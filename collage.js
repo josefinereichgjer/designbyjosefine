@@ -13,10 +13,10 @@
 
   /* ── Image data ─────────────────────────────────────────────────────────── */
   const CARDS = [
-    { src: './assets/broskiforan.jpg',    alt: 'Broski foran',   w: 200, h: 260 },
-    { src: './assets/plakat_mockup.jpg',  alt: 'Plakat mockup',  w: 230, h: 165 },
+    { src: './assets/broskiforan.webp',    alt: 'Broski foran',   w: 200, h: 260 },
+    { src: './assets/plakat_mockup.webp',  alt: 'Plakat mockup',  w: 230, h: 165 },
     { src: './assets/reinalys.webp',      alt: 'Reina Lys',      w: 210, h: 155 },
-    { src: './assets/wenettside.png',     alt: 'We nettside',    w: 260, h: 170 },
+    { src: './assets/wenettside.webp',     alt: 'We nettside',    w: 260, h: 170 },
     { src: './assets/norvaldiphone.webp', alt: 'Norval iPhone',  w: 178, h: 212 },
   ];
 

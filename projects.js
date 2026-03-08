@@ -86,7 +86,7 @@ window.PROJECTS = [
     year: "2024",
     tags: ["Branding"],
     cover: "./assets/srhbrosk.webp",
-    images: ["./assets/plakat_mockup.jpg", "./assets/srhbanner_mockup.jpg", "./assets/linkedinsrh.png", "./assets/reklamebannermock.png", "./assets/facebook.png"],
+    images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
     description: "Short description.",
     background: [
       {
@@ -104,7 +104,7 @@ window.PROJECTS = [
       {
         heading: "Typografi",
         body: "Typografien i prosjektet er basert på en rund og moderne grotesk skrifttype som ligger tett opp til SRHs eksisterende uttrykk. Akkurat samme font som de bruker er utilgjengelig, så fonten jeg bruker har noen svakheter (les nøyere i pdf-en)\n\nUlike skriftvekter og størrelser brukes for å skape et tydelig hierarki mellom overskrifter, mellomtitler og brødtekst.",
-        images: ["./assets/typosrh1.png", "./assets/typosrh2.png"]
+        images: ["./assets/typosrh1.webp", "./assets/typosrh2.webp"]
       },
       {
         heading: "Fotografi",
@@ -136,7 +136,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Typography", "Illustration"],
     cover: "./assets/cards_purple.webp",
-    images: ["./assets/doorskilt.png", "./assets/storefront.png", "./assets/skjema.png", "./assets/newicon.png", "./assets/weinsta.png", "./assets/wenettside.png", "./assets/banner.png"],
+    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
     description: "Short description.",
     finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
   },
