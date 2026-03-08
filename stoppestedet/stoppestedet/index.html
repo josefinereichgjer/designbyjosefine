@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stoppestedet | Modern & Responsive</title>
+
+    <!-- Kobling til ekstern CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <img src="icons/logo_hvit_skrift.png" class="logo-main" alt="Stoppestedet">
+                <div class="nav-links" id="navLinks">
+                    <a href="#hva-skjer">Hva skjer</a>
+                    <a href="#lokaler">Lokaler</a>
+                    <a href="#booking">Booking</a>
+                    <a href="design.html" class="nav-cta">Design</a>
+                </div>
+                <button class="hamburger" id="hamburger" aria-label="Åpne meny">
+                    <span></span><span></span><span></span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Stoppestedet</h1>
+            <p style="opacity: 0.9; max-width: 600px; margin: 0 auto; font-size: 14px;">
+                En åpen møteplass for unge med kreativitet, fellesskap og utvikling midt i hjertet av byen.
+            </p>
+            <br>
+            <p style="color: var(--green); letter-spacing: 5px; font-size: 10px; font-weight: bold;">
+                OSLO // STORGATA 1
+            </p>
+        </div>
+    </div>
+
+    <section id="hva-skjer">
+        <div class="container">
+            <h2>Aktuelle Aktiviteter</h2>
+            <div class="main-grid">
+
+                <div class="card">
+                    <div style="position:absolute; top:0; left:0; width:40px; height:40px; clip-path:polygon(0 0, 100% 0, 0 100%); background-color:#3B3BFF; z-index:10;"></div>
+                    <img src="images/moteplass.jpg" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <span style="color: var(--green); font-size: 10px;">AKKURAT NÅ</span>
+                        <div class="title-with-icon">
+                            <img src="icons/moteplass_hvit.png" class="inline-icon">
+                            <h3>Åpen Møteplass</h3>
+                        </div>
+                        <p style="font-size: 12px; opacity: 0.7;">
+                            Vår viktigste arena. Kom som du er og nyt uten forpliktelser
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="position:absolute; top:0; left:0; width:40px; height:40px; clip-path:polygon(0 0, 100% 0, 0 100%); background-color:#FF6B00; z-index:10;"></div>
+                    <img src="images/minikino.jpg" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <span style="opacity: 0.5; font-size: 10px;">IDAG 18:00-19:30</span>
+                        <div class="title-with-icon">
+                            <img src="icons/kino_hvit.png" class="inline-icon">
+                            <h3>Filmvisning</h3>
+                        </div>
+                        <p style="font-size: 12px; opacity: 0.7;">
+                            Vi rigger til minikinoen og viser dokumentarer etterfulgt av diskusjon.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="position:absolute; top:0; left:0; width:40px; height:40px; clip-path:polygon(0 0, 100% 0, 0 100%); background-color:#A3AF0E; z-index:10;"></div>
+                    <img src="images/verkstedactivity.jpg" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <span style="opacity: 0.5; font-size: 10px;">ONSDAGER KL 16:00-19:00</span>
+                        <div class="title-with-icon">
+                            <img src="icons/verksted.png" class="inline-icon">
+                            <h3>Verksted-onsdag</h3>
+                        </div>
+                        <p style="font-size: 12px; opacity: 0.7;">
+                            Bruk våre symaskiner og verktøy til dine egne prosjekter. Veiledning tilgjengelig.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="lokaler" style="background-color: #0c0c0c;">
+        <div class="container">
+            <h2>Utforsk lokalene</h2>
+            <div class="main-grid">
+
+                <div class="card">
+                    <div style="position:absolute; top:0; left:0; width:40px; height:40px; clip-path:polygon(0 0, 100% 0, 0 100%); background-color:#CE80E0; z-index:10;"></div>
+                    <img src="images/kontorer.jpg" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <h3>GRUPPEROM</h3>
+                        <p style="font-size:12px; opacity:0.6;">1. Etasje</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="position:absolute; top:0; left:0; width:40px; height:40px; clip-path:polygon(0 0, 100% 0, 0 100%); background-color:#5FBDC7; z-index:10;"></div>
+                    <img src="images/samtalerom.jpg" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <h3>SAMTALEROM</h3>
+                        <p style="font-size:12px; opacity:0.6;">2. Etasje</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="position:absolute; top:0; left:0; width:40px; height:40px; clip-path:polygon(0 0, 100% 0, 0 100%); background-color:#3B3BFF; z-index:10;"></div>
+                    <img src="images/inne_trapp.jpg" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <h3>MØTEPLASS</h3>
+                        <p style="font-size:12px; opacity:0.6;">1. Etasje</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="position:absolute; top:0; left:0; width:40px; height:40px; clip-path:polygon(0 0, 100% 0, 0 100%); background-color:#FF6B00; z-index:10;"></div>
+                    <img src="images/minikino.jpg" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <h3>MINIKINO</h3>
+                        <p style="font-size:12px; opacity:0.6;">3. Etasje</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div style="position:absolute; top:0; left:0; width:40px; height:40px; clip-path:polygon(0 0, 100% 0, 0 100%); background-color:#A3AF0E; z-index:10;"></div>
+                    <img src="images/verkstedactivity.jpg" class="card-img" loading="lazy">
+                    <div class="card-body">
+                        <h3>VERKSTED</h3>
+                        <p style="font-size:12px; opacity:0.6;">2. Etasje</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="booking">
+        <div class="container">
+            <div class="booking-split">
+
+                <div>
+                    <h2>Booking</h2>
+                    <p style="margin: 20px 0; opacity: 0.7;">
+                        Trenger du et skjermet rom for en samtale eller konsentrert arbeid?
+                        Book en av våre faste partnere eller et rom direkte her.
+                    </p>
+
+                    <div style="display: flex; gap: 10px; margin-top: 30px;">
+                        <button class="room-btn active" data-room="Samtalerom 1" onclick="selectRoom(this)">
+                            <img src="icons/samtalerom_hvit.png" style="height: 35px; width: auto; filter: invert(1);">
+                            SAMTALEROM 1
+                        </button>
+                        <button class="room-btn" data-room="Samtalerom 2" onclick="selectRoom(this)">
+                            SAMTALEROM 2
+                        </button>
+                    </div>
+
+                    <div style="background:#111; border:1px solid #222; padding:30px; margin-top:30px;">
+                        <p style="font-size:11px; opacity:0.5; text-transform:uppercase; margin-bottom:15px;">Ledige tider i dag</p>
+                        <div class="time-slots">
+                            <button class="time-slot" onclick="selectTime(this)">10:00</button>
+                            <button class="time-slot" onclick="selectTime(this)">11:00</button>
+                            <button class="time-slot taken" disabled>12:00</button>
+                            <button class="time-slot taken" disabled>13:00</button>
+                            <button class="time-slot" onclick="selectTime(this)">14:00</button>
+                            <button class="time-slot" onclick="selectTime(this)">15:00</button>
+                            <button class="time-slot taken" disabled>16:00</button>
+                            <button class="time-slot" onclick="selectTime(this)">17:00</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #111; padding: 40px; border: 1px solid #222;">
+                    <h4 style="margin-bottom: 20px; font-size: 12px; text-transform: uppercase;">
+                        Ledig i dag:
+                    </h4>
+
+                    <div style="display: flex; align-items: center; gap: 20px; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 25px;">
+                        <img src="images/staff_skjorte.jpg" style="width: 60px; height: 60px; object-fit: cover; border-radius: 50%;">
+                        <div>
+                            <p style="font-weight: bold;">Jasmin (Frivillig)</p>
+                            <p style="font-size: 11px; color: var(--green);">Ledig nå - 16:30</p>
+                        </div>
+                    </div>
+
+                    <form id="bookingForm" onsubmit="submitBooking(event)">
+                        <div class="form-group">
+                            <label>Navn</label>
+                            <input type="text" name="name" placeholder="Ditt navn" required>
+                        </div>
+                        <div class="form-group">
+                            <label>E-post</label>
+                            <input type="email" name="email" placeholder="din@epost.no" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Dato</label>
+                            <input type="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Melding (valgfritt)</label>
+                            <textarea name="message" placeholder="Beskriv kort hva dere skal bruke rommet til..." rows="3"></textarea>
+                        </div>
+                        <p id="selectedInfo" style="font-size:11px; color:var(--green); margin-bottom:15px; min-height:18px;"></p>
+                        <button type="submit" class="btn" style="width: 100%; text-align: center; cursor:pointer; border:none;">
+                            Send Forespørsel
+                        </button>
+                    </form>
+
+                    <div id="bookingConfirmation" style="display:none; text-align:center; padding:20px 0;">
+                        <p style="color:var(--green); font-size:22px; margin-bottom:10px;">&#10003;</p>
+                        <p style="font-weight:bold; margin-bottom:8px;">Forespørsel sendt!</p>
+                        <p style="font-size:12px; opacity:0.6;">Vi svarer deg innen kort tid på oppgitt e-post.</p>
+                        <button onclick="resetBooking()" style="margin-top:20px; background:none; border:1px solid #444; color:#fff; padding:10px 20px; font-family:inherit; font-size:11px; cursor:pointer; text-transform:uppercase;">
+                            Book igjen
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Scroll to top -->
+    <button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Tilbake til toppen">&#8593;</button>
+
+    <footer>
+        <div class="container">
+            <img src="icons/logo_hvit_skrift.png" style="height: 105px; margin-bottom: 20px;">
+            <p style="font-size: 14px; opacity: 0.6;">
+                Storgata 1, 0155 Oslo<br>post@stoppestedet.no
+            </p>
+
+            <div class="design-credit">
+                DESIGN: Josefine Reichelt Gjertsen<br>
+                NTNU GJØVIK | IDG3015
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ── Smooth scroll for nav links ──────────────────────────────────────
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+                // close mobile menu if open
+                document.getElementById('navLinks').classList.remove('open');
+                document.getElementById('hamburger').classList.remove('open');
+            });
+        });
+
+        // ── Active nav on scroll ─────────────────────────────────────────────
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    navLinks.forEach(a => {
+                        a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+                    });
+                }
+            });
+        }, { threshold: 0.3 });
+        sections.forEach(s => observer.observe(s));
+
+        // ── Hamburger menu ───────────────────────────────────────────────────
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+            document.getElementById('hamburger').classList.toggle('open');
+        });
+
+        // ── Scroll to top button ─────────────────────────────────────────────
+        const scrollBtn = document.getElementById('scrollTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 500);
+        });
+
+        // ── Booking: room selection ──────────────────────────────────────────
+        function selectRoom(btn) {
+            document.querySelectorAll('.room-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            updateSelectedInfo();
+        }
+
+        // ── Booking: time slots ──────────────────────────────────────────────
+        function selectTime(btn) {
+            document.querySelectorAll('.time-slot:not(.taken)').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            updateSelectedInfo();
+        }
+
+        function updateSelectedInfo() {
+            const room = document.querySelector('.room-btn.active')?.dataset.room || '';
+            const time = document.querySelector('.time-slot.active')?.textContent || '';
+            const el = document.getElementById('selectedInfo');
+            if (room && time) {
+                el.textContent = `Valgt: ${room} kl. ${time}`;
+            } else if (room) {
+                el.textContent = `Valgt: ${room} — velg et tidspunkt`;
+            } else {
+                el.textContent = '';
+            }
+        }
+
+        // ── Booking: form submit ─────────────────────────────────────────────
+        function submitBooking(e) {
+            e.preventDefault();
+            document.getElementById('bookingForm').style.display = 'none';
+            document.getElementById('bookingConfirmation').style.display = 'block';
+        }
+
+        function resetBooking() {
+            document.getElementById('bookingForm').reset();
+            document.getElementById('bookingForm').style.display = 'block';
+            document.getElementById('bookingConfirmation').style.display = 'none';
+            document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('active'));
+            updateSelectedInfo();
+        }
+
+        // ── Lightbox ─────────────────────────────────────────────────────────
+        const galleryImgs = Array.from(document.querySelectorAll('.gallery img'));
+        let currentLightbox = 0;
+
+        function openLightbox(img) {
+            currentLightbox = galleryImgs.indexOf(img);
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightboxImg').alt = img.alt;
+            document.getElementById('lightbox').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        function lightboxNav(e, dir) {
+            e.stopPropagation();
+            currentLightbox = (currentLightbox + dir + galleryImgs.length) % galleryImgs.length;
+            const img = galleryImgs[currentLightbox];
+            document.getElementById('lightboxImg').src = img.src;
+            document.getElementById('lightboxImg').alt = img.alt;
+        }
+
+        document.addEventListener('keydown', e => {
+            if (!document.getElementById('lightbox').classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') lightboxNav(e, -1);
+            if (e.key === 'ArrowRight') lightboxNav(e, 1);
+        });
+
+        // ── Set today's date as min for booking ──────────────────────────────
+        const dateInput = document.querySelector('input[name="date"]');
+        if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+    </script>
+
+</body>
+</html>

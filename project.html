@@ -67,6 +67,7 @@
         <p class="muted" style="margin:0 0 16px">${project.subtitle || ""}</p>
         ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
         ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px">↗ ${project.finalPdf.label}</a>` : ""}
+        ${project.link ? `<a class="btn-pdf btn-pdf--green" href="${project.link.src}" target="_blank" rel="noopener" style="margin-top:18px">↗ ${project.link.label}</a>` : ""}
       `;
 
       const allSlides = [project.cover, ...project.images];
@@ -116,6 +117,9 @@
                 </div>
               </div>`).join("")}</div>`;
           }
+        }
+        if (s.link) {
+          inner += `<a class="btn-pdf btn-pdf--green" href="${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${s.link.label}</a>`;
         }
         return `<div class="bg__section"><h3 class="bg__heading">${s.heading}</h3>${inner}</div>`;
       }).join("");

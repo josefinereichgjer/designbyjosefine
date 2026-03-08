@@ -694,15 +694,17 @@ a:hover{opacity:.75}
 }
 .btn-pdf--primary:hover { background: #333; border-color: #333; }
 .btn-pdf--green {
-  background: #2d7a45;
-  color: #fff;
-  border-color: #2d7a45;
+  background: #cce8f4;
+  color: #000;
+  border-color: #cce8f4;
   font-size: 11px;
   padding: 7px 12px;
   width: 100%;
   justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
-.btn-pdf--green:hover { background: #236237; border-color: #236237; opacity: 1; }
+.btn-pdf--green:hover { background: #aed8ee; border-color: #aed8ee; opacity: 1; }
 
 /* Final PDF section */
 .final-pdf {
