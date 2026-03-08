@@ -3,124 +3,206 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Name — Portfolio</title>
-  <meta name="description" content="Selected work in branding, typography, and illustration." />
+  <title>DesignbyJosefine</title>
+  <meta name="description" content="Portfolio — branding, typografi og illustrasjon." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Neutral, modern type. Swap to your own later. -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%; overflow: hidden;
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: #f0ede8;
+    }
+
+    /* ── Full-screen stage ── */
+    .landing {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: linear-gradient(160deg, #f5f3ef 0%, #eae7e1 100%);
+    }
+
+    /* Edge fades — cards at the wings dissolve softly */
+    .landing::before,
+    .landing::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 12vw;
+      max-width: 140px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .landing::before {
+      left: 0;
+      background: linear-gradient(to right, #f5f3ef, transparent);
+    }
+    .landing::after {
+      right: 0;
+      background: linear-gradient(to left, #eae7e1, transparent);
+    }
+
+    /* ── Collage fills the whole page ── */
+    .collage-scene {
+      position: absolute;
+      inset: 0;
+    }
+
+    /* Cards rendered by collage.js */
+    .collage-card {
+      position: absolute;
+      cursor: pointer;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow:
+        0 2px  6px  rgba(0,0,0,.07),
+        0 8px  28px rgba(0,0,0,.11),
+        0 22px 52px rgba(0,0,0,.08);
+      will-change: transform, opacity;
+      transition: box-shadow .3s ease;
+    }
+    .collage-card:hover {
+      box-shadow:
+        0 4px  10px rgba(0,0,0,.10),
+        0 18px 44px rgba(0,0,0,.17),
+        0 36px 76px rgba(0,0,0,.13);
+    }
+    .collage-card img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      pointer-events: none; user-select: none;
+      -webkit-user-drag: none;
+      filter: brightness(.96) saturate(1.04);
+      transition: filter .3s ease;
+    }
+    .collage-card:hover img {
+      filter: brightness(1) saturate(1.08);
+    }
+
+    /* ── "Portfolio" — top-left, big, links to the portfolio ── */
+    .landing__portfolio-link {
+      position: absolute;
+      top: 36px;
+      left: 44px;
+      z-index: 50;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      color: #000;
+      text-decoration: none;
+    }
+    .landing__portfolio-link:hover { opacity: .7; }
+
+    /* ── "DesignbyJosefine" — centred brand name ── */
+    .landing__brand {
+      position: absolute;
+      /* Vertically and horizontally centred */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .landing__name {
+      font-size: clamp(18px, 2vw, 26px);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #111;
+      margin: 0;
+    }
+
+    .landing__tagline {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #999;
+      margin: 0;
+    }
+
+    .landing__cta {
+      margin-top: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 24px;
+      border-radius: 999px;
+      background: #111;
+      color: #fff;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      pointer-events: all;
+      box-shadow: 0 4px 18px rgba(0,0,0,.18);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .landing__cta:hover {
+      background: #2a2a2a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(0,0,0,.24);
+    }
+    .landing__cta:active { transform: translateY(0); }
+    .landing__cta-arrow {
+      flex-shrink: 0;
+      transition: transform .18s ease;
+    }
+    .landing__cta:hover .landing__cta-arrow { transform: translateX(3px); }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .collage-scene { transform: scale(.78); transform-origin: center; }
+    }
+    @media (max-width: 600px) {
+      .collage-scene  { transform: scale(.55); transform-origin: center; }
+      .landing__portfolio-link { font-size: 30px; top: 24px; left: 24px; }
+      .landing__tagline { display: none; }
+    }
+    @media (max-width: 400px) {
+      .collage-scene { transform: scale(.42); transform-origin: center; }
+    }
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#content">Hopp til innhold</a>
+  <main class="landing">
 
-  <header class="sidebar" id="sidebar">
-    <div class="sidebar__inner">
-     <div class="brand">
-  <a class="brand__mark" href="./index.html" aria-label="Home">
-    <img src="./assets/svartlogo.webp" alt="Logo" class="brand__logo">
-  </a>
-</div>
+    <!-- Cards injected here by collage.js -->
+    <div class="collage-scene" id="collage-scene" aria-hidden="true"></div>
 
-      <p class="intro">
-        A small (or solo) designer based in <span class="muted">[City]</span>.
-        Selected work in branding, typography, and illustration.
-      </p>
+    <!-- Top-left navigation -->
+    <a class="landing__portfolio-link" href="./projects.html">Portfolio</a>
 
-      <nav class="nav" aria-label="Primary">
-        <a class="nav__link" href="#work"><span>Arbeid</span><span class="nav__plus" aria-hidden="true">+</span></a>
-        <a class="nav__link" href="#about"><span>Om</span></a>
-        <a class="nav__link" href="#blog"><span>Blogg</span><span class="nav__plus" aria-hidden="true">+</span></a>
-        <a class="nav__link" href="#contact"><span>Kontakt</span></a>
-      </nav>
-
-      <div class="search">
-        <label class="sr-only" for="searchInput">Søk i prosjekter</label>
-        <input id="searchInput" type="search" placeholder="Søk…" autocomplete="off" />
-      </div>
-
-      <section class="filters" aria-label="Work filters">
-        <p class="filters__title">FILTER</p>
-        <div class="filters__chips" id="filterChips" role="list"></div>
-      </section>
-
-      <footer class="meta">
-        <p class="meta__small">© <span id="year"></span> Your Name</p>
-        <p class="meta__small">
-          <a href="#" rel="noopener">Instagram</a>
-          <span class="dot" aria-hidden="true">·</span>
-          <a href="#" rel="noopener">Behance</a>
-        </p>
-      </footer>
-
-      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">
-        Meny
-      </button>
-    </div>
-  </header>
-
-  <main id="content" class="content">
-    <section id="work" class="section">
-      <div class="grid-header">
-        <h1 class="title">Arbeid</h1>
-        <p class="subtitle" id="resultsMeta">Viser alle</p>
-      </div>
-
-      <div class="masonry" id="grid" aria-live="polite"></div>
-    </section>
-
-   <!-- ── ABOUT ── -->
-<section id="about" class="section section--thin">
-  <h2 class="h2">Om</h2>
-
-  <div class="about-layout">
-
-    <!-- Left: photo + tool strip -->
-    <div class="about-photo-col">
-      <img
-        class="about-photo"
-        src="./assets/me.webp"
-        alt="Portrait photo"
-      />
-
-      <!-- Scrolling tool strip -->
-      <div class="tools-strip">
-        <div class="tools-track" id="toolsTrack"></div>
-      </div>
+    <!-- Centred brand identity — always above the cards -->
+    <div class="landing__brand">
+      <p class="landing__name">DesignbyJosefine</p>
+      <p class="landing__tagline">Visuell kommunikasjon · strategisk design · UX/UI</p>
+      <a class="landing__cta" href="./projects.html">
+        Se prosjektene mine
+        <svg class="landing__cta-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+          <path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
     </div>
 
-    <!-- Right: bio -->
-    <div class="about-bio-col">
-      <p>
-        Short bio. What you do, what you care about, what you're aiming to build next.
-        Keep it tight and specific.
-      </p>
-      <ul class="list">
-        <li><span class="muted">Fokus</span> Branding, type, editorial</li>
-        <li><span class="muted">Verktøy</span> Figma, Adobe, Glyphs</li>
-        <li><span class="muted">E-post</span> you@example.com</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-    <section id="blog" class="section section--thin">
-      <h2 class="h2">Blogg</h2>
-      <p class="muted">Valgfritt. Legg til innlegg senere (eller fjern denne seksjonen).</p>
-    </section>
-
-    <section id="contact" class="section section--thin">
-      <h2 class="h2">Kontakt</h2>
-      <p>
-        For samarbeid, praksisplasser eller oppdrag:
-        <a href="mailto:you@example.com">you@example.com</a>
-      </p>
-    </section>
   </main>
 
-  <script src="./projects.js"></script>
-  <script src="./app.js"></script>
+  <script src="./collage.js"></script>
 </body>
 </html>
