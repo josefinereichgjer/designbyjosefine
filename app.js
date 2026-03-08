@@ -2,7 +2,8 @@ const grid = document.getElementById("grid");
 const chipsWrap = document.getElementById("filterChips");
 const searchInput = document.getElementById("searchInput");
 const resultsMeta = document.getElementById("resultsMeta");
-document.getElementById("year").textContent = new Date().getFullYear();
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 const sidebarToggle = document.getElementById("sidebarToggle");
 sidebarToggle?.addEventListener("click", () => {

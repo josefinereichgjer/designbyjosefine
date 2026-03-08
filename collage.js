@@ -27,11 +27,11 @@
    * centre text column (innermost edges ≥ 185 px from centre).
    */
   const TARGETS = [
-    { x: -430, y: -145, rot:  -8, z: 3 },  // left  wing, upper
-    { x: -315, y:   35, rot:   6, z: 5 },  // left  wing, mid (innermost)
-    { x: -425, y:  195, rot:  -4, z: 2 },  // left  wing, lower
-    { x:  390, y: -135, rot:  -6, z: 4 },  // right wing, upper
-    { x:  335, y:  150, rot:   8, z: 3 },  // right wing, lower (innermost)
+    { x: -300, y: -140, rot:  -8, z: 3 },  // left  wing, upper
+    { x: -210, y:   30, rot:   6, z: 5 },  // left  wing, mid (innermost)
+    { x: -295, y:  185, rot:  -4, z: 2 },  // left  wing, lower
+    { x:  260, y: -130, rot:  -6, z: 4 },  // right wing, upper
+    { x:  215, y:  145, rot:   8, z: 3 },  // right wing, lower (innermost)
   ];
 
   /* ── Module state ───────────────────────────────────────────────────────── */

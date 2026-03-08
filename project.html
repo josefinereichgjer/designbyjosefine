@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="assets/svartlogo.webp">
 </head>
 
 <body>
@@ -49,7 +50,8 @@
     const id = params.get("id");
 
     const project = (window.PROJECTS || []).find(p => p.id === id);
-    $("#year").textContent = new Date().getFullYear();
+    const yearEl = document.querySelector("#year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     if (!project) {
       $("#project").innerHTML = `<p>Prosjekt ikke funnet. <a href="./index.html#work">Gå tilbake</a>.</p>`;
@@ -84,10 +86,10 @@
       const backgroundHTML = (project.background || []).map(s => {
         let inner = s.body ? s.body.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("") : "";
         if (s.image) {
-          inner += `<img class="bg__img" src="${s.image}" alt="${s.heading}">`;
+          inner += `<img class="bg__img" src="${s.image}" alt="${s.heading}" loading="lazy">`;
         }
         if (s.images) {
-          inner += `<div class="bg__img-row">${s.images.map(src => `<img class="bg__img bg__img--small" src="${src}" alt="${s.heading}">`).join("")}</div>`;
+          inner += `<div class="bg__img-row">${s.images.map(src => `<img class="bg__img bg__img--small" src="${src}" alt="${s.heading}" loading="lazy">`).join("")}</div>`;
         }
         if (s.palette) {
           const isCards = s.palette.some(c => c.description);

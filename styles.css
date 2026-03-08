@@ -12,7 +12,7 @@
 }
 
 *{box-sizing:border-box}
-html,body{height:100%}
+html,body{height:100%; overflow-x:hidden}
 body{
   margin:0;
   font-family:var(--font);
@@ -844,14 +844,16 @@ a:hover{opacity:.75}
   .bg { margin-top: 36px; }
   .final-pdf { margin-top: 36px; }
   .bg__sections { grid-template-columns: 1fr; }
+  /* About: stack to single column so photo + bio don't overflow */
+  .about-layout { grid-template-columns: 1fr; gap: 24px; }
+  .about-photo { aspect-ratio: 3 / 2; max-height: 280px; }
 }
 
 /* Mobile: single column */
 @media (max-width: 560px) {
   .masonry { grid-template-columns: 1fr; }
   .slideshow { aspect-ratio: 4 / 3; border-radius: 6px; }
-  .about-layout { grid-template-columns: 1fr; }
-  .about-photo { aspect-ratio: 4 / 3; max-height: 260px; }
+  .about-photo { aspect-ratio: 4 / 3; max-height: 240px; }
   .kv { grid-template-columns: 1fr; gap: 8px; }
   .bg__heading { font-size: 14px; }
   .bg__body { font-size: 14px; line-height: 1.6; }
