@@ -852,14 +852,15 @@ a:hover{opacity:.75}
   .bg__sections { grid-template-columns: 1fr; }
   /* About: stack to single column so photo + bio don't overflow */
   .about-layout { grid-template-columns: 1fr; gap: 24px; }
-  .about-photo { aspect-ratio: unset; height: 260px; }
+  /* Show photo at natural portrait ratio — no fixed height crop */
+  .about-photo { width: 52%; max-width: 200px; height: auto; aspect-ratio: unset; }
 }
 
 /* Mobile: single column */
 @media (max-width: 560px) {
   .masonry { grid-template-columns: 1fr; }
   .slideshow { aspect-ratio: 4 / 3; border-radius: 6px; }
-  .about-photo { aspect-ratio: 4 / 3; max-height: 240px; }
+  .about-photo { width: 60%; max-width: 180px; }
   .kv { grid-template-columns: 1fr; gap: 8px; }
   .bg__heading { font-size: 14px; }
   .bg__body { font-size: 14px; line-height: 1.6; }
