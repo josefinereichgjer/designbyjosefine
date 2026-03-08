@@ -86,18 +86,34 @@
         if (s.image) {
           inner += `<img class="bg__img" src="${s.image}" alt="${s.heading}">`;
         }
+        if (s.images) {
+          inner += `<div class="bg__img-row">${s.images.map(src => `<img class="bg__img bg__img--small" src="${src}" alt="${s.heading}">`).join("")}</div>`;
+        }
         if (s.palette) {
-          inner += `<div class="palette">${s.palette.map(c => `
-            <div class="palette__item">
-              <div class="palette__swatch" style="background:${c.hex}"></div>
-              <div class="palette__info">
-                <span class="palette__hex">${c.hex}</span>
-                <span class="palette__name">${c.name}</span>
-                <span class="palette__val">RGB&nbsp;&nbsp;${c.rgb}</span>
-                <span class="palette__val">CMYK&nbsp;${c.cmyk}</span>
-                <span class="palette__val">${c.pantone}</span>
-              </div>
-            </div>`).join("")}</div>`;
+          const isCards = s.palette.some(c => c.description);
+          if (isCards) {
+            inner += `<div class="palette palette--cards">${s.palette.map(c => `
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:${c.hex}"></div>
+                <div class="palette__info">
+                  <span class="palette__name">${c.name}</span>
+                  <span class="palette__hex">${c.hex}</span>
+                  <span class="palette__desc">${c.description}</span>
+                </div>
+              </div>`).join("")}</div>`;
+          } else {
+            inner += `<div class="palette">${s.palette.map(c => `
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:${c.hex}"></div>
+                <div class="palette__info">
+                  <span class="palette__hex">${c.hex}</span>
+                  <span class="palette__name">${c.name}</span>
+                  <span class="palette__val">RGB&nbsp;&nbsp;${c.rgb}</span>
+                  <span class="palette__val">CMYK&nbsp;${c.cmyk}</span>
+                  <span class="palette__val">${c.pantone}</span>
+                </div>
+              </div>`).join("")}</div>`;
+          }
         }
         return `<div class="bg__section"><h3 class="bg__heading">${s.heading}</h3>${inner}</div>`;
       }).join("");
