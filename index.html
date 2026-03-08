@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Selected work in branding, typography, and illustration." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Neutral, modern type. Swap to your own later. -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#content">Hopp til innhold</a>
+
+  <header class="sidebar" id="sidebar">
+    <div class="sidebar__inner">
+     <div class="brand">
+  <a class="brand__mark" href="./index.html" aria-label="Home">
+    <img src="./assets/svartlogo.webp" alt="Logo" class="brand__logo">
+  </a>
+</div>
+
+      <p class="intro">
+        A small (or solo) designer based in <span class="muted">[City]</span>.
+        Selected work in branding, typography, and illustration.
+      </p>
+
+      <nav class="nav" aria-label="Primary">
+        <a class="nav__link" href="#work"><span>Arbeid</span><span class="nav__plus" aria-hidden="true">+</span></a>
+        <a class="nav__link" href="#about"><span>Om</span></a>
+        <a class="nav__link" href="#blog"><span>Blogg</span><span class="nav__plus" aria-hidden="true">+</span></a>
+        <a class="nav__link" href="#contact"><span>Kontakt</span></a>
+      </nav>
+
+      <div class="search">
+        <label class="sr-only" for="searchInput">Søk i prosjekter</label>
+        <input id="searchInput" type="search" placeholder="Søk…" autocomplete="off" />
+      </div>
+
+      <section class="filters" aria-label="Work filters">
+        <p class="filters__title">FILTER</p>
+        <div class="filters__chips" id="filterChips" role="list"></div>
+      </section>
+
+      <footer class="meta">
+        <p class="meta__small">© <span id="year"></span> Your Name</p>
+        <p class="meta__small">
+          <a href="#" rel="noopener">Instagram</a>
+          <span class="dot" aria-hidden="true">·</span>
+          <a href="#" rel="noopener">Behance</a>
+        </p>
+      </footer>
+
+      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">
+        Meny
+      </button>
+    </div>
+  </header>
+
+  <main id="content" class="content">
+    <section id="work" class="section">
+      <div class="grid-header">
+        <h1 class="title">Arbeid</h1>
+        <p class="subtitle" id="resultsMeta">Viser alle</p>
+      </div>
+
+      <div class="masonry" id="grid" aria-live="polite"></div>
+    </section>
+
+   <!-- ── ABOUT ── -->
+<section id="about" class="section section--thin">
+  <h2 class="h2">Om</h2>
+
+  <div class="about-layout">
+
+    <!-- Left: photo + tool strip -->
+    <div class="about-photo-col">
+      <img
+        class="about-photo"
+        src="./assets/me.webp"
+        alt="Portrait photo"
+      />
+
+      <!-- Scrolling tool strip -->
+      <div class="tools-strip">
+        <div class="tools-track" id="toolsTrack"></div>
+      </div>
+    </div>
+
+    <!-- Right: bio -->
+    <div class="about-bio-col">
+      <p>
+        Short bio. What you do, what you care about, what you're aiming to build next.
+        Keep it tight and specific.
+      </p>
+      <ul class="list">
+        <li><span class="muted">Fokus</span> Branding, type, editorial</li>
+        <li><span class="muted">Verktøy</span> Figma, Adobe, Glyphs</li>
+        <li><span class="muted">E-post</span> you@example.com</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+    <section id="blog" class="section section--thin">
+      <h2 class="h2">Blogg</h2>
+      <p class="muted">Valgfritt. Legg til innlegg senere (eller fjern denne seksjonen).</p>
+    </section>
+
+    <section id="contact" class="section section--thin">
+      <h2 class="h2">Kontakt</h2>
+      <p>
+        For samarbeid, praksisplasser eller oppdrag:
+        <a href="mailto:you@example.com">you@example.com</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="./projects.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

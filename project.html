@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Prosjekt — Ditt navn</title>
+  <meta name="description" content="Prosjektdetaljer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#content">Hopp til innhold</a>
+
+  <header class="sidebar sidebar--detail" id="sidebar">
+    <div class="sidebar__inner">
+      <div class="brand">
+        <a class="brand__mark" href="./index.html" aria-label="Back to work">
+          <img src="./assets/svartlogo.webp" alt="Logo" class="brand__logo">
+        </a>
+      </div>
+
+      <nav class="nav" aria-label="Project navigation">
+        <a class="nav__link" href="./index.html#work"><span>← Tilbake</span></a>
+      </nav>
+
+      <div class="meta meta--stack" id="projectMeta"></div>
+
+      <footer class="meta">
+        <p class="meta__small">© <span id="year"></span> Your Name</p>
+      </footer>
+
+      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">
+        Meny
+      </button>
+    </div>
+  </header>
+
+  <main id="content" class="content">
+    <article class="project" id="project"></article>
+  </main>
+
+  <script src="./projects.js"></script>
+  <script>
+    const $ = (s) => document.querySelector(s);
+    const params = new URLSearchParams(location.search);
+    const id = params.get("id");
+
+    const project = (window.PROJECTS || []).find(p => p.id === id);
+    $("#year").textContent = new Date().getFullYear();
+
+    if (!project) {
+      $("#project").innerHTML = `<p>Prosjekt ikke funnet. <a href="./index.html#work">Gå tilbake</a>.</p>`;
+    } else {
+      const metaRowsHTML = (project.projectMeta || []).map(row => `
+        <div class="pmeta__row">
+          <strong class="pmeta__label">${row.label}</strong>
+          <span class="pmeta__value">${row.value}</span>
+        </div>`).join("");
+
+      $("#projectMeta").innerHTML = `
+        <h1 class="title" style="margin:0 0 4px">${project.title}</h1>
+        <p class="muted" style="margin:0 0 16px">${project.subtitle || ""}</p>
+        ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
+        ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px">↗ ${project.finalPdf.label}</a>` : ""}
+      `;
+
+      const allSlides = [project.cover, ...project.images];
+      const slideshowHTML = `
+        <div class="slideshow" id="slideshow">
+          <div class="slideshow__track" id="slideshowTrack">
+            ${allSlides.map((src, i) => `
+              <figure class="slideshow__slide">
+                <img loading="${i === 0 ? "eager" : "lazy"}" decoding="async" src="${src}" alt="${project.title} — bilde ${i + 1}">
+              </figure>`).join("")}
+          </div>
+          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde">&#8592;</button>
+          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde">&#8594;</button>
+          <div class="slideshow__counter"><span id="slideIndex">1</span> / ${allSlides.length}</div>
+        </div>`;
+
+      const backgroundHTML = (project.background || []).map(s => {
+        let inner = s.body ? s.body.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("") : "";
+        if (s.image) {
+          inner += `<img class="bg__img" src="${s.image}" alt="${s.heading}">`;
+        }
+        if (s.palette) {
+          inner += `<div class="palette">${s.palette.map(c => `
+            <div class="palette__item">
+              <div class="palette__swatch" style="background:${c.hex}"></div>
+              <div class="palette__info">
+                <span class="palette__hex">${c.hex}</span>
+                <span class="palette__name">${c.name}</span>
+                <span class="palette__val">RGB&nbsp;&nbsp;${c.rgb}</span>
+                <span class="palette__val">CMYK&nbsp;${c.cmyk}</span>
+                <span class="palette__val">${c.pantone}</span>
+              </div>
+            </div>`).join("")}</div>`;
+        }
+        return `<div class="bg__section"><h3 class="bg__heading">${s.heading}</h3>${inner}</div>`;
+      }).join("");
+
+      $("#project").innerHTML = `
+        ${slideshowHTML}
+        ${backgroundHTML ? `
+        <section class="bg">
+          <h2 class="section-label">Bakgrunn</h2>
+          <div class="bg__sections">${backgroundHTML}</div>
+          ${project.pdf ? `<a class="btn-pdf" href="${project.pdf.src}" target="_blank" rel="noopener">↗ ${project.pdf.label}</a>` : ""}
+          ${project.pdf?.note ? `
+          <div class="pdf-note">
+            <strong class="pdf-note__heading">${project.pdf.note.heading}</strong>
+            <p class="pdf-note__body">${project.pdf.note.body}</p>
+          </div>` : ""}
+        </section>` : ""}
+        ${project.finalPdf ? `
+        <section class="final-pdf">
+          <h2 class="section-label">Ferdig prosjekt</h2>
+          <a class="btn-pdf btn-pdf--primary" href="${project.finalPdf.src}" target="_blank" rel="noopener">↗ ${project.finalPdf.label}</a>
+        </section>` : ""}
+      `;
+    }
+
+    // Slideshow
+    const track = $("#slideshowTrack");
+    if (track) {
+      const slides = [...track.querySelectorAll(".slideshow__slide")];
+      const counter = $("#slideIndex");
+      let current = 0;
+      let timer;
+
+      function goTo(n) {
+        current = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = current + 1;
+      }
+
+      function startAuto() {
+        clearInterval(timer);
+        timer = setInterval(() => goTo(current + 1), 3500);
+      }
+
+      $("#slideNext")?.addEventListener("click", () => { goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", () => { goTo(current - 1); startAuto(); });
+      document.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
+        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
+      });
+
+      startAuto();
+    }
+
+    // Sidebar mobile toggle
+    const toggle = $("#sidebarToggle");
+    toggle?.addEventListener("click", () => {
+      const sidebar = $("#sidebar");
+      const isOpen = sidebar.classList.toggle("sidebar--open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+  </script>
+</body>
+</html>
+
