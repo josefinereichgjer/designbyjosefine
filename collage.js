@@ -13,33 +13,25 @@
 
   /* ── Image data ─────────────────────────────────────────────────────────── */
   const CARDS = [
-    { src: './assets/mal1reina.webp',      alt: 'Reina emballasje 1', w: 240, h: 170 },
-    { src: './assets/mal2reina.webp',      alt: 'Reina emballasje 2', w: 210, h: 150 },
-    { src: './assets/reinajul.webp',       alt: 'Reina Jul',          w: 225, h: 162 },
-    { src: './assets/reinalys.webp',       alt: 'Reina Lys',          w: 200, h: 145 },
-    { src: './assets/reinastor.webp',      alt: 'Reina stor',         w: 252, h: 178 },
-    { src: './assets/cards_purple.webp',   alt: 'Cards purple',       w: 222, h: 157 },
-    { src: './assets/norvaldiphone.webp',  alt: 'Norval iPhone',      w: 178, h: 212 },
-    { src: './assets/mal3reina.webp',      alt: 'Reina emballasje 3', w: 216, h: 154 },
+    { src: './assets/broskiforan.jpg',    alt: 'Broski foran',   w: 200, h: 260 },
+    { src: './assets/plakat_mockup.jpg',  alt: 'Plakat mockup',  w: 230, h: 165 },
+    { src: './assets/reinalys.webp',      alt: 'Reina Lys',      w: 210, h: 155 },
+    { src: './assets/wenettside.png',     alt: 'We nettside',    w: 260, h: 170 },
+    { src: './assets/norvaldiphone.webp', alt: 'Norval iPhone',  w: 178, h: 212 },
   ];
 
   /*
    * ── Cluster target positions (offset from scene centre, degrees, z-layer) ──
    *
-   * Cards are split into LEFT (x ≤ -310) and RIGHT (x ≥ +330) wings so the
-   * centre column — where the text lives — is always completely clear.
-   * The widest card is 252 px, so the innermost cards' inner edges sit at
-   * roughly ±185 px from centre, well clear of the name text.
+   * 3 cards on the LEFT wing, 2 on the RIGHT — all kept well outside the
+   * centre text column (innermost edges ≥ 185 px from centre).
    */
   const TARGETS = [
-    { x: -445, y: -155, rot:  -8, z: 3 },  // left  wing, upper
-    { x: -315, y:   28, rot:   6, z: 5 },  // left  wing, mid   (innermost)
-    { x: -435, y:  190, rot:  -4, z: 2 },  // left  wing, lower
-    { x: -575, y:   18, rot:   3, z: 1 },  // left  wing, far-out
-    { x:  395, y: -160, rot:  -6, z: 4 },  // right wing, upper
-    { x:  495, y:   35, rot:   9, z: 3 },  // right wing, mid
-    { x:  335, y:  165, rot:  -7, z: 2 },  // right wing, lower  (innermost)
-    { x:  545, y:  195, rot:   5, z: 5 },  // right wing, far-out
+    { x: -430, y: -145, rot:  -8, z: 3 },  // left  wing, upper
+    { x: -315, y:   35, rot:   6, z: 5 },  // left  wing, mid (innermost)
+    { x: -425, y:  195, rot:  -4, z: 2 },  // left  wing, lower
+    { x:  390, y: -135, rot:  -6, z: 4 },  // right wing, upper
+    { x:  335, y:  150, rot:   8, z: 3 },  // right wing, lower (innermost)
   ];
 
   /* ── Module state ───────────────────────────────────────────────────────── */
