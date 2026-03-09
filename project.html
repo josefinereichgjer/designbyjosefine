@@ -85,7 +85,8 @@
         </div>`;
 
       const backgroundHTML = (project.background || []).map(s => {
-        let inner = s.body ? s.body.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("") : "";
+        const bodyHTML = s.body ? s.body.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("") : "";
+        let inner = s.twoCols ? `<div class="bg__body-cols">${bodyHTML}</div>` : bodyHTML;
         if (s.image) {
           inner += `<img class="bg__img" src="${s.image}" alt="${s.heading}" loading="lazy">`;
         }
@@ -118,14 +119,33 @@
               </div>`).join("")}</div>`;
           }
         }
+        if (s.imageSmall) {
+          inner += `<img class="bg__img bg__img--sm" src="${s.imageSmall}" alt="${s.heading}" loading="lazy">`;
+        }
+        if (s.imageStack) {
+          inner += `<div class="bg__img-stack">${s.imageStack.map(src => `<img class="bg__img bg__img--stacked" src="${src}" alt="${s.heading}" loading="lazy">`).join("")}</div>`;
+        }
+        if (s.imagePairs) {
+          inner += `<div class="bg__img-pairs">${s.imagePairs.map(([l, r]) => `<div class="bg__img-pair"><img class="bg__img" src="${l}" loading="lazy"><img class="bg__img" src="${r}" loading="lazy"></div>`).join("")}</div>`;
+        }
         if (s.link) {
           inner += `<a class="btn-pdf btn-pdf--green" href="${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${s.link.label}</a>`;
         }
-        return `<div class="bg__section"><h3 class="bg__heading">${s.heading}</h3>${inner}</div>`;
+        const wideClass = s.wide ? " bg__section--wide" : "";
+        return `<div class="bg__section${wideClass}"><h3 class="bg__heading">${s.heading}</h3>${inner}</div>`;
       }).join("");
+
+      const galleryHTML = (project.gallery || []).length ? `
+        <div class="project__gallery">
+          ${project.gallery.map((src, i) => `
+            <figure class="project__figure">
+              <img loading="lazy" decoding="async" src="${src}" alt="${project.title} — galleri ${i + 1}">
+            </figure>`).join("")}
+        </div>` : "";
 
       $("#project").innerHTML = `
         ${slideshowHTML}
+        ${galleryHTML}
         ${backgroundHTML ? `
         <section class="bg">
           <h2 class="section-label">Bakgrunn</h2>
