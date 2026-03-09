@@ -194,8 +194,8 @@ window.PROJECTS = [
     subtitle: "Redaksjonell design",
     year: "2026",
     tags: ["Redaksjonell"],
-    cover: "./assets/scenebok.jpg",
-    images: ["./assets/closebook.jpg", "./assets/closeletter.jpg", "./assets/togetherbook.png"],
+    cover: "./assets/scenebok.webp",
+    images: ["./assets/closebook.webp", "./assets/closeletter.webp", "./assets/togetherbook.webp"],
     description: "Bokserie – redaksjonell design basert på tre klassiske norske romaner av Collett, Skram og Undset.",
     background: [
       {
@@ -234,9 +234,9 @@ window.PROJECTS = [
       {
         heading: "",
         imagePairs: [
-          ["./assets/bokamt.png", "./assets/bluewhole.png"],
-          ["./assets/bokjenny.png", "./assets/redwhole.png"],
-          ["./assets/forradt.png", "./assets/greenwhole.png"]
+          ["./assets/bokamt.webp", "./assets/bluewhole.webp"],
+          ["./assets/bokjenny.webp", "./assets/redwhole.webp"],
+          ["./assets/forradt.webp", "./assets/greenwhole.webp"]
         ],
         wide: true
       }

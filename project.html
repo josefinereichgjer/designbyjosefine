@@ -88,10 +88,10 @@
         const bodyHTML = s.body ? s.body.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("") : "";
         let inner = s.twoCols ? `<div class="bg__body-cols">${bodyHTML}</div>` : bodyHTML;
         if (s.image) {
-          inner += `<img class="bg__img" src="${s.image}" alt="${s.heading}" loading="lazy">`;
+          inner += `<img class="bg__img" src="${s.image}" alt="${s.heading}" loading="lazy" decoding="async">`;
         }
         if (s.images) {
-          inner += `<div class="bg__img-row">${s.images.map(src => `<img class="bg__img bg__img--small" src="${src}" alt="${s.heading}" loading="lazy">`).join("")}</div>`;
+          inner += `<div class="bg__img-row">${s.images.map(src => `<img class="bg__img bg__img--small" src="${src}" alt="${s.heading}" loading="lazy" decoding="async">`).join("")}</div>`;
         }
         if (s.palette) {
           const isCards = s.palette.some(c => c.description);
@@ -120,13 +120,13 @@
           }
         }
         if (s.imageSmall) {
-          inner += `<img class="bg__img bg__img--sm" src="${s.imageSmall}" alt="${s.heading}" loading="lazy">`;
+          inner += `<img class="bg__img bg__img--sm" src="${s.imageSmall}" alt="${s.heading}" loading="lazy" decoding="async">`;
         }
         if (s.imageStack) {
-          inner += `<div class="bg__img-stack">${s.imageStack.map(src => `<img class="bg__img bg__img--stacked" src="${src}" alt="${s.heading}" loading="lazy">`).join("")}</div>`;
+          inner += `<div class="bg__img-stack">${s.imageStack.map(src => `<img class="bg__img bg__img--stacked" src="${src}" alt="${s.heading}" loading="lazy" decoding="async">`).join("")}</div>`;
         }
         if (s.imagePairs) {
-          inner += `<div class="bg__img-pairs">${s.imagePairs.map(([l, r]) => `<div class="bg__img-pair"><img class="bg__img" src="${l}" loading="lazy"><img class="bg__img" src="${r}" loading="lazy"></div>`).join("")}</div>`;
+          inner += `<div class="bg__img-pairs">${s.imagePairs.map(([l, r]) => `<div class="bg__img-pair"><img class="bg__img" src="${l}" loading="lazy" decoding="async"><img class="bg__img" src="${r}" loading="lazy" decoding="async"></div>`).join("")}</div>`;
         }
         if (s.link) {
           inner += `<a class="btn-pdf btn-pdf--green" href="${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${s.link.label}</a>`;
