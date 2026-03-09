@@ -195,18 +195,41 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Redaksjonell"],
     cover: "./assets/scenebok.jpg",
-    images: ["./assets/closebook.jpg", "./assets/closeletter.jpg"],
+    images: ["./assets/closebook.jpg", "./assets/closeletter.jpg", "./assets/togetherbook.png"],
     description: "Bokserie – redaksjonell design basert på tre klassiske norske romaner av Collett, Skram og Undset.",
     background: [
       {
         heading: "Bokserie – Redaksjonell design",
         wide: true,
         twoCols: true,
-        body: "Dette prosjektet utforsker design av en bokserie basert på tre klassiske romaner fra norsk litteratur: Amtmandens Døtre av Camilla Collett, Forrådt av Amalie Skram og Jenny av Sigrid Undset. Bøkene tematiserer kvinners liv, forventninger og selvstendighet i møte med samfunnets normer. Målet var å utvikle et visuelt system som binder serien sammen, samtidig som hver bok får en egen visuell karakter.\n\nKonseptet bygger på idéen om avstand og spenning – mellom individ og samfunn, mellom egne ønsker og ytre forventninger. Dette uttrykkes gjennom et system av vertikale linjer som går igjen på forsiden og flappene. Linjene fungerer både som et strukturerende element i layouten og som et visuelt motiv som antyder begrensninger, press og avstand.\n\nSelv om linjene danner et felles system for serien, varierer rytme, tetthet og farge mellom bøkene for å reflektere ulike stemninger i tekstene. Amtmandens Døtre har en roligere og mer jevn rytme som gir et dempet uttrykk. I Forrådt er linjene tettere og mer anspente, noe som skaper en følelse av press og konflikt. Jenny har større avstand mellom linjene, som gir et mer åpent og balansert uttrykk.\n\nTypografien er basert på en klassisk serif som knytter designet til litterær tradisjon. Tittelen er bearbeidet slik at bokstavformene fremstår delvis avbrutt. Dette gir typografien en visuell spenning og speiler tematikken i bøkene, hvor karakterene ofte opplever brudd mellom egne ønsker og samfunnets forventninger.\n\nHver bok har også et lite symbol knyttet til sin tematikk. En fjærpenn refererer til skriving og refleksjon i Amtmandens Døtre, en saks symboliserer brudd og konflikt i Forrådt, og en palett viser til kunst og kreativitet i Jenny, hvor hovedpersonen er kunstner.\n\nOmslaget er utviklet som et smussomslag med flapper, noe som gir plass til forfatterinformasjon og redaksjonelt innhold. Designet er utviklet som et sammenhengende system, slik at bøkene fungerer både som enkeltobjekter og som en samlet serie."
+        body: "Dette prosjektet utforsker design av en bokserie basert på tre klassiske romaner fra norsk litteratur: Amtmandens Døtre av Camilla Collett, Forrådt av Amalie Skram og Jenny av Sigrid Undset. Bøkene tematiserer kvinners liv, forventninger og selvstendighet i møte med samfunnets normer. Målet var å utvikle et visuelt system som binder serien sammen, samtidig som hver bok får en egen visuell karakter.\n\nKonseptet bygger på idéen om avstand og spenning – mellom individ og samfunn, mellom egne ønsker og ytre forventninger. Dette uttrykkes gjennom et system av vertikale linjer som går igjen på forsiden og flappene. Linjene fungerer både som et strukturerende element i layouten og som et visuelt motiv som antyder begrensninger, press og avstand."
       },
       {
         heading: "",
-        imageSmall: "./assets/togetherbook.png"
+        body: "Selv om linjene danner et felles system for serien, varierer rytme, tetthet og farge mellom bøkene for å reflektere ulike stemninger i tekstene. Amtmandens Døtre har en roligere og mer jevn rytme som gir et dempet uttrykk. I Forrådt er linjene tettere og mer anspente, noe som skaper en følelse av press og konflikt. Jenny har større avstand mellom linjene, som gir et mer åpent og balansert uttrykk."
+      },
+      {
+        heading: "",
+        image: "./assets/boklinjer.png"
+      },
+      {
+        heading: "",
+        wide: true,
+        body: "Typografien er basert på en klassisk serif som knytter designet til litterær tradisjon. Tittelen er bearbeidet slik at bokstavformene fremstår delvis avbrutt. Dette gir typografien en visuell spenning og speiler tematikken i bøkene, hvor karakterene ofte opplever brudd mellom egne ønsker og samfunnets forventninger.",
+        image: "./assets/bokomtypo.png"
+      },
+      {
+        heading: "",
+        body: "Hver bok har også et lite symbol knyttet til sin tematikk. En fjærpenn refererer til skriving og refleksjon i Amtmandens Døtre, en saks symboliserer brudd og konflikt i Forrådt, og en palett viser til kunst og kreativitet i Jenny, hvor hovedpersonen er kunstner."
+      },
+      {
+        heading: "",
+        image: "./assets/boksymbols.png"
+      },
+      {
+        heading: "",
+        wide: true,
+        body: "Omslaget er utviklet som et smussomslag med flapper, noe som gir plass til forfatterinformasjon og redaksjonelt innhold. Designet er utviklet som et sammenhengende system, slik at bøkene fungerer både som enkeltobjekter og som en samlet serie."
       },
       {
         heading: "",
