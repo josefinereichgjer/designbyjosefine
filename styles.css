@@ -12,6 +12,7 @@
 }
 
 *{box-sizing:border-box}
+button{color:inherit; font-family:inherit; background:none; border:none; padding:0; cursor:pointer; border-radius:0}
 html,body{height:100%; overflow-x:hidden}
 body{
   margin:0;
