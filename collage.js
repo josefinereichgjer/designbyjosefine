@@ -13,30 +13,36 @@
 
   /* ── Image data ─────────────────────────────────────────────────────────── */
   const CARDS = [
-    { src: './assets/broskiforan.webp',    alt: 'Broski foran',   w: 200, h: 260 },
-    { src: './assets/plakat_mockup.webp',  alt: 'Plakat mockup',  w: 230, h: 165 },
-    { src: './assets/reinalys.webp',      alt: 'Reina Lys',      w: 210, h: 155 },
-    { src: './assets/wenettside.webp',     alt: 'We nettside',    w: 260, h: 170 },
-    { src: './assets/norvaldiphone.webp', alt: 'Norval iPhone',  w: 178, h: 212 },
+    { src: './assets/tilforside.webp',                            alt: 'Til forside',    w: 195, h: 255 },
+    { src: './assets/norvaldiphone.webp',                         alt: 'Norval iPhone',  w: 178, h: 212 },
+    { src: './assets/reinategning.webp',                          alt: 'Reina tegning',  w: 220, h: 160 },
+    { src: './assets/me.webp',                                    alt: 'Me',             w: 185, h: 245 },
+    { src: './assets/scenebok.webp',                              alt: 'Scene bok',      w: 240, h: 165 },
+    { src: './stoppestedet/stoppestedet/images/staff_skjorte.jpg',   alt: 'Staff skjorte',  w: 200, h: 255 },
+    { src: './assets/plakat_mockup.webp',                           alt: 'Plakat mockup',  w: 230, h: 162 },
+    { src: './stoppestedet/stoppestedet/images/outsidestopp.png',   alt: 'Outside Stopp',  w: 240, h: 160 },
   ];
 
   /*
    * ── Cluster target positions (offset from scene centre, degrees, z-layer) ──
    *
-   * 3 cards on the LEFT wing, 2 on the RIGHT — all kept well outside the
+   * 4 cards on the LEFT wing, 4 on the RIGHT — all kept well outside the
    * centre text column (innermost edges ≥ 185 px from centre).
    */
   const TARGETS = [
-    { x: -300, y: -140, rot:  -8, z: 3 },  // left  wing, upper
-    { x: -210, y:   30, rot:   6, z: 5 },  // left  wing, mid (innermost)
-    { x: -295, y:  185, rot:  -4, z: 2 },  // left  wing, lower
-    { x:  260, y: -130, rot:  -6, z: 4 },  // right wing, upper
-    { x:  215, y:  145, rot:   8, z: 3 },  // right wing, lower (innermost)
+    { x: -310, y: -145, rot:  -8, z: 3 },  // left  wing, upper
+    { x: -215, y:   25, rot:   6, z: 5 },  // left  wing, mid (innermost)
+    { x: -305, y:  190, rot:  -4, z: 2 },  // left  wing, lower
+    { x: -400, y:   30, rot:   3, z: 2 },  // left  wing, far
+    { x:  265, y: -135, rot:  -6, z: 4 },  // right wing, upper
+    { x:  350, y:   15, rot:  -5, z: 2 },  // right wing, mid
+    { x:  220, y:  150, rot:   8, z: 3 },  // right wing, lower (innermost)
+    { x:  370, y: -130, rot:   5, z: 2 },  // right wing, upper-far
   ];
 
   /* ── Module state ───────────────────────────────────────────────────────── */
   let cardEls    = [];
-  let floatTweens = [];
+  let floatTweens = [];   // stores { y, x, r } tween references per card
 
   /* ── Init ───────────────────────────────────────────────────────────────── */
   function init() {
@@ -97,29 +103,43 @@
 
   /* ── Continuous float ───────────────────────────────────────────────────── */
   function startFloat(el, idx) {
-    const t    = TARGETS[idx];
-    const yAmp = 9  + Math.random() * 13;
-    const rAmp = 1.6 + Math.random() * 2.4;
-    const dur  = 2.6 + Math.random() * 2.2;
+    const t = TARGETS[idx];
+
+    /* Each axis gets its own independent timing so motion feels organic */
+    const yAmp = 14 + Math.random() * 16;
+    const xAmp =  8 + Math.random() * 10;
+    const rAmp = 1.2 + Math.random() * 1.8;
+    const yDur = 4.5 + Math.random() * 3.0;
+    const xDur = 5.5 + Math.random() * 3.5;
+    const rDur = 6.0 + Math.random() * 4.0;
     const sY   = idx % 2 === 0 ?  1 : -1;
+    const sX   = idx % 3 === 0 ?  1 : -1;
     const sR   = idx % 3 === 0 ?  1 : -1;
 
-    /*
-     * fromTo keeps the oscillation anchored to the exact cluster position so
-     * restarting after a hover never causes a visual jump.
-     */
-    floatTweens[idx] = gsap.fromTo(
-      el,
-      { y: t.y,                  rotation: t.rot },
-      { y: t.y + yAmp * sY,      rotation: t.rot + rAmp * sR,
-        ease: 'sine.inOut', yoyo: true, repeat: -1, duration: dur }
-    );
+    floatTweens[idx] = {
+      y: gsap.fromTo(el,
+        { y: t.y },
+        { y: t.y + yAmp * sY,
+          ease: 'sine.inOut', yoyo: true, repeat: -1, duration: yDur }),
+      x: gsap.fromTo(el,
+        { x: t.x },
+        { x: t.x + xAmp * sX,
+          ease: 'sine.inOut', yoyo: true, repeat: -1, duration: xDur }),
+      r: gsap.fromTo(el,
+        { rotation: t.rot },
+        { rotation: t.rot + rAmp * sR,
+          ease: 'sine.inOut', yoyo: true, repeat: -1, duration: rDur }),
+    };
   }
 
   /* ── Hover ──────────────────────────────────────────────────────────────── */
   function onHover(idx) {
-    /* Pause float for hovered card — we're taking full control of its y */
-    if (floatTweens[idx]) floatTweens[idx].pause();
+    /* Pause all float tweens for hovered card */
+    if (floatTweens[idx]) {
+      floatTweens[idx].y.pause();
+      floatTweens[idx].x.pause();
+      floatTweens[idx].r.pause();
+    }
 
     const t = TARGETS[idx];
 
@@ -163,7 +183,11 @@
       overwrite: true,
       onComplete: function () {
         gsap.set(cardEls[idx], { zIndex: t.z });
-        if (floatTweens[idx]) floatTweens[idx].restart();
+        if (floatTweens[idx]) {
+          floatTweens[idx].y.restart();
+          floatTweens[idx].x.restart();
+          floatTweens[idx].r.restart();
+        }
       },
     });
 
