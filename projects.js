@@ -184,7 +184,7 @@ window.PROJECTS = [
     subtitle: "UX + redesign",
     year: "2026",
     tags: ["UX", "Redesign"],
-    cover: "./assets/me.webp",
+    cover: "./assets/kitty.jpeg",
     images: ["./assets/me.webp"],
     description: "Short description."
   },
@@ -248,7 +248,7 @@ window.PROJECTS = [
     subtitle: "Redaksjonell design",
     year: "2026",
     tags: ["Redaksjonell"],
-    cover: "./assets/me.webp",
+    cover: "./assets/kitty.jpeg",
     images: ["./assets/me.webp"],
     description: "Short description."
   },
@@ -258,7 +258,7 @@ window.PROJECTS = [
     subtitle: "Lettering + layout explorations",
     year: "2026",
     tags: ["Visuell identitet"],
-    cover: "./assets/cards_purple.webp",
+    cover: "./assets/kitty.jpeg",
     images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
     description: "Short description.",
     finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }

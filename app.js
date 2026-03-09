@@ -92,18 +92,18 @@ render();
 
 // Tool strip
 const TOOLS = [
-  { label: "Illustrator", abbr: "Ai",  cls: "ti-ai"  },
-  { label: "Photoshop",   abbr: "Ps",  cls: "ti-ps"  },
-  { label: "InDesign",    abbr: "Id",  cls: "ti-id"  },
-  { label: "VS Code",     abbr: "</>", cls: "ti-vsc" },
-  { label: "Figma",       abbr: "F",   cls: "ti-fig" },
+  { label: "Illustrator", src: "./assets/illustrator.png" },
+  { label: "Photoshop",   src: "./assets/photoshop.png"   },
+  { label: "InDesign",    src: "./assets/indesign.png"    },
+  { label: "Glyphs",      src: "./assets/glyphs.png"      },
+  { label: "Acrobat",     src: "./assets/acrobat.png"     },
 ];
 
 const track = document.getElementById("toolsTrack");
 if (track) {
   track.innerHTML = [...TOOLS, ...TOOLS]
     .map(t => `<div class="tool-pill">
-      <div class="tool-icon ${t.cls}">${t.abbr}</div>
+      <img class="tool-icon-img" src="${t.src}" alt="${t.label}">
       ${t.label}
     </div>`).join("");
 }
