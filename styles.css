@@ -6,7 +6,7 @@
   --chip:#f6f6f6;
   --shadow: 0 12px 40px rgba(0,0,0,.08);
   --radius: 16px;
-  --sidebarW: 360px;
+  --sidebarW: 260px;
   --gap: 18px;
   --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
@@ -26,7 +26,7 @@ a:hover{opacity:.75}
 
 .skip-link{
   position:absolute; left:-999px; top:10px;
-  background:#000; color:#fff; padding:10px 12px; border-radius:10px;
+  background:#000; color:#fff; padding:10px 12px;
 }
 .skip-link:focus{left:10px; z-index:9999}
 
@@ -61,7 +61,6 @@ a:hover{opacity:.75}
   align-items:center;
   gap:10px;
   width:52px; height:52px;
-  border-radius:999px;
   position:relative;
 }
 
@@ -87,7 +86,6 @@ a:hover{opacity:.75}
   align-items:center;
   justify-content:space-between;
   padding:6px 0;
-  border-radius:10px;
 }
 .nav__plus{color:var(--muted)}
 
@@ -96,7 +94,6 @@ a:hover{opacity:.75}
   width:100%;
   padding:10px 12px;
   border:1px solid var(--hair);
-  border-radius:12px;
   outline:none;
   background:#fff;
 }
@@ -115,7 +112,6 @@ a:hover{opacity:.75}
   gap:8px;
   align-items:center;
   padding:8px 10px;
-  border-radius:999px;
   background:var(--chip);
   border:1px solid var(--hair);
   font-size:13px;
@@ -148,7 +144,6 @@ a:hover{opacity:.75}
 }
 .card{
   display:block;
-  border-radius:18px;
   overflow:hidden;
   background:#fff;
   border:1px solid rgba(0,0,0,0.06);
@@ -157,7 +152,8 @@ a:hover{opacity:.75}
 }
 .card__img{
   width:100%;
-  height:auto;
+  aspect-ratio:4/3;
+  object-fit:cover;
   display:block;
   background:#f3f3f3;
 }
@@ -201,7 +197,6 @@ a:hover{opacity:.75}
   display:none;
   width:100%;
   padding:10px 12px;
-  border-radius:12px;
   border:1px solid var(--hair);
   background:#fff;
 }
@@ -231,7 +226,6 @@ a:hover{opacity:.75}
   object-fit: cover;
   object-position: center top;
   display: block;
-  border-radius: 4px;
 }
 
 .tools-strip {
@@ -272,7 +266,6 @@ a:hover{opacity:.75}
   gap: 6px;
   padding: 5px 10px 5px 6px;
   border: 1px solid #ddd;
-  border-radius: 100px;
   white-space: nowrap;
   font-size: 11px;
   font-weight: 500;
@@ -286,7 +279,6 @@ a:hover{opacity:.75}
 .tool-icon {
   width: 16px;
   height: 16px;
-  border-radius: 3px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -746,7 +738,6 @@ a:hover{opacity:.75}
   background: rgba(255,255,255,.85);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(0,0,0,.08);
-  border-radius: 999px;
   width: 44px;
   height: 44px;
   font-size: 18px;
@@ -754,6 +745,7 @@ a:hover{opacity:.75}
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #000;
   transition: background .15s;
   z-index: 2;
 }
@@ -825,7 +817,7 @@ a:hover{opacity:.75}
 
 /* Tablet wide: sidebar shrinks, grid 2-col */
 @media (max-width: 1100px) {
-  :root { --sidebarW: 300px }
+  :root { --sidebarW: 220px }
   .masonry { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 

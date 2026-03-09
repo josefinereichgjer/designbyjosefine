@@ -1,10 +1,10 @@
 window.PROJECTS = [
   {
-    id: "Emballasje-design",
-    title: "Emballasje-design",
+    id: "reina-fruktgard",
+    title: "Reina Fruktgård",
     subtitle: "Packaging + editorial system",
     year: "2025",
-    tags: ["Branding", "Typography"],
+    tags: ["Visuell identitet"],
     cover: "./assets/tilforside.webp",
     images: [
       "./assets/grain2.webp",
@@ -80,11 +80,51 @@ window.PROJECTS = [
     finalPdf: { label: "Se hele PDF-en", src: "./assets/ferdigreina.pdf" }
   },
   {
-    id: "Redesign",
-    title: "Redesign",
+    id: "stoppestedet",
+    title: "Stoppestedet",
+    subtitle: "Emneoverbyggende",
+    year: "2026",
+    tags: ["Visuell identitet"],
+    cover: "./assets/emneoverkort.webp",
+    images: [
+      "./stoppestedet/stoppestedet/images/stoppmerch.jpg",
+      "./stoppestedet/stoppestedet/images/stoppstick.jpg",
+      "./stoppestedet/stoppestedet/images/skiltdesign.jpg",
+      "./stoppestedet/stoppestedet/images/oversiktskart.jpg",
+      "./stoppestedet/stoppestedet/images/stoppplakat.png",
+      "./stoppestedet/stoppestedet/images/skiltute.jpg",
+      "./stoppestedet/stoppestedet/images/outsidestopp.png",
+      "./stoppestedet/stoppestedet/images/insidestopp.png",
+      "./stoppestedet/stoppestedet/images/stairstopp.png"
+    ],
+    description: "Short description.",
+    background: [
+      {
+        heading: "Innledning og designbrief",
+        body: "Dette prosjektet tar for seg utviklingen av en visuell identitet for Stoppestedet, et fiksjonelt fritidstilbud for ungdom. Oppgaven har vært å utvikle et helhetlig designkonsept som både gir stedet en tydelig identitet og gjør det enkelt å orientere seg i lokalet gjennom et veifinningssystem.\n\nProsjektet er todelt. Den første delen fokuserer på utviklingen av grafiske designelementer som logo, fargepalett, typografi, plakater, klistremerker og skiltsystemer, presentert gjennom mockups for å vise hvordan designet kan brukes i et fysisk miljø. Den andre delen består av design og utvikling av en nettside som viderefører den samme visuelle identiteten til en digital plattform."
+      },
+      {
+        heading: "Mål og visjon",
+        body: "Målet med prosjektet er å utvikle et konsistent visuelt system som kombinerer identitet og funksjon. Designet skal være tydelig, lett å lese og fungere godt i et fysisk rom.\n\nVisjonen er å skape en moderne og inkluderende møteplass for ungdom, der designet bidrar til oversikt, tilhørighet og trygghet."
+      },
+      {
+        heading: "Målgruppe",
+        body: "Den primære målgruppen er ungdom i alderen 13–18 år som bruker Stoppestedet som et sosialt samlingspunkt og aktivitetssted.\n\nDen sekundære målgruppen består av ansatte, frivillige og besøkende som også trenger tydelig informasjon og god navigasjon i lokalet."
+      },
+      {
+        heading: "Nettsiden som del av prosjektet",
+        body: "Som en utvidelse av prosjektet er det også utviklet en nettside for Stoppestedet. Nettsiden fungerer som en digital videreføring av den visuelle identiteten og viser hvordan designet kan anvendes på tvers av både fysiske og digitale flater.\n\nHer videreføres farger, typografi og grafiske elementer fra designløsningen, slik at identiteten fremstår helhetlig også i et digitalt grensesnitt.",
+        link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/design.html" }
+      }
+    ],
+    link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/index.html" }
+  },
+  {
+    id: "flerkanalspublisering",
+    title: "Flerkanalspublisering",
     subtitle: "Identity refinement",
     year: "2024",
-    tags: ["Branding"],
+    tags: ["Redesign"],
     cover: "./assets/srhbrosk.webp",
     images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
     description: "Short description.",
@@ -130,101 +170,54 @@ window.PROJECTS = [
     finalPdf: { label: "Se hele PDF-en", src: "./assets/srh_pdf.pdf" }
   },
   {
-    id: "strategisk-design",
-    title: "Strategisk design",
-    subtitle: "Lettering + layout explorations",
+    id: "ansatts-portal",
+    title: "Ansatts portal til lokal café",
+    subtitle: "UX design",
     year: "2026",
-    tags: ["Typography", "Illustration"],
-    cover: "./assets/cards_purple.webp",
-    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
-    description: "Short description.",
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
-  },
-    {
-    id: "stoppestedet",
-    title: "Stoppestedet",
-    subtitle: "Emneoverbyggende",
-    year: "2026",
-    tags: ["Typography", "Illustration"],
-    cover: "./assets/emneoverkort.webp",
-    images: [
-      "./stoppestedet/stoppestedet/images/stoppmerch.jpg",
-      "./stoppestedet/stoppestedet/images/stoppstick.jpg",
-      "./stoppestedet/stoppestedet/images/skiltdesign.jpg",
-      "./stoppestedet/stoppestedet/images/oversiktskart.jpg",
-      "./stoppestedet/stoppestedet/images/stoppplakat.png",
-      "./stoppestedet/stoppestedet/images/skiltute.jpg",
-      "./stoppestedet/stoppestedet/images/outsidestopp.png",
-      "./stoppestedet/stoppestedet/images/insidestopp.png",
-      "./stoppestedet/stoppestedet/images/stairstopp.png"
-    ],
-    description: "Short description.",
-    background: [
-      {
-        heading: "Innledning og designbrief",
-        body: "Dette prosjektet tar for seg utviklingen av en visuell identitet for Stoppestedet, et fiksjonelt fritidstilbud for ungdom. Oppgaven har vært å utvikle et helhetlig designkonsept som både gir stedet en tydelig identitet og gjør det enkelt å orientere seg i lokalet gjennom et veifinningssystem.\n\nProsjektet er todelt. Den første delen fokuserer på utviklingen av grafiske designelementer som logo, fargepalett, typografi, plakater, klistremerker og skiltsystemer, presentert gjennom mockups for å vise hvordan designet kan brukes i et fysisk miljø. Den andre delen består av design og utvikling av en nettside som viderefører den samme visuelle identiteten til en digital plattform."
-      },
-      {
-        heading: "Mål og visjon",
-        body: "Målet med prosjektet er å utvikle et konsistent visuelt system som kombinerer identitet og funksjon. Designet skal være tydelig, lett å lese og fungere godt i et fysisk rom.\n\nVisjonen er å skape en moderne og inkluderende møteplass for ungdom, der designet bidrar til oversikt, tilhørighet og trygghet."
-      },
-      {
-        heading: "Målgruppe",
-        body: "Den primære målgruppen er ungdom i alderen 13–18 år som bruker Stoppestedet som et sosialt samlingspunkt og aktivitetssted.\n\nDen sekundære målgruppen består av ansatte, frivillige og besøkende som også trenger tydelig informasjon og god navigasjon i lokalet."
-      },
-      {
-        heading: "Nettsiden som del av prosjektet",
-        body: "Som en utvidelse av prosjektet er det også utviklet en nettside for Stoppestedet. Nettsiden fungerer som en digital videreføring av den visuelle identiteten og viser hvordan designet kan anvendes på tvers av både fysiske og digitale flater.\n\nHer videreføres farger, typografi og grafiske elementer fra designløsningen, slik at identiteten fremstår helhetlig også i et digitalt grensesnitt.",
-        link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/design.html" }
-      }
-    ],
-    link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/index.html" }
-  },
-    {
-    id: "stoppestedet",
-    title: "Stoppestedet",
-    subtitle: "Emneoverbyggende",
-    year: "2026",
-    tags: ["Typography", "Illustration"],
+    tags: ["UX"],
     cover: "./assets/norvaldiphone.webp",
     images: ["./assets/norvaldiphone.webp"],
     description: "Short description."
   },
-    {
-    id: "stoppestedet",
-    title: "Stoppestedet",
-    subtitle: "Emneoverbyggende",
+  {
+    id: "emanuel-viegeland",
+    title: "Emanuel Viegeland nettside",
+    subtitle: "UX + redesign",
     year: "2026",
-    tags: ["Typography", "Illustration"],
+    tags: ["UX", "Redesign"],
     cover: "./assets/me.webp",
     images: ["./assets/me.webp"],
     description: "Short description."
   },
-    {
-    id: "stoppestedet",
-    title: "Stoppestedet",
-    subtitle: "Emneoverbyggende",
+  {
+    id: "bokomslag",
+    title: "Bokomslag",
+    subtitle: "Redaksjonell design",
     year: "2026",
-    tags: ["Typography", "Illustration"],
+    tags: ["Redaksjonell"],
     cover: "./assets/me.webp",
     images: ["./assets/me.webp"],
     description: "Short description."
   },
-    {
-    id: "stoppestedet",
-    title: "Stoppestedet",
-    subtitle: "Emneoverbyggende",
+  {
+    id: "tidsskrift",
+    title: "Tidsskrift",
+    subtitle: "Redaksjonell design",
     year: "2026",
-    tags: ["Typography", "Illustration"],
+    tags: ["Redaksjonell"],
     cover: "./assets/me.webp",
     images: ["./assets/me.webp"],
     description: "Short description."
+  },
+  {
+    id: "we-visuell-profil",
+    title: "WE — Visuell profil",
+    subtitle: "Lettering + layout explorations",
+    year: "2026",
+    tags: ["Visuell identitet"],
+    cover: "./assets/cards_purple.webp",
+    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
+    description: "Short description.",
+    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
   }
-
-
-
-
-
-
-  
 ];
