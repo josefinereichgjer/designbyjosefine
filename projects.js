@@ -8,14 +8,9 @@ window.PROJECTS = [
     cover: "./assets/tilforside.webp",
     images: [
       "./assets/grain2.webp",
-      "./assets/medgrain .webp",
-      "./assets/reinajul.webp",
       "./assets/reinalys.webp",
       "./assets/reinaside.webp",
-      "./assets/reinastor.webp",
-      "./assets/mal1reina.webp",
-      "./assets/mal2reina.webp",
-      "./assets/mal3reina.webp"
+      "./assets/reinastor.webp"
     ],
     description:
       "Short description of the project. What was the goal, your role, and what makes it strong.",
