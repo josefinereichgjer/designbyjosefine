@@ -34,6 +34,7 @@ function makeChip(label){
       c.setAttribute("aria-pressed", String(c.textContent === activeTag))
     );
     render();
+    document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
   });
   return btn;
 }

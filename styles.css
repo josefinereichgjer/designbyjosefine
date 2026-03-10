@@ -6,8 +6,8 @@
   --chip:#f6f6f6;
   --shadow: 0 12px 40px rgba(0,0,0,.08);
   --radius: 16px;
-  --sidebarW: 260px;
-  --gap: 18px;
+  --sidebarW: 220px;
+  --gap: 10px;
   --font: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
