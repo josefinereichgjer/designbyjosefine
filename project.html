@@ -82,6 +82,15 @@
         if (s.image) {
           inner += `<img class="bg__img" src="${s.image}" alt="${s.heading}" loading="lazy" decoding="async">`;
         }
+        if (s.body2) {
+          inner += s.body2.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("");
+        }
+        if (s.image2) {
+          inner += `<img class="bg__img" src="${s.image2}" alt="${s.heading}" loading="lazy" decoding="async">`;
+        }
+        if (s.body3) {
+          inner += s.body3.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("");
+        }
         if (s.images) {
           inner += `<div class="bg__img-row">${s.images.map(src => `<img class="bg__img bg__img--small" src="${src}" alt="${s.heading}" loading="lazy" decoding="async">`).join("")}</div>`;
         }
