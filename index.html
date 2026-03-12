@@ -119,23 +119,10 @@
       pointer-events: none;
     }
 
-    .landing__name {
-      font-family: "Poppins", sans-serif;
-      font-size: clamp(18px, 2.2vw, 30px);
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #111;
-      margin: 0;
-    }
-
-    .landing__tagline {
-      font-size: 11px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: #111;
-      margin: 0;
+    .landing__logo {
+      width: clamp(130px, 14vw, 190px);
+      height: auto;
+      display: block;
     }
 
     .landing__cta {
@@ -198,8 +185,7 @@
 
     <!-- Centred brand identity — always above the cards -->
     <div class="landing__brand">
-      <p class="landing__name">DesignbyJosefine</p>
-      <p class="landing__tagline">Visuell kommunikasjon · strategisk design · UX/UI</p>
+      <img src="./assets/svartlogo.webp" alt="Josefine Gjertsen" class="landing__logo">
       <a class="landing__cta" href="./projects.html">
         Se prosjektene mine
         <svg class="landing__cta-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">

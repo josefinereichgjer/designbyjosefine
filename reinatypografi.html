@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Typografi</title>
+  <style>
+    @font-face {
+      font-family: "AboveBeyond";
+      src: url("./assets/Above the Beyond Script.otf") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @font-face {
+      font-family: "Questa";
+      src: url("./assets/2-questa_grande_regular_31.otf") format("opentype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f0f0f0;
+      font-family: "Questa", Georgia, serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 64px 48px;
+    }
+
+    .specimen {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .col {
+      padding: 56px 48px;
+    }
+
+    .col--left {
+      border-right: 1px solid #ddd;
+    }
+
+    .big-aa {
+      font-size: 160px;
+      line-height: 1;
+      margin-bottom: 48px;
+      color: #111;
+      display: block;
+    }
+
+    .col--left .big-aa {
+      font-family: "AboveBeyond";
+    }
+
+    .col--right .big-aa {
+      font-family: "Questa", Georgia, serif;
+      font-weight: 400;
+    }
+
+    .font-name {
+      font-size: 16px;
+      color: #8b1a1a;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .col--left .font-name {
+      font-family: "AboveBeyond";
+      font-size: 22px;
+    }
+
+    .col--right .font-name {
+      font-family: "Questa", Georgia, serif;
+      font-weight: 400;
+    }
+
+    .alphabet {
+      font-size: 15px;
+      line-height: 1.85;
+      color: #111;
+    }
+
+    .col--left .alphabet {
+      font-family: "AboveBeyond";
+      font-size: 18px;
+    }
+
+    .col--right .alphabet {
+      font-family: "Questa", Georgia, serif;
+      font-weight: 400;
+    }
+  </style>
+</head>
+<body>
+  <div class="specimen">
+
+    <div class="col col--left">
+      <span class="big-aa">Aa</span>
+      <span class="font-name">Above the Beyond Script</span>
+      <p class="alphabet">
+        Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll<br>
+        Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww<br>
+        Xx Yy Zz
+      </p>
+    </div>
+
+    <div class="col col--right">
+      <span class="big-aa">Aa</span>
+      <span class="font-name">Questa (Regular)</span>
+      <p class="alphabet">
+        Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll<br>
+        Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww<br>
+        Xx Yy Zz<br>
+        0123456789!@#$%^&amp;*( )
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>

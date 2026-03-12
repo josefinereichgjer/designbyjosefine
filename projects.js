@@ -19,7 +19,7 @@ window.PROJECTS = [
         body: "I emnet Emballasjedesign (IDG3010) var utgangspunktet for prosjektet å utvikle et nytt emballasjedesign og en visuell identitet for Reina Fruktgård. Reina Fruktgård er en lokal, økologisk produsent i Molde. Jeg valgte denne bedriften fordi den representerte et genuint og ærlig uttrykk som skilte seg fra mer kommersielle aktører. Dette ga et spennende utgangspunkt for å utforske hvordan emballasjedesign kunne formidle lokal identitet, håndverk og kvalitet på en tydelig måte."
       },
       {
-        heading: "Bedriftens historie",
+        heading: "Innsikt i oppdragsgiver",
         body: "Reina er en tradisjonsrik gård med røtter langs Fannefjorden. Den har tidligere drevet med melk og kjøtt, men ble i 2021 omstilt til økologisk frukt-dyrking. Den sørvendte beliggenheten gir ideelle klimaforhold for epleproduksjon. Navnet Reina betyr «helling» eller «skråning», og refererer til gårdens plassering og lysforhold: «en skråning som vender mot sola». Dette har også inspirert bedriftens opprinnelige logo og visuelle uttrykk. Bedriften drives i dag av familien Fredriksen, og inngår i det lokale nettverket av småskalaprodusenter på Nordvestlandet."
       },
       {
@@ -32,7 +32,7 @@ window.PROJECTS = [
         image: "./assets/reinatypografi.webp"
       },
       {
-        heading: "Hoved-tegning",
+        heading: "Illustrasjon",
         body: "Hoved-illustrasjonen er inspirert av gårdens navn og beliggenhet – «reina» betyr skråning eller helling mot sola. Motivet bruker enkle, grafiske linjer for å gjenskape dette landskapet og lyset. Illustrasjonen fungerer som et gjenkjennbart signaturelement på tvers av all emballasje.",
         image: "./assets/reinategning.webp"
       },
@@ -68,7 +68,7 @@ window.PROJECTS = [
       src: "./assets/forsteutkastemballasje.pdf",
       note: {
         heading: "Hvorfor endret jeg uttrykket i 2026?",
-        body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer som en del av hoveduttrykket. Selv om dette formidlet historien om familiebruket og fellesskapet, ble systemet ganske komplekst og litt visuelt rotete når det skulle brukes på ulike produkter. Derfor utviklet jeg i 2026 en ny løsning som er mer minimalistisk og renere. Ved å forenkle uttrykket og redusere antall elementer blir designet mer oversiktlig, lettere å tilpasse til flere produkter og mer konsistent som visuell identitet."
+        body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet."
       }
     },
     finalPdf: { label: "Se hele PDF-en", src: "./assets/ferdigreina.pdf" }

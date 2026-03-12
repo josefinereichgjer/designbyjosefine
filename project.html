@@ -23,6 +23,8 @@
         </a>
       </div>
 
+      <a class="back-btn" href="./projects.html" aria-label="Tilbake til prosjekter">← Tilbake</a>
+
       <nav class="nav" aria-label="Main navigation">
         <a class="nav__link" href="./projects.html"><span>Prosjekter</span></a>
         <a class="nav__link" href="./index.html#om"><span>Om</span></a>
@@ -165,14 +167,21 @@
             </div>
           </div>
           ${accordionHTML ? `
-          <div class="project-layout__info">
-            <div class="accordion" id="accordion">${accordionHTML}</div>
-            ${project.pdf ? `<a class="btn-pdf" href="${project.pdf.src}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗ ${project.pdf.label}</a>` : ""}
-            ${project.pdf?.note ? `
-            <div class="pdf-note" style="margin-top:16px">
-              <strong class="pdf-note__heading">${project.pdf.note.heading}</strong>
-              <p class="pdf-note__body">${project.pdf.note.body}</p>
-            </div>` : ""}
+          <div class="project-layout__side">
+            <button class="panel-toggle" id="panelToggle" aria-expanded="false">
+              Om prosjektet <span class="panel-toggle__icon">+</span>
+            </button>
+            <div class="project-layout__info" id="projectInfo">
+              <div class="project-layout__info-inner">
+                <div class="accordion" id="accordion">${accordionHTML}</div>
+                ${project.pdf ? `<a class="btn-pdf" href="${project.pdf.src}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗ ${project.pdf.label}</a>` : ""}
+                ${project.pdf?.note ? `
+                <div class="pdf-note" style="margin-top:16px">
+                  <strong class="pdf-note__heading">${project.pdf.note.heading}</strong>
+                  <p class="pdf-note__body">${project.pdf.note.body}</p>
+                </div>` : ""}
+              </div>
+            </div>
           </div>` : ""}
         </div>
         ${galleryHTML}
@@ -225,6 +234,15 @@
         });
       });
     }
+
+    // Panel toggle
+    const panelToggle = document.getElementById("panelToggle");
+    const projectLayout = document.querySelector(".project-layout");
+    panelToggle?.addEventListener("click", () => {
+      const isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+      panelToggle.setAttribute("aria-expanded", String(isOpen));
+      panelToggle.querySelector(".panel-toggle__icon").textContent = isOpen ? "×" : "+";
+    });
 
     // Sidebar mobile toggle
     const toggle = $("#sidebarToggle");
