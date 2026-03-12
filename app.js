@@ -23,7 +23,33 @@ function cardHTML(p){
   `;
 }
 
-grid.innerHTML = projects.map(cardHTML).join("") || `<p class="muted">Ingen prosjekter funnet.</p>`;
+const isMobile = window.innerWidth <= 600;
+const INITIAL   = 4;
+
+if (!projects.length) {
+  grid.innerHTML = `<p class="muted">Ingen prosjekter funnet.</p>`;
+} else if (isMobile && projects.length > INITIAL) {
+  grid.innerHTML = projects.slice(0, INITIAL).map(cardHTML).join("");
+
+  const moreBtn = document.createElement("button");
+  moreBtn.className   = "show-more-btn";
+  moreBtn.textContent = "Mer";
+  let expanded = false;
+  moreBtn.addEventListener("click", function () {
+    expanded = !expanded;
+    grid.innerHTML = expanded
+      ? projects.map(cardHTML).join("")
+      : projects.slice(0, INITIAL).map(cardHTML).join("");
+    moreBtn.textContent = expanded ? "−" : "Mer";
+    if (!expanded) {
+      const lastCard = grid.querySelectorAll(".card")[INITIAL - 1];
+      if (lastCard) lastCard.scrollIntoView({ behavior: "smooth", block: "end" });
+    }
+  });
+  grid.insertAdjacentElement("afterend", moreBtn);
+} else {
+  grid.innerHTML = projects.map(cardHTML).join("");
+}
 
 // Tool strip
 const TOOLS = [

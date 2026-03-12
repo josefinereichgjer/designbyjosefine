@@ -109,6 +109,8 @@ a:hover{opacity:.75}
 .muted{color:var(--muted)}
 .dot{padding:0 6px; color:var(--muted)}
 
+.cv-link--soon { opacity: 0.45; cursor: default; font-style: italic; }
+
 /* Nav */
 .nav{display:flex; flex-direction:column; gap:8px; margin-top:6px}
 .nav__link{
@@ -186,10 +188,31 @@ a:hover{opacity:.75}
 .section--dark .muted { color: #fff; }
 .section--dark .muted { opacity: 0.6; }
 .grid-header{display:flex; align-items:flex-end; justify-content:space-between; gap:16px}
-.title{margin:0; font-size:30px; font-weight:500; letter-spacing:-.01em}
+.title,
+.h2{margin:0; font-size:30px; font-weight:500; letter-spacing:-.01em}
 .subtitle{margin:0; color:var(--muted)}
 
 /* Grid */
+.show-more-btn {
+  display: none;
+}
+@media (max-width: 600px) {
+  .show-more-btn {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    padding: 14px;
+    background: #000;
+    color: #fff;
+    border: none;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+  }
+}
+
 .masonry{
   margin-top:32px;
   display:grid;
@@ -255,9 +278,10 @@ a:hover{opacity:.75}
 
 .about-layout {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 300px minmax(0, 550px);
   gap: 40px;
   align-items: stretch;
+  margin-top: 28px;
 }
 
 .about-photo-col,
@@ -278,7 +302,9 @@ a:hover{opacity:.75}
 .about-bio-col li,
 .about-bio-col .list {
   font-family: "Poppins", sans-serif;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.8;
 }
 
 .about-photo-col {
@@ -290,7 +316,7 @@ a:hover{opacity:.75}
 
 .about-photo {
   width: 100%;
-  aspect-ratio: 3 / 4;
+  height: 500px;
   object-fit: cover;
   object-position: center top;
   display: block;
@@ -1291,7 +1317,7 @@ a:hover{opacity:.75}
 
 /* Contact form */
 #contact {
-  max-width: 560px;
+  max-width: 420px;
   margin-left: auto;
   margin-right: auto;
 }

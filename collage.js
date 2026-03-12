@@ -37,11 +37,12 @@
     const scene = document.getElementById('collage-scene');
     if (!scene || typeof gsap === 'undefined') return;
 
-    /* On mobile, strip the rightward x offset so pile stays centred */
+    /* On mobile, fewer cards + simpler easing for performance */
     const isMobile = window.innerWidth <= 600;
-    const xShift   = isMobile ? 267 : 0;   // matches the ~+267 added to TARGETS
+    const xShift   = isMobile ? 267 : 0;
+    const cards    = isMobile ? CARDS.slice(0, 5) : CARDS;
 
-    CARDS.forEach(function (c, i) {
+    cards.forEach(function (c, i) {
       const t  = { x: TARGETS[i].x - xShift, y: TARGETS[i].y, rot: TARGETS[i].rot, z: TARGETS[i].z };
       const el = document.createElement('div');
       el.className   = 'collage-card';
@@ -50,17 +51,18 @@
       el.style.left   = 'calc(50% - ' + (W / 2) + 'px)';
       el.style.top    = 'calc(50% - ' + (H / 2) + 'px)';
 
-      const img     = document.createElement('img');
-      img.src       = c.src;
-      img.alt       = c.alt;
-      img.loading   = 'lazy';
-      img.draggable = false;
+      const img          = document.createElement('img');
+      img.src            = c.src;
+      img.alt            = c.alt;
+      img.loading        = 'eager';
+      img.decoding       = 'async';
+      img.draggable      = false;
       el.appendChild(img);
       scene.appendChild(el);
       cardEls.push(el);
 
       /* Start scattered, spring into pile */
-      const angle = (Math.PI * 2 / CARDS.length) * i + (Math.random() - 0.5) * 0.6;
+      const angle = (Math.PI * 2 / cards.length) * i + (Math.random() - 0.5) * 0.6;
       const dist  = 520 + Math.random() * 220;
       gsap.set(el, {
         x:        Math.cos(angle) * dist,
@@ -77,9 +79,9 @@
         rotation: t.rot,
         scale:    1,
         opacity:  1,
-        duration: 1.45 + Math.random() * 0.25,
+        duration: isMobile ? 0.9 + Math.random() * 0.2 : 1.45 + Math.random() * 0.25,
         delay:    0.1 + i * 0.08,
-        ease:     'elastic.out(1, 0.72)',
+        ease:     isMobile ? 'power2.out' : 'elastic.out(1, 0.72)',
         onComplete: function () { startFloat(el, i); },
       });
 
