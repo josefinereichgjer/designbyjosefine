@@ -779,23 +779,16 @@ a:hover{opacity:.75}
 
 /* Sidebar project metadata list */
 .pmeta {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 16px;
   align-items: baseline;
-  gap: 0;
 }
 .pmeta__row {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  gap: 5px;
+  display: contents;
 }
 .pmeta__row + .pmeta__row::before {
-  content: "|";
-  margin: 0 12px;
-  color: var(--muted);
-  font-weight: 300;
+  display: none;
 }
 .pmeta__label {
   font-size: 11px;
@@ -803,6 +796,7 @@ a:hover{opacity:.75}
   text-transform: uppercase;
   letter-spacing: .1em;
   color: var(--text);
+  white-space: nowrap;
 }
 .pmeta__value {
   font-size: 13px;
@@ -982,7 +976,7 @@ a:hover{opacity:.75}
   .project-layout--panel-open .project-layout__side { display: block; }
   .project-layout--panel-open .project-layout__info { max-width: 100vw; }
   .project-layout__info-inner { width: 100%; padding-left: 0; }
-  .pmeta { flex-direction: column; gap: 8px; }
+  .pmeta { gap: 4px 12px; }
   .pmeta__row + .pmeta__row::before { display: none; }
   .panel-toggle--header { display: none; }
   .panel-toggle--below { display: flex; order: 1; }
