@@ -27,8 +27,8 @@
 
       <nav class="nav" aria-label="Main navigation">
         <a class="nav__link" href="./projects.html"><span>Prosjekter</span></a>
-        <a class="nav__link" href="./index.html#om"><span>Om</span></a>
-        <a class="nav__link" href="./index.html#kontakt"><span>Kontakt</span></a>
+        <a class="nav__link" href="./projects.html#about"><span>Om</span></a>
+        <a class="nav__link" href="./projects.html#contact"><span>Kontakt</span></a>
       </nav>
 
       <footer class="meta">
@@ -160,14 +160,15 @@
             <div class="project-header">
               <h1 class="project-meta__title">${project.title}</h1>
               ${project.intro ? `<p class="project-intro">${project.intro}</p>` : ""}
-              ${accordionHTML ? `<button class="panel-toggle" id="panelToggle" aria-expanded="false">Om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
+              ${accordionHTML ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
             ${slideshowHTML}
             <div class="project-meta">
               <p class="project-meta__subtitle">${project.subtitle || ""}</p>
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
-              ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
+              ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--desktop-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
               ${project.link ? `<a class="btn-pdf btn-pdf--green" href="${project.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.link.label}</a>` : ""}
+              ${accordionHTML ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
           </div>
           ${accordionHTML ? `
@@ -175,17 +176,32 @@
             <div class="project-layout__info" id="projectInfo">
               <div class="project-layout__info-inner">
                 <div class="accordion" id="accordion">${accordionHTML}</div>
-                ${project.pdf ? `<a class="btn-pdf" href="${project.pdf.src}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗ ${project.pdf.label}</a>` : ""}
+                ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--mobile-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
                 ${project.pdf?.note ? `
                 <div class="pdf-note" style="margin-top:16px">
                   <strong class="pdf-note__heading">${project.pdf.note.heading}</strong>
                   <p class="pdf-note__body">${project.pdf.note.body}</p>
-                </div>` : ""}
+                  ${project.pdf ? `<a class="btn-pdf btn-pdf--text" href="${project.pdf.src}" target="_blank" rel="noopener">↗ ${project.pdf.label}</a>` : ""}
+                </div>` : project.pdf ? `<a class="btn-pdf btn-pdf--text" href="${project.pdf.src}" target="_blank" rel="noopener">↗ ${project.pdf.label}</a>` : ""}
               </div>
             </div>
           </div>` : ""}
         </div>
         ${galleryHTML}
+        ${(() => {
+          const others = (window.PROJECTS || []).filter(p => p.id !== project.id).slice(0, 3);
+          if (!others.length) return "";
+          return `<div class="related">
+            <h2 class="related__heading">Du vil også like</h2>
+            <div class="related__grid">
+              ${others.map(p => `
+                <a class="related__card" href="./project.html?id=${encodeURIComponent(p.id)}">
+                  <img src="${p.cover}" alt="${p.title}" loading="lazy">
+                  <p class="related__title">${p.title}</p>
+                </a>`).join("")}
+            </div>
+          </div>`;
+        })()}
       `;
     }
 
@@ -241,7 +257,7 @@
     function syncToggles(isOpen) {
       document.querySelectorAll(".panel-toggle").forEach(btn => {
         btn.setAttribute("aria-expanded", String(isOpen));
-        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "×" : "+";
+        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
       });
     }
     document.querySelectorAll(".panel-toggle").forEach(btn => {

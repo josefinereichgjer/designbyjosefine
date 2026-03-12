@@ -13,15 +13,15 @@ window.PROJECTS = [
     ],
     description:
       "Short description of the project. What was the goal, your role, and what makes it strong.",
-    intro: "I emnet Emballasjedesign (IDG3010) utviklet jeg et emballasjedesign og en visuell identitet for Reina Fruktgård, en lokal økologisk produsent i Molde. Bedriften ble valgt fordi den har et genuint uttrykk som skiller seg fra mer kommersielle aktører, og ga et godt utgangspunkt for å utforske hvordan emballasje kan formidle lokal identitet og kvalitet.",
+    intro: "I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Utgangspunktet var bedriftens eksisterende uttrykk, som ble videreutviklet for å tydeligere formidle opprinnelse, kvalitet og håndverksmessig produksjon. Målet var å skape et helhetlig uttrykk som kunne fungere som en visuell mal på tvers av produktene, samtidig som emballasjen fremhever det lokale og autentiske preget ved produsenten.",
     background: [
       {
         heading: "Innsikt i oppdragsgiver",
         body: "Reina er en tradisjonsrik gård med røtter langs Fannefjorden. Den har tidligere drevet med melk og kjøtt, men ble i 2021 omstilt til økologisk frukt-dyrking. Den sørvendte beliggenheten gir ideelle klimaforhold for epleproduksjon. Navnet Reina betyr «helling» eller «skråning», og refererer til gårdens plassering og lysforhold: «en skråning som vender mot sola». Dette har også inspirert bedriftens opprinnelige logo og visuelle uttrykk. Bedriften drives i dag av familien Fredriksen, og inngår i det lokale nettverket av småskalaprodusenter på Nordvestlandet."
       },
       {
-        heading: "Designbrief",
-        body: "<strong>Verdier og identitet</strong> Reina Fruktgård er en familieeid produsent med sterk tradisjonsforankring. De legger vekt på økologi, kvalitet og nærhet. Hele produksjonen er økologisk, og råvarene utnyttes fullt ut, blant annet gjennom produktet Reinarampen, som er laget av bunnfallet fra eplepressing.\n\nLokal forankring står sentralt, siden dyrking, pressing og tapping skjer på gården. Produktene er rene og uten tilsetningsstoffer, og kommunikasjonen fremstår som jordnær og ærlig. Små produksjonsvolum bidrar til høy kvalitet og et tydelig håndverkspreg.\n\n<strong>Marked og kontekst</strong> Reina opererer i det norske lokalmat- og håndverksmarkedet, særlig innen sider og eplemost. Markedet har vokst de siste årene, drevet av økt interesse for økologi og autentiske produkter. Reina kombinerer produksjon, gårdsutsalg og opplevelser, og retter seg mot et nisjemarked mellom landbruk, håndverksdrikke og reiseliv."
+        heading: "Oppgaven",
+        body: "<strong>Verdier og identitet:</strong>\nReina Fruktgård er en familieeid produsent med sterk tradisjonsforankring. De legger vekt på økologi, kvalitet og nærhet. Hele produksjonen er økologisk, og råvarene utnyttes fullt ut, blant annet gjennom produktet Reinarampen laget av bunnfallet fra eplepressing. Produksjon, pressing og tapping skjer på gården, noe som gir en tydelig lokal forankring og et ærlig, håndverkspreget uttrykk.\n\n<strong>Marked og kontekst:</strong>\nReina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. Med økt interesse for økologiske og autentiske produkter retter de seg mot et nisjemarked mellom landbruk, håndverksdrikke og reiseliv."
       },
       {
         heading: "Typografi",
@@ -30,7 +30,7 @@ window.PROJECTS = [
       },
       {
         heading: "Illustrasjon",
-        body: "Hoved-illustrasjonen er inspirert av gårdens navn og beliggenhet – «reina» betyr skråning eller helling mot sola. Motivet bruker enkle, grafiske linjer for å gjenskape dette landskapet og lyset. Illustrasjonen fungerer som et gjenkjennbart signaturelement på tvers av all emballasje.",
+        body: "<strong>Illustrasjonen</strong> er inspirert av gårdens navn og beliggenhet – «reina» betyr skråning eller helling mot sola. Den fungerer som et gjenkjennbart signaturelement på tvers av all emballasje.",
         image: "./assets/reinategning.webp"
       },
       {
@@ -55,16 +55,16 @@ window.PROJECTS = [
       }
     ],
     projectMeta: [
-      { label: "År", value: "2025" },
+      { label: "År", value: "2026" },
       { label: "Fag", value: "IDG3010 – Emballasjedesign" },
       { label: "Fag ansvarlig", value: "Thomas Tengsedal Nordby" },
-      { label: "Verktøy", value: "Illustrator, Pacdora, Photoshop" }
+      { label: "Verktøy", value: "Illustrator, Pacdora, Photoshop, Procreate" }
     ],
     pdf: {
       label: "Første utkast",
       src: "./assets/forsteutkastemballasje.pdf",
       note: {
-        heading: "Hvorfor endret jeg uttrykket i 2026?",
+        heading: "Hvorfor endret jeg uttrykket fra 2025?",
         body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet."
       }
     },
@@ -124,7 +124,7 @@ window.PROJECTS = [
         body: "I emnet IDG1009 Flerkanalpublisering har oppgaven vært å utvikle en visuell kommunikasjonsløsning for et arrangement der designet skal fungere på tvers av flere medier og formater.\n\nI dette prosjektet har jeg utviklet et konsept for en Open Day ved SRH Campus Berlin med fokus på studieområdet Digital Media & Creative Arts. Dette er ikke et faktisk studieprogram ved universitetet, men et konsept jeg har brukt som en paraply for kreative fagområder innen design, media og digital kommunikasjon.\n\nSRH University tilbyr flere studier innen disse områdene, blant annet Communication Design, Advertising & Brand Design, Film & Motion Design og User Experience Design.\n\nArrangementet brukes derfor som et case for å utforske hvordan et tydelig visuelt uttrykk kan bygges opp gjennom struktur, hierarki og konsistent bruk av designprinsipper."
       },
       {
-        heading: "Designbrief",
+        heading: "Oppgaven",
         body: "Målet med prosjektet har vært å utvikle et visuelt uttrykk som fremstår ryddig, profesjonelt og tydelig. Designet er bygget opp med fokus på hierarki, struktur og en balansert bruk av typografi, bilde og luft i layouten.\n\nProsjektet tar utgangspunkt i SRH University Berlins eksisterende visuelle identitet, men videreutvikler uttrykket gjennom egne designvalg. Målet har vært å skape et system som fungerer på tvers av flere flater samtidig som uttrykket forblir konsistent."
       },
       {
