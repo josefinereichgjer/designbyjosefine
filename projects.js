@@ -2,7 +2,6 @@ window.PROJECTS = [
   {
     id: "reina-fruktgard",
     title: "Reina Fruktgård",
-    subtitle: "Packaging + editorial system",
     year: "2025",
     tags: ["Visuell identitet"],
     cover: "./assets/tilforside.webp",
