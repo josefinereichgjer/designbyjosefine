@@ -13,11 +13,8 @@ window.PROJECTS = [
     ],
     description:
       "Short description of the project. What was the goal, your role, and what makes it strong.",
+    intro: "I emnet Emballasjedesign (IDG3010) utviklet jeg et emballasjedesign og en visuell identitet for Reina Fruktgård, en lokal økologisk produsent i Molde. Bedriften ble valgt fordi den har et genuint uttrykk som skiller seg fra mer kommersielle aktører, og ga et godt utgangspunkt for å utforske hvordan emballasje kan formidle lokal identitet og kvalitet.",
     background: [
-      {
-        heading: "Innledning",
-        body: "I emnet Emballasjedesign (IDG3010) var utgangspunktet for prosjektet å utvikle et nytt emballasjedesign og en visuell identitet for Reina Fruktgård. Reina Fruktgård er en lokal, økologisk produsent i Molde. Jeg valgte denne bedriften fordi den representerte et genuint og ærlig uttrykk som skilte seg fra mer kommersielle aktører. Dette ga et spennende utgangspunkt for å utforske hvordan emballasjedesign kunne formidle lokal identitet, håndverk og kvalitet på en tydelig måte."
-      },
       {
         heading: "Innsikt i oppdragsgiver",
         body: "Reina er en tradisjonsrik gård med røtter langs Fannefjorden. Den har tidligere drevet med melk og kjøtt, men ble i 2021 omstilt til økologisk frukt-dyrking. Den sørvendte beliggenheten gir ideelle klimaforhold for epleproduksjon. Navnet Reina betyr «helling» eller «skråning», og refererer til gårdens plassering og lysforhold: «en skråning som vender mot sola». Dette har også inspirert bedriftens opprinnelige logo og visuelle uttrykk. Bedriften drives i dag av familien Fredriksen, og inngår i det lokale nettverket av småskalaprodusenter på Nordvestlandet."

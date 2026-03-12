@@ -157,9 +157,13 @@
       $("#project").innerHTML = `
         <div class="project-layout">
           <div class="project-layout__media">
+            <div class="project-header">
+              <h1 class="project-meta__title">${project.title}</h1>
+              ${project.intro ? `<p class="project-intro">${project.intro}</p>` : ""}
+              ${accordionHTML ? `<button class="panel-toggle" id="panelToggle" aria-expanded="false">Om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
+            </div>
             ${slideshowHTML}
             <div class="project-meta">
-              <h1 class="project-meta__title">${project.title}</h1>
               <p class="project-meta__subtitle">${project.subtitle || ""}</p>
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
@@ -168,9 +172,6 @@
           </div>
           ${accordionHTML ? `
           <div class="project-layout__side">
-            <button class="panel-toggle" id="panelToggle" aria-expanded="false">
-              Om prosjektet <span class="panel-toggle__icon">+</span>
-            </button>
             <div class="project-layout__info" id="projectInfo">
               <div class="project-layout__info-inner">
                 <div class="accordion" id="accordion">${accordionHTML}</div>
@@ -236,12 +237,18 @@
     }
 
     // Panel toggle
-    const panelToggle = document.getElementById("panelToggle");
     const projectLayout = document.querySelector(".project-layout");
-    panelToggle?.addEventListener("click", () => {
-      const isOpen = projectLayout.classList.toggle("project-layout--panel-open");
-      panelToggle.setAttribute("aria-expanded", String(isOpen));
-      panelToggle.querySelector(".panel-toggle__icon").textContent = isOpen ? "×" : "+";
+    function syncToggles(isOpen) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => {
+        btn.setAttribute("aria-expanded", String(isOpen));
+        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "×" : "+";
+      });
+    }
+    document.querySelectorAll(".panel-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+        syncToggles(isOpen);
+      });
     });
 
     // Sidebar mobile toggle
