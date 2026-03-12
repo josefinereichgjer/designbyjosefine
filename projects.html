@@ -7,7 +7,7 @@
   <meta name="description" content="Selected work in branding, typography, and illustration." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=3">
 
   <link rel="icon" href="assets/hvitlogo.png">
@@ -18,23 +18,19 @@
 
   <header class="sidebar" id="sidebar">
     <div class="sidebar__inner">
+      <a class="back-btn" href="./index.html" aria-label="Tilbake til forsiden">←</a>
+
       <div class="brand">
         <a class="brand__mark" href="./index.html" aria-label="Home">
           <img src="./assets/hvitlogo.png" alt="Logo" class="brand__logo">
         </a>
       </div>
 
-      <a class="back-btn" href="./index.html" aria-label="Tilbake til forsiden">← Tilbake</a>
-
       <nav class="nav" aria-label="Primary">
         <a class="nav__link" href="#work"><span>Prosjekter</span></a>
         <a class="nav__link" href="#about"><span>Om</span></a>
         <a class="nav__link" href="#contact"><span>Kontakt</span></a>
       </nav>
-
-      <footer class="meta">
-        <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
-      </footer>
 
       <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">
         Meny
@@ -54,8 +50,8 @@
     </section>
 
     <!-- ── ABOUT ── -->
-    <section id="about" class="section section--thin">
-      <h2 class="h2">Om</h2>
+    <section id="about" class="section section--thin section--dark">
+      <h2 class="h2">Om meg</h2>
 
       <div class="about-layout">
 
@@ -76,9 +72,9 @@
 
         <!-- Right: bio -->
         <div class="about-bio-col">
-          <p>Hei! Jeg heter Josefine, er 23 år og kommer fra Oslo. På videregående gikk jeg kunstlinjen, hvor jeg utviklet en interesse for håndlagde og nære uttrykk i visuell form. Jeg likte særlig prosessen fra idé til ferdig resultat, og hvordan materialer, form og detaljer påvirker et visuelt uttrykk.</p>
-          <p>Etter videregående tok jeg et friår og dro blant annet på språkreise til Korea. Der deltok jeg i workshops om visuell kommunikasjon, merkevarebygging og skjønnhetsindustrien, noe som ga meg innsikt i hvordan design brukes strategisk i alt fra emballasje til visuell identitet.</p>
-          <p>Derfor valgte jeg å studere grafisk design ved NTNU. Studiet har gitt meg mulighet til å utforske ulike sider av designfaget, blant annet typografi, visuelle identiteter og digitale flater. Gjennom samarbeid med studenter fra webdesign og interaksjonsdesign har jeg også fått en økende interesse for UX-design. Jeg trives godt med kreative prosjekter og liker spesielt å jobbe i team og utvikle ideer sammen med andre.</p>
+          <p>Hei! Jeg heter Josefine, er 23 år og kommer fra Oslo. På videregående gikk jeg kunstlinjen, hvor jeg utviklet en interesse for håndlagde og nære uttrykk i design. Jeg likte spesielt prosessen fra idé til ferdig resultat, og hvordan små detaljer kan påvirke et visuelt uttrykk.</p>
+          <p>Etter videregående tok jeg et friår hvor jeg blant annet jobbet i barnehage og dro på språkreise til Korea. Jeg har alltid vært glad i språk og elsker å lære nye på fritiden. I Korea deltok jeg også i workshops om visuell kommunikasjon og merkevarebygging, noe som ga meg et innblikk i hvordan design brukes strategisk i alt fra emballasje til visuell identitet i en annen kultur.</p>
+          <p>I dag studerer jeg grafisk design ved NTNU. Gjennom studiet har jeg jobbet med blant annet typografi, visuelle identiteter og digitale flater. Samarbeid med studenter fra webdesign og interaksjonsdesign har også vekket en sterk interesse for UX-design. Jeg har blitt veldig glad i å jobbe tverrfaglig, og synes det er både inspirerende og lærerikt å utvikle ideer sammen med andre.</p>
           <ul class="list">
             <li><span class="muted">Fokus</span> Visuell identitet, brukervennlighet</li>
             <li><span class="muted">Verktøy</span> Figma, Adobe, Glyphs</li>
@@ -113,6 +109,10 @@
       </form>
     </section>
   </main>
+
+  <footer class="page-footer">
+    <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
+  </footer>
 
   <script src="./projects.js?v=2"></script>
   <script src="./app.js"></script>
