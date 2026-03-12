@@ -25,9 +25,8 @@
 
     /* ── Full-screen stage ── */
     .landing {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
+      position: fixed;
+      inset: 0;
       overflow: hidden;
       background: #000;
     }
@@ -124,6 +123,14 @@
       margin-top: 6px;
     }
 
+    .landing__logo-between {
+      display: inline-block;
+      width: clamp(36px, 4.5vw, 60px);
+      height: auto;
+      margin-left: 8px;
+      vertical-align: top;
+    }
+
     /* ── CTA + bio — bottom-left ── */
     .landing__brand {
       position: absolute;
@@ -141,7 +148,6 @@
     }
     @media (max-width: 600px) {
       .landing__brand { left: 20px; bottom: 20px; right: 20px; }
-      .landing__cta { padding: 8px 18px; font-size: 11px; }
     }
 
     .landing__logo {
@@ -150,6 +156,9 @@
       display: block;
     }
 
+    .landing__cta-label--short { display: none; }
+    .landing__bio--short { display: none; }
+
     .landing__cta {
       margin-top: 6px;
       display: inline-flex;
@@ -157,8 +166,8 @@
       gap: 8px;
       padding: 14px 32px;
       border-radius: 0;
-      background: #e11584;
-      color: #fff;
+      background: #B8E2F2;
+      color: #000;
       font-family: inherit;
       font-size: 14px;
       font-weight: 500;
@@ -169,7 +178,7 @@
       transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
     }
     .landing__cta:hover {
-      background: #c40e72;
+      background: #9dd4e8;
       transform: translateY(-2px);
       box-shadow: 0 8px 28px rgba(0,0,0,.24);
     }
@@ -200,7 +209,12 @@
     }
     @media (max-width: 600px) {
       .landing__topleft { top: 20px; left: 20px; }
-      .landing__bio { max-width: none; }
+      .landing__bio { max-width: none; font-size: 14px; text-align: left; hyphens: none; }
+      .landing__cta { padding: 9px 18px; font-size: 12px; }
+      .landing__cta-label--full { display: none; }
+      .landing__bio--full { display: none; }
+      .landing__bio--short { display: inline; }
+      .landing__cta-label--short { display: inline; }
     }
 
     /* ── Responsive ── */
@@ -229,18 +243,21 @@
 
     <!-- Top-left block -->
     <div class="landing__topleft">
-      <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO<span class="landing__name">JOSEFINE REICHELT GJERTSEN</span></a>
+      <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO<img src="./assets/hvitlogo.png" alt="Logo" class="landing__logo-between"><span class="landing__name">JOSEFINE REICHELT GJERTSEN</span></a>
     </div>
 
     <!-- Bottom-left: button + bio -->
     <div class="landing__brand">
       <a class="landing__cta" href="./projects.html">
-        Se prosjektene mine
+        <span class="landing__cta-label--full">Se prosjektene mine</span><span class="landing__cta-label--short">Prosjekter</span>
         <svg class="landing__cta-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-          <path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
         </svg>
       </a>
-      <p class="landing__bio">Hei! Jeg er en grafisk designer født i 2002 med fokus på strategisk design og visuell kommunikasjon. Jeg har også erfaring med wayfinding-systemer, informasjonsarkitektur og UI/UX-design. Jeg trives spesielt godt med å jobbe tverrfaglig.</p>
+      <p class="landing__bio">
+        <span class="landing__bio--full">Hei! Jeg er en grafisk designer født i 2002 med fokus på strategisk design og visuell kommunikasjon. Jeg har også erfaring med wayfinding-systemer, informasjonsarkitektur og UI/UX-design. Jeg trives spesielt godt med å jobbe tverrfaglig.</span>
+        <span class="landing__bio--short">Velkommen! Grafisk designer (f. 2002) med fokus på strategisk design og visuell kommunikasjon. Erfaring med wayfinding, informasjonsarkitektur og UI/UX, og elsker å jobbe tverrfaglig.</span>
+      </p>
     </div>
 
   </main>

@@ -74,16 +74,17 @@ a:hover{opacity:.75}
 }
 
 /* Back button */
-.back-btn {
+.back-btn,
+.sidebar .back-btn {
   display: inline-block;
-  font-size: 13px;
+  font-size: 30px;
   font-weight: 500;
-  color: var(--muted);
+  color: #B8E2F2;
   text-decoration: none;
   letter-spacing: 0.01em;
-  transition: color .15s ease;
+  transition: opacity .15s ease;
 }
-.back-btn:hover { color: var(--text); opacity: 1; }
+.back-btn:hover { opacity: 0.7; }
 
 /* Brand */
 .brand__mark{
@@ -92,10 +93,6 @@ a:hover{opacity:.75}
   gap:10px;
   width:52px; height:52px;
   position:relative;
-}
-
-.brand__mark {
-  display: inline-block;
 }
 
 .brand__logo {
@@ -109,7 +106,6 @@ a:hover{opacity:.75}
 .muted{color:var(--muted)}
 .dot{padding:0 6px; color:var(--muted)}
 
-.cv-link--soon { opacity: 0.45; cursor: default; font-style: italic; }
 
 /* Nav */
 .nav{display:flex; flex-direction:column; gap:8px; margin-top:6px}
@@ -296,6 +292,10 @@ a:hover{opacity:.75}
 
 .about-bio-col .list {
   margin-top: auto;
+}
+.about-bio-col .muted {
+  color: #B8E2F2;
+  opacity: 1;
 }
 
 .about-bio-col p,
@@ -530,7 +530,7 @@ a:hover{opacity:.75}
 .palette--cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
+  gap: 8px;
   flex-wrap: unset;
 }
 .palette--cards .palette__item {
@@ -544,33 +544,33 @@ a:hover{opacity:.75}
 }
 .palette--cards .palette__swatch {
   width: 100%;
-  height: 110px;
+  height: 72px;
   border-radius: 0;
   border: none;
   border-bottom: 1px solid rgba(0,0,0,.07);
   flex-shrink: unset;
 }
 .palette--cards .palette__info {
-  padding: 12px 14px 14px;
-  gap: 3px;
+  padding: 8px 10px 10px;
+  gap: 2px;
 }
 .palette--cards .palette__name {
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 600;
 }
 .palette--cards .palette__hex {
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 500;
   font-family: "SF Mono", "Fira Mono", monospace;
   letter-spacing: .04em;
   color: var(--muted);
 }
 .palette__desc {
-  font-size: 11px;
+  font-size: 10px;
   color: var(--muted);
   margin-top: 2px;
 }
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .palette--cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -586,7 +586,7 @@ a:hover{opacity:.75}
   display: grid;
   grid-template-columns: 1fr 1fr;
   background: #f0efed;
-  border-radius: 10px;
+  border-radius: 0;
   overflow: hidden;
   margin-top: 20px;
   border: 1px solid rgba(0,0,0,.07);
@@ -611,7 +611,7 @@ a:hover{opacity:.75}
 }
 .typo-panel__font-box {
   background: #e2e1de;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 18px 20px;
 }
 .typo-panel__font-name {
@@ -774,9 +774,7 @@ a:hover{opacity:.75}
   margin: 0 0 16px;
 }
 .project-meta .pmeta {
-  border-top: 1px solid var(--hair);
   margin-top: 32px;
-  padding-top: 14px;
 }
 
 /* Sidebar project metadata list */
@@ -1056,16 +1054,6 @@ a:hover{opacity:.75}
   white-space: nowrap;
 }
 .btn-pdf:hover { background: #cecece; opacity: 1; }
-.btn-pdf--primary {
-  background: #e0e0e0;
-  color: var(--text);
-}
-.btn-pdf--primary:hover { background: #cecece; }
-.btn-pdf--green {
-  background: #e0e0e0;
-  color: var(--text);
-}
-.btn-pdf--green:hover { background: #cecece; opacity: 1; }
 .btn-pdf--text {
   display: inline-block;
   margin-top: 20px;
@@ -1118,8 +1106,8 @@ a:hover{opacity:.75}
   background: rgba(255,255,255,.85);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(0,0,0,.08);
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   font-size: 14px;
   cursor: pointer;
   display: flex;
@@ -1361,9 +1349,9 @@ a:hover{opacity:.75}
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
-  background: #e11584;
-  color: #fff;
-  border: 1px solid #e11584;
+  background: #B8E2F2;
+  color: #000;
+  border: 1px solid #B8E2F2;
   border-radius: 0;
   font-family: inherit;
   font-size: 13px;
@@ -1373,7 +1361,7 @@ a:hover{opacity:.75}
   -webkit-appearance: none;
   appearance: none;
 }
-.contact-form__submit:hover { background: #c40e72; border-color: #c40e72; }
+.contact-form__submit:hover { background: #9dd4e8; border-color: #9dd4e8; }
 
 .contact-form__footer {
   display: flex;

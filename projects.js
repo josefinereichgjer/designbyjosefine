@@ -71,6 +71,147 @@ window.PROJECTS = [
     finalPdf: { label: "Se hele PDF-en", src: "./assets/ferdigreina.pdf" }
   },
   {
+    id: "emanuel-viegeland",
+    title: "Emanuel Viegeland nettside",
+    subtitle: "UX + redesign",
+    year: "2026",
+    tags: ["UX", "Redesign"],
+    cover: "./assets/kitty.jpeg",
+    images: ["./assets/me.webp"],
+    description: "Short description."
+  },
+  {
+    id: "tidsskrift",
+    title: "Tidsskrift",
+    subtitle: "Redaksjonell design",
+    year: "2026",
+    tags: ["Redaksjonell"],
+    cover: "./assets/kitty.jpeg",
+    images: ["./assets/me.webp"],
+    description: "Short description."
+  },
+  {
+    id: "ansatts-portal",
+    title: "Ansatts portal til lokal café",
+    subtitle: "UX design",
+    year: "2026",
+    tags: ["UX"],
+    cover: "./assets/norvaldiphone.webp",
+    images: ["./assets/norvaldiphone.webp"],
+    description: "Short description."
+  },
+  {
+    id: "flerkanalspublisering",
+    title: "Flerkanalspublisering",
+    subtitle: "Identity refinement",
+    year: "2024",
+    tags: ["Redesign"],
+    cover: "./assets/srhbrosk.webp",
+    images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
+    description: "Short description.",
+    background: [
+      {
+        heading: "Innledning",
+        body: "I emnet IDG1009 Flerkanalpublisering har oppgaven vært å utvikle en visuell kommunikasjonsløsning for et arrangement som fungerer på tvers av flere medier og formater.\n\nProsjektet tar utgangspunkt i et konsept for Open Day ved SRH Campus Berlin, med fokus på studieområdet Digital Media & Creative Arts. Dette er et fiktivt paraplykonsept som samler kreative fag innen design, media og digital kommunikasjon.\n\nArrangementet brukes som et case for å utforske hvordan et tydelig visuelt uttrykk kan bygges gjennom struktur, hierarki og konsistente designprinsipper."
+      },
+      {
+        heading: "Oppgaven",
+        body: "Prosjektet går ut på å utvikle et visuelt uttrykk som fungerer på tvers av flere flater.\n\nDesignet bygger på SRH University Berlins eksisterende visuelle identitet, men videreutvikles gjennom egne designvalg. Fokus har vært på tydelig hierarki, struktur og en balansert bruk av typografi, bilde og luft i layouten."
+      },
+      {
+        heading: "Hva skal produseres",
+        body: "<ul class=\"bg__list\"><li>Plakat i A2-format</li><li>Roll-up banner (850 × 2000 mm)</li><li>Brosjyre om universitetets bærekraftsarbeid</li><li>LinkedIn-karusell for promotering av arrangementet</li><li>PowerPoint-mal for presentasjoner</li><li>Digitale reklamebannere</li><li>Facebook event cover for mobil og desktop</li><li>Designmanual for den visuelle identiteten</li></ul>"
+      },
+      {
+        heading: "Typografi",
+        body: "Typografien er basert på en rund og moderne grotesk skrifttype inspirert av SRHs visuelle profil.\n\nSiden den originale fonten ikke er tilgjengelig, brukes en alternativ font med lignende uttrykk (men ikke like brukervennlig). Ulike skriftvekter og størrelser skaper likevel et tydelig hierarki mellom overskrifter, mellomtitler og brødtekst."
+      },
+      {
+        heading: "Fotografi",
+        body: "Fotografiene viser campusmiljøet ved SRH University Berlin og fungerer som sentrale visuelle elementer i designet. Bildene gir kontekst til arrangementet. Alle er gratis nedlastbare hos deres nettside."
+      },
+      {
+        heading: "Fargepalett",
+        body: "Fargepaletten tar utgangspunkt i SRH University Berlins merkevarefarger.\n\nEn varm oransjetone brukes som aksentfarge sammen med mørke og lyse nøytrale toner. Dette skaper et tydelig og konsistent uttrykk på tvers av flater.",
+        palette: [
+          { hex: "#c44f24", name: "SRH Oransj",  description: "Primær farge" },
+          { hex: "#1c1c1c", name: "SRH Mørk",    description: "Tekst og mørke slides" },
+          { hex: "#e2ded5", name: "SRH Krem",     description: "Seksjon bakgrunn" },
+          { hex: "#ffffff", name: "SRH Hvit",     description: "Bakgrunn" }
+        ]
+      }
+    ],
+    projectMeta: [
+      { label: "År", value: "2024" },
+      { label: "Fag", value: "IDG1009 – Flerkanalpublisering" },
+      { label: "Fagansvarlig", value: "Mari Hermansen" },
+      { label: "Verktøy", value: "Illustrator, Photoshop" }
+    ],
+    finalPdf: { label: "Se hele PDF-en", src: "./assets/srh_pdf.pdf" }
+  },
+  {
+    id: "bokomslag",
+    title: "Bokomslag",
+    subtitle: "Redaksjonell design",
+    year: "2026",
+    tags: ["Redaksjonell"],
+    cover: "./assets/scenebok.webp",
+    images: ["./assets/closebook.webp", "./assets/closeletter.webp", "./assets/togetherbook.webp"],
+    description: "Bokserie – redaksjonell design basert på tre klassiske norske romaner av Collett, Skram og Undset.",
+    background: [
+      {
+        heading: "Bokserie – konsept",
+        wide: true,
+        body: "Dette prosjektet utforsker design av en bokserie basert på tre klassiske romaner fra norsk litteratur: Amtmandens Døtre av Camilla Collett, Forrådt av Amalie Skram og Jenny av Sigrid Undset. Bøkene tematiserer kvinners liv, forventninger og selvstendighet i møte med samfunnets normer. Målet var å utvikle et visuelt system som binder serien sammen, samtidig som hver bok får en egen visuell karakter.\n\nKonseptet bygger på idéen om avstand og spenning – mellom individ og samfunn, mellom egne ønsker og ytre forventninger. Dette uttrykkes gjennom et system av vertikale linjer som går igjen på forsiden og flappene. Linjene fungerer både som et strukturerende element i layouten og som et visuelt motiv som antyder begrensninger, press og avstand."
+      },
+      {
+        heading: "Linjer",
+        wide: true,
+        body: "Selv om linjene danner et felles system for serien, varierer rytme, tetthet og farge mellom bøkene for å reflektere ulike stemninger i tekstene. Amtmandens Døtre har en roligere og mer jevn rytme som gir et dempet uttrykk. I Forrådt er linjene tettere og mer anspente, noe som skaper en følelse av press og konflikt. Jenny har større avstand mellom linjene, som gir et mer åpent og balansert uttrykk.",
+        image: "./assets/boklinjer.png"
+      },
+      {
+        heading: "Typografi",
+        wide: true,
+        body: "Typografien er basert på en klassisk serif som knytter designet til litterær tradisjon. Tittelen er bearbeidet slik at bokstavformene fremstår delvis avbrutt. Dette gir typografien en visuell spenning og speiler tematikken i bøkene, hvor karakterene ofte opplever brudd mellom egne ønsker og samfunnets forventninger.",
+        image: "./assets/bokomtypo.png"
+      },
+      {
+        heading: "Symboler",
+        wide: true,
+        body: "Hver bok har også et lite symbol knyttet til sin tematikk. En fjærpenn refererer til skriving og refleksjon i Amtmandens Døtre, en saks symboliserer brudd og konflikt i Forrådt, og en palett viser til kunst og kreativitet i Jenny, hvor hovedpersonen er kunstner.",
+        image: "./assets/boksymbols.png"
+      },
+      {
+        heading: "Smussomslag",
+        wide: true,
+        body: "Omslaget er utviklet som et smussomslag med flapper, noe som gir plass til forfatterinformasjon og redaksjonelt innhold. Designet er utviklet som et sammenhengende system, slik at bøkene fungerer både som enkeltobjekter og som en samlet serie.",
+        imagePairs: [
+          ["./assets/bokamt.webp", "./assets/bluewhole.webp"],
+          ["./assets/bokjenny.webp", "./assets/redwhole.webp"],
+          ["./assets/forradt.webp", "./assets/greenwhole.webp"]
+        ]
+      }
+    ],
+    projectMeta: [
+      { label: "År", value: "2026" },
+      { label: "Fag", value: "IDG3013 – Redaksjonell design 2" },
+      { label: "Fagansvarlig", value: "Martin Asbjørnsen" },
+      { label: "Verktøy", value: "Illustrator, Photoshop" }
+    ]
+  },
+  {
+    id: "we-visuell-profil",
+    title: "WE — Visuell profil",
+    subtitle: "Lettering + layout explorations",
+    year: "2026",
+    tags: ["Visuell identitet"],
+    cover: "./assets/kitty.jpeg",
+    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
+    description: "Short description.",
+    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
+  },
+  {
     id: "stoppestedet",
     title: "Stoppestedet",
     subtitle: "Emneoverbyggende",
@@ -91,7 +232,7 @@ window.PROJECTS = [
     background: [
       {
         heading: "Innledning og designbrief",
-        body: "Dette prosjektet tar for seg utviklingen av en visuell identitet for Stoppestedet, et fiksjonelt fritidstilbud for ungdom. Oppgaven har vært å utvikle et helhetlig designkonsept som både gir stedet en tydelig identitet og gjør det enkelt å orientere seg i lokalet gjennom et veifinningssystem.\n\nProsjektet er todelt. Den første delen fokuserer på utviklingen av grafiske designelementer som logo, fargepalett, typografi, plakater, klistremerker og skiltsystemer, presentert gjennom mockups for å vise hvordan designet kan brukes i et fysisk miljø. Den andre delen består av design og utvikling av en nettside som viderefører den samme visuelle identiteten til en digital plattform."
+        body: "Dette prosjektet handler om utviklingen av en visuell identitet for Stoppestedet, et fiktivt fritidstilbud for ungdom.\n\nProsjektet består av to deler: utvikling av grafiske elementer som logo, fargepalett, typografi, plakater, klistremerker og skilting, presentert gjennom mockups, samt design og utvikling av en nettside som viderefører identiteten digitalt."
       },
       {
         heading: "Mål og visjon",
@@ -108,150 +249,5 @@ window.PROJECTS = [
       }
     ],
     link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/index.html" }
-  },
-  {
-    id: "flerkanalspublisering",
-    title: "Flerkanalspublisering",
-    subtitle: "Identity refinement",
-    year: "2024",
-    tags: ["Redesign"],
-    cover: "./assets/srhbrosk.webp",
-    images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
-    description: "Short description.",
-    background: [
-      {
-        heading: "Innledning",
-        body: "I emnet IDG1009 Flerkanalpublisering har oppgaven vært å utvikle en visuell kommunikasjonsløsning for et arrangement der designet skal fungere på tvers av flere medier og formater.\n\nI dette prosjektet har jeg utviklet et konsept for en Open Day ved SRH Campus Berlin med fokus på studieområdet Digital Media & Creative Arts. Dette er ikke et faktisk studieprogram ved universitetet, men et konsept jeg har brukt som en paraply for kreative fagområder innen design, media og digital kommunikasjon.\n\nSRH University tilbyr flere studier innen disse områdene, blant annet Communication Design, Advertising & Brand Design, Film & Motion Design og User Experience Design.\n\nArrangementet brukes derfor som et case for å utforske hvordan et tydelig visuelt uttrykk kan bygges opp gjennom struktur, hierarki og konsistent bruk av designprinsipper."
-      },
-      {
-        heading: "Oppgaven",
-        body: "Målet med prosjektet har vært å utvikle et visuelt uttrykk som fremstår ryddig, profesjonelt og tydelig. Designet er bygget opp med fokus på hierarki, struktur og en balansert bruk av typografi, bilde og luft i layouten.\n\nProsjektet tar utgangspunkt i SRH University Berlins eksisterende visuelle identitet, men videreutvikler uttrykket gjennom egne designvalg. Målet har vært å skape et system som fungerer på tvers av flere flater samtidig som uttrykket forblir konsistent."
-      },
-      {
-        heading: "Hva skal produseres",
-        body: "<ul class=\"bg__list\"><li>Plakat i A2-format</li><li>Roll-up banner (850 × 2000 mm)</li><li>Brosjyre om universitetets bærekraftsarbeid</li><li>LinkedIn-karusell for promotering av arrangementet</li><li>PowerPoint-mal for presentasjoner</li><li>Digitale reklamebannere</li><li>Facebook event cover for mobil og desktop</li><li>Designmanual for den visuelle identiteten</li></ul>"
-      },
-      {
-        heading: "Typografi",
-        body: "Typografien i prosjektet er basert på en rund og moderne grotesk skrifttype som ligger tett opp til SRHs eksisterende uttrykk. Akkurat samme font som de bruker er utilgjengelig, så fonten jeg bruker har noen svakheter (les nøyere i pdf-en)\n\nUlike skriftvekter og størrelser brukes for å skape et tydelig hierarki mellom overskrifter, mellomtitler og brødtekst.",
-        images: ["./assets/typosrh1.webp", "./assets/typosrh2.webp"]
-      },
-      {
-        heading: "Fotografi",
-        body: "Fotografiene viser campusmiljøet ved SRH University Berlin og brukes som sentrale visuelle elementer i designet.\n\nBildene gir kontekst til arrangementet og bidrar til et mer levende uttrykk i layouten, samtidig som de støtter opp under den visuelle strukturen."
-      },
-      {
-        heading: "Fargepalett",
-        body: "Fargepaletten tar utgangspunkt i SRH University Berlins eksisterende merkevarefarger. Den viktigste fargen er en varm oransjetone som brukes til aksenter og viktige elementer i designet.\n\nSammen med mørke og lyse nøytrale farger skaper dette et tydelig og balansert uttrykk som fungerer konsistent på tvers av alle flater.",
-        palette: [
-          { hex: "#c44f24", name: "SRH Oransj",  description: "Primær farge" },
-          { hex: "#1c1c1c", name: "SRH Mørk",    description: "Tekst og mørke slides" },
-          { hex: "#e2ded5", name: "SRH Krem",     description: "Seksjon bakgrunn" },
-          { hex: "#ffffff", name: "SRH Hvit",     description: "Bakgrunn" }
-        ]
-      }
-    ],
-    projectMeta: [
-      { label: "År", value: "2024" },
-      { label: "Fag", value: "IDG1009 – Flerkanalpublisering" },
-      { label: "Fagansvarlig", value: "Mari Hermansen" },
-      { label: "Verktøy", value: "Illustrator, Photoshop" }
-    ],
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/srh_pdf.pdf" }
-  },
-  {
-    id: "ansatts-portal",
-    title: "Ansatts portal til lokal café",
-    subtitle: "UX design",
-    year: "2026",
-    tags: ["UX"],
-    cover: "./assets/norvaldiphone.webp",
-    images: ["./assets/norvaldiphone.webp"],
-    description: "Short description."
-  },
-  {
-    id: "emanuel-viegeland",
-    title: "Emanuel Viegeland nettside",
-    subtitle: "UX + redesign",
-    year: "2026",
-    tags: ["UX", "Redesign"],
-    cover: "./assets/kitty.jpeg",
-    images: ["./assets/me.webp"],
-    description: "Short description."
-  },
-  {
-    id: "bokomslag",
-    title: "Bokomslag",
-    subtitle: "Redaksjonell design",
-    year: "2026",
-    tags: ["Redaksjonell"],
-    cover: "./assets/scenebok.webp",
-    images: ["./assets/closebook.webp", "./assets/closeletter.webp", "./assets/togetherbook.webp"],
-    description: "Bokserie – redaksjonell design basert på tre klassiske norske romaner av Collett, Skram og Undset.",
-    background: [
-      {
-        heading: "Bokserie – Redaksjonell design",
-        wide: true,
-        twoCols: true,
-        body: "Dette prosjektet utforsker design av en bokserie basert på tre klassiske romaner fra norsk litteratur: Amtmandens Døtre av Camilla Collett, Forrådt av Amalie Skram og Jenny av Sigrid Undset. Bøkene tematiserer kvinners liv, forventninger og selvstendighet i møte med samfunnets normer. Målet var å utvikle et visuelt system som binder serien sammen, samtidig som hver bok får en egen visuell karakter.\n\nKonseptet bygger på idéen om avstand og spenning – mellom individ og samfunn, mellom egne ønsker og ytre forventninger. Dette uttrykkes gjennom et system av vertikale linjer som går igjen på forsiden og flappene. Linjene fungerer både som et strukturerende element i layouten og som et visuelt motiv som antyder begrensninger, press og avstand."
-      },
-      {
-        heading: "",
-        body: "Selv om linjene danner et felles system for serien, varierer rytme, tetthet og farge mellom bøkene for å reflektere ulike stemninger i tekstene. Amtmandens Døtre har en roligere og mer jevn rytme som gir et dempet uttrykk. I Forrådt er linjene tettere og mer anspente, noe som skaper en følelse av press og konflikt. Jenny har større avstand mellom linjene, som gir et mer åpent og balansert uttrykk."
-      },
-      {
-        heading: "",
-        image: "./assets/boklinjer.png"
-      },
-      {
-        heading: "",
-        wide: true,
-        body: "Typografien er basert på en klassisk serif som knytter designet til litterær tradisjon. Tittelen er bearbeidet slik at bokstavformene fremstår delvis avbrutt. Dette gir typografien en visuell spenning og speiler tematikken i bøkene, hvor karakterene ofte opplever brudd mellom egne ønsker og samfunnets forventninger.",
-        image: "./assets/bokomtypo.png"
-      },
-      {
-        heading: "",
-        body: "Hver bok har også et lite symbol knyttet til sin tematikk. En fjærpenn refererer til skriving og refleksjon i Amtmandens Døtre, en saks symboliserer brudd og konflikt i Forrådt, og en palett viser til kunst og kreativitet i Jenny, hvor hovedpersonen er kunstner."
-      },
-      {
-        heading: "",
-        image: "./assets/boksymbols.png"
-      },
-      {
-        heading: "",
-        wide: true,
-        body: "Omslaget er utviklet som et smussomslag med flapper, noe som gir plass til forfatterinformasjon og redaksjonelt innhold. Designet er utviklet som et sammenhengende system, slik at bøkene fungerer både som enkeltobjekter og som en samlet serie."
-      },
-      {
-        heading: "",
-        imagePairs: [
-          ["./assets/bokamt.webp", "./assets/bluewhole.webp"],
-          ["./assets/bokjenny.webp", "./assets/redwhole.webp"],
-          ["./assets/forradt.webp", "./assets/greenwhole.webp"]
-        ],
-        wide: true
-      }
-    ]
-  },
-  {
-    id: "tidsskrift",
-    title: "Tidsskrift",
-    subtitle: "Redaksjonell design",
-    year: "2026",
-    tags: ["Redaksjonell"],
-    cover: "./assets/kitty.jpeg",
-    images: ["./assets/me.webp"],
-    description: "Short description."
-  },
-  {
-    id: "we-visuell-profil",
-    title: "WE — Visuell profil",
-    subtitle: "Lettering + layout explorations",
-    year: "2026",
-    tags: ["Visuell identitet"],
-    cover: "./assets/kitty.jpeg",
-    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
-    description: "Short description.",
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
   }
 ];

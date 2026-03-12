@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Prosjekt — Ditt navn</title>
+  <title>Prosjekt — DesignbyJosefine</title>
   <meta name="description" content="Prosjektdetaljer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +23,7 @@
         </a>
       </div>
 
-      <a class="back-btn" href="./projects.html" aria-label="Tilbake til prosjekter">←</a>
+      <a class="back-btn" href="./projects.html" aria-label="Tilbake til prosjekter"><svg width="28" height="20" viewBox="0 0 22 16" fill="none" aria-hidden="true"><path d="M21 8H1M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/></svg></a>
 
       <nav class="nav" aria-label="Main navigation">
         <a class="nav__link" href="./projects.html"><span>Prosjekter</span></a>
@@ -56,7 +56,7 @@
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
     if (!project) {
-      $("#project").innerHTML = `<p>Prosjekt ikke funnet. <a href="./index.html#work">Gå tilbake</a>.</p>`;
+      $("#project").innerHTML = `<p>Prosjekt ikke funnet. <a href="./projects.html">Gå tilbake</a>.</p>`;
     } else {
       const metaRowsHTML = (project.projectMeta || []).map(row => `
         <div class="pmeta__row">
@@ -73,8 +73,8 @@
                 <img loading="${i === 0 ? "eager" : "lazy"}" decoding="async" src="${src}" alt="${project.title} — bilde ${i + 1}">
               </figure>`).join("")}
           </div>
-          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde">&#8592;</button>
-          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde">&#8594;</button>
+          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="10" height="8" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M13 6H1M6 1L1 6L6 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></svg></button>
+          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="10" height="8" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6H13M8 1L13 6L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></svg></button>
           <div class="slideshow__counter"><span id="slideIndex">1</span> / ${allSlides.length}</div>
         </div>`;
 
@@ -164,7 +164,6 @@
             </div>
             ${slideshowHTML}
             <div class="project-meta">
-              <p class="project-meta__subtitle">${project.subtitle || ""}</p>
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--desktop-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
               ${project.link ? `<a class="btn-pdf btn-pdf--green" href="${project.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.link.label}</a>` : ""}
