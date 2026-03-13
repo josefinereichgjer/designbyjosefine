@@ -210,7 +210,8 @@
           const bg = s.bg || "krem";
           if (s.type === "problem") {
             const problemImg = s.image ? `<img class="proj-problem__img" src="${s.image}" alt="${s.label || ""}" loading="lazy" decoding="async">` : "";
-            return `<div class="proj-section proj-section--${bg}"><div>${label}${heading}${body}</div><div class="proj-problem proj-problem--below">${problemImg ? `<div>${problemImg}</div>` : ""}<div class="proj-problem-list">${(s.items||[]).map(it=>`<div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>${it.title}</h4><p>${it.body}</p></div></div>`).join("")}</div></div></div>`;
+            const itemsLabel = s.itemsLabel ? `<p class="proj-problem-list__label">${s.itemsLabel}</p>` : "";
+            return `<div class="proj-section proj-section--${bg}"><div>${label}${heading}${body}</div><div class="proj-problem proj-problem--below">${problemImg ? `<div>${problemImg}</div>` : ""}<div class="proj-problem-list">${itemsLabel}${(s.items||[]).map(it=>`<div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>${it.title}</h4><p>${it.body}</p></div></div>`).join("")}</div></div></div>`;
           }
           if (s.type === "steps") {
             return `<div class="proj-section proj-section--${bg}">${label}${heading}<div class="proj-steps-grid">${(s.steps||[]).map(st=>`<div class="proj-step"><div class="proj-step-num">${st.num}</div><h3>${st.title}</h3><p>${st.body}</p></div>`).join("")}</div></div>`;

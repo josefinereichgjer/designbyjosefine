@@ -152,9 +152,10 @@ window.PROJECTS = [
         type: "problem",
         bg: "krem",
         label: "Innsikt & utfordringer",
-        heading: "Hverdagen var spredt på for mange systemer",
-        body: "Gjennom et semi-strukturert intervju med daglig leder Mari-Mette avdekket vi at driften var fordelt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.",
+        heading: "Jobbhverdagen var spredt på for mange systemer",
+        body: "Gjennom et semi-strukturert intervju med daglig leder for Norvald og Tjønnås delikatesser Mari-Mette avdekket vi at driften var fordelt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.",
         image: "./assets/norvald/marimette.webp",
+        itemsLabel: "Hovedproblemer:",
         items: [
           { title: "Vaktplaner", body: "Håndtert i eget system uten kobling til kommunikasjon eller mål." },
           { title: "Internkommunikasjon", body: "Viktig info forsvant i Messenger-tråder og ble aldri arkivert." },
@@ -168,7 +169,7 @@ window.PROJECTS = [
         label: "Designprosess",
         heading: "Fra innsikt til løsning",
         steps: [
-          { num: "01", title: "Intervju", body: "Semi-strukturert kvalitativt intervju med daglig leder. Ga dyp forståelse av drift og utfordringer." },
+          { num: "01", title: "Intervju", body: "Semi-strukturert kvalitativt intervju med daglig leder for Norvald og Tjønnås delikatesser. Ga dyp forståelse av drift og utfordringer." },
           { num: "02", title: "Affinity map", body: "Observasjoner gruppert i 6 temaer: salgsmål, vaktplan, kommunikasjon, opplæring, dokumenter og markedsføring." },
           { num: "03", title: "Personas & scenarier", body: "5 personas utviklet. Fokus på Kari (erfaren ansatt) og Eirik (nyansatt) som primære brukere." },
           { num: "04", title: "Wireframes → Hi-fi", body: "Lo-fi skisser i Figma, iterert til hi-fi prototyper med designmanual og WCAG-krav." }

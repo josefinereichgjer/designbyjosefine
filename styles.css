@@ -926,6 +926,14 @@ a:hover{opacity:.75}
   line-height: 1.5;
   margin: 0;
 }
+.proj-problem-list__label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--oliven);
+  margin: 0 0 12px;
+}
 
 /* Steps section */
 .proj-steps-grid {
