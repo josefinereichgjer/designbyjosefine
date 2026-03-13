@@ -156,6 +156,7 @@
       display: block;
     }
 
+    .landing__logo-mobile { display: none; }
     .landing__cta-label--short { display: none; }
     .landing__bio--short { display: none; }
 
@@ -215,6 +216,9 @@
       .landing__bio--full { display: none; }
       .landing__bio--short { display: inline; }
       .landing__cta-label--short { display: inline; }
+      .landing__logo-desktop { display: none; }
+      .landing__logo-mobile { display: inline-block; vertical-align: middle; margin-left: 8px; }
+      .landing__name { display: flex; align-items: center; }
     }
 
     /* ── Responsive ── */
@@ -243,7 +247,7 @@
 
     <!-- Top-left block -->
     <div class="landing__topleft">
-      <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO<img src="./assets/hvitlogo.png" alt="Logo" class="landing__logo-between"><span class="landing__name">JOSEFINE REICHELT GJERTSEN</span></a>
+      <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO<img src="./assets/hvitlogo.png" alt="Logo" class="landing__logo-between landing__logo-desktop"><span class="landing__name">JOSEFINE REICHELT GJERTSEN<img src="./assets/hvitlogo.png" alt="" class="landing__logo-between landing__logo-mobile" aria-hidden="true"></span></a>
     </div>
 
     <!-- Bottom-left: button + bio -->
@@ -256,7 +260,7 @@
       </a>
       <p class="landing__bio">
         <span class="landing__bio--full">Hei! Jeg er en grafisk designer født i 2002 med fokus på strategisk design og visuell kommunikasjon. Jeg har også erfaring med wayfinding-systemer, informasjonsarkitektur og UI/UX-design. Jeg trives spesielt godt med å jobbe tverrfaglig.</span>
-        <span class="landing__bio--short">Velkommen! Grafisk designer (f. 2002) med fokus på strategisk design og visuell kommunikasjon. Erfaring med wayfinding, informasjonsarkitektur og UI/UX, og elsker å jobbe tverrfaglig.</span>
+        <span class="landing__bio--short">Velkommen! Grafisk designer (f. 2002) med fokus på strategisk design og visuell kommunikasjon. Erfaring med wayfinding, informasjonsarkitektur og UI/UX, og elsker å jobbe i team.</span>
       </p>
     </div>
 

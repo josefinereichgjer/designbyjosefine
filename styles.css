@@ -1235,7 +1235,7 @@ a:hover{opacity:.75}
 .process__body:last-child { margin-bottom: 0; }
 .process__images {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
   gap: var(--gap);
   margin-top: 20px;
 }
@@ -1376,4 +1376,13 @@ a:hover{opacity:.75}
   .about-photo { width: 70%; max-width: 220px; }
   .bg__heading { font-size: 14px; }
   .bg__body { font-size: 14px; line-height: 1.6; }
+  .proj-section { padding: 32px 20px; }
+  .proj-steps-grid { gap: 12px; }
+  .process__images { grid-template-columns: 1fr; }
+  .scroll-gallery__img { height: 340px; }
+  .scroll-gallery__img--ipad { height: 260px; }
+  .scroll-gallery__img--mobile { height: 240px; }
+  .panel-toggle { font-size: 14px; padding: 10px 18px; }
+  .proj-problem { gap: 20px; }
+  .bg__img-pair { grid-template-columns: 1fr; }
 }
