@@ -101,7 +101,7 @@ window.PROJECTS = [
     images: ["./assets/tjonnipadiphone.png"],
     noSlideshow: true,
     description: "Short description.",
-    intro: "digital ansattsportal\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
+    intro: "Digital ansattsportal\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
     scrollGalleries: [
       {
         label: "Mobil – vaktliste & kalender (noen utvalgte prototyper)",

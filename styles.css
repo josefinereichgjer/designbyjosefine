@@ -1151,6 +1151,7 @@ a:hover{opacity:.75}
   font-size: 13px;
   color: var(--oliven);
   line-height: 1.5;
+  margin: 0;
 }
 
 /* Steps section */
@@ -1177,6 +1178,7 @@ a:hover{opacity:.75}
   font-size: 13px;
   color: var(--oliven);
   line-height: 1.6;
+  margin: 0;
 }
 
 /* Features section */
@@ -1264,7 +1266,7 @@ a:hover{opacity:.75}
   .proj-sections { margin-left: -20px; margin-right: -20px; }
   .proj-section { padding: 44px 40px; }
   .proj-problem { grid-template-columns: 1fr; gap: 28px; }
-  .proj-steps-grid { grid-template-columns: 1fr; gap: 28px; }
+  .proj-steps-grid { grid-template-columns: 1fr; gap: 16px; }
   .proj-features-grid { grid-template-columns: 1fr; }
   .proj-feature:nth-child(odd) { border-right: none; padding-right: 0; }
   .proj-feature:nth-child(even) { padding-left: 0; }
@@ -1676,6 +1678,9 @@ a:hover{opacity:.75}
     border-bottom: 1px solid #222;
   }
   .content { margin-left: 0; padding: 24px 20px 60px; }
+  .scroll-gallery { margin-left: calc(50% - 50vw); width: 100vw; }
+  .scroll-gallery__track { padding-left: 0; padding-right: 20px; }
+  .scroll-gallery__label { padding-left: 20px; }
   .sidebar__inner { flex-direction: row; align-items: center; gap: 12px; }
   .brand { display: flex; align-items: center; }
   .brand__logo { width: 40px; }
@@ -1707,7 +1712,4 @@ a:hover{opacity:.75}
   .kv { grid-template-columns: 1fr; gap: 8px; }
   .bg__heading { font-size: 14px; }
   .bg__body { font-size: 14px; line-height: 1.6; }
-  .scroll-gallery { margin-left: -20px; width: calc(100% + 40px); }
-  .scroll-gallery__track { padding-left: 0; padding-right: 20px; }
-  .scroll-gallery__label { padding-left: 20px; }
 }
