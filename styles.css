@@ -441,6 +441,38 @@ a:hover{opacity:.75}
   display: block;
   margin-top: 14px;
 }
+.accordion__link {
+  display: inline-block;
+  margin-top: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: inherit;
+  font-size: 0.875rem;
+}
+.page-img-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 0;
+}
+.page-img-row + .page-img-row {
+  margin-top: 12px;
+}
+.page-img-frame {
+  width: 22%;
+  max-width: 140px;
+  display: block;
+}
+.page-img-frame--wide {
+  width: 100%;
+  max-width: 680px;
+}
+.page-img-arrow {
+  font-size: 1.2rem;
+  color: var(--fg, #111);
+  flex-shrink: 0;
+}
 .bg__img-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
@@ -753,9 +785,10 @@ a:hover{opacity:.75}
 }
 .project-intro {
   font-size: 14px;
-  color: var(--muted);
+  color: var(--fg);
   line-height: 1.65;
   margin-top: 8px;
+  max-width: 78ch;
 }
 
 /* Project meta below slideshow */

@@ -132,7 +132,9 @@
           inner += `<div class="bg__img-pairs">${s.imagePairs.map(([l, r]) => `<div class="bg__img-pair"><img class="bg__img" src="${l}" loading="lazy" decoding="async"><img class="bg__img" src="${r}" loading="lazy" decoding="async"></div>`).join("")}</div>`;
         }
         if (s.link) {
-          inner += `<a class="btn-pdf btn-pdf--green" href="${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${s.link.label}</a>`;
+          inner += s.link.plain
+            ? `<a class="accordion__link" href="${s.link.src}" target="_blank" rel="noopener">↗ ${s.link.label}</a>`
+            : `<a class="btn-pdf btn-pdf--green" href="${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${s.link.label}</a>`;
         }
         return `
           <div class="accordion__item">
@@ -159,10 +161,16 @@
           <div class="project-layout__media">
             <div class="project-header">
               <h1 class="project-meta__title">${project.title}</h1>
-              ${project.intro ? `<p class="project-intro">${project.intro}</p>` : ""}
+              ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro">${p.replace(/\n/g, "<br>")}</p>`).join("") : ""}
               ${accordionHTML ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
-            ${slideshowHTML}
+            ${project.noSlideshow
+              ? project.pageImageRows?.length
+                ? project.pageImageRows.map(row => `<div class="page-img-row">${row.map(src => `<img class="${row.length === 1 ? "page-img-frame page-img-frame--wide" : "page-img-frame"}" src="${src}" alt="${project.title}" loading="lazy" decoding="async">`).join("")}</div>`).join("")
+                : project.pageImages?.length
+                  ? `<div class="page-img-row">${project.pageImages.map((src, i) => `${i > 0 ? `<span class="page-img-arrow">→</span>` : ""}<img class="page-img-frame" src="${src}" alt="${project.title}" loading="lazy" decoding="async">`).join("")}</div>`
+                  : ""
+              : slideshowHTML}
             <div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--desktop-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}

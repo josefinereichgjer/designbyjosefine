@@ -78,6 +78,7 @@ window.PROJECTS = [
     tags: ["UX", "Redesign"],
     cover: "./assets/kitty.jpeg",
     images: ["./assets/me.webp"],
+    noSlideshow: true,
     description: "Short description."
   },
   {
@@ -98,7 +99,35 @@ window.PROJECTS = [
     tags: ["UX"],
     cover: "./assets/norvaldiphone.webp",
     images: ["./assets/norvaldiphone.webp"],
-    description: "Short description."
+    noSlideshow: true,
+    description: "Short description.",
+    intro: "Tjønnås & Norvald – Fra analogt kaos til digital kontroll\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.\n\nGjennom tett innsiktsarbeid har vi skapt en løsning som fjerner informasjonsstøy og effektiviserer driften. Ved å kombinere strukturert informasjonsarkitektur med et sterkt visuelt uttrykk, har vi designet et verktøy som forenkler onboarding og sikrer sømløs samhandling mellom to unike serveringssteder.\n\n<strong>Min rolle:</strong> UX-research, informasjonsarkitektur og visuelt design.\n<strong>Resultat:</strong> En sentralisert ansattportal som gir en mer oversiktlig og forutsigbar arbeidsdag.",
+    pageImageRows: [
+      [
+        "./assets/norvald/tjonnas1.png"
+      ],
+      [
+        "./assets/norvald/tjonnas2.png"
+      ]
+    ],
+    background: [
+      {
+        heading: "Rapport",
+        link: { label: "Åpne rapport", src: "./assets/norvald/Endelig-rapport- informasjonsarkitektur.pdf", plain: true }
+      },
+      {
+        heading: "Intervju",
+        link: { label: "Åpne intervjuguide", src: "./assets/norvald/Intervju.pdf", plain: true }
+      },
+      {
+        heading: "Sitemap",
+        link: { label: "Åpne sitemap", src: "./assets/norvald/sitemap.pdf", plain: true }
+      },
+      {
+        heading: "Designmanual",
+        link: { label: "Åpne designmanual", src: "./assets/norvald/Designmanual.pdf", plain: true }
+      }
+    ]
   },
   {
     id: "flerkanalspublisering",
