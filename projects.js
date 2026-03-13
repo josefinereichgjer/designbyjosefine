@@ -122,7 +122,7 @@ window.PROJECTS = [
     cover: "./assets/tjonnipadiphone.png",
     images: ["./assets/tjonnipadiphone.png"],
     noSlideshow: true,
-    intro: "Digital ansattsportal\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
+    intro: "Dette prosjektet ble utført av et tverrfaglig team bestående av to interaksjonsdesignere og to grafiske designere. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café i Gjøvik som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
     scrollGalleries: [
       {
         label: "<strong>iPhone 16 Pro Max</strong> (Noen utvalgte skisser)",
@@ -178,15 +178,15 @@ window.PROJECTS = [
         type: "problem",
         bg: "krem",
         label: "Innsikt & utfordringer",
-        heading: "Jobbhverdagen var spredt på for mange systemer",
-        body: "Gjennom et semi-strukturert intervju med daglig leder for Norvald og Tjønnås delikatesser Mari-Mette avdekket vi at driften var fordelt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.",
+        heading: "Jobbhverdagen er spredt på for mange systemer",
+        body: "Gjennom et semi-strukturert intervju med daglig leder for Norvald og Tjønnås delikatesser (Mari-Mette) avdekket vi at informasjonsarkitekturen innad driften var fordelt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.",
         image: "./assets/norvald/marimette.webp",
         itemsLabel: "Hovedproblemer:",
         items: [
-          { title: "Vaktplaner", body: "Håndtert i eget system uten kobling til kommunikasjon eller mål." },
-          { title: "Internkommunikasjon", body: "Viktig info forsvant i Messenger-tråder og ble aldri arkivert." },
+          { title: "Vaktplaner", body: "Håndtert i et separat system uten kobling til felles kommunikasjon." },
+          { title: "Internkommunikasjon", body: "Viktig info forsvant i Messenger-tråder." },
           { title: "Opplæring", body: "Kun fysisk og muntlig – tidkrevende og ikke tilgjengelig utenom arbeidstid." },
-          { title: "Dokumenter & rutiner", body: "Ingen versjonskontroll. Nye ansatte fant ikke frem til riktig informasjon." }
+          { title: "Dokumenter & rutiner", body: "Ingen versjonskontroll. Nye ansatte hadde vansker med å finne frem til riktig informasjon." }
         ]
       },
       {
