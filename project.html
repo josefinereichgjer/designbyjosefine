@@ -23,7 +23,7 @@
         </a>
       </div>
 
-      <a class="back-btn" href="./projects.html" aria-label="Tilbake til prosjekter"><svg width="28" height="20" viewBox="0 0 22 16" fill="none" aria-hidden="true"><path d="M21 8H1M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter"/></svg></a>
+      <a class="back-btn" href="./projects.html" aria-label="Tilbake til prosjekter"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
       <nav class="nav" aria-label="Main navigation">
         <a class="nav__link" href="./projects.html"><span>Prosjekter</span></a>
@@ -73,8 +73,8 @@
                 <img loading="${i === 0 ? "eager" : "lazy"}" decoding="async" src="${src}" alt="${project.title} — bilde ${i + 1}">
               </figure>`).join("")}
           </div>
-          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="10" height="8" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M13 6H1M6 1L1 6L6 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></svg></button>
-          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="10" height="8" viewBox="0 0 14 12" fill="none" aria-hidden="true"><path d="M1 6H13M8 1L13 6L8 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="square" stroke-linejoin="miter"/></svg></button>
+          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="slideshow__counter"><span id="slideIndex">1</span> / ${allSlides.length}</div>
         </div>`;
 
@@ -169,12 +169,14 @@
             <div class="project-header">
               <h1 class="project-meta__title">${project.title}</h1>
               ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro">${p.replace(/\n/g, "<br>")}</p>`).join("") : ""}
+              ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
             ${project.noSlideshow ? "" : slideshowHTML}
             <div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--desktop-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
               ${project.link ? `<a class="btn-pdf btn-pdf--green" href="${project.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.link.label}</a>` : ""}
+              ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
           </div>
           ${accordionHTML && !(project.sections || []).length ? `
@@ -230,7 +232,7 @@
           const others = (window.PROJECTS || []).filter(p => p.id !== project.id).slice(0, 3);
           if (!others.length) return "";
           return `<div class="related">
-            <h2 class="related__heading">Du vil også like</h2>
+            <h2 class="related__heading">Mer å se på</h2>
             <div class="related__grid">
               ${others.map(p => `
                 <a class="related__card" href="./project.html?id=${encodeURIComponent(p.id)}">

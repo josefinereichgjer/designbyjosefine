@@ -11,8 +11,6 @@ window.PROJECTS = [
       "./assets/reinaside.webp",
       "./assets/reinastor.webp"
     ],
-    description:
-      "Short description of the project. What was the goal, your role, and what makes it strong.",
     intro: "I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Utgangspunktet var bedriftens eksisterende uttrykk, som ble videreutviklet for å tydeligere formidle opprinnelse, kvalitet og håndverksmessig produksjon. Målet var å skape et helhetlig uttrykk som kunne fungere som en visuell mal på tvers av produktene, samtidig som emballasjen fremhever det lokale og autentiske preget ved produsenten.",
     background: [
       {
@@ -79,7 +77,6 @@ window.PROJECTS = [
     cover: "./assets/kitty.jpeg",
     images: ["./assets/me.webp"],
     noSlideshow: true,
-    description: "Short description."
   },
   {
     id: "tidsskrift",
@@ -89,7 +86,6 @@ window.PROJECTS = [
     tags: ["Redaksjonell"],
     cover: "./assets/kitty.jpeg",
     images: ["./assets/me.webp"],
-    description: "Short description."
   },
   {
     id: "ansatts-portal",
@@ -100,11 +96,10 @@ window.PROJECTS = [
     cover: "./assets/tjonnipadiphone.png",
     images: ["./assets/tjonnipadiphone.png"],
     noSlideshow: true,
-    description: "Short description.",
     intro: "Digital ansattsportal\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
     scrollGalleries: [
       {
-        label: "Mobil – vaktliste & kalender (noen utvalgte prototyper)",
+        label: "<strong>iPhone 16 Pro Max</strong> (Noen utvalgte skisser)",
         size: "mobile",
         images: [
           "./assets/norvald/tjonnas-2-mock.png",
@@ -112,7 +107,7 @@ window.PROJECTS = [
         ]
       },
       {
-        label: "iPad – digital opplæring (noen utvalgte skisser)",
+        label: "<strong>iPad Pro 12.9\"</strong> (Noen utvalgte skisser)",
         size: "ipad",
         images: [
           "./assets/norvald/ipad10.png",
@@ -216,7 +211,6 @@ window.PROJECTS = [
     tags: ["Redesign"],
     cover: "./assets/srhbrosk.webp",
     images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
-    description: "Short description.",
     intro: "Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.",
     background: [
       {
@@ -262,7 +256,6 @@ window.PROJECTS = [
     tags: ["Redaksjonell"],
     cover: "./assets/scenebok.webp",
     images: ["./assets/closebook.webp", "./assets/closeletter.webp", "./assets/togetherbook.webp"],
-    description: "Bokserie – redaksjonell design basert på tre klassiske norske romaner av Collett, Skram og Undset.",
     background: [
       {
         heading: "Bokserie – konsept",
@@ -313,7 +306,6 @@ window.PROJECTS = [
     tags: ["Visuell identitet"],
     cover: "./assets/kitty.jpeg",
     images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
-    description: "Short description.",
     finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
   },
   {
@@ -333,7 +325,6 @@ window.PROJECTS = [
       "./stoppestedet/stoppestedet/images/insidestopp.png",
       "./stoppestedet/stoppestedet/images/stairstopp.png"
     ],
-    description: "Short description.",
     background: [
       {
         heading: "Innledning og designbrief",
