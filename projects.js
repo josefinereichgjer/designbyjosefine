@@ -66,7 +66,7 @@ window.PROJECTS = [
         body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet."
       }
     },
-    finalPdf: { label: "Nyskjerrig på mer?", src: "./assets/ferdigreina.pdf" }
+    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" }
   },
   {
     id: "flerkanalspublisering",
@@ -111,7 +111,7 @@ window.PROJECTS = [
       { label: "Fagansvarlig", value: "Mari Hermansen" },
       { label: "Verktøy", value: "Illustrator, Photoshop" }
     ],
-    finalPdf: { label: "Nyskjerrig på mer?", src: "./assets/srh_pdf.pdf" }
+    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
   },
   {
     id: "ansatts-portal",
