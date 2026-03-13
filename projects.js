@@ -101,16 +101,40 @@ window.PROJECTS = [
     images: ["./assets/norvaldiphone.webp"],
     noSlideshow: true,
     description: "Short description.",
-    intro: "Tjønnås & Norvald – Fra analogt kaos til digital kontroll\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.\n\nGjennom tett innsiktsarbeid har vi skapt en løsning som fjerner informasjonsstøy og effektiviserer driften. Ved å kombinere strukturert informasjonsarkitektur med et sterkt visuelt uttrykk, har vi designet et verktøy som forenkler onboarding og sikrer sømløs samhandling mellom to unike serveringssteder.\n\n<strong>Min rolle:</strong> UX-research, informasjonsarkitektur og visuelt design.\n<strong>Resultat:</strong> En sentralisert ansattportal som gir en mer oversiktlig og forutsigbar arbeidsdag.",
-    pageImageRows: [
-      [
-        "./assets/norvald/tjonnas1.png"
-      ],
-      [
-        "./assets/norvald/tjonnas2.png"
-      ]
+    intro: "Tjønnås & Norvald – Fra analogt kaos til digital kontroll\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
+    scrollGalleries: [
+      {
+        label: "Mobil – vaktliste & kalender (noen utvalgte prototyper)",
+        size: "mobile",
+        images: [
+          "./assets/norvald/tjonnas-2-mock.png",
+          "./assets/norvald/tjonnas-1-mock.png"
+        ]
+      },
+      {
+        label: "iPad – digital opplæring (noen utvalgte skisser)",
+        size: "ipad",
+        images: [
+          "./assets/norvald/ipad10.png",
+          "./assets/norvald/ipad11.png",
+          "./assets/norvald/ipad12.png",
+          "./assets/norvald/ipad13.png",
+          "./assets/norvald/ipad14.png",
+          "./assets/norvald/ipad15.png",
+          "./assets/norvald/ipad16.png",
+          "./assets/norvald/ipad17.png"
+        ]
+      }
     ],
     background: [
+      {
+        heading: "Prototype",
+        body: "Utforsk den interaktive Figma-prototypen – mobil eller iPad.",
+        links: [
+          { label: "Mobil-prototype (Figma)", src: "https://www.figma.com/proto/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=370-654&t=gURyvsCsv2Xut1a-1", plain: true },
+          { label: "iPad-prototype (Figma)", src: "https://www.figma.com/proto/SIwHbrWgze8kbEIWvYqJug/Tj%C3%B8nn%C3%A5smain?node-id=357-92&t=WdrI0DT0DpxmhxMO-1", plain: true }
+        ]
+      },
       {
         heading: "Rapport",
         link: { label: "Åpne rapport", src: "./assets/norvald/Endelig-rapport- informasjonsarkitektur.pdf", plain: true }
@@ -126,6 +150,61 @@ window.PROJECTS = [
       {
         heading: "Designmanual",
         link: { label: "Åpne designmanual", src: "./assets/norvald/Designmanual.pdf", plain: true }
+      }
+    ],
+    sections: [
+      {
+        type: "problem",
+        bg: "krem",
+        label: "Innsikt & utfordringer",
+        heading: "Hverdagen var spredt på for mange systemer",
+        body: "Gjennom et semi-strukturert intervju med daglig leder Mari-Mette avdekket vi at driften var fordelt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.",
+        image: "./assets/norvald/marimette.webp",
+        items: [
+          { title: "Vaktplaner", body: "Håndtert i eget system uten kobling til kommunikasjon eller mål." },
+          { title: "Internkommunikasjon", body: "Viktig info forsvant i Messenger-tråder og ble aldri arkivert." },
+          { title: "Opplæring", body: "Kun fysisk og muntlig – tidkrevende og ikke tilgjengelig utenom arbeidstid." },
+          { title: "Dokumenter & rutiner", body: "Ingen versjonskontroll. Nye ansatte fant ikke frem til riktig informasjon." }
+        ]
+      },
+      {
+        type: "steps",
+        bg: "mandel-light",
+        label: "Designprosess",
+        heading: "Fra innsikt til løsning",
+        steps: [
+          { num: "01", title: "Intervju", body: "Semi-strukturert kvalitativt intervju med daglig leder. Ga dyp forståelse av drift og utfordringer." },
+          { num: "02", title: "Affinity map", body: "Observasjoner gruppert i 6 temaer: salgsmål, vaktplan, kommunikasjon, opplæring, dokumenter og markedsføring." },
+          { num: "03", title: "Personas & scenarier", body: "5 personas utviklet. Fokus på Kari (erfaren ansatt) og Eirik (nyansatt) som primære brukere." },
+          { num: "04", title: "Wireframes → Hi-fi", body: "Lo-fi skisser i Figma, iterert til hi-fi prototyper med designmanual og WCAG-krav." }
+        ]
+      },
+      {
+        type: "features",
+        bg: "krem",
+        label: "Løsningen",
+        heading: "Én samlet ansattportal",
+        body: "Portalens kjerneområder samler det som tidligere lå spredt på ulike plattformer – tilgjengelig på mobil og iPad.",
+        items: [
+          { num: "01", title: "Vaktliste", body: "Månedlig kalender med full oversikt over tid, sted og hvem du jobber med." },
+          { num: "02", title: "Chat & kommunikasjon", body: "Felles meldingskanal med historikk. Viktig info drukner ikke lenger i Messenger-tråder." },
+          { num: "03", title: "Digital opplæring", body: "Modulbaserte kurs med steg-for-steg instruksjoner. Kan fullføres hjemmefra i eget tempo." },
+          { num: "04", title: "Dokumenter & rutiner", body: "Samlet bibliotek med versjonskontroll. Alltid oppdatert og lett å finne." },
+          { num: "05", title: "Landing page", body: "Daglige mål, ukentlige oppdateringer og viktige beskjeder samlet på én startside." },
+          { num: "06", title: "Min side", body: "Personlig profil, innstillinger og notifikasjonslogg, tilpasset etter arbeidssted." }
+        ]
+      },
+      {
+        type: "team",
+        bg: "none",
+        label: "Gruppe 01",
+        heading: "Teamet bak prosjektet",
+        members: [
+          { initials: "JR", name: "Josefine Reichelt Gjertsen", role: "Intervjuguide · Personas · Design", color: "#571721" },
+          { initials: "HB", name: "Herman Brenn-Svendsen", role: "Sitemap · Prototyper · Wireframes", color: "#ad822e" },
+          { initials: "TD", name: "Tia Linnea Dahl", role: "Designmanual · Personas · Rapport", color: "#c0523f" },
+          { initials: "AJ", name: "Axel Bruusgaard Jewett", role: "Prototyper · Wireframes · Intervju", color: "#403d26" }
+        ]
       }
     ]
   },

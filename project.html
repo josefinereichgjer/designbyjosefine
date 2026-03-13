@@ -131,6 +131,13 @@
         if (s.imagePairs) {
           inner += `<div class="bg__img-pairs">${s.imagePairs.map(([l, r]) => `<div class="bg__img-pair"><img class="bg__img" src="${l}" loading="lazy" decoding="async"><img class="bg__img" src="${r}" loading="lazy" decoding="async"></div>`).join("")}</div>`;
         }
+        if (s.links) {
+          s.links.forEach(lnk => {
+            inner += lnk.plain
+              ? `<a class="accordion__link" href="${lnk.src}" target="_blank" rel="noopener">↗ ${lnk.label}</a>`
+              : `<a class="btn-pdf btn-pdf--green" href="${lnk.src}" target="_blank" rel="noopener" style="margin-top:12px;display:inline-block">↗ ${lnk.label}</a>`;
+          });
+        }
         if (s.link) {
           inner += s.link.plain
             ? `<a class="accordion__link" href="${s.link.src}" target="_blank" rel="noopener">↗ ${s.link.label}</a>`
@@ -162,23 +169,15 @@
             <div class="project-header">
               <h1 class="project-meta__title">${project.title}</h1>
               ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro">${p.replace(/\n/g, "<br>")}</p>`).join("") : ""}
-              ${accordionHTML ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
-            ${project.noSlideshow
-              ? project.pageImageRows?.length
-                ? project.pageImageRows.map(row => `<div class="page-img-row">${row.map(src => `<img class="${row.length === 1 ? "page-img-frame page-img-frame--wide" : "page-img-frame"}" src="${src}" alt="${project.title}" loading="lazy" decoding="async">`).join("")}</div>`).join("")
-                : project.pageImages?.length
-                  ? `<div class="page-img-row">${project.pageImages.map((src, i) => `${i > 0 ? `<span class="page-img-arrow">→</span>` : ""}<img class="page-img-frame" src="${src}" alt="${project.title}" loading="lazy" decoding="async">`).join("")}</div>`
-                  : ""
-              : slideshowHTML}
+            ${project.noSlideshow ? "" : slideshowHTML}
             <div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--desktop-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
               ${project.link ? `<a class="btn-pdf btn-pdf--green" href="${project.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.link.label}</a>` : ""}
-              ${accordionHTML ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
           </div>
-          ${accordionHTML ? `
+          ${accordionHTML && !(project.sections || []).length ? `
           <div class="project-layout__side">
             <div class="project-layout__info" id="projectInfo">
               <div class="project-layout__info-inner">
@@ -195,6 +194,38 @@
           </div>` : ""}
         </div>
         ${galleryHTML}
+        ${(project.scrollGalleries || []).map(g => `
+          <div class="scroll-gallery">
+            ${g.label ? `<p class="scroll-gallery__label">${g.label}</p>` : ""}
+            <div class="scroll-gallery__track">
+              ${g.images.map(src => `<img class="scroll-gallery__img${g.size === "ipad" ? " scroll-gallery__img--ipad" : g.size === "mobile" ? " scroll-gallery__img--mobile" : ""}" src="${src}" alt="${project.title}" loading="lazy" decoding="async">`).join("")}
+            </div>
+          </div>`).join("")}
+        ${(project.sections || []).length ? `<div class="proj-sections">${(project.sections || []).map(s => {
+          const label = s.label ? `<p class="proj-section__label">${s.label}</p>` : "";
+          const heading = s.heading ? `<h2 class="proj-section__heading">${s.heading}</h2>` : "";
+          const body = s.body ? `<p class="proj-section__body">${s.body}</p>` : "";
+          const bg = s.bg || "krem";
+          if (s.type === "problem") {
+            const problemImg = s.image ? `<img class="proj-problem__img" src="${s.image}" alt="${s.label || ""}" loading="lazy" decoding="async">` : "";
+            return `<div class="proj-section proj-section--${bg}"><div>${label}${heading}${body}</div><div class="proj-problem proj-problem--below">${problemImg ? `<div>${problemImg}</div>` : ""}<div class="proj-problem-list">${(s.items||[]).map(it=>`<div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>${it.title}</h4><p>${it.body}</p></div></div>`).join("")}</div></div></div>`;
+          }
+          if (s.type === "steps") {
+            return `<div class="proj-section proj-section--${bg}">${label}${heading}<div class="proj-steps-grid">${(s.steps||[]).map(st=>`<div class="proj-step"><div class="proj-step-num">${st.num}</div><h3>${st.title}</h3><p>${st.body}</p></div>`).join("")}</div></div>`;
+          }
+          if (s.type === "features") {
+            return `<div class="proj-section proj-section--${bg}">${label}${heading}${body}<div class="proj-features-grid">${(s.items||[]).map(it=>`<div class="proj-feature"><span class="proj-feature-num">${it.num}</span><div><h3>${it.title}</h3><p>${it.body}</p></div></div>`).join("")}</div></div>`;
+          }
+          if (s.type === "team") {
+            return `<div class="proj-section proj-section--${bg}"><div class="proj-team-header">${label}${heading}</div><div class="proj-team-grid">${(s.members||[]).map(m=>`<div class="proj-team-card"><div class="proj-team-avatar" style="background:${m.color}">${m.initials}</div><h4>${m.name}</h4><p>${m.role}</p></div>`).join("")}</div></div>`;
+          }
+          return "";
+        }).join("")}</div>` : ""}
+        ${accordionHTML && (project.sections || []).length ? `
+        <button class="panel-toggle panel-toggle--bottom" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>
+        <div class="inline-accordion" id="inlineAccordion" hidden>
+          <div class="accordion" id="accordion">${accordionHTML}</div>
+        </div>` : ""}
         ${(() => {
           const others = (window.PROJECTS || []).filter(p => p.id !== project.id).slice(0, 3);
           if (!others.length) return "";
@@ -271,6 +302,7 @@
 
     // Panel toggle
     const projectLayout = document.querySelector(".project-layout");
+    const inlineAccordion = document.getElementById("inlineAccordion");
     function syncToggles(isOpen) {
       document.querySelectorAll(".panel-toggle").forEach(btn => {
         btn.setAttribute("aria-expanded", String(isOpen));
@@ -279,7 +311,13 @@
     }
     document.querySelectorAll(".panel-toggle").forEach(btn => {
       btn.addEventListener("click", () => {
-        const isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+        let isOpen;
+        if (inlineAccordion) {
+          isOpen = inlineAccordion.hidden;
+          inlineAccordion.hidden = !isOpen;
+        } else {
+          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+        }
         syncToggles(isOpen);
       });
     });

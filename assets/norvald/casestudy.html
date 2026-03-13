@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tjønnås & Norvald – Ansattportal</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --vinrod: #571721;
+    --norvald: #e84030;
+    --tjonnås: #ad822e;
+    --oliven: #403d26;
+    --mandel: #ebe1c4;
+    --krem: #fcfaeb;
+    --hvit: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--krem);
+    color: var(--vinrod);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    background: var(--vinrod);
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 120px 100px;
+    position: relative;
+    z-index: 2;
+    max-width: 860px;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--tjonnås);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .hero-title {
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: var(--mandel);
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.4s forwards;
+  }
+
+  .hero-title span {
+    color: var(--norvald);
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--mandel);
+    opacity: 0.7;
+    margin-bottom: 48px;
+    line-height: 1.7;
+    max-width: 380px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .hero-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .hero-meta-item {
+    font-size: 12px;
+    color: rgba(235,225,196,0.5);
+    letter-spacing: 1px;
+  }
+
+  .hero-meta-item strong {
+    color: var(--mandel);
+    font-weight: 600;
+  }
+
+  .hero-bg-text {
+    position: absolute;
+    bottom: -60px;
+    right: -20px;
+    font-size: 260px;
+    font-weight: 700;
+    color: rgba(235,225,196,0.05);
+    letter-spacing: -10px;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 16px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(252,250,235,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(87,23,33,0.08);
+  }
+
+  .nav-logo { font-weight: 700; font-size: 16px; }
+  .nav-logo .t { color: var(--tjonnås); }
+  .nav-logo .n { color: var(--norvald); }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { 
+    font-size: 13px; 
+    font-weight: 500; 
+    color: var(--vinrod); 
+    text-decoration: none; 
+    letter-spacing: 0.3px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 60px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--tjonnås);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 700;
+    line-height: 1.1;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+
+  .section-body {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--oliven);
+    max-width: 560px;
+  }
+
+  /* ── PROBLEM ── */
+  .problem {
+    background: var(--mandel);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .problem-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-top: 1px solid rgba(87,23,33,0.15);
+  }
+
+  .problem-item {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(87,23,33,0.1);
+  }
+
+  .problem-item-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--norvald);
+    flex-shrink: 0;
+    margin-top: 6px;
+  }
+
+  .problem-item-dot.accent { background: var(--tjonnås); }
+
+  .problem-item h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--vinrod);
+    margin-bottom: 3px;
+  }
+
+  .problem-item p {
+    font-size: 12px;
+    color: var(--oliven);
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  /* ── PROCESS ── */
+  .process { background: var(--krem); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+  }
+
+  .step {
+    position: relative;
+  }
+
+  .step::after {
+    content: '→';
+    position: absolute;
+    right: -20px;
+    top: 20px;
+    font-size: 20px;
+    color: var(--tjonnås);
+    opacity: 0.4;
+  }
+  .step:last-child::after { display: none; }
+
+  .step-num {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--mandel);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .step p { font-size: 13px; color: var(--oliven); line-height: 1.7; opacity: 0.8; }
+
+  /* ── DESIGN ── */
+  .design { background: var(--vinrod); color: var(--mandel); }
+  .design .section-label { color: var(--tjonnås); }
+  .design .section-title { color: var(--mandel); }
+  .design .section-body { color: rgba(235,225,196,0.7); }
+
+  .design-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 60px;
+    align-items: start;
+  }
+
+  .colors-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .color-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .color-swatch {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.15);
+  }
+
+  .color-name {
+    font-size: 10px;
+    color: rgba(235,225,196,0.6);
+    text-align: center;
+  }
+
+  .type-sample {
+    margin-top: 24px;
+  }
+
+  .type-display {
+    font-size: 52px;
+    font-weight: 700;
+    color: var(--mandel);
+    line-height: 1;
+  }
+
+  .type-body {
+    font-size: 14px;
+    color: rgba(235,225,196,0.6);
+    margin-top: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .design-sub { font-size: 13px; color: var(--tjonnås); font-weight: 600; letter-spacing: 1px; margin-bottom: 12px; }
+
+  /* ── SOLUTION ── */
+  .solution { background: var(--krem); }
+
+  .features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin-top: 48px;
+    border-top: 1px solid rgba(87,23,33,0.1);
+  }
+
+  .feature {
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(87,23,33,0.08);
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    padding-right: 40px;
+  }
+
+  .feature:nth-child(odd) { padding-right: 40px; border-right: 1px solid rgba(87,23,33,0.08); }
+  .feature:nth-child(even) { padding-left: 40px; padding-right: 0; }
+
+  .feature-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--tjonnås);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .feature-content {}
+
+  .feature h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .feature p { font-size: 12px; color: var(--oliven); line-height: 1.6; opacity: 0.8; }
+
+  /* ── PROTOTYPE LINK ── */
+  .prototype { background: var(--mandel); }
+
+  .proto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .proto-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 32px;
+  }
+
+  .proto-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--krem);
+    border-radius: 14px;
+    padding: 18px 22px;
+    text-decoration: none;
+    color: var(--vinrod);
+    transition: all 0.2s;
+    border: 1px solid rgba(87,23,33,0.08);
+  }
+
+  .proto-link:hover {
+    background: var(--vinrod);
+    color: var(--mandel);
+    transform: translateX(6px);
+  }
+
+  .proto-link-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--mandel);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .proto-link:hover .proto-link-icon { background: rgba(235,225,196,0.2); }
+
+  .proto-link-text { flex: 1; }
+  .proto-link-text strong { font-size: 14px; font-weight: 600; display: block; }
+  .proto-link-text span { font-size: 12px; opacity: 0.6; }
+  .proto-link-arrow { font-size: 18px; opacity: 0.4; }
+
+  .sitemap-preview {
+    background: var(--krem);
+    border-radius: 20px;
+    padding: 28px;
+    font-size: 12px;
+    border: 1px solid rgba(87,23,33,0.08);
+  }
+
+  .sitemap-title { font-weight: 600; font-size: 13px; margin-bottom: 20px; color: var(--vinrod); }
+
+  .sitemap-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+
+  .sitemap-node {
+    background: var(--mandel);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 11px;
+    color: var(--oliven);
+    font-weight: 500;
+  }
+
+  .sitemap-node.root {
+    background: var(--vinrod);
+    color: var(--mandel);
+    font-weight: 600;
+  }
+
+  .sitemap-node.accent { background: var(--tjonnås); color: white; }
+
+  .sitemap-connector {
+    font-size: 10px;
+    color: rgba(87,23,33,0.3);
+    align-self: center;
+  }
+
+  /* ── TEAM ── */
+  .team { background: var(--krem); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 60px;
+  }
+
+  .team-card {
+    text-align: center;
+    padding: 32px 20px;
+    background: var(--mandel);
+    border-radius: 20px;
+  }
+
+  .team-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--vinrod);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--mandel);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 auto 16px;
+  }
+
+  .team-card h4 { font-size: 14px; font-weight: 600; }
+  .team-card p { font-size: 12px; color: var(--oliven); opacity: 0.7; margin-top: 4px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--vinrod);
+    color: var(--mandel);
+    padding: 48px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  footer .logo { font-size: 22px; font-weight: 700; }
+  footer .logo .t { color: var(--tjonnås); }
+  footer .logo .n { color: var(--norvald); }
+  footer p { font-size: 13px; opacity: 0.5; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(40px) rotate(2deg); }
+    to { opacity: 1; transform: translateX(0) rotate(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    nav .nav-links { display: none; }
+    .hero-left { padding: 100px 32px 60px; }
+    section { padding: 64px 24px; }
+    .problem, .design-grid, .proto-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .features { grid-template-columns: 1fr; }
+    .feature:nth-child(odd) { border-right: none; padding-right: 0; }
+    .feature:nth-child(even) { padding-left: 0; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+    .problem-list { margin-top: 0; }
+  }
+  /* ── SCROLL GALLERY ── */
+  .scroll-track {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 40px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--tjonnås) transparent;
+  }
+
+  .scroll-track::-webkit-scrollbar { height: 4px; }
+  .scroll-track::-webkit-scrollbar-thumb { background: var(--tjonnås); border-radius: 2px; }
+
+  .scroll-inner {
+    display: flex;
+    gap: 24px;
+    padding: 0 60px;
+    width: max-content;
+  }
+
+  .scroll-img {
+    flex-shrink: 0;
+    border-radius: 16px;
+    display: block;
+    object-fit: contain;
+  }
+
+  .scroll-img-mobile {
+    height: 520px;
+    width: auto;
+    box-shadow: 0 20px 60px rgba(87,23,33,0.15);
+  }
+
+  .scroll-img-ipad {
+    height: 380px;
+    width: auto;
+    box-shadow: 0 16px 48px rgba(87,23,33,0.12);
+  }
+
+  .proto-cta {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--vinrod);
+    text-decoration: none;
+    border-bottom: 1.5px solid var(--tjonnås);
+    padding-bottom: 2px;
+    letter-spacing: 0.3px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .proto-cta:hover { color: var(--norvald); border-color: var(--norvald); }
+
+  /* ── SITEMAP SECTION ── */
+  .sitemap-section { background: var(--krem); padding: 80px 60px; }
+  .sitemap-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .scroll-inner { padding: 0 24px; }
+    .scroll-img-mobile { height: 380px; }
+    .scroll-img-ipad { height: 240px; }
+    .sitemap-section { padding: 64px 24px; }
+    .sitemap-inner { grid-template-columns: 1fr; }
+    .mockup-section div[style*="padding:0 60px"] { padding: 0 24px 32px !important; }
+  }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><span class="t">Tjønnås</span> & <span class="n">Norvald</span></div>
+  <ul class="nav-links">
+    <li><a href="#problem">Problem</a></li>
+    <li><a href="#prosess">Prosess</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#løsning">Løsning</a></li>
+    <li><a href="#prototype">Prototype</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">IDG3009 Informasjonsarkitektur · Høst 2025</p>
+    <h1 class="hero-title">Tjønnås &<br><span>Norvald</span></h1>
+    <p class="hero-subtitle" style="opacity:0;animation:fadeUp 0.8s 0.6s forwards;color:rgba(235,225,196,0.75);font-size:15px;line-height:1.8;max-width:480px;margin-bottom:48px">
+      En samlet digital ansattportal for kommunikasjon, vaktlister og opplæring – utviklet for å forenkle hverdagen til ansatte i Gjøvik.
+    </p>
+    <div class="hero-meta">
+      <p class="hero-meta-item"><strong>Klient:</strong> Tjønnås Delikatesser & Norvald Café, Gjøvik</p>
+      <p class="hero-meta-item"><strong>Gruppe 01:</strong> Axel · Herman · Josefine · Tia</p>
+      <p class="hero-meta-item"><strong>Verktøy:</strong> Figma · Affinity Mapping · Poppins</p>
+    </div>
+  </div>
+  <div class="hero-bg-text">T&N</div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="reveal">
+    <p class="section-label">Innsikt & Utfordringer</p>
+    <h2 class="section-title">Hverdagen var spredt på for mange systemer</h2>
+    <p class="section-body">
+      Gjennom et semi-strukturert intervju med daglig leder Mari-Mette avdekket vi at driften var fordelt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.
+    </p>
+  </div>
+  <div class="problem-list reveal">
+    <div class="problem-item">
+      <div class="problem-item-dot"></div>
+      <div><h4>Vaktplaner</h4><p>Håndtert i eget system uten kobling til kommunikasjon eller mål.</p></div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-item-dot accent"></div>
+      <div><h4>Internkommunikasjon</h4><p>Viktig info forsvant i Messenger-tråder og Apple Notater.</p></div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-item-dot accent"></div>
+      <div><h4>Opplæring</h4><p>Kun fysisk og muntlig – tidkrevende og ikke tilgjengelig utenom arbeidstid.</p></div>
+    </div>
+    <div class="problem-item">
+      <div class="problem-item-dot"></div>
+      <div><h4>Dokumenter & Rutiner</h4><p>Ingen versjonskontroll. Nye ansatte fant ikke frem til riktig informasjon.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="prosess">
+  <div class="reveal">
+    <p class="section-label">Designprosess</p>
+    <h2 class="section-title">Fra innsikt til løsning</h2>
+  </div>
+  <div class="process-steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <h3>Intervju</h3>
+      <p>Semi-strukturert kvalitativt intervju med daglig leder. Ga dyp forståelse av drift og utfordringer.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <h3>Affinity Map</h3>
+      <p>Observasjoner gruppert i 6 temaer: salgsmål, vaktplan, kommunikasjon, opplæring, dokumenter og markedsføring.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <h3>Personas & Scenarier</h3>
+      <p>5 personas utviklet. Fokus på Kari (erfaren ansatt) og Eirik (nyansatt) som primære brukere.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <h3>Wireframes → Hi-fi</h3>
+      <p>Lo-fi skisser i Figma, iterert til hi-fi prototyper med designmanual og WCAG-krav.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN -->
+<section class="design" id="design">
+  <div class="reveal">
+    <p class="section-label">Designmanual</p>
+    <h2 class="section-title">Visuell identitet</h2>
+    <p class="section-body">Designsystemet reflekterer varme, kvalitet og delikatesse – direkte inspirert av de to virksomhetenes eksisterende logoer og estetikk.</p>
+  </div>
+  <div class="design-grid">
+    <div class="reveal">
+      <p class="design-sub">Fargepalett</p>
+      <div class="colors-row">
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#571721"></div>
+          <span class="color-name">Vinrød</span>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#ebe1c4;border-color:rgba(255,255,255,0.3)"></div>
+          <span class="color-name">Mandel</span>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#fcfaeb;border-color:rgba(255,255,255,0.3)"></div>
+          <span class="color-name">Krem</span>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#e84030"></div>
+          <span class="color-name">Norvald</span>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#ad822e"></div>
+          <span class="color-name">Tjønnås</span>
+        </div>
+        <div class="color-chip">
+          <div class="color-swatch" style="background:#403d26"></div>
+          <span class="color-name">Oliven</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="design-sub">Typografi</p>
+      <div class="type-sample">
+        <div class="type-display">Poppins</div>
+        <div class="type-body">Regular · Medium · Semi-bold</div>
+        <p style="font-size:14px;color:rgba(235,225,196,0.6);margin-top:16px;line-height:1.7">Vennlig og profesjonell. Effektiv til å skape tydelig hierarki. De runde formene gjør skriften lett å lese i alle størrelser.</p>
+      </div>
+    </div>
+    <div class="reveal">
+      <p class="design-sub">Logo – ansettelsesbasert farge</p>
+      <div style="display:flex;gap:24px;margin-top:16px;flex-wrap:wrap">
+        <div style="background:var(--krem);border-radius:12px;padding:16px 20px;text-align:center">
+          <div style="font-size:18px;font-weight:700;color:var(--tjonnås)">Tjønnås &</div>
+          <div style="font-size:18px;font-weight:700;color:var(--norvald)">Norvald</div>
+          <div style="font-size:10px;color:var(--oliven);margin-top:6px;opacity:0.6">Begge steder</div>
+        </div>
+        <div style="background:var(--krem);border-radius:12px;padding:16px 20px;text-align:center">
+          <div style="font-size:18px;font-weight:700;color:var(--tjonnås)">Tjønnås &</div>
+          <div style="font-size:18px;font-weight:700;color:rgba(173,130,46,0.45)">Norvald</div>
+          <div style="font-size:10px;color:var(--oliven);margin-top:6px;opacity:0.6">Kun Tjønnås</div>
+        </div>
+        <div style="background:var(--krem);border-radius:12px;padding:16px 20px;text-align:center">
+          <div style="font-size:18px;font-weight:700;color:rgba(232,64,48,0.35)">Tjønnås &</div>
+          <div style="font-size:18px;font-weight:700;color:var(--norvald)">Norvald</div>
+          <div style="font-size:10px;color:var(--oliven);margin-top:6px;opacity:0.6">Kun Norvald</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution" id="løsning">
+  <div class="reveal">
+    <p class="section-label">Løsningen</p>
+    <h2 class="section-title">Én samlet ansattportal</h2>
+    <p class="section-body">Portalens fem kjerneområder samler det som tidligere lå spredt på ulike plattformer – tilgjengelig på mobil og iPad.</p>
+  </div>
+  <div class="features">
+    <div class="feature reveal">
+      <div class="feature-num">01</div>
+      <div class="feature-content"><h3>Vaktliste</h3><p>Månedlig kalender med full oversikt over tid, sted og hvem du jobber med. Tilgjengelig utenfor arbeidstid.</p></div>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-num">02</div>
+      <div class="feature-content"><h3>Chat & Kommunikasjon</h3><p>Felles meldingskanal med historikk. Viktig info drukner ikke lenger i Messenger-tråder.</p></div>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-num">03</div>
+      <div class="feature-content"><h3>Digital Opplæring</h3><p>Modulbaserte kurs med steg-for-steg instruksjoner og video. Kan fullføres hjemmefra i eget tempo.</p></div>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-num">04</div>
+      <div class="feature-content"><h3>Dokumenter & Rutiner</h3><p>Samlet bibliotek med versjonskontroll. Alltid oppdatert – alltid lett å finne.</p></div>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-num">05</div>
+      <div class="feature-content"><h3>Landing Page</h3><p>Daglige mål, ukentlige oppdateringer og viktige beskjeder samlet på én startside.</p></div>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-num">06</div>
+      <div class="feature-content"><h3>Min Side</h3><p>Personlig profil, innstillinger og notifikasjonslogg. Tilpasset etter arbeidssted.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MOBILE MOCKUPS -->
+<section class="mockup-section" id="prototype" style="background:var(--krem);padding-top:80px;padding-bottom:0;">
+  <div style="padding:0 60px 40px;" class="reveal">
+    <p class="section-label">Prototype – Mobil</p>
+    <h2 class="section-title">Vaktliste & kalender</h2>
+    <p class="section-body">Mobil-prototypen er bygget rundt scenariet til Kari – ansatt som ønsker å sjekke vaktplanen sin utenfor arbeidstid.</p>
+    <a href="https://www.figma.com/proto/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=370-654&t=gURyvsCsv2Xut1a-1" target="_blank" class="proto-cta">Åpne prototype →</a>
+  </div>
+  <div class="scroll-track">
+    <div class="scroll-inner">
+      <img src="tjonnas1.png" alt="Mobil mockup – login" class="scroll-img scroll-img-mobile">
+      <img src="tjonnas2.png" alt="Mobil mockup – vaktliste og kalender" class="scroll-img scroll-img-mobile">
+    </div>
+  </div>
+</section>
+
+<!-- IPAD MOCKUPS -->
+<section class="mockup-section" style="background:var(--mandel);padding-top:80px;padding-bottom:0;">
+  <div style="padding:0 60px 40px;" class="reveal">
+    <p class="section-label">Prototype – iPad / Desktop</p>
+    <h2 class="section-title">Digital opplæring</h2>
+    <p class="section-body">iPad-prototypen dekker Eiriks scenario – nyansatt som trenger strukturert, tilgjengelig opplæring i eget tempo, med modulbaserte kurs og tydelig progresjon.</p>
+    <a href="https://www.figma.com/proto/SIwHbrWgze8kbEIWvYqJug/Tj%C3%B8nn%C3%A5smain?node-id=357-92&t=WdrI0DT0DpxmhxMO-1" target="_blank" class="proto-cta">Åpne prototype →</a>
+  </div>
+  <div class="scroll-track">
+    <div class="scroll-inner">
+      <img src="ipad10.png" alt="iPad – Min trening steg 1" class="scroll-img scroll-img-ipad">
+      <img src="ipad11.png" alt="iPad – Min trening steg 2" class="scroll-img scroll-img-ipad">
+      <img src="ipad12.png" alt="iPad – Min trening steg 3" class="scroll-img scroll-img-ipad">
+      <img src="ipad13.png" alt="iPad – Min trening steg 4" class="scroll-img scroll-img-ipad">
+      <img src="ipad14.png" alt="iPad – Gratulerer modal" class="scroll-img scroll-img-ipad">
+      <img src="ipad15.png" alt="iPad – Modul 2 start" class="scroll-img scroll-img-ipad">
+      <img src="ipad16.png" alt="iPad – Arkivert trening" class="scroll-img scroll-img-ipad">
+      <img src="ipad17.png" alt="iPad – Arkiv modul" class="scroll-img scroll-img-ipad">
+    </div>
+  </div>
+</section>
+
+
+
+<!-- TEAM -->
+<section class="team">
+  <div class="reveal" style="text-align:center">
+    <p class="section-label">Gruppe 01</p>
+    <h2 class="section-title" style="margin:0 auto;text-align:center">Teamet bak prosjektet</h2>
+  </div>
+  <div class="team-grid">
+    <div class="team-card reveal">
+      <div class="team-avatar">JR</div>
+      <h4>Josefine Reichelt Gjertsen</h4>
+      <p>Intervjuguide · Personas · Design</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar" style="background:var(--tjonnås)">HB</div>
+      <h4>Herman Brenn-Svendsen</h4>
+      <p>Sitemap · Prototyper · Wireframes</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar" style="background:var(--norvald)">TD</div>
+      <h4>Tia Linnea Dahl</h4>
+      <p>Designmanual · Personas · Rapport</p>
+    </div>
+    <div class="team-card reveal">
+      <div class="team-avatar" style="background:var(--oliven)">AJ</div>
+      <h4>Axel Bruusgaard Jewett</h4>
+      <p>Prototyper · Wireframes · Intervju</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo"><span class="t">Tjønnås</span> & <span class="n">Norvald</span></div>
+  <p>IDG3009 Informasjonsarkitektur · NTNU · Høst 2025</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
