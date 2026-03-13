@@ -4,7 +4,7 @@ window.PROJECTS = [
     title: "Reina Fruktgård",
     year: "2025",
     tags: ["Visuell identitet"],
-    cover: "./assets/tilforside.webp",
+    cover: "./assets/reinalys.webp",
     images: [
       "./assets/grain2.webp",
       "./assets/reinalys.webp",
@@ -93,15 +93,15 @@ window.PROJECTS = [
   },
   {
     id: "ansatts-portal",
-    title: "Ansatts portal til lokal café",
+    title: "Tjønnås og Norvald",
     subtitle: "UX design",
     year: "2026",
     tags: ["UX"],
-    cover: "./assets/norvaldiphone.webp",
-    images: ["./assets/norvaldiphone.webp"],
+    cover: "./assets/tjonnipadiphone.png",
+    images: ["./assets/tjonnipadiphone.png"],
     noSlideshow: true,
     description: "Short description.",
-    intro: "Tjønnås & Norvald – Fra analogt kaos til digital kontroll\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
+    intro: "digital ansattsportal\n\nDette prosjektet ble utført av et tverrfaglig team bestående av <strong>to interaksjonsdesignere</strong> og <strong>to grafiske designere</strong>. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
     scrollGalleries: [
       {
         label: "Mobil – vaktliste & kalender (noen utvalgte prototyper)",
