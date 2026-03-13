@@ -1351,10 +1351,10 @@ a:hover{opacity:.75}
   .scroll-gallery__track { padding-left: 0; padding-right: 20px; }
   .scroll-gallery__label { padding-left: 20px; }
   .sidebar__inner { flex-direction: row; align-items: center; gap: 12px; }
-  .brand { display: flex; align-items: center; }
+  .brand { display: flex; align-items: center; order: 2; }
   .brand__logo { width: 40px; }
-  .nav { flex-direction: row; justify-content: flex-end; gap: 16px; flex: 1; margin-top: 0; }
-  .back-btn { white-space: nowrap; }
+  .nav { flex-direction: row; justify-content: flex-end; gap: 16px; flex: 1; margin-top: 0; order: 3; }
+  .back-btn { white-space: nowrap; order: 1; }
   .sidebar__toggle { display: none; }
   .meta { display: none; }
   .masonry { grid-template-columns: repeat(2, minmax(0, 1fr)); }
