@@ -212,6 +212,9 @@
       let current = 0;
       let timer;
 
+      const slideshow = $("#slideshow");
+      let paused = false;
+
       function goTo(n) {
         current = (n + slides.length) % slides.length;
         track.style.transform = `translateX(-${current * 100}%)`;
@@ -220,11 +223,18 @@
 
       function startAuto() {
         clearInterval(timer);
-        timer = setInterval(() => goTo(current + 1), 3500);
+        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
       }
 
-      $("#slideNext")?.addEventListener("click", () => { goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", () => { goTo(current - 1); startAuto(); });
+      track.addEventListener("click", () => {
+        paused = !paused;
+        slideshow.classList.toggle("slideshow--paused", paused);
+        if (paused) clearInterval(timer);
+        else startAuto();
+      });
+
+      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
       document.addEventListener("keydown", e => {
         if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
         if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }

@@ -192,7 +192,7 @@ a:hover{opacity:.75}
 .show-more-btn {
   display: none;
 }
-@media (max-width: 600px) {
+@media (max-width: 860px) {
   .show-more-btn {
     display: block;
     width: 100%;
@@ -982,7 +982,7 @@ a:hover{opacity:.75}
   .panel-toggle--below { display: flex; order: 1; }
   .project-meta { display: flex; flex-direction: column; align-items: flex-start; margin-top: 12px; }
   .project-meta .btn-pdf { order: 2; }
-  .project-meta .panel-toggle--below { margin-top: 8px; }
+  .project-meta .panel-toggle--below { margin-top: 24px; }
   .project-meta .btn-pdf { margin-top: 8px; }
 }
 
@@ -1043,11 +1043,11 @@ a:hover{opacity:.75}
   font-size: 16px;
   font-weight: 500;
   color: var(--text);
-  background: #e0e0e0;
+  background: #c8e4f5;
   transition: background .15s;
   white-space: nowrap;
 }
-.btn-pdf:hover { background: #cecece; opacity: 1; }
+.btn-pdf:hover { background: #aed4ee; opacity: 1; }
 .btn-pdf--text {
   display: inline-block;
   margin-top: 20px;
@@ -1092,6 +1092,19 @@ a:hover{opacity:.75}
   height: 100%;
   object-fit: contain;
   display: block;
+}
+.slideshow { cursor: pointer; }
+.slideshow--paused::after {
+  content: "⏸";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 16px;
+  background: rgba(255,255,255,.8);
+  backdrop-filter: blur(6px);
+  padding: 4px 8px;
+  pointer-events: none;
+  z-index: 3;
 }
 .slideshow__btn {
   position: absolute;

@@ -23,7 +23,7 @@ function cardHTML(p){
   `;
 }
 
-const isMobile = window.innerWidth <= 600;
+const isMobile = window.innerWidth <= 860;
 const INITIAL   = 4;
 
 if (!projects.length) {

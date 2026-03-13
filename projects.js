@@ -68,7 +68,7 @@ window.PROJECTS = [
         body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet."
       }
     },
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/ferdigreina.pdf" }
+    finalPdf: { label: "Nyskjerrig på mer?", src: "./assets/ferdigreina.pdf" }
   },
   {
     id: "emanuel-viegeland",
@@ -109,11 +109,8 @@ window.PROJECTS = [
     cover: "./assets/srhbrosk.webp",
     images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
     description: "Short description.",
+    intro: "Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.",
     background: [
-      {
-        heading: "Innledning",
-        body: "I emnet IDG1009 Flerkanalpublisering har oppgaven vært å utvikle en visuell kommunikasjonsløsning for et arrangement som fungerer på tvers av flere medier og formater.\n\nProsjektet tar utgangspunkt i et konsept for Open Day ved SRH Campus Berlin, med fokus på studieområdet Digital Media & Creative Arts. Dette er et fiktivt paraplykonsept som samler kreative fag innen design, media og digital kommunikasjon.\n\nArrangementet brukes som et case for å utforske hvordan et tydelig visuelt uttrykk kan bygges gjennom struktur, hierarki og konsistente designprinsipper."
-      },
       {
         heading: "Oppgaven",
         body: "Prosjektet går ut på å utvikle et visuelt uttrykk som fungerer på tvers av flere flater.\n\nDesignet bygger på SRH University Berlins eksisterende visuelle identitet, men videreutvikles gjennom egne designvalg. Fokus har vært på tydelig hierarki, struktur og en balansert bruk av typografi, bilde og luft i layouten."
@@ -147,7 +144,7 @@ window.PROJECTS = [
       { label: "Fagansvarlig", value: "Mari Hermansen" },
       { label: "Verktøy", value: "Illustrator, Photoshop" }
     ],
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/srh_pdf.pdf" }
+    finalPdf: { label: "Nyskjerrig på mer?", src: "./assets/srh_pdf.pdf" }
   },
   {
     id: "bokomslag",
