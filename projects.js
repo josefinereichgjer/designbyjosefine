@@ -122,6 +122,7 @@ window.PROJECTS = [
     cover: "./assets/tjonnipadiphone.png",
     images: ["./assets/tjonnipadiphone.png"],
     noSlideshow: true,
+    introBorder: true,
     intro: "Ansattportal for Tjønnås Delikatesser og Norvald Café:\nett system som samler vaktlister, kommunikasjon og opplæring på én plass.",
     scrollGalleries: [
       {

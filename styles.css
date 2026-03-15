@@ -605,6 +605,8 @@ a:hover{opacity:.75}
   line-height: 1.65;
   margin-top: 8px;
   max-width: 78ch;
+}
+.project-intro--border {
   padding-bottom: 16px;
   border-bottom: 1.5px solid rgba(59, 31, 14, 0.3);
 }
