@@ -418,6 +418,7 @@ a:hover{opacity:.75}
   padding: 0 40px 32px;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
+  scroll-snap-type: x mandatory;
 }
 .scroll-gallery__track::-webkit-scrollbar { height: 3px; }
 .scroll-gallery__track::-webkit-scrollbar-thumb { background: currentColor; opacity: 0.3; }
@@ -426,6 +427,7 @@ a:hover{opacity:.75}
   height: 540px;
   width: auto;
   display: block;
+  scroll-snap-align: start;
 }
 .scroll-gallery__img--ipad {
   height: 380px;
