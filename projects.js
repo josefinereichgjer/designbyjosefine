@@ -125,7 +125,7 @@ window.PROJECTS = [
     intro: "Ansattportal for Tjønnås Delikatesser og Norvald Café:\nett system som samler vaktlister, kommunikasjon og opplæring på én plass.",
     scrollGalleries: [
       {
-        label: "<strong>iPhone 16 Pro Max</strong> (Noen utvalgte skisser)",
+        label: "<strong>iPhone 16 Pro Max</strong> (utvalgte prototyper)",
         size: "mobile",
         images: [
           "./assets/norvald/tjonnas-2-mock.png",
@@ -133,7 +133,7 @@ window.PROJECTS = [
         ]
       },
       {
-        label: "<strong>iPad Pro 12.9\"</strong> (Noen utvalgte skisser)",
+        label: "<strong>iPad Pro 12.9\"</strong> (utvalgte prototyper)",
         size: "ipad",
         images: [
           "./assets/norvald/ipad10.png",
@@ -208,11 +208,11 @@ window.PROJECTS = [
         heading: "Én samlet ansattportal",
         body: "Portalens kjerneområder samler det som tidligere lå spredt på ulike plattformer – tilgjengelig på mobil og iPad.",
         items: [
-          { num: "01", title: "Vaktliste", body: "Månedlig kalender med full oversikt over tid, sted og hvem du jobber med." },
-          { num: "02", title: "Chat & kommunikasjon", body: "Felles meldingskanal med historikk. Viktig info drukner ikke lenger i Messenger-tråder." },
-          { num: "03", title: "Digital opplæring", body: "Modulbaserte kurs med steg-for-steg instruksjoner. Kan fullføres hjemmefra i eget tempo." },
-          { num: "04", title: "Dokumenter & rutiner", body: "Samlet bibliotek med versjonskontroll. Alltid oppdatert og lett å finne." },
-          { num: "05", title: "Landing page", body: "Daglige mål, ukentlige oppdateringer og viktige beskjeder samlet på én startside." },
+          { num: "01", title: "Landing page", body: "Daglige mål, ukentlige oppdateringer og viktige beskjeder samlet på én startside." },
+          { num: "02", title: "Vaktliste", body: "Månedlig kalender med full oversikt over tid, sted og hvem du jobber med." },
+          { num: "03", title: "Chat & kommunikasjon", body: "Felles meldingskanal med historikk. Viktig info drukner ikke lenger i Messenger-tråder." },
+          { num: "04", title: "Digital opplæring", body: "Modulbaserte kurs med steg-for-steg instruksjoner. Kan fullføres hjemmefra i eget tempo." },
+          { num: "05", title: "Dokumenter & rutiner", body: "Samlet bibliotek med versjonskontroll. Alltid oppdatert og lett å finne." },
           { num: "06", title: "Min side", body: "Personlig profil, innstillinger og notifikasjonslogg, tilpasset etter arbeidssted." }
         ]
       },

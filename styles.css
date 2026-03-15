@@ -1063,7 +1063,7 @@ a:hover{opacity:.75}
   .proj-sections { margin-left: -20px; margin-right: -20px; }
   .proj-section { padding: 44px 40px; }
   .proj-problem { grid-template-columns: 1fr; gap: 28px; }
-  .proj-steps-grid { grid-template-columns: 1fr; gap: 16px; }
+  .proj-steps-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
   .proj-features-grid { grid-template-columns: 1fr; }
   .proj-feature:nth-child(odd) { border-right: none; padding-right: 0; }
   .proj-feature:nth-child(even) { padding-left: 0; }
@@ -1394,7 +1394,7 @@ a:hover{opacity:.75}
   .bg__heading { font-size: 14px; }
   .bg__body { font-size: 14px; line-height: 1.6; }
   .proj-section { padding: 32px 20px; }
-  .proj-steps-grid { gap: 12px; }
+  .proj-steps-grid { gap: 12px; margin-top: 16px; }
   .process__images { grid-template-columns: 1fr; }
   .scroll-gallery__img { height: 340px; }
   .scroll-gallery__img--ipad { height: 260px; }
