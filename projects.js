@@ -122,7 +122,7 @@ window.PROJECTS = [
     cover: "./assets/tjonnipadiphone.png",
     images: ["./assets/tjonnipadiphone.png"],
     noSlideshow: true,
-    intro: "Dette prosjektet ble utført av et tverrfaglig team bestående av to interaksjonsdesignere og to grafiske designere. Sammen har vi utviklet en prototype for en skreddersydd ansattportal for Tjønnås Delikatesser og Norvald Café i Gjøvik som samler fragmentert kommunikasjon, vaktlister og opplæring i ett intuitivt system.",
+    intro: "Ansattportal for Tjønnås Delikatesser og Norvald Café:\nett system som samler vaktlister, kommunikasjon og opplæring på én plass.",
     scrollGalleries: [
       {
         label: "<strong>iPhone 16 Pro Max</strong> (Noen utvalgte skisser)",
@@ -179,7 +179,7 @@ window.PROJECTS = [
         bg: "krem",
         label: "Innsikt & utfordringer",
         heading: "Jobbhverdagen er spredt på for mange systemer",
-        body: "Gjennom et semi-strukturert intervju med daglig leder for Norvald og Tjønnås delikatesser (Mari-Mette) avdekket vi at informasjonsarkitekturen innad driften var fordelt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.",
+        body: "Intervju med daglig leder (Mari-Mette) avdekket at driften var spredt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.",
         image: "./assets/norvald/marimette.webp",
         itemsLabel: "Hovedproblemer:",
         items: [
@@ -195,10 +195,10 @@ window.PROJECTS = [
         label: "Designprosess",
         heading: "Fra innsikt til løsning",
         steps: [
-          { num: "01", title: "Intervju", body: "Semi-strukturert kvalitativt intervju med daglig leder for Norvald og Tjønnås delikatesser. Ga dyp forståelse av drift og utfordringer." },
+          { num: "01", title: "Intervju", body: "Kvalitativt intervju med daglig leder. Ga innsikt i drift, kommunikasjon og utfordringer." },
           { num: "02", title: "Affinity map", body: "Observasjoner gruppert i 6 temaer: salgsmål, vaktplan, kommunikasjon, opplæring, dokumenter og markedsføring." },
-          { num: "03", title: "Personas & scenarier", body: "5 personas utviklet. Fokus på Kari (erfaren ansatt) og Eirik (nyansatt) som primære brukere." },
-          { num: "04", title: "Wireframes → Hi-fi", body: "Lo-fi skisser i Figma, iterert til hi-fi prototyper med designmanual og WCAG-krav." }
+          { num: "03", title: "Personas & scenarier", body: "5 personas. Primærbrukere: Kari (erfaren ansatt) og Eirik (nyansatt)." },
+          { num: "04", title: "Wireframes → Hi-fi", body: "Lo-fi skisser iterert til hi-fi prototyper i Figma, med designmanual og WCAG-krav." }
         ]
       },
       {

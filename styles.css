@@ -600,11 +600,19 @@ a:hover{opacity:.75}
   gap: 16px;
 }
 .project-intro {
-  font-size: 14px;
-  color: var(--fg);
+  font-size: 19px;
+  color: #3b1f0e;
   line-height: 1.65;
   margin-top: 8px;
   max-width: 78ch;
+  padding-bottom: 16px;
+  border-bottom: 1.5px solid rgba(59, 31, 14, 0.3);
+}
+.intro-space { display: none; }
+@media (max-width: 768px) {
+  .project-intro br { display: none; }
+  .intro-space { display: inline; }
+  .project-intro { font-size: 15px; }
 }
 
 /* Project meta below slideshow */

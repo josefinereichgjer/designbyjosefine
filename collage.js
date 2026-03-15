@@ -10,7 +10,7 @@
   const CARDS = [
     { src: './assets/me.webp',                                      alt: 'Me'            },
     { src: './assets/tilforside.webp',                              alt: 'Til forside'   },
-    { src: './assets/norvaldiphone.webp',                           alt: 'Norval iPhone' },
+    { src: './assets/norvald/norvald.jpeg',                         alt: 'Norval iPhone' },
     { src: './assets/reinategning.webp',                            alt: 'Reina tegning' },
     { src: './assets/scenebok.webp',                                alt: 'Scene bok'     },
     { src: './stoppestedet/stoppestedet/images/staff_skjorte.jpg',  alt: 'Staff skjorte' },

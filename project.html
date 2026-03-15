@@ -168,7 +168,7 @@
           <div class="project-layout__media">
             <div class="project-header">
               <h1 class="project-meta__title">${project.title}</h1>
-              ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro">${p.replace(/\n/g, "<br>")}</p>`).join("") : ""}
+              ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro">${p.replace(/\n/g, `<br><span class="intro-space"> </span>`)}</p>`).join("") : ""}
               ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Mer om prosjektet <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
             ${project.noSlideshow ? "" : slideshowHTML}
