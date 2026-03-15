@@ -199,6 +199,7 @@
         ${(project.scrollGalleries || []).map(g => `
           <div class="scroll-gallery">
             ${g.label ? `<p class="scroll-gallery__label">${g.label}</p>` : ""}
+            <p class="scroll-gallery__swipe-hint" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Sveip</p>
             <div class="scroll-gallery__track">
               ${g.images.map(src => `<img class="scroll-gallery__img${g.size === "ipad" ? " scroll-gallery__img--ipad" : g.size === "mobile" ? " scroll-gallery__img--mobile" : ""}" src="${src}" alt="${project.title}" loading="lazy" decoding="async">`).join("")}
             </div>
