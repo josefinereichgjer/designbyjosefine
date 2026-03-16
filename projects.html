@@ -27,7 +27,7 @@
       <a class="back-btn" href="./index.html" aria-label="Tilbake til forsiden"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
       <nav class="nav" aria-label="Primary">
-        <a class="nav__link" href="#work"><span>Prosjekter</span></a>
+        <a class="nav__link" href="#work"><span>Arbeider</span></a>
         <a class="nav__link" href="#about"><span>Om</span></a>
         <a class="nav__link" href="#contact"><span>Kontakt</span></a>
       </nav>
@@ -42,7 +42,7 @@
 
     <section id="work" class="section">
       <div class="grid-header">
-        <h1 class="title">Prosjekter</h1>
+        <h1 class="title">Arbeider</h1>
       </div>
 
       <div class="masonry" id="grid" aria-live="polite"></div>
@@ -71,7 +71,7 @@
 
         <!-- Right: bio -->
         <div class="about-bio-col">
-          <p>Hei! Jeg heter Josefine, er 23 år og studerer grafisk design ved NTNU. Jeg er spesielt interessert i hvordan design kan brukes strategisk for å formidle informasjon og skape gode brukeropplevelser.</p>
+          <p>Hei! Jeg heter Josefine, er 23 år og tar en bachelor i grafisk design ved NTNU. Jeg er spesielt interessert i hvordan design kan brukes strategisk for å formidle informasjon og skape gode brukeropplevelser.</p>
           <p>Gjennom studiet har jeg jobbet med typografi, visuelle identiteter og digitale flater, og samarbeid med studenter fra web- og interaksjonsdesign har vekket en sterk interesse for UX-design og tverrfaglig arbeid.</p>
           <p>Jeg gikk kunstlinjen på videregående, hvor jeg utviklet en interesse for håndlagde uttrykk og designprosessen fra idé til ferdig resultat. Et friår med blant annet språkreise til Korea ga meg også innsikt i hvordan visuell kommunikasjon og merkevarebygging brukes i ulike kulturer.</p>
           <ul class="list">
@@ -88,24 +88,17 @@
       <div class="contact-heading">
         <h2 class="h2">Kontakt</h2>
       </div>
-      <p>For samarbeid, praksisplasser eller oppdrag:</p>
-      <form class="contact-form" action="mailto:josefinegjertsen@gmail.com" method="post" enctype="text/plain">
-        <div class="contact-form__row">
-          <label class="contact-form__label" for="cf-name">Navn</label>
-          <input class="contact-form__input" type="text" id="cf-name" name="navn" placeholder="Ditt navn" required>
-        </div>
-        <div class="contact-form__row">
-          <label class="contact-form__label" for="cf-email">E-post</label>
-          <input class="contact-form__input" type="email" id="cf-email" name="epost" placeholder="din@epost.no" required>
-        </div>
-        <div class="contact-form__row">
-          <label class="contact-form__label" for="cf-msg">Melding</label>
-          <textarea class="contact-form__input contact-form__textarea" id="cf-msg" name="melding" placeholder="Hva gjelder det?" required></textarea>
-        </div>
-        <div class="contact-form__footer">
-          <button class="contact-form__submit" type="submit">Send melding</button>
-        </div>
-      </form>
+      <p>For samarbeid, oppdrag eller bare en liten prat, send gjerne en e-post:</p>
+      <script>
+        (function(){
+          var u='josefinegjertsen',d='gm'+'ail'+'.com';
+          var a=document.createElement('a');
+          a.href='mailto:'+u+'@'+d;
+          a.className='contact-email-link';
+          a.textContent=u+'@'+d;
+          document.currentScript.insertAdjacentElement('afterend',a);
+        })();
+      </script>
     </section>
   </main>
 

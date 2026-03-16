@@ -492,6 +492,33 @@ a:hover{opacity:.75}
   margin-top: 0;
 }
 
+/* Lightbox */
+.lb-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(0,0,0,0.92);
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+}
+.lb-overlay.lb-open {
+  display: flex;
+}
+.lb-overlay img {
+  max-width: 92vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  cursor: default;
+}
+.bg__img {
+  cursor: zoom-in;
+}
+
 /* Color palette */
 .palette {
   display: flex;
@@ -1332,6 +1359,16 @@ a:hover{opacity:.75}
   align-items: center;
   gap: 12px;
 }
+
+.contact-email-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 1rem;
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.contact-email-link:hover { opacity: 0.6; }
 
 /* ── Responsive ── */
 

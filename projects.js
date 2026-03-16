@@ -257,6 +257,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Redaksjonell"],
     cover: "./assets/scenebok.webp",
+    coverFilter: "brightness(1.2)",
     images: ["./assets/closebook.webp", "./assets/closeletter.webp", "./assets/togetherbook.webp"],
     background: [
       {
@@ -317,6 +318,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Visuell identitet"],
     cover: "./assets/emneoverkort.webp",
+    coverPosition: "center 35%",
     images: [
       "./stoppestedet/stoppestedet/images/stoppmerch.jpg",
       "./stoppestedet/stoppestedet/images/stoppstick.jpg",
