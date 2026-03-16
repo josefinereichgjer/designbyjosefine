@@ -19,9 +19,6 @@
         .ds-title { margin-bottom: 40px; }
 
         /* ── Design system extras ───────────────────────────── */
-        .ds-section {
-            border-bottom: 1px solid #1e1e1e;
-        }
 
         .ds-label {
             font-size: 10px;
@@ -32,10 +29,11 @@
         }
 
         .ds-title {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            font-size: clamp(1rem, 2vw, 1.25rem);
             text-transform: uppercase;
-            letter-spacing: -0.5px;
-            font-family: 'Space Mono', monospace;
+            letter-spacing: 0.02em;
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-weight: 700;
         }
 
         /* Consistent section spacing */
@@ -54,13 +52,13 @@
         /* Color swatches */
         .palette-row {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 0;
             margin-top: clamp(32px, 4vw, 48px);
         }
 
         .swatch {
-            padding: clamp(24px, 3vw, 40px) 20px clamp(24px, 3vw, 40px);
+            padding: clamp(24px, 3vw, 40px) clamp(20px, 2.5vw, 32px) clamp(24px, 3vw, 40px);
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -85,6 +83,13 @@
             font-size: 12px;
             line-height: 1.6;
             margin-top: 4px;
+        }
+.swatch-values {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            line-height: 1.8;
+            opacity: 0.7;
+            margin-top: 8px;
         }
 
         /* Type specimens */
@@ -186,7 +191,46 @@
             }
         }
 
+        .portrait-stack {
+            position: relative;
+            width: 380px;
+            height: 520px;
+            flex-shrink: 0;
+        }
+        .portrait-stack img {
+            position: absolute;
+            width: 340px;
+            height: auto;
+            object-fit: cover;
+            display: block;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+            border: none;
+        }
+        .portrait-stack img:nth-child(1) { top: 0px;  left: 0px;  transform: rotate(-6deg); z-index: 1; }
+        .portrait-stack img:nth-child(2) { top: 14px; left: 12px; transform: rotate(-2deg); z-index: 2; }
+        .portrait-stack img:nth-child(3) { top: 28px; left: 24px; transform: rotate(3deg);  z-index: 3; }
+        .portrait-stack img:nth-child(4) { top: 42px; left: 36px; transform: rotate(7deg);  z-index: 4; }
         @media (max-width: 767px) {
+            .design-item--portrait { gap: 4px; }
+        }
+        .design-item-title::after {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 2px;
+            background: #A3AF0E;
+            margin-top: 8px;
+        }
+        .grafisk-img { width: 180px !important; }
+        .design-caption-text {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: clamp(13px, 1.4vw, 15px);
+            color: #c0c0c0;
+            line-height: 1.85;
+        }
+        .logo-dark-variant { margin-top: 56px; }
+        @media (max-width: 767px) {
+            .logo-dark-variant { margin-top: 16px; }
             .type-row {
                 grid-template-columns: 1fr;
             }
@@ -239,7 +283,7 @@
     <div class="design-hero">
         <div class="container">
             <p class="design-label">IDG3015 · NTNU GJØVIK</p>
-            <h1 class="design-title">Design System</h1>
+            <h1 class="design-title">Design</h1>
             <p class="design-intro">
                 Visuell identitet og designsystem for Stoppestedet, en åpen møteplass for unge i Oslo.
                 Her dokumenterer jeg valgene bak logo, farger, typografi og grafiske elementer
@@ -253,17 +297,18 @@
     <!-- ── LOGO ────────────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">01 Logo</p>
             <div class="logo-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); margin-top: clamp(32px, 5vw, 56px);">
                 <div>
-                    <img src="images/primlogo.png" alt="Primær logo" style="width: 100%; display: block; border: 1px solid #222;">
-                    <h2 class="design-item-title" style="margin-top: 20px;">Primær logo</h2>
-                    <p style="margin-top: 12px;">Logomerket er satt sammen av geometriske flater som danner en form som kan leses som et knutepunkt. Jeg tenkte på møte, orientering og tilhørighet da jeg lagde det. Den åpne formen skal signalisere at stedet er tilgjengelig for alle.</p>
+                    <h2 class="design-item-title" style="margin-bottom: 16px;">Primær logo</h2>
+                    <img src="images/primlogo.png" alt="Primær logo" style="width: 100%; height: 220px; object-fit: contain; display: block;">
+                    <img src="images/primlogosvart.png" alt="Primær logo svart" class="logo-dark-variant" style="width: 100%; height: 220px; object-fit: contain; display: block; background: #fff;">
+                    <p class="design-caption-text" style="margin-top: 16px;">Logomerket er satt sammen av geometriske flater som danner et knutepunkt. Den åpne formen signaliserer at stedet er tilgjengelig for alle.</p>
                 </div>
                 <div>
-                    <img src="images/sekundlogo.png" alt="Sekundær logo" style="width: 100%; display: block; border: 1px solid #222;">
-                    <h2 class="design-item-title" style="margin-top: 20px;">Sekundær logo</h2>
-                    <p style="margin-top: 12px;">Sekundærlogoen kombinerer merket med tekst. Den passer best i sammenhenger der man trenger å forklare hva Stoppestedet er, for eksempel på vinduer mot gaten der folk som går forbi raskt skal forstå hva som tilbys.</p>
+                    <h2 class="design-item-title" style="margin-bottom: 16px;">Sekundær logo</h2>
+                    <img src="images/seklogo.png" alt="Sekundær logo" style="width: 100%; height: 220px; object-fit: contain; display: block;">
+                    <img src="images/seklogosvart.png" alt="Sekundær logo svart" class="logo-dark-variant" style="width: 100%; height: 220px; object-fit: contain; display: block; background: #fff;">
+                    <p class="design-caption-text" style="margin-top: 16px;">Kombinerer merket med tekst. Brukes der man raskt skal formidle hva Stoppestedet er.</p>
                 </div>
             </div>
         </div>
@@ -272,33 +317,42 @@
     <!-- ── FARGEPALETT ─────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">02 Fargepalett</p>
-            <h2 class="design-item-title">Primærfarger</h2>
+            <h2 class="design-item-title">Fargepalett</h2>
             <div class="palette-row">
-                <div class="swatch" style="background: #A3AF0E; color: #000;">
+                <div class="swatch" style="background: #6c7528; color: #fff;">
+                    <span class="swatch-name">Mosegrønn</span>
+                    <span class="swatch-hex">#6C7528</span>
+                    <span class="swatch-values">RGB 108 · 117 · 40<br>CMYK 8 · 0 · 66 · 54</span>
+                </div>
+                <div class="swatch" style="background: #a3af0e; color: #000;">
                     <span class="swatch-name">Olivengrønn</span>
                     <span class="swatch-hex">#A3AF0E</span>
-                    <span class="swatch-use">Primæraksentuering, CTA, seksjonsmerking</span>
+                    <span class="swatch-values">RGB 163 · 175 · 14<br>CMYK 7 · 0 · 92 · 31</span>
                 </div>
-                <div class="swatch" style="background: #CE80E0; color: #000;">
+                <div class="swatch" style="background: #329196; color: #fff;">
+                    <span class="swatch-name">Mørk teal</span>
+                    <span class="swatch-hex">#329196</span>
+                    <span class="swatch-values">RGB 50 · 145 · 150<br>CMYK 67 · 3 · 0 · 41</span>
+                </div>
+                <div class="swatch" style="background: #3fb0bc; color: #000;">
+                    <span class="swatch-name">Turkis</span>
+                    <span class="swatch-hex">#3FB0BC</span>
+                    <span class="swatch-values">RGB 63 · 176 · 188<br>CMYK 66 · 6 · 0 · 26</span>
+                </div>
+                <div class="swatch" style="background: #ce80e0; color: #000;">
                     <span class="swatch-name">Lavendel</span>
                     <span class="swatch-hex">#CE80E0</span>
-                    <span class="swatch-use">Sekundæraksentuering, hover-tilstander</span>
+                    <span class="swatch-values">RGB 206 · 128 · 224<br>CMYK 8 · 43 · 0 · 12</span>
                 </div>
-                <div class="swatch" style="background: #4DC8BF; color: #000;">
-                    <span class="swatch-name">Turkis</span>
-                    <span class="swatch-hex">#4DC8BF</span>
-                    <span class="swatch-use">Tertiæraksentuering, interaktive elementer</span>
-                </div>
-                <div class="swatch" style="background: #000000; color: #fff; border: 1px solid #222;">
-                    <span class="swatch-name">Sort</span>
-                    <span class="swatch-hex">#000000</span>
-                    <span class="swatch-use">Primærbakgrunn, flater</span>
-                </div>
-                <div class="swatch" style="background: #FFFFFF; color: #000;">
+                <div class="swatch" style="background: #ffffff; color: #000;">
                     <span class="swatch-name">Hvit</span>
                     <span class="swatch-hex">#FFFFFF</span>
-                    <span class="swatch-use">Primærtekst, kontrasttekst</span>
+                    <span class="swatch-values">RGB 255 · 255 · 255<br>CMYK 0 · 0 · 0 · 0</span>
+                </div>
+                <div class="swatch" style="background: #000000; color: #fff;">
+                    <span class="swatch-name">Sort</span>
+                    <span class="swatch-hex">#000000</span>
+                    <span class="swatch-values">RGB 0 · 0 · 0<br>CMYK 0 · 0 · 0 · 100</span>
                 </div>
             </div>
         </div>
@@ -307,7 +361,6 @@
     <!-- ── TYPOGRAFI ───────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">03 Typografi</p>
             <h2 class="design-item-title">Skriftsystem</h2>
             <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: #aaa; max-width: 600px; line-height: 1.8; margin-bottom: 32px;">Jeg har valgt to skrifttyper som utfyller hverandre. Space Mono gir identitet og struktur, mens IBM Plex Sans tar seg av brødtekst og lesbarhet.</p>
 
@@ -353,21 +406,19 @@
     <!-- ── GRAFISKE ELEMENTER ──────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">04 Grafiske elementer</p>
 
             <div class="design-item">
                 <div class="design-img-wrap design-img-wrap--bare" style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
                     <div style="text-align: center;">
-                        <img src="icons/grafisk_element.png" alt="Grafisk element" style="width: 140px; height: auto; display: block; margin: 0 auto 12px;">
+                        <img src="icons/grafisk_element.png" alt="Grafisk element" class="grafisk-img" style="height: auto; display: block; margin: 0 auto 12px;">
                         <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase;">Identitetsform</p>
                     </div>
                     <div style="text-align: center;">
-                        <img src="icons/grafisk_pil.png" alt="Grafisk pil" style="width: 140px; height: auto; display: block; margin: 0 auto 12px;">
+                        <img src="icons/grafisk_pil.png" alt="Grafisk pil" class="grafisk-img" style="height: auto; display: block; margin: 0 auto 12px;">
                         <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase;">Retningselement</p>
                     </div>
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">GRAFISK ELEMENT · VISUELL IDENTITET</span>
                     <h2 class="design-item-title">Identitetsform og retningselement</h2>
                     <p>Begge elementene er satt sammen av de samme geometriske trekantene som logoen, i fargepaletten til Stoppestedet. <strong style="color: #fff;">Identitetsformen</strong> fungerer som et gjenkjennbart merkepunkt i grensesnittet. <strong style="color: #fff;">Retningselementet</strong> brukes til navigering og som innrammingselement i hero-seksjoner.</p>
                 </div>
@@ -376,48 +427,18 @@
     </section>
 
     <!-- ── IKONER & MATERIALE ──────────────────────────────────── -->
-    <section class="ds-section">
-        <div class="container">
-            <p class="ds-label">05 Ikoner og materiale</p>
-
-            <div class="design-item">
-                <div class="design-img-wrap design-img-wrap--small">
-                    <img src="images/ikonsett.jpg" alt="Ikonsett for Stoppestedet">
-                </div>
-                <div class="design-caption">
-                    <span class="design-tag">IKONER · VISUELL IDENTITET</span>
-                    <h2 class="design-item-title">Ikonsett</h2>
-                    <p>Ikonene er tegnet med skarpe geometriske former som speiler resten av identiteten. Personfigurene har en husformet kropp, et bevisst grep for å knytte dem til temaet tilhørighet og det å ha et sted å høre til.</p>
-                </div>
-            </div>
-
-            <div class="design-item design-item--reverse" style="margin-top: 80px;">
-                <div class="design-img-wrap design-img-wrap--stacked design-img-wrap--small" style="gap: 24px; border: none;">
-                    <img src="images/wood.png" alt="Treverk" style="max-width: 70%; margin: 0 auto;">
-                    <img src="images/stoppfarg.png" alt="Fargepalett" style="border: 1px solid #222;">
-                </div>
-                <div class="design-caption">
-                    <span class="design-tag">MATERIALE · IDENTITET</span>
-                    <h2 class="design-item-title">Treverk</h2>
-                    <p>Svartbrun filmbelagt kryssfiner er valgt som et sentralt materiale i prosjektet. Det er trebasert, slitesterkt og motstandsdyktig. Kombinert med fargepaletten gir det et rolig og imøtekommende uttrykk, en balanse mellom det robuste og det varme.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- ── MERCH & STICKERS ────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">06 Profileringsmateriell</p>
 
-            <div class="design-item" style="grid-template-columns: 2fr 1fr;">
-                <div class="design-img-wrap design-img-wrap--bare">
-                    <img src="images/stoppmerch.jpg" alt="T-skjorte og visittkort">
+            <div style="display:flex; flex-direction:column; gap:20px;">
+                <div class="design-img-wrap design-img-wrap--bare card-pair">
+                    <img src="images/businesscard.png" alt="Visittkort">
+                    <img src="images/idcard.png" alt="ID-kort">
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">MERCH · FRIVILLIGE</span>
-                    <h2 class="design-item-title">T-skjorte og visittkort</h2>
-                    <p>Jobb-T-skjorte og visittkort designet for de frivillige på Stoppestedet. Begge følger den visuelle identiteten med Space Mono, den karakteristiske grønne fargen og det grafiske uttrykket som skal passe ungdomskulturen og den åpne stemningen på stedet.</p>
+                    <h2 class="design-item-title">Visittkort og ID-kort</h2>
+                    <p>Visittkort og ID-kort designet for de frivillige på Stoppestedet. Begge følger den visuelle identiteten med Space Mono, den karakteristiske grønne fargen og det grafiske uttrykket som skal passe ungdomskulturen og den åpne stemningen på stedet.</p>
                 </div>
             </div>
 
@@ -426,7 +447,6 @@
                     <img src="images/stoppstick.jpg" alt="Stickers">
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">STICKERS · VISUELL PROFIL</span>
                     <h2 class="design-item-title">Stickers</h2>
                     <p>Enkle grafiske former og den karakteristiske fargepaletten gjør klistremerkene gjenkjennbare og enkle å bruke på tvers av ulike flater.</p>
                 </div>
@@ -437,14 +457,12 @@
     <!-- ── SKILTING ────────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">07 Skilting</p>
 
             <div class="design-item">
                 <div class="design-img-wrap">
                     <img src="images/skiltdesign.jpg" alt="Skiltdesign">
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">SKILTING · ORIENTERING</span>
                     <h2 class="design-item-title">Skiltdesign</h2>
                     <p>Skiltene er tenkt som det primære orienteringsnivået i lokalet og henger i taket for å være synlige på avstand. Hvert skilt er satt sammen av tre deler:</p>
                     <ol class="design-list">
@@ -457,10 +475,42 @@
         </div>
     </section>
 
+    <section class="ds-section">
+        <div class="container">
+
+            <div class="design-item">
+                <div class="design-img-wrap design-img-wrap--small">
+                    <img src="images/ikonsett.jpg" alt="Ikonsett for Stoppestedet">
+                </div>
+                <div class="design-caption">
+                    <h2 class="design-item-title">Ikonsett</h2>
+                    <p>Ikonene er tegnet med skarpe geometriske former som speiler resten av identiteten. Personfigurene har en husformet kropp, et bevisst grep for å knytte dem til temaet tilhørighet og det å ha et sted å høre til.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FRIVILLIGE PORTRETTER ──────────────────────────────── -->
+    <section class="ds-section">
+        <div class="container">
+            <div class="design-item design-item--portrait">
+                <div class="portrait-stack">
+                    <img src="images/hedda.png" alt="Hedda">
+                    <img src="images/josef.png" alt="Josef">
+                    <img src="images/joline.png" alt="Joline">
+                    <img src="images/henrik.png" alt="Henrik">
+                </div>
+                <div class="design-caption">
+                    <h2 class="design-item-title">Polaroid bilder</h2>
+                    <p>Jeg valgte å la disse skille seg litt ut fra resten av designet, fordi de er ment å fremstå mer menneskelige. Derfor har jeg brukt fonten Casual Human til navnet. Tanken er at de frivillige skal oppleves som tilgjengelige og personlige, siden de fungerer som en veileder eller samtalepartner for de unge.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ── MOCKUPS ─────────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">08 Mockups</p>
             <h2 class="design-item-title">In context</h2>
 
             <div class="mockup-grid">
@@ -496,7 +546,7 @@
 
     <footer>
         <div class="container">
-            <img src="icons/logo_hvit_skrift.png" class="footer-logo">
+            <img src="icons/logo_hvit_skrift.png" class="footer-logo" alt="Stoppestedet">
             <p style="font-size: 14px; opacity: 0.5; font-family: 'IBM Plex Sans', sans-serif;">
                 Storgata 1, 0155 Oslo &nbsp;·&nbsp; post@stoppestedet.no
             </p>
@@ -517,18 +567,6 @@
             hamburger.setAttribute('aria-label', isOpen ? 'Lukk meny' : 'Åpne meny');
         });
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.08 });
-
-        document.querySelectorAll('.design-item, .design-mockup-section').forEach(el => {
-            observer.observe(el);
-        });
     </script>
 
 </body>

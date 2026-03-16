@@ -1381,7 +1381,7 @@ footer {
 .design-caption p,
 .design-list li,
 .design-mockup-caption {
-    font-family: 'Inter', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     letter-spacing: 0;
 }
 
@@ -1397,17 +1397,10 @@ footer {
     color: rgba(255, 255, 255, 0.25);
 }
 
-/* Scroll reveal */
 .design-item,
 .design-mockup-section {
-    opacity: 0;
-    transform: translateY(28px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-}
-.design-item.is-visible,
-.design-mockup-section.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
 }
 
 .nav-links a.active-cta {
@@ -1429,7 +1422,7 @@ footer {
 }
 
 .design-title {
-    font-size: clamp(2.8rem, 10vw, 7rem);
+    font-size: clamp(2rem, 6vw, 4rem);
     text-transform: uppercase;
     letter-spacing: -3px;
     line-height: 1;
@@ -1437,10 +1430,11 @@ footer {
 }
 
 .design-intro {
-    max-width: 640px;
+    max-width: none;
     color: #c0c0c0;
-    font-size: clamp(12px, 1.5vw, 14px);
+    font-size: clamp(15px, 1.8vw, 21px);
     line-height: 1.8;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .design-section {
@@ -1451,9 +1445,8 @@ footer {
     display: grid;
     grid-template-columns: 1fr;
     gap: clamp(24px, 4vw, 40px);
-    padding-bottom: clamp(50px, 7vw, 100px);
-    border-bottom: 1px solid #1e1e1e;
-    margin-bottom: clamp(50px, 7vw, 100px);
+    padding-bottom: 0;
+    margin-bottom: clamp(80px, 10vw, 140px);
 }
 
 .design-item:last-of-type {
@@ -1536,12 +1529,14 @@ footer {
 }
 
 .design-item-title {
-    font-size: clamp(1.3rem, 3vw, 2rem);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: -1px;
+    letter-spacing: 0.02em;
     border: none;
     padding: 0;
-    line-height: 1.1;
+    line-height: 1.2;
 }
 
 .design-caption p {
@@ -1578,6 +1573,30 @@ footer {
 
 .design-img-wrap--bare {
     border: none;
+}
+
+.card-pair {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    overflow: visible;
+}
+.design-img-wrap.card-pair img {
+    width: auto;
+    height: 380px;
+    object-fit: contain;
+    display: block;
+}
+@media (max-width: 767px) {
+    .card-pair {
+        flex-direction: column;
+        height: auto;
+    }
+    .design-img-wrap.card-pair img {
+        width: 100%;
+        height: auto;
+        flex: none;
+    }
 }
 
 .design-item--full {
