@@ -627,11 +627,11 @@ a:hover{opacity:.75}
   gap: 16px;
 }
 .project-intro {
-  font-size: 19px;
+  font-size: 16px;
   color: #3b1f0e;
   line-height: 1.65;
   margin-top: 8px;
-  max-width: 78ch;
+  max-width: 100%;
 }
 .project-intro--border {
   padding-bottom: 16px;
@@ -1180,8 +1180,8 @@ a:hover{opacity:.75}
   max-width: 1200px;
   border-radius: 0;
   overflow: hidden;
-  background: #f3f3f3;
-  aspect-ratio: 4 / 3;
+  background: #fff;
+  aspect-ratio: 3 / 2;
 }
 .slideshow__track {
   display: flex;
