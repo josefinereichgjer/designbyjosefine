@@ -319,16 +319,8 @@ window.PROJECTS = [
     tags: ["Visuell identitet"],
     cover: "./assets/emneoverkort.webp",
     coverPosition: "center 35%",
-    images: [
-      "./stoppestedet/stoppestedet/images/stoppmerch.jpg",
-      "./stoppestedet/stoppestedet/images/stoppstick.jpg",
-      "./stoppestedet/stoppestedet/images/skiltdesign.jpg",
-      "./stoppestedet/stoppestedet/images/oversiktskart.jpg",
-      "./stoppestedet/stoppestedet/images/skiltute.jpg",
-      "./stoppestedet/stoppestedet/images/outsidestopp.png",
-      "./stoppestedet/stoppestedet/images/insidestopp.png",
-      "./stoppestedet/stoppestedet/images/stairstopp.png"
-    ],
+    noSlideshow: true,
+    images: [],
     background: [
       {
         heading: "Innledning og designbrief",

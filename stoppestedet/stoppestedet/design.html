@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design System | Stoppestedet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* Remove global h2 icon + padding on this page */
         h2::before { content: none; }
         h2 { padding-top: 0; display: block; }
 
+        /* More breathing room between headings and body */
+        .design-caption .design-item-title { margin-bottom: 16px; }
+        .design-caption p { margin-bottom: 12px; }
+        .design-caption { gap: 28px; }
+        .ds-title { margin-bottom: 40px; }
+
         /* ── Design system extras ───────────────────────────── */
         .ds-section {
-            padding: 80px 0;
             border-bottom: 1px solid #1e1e1e;
         }
 
@@ -21,7 +28,6 @@
             letter-spacing: 4px;
             color: var(--green);
             text-transform: uppercase;
-            margin-bottom: 16px;
             font-family: 'Space Mono', monospace;
         }
 
@@ -29,21 +35,32 @@
             font-size: clamp(1.3rem, 3vw, 1.8rem);
             text-transform: uppercase;
             letter-spacing: -0.5px;
-            margin-bottom: 32px;
             font-family: 'Space Mono', monospace;
         }
 
+        /* Consistent section spacing */
+        .ds-section { padding: clamp(60px, 8vw, 100px) 0; }
+
+        /* Space between ds-label → ds-title → content */
+        .ds-label { margin-bottom: 12px; }
+        .ds-title  { margin-bottom: clamp(32px, 5vw, 56px); }
+
+        /* Space between stacked design-items inside a section */
+        .ds-section .design-item + .design-item { margin-top: clamp(60px, 8vw, 100px); }
+
+        /* Consistent caption gap */
+        .design-caption { gap: clamp(16px, 2vw, 28px); }
+
         /* Color swatches */
         .palette-row {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
             gap: 0;
+            margin-top: clamp(32px, 4vw, 48px);
         }
 
         .swatch {
-            flex: 1;
-            min-width: 140px;
-            padding: 40px 20px 20px;
+            padding: clamp(24px, 3vw, 40px) 20px clamp(24px, 3vw, 40px);
             display: flex;
             flex-direction: column;
             gap: 8px;
@@ -79,20 +96,24 @@
         }
 
         .type-specimen {
-            border: 1px solid #1e1e1e;
+            border: none;
             padding: 32px;
+            background: #f2f0eb;
+            color: #000;
         }
 
         .type-specimen__preview {
             margin-bottom: 24px;
-            border-bottom: 1px solid #1e1e1e;
+            border-bottom: 1px solid #d8d6d1;
             padding-bottom: 24px;
         }
+
+        .type-specimen p { color: #000 !important; }
 
         .type-specimen__meta {
             font-family: 'Space Mono', monospace;
             font-size: 10px;
-            color: #666;
+            color: #000;
             letter-spacing: 2px;
             text-transform: uppercase;
         }
@@ -165,13 +186,32 @@
             }
         }
 
-        @media (max-width: 640px) {
+        @media (max-width: 767px) {
             .type-row {
                 grid-template-columns: 1fr;
             }
             .swatch {
                 min-width: 100px;
             }
+            /* Stack design-items on mobile */
+            .design-item,
+            .design-item.design-item--reverse {
+                grid-template-columns: 1fr !important;
+            }
+            .design-item.design-item--reverse .design-img-wrap { order: 0; }
+            .design-item.design-item--reverse .design-caption  { order: 1; }
+            /* Graphic elements row wraps nicely */
+            .design-img-wrap[style*="display: flex"] {
+                justify-content: center;
+            }
+            /* Mockup grid single col */
+            .mockup-grid {
+                grid-template-columns: 1fr;
+            }
+            /* DS section padding */
+            .ds-section { padding: 52px 0; }
+            /* Logo grid stacks on mobile */
+            .logo-grid { grid-template-columns: 1fr !important; }
         }
     </style>
 </head>
@@ -198,12 +238,12 @@
 
     <div class="design-hero">
         <div class="container">
-            <p class="design-label">IDG3015 — NTNU GJØVIK</p>
+            <p class="design-label">IDG3015 · NTNU GJØVIK</p>
             <h1 class="design-title">Design System</h1>
             <p class="design-intro">
-                Visuell identitet og designsystem for Stoppestedet — en åpen møteplass for unge i Oslo.
-                Systemet definerer logo, farger, typografi, grafiske elementer og komponenter
-                som brukes konsekvent på tvers av alle flater.
+                Visuell identitet og designsystem for Stoppestedet, en åpen møteplass for unge i Oslo.
+                Her dokumenterer jeg valgene bak logo, farger, typografi og grafiske elementer
+                som til sammen utgjør uttrykket til stedet.
             </p>
         </div>
     </div>
@@ -211,20 +251,19 @@
     <main>
 
     <!-- ── LOGO ────────────────────────────────────────────────── -->
-    <section class="ds-section design-item">
+    <section class="ds-section">
         <div class="container">
-            <p class="ds-label">01 — Logo</p>
-            <div class="design-item">
-                <div class="design-img-wrap design-img-wrap--stacked" style="gap: 20px; border: none;">
-                    <img src="images/primlogo.png" alt="Primær logo" style="border: 1px solid #222;">
-                    <img src="images/sekundlogo.png" alt="Sekundær logo" style="border: 1px solid #222;">
+            <p class="ds-label">01 Logo</p>
+            <div class="logo-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 4vw, 56px); margin-top: clamp(32px, 5vw, 56px);">
+                <div>
+                    <img src="images/primlogo.png" alt="Primær logo" style="width: 100%; display: block; border: 1px solid #222;">
+                    <h2 class="design-item-title" style="margin-top: 20px;">Primær logo</h2>
+                    <p style="margin-top: 12px;">Logomerket er satt sammen av geometriske flater som danner en form som kan leses som et knutepunkt. Jeg tenkte på møte, orientering og tilhørighet da jeg lagde det. Den åpne formen skal signalisere at stedet er tilgjengelig for alle.</p>
                 </div>
-                <div class="design-caption">
-                    <span class="design-tag">LOGO — VISUELL IDENTITET</span>
-                    <h2 class="design-item-title">Primær logo</h2>
-                    <p>Logomerket er bygget opp av geometriske flater som sammen danner en form som kan assosieres med et knutepunkt — møte, orientering og fellesskap. Den åpne formen understreker tilgjengelighet og inkluderende bruk.</p>
-                    <h2 class="design-item-title" style="margin-top: 24px;">Sekundær logo</h2>
-                    <p>Sekundærlogoen kombinerer logomerket med tekst og brukes i mer informasjonsrettede sammenhenger — for eksempel på vinduer mot gaten der forbipasserende raskt skal forstå stedet.</p>
+                <div>
+                    <img src="images/sekundlogo.png" alt="Sekundær logo" style="width: 100%; display: block; border: 1px solid #222;">
+                    <h2 class="design-item-title" style="margin-top: 20px;">Sekundær logo</h2>
+                    <p style="margin-top: 12px;">Sekundærlogoen kombinerer merket med tekst. Den passer best i sammenhenger der man trenger å forklare hva Stoppestedet er, for eksempel på vinduer mot gaten der folk som går forbi raskt skal forstå hva som tilbys.</p>
                 </div>
             </div>
         </div>
@@ -233,34 +272,34 @@
     <!-- ── FARGEPALETT ─────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">02 — Fargepalett</p>
+            <p class="ds-label">02 Fargepalett</p>
             <h2 class="design-item-title">Primærfarger</h2>
-        </div>
-        <div class="palette-row">
-            <div class="swatch" style="background: #A3AF0E; color: #000;">
-                <span class="swatch-name">Olivengrønn</span>
-                <span class="swatch-hex">#A3AF0E</span>
-                <span class="swatch-use">Primæraksentuering, CTA, seksjonsmerking</span>
-            </div>
-            <div class="swatch" style="background: #CE80E0; color: #000;">
-                <span class="swatch-name">Lavendel</span>
-                <span class="swatch-hex">#CE80E0</span>
-                <span class="swatch-use">Sekundæraksentuering, hover-tilstander</span>
-            </div>
-            <div class="swatch" style="background: #4DC8BF; color: #000;">
-                <span class="swatch-name">Turkis</span>
-                <span class="swatch-hex">#4DC8BF</span>
-                <span class="swatch-use">Tertiæraksentuering, interaktive elementer</span>
-            </div>
-            <div class="swatch" style="background: #000000; color: #fff; border: 1px solid #222;">
-                <span class="swatch-name">Sort</span>
-                <span class="swatch-hex">#000000</span>
-                <span class="swatch-use">Primærbakgrunn, flater</span>
-            </div>
-            <div class="swatch" style="background: #FFFFFF; color: #000;">
-                <span class="swatch-name">Hvit</span>
-                <span class="swatch-hex">#FFFFFF</span>
-                <span class="swatch-use">Primærtekst, kontrasttekst</span>
+            <div class="palette-row">
+                <div class="swatch" style="background: #A3AF0E; color: #000;">
+                    <span class="swatch-name">Olivengrønn</span>
+                    <span class="swatch-hex">#A3AF0E</span>
+                    <span class="swatch-use">Primæraksentuering, CTA, seksjonsmerking</span>
+                </div>
+                <div class="swatch" style="background: #CE80E0; color: #000;">
+                    <span class="swatch-name">Lavendel</span>
+                    <span class="swatch-hex">#CE80E0</span>
+                    <span class="swatch-use">Sekundæraksentuering, hover-tilstander</span>
+                </div>
+                <div class="swatch" style="background: #4DC8BF; color: #000;">
+                    <span class="swatch-name">Turkis</span>
+                    <span class="swatch-hex">#4DC8BF</span>
+                    <span class="swatch-use">Tertiæraksentuering, interaktive elementer</span>
+                </div>
+                <div class="swatch" style="background: #000000; color: #fff; border: 1px solid #222;">
+                    <span class="swatch-name">Sort</span>
+                    <span class="swatch-hex">#000000</span>
+                    <span class="swatch-use">Primærbakgrunn, flater</span>
+                </div>
+                <div class="swatch" style="background: #FFFFFF; color: #000;">
+                    <span class="swatch-name">Hvit</span>
+                    <span class="swatch-hex">#FFFFFF</span>
+                    <span class="swatch-use">Primærtekst, kontrasttekst</span>
+                </div>
             </div>
         </div>
     </section>
@@ -268,9 +307,9 @@
     <!-- ── TYPOGRAFI ───────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">03 — Typografi</p>
+            <p class="ds-label">03 Typografi</p>
             <h2 class="design-item-title">Skriftsystem</h2>
-            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: #aaa; max-width: 600px; line-height: 1.8; margin-bottom: 32px;">To skrifttyper brukes i systemet — en for identitet og struktur, en for lesbarhet og brødtekst.</p>
+            <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: #aaa; max-width: 600px; line-height: 1.8; margin-bottom: 32px;">Jeg har valgt to skrifttyper som utfyller hverandre. Space Mono gir identitet og struktur, mens IBM Plex Sans tar seg av brødtekst og lesbarhet.</p>
 
             <div class="type-row">
                 <div class="type-specimen">
@@ -302,11 +341,11 @@
                 </div>
             </div>
 
-            <div style="margin-top: 40px; border: 1px solid #1e1e1e; padding: 40px;">
-                <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #666; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px;">Hierarki — eksempel</p>
-                <p style="font-family: 'Space Mono', monospace; font-size: clamp(1.5rem, 3vw, 2rem); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Seksjonstittel H2</p>
-                <p style="font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 2vw, 1.3rem); text-transform: uppercase; margin-bottom: 16px; color: #ccc;">Romtittel H3</p>
-                <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: #aaa; line-height: 1.8; max-width: 500px;">Brødtekst i IBM Plex Sans. Lesbar og nøytral — tar ikke oppmerksomhet fra identiteten, men formidler innholdet tydelig og effektivt.</p>
+            <div style="margin-top: 40px; border: none; padding: 40px; background: #f2f0eb; color: #000;">
+                <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #000; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 24px; opacity: 0.45;">Hierarki, eksempel</p>
+                <p style="font-family: 'Space Mono', monospace; font-size: clamp(1.5rem, 3vw, 2rem); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: #000;">Seksjonstittel H2</p>
+                <p style="font-family: 'Space Mono', monospace; font-size: clamp(1.1rem, 2vw, 1.3rem); text-transform: uppercase; margin-bottom: 16px; color: #000;">Romtittel H3</p>
+                <p style="font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; color: #000; line-height: 1.8; max-width: 500px;">Brødtekst i IBM Plex Sans. Lesbar og nøytral, den tar ikke oppmerksomheten fra identiteten, men formidler innholdet tydelig.</p>
             </div>
         </div>
     </section>
@@ -314,23 +353,23 @@
     <!-- ── GRAFISKE ELEMENTER ──────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">04 — Grafiske elementer</p>
+            <p class="ds-label">04 Grafiske elementer</p>
 
             <div class="design-item">
                 <div class="design-img-wrap design-img-wrap--bare" style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
                     <div style="text-align: center;">
                         <img src="icons/grafisk_element.png" alt="Grafisk element" style="width: 140px; height: auto; display: block; margin: 0 auto 12px;">
-                        <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #666; letter-spacing: 2px; text-transform: uppercase;">Identitetsform</p>
+                        <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase;">Identitetsform</p>
                     </div>
                     <div style="text-align: center;">
                         <img src="icons/grafisk_pil.png" alt="Grafisk pil" style="width: 140px; height: auto; display: block; margin: 0 auto 12px;">
-                        <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #666; letter-spacing: 2px; text-transform: uppercase;">Retningselement</p>
+                        <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase;">Retningselement</p>
                     </div>
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">GRAFISK ELEMENT — VISUELL IDENTITET</span>
-                    <h2 class="design-item-title">Identitetsform &amp; retningselement</h2>
-                    <p>Begge elementene er bygget opp av de samme geometriske flatene som logoen — trekanter i brandets fargepalett. <strong style="color: #fff;">Identitetsformen</strong> brukes som en visuell bulletpoint og merkepunkt gjennom grensesnittet. <strong style="color: #fff;">Retningselementet</strong> brukes til navigering og som framing-element i hero-flater.</p>
+                    <span class="design-tag">GRAFISK ELEMENT · VISUELL IDENTITET</span>
+                    <h2 class="design-item-title">Identitetsform og retningselement</h2>
+                    <p>Begge elementene er satt sammen av de samme geometriske trekantene som logoen, i fargepaletten til Stoppestedet. <strong style="color: #fff;">Identitetsformen</strong> fungerer som et gjenkjennbart merkepunkt i grensesnittet. <strong style="color: #fff;">Retningselementet</strong> brukes til navigering og som innrammingselement i hero-seksjoner.</p>
                 </div>
             </div>
         </div>
@@ -339,16 +378,16 @@
     <!-- ── IKONER & MATERIALE ──────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">05 — Ikoner &amp; materiale</p>
+            <p class="ds-label">05 Ikoner og materiale</p>
 
             <div class="design-item">
                 <div class="design-img-wrap design-img-wrap--small">
                     <img src="images/ikonsett.jpg" alt="Ikonsett for Stoppestedet">
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">IKONER — VISUELL IDENTITET</span>
+                    <span class="design-tag">IKONER · VISUELL IDENTITET</span>
                     <h2 class="design-item-title">Ikonsett</h2>
-                    <p>Ikoner som bevisst bruker skarpe geometriske former. Personfigurene har en husformet kropp — et visuelt grep som understreker temaet tilhørighet og det å ha et sted å høre til.</p>
+                    <p>Ikonene er tegnet med skarpe geometriske former som speiler resten av identiteten. Personfigurene har en husformet kropp, et bevisst grep for å knytte dem til temaet tilhørighet og det å ha et sted å høre til.</p>
                 </div>
             </div>
 
@@ -358,9 +397,9 @@
                     <img src="images/stoppfarg.png" alt="Fargepalett" style="border: 1px solid #222;">
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">MATERIALE — IDENTITET</span>
+                    <span class="design-tag">MATERIALE · IDENTITET</span>
                     <h2 class="design-item-title">Treverk</h2>
-                    <p>Svartbrun filmbelagt kryssfiner er valgt som et sentralt materiale. Trebasert og belagt med filmbelagt papir som er termisk presset — glatt, slitesterk og motstandsdyktig. I kombinasjon med fargepaletten skaper det et rolig, imøtekommende uttrykk og en balansert veksling mellom det robuste og det varme.</p>
+                    <p>Svartbrun filmbelagt kryssfiner er valgt som et sentralt materiale i prosjektet. Det er trebasert, slitesterkt og motstandsdyktig. Kombinert med fargepaletten gir det et rolig og imøtekommende uttrykk, en balanse mellom det robuste og det varme.</p>
                 </div>
             </div>
         </div>
@@ -369,16 +408,16 @@
     <!-- ── MERCH & STICKERS ────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">06 — Profileringsmateriell</p>
+            <p class="ds-label">06 Profileringsmateriell</p>
 
             <div class="design-item" style="grid-template-columns: 2fr 1fr;">
                 <div class="design-img-wrap design-img-wrap--bare">
                     <img src="images/stoppmerch.jpg" alt="T-skjorte og visittkort">
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">MERCH — FRIVILLIGE</span>
-                    <h2 class="design-item-title">T-skjorte &amp; Visittkort</h2>
-                    <p>Jobb-T-skjorte og visittkort designet for de frivillige. Følger den visuelle identiteten med Space Mono-typografi, den karakteristiske grønne fargen og den grafiske stilen som reflekterer stedets ungdomskultur og åpne atmosfære.</p>
+                    <span class="design-tag">MERCH · FRIVILLIGE</span>
+                    <h2 class="design-item-title">T-skjorte og visittkort</h2>
+                    <p>Jobb-T-skjorte og visittkort designet for de frivillige på Stoppestedet. Begge følger den visuelle identiteten med Space Mono, den karakteristiske grønne fargen og det grafiske uttrykket som skal passe ungdomskulturen og den åpne stemningen på stedet.</p>
                 </div>
             </div>
 
@@ -387,9 +426,9 @@
                     <img src="images/stoppstick.jpg" alt="Stickers">
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">STICKERS — VISUELL PROFIL</span>
+                    <span class="design-tag">STICKERS · VISUELL PROFIL</span>
                     <h2 class="design-item-title">Stickers</h2>
-                    <p>Enkle, grafiske former og den karakteristiske fargepaletten gjør dem gjenkjennbare og lette å bruke på tvers av ulike flater.</p>
+                    <p>Enkle grafiske former og den karakteristiske fargepaletten gjør klistremerkene gjenkjennbare og enkle å bruke på tvers av ulike flater.</p>
                 </div>
             </div>
         </div>
@@ -398,16 +437,16 @@
     <!-- ── SKILTING ────────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">07 — Skilting</p>
+            <p class="ds-label">07 Skilting</p>
 
             <div class="design-item">
                 <div class="design-img-wrap">
                     <img src="images/skiltdesign.jpg" alt="Skiltdesign">
                 </div>
                 <div class="design-caption">
-                    <span class="design-tag">SKILTING — ORIENTERING</span>
+                    <span class="design-tag">SKILTING · ORIENTERING</span>
                     <h2 class="design-item-title">Skiltdesign</h2>
-                    <p>Disse skiltene fungerer som det primære orienteringsnivået i lokalet og er plassert i tak for å være synlige på avstand. Bygget opp av tre deler:</p>
+                    <p>Skiltene er tenkt som det primære orienteringsnivået i lokalet og henger i taket for å være synlige på avstand. Hvert skilt er satt sammen av tre deler:</p>
                     <ol class="design-list">
                         <li>Funksjonsnavn i mørk bakgrunn for høy kontrast og lesbarhet.</li>
                         <li>Piktogram på treverket for rask visuell gjenkjenning og identitet.</li>
@@ -421,7 +460,7 @@
     <!-- ── MOCKUPS ─────────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
-            <p class="ds-label">08 — Mockups</p>
+            <p class="ds-label">08 Mockups</p>
             <h2 class="design-item-title">In context</h2>
 
             <div class="mockup-grid">
