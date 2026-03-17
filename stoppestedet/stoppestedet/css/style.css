@@ -16,17 +16,17 @@
     scroll-margin-top: 110px;
 }
 
-html {
-    overflow-x: hidden;
-}
-
 body {
     font-family: 'Space Mono', monospace;
     background-color: #0f0f0f;
     color: var(--white);
     line-height: 1.6;
-    overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+/* Overflow clip lives on a wrapper so it never interferes with position:fixed */
+.page-wrap {
+    overflow-x: clip;
 }
 
 /* --- LAYOUT UTILS --- */
