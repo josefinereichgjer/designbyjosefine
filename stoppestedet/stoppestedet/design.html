@@ -167,7 +167,15 @@
         }
 
         .mockup-grid .design-img-wrap {
-            border: 1px solid #1e1e1e;
+            aspect-ratio: 4 / 3;
+            overflow: hidden;
+            border: none;
+        }
+
+        .mockup-grid .design-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .mockup-grid p {
@@ -222,6 +230,61 @@
             margin-top: 8px;
         }
         .grafisk-img { width: 180px !important; }
+        .identitetsform-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .identitetsform-row {
+            display: flex;
+            gap: clamp(20px, 4vw, 60px);
+            align-items: center;
+            justify-content: center;
+        }
+        .arrow {
+            color: #aaa;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .id-item {
+            text-align: center;
+        }
+        .id-img-box {
+            width: clamp(80px, 12vw, 140px);
+            height: clamp(80px, 12vw, 140px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+        }
+        .id-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .id-img-box--logo img {
+            width: 40% !important;
+            height: 40% !important;
+            object-fit: contain;
+        }
+        .id-label {
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            color: #aaa;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .identitetsform-caption {
+            max-width: 600px;
+        }
+        @media (max-width: 600px) {
+            .identitetsform-row {
+                flex-direction: column;
+            }
+            .arrow {
+                transform: rotate(90deg);
+            }
+        }
         .design-caption-text {
             font-family: 'IBM Plex Sans', sans-serif;
             font-size: clamp(13px, 1.4vw, 15px);
@@ -265,10 +328,10 @@
         <div class="container">
             <nav>
                 <a href="index.html">
-                    <img src="images/primlogo.png" class="logo-main" alt="Stoppestedet">
+                    <img src="images/alonelogo.png" class="logo-main" alt="Stoppestedet">
                 </a>
                 <div class="nav-links" id="navLinks">
-                    <a href="index.html#lokaler">Lokaler</a>
+                    <a href="index.html#arrangementer">Arrangementer</a>
                     <a href="index.html#frivillige">Frivillige</a>
                     <a href="index.html#faq">Spørsmål</a>
                     <a href="design.html" class="nav-cta active-cta">Design</a>
@@ -289,6 +352,17 @@
                 Her dokumenterer jeg valgene bak logo, farger, typografi og grafiske elementer
                 som til sammen utgjør uttrykket til stedet.
             </p>
+            <div class="verdiord">
+                <p class="verdiord__label">Verdiord</p>
+                <ul class="verdiord__list">
+                    <li>Urban</li>
+                    <li>Inkluderende</li>
+                    <li>Åpen</li>
+                    <li>Dynamisk</li>
+                    <li>Ungdommelig</li>
+                    <li>Samlende</li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -407,20 +481,32 @@
     <section class="ds-section">
         <div class="container">
 
-            <div class="design-item">
-                <div class="design-img-wrap design-img-wrap--bare" style="display: flex; gap: 40px; align-items: center; flex-wrap: wrap;">
-                    <div style="text-align: center;">
-                        <img src="icons/grafisk_element.png" alt="Grafisk element" class="grafisk-img" style="height: auto; display: block; margin: 0 auto 12px;">
-                        <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase;">Identitetsform</p>
+            <div class="design-item design-item--full identitetsform-section">
+                <div class="identitetsform-row">
+                    <div class="id-item">
+                        <div class="id-img-box id-img-box--logo">
+                            <img src="images/alonelogo.png" alt="Logo">
+                        </div>
+                        <p class="id-label">Logo</p>
                     </div>
-                    <div style="text-align: center;">
-                        <img src="icons/grafisk_pil.png" alt="Grafisk pil" class="grafisk-img" style="height: auto; display: block; margin: 0 auto 12px;">
-                        <p style="font-family: 'Space Mono', monospace; font-size: 10px; color: #aaa; letter-spacing: 2px; text-transform: uppercase;">Retningselement</p>
+                    <span class="arrow">→</span>
+                    <div class="id-item">
+                        <div class="id-img-box">
+                            <img src="icons/grafisk_element_transparent.png" alt="Identitetsform">
+                        </div>
+                        <p class="id-label">Identitetsform</p>
+                    </div>
+                    <span class="arrow">→</span>
+                    <div class="id-item">
+                        <div class="id-img-box">
+                            <img src="icons/grafisk_pil_transparent.png" alt="Identitetsform 2">
+                        </div>
+                        <p class="id-label">Identitetsform 2</p>
                     </div>
                 </div>
-                <div class="design-caption">
-                    <h2 class="design-item-title">Identitetsform og retningselement</h2>
-                    <p>Begge elementene er satt sammen av de samme geometriske trekantene som logoen, i fargepaletten til Stoppestedet. <strong style="color: #fff;">Identitetsformen</strong> fungerer som et gjenkjennbart merkepunkt i grensesnittet. <strong style="color: #fff;">Retningselementet</strong> brukes til navigering og som innrammingselement i hero-seksjoner.</p>
+                <div class="design-caption identitetsform-caption">
+                    <h2 class="design-item-title">Identitetsform</h2>
+                    <p>Begge elementene er satt sammen av de samme geometriske trekantene som logoen, i fargepaletten til Stoppestedet. <strong style="color: #fff;">Identitetsformen</strong> fungerer som et gjenkjennbart merkepunkt i grensesnittet. <strong style="color: #fff;">Identitetsform 2</strong> brukes til navigering og som innrammingselement i hero-seksjoner.</p>
                 </div>
             </div>
         </div>
@@ -516,7 +602,7 @@
             <div class="mockup-grid">
                 <div class="design-mockup-item">
                     <div class="design-img-wrap">
-                        <img src="images/stoppiiiis.png" alt="Skilt ute">
+                        <img src="images/skiltutestopp.png" alt="Skilt ute">
                     </div>
                     <p>Skilt ute</p>
                 </div>

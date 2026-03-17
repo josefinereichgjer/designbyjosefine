@@ -627,7 +627,7 @@ a:hover{opacity:.75}
   gap: 16px;
 }
 .project-intro {
-  font-size: 16px;
+  font-size: 14px;
   color: #3b1f0e;
   line-height: 1.65;
   margin-top: 8px;
@@ -641,7 +641,7 @@ a:hover{opacity:.75}
 @media (max-width: 768px) {
   .project-intro br { display: none; }
   .intro-space { display: inline; }
-  .project-intro { font-size: 15px; }
+  .project-intro { font-size: 13px; }
 }
 
 /* Project meta below slideshow */
@@ -1242,7 +1242,6 @@ a:hover{opacity:.75}
 
 /* Hero video */
 .hero-video {
-  width: 100%;
   margin-top: 28px;
 }
 .hero-video video {

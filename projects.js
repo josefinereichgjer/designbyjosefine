@@ -77,19 +77,16 @@ window.PROJECTS = [
     cover: "./stoppestedet/stoppestedet/images/storefrontstoppis.png",
     coverPosition: "center 40%",
     noSlideshow: true,
-    heroVideo: "./assets/stoppvideo.mp4",
+    heroVideo: "./stoppestedet/stoppestedet/images/stoppestedetvideo.mp4",
     projectMeta: [
       { label: "År", value: "2026" },
       { label: "Fag", value: "Emneoverbyggende" },
+      { label: "Fag ansvarlig", value: "Jesper Christian Egemar" },
       { label: "Verktøy", value: "Illustrator, Photoshop, HTML/CSS/Javascript" }
     ],
-    intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.",
-    introColumns: [
-      { label: "Primærmålgruppe", body: "Ungdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet." },
-      { label: "Sekundærmålgruppe", body: "Foreldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen." }
-    ],
+    intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.\n\nJeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.",
     link: { label: "Åpne nettsiden", src: "./stoppestedet/stoppestedet/index.html" },
-    processText: "Utgangspunktet for Stoppestedet var å skape en visuell identitet som kunne representere en inkluderende og urban møteplass for ungdom. Prosessen startet med research og konseptutvikling: hva skulle stedet kommunisere, og hvem er det for?\n\nLogoen ble utviklet iterativt gjennom skisser og digitale utkast i Illustrator. Målet var et geometrisk merke som føltes modulært og åpent, et symbol på at stedet tilhører alle. Fargepaletten ble bevisst holdt enkel: én sterk aksentfarge mot mørk bakgrunn for å gi identiteten energi og kontrast.\n\nProfileringen ble testet på fysiske flater som merch, ID-kort og skilting for å sikre at systemet skalerer godt. Til slutt ble identiteten overført digitalt gjennom design og utvikling av en tilhørende nettside, der typografi, farger og grafiske elementer fra profileringen ble gjenskapt i grensesnittet."
+    processText: "<strong>Primærmålgruppe</strong>\nUngdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet.\n\n<strong>Sekundærmålgruppe</strong>\nForeldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen."
   },
   {
     noDrawer: true,
@@ -98,8 +95,8 @@ window.PROJECTS = [
     subtitle: "UX design",
     year: "2026",
     tags: ["UX"],
-    cover: "./assets/tjonnipadiphone.png",
-    images: ["./assets/tjonnipadiphone.png"],
+    cover: "./assets/tjonnipadiphone.webp",
+    images: ["./assets/tjonnipadiphone.webp"],
     noSlideshow: true,
     introBorder: true,
     intro: "Ansattportal for Tjønnås Delikatesser og Norvald Café:\nett system som samler vaktlister, kommunikasjon og opplæring på én plass.",
@@ -108,22 +105,22 @@ window.PROJECTS = [
         label: "<strong>iPhone 16 Pro Max</strong> (utvalgte prototyper)",
         size: "mobile",
         images: [
-          "./assets/norvald/tjonnas-2-mock.png",
-          "./assets/norvald/tjonnas-1-mock.png"
+          "./assets/norvald/tjonnas-2-mock.webp",
+          "./assets/norvald/tjonnas-1-mock.webp"
         ]
       },
       {
         label: "<strong>iPad Pro 12.9\"</strong> (utvalgte prototyper)",
         size: "ipad",
         images: [
-          "./assets/norvald/ipad10.png",
-          "./assets/norvald/ipad11.png",
-          "./assets/norvald/ipad12.png",
-          "./assets/norvald/ipad13.png",
-          "./assets/norvald/ipad14.png",
-          "./assets/norvald/ipad15.png",
-          "./assets/norvald/ipad16.png",
-          "./assets/norvald/ipad17.png"
+          "./assets/norvald/ipad10.webp",
+          "./assets/norvald/ipad11.webp",
+          "./assets/norvald/ipad12.webp",
+          "./assets/norvald/ipad13.webp",
+          "./assets/norvald/ipad14.webp",
+          "./assets/norvald/ipad15.webp",
+          "./assets/norvald/ipad16.webp",
+          "./assets/norvald/ipad17.webp"
         ]
       }
     ],

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stoppestedet — Din plass i Oslo</title>
+    <title>Stoppestedet - Din plass i Oslo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/style.css">
@@ -15,9 +15,9 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#"><img src="images/primlogo.png" class="logo-main" alt="Stoppestedet"></a>
+                <a href="#"><img src="images/alonelogo.png" class="logo-main" alt="Stoppestedet"></a>
                 <div class="nav-links" id="navLinks">
-                    <a href="#lokaler">Lokaler</a>
+                    <a href="#arrangementer">Arrangementer</a>
                     <a href="#frivillige">Frivillige</a>
                     <a href="#faq">Spørsmål</a>
                     <a href="design.html" class="nav-cta">Design</a>
@@ -37,13 +37,11 @@
         <img src="icons/grafisk_pil.png" class="hero-corner hero-corner--left"  alt="" aria-hidden="true">
         <img src="icons/grafisk_pil.png" class="hero-corner hero-corner--right" alt="" aria-hidden="true">
         <div class="hero-content">
-            <p style="color: var(--green); letter-spacing: 5px; font-size: 10px; font-weight: bold; margin-bottom: 20px;">
-                OSLO // STORGATA 1
-            </p>
-            <h1>Stoppestedet</h1>
-            <p class="hero-sub">
-                STOPPESTEDET ER EN MØTEPLASS FOR UNGDOM HVOR DU KAN HENGE, VÆRE KREATIV OG MØTE NYE FOLK.
-            </p>
+<h1>Stoppestedet</h1>
+            <div class="hero-meta">
+<span class="hero-hours">Man–Fre 14–21 · Lør 12–20</span>
+            </div>
+            <a href="#arrangementer" class="hero-cta">Utforsk stedet ↓</a>
         </div>
     </div>
 
@@ -70,75 +68,76 @@
         </div>
     </div>
 
-    <!-- ── LOKALER ─────────────────────────────────────────────────────────── -->
-    <section id="lokaler">
+    <!-- ── INTRO ─────────────────────────────────────────────────────────── -->
+    <section class="intro-section">
         <div class="container">
-            <h2>Lokaler</h2>
-            <p class="section-intro">Tre etasjer i Storgata 1 — fra åpen møteplass i første til minikino øverst.</p>
+            <div class="intro-inner">
+                <p class="intro-label">Hva er Stoppestedet?</p>
+                <p class="intro-text">Stoppestedet er et gratis sted for ungdom mellom 13 og 25 år, midt i Oslo. Her kan du henge, møte folk, bruke verkstedet, se film på minikinoen eller bare slappe av. Du trenger ikke melde deg på eller ha en grunn til å komme. Bare dukk opp.</p>
+            </div>
         </div>
+    </section>
 
-        <div class="lokaler-list">
+    <!-- ── ARRANGEMENTER ─────────────────────────────────────────────────── -->
+    <section id="arrangementer">
+        <div class="container">
+            <h2>Arrangementer</h2>
+            <p class="section-intro">Kommende aktiviteter på Stoppestedet. Gratis for alle.</p>
+            <div class="evt-grid">
 
-            <!-- 01 Møteplassen -->
-            <div class="lokal-row reveal">
-                <div class="lokal-img-col">
-                    <img src="images/moteplass.jpg" alt="Møteplassen" loading="lazy">
+                <div class="evt-card reveal">
+                    <div class="evt-img-wrap">
+                        <div class="evt-date"><span class="evt-day">20</span><span class="evt-month">Mars</span></div>
+                        <img src="images/minikino.jpg" alt="Filmkveld" loading="lazy">
+                    </div>
+                    <div class="evt-body">
+                        <p class="evt-category">Film og underholdning</p>
+                        <h3 class="evt-title">Filmkveld</h3>
+                        <p class="evt-time">Fredag 20. mars, kl. 18:00 – 21:00</p>
+                        <p class="evt-location">3. Etasje · Minikino</p>
+                    </div>
                 </div>
-                <div class="lokal-text-col">
-                    <span class="lokal-floor-tag" style="color:#CE80E0;">1. Etasje</span>
-                    <h3>Møteplassen</h3>
-                    <p>Hjerte av Stoppestedet. Sofaer, bord, kiosk og en åpen atmosfære — alltid åpent.</p>
+
+                <div class="evt-card reveal">
+                    <div class="evt-img-wrap">
+                        <div class="evt-date"><span class="evt-day">22</span><span class="evt-month">Mars</span></div>
+                        <img src="images/moteplass.jpg" alt="Spillkveld" loading="lazy">
+                    </div>
+                    <div class="evt-body">
+                        <p class="evt-category">Sosial møteplass</p>
+                        <h3 class="evt-title">Spillkveld</h3>
+                        <p class="evt-time">Lørdag 22. mars, kl. 16:00 – 20:00</p>
+                        <p class="evt-location">1. Etasje · Møteplassen</p>
+                    </div>
                 </div>
+
+                <div class="evt-card reveal">
+                    <div class="evt-img-wrap">
+                        <div class="evt-date"><span class="evt-day">25</span><span class="evt-month">Mars</span></div>
+                        <img src="images/verkstedactivity.jpg" alt="Kreativ workshop" loading="lazy">
+                    </div>
+                    <div class="evt-body">
+                        <p class="evt-category">Verksted og kreativitet</p>
+                        <h3 class="evt-title">Kreativ workshop</h3>
+                        <p class="evt-time">Tirsdag 25. mars, kl. 15:00 – 18:00</p>
+                        <p class="evt-location">2. Etasje · Verksted</p>
+                    </div>
+                </div>
+
+                <div class="evt-card reveal">
+                    <div class="evt-img-wrap">
+                        <div class="evt-date"><span class="evt-day">27</span><span class="evt-month">Mars</span></div>
+                        <img src="images/samtalerom.jpg" alt="Drop-in samtale" loading="lazy">
+                    </div>
+                    <div class="evt-body">
+                        <p class="evt-category">Åpent tilbud</p>
+                        <h3 class="evt-title">Drop-in samtale</h3>
+                        <p class="evt-time">Torsdag 27. mars, kl. 14:00 – 19:00</p>
+                        <p class="evt-location">2. Etasje · Samtalerom</p>
+                    </div>
+                </div>
+
             </div>
-
-            <!-- 02 Samtalerom -->
-            <div class="lokal-row reveal">
-                <div class="lokal-img-col">
-                    <img src="images/samtalerom.jpg" alt="Samtalerom" loading="lazy">
-                </div>
-                <div class="lokal-text-col">
-                    <span class="lokal-floor-tag" style="color:#5FBDC7;">2. Etasje</span>
-                    <h3>Samtalerom</h3>
-                    <p>Skjermet og rolig. Prat med en frivillig i fred, eller finn en pause fra alt.</p>
-                </div>
-            </div>
-
-            <!-- 03 Grupperom -->
-            <div class="lokal-row reveal">
-                <div class="lokal-img-col">
-                    <img src="images/kontorer.jpg" alt="Grupperom" loading="lazy">
-                </div>
-                <div class="lokal-text-col">
-                    <span class="lokal-floor-tag" style="color:#4DC8BF;">1. Etasje</span>
-                    <h3>Grupperom</h3>
-                    <p>Plass til 8–10 personer. Perfekt for prosjekter, lekser i gruppe eller et rolig hjørne.</p>
-                </div>
-            </div>
-
-            <!-- 04 Minikino -->
-            <div class="lokal-row reveal">
-                <div class="lokal-img-col">
-                    <img src="images/minikino.jpg" alt="Minikino" loading="lazy">
-                </div>
-                <div class="lokal-text-col">
-                    <span class="lokal-floor-tag" style="color:#CE80E0;">3. Etasje</span>
-                    <h3>Minikino</h3>
-                    <p>Liten og intim sal med projektor og ordentlig lyd. Filmvisninger ukentlig — du kan requeste.</p>
-                </div>
-            </div>
-
-            <!-- 05 Verksted -->
-            <div class="lokal-row reveal">
-                <div class="lokal-img-col">
-                    <img src="images/verkstedactivity.jpg" alt="Verksted" loading="lazy">
-                </div>
-                <div class="lokal-text-col">
-                    <span class="lokal-floor-tag" style="color:#A3AF0E;">2. Etasje</span>
-                    <h3>Verksted</h3>
-                    <p>Symaskiner, verktøy og materialer tilgjengelig. Ta med et prosjekt eller start noe nytt.</p>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -146,9 +145,7 @@
     <section id="frivillige">
         <div class="container">
             <h2>Frivillige</h2>
-            <p style="margin-top: 16px; color: #aaa; font-size: 13px; font-family: 'IBM Plex Sans', sans-serif; max-width: 580px; line-height:1.8;">
-                De frivillige er ikke ansatte — de er her fordi de vil. Prat med dem om hva som helst, heng med dem, eller bare ha dem i nærheten. Ingen agenda, ingen krav.
-            </p>
+            <p class="section-intro">De frivillige er ikke ansatte. De er her fordi de vil. Prat med dem om hva som helst, heng med dem, eller bare ha dem i nærheten. Ingen agenda, ingen krav.</p>
             <div class="volunteer-grid">
 
                 <div class="volunteer-card reveal">
@@ -157,7 +154,10 @@
                     </div>
                     <div class="volunteer-body">
                         <p class="volunteer-name">Josef</p>
-                        <p class="volunteer-bio">Hei! Jeg heter Josef og kommer fra Smestad i Oslo. Jeg er en skikkelig filmnerd, så hvis du er glad i film kan du alltid komme til meg og requeste filmer til minikinoen. Jeg elsker alt fra gamle klassikere til nye filmer. Jeg stiller alltid opp med godt humør, og håper Stoppestedet kan være et sted hvor alle føler seg velkomne, kan slappe av og bare henge litt.</p>
+                        <div class="bio-wrap">
+                            <p class="volunteer-bio">Hei! Jeg heter Josef og kommer fra Smestad i Oslo. Jeg er en skikkelig filmnerd, så hvis du er glad i film kan du alltid komme til meg og requeste filmer til minikinoen. Jeg elsker alt fra gamle klassikere til nye filmer. Jeg stiller alltid opp med godt humør, og håper Stoppestedet kan være et sted hvor alle føler seg velkomne, kan slappe av og bare henge litt.</p>
+                        </div>
+                        <button class="bio-expand" aria-expanded="false">Les mer ↓</button>
                         <button class="volunteer-book-btn" onclick="openVolunteerBooking('Josef')">Book en prat</button>
                     </div>
                 </div>
@@ -168,7 +168,10 @@
                     </div>
                     <div class="volunteer-body">
                         <p class="volunteer-name">Joline</p>
-                        <p class="volunteer-bio">Hei! Jeg heter Joline og kommer fra Røa. Jeg har alltid vært en kreativ person og elsker å lage ting. Jeg har faktisk en egen TikTok hvor jeg hekler små dyr og andre morsomme prosjekter. På Stoppestedet liker jeg å finne på kreative aktiviteter eller bare sitte og prate med folk. Her skal alle føle seg velkomne, og jeg håper jeg kan bidra til en hyggelig og inkluderende stemning.</p>
+                        <div class="bio-wrap">
+                            <p class="volunteer-bio">Hei! Jeg heter Joline og kommer fra Røa. Jeg har alltid vært en kreativ person og elsker å lage ting. Jeg har faktisk en egen TikTok hvor jeg hekler små dyr og andre morsomme prosjekter. På Stoppestedet liker jeg å finne på kreative aktiviteter eller bare sitte og prate med folk. Her skal alle føle seg velkomne, og jeg håper jeg kan bidra til en hyggelig og inkluderende stemning.</p>
+                        </div>
+                        <button class="bio-expand" aria-expanded="false">Les mer ↓</button>
                         <button class="volunteer-book-btn" onclick="openVolunteerBooking('Joline')">Book en prat</button>
                     </div>
                 </div>
@@ -179,7 +182,10 @@
                     </div>
                     <div class="volunteer-body">
                         <p class="volunteer-name">Hedda</p>
-                        <p class="volunteer-bio">Hei! Jeg heter Hedda og kommer fra Ullern. Jeg har en master i språk og litteratur, og når jeg ikke er på Stoppestedet jobber jeg i en barnehage. Jeg liker gode samtaler, bøker og å bli kjent med nye mennesker. For meg er det viktig at Stoppestedet er et sted hvor alle kan føle seg trygge og velkomne, og hvor det er rom for både prat og gode opplevelser.</p>
+                        <div class="bio-wrap">
+                            <p class="volunteer-bio">Hei! Jeg heter Hedda og kommer fra Ullern. Jeg har en master i språk og litteratur, og når jeg ikke er på Stoppestedet jobber jeg i en barnehage. Jeg liker gode samtaler, bøker og å bli kjent med nye mennesker. For meg er det viktig at Stoppestedet er et sted hvor alle kan føle seg trygge og velkomne, og hvor det er rom for både prat og gode opplevelser.</p>
+                        </div>
+                        <button class="bio-expand" aria-expanded="false">Les mer ↓</button>
                         <button class="volunteer-book-btn" onclick="openVolunteerBooking('Hedda')">Book en prat</button>
                     </div>
                 </div>
@@ -190,7 +196,10 @@
                     </div>
                     <div class="volunteer-body">
                         <p class="volunteer-name">Henrik</p>
-                        <p class="volunteer-bio">Hei! Jeg heter Henrik og kommer fra Majorstuen. Jeg er ganske sosial og liker å prate med folk og bli kjent med nye mennesker. På fritiden liker jeg sport, gaming og å henge med venner. På Stoppestedet er jeg alltid klar for en prat, et spill eller bare å bidra til god stemning. Alle skal føle seg velkomne her.</p>
+                        <div class="bio-wrap">
+                            <p class="volunteer-bio">Hei! Jeg heter Henrik og kommer fra Majorstuen. Jeg er ganske sosial og liker å prate med folk og bli kjent med nye mennesker. På fritiden liker jeg sport, gaming og å henge med venner. På Stoppestedet er jeg alltid klar for en prat, et spill eller bare å bidra til god stemning. Alle skal føle seg velkomne her.</p>
+                        </div>
+                        <button class="bio-expand" aria-expanded="false">Les mer ↓</button>
                         <button class="volunteer-book-btn" onclick="openVolunteerBooking('Henrik')">Book en prat</button>
                     </div>
                 </div>
@@ -237,7 +246,7 @@
 
                 <div class="faq-item">
                     <p class="faq-q">Hvem kan komme?</p>
-                    <p class="faq-a">Alle mellom 13 og 25 år er velkomne. Det er ingen krav om medlemskap eller påmelding — bare møt opp.</p>
+                    <p class="faq-a">Alle mellom 13 og 25 år er velkomne. Det er ingen krav om medlemskap eller påmelding, bare møt opp.</p>
                 </div>
 
                 <div class="faq-item">
@@ -257,7 +266,7 @@
 
                 <div class="faq-item">
                     <p class="faq-q">Trenger jeg å booke på forhånd?</p>
-                    <p class="faq-a">Nei — du kan bare dukke opp. Booking er kun nødvendig hvis du vil reservere et bestemt rom eller en prat med en frivillig.</p>
+                    <p class="faq-a">Nei, du kan bare dukke opp. Booking er kun nødvendig hvis du vil reservere et bestemt rom eller en prat med en frivillig.</p>
                 </div>
 
                 <div class="faq-item">
@@ -459,6 +468,16 @@
             document.getElementById('volunteerConfirmation').style.display = 'block';
         }
 
+        // ── Bio expand ───────────────────────────────────────────────────────
+        document.querySelectorAll('.bio-expand').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const wrap = btn.previousElementSibling;
+                const expanded = wrap.classList.toggle('expanded');
+                btn.textContent = expanded ? 'Les mindre ↑' : 'Les mer ↓';
+                btn.setAttribute('aria-expanded', expanded);
+            });
+        });
+
         // ── Set today's date as min for booking ──────────────────────────────
         const dateInput = document.querySelector('#bookingForm input[name="date"]');
         if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
@@ -472,10 +491,14 @@
         const cornerLeft  = document.querySelector('.hero-corner--left');
         const cornerRight = document.querySelector('.hero-corner--right');
         if (cornerLeft && cornerRight && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            const hero = document.querySelector('.hero');
             window.addEventListener('scroll', () => {
                 const y = window.scrollY * 0.18;
-                cornerLeft.style.transform  = `scaleX(-1) translateY(${-y}px)`;
-                cornerRight.style.transform = `translateY(${-y}px)`;
+                const past = window.scrollY > hero.offsetHeight;
+                cornerLeft.style.opacity  = past ? '0' : '0.45';
+                cornerRight.style.opacity = past ? '0' : '0.45';
+                cornerLeft.style.transform  = `scaleX(-1) translateY(${y}px)`;
+                cornerRight.style.transform = `translateY(${y}px)`;
             }, { passive: true });
         }
 
