@@ -69,49 +69,32 @@ window.PROJECTS = [
     finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" }
   },
   {
-    id: "flerkanalspublisering",
-    title: "Flerkanalspublisering",
-    subtitle: "Identity refinement",
-    year: "2024",
-    tags: ["Redesign"],
-    cover: "./assets/srhbrosk.webp",
-    images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
-    intro: "Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.",
+    id: "stoppestedet",
+    title: "Stoppestedet",
+    subtitle: "Emneoverbyggende",
+    year: "2026",
+    tags: ["Visuell identitet"],
+    cover: "./stoppestedet/stoppestedet/images/idcard.png",
+    coverPosition: "center 35%",
+    noSlideshow: true,
+    images: [],
+    intro: "Dette prosjektet handler om utviklingen av en visuell identitet for Stoppestedet, et fiktivt fritidstilbud for ungdom.\n\nProsjektet består av to deler: utvikling av grafiske elementer som logo, fargepalett, typografi, plakater, klistremerker og skilting, presentert gjennom mockups, samt design og utvikling av en nettside som viderefører identiteten digitalt.",
     background: [
       {
-        heading: "Oppgaven",
-        body: "Prosjektet går ut på å utvikle et visuelt uttrykk som fungerer på tvers av flere flater.\n\nDesignet bygger på SRH University Berlins eksisterende visuelle identitet, men videreutvikles gjennom egne designvalg. Fokus har vært på tydelig hierarki, struktur og en balansert bruk av typografi, bilde og luft i layouten."
+        heading: "Mål og visjon",
+        body: "Målet med prosjektet er å utvikle et konsistent visuelt system som kombinerer identitet og funksjon. Designet skal være tydelig, lett å lese og fungere godt i et fysisk rom.\n\nVisjonen er å skape en moderne og inkluderende møteplass for ungdom, der designet bidrar til oversikt, tilhørighet og trygghet."
       },
       {
-        heading: "Hva skal produseres",
-        body: "<ul class=\"bg__list\"><li>Plakat i A2-format</li><li>Roll-up banner (850 × 2000 mm)</li><li>Brosjyre om universitetets bærekraftsarbeid</li><li>LinkedIn-karusell for promotering av arrangementet</li><li>PowerPoint-mal for presentasjoner</li><li>Digitale reklamebannere</li><li>Facebook event cover for mobil og desktop</li><li>Designmanual for den visuelle identiteten</li></ul>"
+        heading: "Målgruppe",
+        body: "Den primære målgruppen er ungdom i alderen 13–18 år som bruker Stoppestedet som et sosialt samlingspunkt og aktivitetssted.\n\nDen sekundære målgruppen består av ansatte, frivillige og besøkende som også trenger tydelig informasjon og god navigasjon i lokalet."
       },
       {
-        heading: "Typografi",
-        body: "Typografien er basert på en rund og moderne grotesk skrifttype inspirert av SRHs visuelle profil.\n\nSiden den originale fonten ikke er tilgjengelig, brukes en alternativ font med lignende uttrykk (men ikke like brukervennlig). Ulike skriftvekter og størrelser skaper likevel et tydelig hierarki mellom overskrifter, mellomtitler og brødtekst."
-      },
-      {
-        heading: "Fotografi",
-        body: "Fotografiene viser campusmiljøet ved SRH University Berlin og fungerer som sentrale visuelle elementer i designet. Bildene gir kontekst til arrangementet. Alle er gratis nedlastbare hos deres nettside."
-      },
-      {
-        heading: "Fargepalett",
-        body: "Fargepaletten tar utgangspunkt i SRH University Berlins merkevarefarger.\n\nEn varm oransjetone brukes som aksentfarge sammen med mørke og lyse nøytrale toner. Dette skaper et tydelig og konsistent uttrykk på tvers av flater.",
-        palette: [
-          { hex: "#c44f24", name: "SRH Oransj",  description: "Primær farge" },
-          { hex: "#1c1c1c", name: "SRH Mørk",    description: "Tekst og mørke slides" },
-          { hex: "#e2ded5", name: "SRH Krem",     description: "Seksjon bakgrunn" },
-          { hex: "#ffffff", name: "SRH Hvit",     description: "Bakgrunn" }
-        ]
+        heading: "Nettsiden som del av prosjektet",
+        body: "Som en utvidelse av prosjektet er det også utviklet en nettside for Stoppestedet. Nettsiden fungerer som en digital videreføring av den visuelle identiteten og viser hvordan designet kan anvendes på tvers av både fysiske og digitale flater.\n\nHer videreføres farger, typografi og grafiske elementer fra designløsningen, slik at identiteten fremstår helhetlig også i et digitalt grensesnitt.",
+        link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/design.html" }
       }
     ],
-    projectMeta: [
-      { label: "År", value: "2024" },
-      { label: "Fag", value: "IDG1009 – Flerkanalpublisering" },
-      { label: "Fagansvarlig", value: "Mari Hermansen" },
-      { label: "Verktøy", value: "Illustrator, Photoshop" }
-    ],
-    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
+    link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/index.html" }
   },
   {
     id: "ansatts-portal",
@@ -232,6 +215,51 @@ window.PROJECTS = [
     ]
   },
   {
+    id: "flerkanalspublisering",
+    title: "Flerkanalspublisering",
+    subtitle: "Identity refinement",
+    year: "2024",
+    tags: ["Redesign"],
+    cover: "./assets/srhbrosk.webp",
+    images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
+    intro: "Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.",
+    background: [
+      {
+        heading: "Oppgaven",
+        body: "Prosjektet går ut på å utvikle et visuelt uttrykk som fungerer på tvers av flere flater.\n\nDesignet bygger på SRH University Berlins eksisterende visuelle identitet, men videreutvikles gjennom egne designvalg. Fokus har vært på tydelig hierarki, struktur og en balansert bruk av typografi, bilde og luft i layouten."
+      },
+      {
+        heading: "Hva skal produseres",
+        body: "<ul class=\"bg__list\"><li>Plakat i A2-format</li><li>Roll-up banner (850 × 2000 mm)</li><li>Brosjyre om universitetets bærekraftsarbeid</li><li>LinkedIn-karusell for promotering av arrangementet</li><li>PowerPoint-mal for presentasjoner</li><li>Digitale reklamebannere</li><li>Facebook event cover for mobil og desktop</li><li>Designmanual for den visuelle identiteten</li></ul>"
+      },
+      {
+        heading: "Typografi",
+        body: "Typografien er basert på en rund og moderne grotesk skrifttype inspirert av SRHs visuelle profil.\n\nSiden den originale fonten ikke er tilgjengelig, brukes en alternativ font med lignende uttrykk (men ikke like brukervennlig). Ulike skriftvekter og størrelser skaper likevel et tydelig hierarki mellom overskrifter, mellomtitler og brødtekst."
+      },
+      {
+        heading: "Fotografi",
+        body: "Fotografiene viser campusmiljøet ved SRH University Berlin og fungerer som sentrale visuelle elementer i designet. Bildene gir kontekst til arrangementet. Alle er gratis nedlastbare hos deres nettside."
+      },
+      {
+        heading: "Fargepalett",
+        body: "Fargepaletten tar utgangspunkt i SRH University Berlins merkevarefarger.\n\nEn varm oransjetone brukes som aksentfarge sammen med mørke og lyse nøytrale toner. Dette skaper et tydelig og konsistent uttrykk på tvers av flater.",
+        palette: [
+          { hex: "#c44f24", name: "SRH Oransj",  description: "Primær farge" },
+          { hex: "#1c1c1c", name: "SRH Mørk",    description: "Tekst og mørke slides" },
+          { hex: "#e2ded5", name: "SRH Krem",     description: "Seksjon bakgrunn" },
+          { hex: "#ffffff", name: "SRH Hvit",     description: "Bakgrunn" }
+        ]
+      }
+    ],
+    projectMeta: [
+      { label: "År", value: "2024" },
+      { label: "Fag", value: "IDG1009 – Flerkanalpublisering" },
+      { label: "Fagansvarlig", value: "Mari Hermansen" },
+      { label: "Verktøy", value: "Illustrator, Photoshop" }
+    ],
+    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
+  },
+  {
     id: "tidsskrift",
     title: "Tidsskrift",
     subtitle: "Redaksjonell design",
@@ -310,36 +338,5 @@ window.PROJECTS = [
     cover: "./assets/kitty.jpeg",
     images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
     finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
-  },
-  {
-    id: "stoppestedet",
-    title: "Stoppestedet",
-    subtitle: "Emneoverbyggende",
-    year: "2026",
-    tags: ["Visuell identitet"],
-    cover: "./assets/emneoverkort.webp",
-    coverPosition: "center 35%",
-    noSlideshow: true,
-    images: [],
-    background: [
-      {
-        heading: "Innledning og designbrief",
-        body: "Dette prosjektet handler om utviklingen av en visuell identitet for Stoppestedet, et fiktivt fritidstilbud for ungdom.\n\nProsjektet består av to deler: utvikling av grafiske elementer som logo, fargepalett, typografi, plakater, klistremerker og skilting, presentert gjennom mockups, samt design og utvikling av en nettside som viderefører identiteten digitalt."
-      },
-      {
-        heading: "Mål og visjon",
-        body: "Målet med prosjektet er å utvikle et konsistent visuelt system som kombinerer identitet og funksjon. Designet skal være tydelig, lett å lese og fungere godt i et fysisk rom.\n\nVisjonen er å skape en moderne og inkluderende møteplass for ungdom, der designet bidrar til oversikt, tilhørighet og trygghet."
-      },
-      {
-        heading: "Målgruppe",
-        body: "Den primære målgruppen er ungdom i alderen 13–18 år som bruker Stoppestedet som et sosialt samlingspunkt og aktivitetssted.\n\nDen sekundære målgruppen består av ansatte, frivillige og besøkende som også trenger tydelig informasjon og god navigasjon i lokalet."
-      },
-      {
-        heading: "Nettsiden som del av prosjektet",
-        body: "Som en utvidelse av prosjektet er det også utviklet en nettside for Stoppestedet. Nettsiden fungerer som en digital videreføring av den visuelle identiteten og viser hvordan designet kan anvendes på tvers av både fysiske og digitale flater.\n\nHer videreføres farger, typografi og grafiske elementer fra designløsningen, slik at identiteten fremstår helhetlig også i et digitalt grensesnitt.",
-        link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/design.html" }
-      }
-    ],
-    link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/index.html" }
   }
 ];

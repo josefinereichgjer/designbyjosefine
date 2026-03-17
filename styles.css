@@ -192,7 +192,6 @@ a:hover{opacity:.75}
   display:block;
   overflow:hidden;
   background:#fff;
-  border:1px solid rgba(0,0,0,0.06);
   box-shadow:none;
   transform:translateZ(0);
 }
@@ -1382,8 +1381,10 @@ a:hover{opacity:.75}
 @media (max-width: 820px) {
   .sidebar {
     width: 100%;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     padding: 16px 16px 10px;
     background: #000;
@@ -1391,9 +1392,10 @@ a:hover{opacity:.75}
     border-bottom: 1px solid #222;
   }
   .sidebar--detail {
-    position: relative;
-    top: auto;
-    z-index: auto;
+    position: fixed;
+  }
+  .content {
+    padding-top: 80px;
   }
   .slideshow__btn {
     width: 26px;
