@@ -98,8 +98,14 @@ nav {
 }
 
 .logo-main {
-    height: 84px;
+    height: 64px;
     width: auto;
+}
+
+nav a:has(.logo-main) {
+    outline: none;
+    border: none;
+    display: flex;
 }
 
 header .container {

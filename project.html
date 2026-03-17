@@ -68,7 +68,7 @@
           <span class="pmeta__value">${row.value}</span>
         </div>`).join("");
 
-      const allSlides = [project.cover, ...project.images];
+      const allSlides = [project.cover, ...(project.images || [])];
       const slideshowHTML = `
         <div class="slideshow" id="slideshow">
           <div class="slideshow__track" id="slideshowTrack">
@@ -173,13 +173,20 @@
             <div class="project-header">
               <h1 class="project-meta__title">${project.title}</h1>
               ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro${project.introBorder ? " project-intro--border" : ""}">${p.replace(/\n/g, `<br><span class="intro-space"> </span>`)}</p>`).join("") : ""}
+              ${(project.introColumns || []).length ? `<div class="intro-cols">${project.introColumns.map(c => `<div class="intro-col"><strong class="intro-col__label">${c.label}</strong><p class="intro-col__body">${c.body}</p></div>`).join("")}</div>` : ""}
               ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
+              ${!accordionHTML && project.link ? `<div class="header-btns">
+                <a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗ ${project.link.label}</a>
+                ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button">Mer om prosessen</button>` : ""}
+              </div>
+              ${project.processText ? `<div class="process-text" id="processText" hidden>${project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("")}</div>` : ""}` : ""}
+              ${project.heroVideo ? `<div class="hero-video"><video src="${project.heroVideo}" autoplay muted loop playsinline></video></div>` : ""}
             </div>
-            ${project.noSlideshow ? "" : slideshowHTML}
+            ${!project.heroVideo && !project.noSlideshow ? slideshowHTML : ""}
             <div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--desktop-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
-              ${project.link ? `<a class="btn-pdf btn-pdf--green" href="${project.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.link.label}</a>` : ""}
+              ${project.link && accordionHTML ? `<a class="btn-pdf btn-pdf--green" href="${project.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.link.label}</a>` : ""}
               ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
           </div>
@@ -351,6 +358,15 @@
     });
     document.addEventListener("keydown", e => {
       if (e.key === "Escape") closeLightbox();
+    });
+
+    // Process text toggle
+    const processToggle = document.getElementById("processToggle");
+    const processText = document.getElementById("processText");
+    processToggle?.addEventListener("click", () => {
+      const isHidden = processText.hidden;
+      processText.hidden = !isHidden;
+      processToggle.classList.toggle("btn-pdf--grey--active", isHidden);
     });
 
     // Sidebar mobile toggle

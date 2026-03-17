@@ -71,30 +71,25 @@ window.PROJECTS = [
   {
     id: "stoppestedet",
     title: "Stoppestedet",
-    subtitle: "Emneoverbyggende",
+    subtitle: "Visuell identitet & nettside",
     year: "2026",
-    tags: ["Visuell identitet"],
-    cover: "./stoppestedet/stoppestedet/images/idcard.png",
-    coverPosition: "center 35%",
+    tags: ["Visuell identitet", "Webutvikling"],
+    cover: "./stoppestedet/stoppestedet/images/outsidestopp.png",
+    coverPosition: "center 40%",
     noSlideshow: true,
-    images: [],
-    intro: "Dette prosjektet handler om utviklingen av en visuell identitet for Stoppestedet, et fiktivt fritidstilbud for ungdom.\n\nProsjektet består av to deler: utvikling av grafiske elementer som logo, fargepalett, typografi, plakater, klistremerker og skilting, presentert gjennom mockups, samt design og utvikling av en nettside som viderefører identiteten digitalt.",
-    background: [
-      {
-        heading: "Mål og visjon",
-        body: "Målet med prosjektet er å utvikle et konsistent visuelt system som kombinerer identitet og funksjon. Designet skal være tydelig, lett å lese og fungere godt i et fysisk rom.\n\nVisjonen er å skape en moderne og inkluderende møteplass for ungdom, der designet bidrar til oversikt, tilhørighet og trygghet."
-      },
-      {
-        heading: "Målgruppe",
-        body: "Den primære målgruppen er ungdom i alderen 13–18 år som bruker Stoppestedet som et sosialt samlingspunkt og aktivitetssted.\n\nDen sekundære målgruppen består av ansatte, frivillige og besøkende som også trenger tydelig informasjon og god navigasjon i lokalet."
-      },
-      {
-        heading: "Nettsiden som del av prosjektet",
-        body: "Som en utvidelse av prosjektet er det også utviklet en nettside for Stoppestedet. Nettsiden fungerer som en digital videreføring av den visuelle identiteten og viser hvordan designet kan anvendes på tvers av både fysiske og digitale flater.\n\nHer videreføres farger, typografi og grafiske elementer fra designløsningen, slik at identiteten fremstår helhetlig også i et digitalt grensesnitt.",
-        link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/design.html" }
-      }
+    heroVideo: "./assets/stoppvideo.mp4",
+    projectMeta: [
+      { label: "År", value: "2026" },
+      { label: "Fag", value: "Emneoverbyggende" },
+      { label: "Verktøy", value: "Illustrator, Photoshop, HTML/CSS/Javascript" }
     ],
-    link: { label: "Besøk nettstedet", src: "./stoppestedet/stoppestedet/index.html" }
+    intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.",
+    introColumns: [
+      { label: "Primærmålgruppe", body: "Ungdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet." },
+      { label: "Sekundærmålgruppe", body: "Foreldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen." }
+    ],
+    link: { label: "Åpne nettsiden", src: "./stoppestedet/stoppestedet/index.html" },
+    processText: "Utgangspunktet for Stoppestedet var å skape en visuell identitet som kunne representere en inkluderende og urban møteplass for ungdom. Prosessen startet med research og konseptutvikling: hva skulle stedet kommunisere, og hvem er det for?\n\nLogoen ble utviklet iterativt gjennom skisser og digitale utkast i Illustrator. Målet var et geometrisk merke som føltes modulært og åpent, et symbol på at stedet tilhører alle. Fargepaletten ble bevisst holdt enkel: én sterk aksentfarge mot mørk bakgrunn for å gi identiteten energi og kontrast.\n\nProfileringen ble testet på fysiske flater som merch, ID-kort og skilting for å sikre at systemet skalerer godt. Til slutt ble identiteten overført digitalt gjennom design og utvikling av en tilhørende nettside, der typografi, farger og grafiske elementer fra profileringen ble gjenskapt i grensesnittet."
   },
   {
     id: "ansatts-portal",

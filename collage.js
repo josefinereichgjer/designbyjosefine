@@ -4,7 +4,8 @@
 (function () {
   'use strict';
 
-  const W = 330, H = 435;   // uniform card size
+  const W = Math.min(330, Math.floor(window.innerWidth * 0.82));
+  const H = Math.round(W * (435 / 330));
 
   /* me.webp first → highest z-index → on top of pile */
   const CARDS = [
