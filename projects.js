@@ -74,7 +74,7 @@ window.PROJECTS = [
     subtitle: "Visuell identitet & nettside",
     year: "2026",
     tags: ["Visuell identitet", "Webutvikling"],
-    cover: "./stoppestedet/stoppestedet/images/storefrontstoppis.png",
+    cover: "./stoppestedet/stoppestedet/images/storefrontstoppis.webp",
     coverPosition: "center 40%",
     noSlideshow: true,
     heroVideo: "./stoppestedet/stoppestedet/images/stoppestedetvideo.mp4",
@@ -258,7 +258,7 @@ window.PROJECTS = [
     subtitle: "Redaksjonell design",
     year: "2026",
     tags: ["Redaksjonell"],
-    cover: "./assets/kitty.jpeg",
+    cover: "./assets/kitty.webp",
     images: ["./assets/me.webp"],
   },
   {
@@ -267,7 +267,7 @@ window.PROJECTS = [
     subtitle: "UX + redesign",
     year: "2026",
     tags: ["Redesign/UX"],
-    cover: "./assets/kitty.jpeg",
+    cover: "./assets/kitty.webp",
     images: ["./assets/me.webp"],
     noSlideshow: true,
   },
@@ -328,7 +328,7 @@ window.PROJECTS = [
     subtitle: "Lettering + layout explorations",
     year: "2026",
     tags: ["Visuell identitet"],
-    cover: "./assets/kitty.jpeg",
+    cover: "./assets/kitty.webp",
     images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
     finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
   }

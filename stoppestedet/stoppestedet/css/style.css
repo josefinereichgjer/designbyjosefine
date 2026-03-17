@@ -16,6 +16,10 @@
     scroll-margin-top: 110px;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Space Mono', monospace;
     background-color: #0f0f0f;
@@ -88,6 +92,7 @@ header {
     width: 100%;
     z-index: 1000;
     border-bottom: 1px solid #333;
+    padding-top: env(safe-area-inset-top);
 }
 
 nav {
@@ -146,7 +151,7 @@ header .container {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 64px;
+    top: calc(64px + env(safe-area-inset-top));
     left: 0;
     width: 100%;
     background: rgba(10,10,10,0.98);
@@ -687,7 +692,7 @@ body::before {
     font-size: 11px;
     color: #888;
     font-family: 'Space Mono', monospace;
-    white-space: nowrap;
+    word-break: break-word;
 }
 
 @media (min-width: 768px) {
@@ -846,6 +851,12 @@ body::before {
 @media (max-width: 480px) {
     .evt-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Footer: single column on small phones */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
     }
 }
 
@@ -1599,6 +1610,19 @@ h2::before {
     .time-slots {
         gap: 8px;
     }
+
+
+    /* Verdiord: stack label above list on mobile */
+    .verdiord {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* Verdiord list: single column on mobile */
+    .verdiord__list {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
 }
 
 /* ── Tablet (768px – 1023px) ────────────────────────────────────── */
@@ -1631,7 +1655,8 @@ footer {
 .footer-logo {
     height: 160px;
     width: auto;
-    margin-bottom: 40px;
+    display: block;
+    margin: 0 auto 40px;
 }
 
 .design-credit {
