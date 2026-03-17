@@ -74,7 +74,7 @@ window.PROJECTS = [
     subtitle: "Visuell identitet & nettside",
     year: "2026",
     tags: ["Visuell identitet", "Webutvikling"],
-    cover: "./stoppestedet/stoppestedet/images/outsidestopp.png",
+    cover: "./stoppestedet/stoppestedet/images/storefrontstoppis.png",
     coverPosition: "center 40%",
     noSlideshow: true,
     heroVideo: "./assets/stoppvideo.mp4",
@@ -92,6 +92,7 @@ window.PROJECTS = [
     processText: "Utgangspunktet for Stoppestedet var å skape en visuell identitet som kunne representere en inkluderende og urban møteplass for ungdom. Prosessen startet med research og konseptutvikling: hva skulle stedet kommunisere, og hvem er det for?\n\nLogoen ble utviklet iterativt gjennom skisser og digitale utkast i Illustrator. Målet var et geometrisk merke som føltes modulært og åpent, et symbol på at stedet tilhører alle. Fargepaletten ble bevisst holdt enkel: én sterk aksentfarge mot mørk bakgrunn for å gi identiteten energi og kontrast.\n\nProfileringen ble testet på fysiske flater som merch, ID-kort og skilting for å sikre at systemet skalerer godt. Til slutt ble identiteten overført digitalt gjennom design og utvikling av en tilhørende nettside, der typografi, farger og grafiske elementer fra profileringen ble gjenskapt i grensesnittet."
   },
   {
+    noDrawer: true,
     id: "ansatts-portal",
     title: "Tjønnås og Norvald",
     subtitle: "UX design",

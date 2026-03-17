@@ -15,6 +15,11 @@
 
 <body>
   <a class="skip-link" href="#content">Hopp til innhold</a>
+  <div class="process-drawer" id="processDrawer" aria-hidden="true">
+    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
+    <div class="process-drawer__inner" id="processDrawerContent"></div>
+  </div>
+  <div class="process-drawer__backdrop" id="processBackdrop"></div>
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <img id="lbImg" src="" alt="">
   </div>
@@ -174,19 +179,16 @@
               <h1 class="project-meta__title">${project.title}</h1>
               ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro${project.introBorder ? " project-intro--border" : ""}">${p.replace(/\n/g, `<br><span class="intro-space"> </span>`)}</p>`).join("") : ""}
               ${(project.introColumns || []).length ? `<div class="intro-cols">${project.introColumns.map(c => `<div class="intro-col"><strong class="intro-col__label">${c.label}</strong><p class="intro-col__body">${c.body}</p></div>`).join("")}</div>` : ""}
-              ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
-              ${!accordionHTML && project.link ? `<div class="header-btns">
-                <a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗ ${project.link.label}</a>
+              <div class="header-btns">
+                ${project.link ? `<a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗ ${project.link.label}</a>` : ""}
+                ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
                 ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button">Mer om prosessen</button>` : ""}
               </div>
-              ${project.processText ? `<div class="process-text" id="processText" hidden>${project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("")}</div>` : ""}` : ""}
-              ${project.heroVideo ? `<div class="hero-video"><video src="${project.heroVideo}" autoplay muted loop playsinline></video></div>` : ""}
             </div>
-            ${!project.heroVideo && !project.noSlideshow ? slideshowHTML : ""}
+            ${project.heroVideo ? `<div class="hero-video"><video src="${project.heroVideo}" autoplay muted loop playsinline></video></div>` : !project.noSlideshow ? slideshowHTML : ""}
             <div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--desktop-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
-              ${project.link && accordionHTML ? `<a class="btn-pdf btn-pdf--green" href="${project.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.link.label}</a>` : ""}
               ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
           </div>
@@ -302,14 +304,22 @@
     if (accordion) {
       accordion.querySelectorAll(".accordion__item").forEach(item => {
         item.querySelector(".accordion__trigger").addEventListener("click", () => {
-          const isOpen = item.classList.contains("accordion__item--open");
-          accordion.querySelectorAll(".accordion__item").forEach(i => {
-            i.classList.remove("accordion__item--open");
-            i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
-          });
-          if (!isOpen) {
-            item.classList.add("accordion__item--open");
-            item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
+          if (project.noDrawer) {
+            const isOpen = item.classList.contains("accordion__item--open");
+            accordion.querySelectorAll(".accordion__item").forEach(i => {
+              i.classList.remove("accordion__item--open");
+              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("accordion__item--open");
+              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
+            }
+          } else {
+            const idx = accordionItems.indexOf(item);
+            openDrawer();
+            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
+            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
+            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
           }
         });
       });
@@ -360,14 +370,78 @@
       if (e.key === "Escape") closeLightbox();
     });
 
-    // Process text toggle
+    // Process drawer
     const processToggle = document.getElementById("processToggle");
-    const processText = document.getElementById("processText");
-    processToggle?.addEventListener("click", () => {
-      const isHidden = processText.hidden;
-      processText.hidden = !isHidden;
-      processToggle.classList.toggle("btn-pdf--grey--active", isHidden);
-    });
+    const processDrawer = document.getElementById("processDrawer");
+    const processBackdrop = document.getElementById("processBackdrop");
+    const processDrawerClose = document.getElementById("processDrawerClose");
+    const processDrawerContent = document.getElementById("processDrawerContent");
+
+    // Build sections index from accordion items
+    const accordionItems = [...(document.getElementById("accordion")?.querySelectorAll(".accordion__item") || [])];
+
+    // Add processText as a virtual section if present
+    const allSections = accordionItems.map(item => ({
+      title: item.querySelector(".accordion__title").textContent,
+      content: item.querySelector(".accordion__panel-inner").innerHTML
+    }));
+    if (project.processText) {
+      allSections.push({
+        title: "Mer om prosessen",
+        content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("")
+      });
+    }
+
+    function showDrawerIndex() {
+      processDrawerContent.innerHTML = `
+        <ul class="drawer-index">
+          ${allSections.map((s, i) => `
+            <li class="drawer-index__item" id="drawer-item-${i}">
+              <button class="drawer-index__btn" data-index="${i}">
+                <span>${s.title}</span>
+                <span class="drawer-index__icon">+</span>
+              </button>
+              <div class="drawer-index__panel" hidden>${s.content}</div>
+            </li>`).join("")}
+        </ul>`;
+      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const i = btn.dataset.index;
+          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
+          const isOpen = !panel.hidden;
+          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
+          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
+          if (!isOpen) {
+            panel.hidden = false;
+            btn.querySelector(".drawer-index__icon").textContent = "−";
+          }
+        });
+      });
+    }
+
+    function openDrawer() {
+      if (allSections.length === 1) {
+        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
+      } else {
+        showDrawerIndex();
+      }
+      processDrawer.classList.add("process-drawer--open");
+      processBackdrop.classList.add("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "false");
+    }
+    function closeDrawer() {
+      processDrawer.classList.remove("process-drawer--open");
+      processBackdrop.classList.remove("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "true");
+    }
+
+    processToggle?.addEventListener("click", openDrawer);
+    if (!project.noDrawer) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
+    }
+    processDrawerClose?.addEventListener("click", closeDrawer);
+    processBackdrop?.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
     // Sidebar mobile toggle
     const toggle = $("#sidebarToggle");
