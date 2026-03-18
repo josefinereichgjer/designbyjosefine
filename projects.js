@@ -228,23 +228,25 @@ window.PROJECTS = [
     coverCaption: "Brosjyre om universitetets bærekraftsarbeid",
     noSlideshow: true,
     gallery: [
-      { type: "row", items: [
-        { src: "./assets/bak.png",               caption: "Brosjyre – bakside", crop: true },
-        { src: "./assets/srhbrosk.webp",         caption: "Brosjyre om universitetets bærekraftsarbeid" },
-      ]},
-      { type: "row", items: [
-        { src: "./assets/srhvideo.mp4",          caption: "Tilhørende nettside", video: true, autoplay: true, cropX: true, link: "http://127.0.0.1:5501/srh-open-day-3/index.html" },
-        { src: "./assets/foran.png",             caption: "Brosjyre – forside", crop: true, grow: 1.3 },
-      ]},
-      { type: "row", items: [
-        { src: "./assets/srhbanner_mockup.webp", caption: "Roll-up banner (850 × 2000 mm)" },
-        { src: "./assets/plakat_mockup.webp",    caption: "Plakat i A2-format" },
-      ]},
-      { type: "row", items: [
-        { src: "./assets/linkedinsrh.webp",      caption: "LinkedIn-karusell for promotering av arrangementet" },
-        { src: "./assets/facebook.webp",         caption: "Facebook event cover" },
-      ]},
-      { src: "./assets/powerpointmal.png",       caption: "PowerPoint-mal for presentasjoner" },
+      { type: "expandable",
+        heading: "Trykte flater",
+        cover: { src: "./assets/srhbrosk.webp", caption: "Brosjyre om universitetets bærekraftsarbeid" },
+        items: [
+          { src: "./assets/bak.png",             caption: "Brosjyre – bakside",    crop: true },
+          { src: "./assets/foran.png",           caption: "Brosjyre – forside",    crop: true },
+          { src: "./assets/plakat_mockup.webp",  caption: "Plakat i A2-format" },
+          { src: "./assets/srhbanner_mockup.webp", caption: "Roll-up banner" },
+        ]
+      },
+      { type: "expandable",
+        heading: "Digitale flater",
+        cover: { src: "./assets/srhvideo.mp4", caption: "Tilhørende nettside", captionLink: "http://127.0.0.1:5501/srh-open-day-3/index.html", video: true, autoplay: true },
+        items: [
+          { src: "./assets/linkedinsrh.webp",    caption: "LinkedIn-karusell" },
+          { src: "./assets/facebook.webp",       caption: "Facebook event cover" },
+          { src: "./assets/powerpointmal.png",   caption: "PowerPoint-mal" },
+        ]
+      },
     ],
     intro: "Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.",
     background: [

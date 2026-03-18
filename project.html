@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=10" />
+  <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
@@ -21,7 +21,10 @@
   </div>
   <div class="process-drawer__backdrop" id="processBackdrop"></div>
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
+    <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
     <img id="lbImg" src="" alt="">
+    <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
   </div>
 
   <header class="sidebar sidebar--detail" id="sidebar">
@@ -54,7 +57,7 @@
     <article class="project" id="project"></article>
   </main>
 
-  <script src="./projects.js?v=2"></script>
+  <script src="./projects.js?v=5"></script>
   <script>
     const $ = (s) => document.querySelector(s);
     const params = new URLSearchParams(location.search);
@@ -178,6 +181,7 @@
         const autoplay = typeof item === "object" && item.autoplay;
         const cropX = typeof item === "object" && item.cropX;
         const link = typeof item === "object" && item.link;
+        const captionLink = typeof item === "object" && item.captionLink;
         const grow = typeof item === "object" && item.grow;
         const classes = ["project__figure", wide && "project__figure--wide", crop && "project__figure--crop", cropX && "project__figure--cropx"].filter(Boolean).join(" ");
         const media = isVideo
@@ -191,7 +195,7 @@
         ].filter(Boolean).join(";");
         const figure = `<figure class="${classes}"${figStyle ? ` style="${figStyle}"` : ""}>
           ${media}
-          ${caption ? `<figcaption class="project__figcaption">${caption}</figcaption>` : ""}
+          ${caption ? `<figcaption class="project__figcaption">${caption}${captionLink ? ` <a href="${captionLink}" target="_blank" rel="noopener" class="project__figcaption-link">Se nettside →</a>` : ""}</figcaption>` : ""}
         </figure>`;
         return link ? `<a href="${link}" target="_blank" rel="noopener" class="project__figure-link">${figure}</a>` : figure;
       };
@@ -199,6 +203,21 @@
       const galleryHTML = (project.gallery || []).length ? `
         <div class="project__gallery">
           ${project.gallery.map((item, i) => {
+            if (item && item.type === "heading") {
+              return `<div class="project__gallery-heading">${item.text}</div>`;
+            }
+            if (item && item.type === "expandable") {
+              const coverFig = renderFigure(item.cover, i);
+              const restFigs = item.items.map((sub, j) => renderFigure(sub, i + j + 1)).join("");
+              return `<div class="gallery-expandable">
+                <div class="gallery-expandable__heading">${item.heading}</div>
+                <div class="gallery-expandable__strip">
+                  <div class="gallery-expandable__cover">${coverFig}</div>
+                  <div class="gallery-expandable__rest">${restFigs}</div>
+                </div>
+                <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
+              </div>`;
+            }
             if (item && item.type === "row") {
               return `<div class="project__gallery-row">
                 ${item.items.map((sub, j) => renderFigure(sub, i + j)).join("")}
@@ -400,27 +419,78 @@
       });
     });
 
+    // Expandable gallery sections
+    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
+      cover.addEventListener("click", () => {
+        const section = cover.closest(".gallery-expandable");
+        const wasOpen = section.classList.contains("is-open");
+        section.classList.toggle("is-open");
+        if (!wasOpen && window.innerWidth <= 780) {
+          setTimeout(() => {
+            section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 80);
+        }
+      });
+    });
+    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const section = btn.closest(".gallery-expandable");
+        section.classList.remove("is-open");
+        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
     // Lightbox
     const lbOverlay = document.getElementById("lbOverlay");
     const lbImg = document.getElementById("lbImg");
-    function openLightbox(src, alt) {
+    const lbPrev = document.getElementById("lbPrev");
+    const lbNext = document.getElementById("lbNext");
+    let lbImages = [];
+    let lbIndex = 0;
+
+    function openLightbox(src, alt, images, index) {
       lbImg.src = src;
       lbImg.alt = alt || "";
+      lbImages = images || [];
+      lbIndex = index ?? 0;
+      lbPrev.style.display = lbImages.length > 1 ? "" : "none";
+      lbNext.style.display = lbImages.length > 1 ? "" : "none";
       lbOverlay.classList.add("lb-open");
     }
     function closeLightbox() {
       lbOverlay.classList.remove("lb-open");
       lbImg.src = "";
     }
+    function showLbImage(idx) {
+      lbIndex = (idx + lbImages.length) % lbImages.length;
+      lbImg.src = lbImages[lbIndex].src;
+      lbImg.alt = lbImages[lbIndex].alt || "";
+    }
+
+    lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
+    lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
+
     document.addEventListener("click", e => {
-      if (e.target.classList.contains("bg__img") || e.target.closest(".project__figure") && e.target.tagName === "IMG") {
-        openLightbox(e.target.src, e.target.alt);
-      } else if (e.target === lbOverlay) {
+      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
+      if (imgEl) {
+        // Check if inside an expandable section — collect all images from that section
+        const section = imgEl.closest(".gallery-expandable");
+        if (section) {
+          const imgs = [...section.querySelectorAll(".project__figure img")];
+          const idx = imgs.indexOf(imgEl);
+          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), idx);
+        } else {
+          openLightbox(imgEl.src, imgEl.alt, [], 0);
+        }
+      } else if (e.target === lbOverlay || e.target.id === "lbClose") {
         closeLightbox();
       }
     });
     document.addEventListener("keydown", e => {
+      if (!lbOverlay.classList.contains("lb-open")) return;
       if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showLbImage(lbIndex - 1);
+      if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
     });
 
     // Process drawer
