@@ -78,6 +78,17 @@ window.PROJECTS = [
     coverPosition: "center 40%",
     noSlideshow: true,
     heroVideo: "./stoppestedet/images/nystoppvid.mp4",
+    videoLink: "./stoppestedet/index.html",
+    heroCollage: {
+      src: "./stoppestedet/design.html",
+      label: "Se visuell identitet →",
+      images: [
+        "./stoppestedet/images/skiltdesign.jpg",
+        "./stoppestedet/images/storefrontstoppis.webp",
+        "./stoppestedet/images/skiltutestopp.png",
+        "./stoppestedet/images/stairstopp.png",
+      ]
+    },
     projectMeta: [
       { label: "År", value: "2026" },
       { label: "Fag", value: "Emneoverbyggende" },

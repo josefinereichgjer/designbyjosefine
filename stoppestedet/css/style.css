@@ -858,10 +858,14 @@ body::before {
         grid-template-columns: 1fr;
     }
 
-    /* Footer: single column on small phones */
+    /* Footer: centered on small phones */
     .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px 24px;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: left;
     }
 }
 
@@ -969,8 +973,8 @@ h2::before {
     background: rgba(0,0,0,0.88);
     z-index: 2000;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
+    justify-content: flex-start;
+    padding: 20px 20px 20px clamp(60px, 12vw, 180px);
 }
 
 .modal-overlay.open {
