@@ -87,7 +87,13 @@
             <p class="section-intro">Kommende aktiviteter på Stoppestedet. Gratis for alle.</p>
             <div class="evt-grid">
 
-                <div class="evt-card reveal">
+                <div class="evt-card reveal" tabindex="0" role="button" aria-label="Les mer om Filmkveld"
+                    data-title="Filmkveld"
+                    data-category="Film og underholdning"
+                    data-time="Fredag 20. mars, kl. 18:00 – 21:00"
+                    data-location="3. Etasje · Minikino"
+                    data-img="images/minikino.jpg"
+                    data-desc="Vi setter opp lerretet i minikinoen og viser en utvalgt film for kvelden. Popcorn på huset. Ingen påmelding nødvendig – bare møt opp. Hvilken film som vises kunngjøres dagen før på Instagram. Ta med en venn, eller kom alene og møt noen nye.">
                     <div class="evt-img-wrap">
                         <div class="evt-date"><span class="evt-day">20</span><span class="evt-month">Mars</span></div>
                         <img src="images/minikino.jpg" alt="Filmkveld" loading="lazy">
@@ -100,7 +106,13 @@
                     </div>
                 </div>
 
-                <div class="evt-card reveal">
+                <div class="evt-card reveal" tabindex="0" role="button" aria-label="Les mer om Spillkveld"
+                    data-title="Spillkveld"
+                    data-category="Sosial møteplass"
+                    data-time="Lørdag 22. mars, kl. 16:00 – 20:00"
+                    data-location="1. Etasje · Møteplassen"
+                    data-img="images/moteplass.jpg"
+                    data-desc="Brettspill, kortspill og konsolspill for alle nivåer. Ta med favorittspillet ditt eller prøv noe nytt fra hyllen vår. Sofa, snacks og god stemning. Her er det lov å tape, og like lov å vinne. Ingen påmelding – bare kom.">
                     <div class="evt-img-wrap">
                         <div class="evt-date"><span class="evt-day">22</span><span class="evt-month">Mars</span></div>
                         <img src="images/moteplass.jpg" alt="Spillkveld" loading="lazy">
@@ -113,7 +125,13 @@
                     </div>
                 </div>
 
-                <div class="evt-card reveal">
+                <div class="evt-card reveal" tabindex="0" role="button" aria-label="Les mer om Kreativ workshop"
+                    data-title="Kreativ workshop"
+                    data-category="Verksted og kreativitet"
+                    data-time="Tirsdag 25. mars, kl. 15:00 – 18:00"
+                    data-location="2. Etasje · Verksted"
+                    data-img="images/verkstedactivity.jpg"
+                    data-desc="Denne gangen handler det om silketrykk. Du lager ditt eget motiv og trykker det på t-skjorte eller tote bag. Alt materiale er inkludert – du trenger ikke ha erfaring fra før. Maks 12 plasser, så kom tidlig.">
                     <div class="evt-img-wrap">
                         <div class="evt-date"><span class="evt-day">25</span><span class="evt-month">Mars</span></div>
                         <img src="images/verkstedactivity.jpg" alt="Kreativ workshop" loading="lazy">
@@ -126,7 +144,13 @@
                     </div>
                 </div>
 
-                <div class="evt-card reveal">
+                <div class="evt-card reveal" tabindex="0" role="button" aria-label="Les mer om Drop-in samtale"
+                    data-title="Drop-in samtale"
+                    data-category="Åpent tilbud"
+                    data-time="Torsdag 27. mars, kl. 14:00 – 19:00"
+                    data-location="2. Etasje · Samtalerom"
+                    data-img="images/samtalerom.jpg"
+                    data-desc="Har du noe på hjertet, eller bare lyst til å prate? De frivillige er tilgjengelige for en uformell en-til-en-samtale. Ingen agenda, ingen krav, ingen journalføring. Bare kom innom og si hei – du bestemmer selv hva vi snakker om.">
                     <div class="evt-img-wrap">
                         <div class="evt-date"><span class="evt-day">27</span><span class="evt-month">Mars</span></div>
                         <img src="images/samtalerom.jpg" alt="Drop-in samtale" loading="lazy">
@@ -236,6 +260,23 @@
                 <p style="font-weight:bold; margin-bottom:8px;">Forespørsel sendt!</p>
                 <p style="font-size:13px; color:#aaa; font-family:'IBM Plex Sans',sans-serif; line-height:1.7;">Vi tar kontakt med deg innen kort tid.</p>
                 <button onclick="closeVolunteerModal()" style="margin-top:24px; background:none; border:1px solid #444; color:#fff; padding:10px 20px; font-family:inherit; font-size:11px; cursor:pointer; text-transform:uppercase; letter-spacing:1px;">Lukk</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event detail modal -->
+    <div id="eventModal" class="modal-overlay" onclick="closeEventModalOutside(event)" role="dialog" aria-modal="true" aria-labelledby="eventModalTitle">
+        <div class="modal-box" style="max-width: 560px; padding: 0; overflow: hidden;">
+            <button class="modal-close" onclick="closeEventModal()" style="z-index:2; position:absolute; top:16px; right:16px;">✕</button>
+            <div id="eventModalImg" style="width:100%; height:220px; overflow:hidden;">
+                <img id="eventModalImgEl" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:block; filter:brightness(0.8);">
+            </div>
+            <div style="padding: 28px 32px 32px;">
+                <p id="eventModalCategory" style="font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--green); margin-bottom:10px;"></p>
+                <h3 id="eventModalTitle" style="font-size:1.4rem; text-transform:uppercase; letter-spacing:-0.5px; margin-bottom:16px;"></h3>
+                <p id="eventModalTime" style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:1px; color:#aaa; margin-bottom:4px;"></p>
+                <p id="eventModalLocation" style="font-family:'Space Mono',monospace; font-size:11px; letter-spacing:1px; color:#aaa; margin-bottom:20px;"></p>
+                <p id="eventModalDesc" style="font-family:'IBM Plex Sans',sans-serif; font-size:14px; line-height:1.8; color:#c0c0c0;"></p>
             </div>
         </div>
     </div>
@@ -486,7 +527,40 @@
 
         // ── Close modal on Escape ────────────────────────────────────────────
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape') closeVolunteerModal();
+            if (e.key === 'Escape') { closeVolunteerModal(); closeEventModal(); }
+        });
+
+        // ── Event detail modal ───────────────────────────────────────────────
+        function openEventModal(card) {
+            _lastFocus = document.activeElement;
+            document.getElementById('eventModalTitle').textContent    = card.dataset.title;
+            document.getElementById('eventModalCategory').textContent = card.dataset.category;
+            document.getElementById('eventModalTime').textContent     = card.dataset.time;
+            document.getElementById('eventModalLocation').textContent = card.dataset.location;
+            document.getElementById('eventModalDesc').textContent     = card.dataset.desc;
+            document.getElementById('eventModalImgEl').src            = card.dataset.img;
+            document.getElementById('eventModalImgEl').alt            = card.dataset.title;
+            document.getElementById('eventModal').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            trapFocus(document.querySelector('#eventModal .modal-box'));
+        }
+
+        function closeEventModal() {
+            releaseTrap(document.querySelector('#eventModal .modal-box'));
+            document.getElementById('eventModal').classList.remove('open');
+            document.body.style.overflow = '';
+            if (_lastFocus) _lastFocus.focus();
+        }
+
+        function closeEventModalOutside(e) {
+            if (e.target === document.getElementById('eventModal')) closeEventModal();
+        }
+
+        document.querySelectorAll('.evt-card').forEach(card => {
+            card.addEventListener('click', () => openEventModal(card));
+            card.addEventListener('keydown', e => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openEventModal(card); }
+            });
         });
 
         // ── Hero corner parallax ──────────────────────────────────────────────

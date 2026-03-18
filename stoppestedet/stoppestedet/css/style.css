@@ -748,7 +748,12 @@ body::before {
 .evt-card {
     display: flex;
     flex-direction: column;
-    cursor: default;
+    cursor: pointer;
+}
+
+.evt-card:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
 }
 
 .evt-img-wrap {
