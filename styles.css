@@ -1330,9 +1330,20 @@ a:hover{opacity:.75}
     width: calc(100% + 40px);
   }
   .hero-media-row .hero-video {
-    margin-left: -20px;
-    margin-right: -20px;
-    width: calc(100% + 40px);
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-left: 0;
+    margin-right: 0;
+    overflow: hidden;
+    background: #111;
+  }
+  .hero-media-row .hero-video video {
+    width: 130%;
+    position: relative;
+    left: 51%;
+    transform: translateX(-50%);
   }
   .hero-collage-wrap {
     transform: scale(0.55);
