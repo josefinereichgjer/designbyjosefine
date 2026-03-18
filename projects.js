@@ -230,10 +230,10 @@ window.PROJECTS = [
     gallery: [
       { type: "expandable",
         heading: "Trykte flater",
-        cover: { src: "./assets/srhbrosk.webp", caption: "Brosjyre om universitetets bærekraftsarbeid" },
+        cover: { src: "./assets/srhbrosk.webp", caption: "Brosjyre om universitetets bærekraftsarbeid", eager: true },
         items: [
-          { src: "./assets/bak.png",             caption: "Brosjyre – bakside",    crop: true },
-          { src: "./assets/foran.png",           caption: "Brosjyre – forside",    crop: true },
+          { src: "./assets/bak.webp",            caption: "Brosjyre – bakside",    crop: true },
+          { src: "./assets/foran.webp",          caption: "Brosjyre – forside",    crop: true },
           { src: "./assets/plakat_mockup.webp",  caption: "Plakat i A2-format" },
           { src: "./assets/srhbanner_mockup.webp", caption: "Roll-up banner" },
         ]
@@ -244,7 +244,7 @@ window.PROJECTS = [
         items: [
           { src: "./assets/linkedinsrh.webp",    caption: "LinkedIn-karusell" },
           { src: "./assets/facebook.webp",       caption: "Facebook event cover" },
-          { src: "./assets/powerpointmal.png",   caption: "PowerPoint-mal" },
+          { src: "./assets/powerpointmal.webp",  caption: "PowerPoint-mal" },
         ]
       },
     ],

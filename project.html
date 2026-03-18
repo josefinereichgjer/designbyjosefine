@@ -57,7 +57,7 @@
     <article class="project" id="project"></article>
   </main>
 
-  <script src="./projects.js?v=5"></script>
+  <script src="./projects.js?v=6"></script>
   <script>
     const $ = (s) => document.querySelector(s);
     const params = new URLSearchParams(location.search);
@@ -182,13 +182,14 @@
         const cropX = typeof item === "object" && item.cropX;
         const link = typeof item === "object" && item.link;
         const captionLink = typeof item === "object" && item.captionLink;
+        const eager = typeof item === "object" && item.eager;
         const grow = typeof item === "object" && item.grow;
         const classes = ["project__figure", wide && "project__figure--wide", crop && "project__figure--crop", cropX && "project__figure--cropx"].filter(Boolean).join(" ");
         const media = isVideo
           ? autoplay
             ? `<video class="project__video" src="${src}" autoplay muted loop playsinline></video>`
             : `<video class="project__video" src="${src}" controls playsinline preload="metadata"></video>`
-          : `<img loading="lazy" decoding="async" src="${src}" alt="${project.title} — galleri ${i + 1}">`;
+          : `<img loading="${eager ? "eager" : "lazy"}" decoding="async" src="${src}" alt="${project.title} — galleri ${i + 1}">`;
         const figStyle = [
           cropScale ? `--crop-scale:${cropScale}` : (cropX !== true && cropX ? `--crop-scale:${cropX}` : null),
           grow ? `flex:${grow}` : null
