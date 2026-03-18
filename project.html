@@ -168,12 +168,44 @@
           </div>`;
       }).join("");
 
+      const renderFigure = (item, i) => {
+        const src = typeof item === "string" ? item : item.src;
+        const caption = typeof item === "object" ? item.caption : null;
+        const wide = typeof item === "object" && item.wide;
+        const crop = typeof item === "object" && item.crop;
+        const cropScale = typeof item === "object" && item.cropScale;
+        const isVideo = typeof item === "object" && item.video;
+        const autoplay = typeof item === "object" && item.autoplay;
+        const cropX = typeof item === "object" && item.cropX;
+        const link = typeof item === "object" && item.link;
+        const grow = typeof item === "object" && item.grow;
+        const classes = ["project__figure", wide && "project__figure--wide", crop && "project__figure--crop", cropX && "project__figure--cropx"].filter(Boolean).join(" ");
+        const media = isVideo
+          ? autoplay
+            ? `<video class="project__video" src="${src}" autoplay muted loop playsinline></video>`
+            : `<video class="project__video" src="${src}" controls playsinline preload="metadata"></video>`
+          : `<img loading="lazy" decoding="async" src="${src}" alt="${project.title} — galleri ${i + 1}">`;
+        const figStyle = [
+          cropScale ? `--crop-scale:${cropScale}` : (cropX !== true && cropX ? `--crop-scale:${cropX}` : null),
+          grow ? `flex:${grow}` : null
+        ].filter(Boolean).join(";");
+        const figure = `<figure class="${classes}"${figStyle ? ` style="${figStyle}"` : ""}>
+          ${media}
+          ${caption ? `<figcaption class="project__figcaption">${caption}</figcaption>` : ""}
+        </figure>`;
+        return link ? `<a href="${link}" target="_blank" rel="noopener" class="project__figure-link">${figure}</a>` : figure;
+      };
+
       const galleryHTML = (project.gallery || []).length ? `
         <div class="project__gallery">
-          ${project.gallery.map((src, i) => `
-            <figure class="project__figure">
-              <img loading="lazy" decoding="async" src="${src}" alt="${project.title} — galleri ${i + 1}">
-            </figure>`).join("")}
+          ${project.gallery.map((item, i) => {
+            if (item && item.type === "row") {
+              return `<div class="project__gallery-row">
+                ${item.items.map((sub, j) => renderFigure(sub, i + j)).join("")}
+              </div>`;
+            }
+            return renderFigure(item, i);
+          }).join("")}
         </div>` : "";
 
       $("#project").innerHTML = `
@@ -199,12 +231,12 @@
                 <a class="hero-collage__label" href="${project.heroCollage.src}" target="_blank" rel="noopener">${project.heroCollage.label}</a>
               </div>` : ""}
             </div>` : !project.noSlideshow ? slideshowHTML : ""}
-            <div class="project-meta">
+            ${!project.gallery?.length ? `<div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:12px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
               ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
-            </div>
+            </div>` : ""}
           </div>
           ${accordionHTML && !(project.sections || []).length ? `
           <div class="project-layout__side">
@@ -223,6 +255,11 @@
           </div>` : ""}
         </div>
         ${galleryHTML}
+        ${project.gallery?.length ? `<div class="project-meta" style="margin-top:var(--gap)">
+          ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
+          ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
+          ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:12px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
+        </div>` : ""}
         ${(project.scrollGalleries || []).map(g => `
           <div class="scroll-gallery">
             ${g.label ? `<p class="scroll-gallery__label">${g.label}</p>` : ""}
@@ -376,7 +413,7 @@
       lbImg.src = "";
     }
     document.addEventListener("click", e => {
-      if (e.target.classList.contains("bg__img")) {
+      if (e.target.classList.contains("bg__img") || e.target.closest(".project__figure") && e.target.tagName === "IMG") {
         openLightbox(e.target.src, e.target.alt);
       } else if (e.target === lbOverlay) {
         closeLightbox();

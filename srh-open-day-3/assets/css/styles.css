@@ -134,14 +134,14 @@ figure { margin: 0; }
    ============================= */
 .hero {
   position: relative;
-  height: 60vh;
+  height: 80vh;
   min-height: 400px;
-  max-height: 640px;
+  max-height: 900px;
   overflow: hidden;
 }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url("../img/campus.jpg") center / cover no-repeat;
+  background: url("../img/campus.webp") center / cover no-repeat;
   transform: scale(1.04);
   transition: transform 1.6s cubic-bezier(.25,.46,.45,.94);
 }
@@ -151,8 +151,8 @@ figure { margin: 0; }
   position: absolute; inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,.22) 0%,
-    rgba(0,0,0,.72) 100%
+    rgba(0,0,0,.10) 0%,
+    rgba(0,0,0,.55) 100%
   );
 }
 .hero-blob {
@@ -171,9 +171,11 @@ figure { margin: 0; }
 .hero-content {
   position: relative; z-index: 3;
   height: 100%;
-  display: flex; flex-direction: column; justify-content: flex-end;
+  display: flex; flex-direction: column; justify-content: flex-start;
+  padding-top: 40px;
   padding-bottom: 52px;
 }
+.hero-actions { margin-top: auto; }
 .hero-tag {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(0,0,0,.65);
@@ -196,9 +198,11 @@ figure { margin: 0; }
 }
 .hero-title-line {
   display: block;
-  font-size: clamp(36px, 4.5vw, 64px);
+  font-size: clamp(42px, 5.5vw, 76px);
 }
 .hero-title-accent { color: #fff; }
+.hero-title-sub { color: rgba(255,255,255,.72); margin-top: 4px; font-size: clamp(22px, 3vw, 44px); }
+.hero-date { font-size: 17px; font-weight: 600; letter-spacing: .03em; color: rgba(255,255,255,.75); margin: 2px 0 0; }
 
 .hero-sub {
   margin: 0 0 28px;
@@ -229,21 +233,33 @@ figure { margin: 0; }
   display: flex; flex-direction: column; gap: 0;
   padding-top: 8px;
 }
-.stat {
-  display: flex; align-items: center; gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--line);
+.campus-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px;
+  margin-top: 24px;
 }
-.stat:first-child { border-top: 1px solid var(--line); }
+.stat {
+  display: flex; flex-direction: column; justify-content: flex-end;
+  gap: 4px;
+  padding: clamp(12px, 2vw, 20px);
+  background: rgba(0,0,0,.04);
+  border-left: 3px solid var(--accent);
+  min-height: 0;
+}
 .stat-num {
-  font-size: clamp(22px, 2.4vw, 32px);
-  font-weight: 700; color: var(--accent);
-  line-height: 1; white-space: nowrap; flex-shrink: 0;
-  min-width: 80px;
+  font-size: clamp(14px, 1.6vw, 20px);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.1;
 }
 .stat-label {
-  font-size: 14px; color: var(--muted);
-  line-height: 1.5;
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  line-height: 1.3;
 }
 
 /* Photo grid */
@@ -364,50 +380,59 @@ figure { margin: 0; }
 .timeline { margin-top: 32px; }
 .time-row {
   display: grid; grid-template-columns: 110px 1fr;
-  gap: 32px; padding: 24px 0;
+  gap: 32px; padding: 36px 0;
   border-top: 1px solid var(--line);
   align-items: start;
 }
 .time-row:last-child { border-bottom: 1px solid var(--line); }
 .time {
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 700; color: var(--accent);
   line-height: 1.2; letter-spacing: -.01em;
 }
-.time-content h3 { margin: 0 0 6px; font-size: 17px; font-weight: 600; }
-.time-content p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.time-content h3 { margin: 0 0 8px; font-size: 20px; font-weight: 600; }
+.time-content p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.65; }
 
 /* =============================
    Contact
    ============================= */
-.contact { background: var(--bg); }
+.contact { background: #c44f24; color: #fff; }
+.contact .eyebrow { color: rgba(255,255,255,.7); }
+.contact .h2 { color: #fff; }
+.contact .lead { color: rgba(255,255,255,.8); }
 .contact-grid {
   display: grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 64px; align-items: start;
 }
-.form {
-  background: var(--section);
-  border: 1px solid var(--line);
-  border-radius: 0;
-  padding: 28px;
+.contact-icons {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  padding-top: 8px;
 }
-.form label { display: grid; gap: 8px; margin-bottom: 16px; }
-.form span {
-  font-size: 11px; font-weight: 700; color: var(--muted);
-  letter-spacing: .08em; text-transform: uppercase;
+.contact-icon-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #fff;
+  opacity: .85;
+  transition: opacity .2s;
 }
-.form input, .form textarea {
-  width: 100%; border: 1px solid var(--line);
-  border-radius: 0; padding: 11px 14px;
-  font: inherit; background: #fff;
-  transition: border-color .2s;
+.contact-icon-link:hover { opacity: 1; }
+.contact-icon-link img {
+  width: 36px;
+  height: 36px;
+  filter: brightness(0) invert(1);
 }
-.form input:focus, .form textarea:focus {
-  border-color: var(--accent); outline: none;
+.contact-icon-link span {
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
 }
-.form textarea { resize: vertical; min-height: 120px; }
-.fineprint { margin: 10px 0 0; font-size: 11px; color: var(--muted); }
 
 /* =============================
    Image credits
@@ -427,7 +452,7 @@ figure { margin: 0; }
 }
 .image-credits p {
   margin: 0 0 10px;
-  font-size: 16px;
+  font-size: 11px;
   color: rgba(255,255,255,.85);
   line-height: 1.7;
 }
@@ -437,13 +462,15 @@ figure { margin: 0; }
    Footer
    ============================= */
 .footer {
-  border-top: 1px solid var(--line);
+  border-top: none;
   padding: 28px 0;
   background: var(--ink);
 }
 .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .footer a { text-decoration: none; color: rgba(255,255,255,.6); transition: color .2s; }
 .footer a:hover { color: #fff; }
+.footer-logo-wrap { display: flex; justify-content: center; margin-top: 24px; padding-bottom: 4px; }
+.footer-logo { height: 48px; width: auto; }
 .footer-copy { margin: 0; color: rgba(255,255,255,.4); font-size: 12px; }
 
 /* =============================

@@ -1,14 +1,9 @@
 (() => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  // Hero Ken Burns zoom-out on load
-  if (!prefersReducedMotion) {
-    const heroBg = document.querySelector(".hero-bg");
-    if (heroBg) setTimeout(() => heroBg.classList.add("loaded"), 60);
-  } else {
-    const heroBg = document.querySelector(".hero-bg");
-    if (heroBg) heroBg.classList.add("loaded");
-  }
+  // Hero background — no animation
+  const heroBg = document.querySelector(".hero-bg");
+  if (heroBg) heroBg.classList.add("loaded");
 
   // Year in footer
   const y = document.querySelector("#year");
@@ -46,28 +41,14 @@
     });
   }
 
-  // Fade-up animations
-  const fadeEls = Array.from(document.querySelectorAll(".fade-up"));
-
-  if (!prefersReducedMotion && "IntersectionObserver" in window) {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const delay = Number(entry.target.getAttribute("data-delay") || "0");
-            window.setTimeout(() => entry.target.classList.add("visible"), delay);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-
-    fadeEls.forEach((el, i) => {
-      el.setAttribute("data-delay", String((i % 3) * 120));
-      observer.observe(el);
+  // Back to top
+  document.querySelectorAll('a[href="#top"]').forEach(a => {
+    a.addEventListener("click", e => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
-  } else {
-    fadeEls.forEach((el) => el.classList.add("visible"));
-  }
+  });
+
+  // No fade-up animations — make all visible immediately
+  document.querySelectorAll(".fade-up").forEach(el => el.classList.add("visible"));
 })();
