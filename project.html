@@ -186,14 +186,14 @@
               <div class="header-btns">
                 ${project.link ? `<a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗ ${project.link.label}</a>` : ""}
                 ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener">↗ ${project.finalPdf.label}</a>` : ""}
-                ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
+                ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
               </div>
             </div>
             ${project.heroVideo ? `<div class="hero-video"><video src="${project.heroVideo}" autoplay muted loop playsinline></video></div>` : !project.noSlideshow ? slideshowHTML : ""}
             <div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
-              ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
+              ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
           </div>
           ${accordionHTML && !(project.sections || []).length ? `
@@ -243,7 +243,7 @@
           return "";
         }).join("")}</div>` : ""}
         ${accordionHTML && (project.sections || []).length ? `
-        <button class="panel-toggle panel-toggle--bottom" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>
+        <button class="panel-toggle panel-toggle--bottom" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
         <div class="inline-accordion" id="inlineAccordion" hidden>
           <div class="accordion" id="accordion">${accordionHTML}</div>
         </div>` : ""}
