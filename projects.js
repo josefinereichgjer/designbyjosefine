@@ -86,7 +86,7 @@ window.PROJECTS = [
         "./stoppestedet/images/skiltdesign.jpg",
         "./stoppestedet/images/storefrontstoppis.webp",
         "./stoppestedet/images/skiltutestopp.png",
-        "./stoppestedet/images/stairstopp.png",
+        "./stoppestedet/images/idcard.png",
       ]
     },
     projectMeta: [

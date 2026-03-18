@@ -291,6 +291,35 @@
             color: #c0c0c0;
             line-height: 1.85;
         }
+        .icon-grid-wrap {
+            align-self: center;
+        }
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: clamp(20px, 3vw, 36px);
+        }
+        .icon-grid__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .icon-grid__item img {
+            width: clamp(56px, 7vw, 80px);
+            height: clamp(56px, 7vw, 80px);
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            display: block;
+        }
+        .icon-grid__item span {
+            font-family: 'Space Mono', monospace;
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #666;
+            text-align: center;
+        }
         .logo-dark-variant { margin-top: 56px; }
         @media (max-width: 767px) {
             .logo-dark-variant { margin-top: 16px; }
@@ -542,11 +571,41 @@
         </div>
     </section>
 
-    <!-- ── SKILTING ────────────────────────────────────────────── -->
     <section class="ds-section">
         <div class="container">
 
             <div class="design-item">
+                <div class="icon-grid-wrap">
+                    <div class="icon-grid">
+                        <div class="icon-grid__item"><img src="icons/icon-heis.png" alt="Heis"><span>Heis</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-trapper.png" alt="Trapper"><span>Trapper</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-kino.png" alt="Kino"><span>Kino</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-verksted.png" alt="Verksted"><span>Verksted</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-kiosk.png" alt="Kiosk"><span>Kiosk</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-kontorer.png" alt="Kontorer"><span>Kontorer</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-moteplass.png" alt="Møteplass"><span>Møteplass</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-stellerom.png" alt="Stellerom"><span>Stellerom</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-venteomrade.png" alt="Venteområde"><span>Venteområde</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-handicap.png" alt="Handicap"><span>Handicap</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-grupperom.png" alt="Grupperom"><span>Grupperom</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-samtalerom.png" alt="Samtalerom"><span>Samtalerom</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-resepsjon.png" alt="Resepsjon"><span>Resepsjon</span></div>
+                        <div class="icon-grid__item"><img src="icons/icon-wc.png" alt="WC"><span>WC</span></div>
+                    </div>
+                </div>
+                <div class="design-caption">
+                    <h2 class="design-item-title">Ikonsett</h2>
+                    <p>Ikonene er tegnet med skarpe geometriske former som speiler resten av identiteten. Personfigurene har en husformet kropp, et bevisst grep for å knytte dem til temaet tilhørighet og det å ha et sted å høre til.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SKILTING ────────────────────────────────────────────── -->
+    <section class="ds-section">
+        <div class="container">
+
+            <div class="design-item" style="grid-template-columns: 2fr 1fr;">
                 <div class="design-img-wrap">
                     <img src="images/skiltdesign.jpg" alt="Skiltdesign">
                 </div>
@@ -558,21 +617,6 @@
                         <li>Piktogram på treverket for rask visuell gjenkjenning og identitet.</li>
                         <li>Grønn pilflate med skrå kant, hentet fra logoens formspråk.</li>
                     </ol>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="ds-section">
-        <div class="container">
-
-            <div class="design-item">
-                <div class="design-img-wrap design-img-wrap--small">
-                    <img src="images/ikonsett.jpg" alt="Ikonsett for Stoppestedet">
-                </div>
-                <div class="design-caption">
-                    <h2 class="design-item-title">Ikonsett</h2>
-                    <p>Ikonene er tegnet med skarpe geometriske former som speiler resten av identiteten. Personfigurene har en husformet kropp, et bevisst grep for å knytte dem til temaet tilhørighet og det å ha et sted å høre til.</p>
                 </div>
             </div>
         </div>

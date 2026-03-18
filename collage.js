@@ -14,9 +14,9 @@
     { src: './assets/norvald/norvald.webp',                         alt: 'Norval iPhone' },
     { src: './assets/reinategning.webp',                            alt: 'Reina tegning' },
     { src: './assets/scenebok.webp',                                alt: 'Scene bok'     },
-    { src: './stoppestedet/stoppestedet/images/storefrontstoppis.webp', alt: 'Stoppestedet' },
-    { src: './assets/plakat_mockup.webp',                              alt: 'Plakat mockup' },
-    { src: './stoppestedet/stoppestedet/images/businesscard.png',      alt: 'Visittkort'    },
+    { src: './assets/srhbrosk.webp',      alt: 'SRH brosjyre'  },
+    { src: './assets/plakat_mockup.webp', alt: 'Plakat mockup' },
+    { src: './assets/closebook.webp',     alt: 'Bokomslag'     },
   ];
 
   /* Small x/y offsets + rotations — tight pile, me.webp top layer */
