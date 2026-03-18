@@ -73,13 +73,17 @@
           <span class="pmeta__value">${row.value}</span>
         </div>`).join("");
 
-      const allSlides = [project.cover, ...(project.images || [])];
+      const allSlides = [
+        { src: project.cover, caption: project.coverCaption || null },
+        ...(project.images || []).map(img => typeof img === "string" ? { src: img, caption: null } : img)
+      ];
       const slideshowHTML = `
         <div class="slideshow" id="slideshow">
           <div class="slideshow__track" id="slideshowTrack">
-            ${allSlides.map((src, i) => `
+            ${allSlides.map((slide, i) => `
               <figure class="slideshow__slide">
-                <img loading="${i === 0 ? "eager" : "lazy"}" decoding="async" src="${src}" alt="${project.title} — bilde ${i + 1}">
+                <img loading="${i === 0 ? "eager" : "lazy"}" decoding="async" src="${slide.src}" alt="${project.title} — bilde ${i + 1}">
+                ${slide.caption ? `<figcaption class="slideshow__caption">${slide.caption}</figcaption>` : ""}
               </figure>`).join("")}
           </div>
           <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -181,6 +185,7 @@
               ${(project.introColumns || []).length ? `<div class="intro-cols">${project.introColumns.map(c => `<div class="intro-col"><strong class="intro-col__label">${c.label}</strong><p class="intro-col__body">${c.body}</p></div>`).join("")}</div>` : ""}
               <div class="header-btns">
                 ${project.link ? `<a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗ ${project.link.label}</a>` : ""}
+                ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener">↗ ${project.finalPdf.label}</a>` : ""}
                 ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
               </div>
             </div>
@@ -188,7 +193,6 @@
             <div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
-              ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--desktop-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
               ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Les mer om prosessen <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>
           </div>

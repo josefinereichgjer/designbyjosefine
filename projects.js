@@ -214,7 +214,15 @@ window.PROJECTS = [
     year: "2024",
     tags: ["Redesign"],
     cover: "./assets/srhbrosk.webp",
-    images: ["./assets/plakat_mockup.webp", "./assets/srhbanner_mockup.webp", "./assets/linkedinsrh.webp", "./assets/reklamebannermock.webp", "./assets/facebook.webp"],
+    coverCaption: "Brosjyre om universitetets bærekraftsarbeid",
+    images: [
+      { src: "./assets/plakat_mockup.webp",      caption: "Plakat i A2-format" },
+      { src: "./assets/srhbanner_mockup.webp",   caption: "Roll-up banner (850 × 2000 mm)" },
+      { src: "./assets/linkedinsrh.webp",        caption: "LinkedIn-karusell for promotering av arrangementet" },
+      { src: "./assets/reklamebannermock.webp",  caption: "Digitale reklamebannere" },
+      { src: "./assets/facebook.webp",           caption: "Facebook event cover" },
+      { src: "./assets/powerpointmal.png",       caption: "PowerPoint-mal for presentasjoner" },
+    ],
     intro: "Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.",
     background: [
       {
