@@ -74,10 +74,10 @@ window.PROJECTS = [
     subtitle: "Visuell identitet & nettside",
     year: "2026",
     tags: ["Visuell identitet", "Webutvikling"],
-    cover: "./stoppestedet/stoppestedet/images/storefrontstoppis.webp",
+    cover: "./stoppestedet/images/storefrontstoppis.webp",
     coverPosition: "center 40%",
     noSlideshow: true,
-    heroVideo: "./stoppestedet/stoppestedet/images/stoppestedetvideo.mp4",
+    heroVideo: "./stoppestedet/images/nystoppvid.mp4",
     projectMeta: [
       { label: "År", value: "2026" },
       { label: "Fag", value: "Emneoverbyggende" },
@@ -85,7 +85,7 @@ window.PROJECTS = [
       { label: "Verktøy", value: "Illustrator, Photoshop, HTML/CSS/Javascript" }
     ],
     intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.\n\nJeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.",
-    link: { label: "Åpne nettsiden", src: "./stoppestedet/stoppestedet/index.html" },
+    link: { label: "Åpne nettsiden", src: "./stoppestedet/index.html" },
     processText: "<strong>Primærmålgruppe</strong>\nUngdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet.\n\n<strong>Sekundærmålgruppe</strong>\nForeldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen."
   },
   {
@@ -250,6 +250,7 @@ window.PROJECTS = [
       { label: "Fagansvarlig", value: "Mari Hermansen" },
       { label: "Verktøy", value: "Illustrator, Photoshop" }
     ],
+    link: { label: "Åpne nettsiden", src: "./srh-open-day-3/index.html" },
     finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
   },
   {

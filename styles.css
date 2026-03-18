@@ -859,7 +859,8 @@ a:hover{opacity:.75}
 @media (max-width: 860px) {
   .project-layout { flex-direction: column; gap: 0; }
   .project-layout__media { flex: none; width: 100%; }
-  .project-layout__media .slideshow {
+  .project-layout__media .slideshow,
+  .project-layout__media .hero-video {
     margin-left: -20px;
     margin-right: -20px;
     width: calc(100% + 40px);
