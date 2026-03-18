@@ -865,7 +865,7 @@ body::before {
         max-width: 320px;
         margin-left: auto;
         margin-right: auto;
-        text-align: left;
+        text-align: center;
     }
 }
 
@@ -1037,6 +1037,12 @@ h2::before {
     color: #888;
     font-family: 'IBM Plex Sans', sans-serif;
     line-height: 1.8;
+}
+
+.footer-grid a[href^="tel:"],
+.footer-grid a[href^="mailto:"] {
+    color: inherit;
+    text-decoration: none;
 }
 
 @media (min-width: 768px) {
@@ -1592,6 +1598,7 @@ h2::before {
         grid-template-columns: 1fr 1fr;
         max-width: 100%;
         gap: 24px;
+        text-align: center;
     }
 
 
