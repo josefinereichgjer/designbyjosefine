@@ -78,12 +78,12 @@
         ...(project.images || []).map(img => typeof img === "string" ? { src: img, caption: null } : img)
       ];
       const slideshowHTML = `
+        <div class="slideshow__caption-bar" id="slideshowCaption">${allSlides[0]?.caption || ""}</div>
         <div class="slideshow" id="slideshow">
           <div class="slideshow__track" id="slideshowTrack">
             ${allSlides.map((slide, i) => `
-              <figure class="slideshow__slide">
+              <figure class="slideshow__slide" data-caption="${slide.caption ? slide.caption.replace(/"/g, '&quot;') : ""}">
                 <img loading="${i === 0 ? "eager" : "lazy"}" decoding="async" src="${slide.src}" alt="${project.title} — bilde ${i + 1}">
-                ${slide.caption ? `<figcaption class="slideshow__caption">${slide.caption}</figcaption>` : ""}
               </figure>`).join("")}
           </div>
           <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -273,12 +273,14 @@
       let timer;
 
       const slideshow = $("#slideshow");
+      const captionBar = $("#slideshowCaption");
       let paused = false;
 
       function goTo(n) {
         current = (n + slides.length) % slides.length;
         track.style.transform = `translateX(-${current * 100}%)`;
         counter.textContent = current + 1;
+        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
       }
 
       function startAuto() {
