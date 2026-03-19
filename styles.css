@@ -194,6 +194,7 @@ a:hover{opacity:.75}
   background:#fff;
   box-shadow:none;
   transform:translateZ(0);
+  border:1px solid var(--hair);
 }
 .card__img{
   width:100%;
@@ -1667,6 +1668,64 @@ a:hover{opacity:.75}
 }
 .slideshow__caption-bar:empty {
   display: none;
+}
+
+/* Strip slideshow (Frend-style) */
+.strip-ss {
+  width: 100%;
+  margin-top: 20px;
+}
+.strip-ss__nav {
+  display: flex;
+  gap: 10px;
+  padding: 0 0 14px;
+}
+.strip-ss__btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  color: #111;
+  font-family: inherit;
+  transition: opacity 0.15s;
+}
+.strip-ss__btn:hover { opacity: 0.45; }
+.strip-ss__viewport {
+  width: 100%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  cursor: grab;
+  container-type: inline-size;
+}
+.strip-ss__viewport::-webkit-scrollbar { display: none; }
+.strip-ss__viewport:active { cursor: grabbing; }
+.strip-ss__track {
+  display: flex;
+  gap: 6px;
+}
+.strip-ss__slide {
+  flex: 0 0 calc(46cqi - 4px);
+  scroll-snap-align: start;
+  margin: 0;
+}
+.strip-ss__slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+  pointer-events: none;
+}
+@media (max-width: 900px) {
+  .strip-ss__slide { flex: 0 0 calc(70cqi - 3px); }
+}
+@media (max-width: 560px) {
+  .strip-ss__slide { flex: 0 0 calc(88cqi - 4px); }
 }
 
 /* Process section */
