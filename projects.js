@@ -368,6 +368,7 @@ window.PROJECTS = [
   },
   {
     id: "we-visuell-profil",
+    skipBuild: true,
     title: "Stiftelsen WE",
     subtitle: "Lettering + layout explorations",
     year: "2026",

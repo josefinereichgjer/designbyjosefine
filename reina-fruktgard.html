@@ -61,28 +61,19 @@
               </div>
             </div>
             
-        <div class="slideshow__caption-bar" id="slideshowCaption"></div>
-        <div class="slideshow" id="slideshow">
-          <div class="slideshow__track" id="slideshowTrack">
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="eager" decoding="async" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 1">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 2">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 3">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/reinaside.webp" alt="Reina Fruktgård — bilde 4">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/reinastor.webp" alt="Reina Fruktgård — bilde 5">
-              </figure>
+        <div class="strip-ss">
+          <div class="strip-ss__nav">
+            <button class="strip-ss__btn" id="stripPrev" aria-label="Forrige bilde">←</button>
+            <button class="strip-ss__btn" id="stripNext" aria-label="Neste bilde">→</button>
           </div>
-          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="slideshow__counter"><span id="slideIndex">1</span> / 5</div>
+          <div class="strip-ss__viewport">
+            <div class="strip-ss__track" id="stripTrack">
+              <figure class="strip-ss__slide"><img loading="eager" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 1"></figure>
+              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 2"></figure>
+              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinaside.webp" alt="Reina Fruktgård — bilde 3"></figure>
+              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinastor.webp" alt="Reina Fruktgård — bilde 4"></figure>
+            </div>
+          </div>
         </div>
             <div class="project-meta">
               <div class="pmeta">
@@ -229,46 +220,30 @@ Reina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. M
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Slideshow
-    const track = $("#slideshowTrack");
-    if (track) {
-      const slides = [...track.querySelectorAll(".slideshow__slide")];
-      const counter = $("#slideIndex");
+    // Strip slideshow
+    (function() {
+      const track = document.getElementById("stripTrack");
+      if (!track) return;
+      const slides = [...track.querySelectorAll(".strip-ss__slide")];
+      const N = slides.length;
       let current = 0;
-      let timer;
-      const slideshow = $("#slideshow");
-      const captionBar = $("#slideshowCaption");
-      let paused = false;
-      function goTo(n) {
-        current = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = current + 1;
-        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
+      function scrollTo(n) {
+        current = (n + N) % N;
+        track.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
       }
-      function startAuto() {
-        clearInterval(timer);
-        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
-      }
-      track.addEventListener("click", () => {
-        paused = !paused;
-        slideshow.classList.toggle("slideshow--paused", paused);
-        if (paused) clearInterval(timer);
-        else startAuto();
-      });
-      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
-      let touchStartX = 0;
-      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      document.getElementById("stripNext")?.addEventListener("click", () => scrollTo(current + 1));
+      document.getElementById("stripPrev")?.addEventListener("click", () => scrollTo(current - 1));
+      // drag to scroll
+      let dragging = false, startX = 0, scrollLeft = 0;
+      track.addEventListener("mousedown", e => { dragging = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; track.style.cursor = "grabbing"; });
+      track.addEventListener("mouseleave", () => { dragging = false; track.style.cursor = ""; });
+      track.addEventListener("mouseup", () => { dragging = false; track.style.cursor = ""; });
+      track.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX); });
+      track.addEventListener("scroll", () => {
+        const w = slides[0]?.offsetWidth || 1;
+        current = Math.round(track.scrollLeft / w);
       }, { passive: true });
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
-        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
-      });
-      startAuto();
-    }
+    })();
 
     // Accordion
     const accordion = document.getElementById("accordion");
