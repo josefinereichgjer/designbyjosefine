@@ -65,12 +65,9 @@
     .we-gallery img { width: 100%; display: block; }
 
     /* Logo */
-    .we-logos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .we-logo-box { aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 20px; }
-    .we-logo-box__label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; margin-top: 8px; }
-    .we-logo-mark { display: flex; align-items: baseline; gap: 6px; }
-    .we-logo-mark__we { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; }
-    .we-logo-mark__sub { font-size: 8px; text-transform: uppercase; letter-spacing: .12em; line-height: 1.3; max-width: 60px; }
+    .we-logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .we-logo-box { overflow: hidden; }
+    .we-logo-box img { width: 100%; display: block; }
 
     /* Palette */
     .we-palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -262,34 +259,12 @@
           <p class="we-section__num">03</p>
           <h2 class="we-section__heading">Logo</h2>
           <div class="we-logos">
-            <div class="we-logo-box" style="background:#30133d">
-              <div class="we-logo-mark">
-                <span class="we-logo-mark__we" style="color:#fcf7fa">WE</span>
-                <span class="we-logo-mark__sub" style="color:rgba(252,247,250,.6)">WOMEN EMPOWERMENT</span>
-              </div>
-              <span class="we-logo-box__label" style="color:rgba(252,247,250,.4)">Primær · mørk</span>
-            </div>
-            <div class="we-logo-box" style="background:#fcf7fa; border: 1px solid #e8e4e2">
-              <div class="we-logo-mark">
-                <span class="we-logo-mark__we" style="color:#30133d">WE</span>
-                <span class="we-logo-mark__sub" style="color:rgba(48,19,61,.5)">WOMEN EMPOWERMENT</span>
-              </div>
-              <span class="we-logo-box__label" style="color:#aaa">Primær · lys</span>
-            </div>
-            <div class="we-logo-box" style="background:#ace088">
-              <div class="we-logo-mark">
-                <span class="we-logo-mark__we" style="color:#30133d">WE</span>
-                <span class="we-logo-mark__sub" style="color:rgba(48,19,61,.6)">WOMEN EMPOWERMENT</span>
-              </div>
-              <span class="we-logo-box__label" style="color:rgba(48,19,61,.5)">Light green</span>
-            </div>
-            <div class="we-logo-box" style="background:#9495ce">
-              <div class="we-logo-mark">
-                <span class="we-logo-mark__we" style="color:#fcf7fa">WE</span>
-                <span class="we-logo-mark__sub" style="color:rgba(252,247,250,.7)">WOMEN EMPOWERMENT</span>
-              </div>
-              <span class="we-logo-box__label" style="color:rgba(252,247,250,.5)">Soft periwinkle</span>
-            </div>
+            <div class="we-logo-box"><img src="./assets/wepurpur.png" alt="WE logo — lilla på lilla" loading="lazy"></div>
+            <div class="we-logo-box"><img src="./assets/wehreen.png" alt="WE logo — grønn" loading="lazy"></div>
+            <div class="we-logo-box"><img src="./assets/wegrepurp.png" alt="WE logo — grønn på lilla" loading="lazy"></div>
+            <div class="we-logo-box"><img src="./assets/wewhite.png" alt="WE logo — hvit" loading="lazy"></div>
+            <div class="we-logo-box"><img src="./assets/wepurgre.png" alt="WE logo — lilla på grønn" loading="lazy"></div>
+            <div class="we-logo-box"><img src="./assets/wewhitepur.png" alt="WE logo — hvit på lilla" loading="lazy"></div>
           </div>
         </section>
 
