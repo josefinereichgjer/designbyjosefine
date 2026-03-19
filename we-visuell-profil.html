@@ -59,10 +59,7 @@
     .we-step__title { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
     .we-step__body { font-size: 12px; color: #666; line-height: 1.55; }
 
-    /* Gallery */
-    .we-gallery { columns: 3; gap: 12px; }
-    .we-gallery figure { break-inside: avoid; margin: 0 0 12px; }
-    .we-gallery img { width: 100%; display: block; }
+    /* Gallery — strip slideshow */
 
     /* Logo */
     .we-logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -265,15 +262,21 @@
         <section class="we-section">
           <p class="we-section__num">02</p>
           <h2 class="we-section__heading">Bildebruk</h2>
-          <div class="we-gallery">
-            <figure><img src="./assets/kitty.webp" alt="WE — sosiale medier" loading="lazy"></figure>
-            <figure><img src="./assets/doorskilt.webp" alt="WE — dørskilting" loading="lazy"></figure>
-            <figure><img src="./assets/storefront.webp" alt="WE — storefront" loading="lazy"></figure>
-            <figure><img src="./assets/skjema.webp" alt="WE — skjema" loading="lazy"></figure>
-            <figure><img src="./assets/newicon.webp" alt="WE — ikon" loading="lazy"></figure>
-            <figure><img src="./assets/weinsta.webp" alt="WE — Instagram" loading="lazy"></figure>
-            <figure><img src="./assets/wenettside.webp" alt="WE — nettside" loading="lazy"></figure>
-            <figure><img src="./assets/banner.webp" alt="WE — banner" loading="lazy"></figure>
+          <div class="strip-ss">
+            <div class="strip-ss__nav">
+              <button class="strip-ss__btn" id="weStripPrev" aria-label="Forrige bilde">←</button>
+              <button class="strip-ss__btn" id="weStripNext" aria-label="Neste bilde">→</button>
+            </div>
+            <div class="strip-ss__viewport">
+              <div class="strip-ss__track" id="weStripTrack">
+                <figure class="strip-ss__slide"><img loading="eager" decoding="async" draggable="false" src="./assets/wewomen1.jpeg" alt="WE — bilde 1"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen2.jpeg" alt="WE — bilde 2"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen3.jpeg" alt="WE — bilde 3"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen4.jpeg" alt="WE — bilde 4"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen5.jpeg" alt="WE — bilde 5"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen6.jpeg" alt="WE — bilde 6"></figure>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -435,6 +438,30 @@
     const $ = (s) => document.querySelector(s);
     document.querySelector("#year").textContent = new Date().getFullYear();
 
+    // Strip slideshow
+    (function() {
+      const track = document.getElementById("weStripTrack");
+      if (!track) return;
+      const slides = [...track.querySelectorAll(".strip-ss__slide")];
+      const N = slides.length;
+      let current = 0;
+      function scrollTo(n) {
+        current = (n + N) % N;
+        track.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
+      }
+      document.getElementById("weStripNext")?.addEventListener("click", () => scrollTo(current + 1));
+      document.getElementById("weStripPrev")?.addEventListener("click", () => scrollTo(current - 1));
+      let dragging = false, startX = 0, scrollLeft = 0;
+      track.addEventListener("mousedown", e => { dragging = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; track.style.cursor = "grabbing"; });
+      track.addEventListener("mouseleave", () => { dragging = false; track.style.cursor = ""; });
+      track.addEventListener("mouseup", () => { dragging = false; track.style.cursor = ""; });
+      track.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX); });
+      track.addEventListener("scroll", () => {
+        const w = slides[0]?.offsetWidth || 1;
+        current = Math.round(track.scrollLeft / w);
+      }, { passive: true });
+    })();
+
     // Lightbox
     const lbOverlay = document.getElementById("lbOverlay");
     const lbImg = document.getElementById("lbImg");
@@ -456,11 +483,7 @@
     lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
     lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
     document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && e.target.closest(".we-gallery") ? e.target : null;
-      if (imgEl) {
-        const imgs = [...document.querySelectorAll(".we-gallery img")];
-        openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
-      } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
+      if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
       if (!lbOverlay.classList.contains("lb-open")) return;
