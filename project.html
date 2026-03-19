@@ -237,7 +237,7 @@
               ${(project.introColumns || []).length ? `<div class="intro-cols">${project.introColumns.map(c => `<div class="intro-col"><strong class="intro-col__label">${c.label}</strong><p class="intro-col__body">${c.body}</p></div>`).join("")}</div>` : ""}
               <div class="header-btns">
                 ${project.link ? `<a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗ ${project.link.label}</a>` : ""}
-                ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
+                ${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
               </div>
             </div>
             ${project.heroVideo ? `
@@ -255,10 +255,10 @@
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
               ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
-              ${accordionHTML && !(project.sections || []).length ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
+              ${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>` : ""}
           </div>
-          ${accordionHTML && !(project.sections || []).length ? `
+          ${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? `
           <div class="project-layout__side">
             <div class="project-layout__info" id="projectInfo">
               <div class="project-layout__info-inner">
@@ -309,7 +309,7 @@
           }
           return "";
         }).join("")}</div>` : ""}
-        ${accordionHTML && (project.sections || []).length ? `
+        ${accordionHTML && (project.sections || []).length && !project.showAccordion ? `
         <button class="panel-toggle panel-toggle--bottom" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
         <div class="inline-accordion" id="inlineAccordion" hidden>
           <div class="accordion" id="accordion">${accordionHTML}</div>
@@ -364,6 +364,14 @@
 
       $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
       $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+
+      let touchStartX = 0;
+      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      }, { passive: true });
+
       document.addEventListener("keydown", e => {
         if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
         if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }

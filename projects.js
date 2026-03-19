@@ -105,7 +105,6 @@ window.PROJECTS = [
     processText: "<strong>Primærmålgruppe</strong>\nUngdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet.\n\n<strong>Sekundærmålgruppe</strong>\nForeldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen."
   },
   {
-    noDrawer: true,
     id: "ansatts-portal",
     title: "Tjønnås og Norvald",
     subtitle: "UX design",
@@ -115,6 +114,7 @@ window.PROJECTS = [
     images: ["./assets/tjonnipadiphone.webp"],
     noSlideshow: true,
     introBorder: true,
+    showAccordion: true,
     intro: "Ansattportal for Tjønnås Delikatesser og Norvald Café:\nett system som samler vaktlister, kommunikasjon og opplæring på én plass.",
     scrollGalleries: [
       {
@@ -164,6 +164,10 @@ window.PROJECTS = [
       {
         heading: "Designmanual",
         link: { label: "Åpne designmanual", src: "./assets/norvald/Designmanual.pdf", plain: true }
+      },
+      {
+        heading: "Presentasjon",
+        link: { label: "Åpne presentasjon", src: "https://www.canva.com/design/DAG5D6PV-Tc/0pcCKonM91HyyvCOiMM8ZA/view?utm_content=DAG5D6PV-Tc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf8713a3968", plain: true }
       }
     ],
     sections: [
