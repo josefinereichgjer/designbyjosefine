@@ -75,10 +75,14 @@
     .we-logo-badge img { width: 100%; height: 100%; }
 
     /* Logo specs */
-    .we-logo-specs { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-    .we-logo-specs__images { display: flex; flex-direction: column; gap: 10px; }
-    .we-logo-specs__images img { width: 200px; display: block; border: 1px solid #e8e4e2; }
-    .we-logo-specs__text { display: flex; flex-direction: column; gap: 24px; }
+    .we-logo-specs { margin-top: 48px; display: flex; flex-direction: column; gap: 40px; }
+    .we-logo-spec-row { display: grid; gap: 32px; align-items: center; }
+    .we-logo-spec-row--friluft { grid-template-columns: auto auto 1fr; }
+    .we-logo-spec-row--minsize { grid-template-columns: 1fr auto; }
+    .we-logo-spec-row img { display: block; border: 1px solid #e8e4e2; }
+    .we-logo-spec-row--friluft img:first-of-type { width: 240px; }
+    .we-logo-spec-row--friluft img:last-of-type { width: 140px; }
+    .we-logo-spec-row--minsize img { width: 200px; }
     .we-logo-specs__block p { font-size: 13px; line-height: 1.7; color: #444; margin: 0; }
     .we-logo-specs__block strong { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #999; display: block; margin-bottom: 6px; font-weight: 500; }
 
@@ -282,20 +286,20 @@
         </section>
 
           <div class="we-logo-specs">
-            <div class="we-logo-specs__images">
+            <div class="we-logo-spec-row we-logo-spec-row--friluft">
               <img src="./assets/helekravlogo.png" alt="Friluft — hele logoens krav" loading="lazy">
               <img src="./assets/litenkravlogo.png" alt="Friluft — liten variant" loading="lazy">
-              <img src="./assets/minimumstrls.png" alt="Minimumsstørrelse" loading="lazy">
-            </div>
-            <div class="we-logo-specs__text">
               <div class="we-logo-specs__block">
                 <strong>Friluft</strong>
                 <p>For å sikre tydelighet og lesbarhet skal logoen alltid ha tilstrekkelig friluft rundt seg. Friluftsonen defineres av høyden på et utvalgt element i logoen og må minimum opprettholdes på alle sider. Ingen tekst, grafiske elementer eller bilder skal plasseres innenfor dette området.</p>
               </div>
+            </div>
+            <div class="we-logo-spec-row we-logo-spec-row--minsize">
               <div class="we-logo-specs__block">
                 <strong>Minimumsstørrelse</strong>
                 <p>Minimumsstørrelsen er satt for å sikre at detaljer og typografi forblir tydelige både i trykk og på digitale flater. Logoen skal ikke brukes mindre enn angitte mål, slik at formspråk og lesbarhet ikke forringes.</p>
               </div>
+              <img src="./assets/minimumstrls.png" alt="Minimumsstørrelse" loading="lazy">
             </div>
           </div>
 
