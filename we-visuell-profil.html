@@ -56,6 +56,7 @@
               <p class="project-intro"></p>
 
               <div class="header-btns">
+
                 <button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
               </div>
             </div>
@@ -147,6 +148,10 @@
           </div>
         </div>
 
+
+
+
+
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
                   <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
@@ -222,6 +227,25 @@
       });
     });
 
+    // Expandable gallery
+    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
+      cover.addEventListener("click", () => {
+        const section = cover.closest(".gallery-expandable");
+        const wasOpen = section.classList.contains("is-open");
+        section.classList.toggle("is-open");
+        if (!wasOpen && window.innerWidth <= 780) {
+          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+        }
+      });
+    });
+    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const section = btn.closest(".gallery-expandable");
+        section.classList.remove("is-open");
+        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
     // Lightbox
     const lbOverlay = document.getElementById("lbOverlay");
     const lbImg = document.getElementById("lbImg");
@@ -245,7 +269,11 @@
     document.addEventListener("click", e => {
       const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
       if (imgEl) {
-        openLightbox(imgEl.src, imgEl.alt, [], 0);
+        const section = imgEl.closest(".gallery-expandable");
+        if (section) {
+          const imgs = [...section.querySelectorAll(".project__figure img")];
+          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
+        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
@@ -266,6 +294,9 @@
       title: item.querySelector(".accordion__title").textContent,
       content: item.querySelector(".accordion__panel-inner").innerHTML
     }));
+    if (project && project.processText) {
+      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
+    }
     function showDrawerIndex() {
       processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
       processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
@@ -293,7 +324,9 @@
       processDrawer.setAttribute("aria-hidden", "true");
     }
     processToggle?.addEventListener("click", openDrawer);
-    document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
+    if (project && !project.noDrawer) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
+    }
     processDrawerClose?.addEventListener("click", closeDrawer);
     processBackdrop?.addEventListener("click", closeDrawer);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });

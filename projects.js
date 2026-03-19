@@ -71,7 +71,8 @@ window.PROJECTS = [
         body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet."
       }
     },
-    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" }
+    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" },
+    skipBuild: true
   },
   {
     id: "stoppestedet",
@@ -373,7 +374,6 @@ window.PROJECTS = [
     tags: ["Strategisk design"],
     cover: "./assets/kitty.webp",
     images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" },
-    skipBuild: true
+    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
   }
 ];
