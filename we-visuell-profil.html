@@ -140,12 +140,17 @@
       .we-logos { grid-template-columns: 1fr 1fr; }
       .we-palette { grid-template-columns: 1fr 1fr; }
       .we-gallery { columns: 2; }
+      .we-logo-spec-row { flex-direction: column; align-items: flex-start; }
+      .we-logo-spec-row--friluft .we-spec-img-large,
+      .we-logo-spec-row--friluft .we-spec-img-small,
+      .we-logo-spec-row--minsize .we-spec-img-min { width: 100%; max-width: 320px; }
     }
     @media (max-width: 600px) {
       .we-steps { grid-template-columns: 1fr; }
       .we-typo { grid-template-columns: 1fr; }
       .we-swot { grid-template-columns: 1fr; }
       .we-gallery { columns: 1; }
+      .we-hero__meta { gap: 20px; }
     }
   </style>
 </head>
