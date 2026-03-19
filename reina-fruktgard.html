@@ -61,19 +61,28 @@
               </div>
             </div>
             
-        <div class="strip-ss">
-          <div class="strip-ss__nav">
-            <button class="strip-ss__btn" id="stripPrev" aria-label="Forrige bilde">←</button>
-            <button class="strip-ss__btn" id="stripNext" aria-label="Neste bilde">→</button>
+        <div class="slideshow__caption-bar" id="slideshowCaption"></div>
+        <div class="slideshow" id="slideshow">
+          <div class="slideshow__track" id="slideshowTrack">
+              <figure class="slideshow__slide" data-caption="">
+                <img loading="eager" decoding="async" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 1">
+              </figure>
+              <figure class="slideshow__slide" data-caption="">
+                <img loading="lazy" decoding="async" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 2">
+              </figure>
+              <figure class="slideshow__slide" data-caption="">
+                <img loading="lazy" decoding="async" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 3">
+              </figure>
+              <figure class="slideshow__slide" data-caption="">
+                <img loading="lazy" decoding="async" src="./assets/reinaside.webp" alt="Reina Fruktgård — bilde 4">
+              </figure>
+              <figure class="slideshow__slide" data-caption="">
+                <img loading="lazy" decoding="async" src="./assets/reinastor.webp" alt="Reina Fruktgård — bilde 5">
+              </figure>
           </div>
-          <div class="strip-ss__viewport">
-            <div class="strip-ss__track" id="stripTrack">
-              <figure class="strip-ss__slide"><img loading="eager" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 1"></figure>
-              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 2"></figure>
-              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinaside.webp" alt="Reina Fruktgård — bilde 3"></figure>
-              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinastor.webp" alt="Reina Fruktgård — bilde 4"></figure>
-            </div>
-          </div>
+          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="slideshow__counter"><span id="slideIndex">1</span> / 5</div>
         </div>
             <div class="project-meta">
               <div class="pmeta">
@@ -220,29 +229,45 @@ Reina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. M
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Strip slideshow
-    const stripViewport = document.querySelector(".strip-ss__viewport");
-    if (stripViewport) {
-      const slides = [...stripViewport.querySelectorAll(".strip-ss__slide")];
-      function sw() { return slides[0].getBoundingClientRect().width + 6; }
-      document.getElementById("stripNext")?.addEventListener("click", () =>
-        stripViewport.scrollBy({ left: sw(), behavior: "smooth" }));
-      document.getElementById("stripPrev")?.addEventListener("click", () =>
-        stripViewport.scrollBy({ left: -sw(), behavior: "smooth" }));
-      let startX = 0, startScroll = 0, pointerDown = false;
-      stripViewport.addEventListener("pointerdown", e => {
-        pointerDown = true; startX = e.clientX; startScroll = stripViewport.scrollLeft;
-        stripViewport.setPointerCapture(e.pointerId);
+    // Slideshow
+    const track = $("#slideshowTrack");
+    if (track) {
+      const slides = [...track.querySelectorAll(".slideshow__slide")];
+      const counter = $("#slideIndex");
+      let current = 0;
+      let timer;
+      const slideshow = $("#slideshow");
+      const captionBar = $("#slideshowCaption");
+      let paused = false;
+      function goTo(n) {
+        current = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = current + 1;
+        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
+      }
+      function startAuto() {
+        clearInterval(timer);
+        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
+      }
+      track.addEventListener("click", () => {
+        paused = !paused;
+        slideshow.classList.toggle("slideshow--paused", paused);
+        if (paused) clearInterval(timer);
+        else startAuto();
       });
-      stripViewport.addEventListener("pointermove", e => {
-        if (!pointerDown) return;
-        stripViewport.scrollLeft = startScroll - (e.clientX - startX);
-      });
-      stripViewport.addEventListener("pointerup", () => { pointerDown = false; });
+      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+      let touchStartX = 0;
+      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      }, { passive: true });
       document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") stripViewport.scrollBy({ left: sw(), behavior: "smooth" });
-        if (e.key === "ArrowLeft")  stripViewport.scrollBy({ left: -sw(), behavior: "smooth" });
+        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
+        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
       });
+      startAuto();
     }
 
     // Accordion
