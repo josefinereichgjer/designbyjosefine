@@ -240,7 +240,7 @@ window.PROJECTS = [
       },
       { type: "expandable",
         heading: "Digitale flater",
-        cover: { src: "./assets/srhvideo.mp4", caption: "Tilhørende nettside", captionLink: "http://127.0.0.1:5501/srh-open-day-3/index.html", video: true, autoplay: true },
+        cover: { src: "./assets/srhvideo.mp4", caption: "Tilhørende nettside", captionLink: "./srh-open-day-3/index.html", video: true, autoplay: true },
         items: [
           { src: "./assets/linkedinsrh.webp",    caption: "LinkedIn-karusell" },
           { src: "./assets/facebook.webp",       caption: "Facebook event cover" },
