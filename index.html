@@ -91,8 +91,8 @@
     /* ── Top-left block ── */
     .landing__topleft {
       position: absolute;
-      top: 36px;
-      left: 44px;
+      top: 20px;
+      left: 20px;
       z-index: 50;
       display: flex;
       flex-direction: column;
@@ -103,7 +103,7 @@
     .landing__portfolio-link {
       z-index: 50;
       font-family: "Poppins", sans-serif;
-      font-size: clamp(52px, 7vw, 96px);
+      font-size: 58px;
       font-weight: 700;
       letter-spacing: 0;
       line-height: 1;
@@ -114,9 +114,10 @@
     .landing__portfolio-link:hover .landing__name { opacity: .7; }
 
     .landing__name {
-      display: block;
+      display: flex;
+      align-items: center;
       font-family: "Poppins", sans-serif;
-      font-size: clamp(18px, 2vw, 28px);
+      font-size: 16px;
       font-weight: 600;
       letter-spacing: 0.01em;
       color: #fff;
@@ -126,7 +127,7 @@
     .landing__wip {
       display: block;
       font-family: "Poppins", sans-serif;
-      font-size: clamp(20px, 2.4vw, 32px);
+      font-size: 20px;
       font-weight: 600;
       letter-spacing: 0.08em;
       color: #bcd8f0;
@@ -144,20 +145,15 @@
     /* ── CTA + bio — bottom-left ── */
     .landing__brand {
       position: absolute;
-      bottom: 36px;
-      left: 44px;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
       z-index: 50;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 14px;
       pointer-events: none;
-    }
-    @media (max-width: 820px) {
-      .landing__brand { left: 28px; bottom: 28px; }
-    }
-    @media (max-width: 600px) {
-      .landing__brand { left: 20px; bottom: 20px; right: 20px; }
     }
 
     .landing__logo {
@@ -166,21 +162,25 @@
       display: block;
     }
 
-    .landing__logo-mobile { display: none; }
-    .landing__cta-label--short { display: none; }
-    .landing__bio--short { display: none; }
+    /* Mobile: show short variants, hide full */
+    .landing__logo-mobile { display: inline-block; vertical-align: middle; margin-left: 8px; }
+    .landing__logo-desktop { display: none; }
+    .landing__cta-label--short { display: inline; }
+    .landing__cta-label--full { display: none; }
+    .landing__bio--short { display: inline; }
+    .landing__bio--full { display: none; }
 
     .landing__cta {
-      margin-top: 6px;
+      margin-top: 10px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 14px 32px;
+      padding: 9px 18px;
       border-radius: 0;
       background: #bcd8f0;
       color: #000;
       font-family: inherit;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.03em;
       text-decoration: none;
@@ -200,54 +200,58 @@
     }
     .landing__cta:hover .landing__cta-arrow { transform: translateX(3px); }
 
-    /* ── Bio — inside bottom-left brand block ── */
+    /* ── Bio ── */
     .landing__bio {
-      max-width: 480px;
-      font-size: clamp(12px, 1vw, 14px);
+      max-width: none;
+      font-size: 12px;
       font-weight: 300;
       line-height: 1.85;
       letter-spacing: 0.015em;
       color: rgba(255,255,255,1);
       overflow-wrap: break-word;
     }
-    @media (max-width: 820px) {
+
+    /* Mobile collage */
+    .collage-scene { transform: scale(.72); transform-origin: center; }
+
+    /* ── Tablet (768px+) ── */
+    @media (min-width: 768px) {
       .landing__topleft { top: 28px; left: 28px; }
-    }
-    @media (max-width: 600px) {
-      .landing__topleft { top: 20px; left: 20px; }
-      .landing__bio { max-width: none; font-size: 12px; text-align: left; hyphens: none; }
-      .landing__cta { padding: 9px 18px; font-size: 12px; }
-      .landing__cta-label--full { display: none; }
-      .landing__bio--full { display: none; }
-      .landing__bio--short { display: inline; }
-      .landing__cta-label--short { display: inline; }
-      .landing__logo-desktop { display: none; }
-      .landing__logo-mobile { display: inline-block; vertical-align: middle; margin-left: 8px; }
-      .landing__name { display: flex; align-items: center; }
+      .landing__brand { left: 28px; bottom: 28px; right: auto; }
+      .landing__portfolio-link { font-size: 108px; }
+      .landing__name { font-size: 30px; display: block; }
+      .landing__wip { font-size: 34px; }
+      .landing__logo-desktop { display: inline-block; }
+      .landing__logo-mobile { display: none; }
+      .landing__cta-label--full { display: inline; }
+      .landing__cta-label--short { display: none; }
+      .landing__bio--full { display: inline; }
+      .landing__bio--short { display: none; }
+      .landing__bio { font-size: 15px; max-width: 520px; line-height: 1.75; }
+      .landing__cta { font-size: 20px; padding: 18px 40px; margin-top: 0; }
+      .collage-scene { transform: scale(1.4) translateX(-22%); transform-origin: center; }
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 1100px) {
-      .collage-scene { transform: scale(.88); transform-origin: center; }
+    /* ── Small desktop (1024px+) ── */
+    @media (min-width: 1024px) {
+      .landing__topleft { top: 36px; left: 44px; }
+      .landing__brand { left: 44px; bottom: 36px; }
+      .landing__portfolio-link { font-size: clamp(52px, 7vw, 96px); }
+      .landing__name { font-size: clamp(18px, 2vw, 28px); }
+      .landing__wip { font-size: clamp(20px, 2.4vw, 32px); }
+      .landing__bio { font-size: clamp(12px, 1vw, 14px); max-width: 480px; line-height: 1.85; }
+      .landing__cta { font-size: 14px; padding: 14px 32px; margin-top: 6px; }
+      .collage-scene { transform: scale(.92); transform-origin: center; }
     }
-    @media (max-width: 1100px) and (orientation: portrait) {
+
+    /* Keep tablet collage on portrait (e.g. iPad portrait at 1024px) */
+    @media (min-width: 768px) and (orientation: portrait) {
       .collage-scene { transform: scale(1.4) translateX(-22%); transform-origin: center; }
-      .landing__portfolio-link { font-size: 108px; }
-      .landing__name { font-size: 30px; }
-      .landing__wip { font-size: 34px; }
-      .landing__bio { font-size: 15px; max-width: 520px; line-height: 1.75; }
-      .landing__cta { font-size: 20px; padding: 18px 40px; }
     }
-    @media (max-width: 820px) {
-      .collage-scene { transform: scale(.72); transform-origin: center; }
-      .landing__portfolio-link { font-size: 68px; }
-    }
-    @media (max-width: 600px) {
-      .collage-scene  { transform: scale(.75); transform-origin: center; }
-      .landing__portfolio-link { font-size: 58px; }
-    }
-    @media (max-width: 400px) {
-      .collage-scene { transform: scale(.62); transform-origin: center; }
+
+    /* ── Large desktop (1440px+) ── */
+    @media (min-width: 1440px) {
+      .collage-scene { transform: none; }
     }
   </style>
 </head>
