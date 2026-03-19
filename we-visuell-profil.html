@@ -9,11 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/fsf3tmv.css">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.png">
   <style>
     /* ── WE case study ── */
-    .we-page { --we-amethyst: #30133d; --we-lime: #ace088; --we-periwinkle: #9495ce; --we-snow: #fcf7fa; font-family: 'Poppins', sans-serif; }
+    .we-page { --we-amethyst: #30133d; --we-lime: #ace088; --we-periwinkle: #9495ce; --we-snow: #fcf7fa; font-family: 'neuzeit-grotesk', sans-serif; }
 
     .we-hero {
       background: var(--we-amethyst);
@@ -30,7 +31,7 @@
       padding: 5px 14px; margin-bottom: 32px; color: rgba(255,255,255,.7);
     }
     .we-hero__pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--we-lime); flex-shrink: 0; }
-    .we-hero__title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(48px, 7vw, 88px); line-height: .95; margin: 0 0 32px; }
+    .we-hero__title { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: clamp(48px, 7vw, 88px); line-height: .95; margin: 0 0 32px; }
     .we-hero__title em { font-style: italic; font-weight: 300; color: var(--we-periwinkle); }
     .we-hero__intro { font-size: 16px; line-height: 1.65; max-width: 520px; color: rgba(255,255,255,.8); margin-bottom: 40px; }
     .we-hero__meta { display: flex; gap: 40px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.15); padding-top: 28px; }
@@ -42,7 +43,7 @@
 
     .we-section { padding: 64px 0; border-top: 1px solid #e8e4e2; }
     .we-section__num { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #aaa; margin-bottom: 12px; }
-    .we-section__heading { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.1; margin: 0 0 40px; color: #111; }
+    .we-section__heading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.1; margin: 0 0 40px; color: #111; }
 
     /* Oppdragsgiver */
     .we-client { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
@@ -52,13 +53,13 @@
       padding: 36px 32px; position: relative;
     }
     .we-quote__mark { font-family: 'DM Serif Display', serif; font-size: 64px; line-height: 0; color: rgba(255,255,255,.2); position: absolute; top: 24px; left: 28px; }
-    .we-quote__text { font-family: 'Poppins', sans-serif; font-weight: 300; font-style: italic; font-size: 18px; line-height: 1.6; margin: 0 0 20px; padding-top: 24px; }
+    .we-quote__text { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 300; font-style: italic; font-size: 18px; line-height: 1.6; margin: 0 0 20px; padding-top: 24px; }
     .we-quote__attr { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.5); }
 
     /* Prosess */
     .we-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
     .we-step { border: 1px solid #e8e4e2; padding: 24px 20px; }
-    .we-step__num { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 30px; color: #ddd; margin-bottom: 12px; }
+    .we-step__num { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: 30px; color: #9495ce; margin-bottom: 12px; }
     .we-step__title { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
     .we-step__body { font-size: 12px; color: #666; line-height: 1.55; }
 
@@ -77,7 +78,7 @@
 
     /* Logo specs */
     .we-logo-specs { margin-top: 48px; display: flex; flex-direction: column; gap: 48px; }
-    .we-logo-specs__subheading { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 18px; color: #111; margin: 0; }
+    .we-logo-specs__subheading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #111; margin: 0; }
     .we-logo-spec-row { display: flex; gap: 28px; align-items: center; }
     .we-logo-spec-row--friluft { align-items: flex-start; }
     .we-logo-spec-row img { display: block; flex-shrink: 0; border: 1px solid #e8e4e2; }
@@ -97,17 +98,21 @@
     .we-swatch__name { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: .07em; }
 
     /* Typography */
-    .we-typo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .we-typo-card { padding: 36px 32px; }
-    .we-typo-card--dark { background: var(--we-amethyst); color: var(--we-snow); }
-    .we-typo-card--light { background: var(--we-snow); border: 1px solid #e8e4e2; }
-    .we-typo-card__label { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; opacity: .5; margin-bottom: 16px; }
-    .we-typo-card__specimen { font-family: 'DM Serif Display', serif; font-size: 40px; line-height: 1.1; margin-bottom: 16px; }
-    .we-typo-card__specimen em { font-style: italic; color: var(--we-periwinkle); }
-    .we-typo-card__body { font-size: 12px; line-height: 1.6; opacity: .7; }
-    .we-typo-card--light .we-typo-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e8e4e2; font-size: 13px; }
-    .we-typo-card--light .we-typo-row:last-child { border-bottom: none; }
-    .we-typo-card--light .we-typo-weight { color: #aaa; font-size: 11px; }
+    .we-section__top { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin-bottom: 48px; }
+    .we-section__top .we-section__heading { margin-bottom: 0; }
+    .we-section__top-meta { display: flex; justify-content: space-between; align-items: start; gap: 24px; padding-top: 8px; }
+    .we-section__top-desc { font-size: 13px; line-height: 1.65; color: #555; }
+    .we-section__top-year { font-size: 13px; color: #aaa; white-space: nowrap; }
+    .we-typo { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; }
+    .we-typo-col { font-family: 'neuzeit-grotesk', sans-serif; }
+    .we-typo-col--bold { font-weight: 700; }
+    .we-typo-col--regular { font-weight: 400; }
+    .we-typo-col--italic { font-family: 'natom', 'neuzeit-grotesk', sans-serif; font-style: italic; font-weight: 400; }
+    .we-typo-col__aa { font-size: clamp(72px, 9vw, 130px); line-height: 1; margin-bottom: 16px; color: #111; }
+    .we-typo-col__name { font-size: 14px; color: var(--we-periwinkle); margin-bottom: 20px; }
+    .we-typo-col__name--bold { font-weight: 700; }
+    .we-typo-col__name--italic { font-style: italic; }
+    .we-typo-col__alphabet { font-size: 13px; line-height: 1.65; color: #333; }
 
     /* SWOT */
     .we-swot { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
@@ -149,6 +154,7 @@
     @media (max-width: 600px) {
       .we-steps { grid-template-columns: 1fr; }
       .we-typo { grid-template-columns: 1fr; }
+      .we-section__top { grid-template-columns: 1fr; }
       .we-swot { grid-template-columns: 1fr; }
       .we-gallery { columns: 1; }
       .we-hero__meta { gap: 20px; }
@@ -349,19 +355,27 @@
         <!-- 05 Typografi -->
         <section class="we-section">
           <p class="we-section__num">05</p>
-          <h2 class="we-section__heading">Typografi</h2>
-          <div class="we-typo">
-            <div class="we-typo-card we-typo-card--dark">
-              <p class="we-typo-card__label">DM Serif Display · Overskrifter</p>
-              <div class="we-typo-card__specimen">Kvinner <em>skaper</em> endring.</div>
-              <p class="we-typo-card__body">DM Serif Display brukes til overskrifter og fremhevede sitat. Italic som kontrastelementfor lekent og personlig uttrykk.</p>
+          <div class="we-section__top">
+            <h2 class="we-section__heading">Typografi</h2>
+            <div class="we-section__top-meta">
+              <p class="we-section__top-desc">Neuzeit Grotesk brukes som gjennomgående skrifttype i identiteten. Regular benyttes til brødtekst og generell kommunikasjon, mens Italic brukes for å skape variasjon, sitater eller fremheving.</p>
             </div>
-            <div class="we-typo-card we-typo-card--light">
-              <p class="we-typo-card__label">DM Sans · Brødtekst / UI</p>
-              <div class="we-typo-row"><span>DM Sans Light</span><span class="we-typo-weight">300</span></div>
-              <div class="we-typo-row"><span>DM Sans Regular</span><span class="we-typo-weight">400</span></div>
-              <div class="we-typo-row"><span>DM Sans Medium</span><span class="we-typo-weight">500</span></div>
-              <p class="we-typo-card__body" style="margin-top:16px">Ren og moderne grotesk for brødtekst og UI. Sikrer hierarki og lesbarhet på tvers av alle flater.</p>
+          </div>
+          <div class="we-typo">
+            <div class="we-typo-col we-typo-col--bold">
+              <div class="we-typo-col__aa">Aa</div>
+              <p class="we-typo-col__name we-typo-col__name--bold">Neuzeit Groteks, Bold</p>
+              <p class="we-typo-col__alphabet">Aa BbCc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br>Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0123456789!@#$%^&amp;*( )</p>
+            </div>
+            <div class="we-typo-col we-typo-col--regular">
+              <div class="we-typo-col__aa">Aa</div>
+              <p class="we-typo-col__name">Neuzeit Grotesk, Regular</p>
+              <p class="we-typo-col__alphabet">Aa BbCc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br>Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0123456789!@#$%^&amp;*( )</p>
+            </div>
+            <div class="we-typo-col we-typo-col--italic">
+              <div class="we-typo-col__aa">Aa</div>
+              <p class="we-typo-col__name we-typo-col__name--italic">Natom pro Regular Italic</p>
+              <p class="we-typo-col__alphabet">Aa BbCc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br>Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0123456789!@#$%^&amp;*( )</p>
             </div>
           </div>
         </section>
