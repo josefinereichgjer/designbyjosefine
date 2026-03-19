@@ -66,7 +66,7 @@
     .we-page .strip-ss__slide img { width: 100%; height: 300px; object-fit: cover; }
 
     /* Logo */
-    .we-logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .we-logos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 660px; }
     .we-logo-box { overflow: hidden; position: relative; }
     .we-logo-box img { width: 100%; display: block; }
     .we-logo-badge {
@@ -146,12 +146,14 @@
       .we-palette { grid-template-columns: 1fr 1fr; }
       .we-gallery { columns: 2; }
       .we-logo-spec-row { flex-direction: column; align-items: flex-start; }
-      .we-logo-spec-row--friluft .we-spec-img-large { width: 200px; }
-      .we-logo-spec-row--friluft .we-spec-img-small { width: 120px; }
-      .we-logo-spec-row--minsize .we-spec-img-min { width: 180px; }
+      .we-logo-spec-row--friluft { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 12px; }
+      .we-logo-spec-row--friluft .we-spec-img-large { height: 100px; width: auto; }
+      .we-logo-spec-row--friluft .we-spec-img-small { height: 100px; width: auto; }
+      .we-logo-spec-row--friluft .we-logo-specs__block { width: 100%; }
+      .we-logo-spec-row--minsize .we-spec-img-min { width: 260px; }
     }
     @media (max-width: 600px) {
-      .we-steps { grid-template-columns: 1fr; }
+      .we-steps { grid-template-columns: 1fr 1fr; }
       .we-typo { grid-template-columns: 1fr; }
       .we-section__top { grid-template-columns: 1fr; }
       .we-swot { grid-template-columns: 1fr; }
@@ -233,7 +235,10 @@
               <p>WE fungerer som en brobygger mellom næringsliv og sosialt entreprenørskap, ved å koble virksomheter med sosiale entreprenører og følge opp resultatene over tid.</p>
               <p>Oppdraget ble gitt uten en fastsatt visuell retning, noe som ga stort strategisk handlingsrom, men også krevde egne valg og tett dialog underveis.</p>
             </div>
-            <a href="https://www.linkedin.com/posts/kirstine-holst_kvinnedagen-sosialtentreprenaeorskap-stiftelsenwe-activity-7304195466643038208-b-LH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI0OqoBN-ikYxYK7sTRX62ULrtF7TQiGZ4" target="_blank" rel="noopener"><img src="./assets/ragnhildkistine.webp" alt="Ragnhild og Kirstine" style="width:100%;display:block;"></a>
+            <figure style="margin:0;">
+              <a href="https://www.linkedin.com/posts/kirstine-holst_kvinnedagen-sosialtentreprenaeorskap-stiftelsenwe-activity-7304195466643038208-b-LH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI0OqoBN-ikYxYK7sTRX62ULrtF7TQiGZ4" target="_blank" rel="noopener"><img src="./assets/ragnhildkistine.webp" alt="Ragnhild og Kirstine" style="width:100%;display:block;"></a>
+              <figcaption style="font-size:13px;color:#111;margin-top:6px;">Til venstre: Kirstine Holst, til høyre: Ragnhild Slettner</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -303,8 +308,8 @@
             <div class="we-logo-box"><span class="we-logo-badge"><img src="./assets/check-bold.svg" alt="Godkjent"></span><img src="./assets/wepurpur.png" alt="WE logo — lilla på lilla" loading="lazy"></div>
             <div class="we-logo-box"><span class="we-logo-badge"><img src="./assets/x-bold.svg" alt="Ikke godkjent"></span><img src="./assets/wepurgre.png" alt="WE logo — lilla på grønn" loading="lazy"></div>
             <div class="we-logo-box"><span class="we-logo-badge"><img src="./assets/check-bold.svg" alt="Godkjent"></span><img src="./assets/wewhitepur.png" alt="WE logo — hvit på lilla" loading="lazy"></div>
-            <div class="we-logo-box"><span class="we-logo-badge"><img src="./assets/x-bold.svg" alt="Ikke godkjent"></span><img src="./assets/wewhite.png" alt="WE logo — hvit på grønn" loading="lazy"></div>
-            <div class="we-logo-box"><span class="we-logo-badge"><img src="./assets/check-bold.svg" alt="Godkjent"></span><img src="./assets/wehreen.png" alt="WE logo — grønn" loading="lazy"></div>
+            <div class="we-logo-box"><span class="we-logo-badge"><img src="./assets/x-bold.svg" alt="Ikke godkjent"></span><img src="./assets/wehreen.png" alt="WE logo — grønn" loading="lazy"></div>
+            <div class="we-logo-box"><span class="we-logo-badge"><img src="./assets/check-bold.svg" alt="Godkjent"></span><img src="./assets/wewhite.png" alt="WE logo — hvit på grønn" loading="lazy"></div>
           </div>
         </section>
 
@@ -314,7 +319,7 @@
               <img class="we-spec-img-large" src="./assets/helekravlogo.png" alt="Friluft — hele logoens krav" loading="lazy">
               <img class="we-spec-img-small" src="./assets/litenkravlogo.png" alt="Friluft — liten variant" loading="lazy">
               <div class="we-logo-specs__block">
-                <p>For å sikre tydelighet og lesbarhet skal logoen alltid ha tilstrekkelig friluft rundt seg. Friluftsonen defineres av høyden på et utvalgt element i logoen og må minimum opprettholdes på alle sider. Ingen tekst, grafiske elementer eller bilder skal plasseres innenfor dette området.</p>
+                <p>For å sikre tydelighet og lesbarhet skal logoen alltid ha tilstrekkelig friluft rundt seg. Friluftsonen bestemmes av høyden på et utvalgt element i logoen og må opprettholdes på alle sider. Ingen tekst eller grafikk skal plasseres innenfor dette området.</p>
               </div>
             </div>
             <div class="we-logo-spec-row we-logo-spec-row--minsize">
