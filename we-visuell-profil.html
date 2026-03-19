@@ -5,21 +5,138 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
   <title>Stiftelsen WE — DesignbyJosefine</title>
-  <meta name="description" content="Stiftelsen WE — DesignbyJosefine" />
+  <meta name="description" content="Utvikling av en helhetlig visuell identitet for Stiftelsen WE — en nyetablert sosial stiftelse som bygger broer mellom næringsliv og sosialt entreprenørskap." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.png">
+  <style>
+    /* ── WE case study ── */
+    .we-page { --we-amethyst: #30133d; --we-lime: #ace088; --we-periwinkle: #9495ce; --we-snow: #fcf7fa; font-family: 'Poppins', sans-serif; }
+
+    .we-hero {
+      background: var(--we-amethyst);
+      color: var(--we-snow);
+      padding: 72px 48px 64px;
+    }
+    .we-hero__pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(255,255,255,.25); border-radius: 999px;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+      padding: 5px 14px; margin-bottom: 32px; color: rgba(255,255,255,.7);
+    }
+    .we-hero__pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--we-lime); flex-shrink: 0; }
+    .we-hero__title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(48px, 7vw, 88px); line-height: .95; margin: 0 0 32px; }
+    .we-hero__title em { font-style: italic; font-weight: 300; color: var(--we-periwinkle); }
+    .we-hero__intro { font-size: 16px; line-height: 1.65; max-width: 520px; color: rgba(255,255,255,.8); margin-bottom: 40px; }
+    .we-hero__meta { display: flex; gap: 40px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.15); padding-top: 28px; }
+    .we-hero__meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .we-hero__meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.45); }
+    .we-hero__meta-value { font-size: 13px; color: rgba(255,255,255,.85); }
+
+    .we-body { padding: 0 48px 80px; max-width: 1100px; }
+
+    .we-section { padding: 64px 0; border-top: 1px solid #e8e4e2; }
+    .we-section__num { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #aaa; margin-bottom: 12px; }
+    .we-section__heading { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.1; margin: 0 0 40px; color: #111; }
+
+    /* Oppdragsgiver */
+    .we-client { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+    .we-client__text p { font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 16px; }
+    .we-quote {
+      background: var(--we-amethyst); color: var(--we-snow);
+      padding: 36px 32px; position: relative;
+    }
+    .we-quote__mark { font-family: 'DM Serif Display', serif; font-size: 64px; line-height: 0; color: rgba(255,255,255,.2); position: absolute; top: 24px; left: 28px; }
+    .we-quote__text { font-family: 'Poppins', sans-serif; font-weight: 300; font-style: italic; font-size: 18px; line-height: 1.6; margin: 0 0 20px; padding-top: 24px; }
+    .we-quote__attr { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.5); }
+
+    /* Prosess */
+    .we-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .we-step { border: 1px solid #e8e4e2; padding: 24px 20px; }
+    .we-step__num { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 30px; color: #ddd; margin-bottom: 12px; }
+    .we-step__title { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
+    .we-step__body { font-size: 12px; color: #666; line-height: 1.55; }
+
+    /* Gallery */
+    .we-gallery { columns: 3; gap: 12px; }
+    .we-gallery figure { break-inside: avoid; margin: 0 0 12px; }
+    .we-gallery img { width: 100%; display: block; }
+
+    /* Logo */
+    .we-logos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .we-logo-box { aspect-ratio: 4/3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 20px; }
+    .we-logo-box__label { font-size: 10px; letter-spacing: .08em; text-transform: uppercase; margin-top: 8px; }
+    .we-logo-mark { display: flex; align-items: baseline; gap: 6px; }
+    .we-logo-mark__we { font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700; }
+    .we-logo-mark__sub { font-size: 8px; text-transform: uppercase; letter-spacing: .12em; line-height: 1.3; max-width: 60px; }
+
+    /* Palette */
+    .we-palette { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .we-swatch { }
+    .we-swatch__color { height: 120px; }
+    .we-swatch__info { padding: 14px 0 0; }
+    .we-swatch__hex { font-size: 13px; font-weight: 500; display: block; }
+    .we-swatch__name { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: .07em; }
+
+    /* Typography */
+    .we-typo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .we-typo-card { padding: 36px 32px; }
+    .we-typo-card--dark { background: var(--we-amethyst); color: var(--we-snow); }
+    .we-typo-card--light { background: var(--we-snow); border: 1px solid #e8e4e2; }
+    .we-typo-card__label { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; opacity: .5; margin-bottom: 16px; }
+    .we-typo-card__specimen { font-family: 'DM Serif Display', serif; font-size: 40px; line-height: 1.1; margin-bottom: 16px; }
+    .we-typo-card__specimen em { font-style: italic; color: var(--we-periwinkle); }
+    .we-typo-card__body { font-size: 12px; line-height: 1.6; opacity: .7; }
+    .we-typo-card--light .we-typo-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #e8e4e2; font-size: 13px; }
+    .we-typo-card--light .we-typo-row:last-child { border-bottom: none; }
+    .we-typo-card--light .we-typo-weight { color: #aaa; font-size: 11px; }
+
+    /* SWOT */
+    .we-swot { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .we-swot-cell { padding: 32px 28px; }
+    .we-swot-cell--s { background: var(--we-amethyst); color: var(--we-snow); }
+    .we-swot-cell--w { background: #f5f3f0; }
+    .we-swot-cell--o { background: var(--we-lime); }
+    .we-swot-cell--t { background: #f5f3f0; }
+    .we-swot-cell__title { font-size: 13px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .07em; }
+    .we-swot-cell--s .we-swot-cell__title { color: var(--we-lime); }
+    .we-swot-cell ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .we-swot-cell li { font-size: 13px; line-height: 1.4; padding-left: 14px; position: relative; }
+    .we-swot-cell li::before { content: '·'; position: absolute; left: 0; }
+    .we-swot-cell--s li { color: rgba(255,255,255,.85); }
+    .we-swot-cell--s li::before { color: var(--we-lime); }
+
+    .we-cta { padding: 48px 0 0; display: flex; justify-content: center; }
+    .we-cta a {
+      background: var(--we-amethyst); color: var(--we-snow);
+      font-size: 14px; padding: 16px 32px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: opacity .15s;
+    }
+    .we-cta a:hover { opacity: .75; }
+
+    @media (max-width: 900px) {
+      .we-hero { padding: 48px 24px 40px; }
+      .we-body { padding: 0 24px 60px; }
+      .we-client { grid-template-columns: 1fr; }
+      .we-steps { grid-template-columns: 1fr 1fr; }
+      .we-logos { grid-template-columns: 1fr 1fr; }
+      .we-palette { grid-template-columns: 1fr 1fr; }
+      .we-gallery { columns: 2; }
+    }
+    @media (max-width: 600px) {
+      .we-steps { grid-template-columns: 1fr; }
+      .we-typo { grid-template-columns: 1fr; }
+      .we-swot { grid-template-columns: 1fr; }
+      .we-gallery { columns: 1; }
+    }
+  </style>
 </head>
 
 <body>
   <a class="skip-link" href="#content">Hopp til innhold</a>
-  <div class="process-drawer" id="processDrawer" aria-hidden="true">
-    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
-    <div class="process-drawer__inner" id="processDrawerContent"></div>
-  </div>
-  <div class="process-drawer__backdrop" id="processBackdrop"></div>
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
@@ -48,198 +165,260 @@
   </header>
 
   <main id="content" class="content">
-    <article class="project" id="project">
-        <div class="project-layout">
-          <div class="project-layout__media">
-            <div class="project-header">
-              <h1 class="project-meta__title">Stiftelsen WE</h1>
-              
-              
-              <div class="header-btns">
-                
-                
+    <article class="project we-page" id="project">
+
+      <!-- Hero -->
+      <div class="we-hero">
+        <div class="we-hero__pill">Visuell identitet · IDG2015 · NTNU Gjøvik · 2024</div>
+        <h1 class="we-hero__title">Stiftelsen <em>WE</em></h1>
+        <p class="we-hero__intro">Utvikling av en helhetlig visuell identitet for Women Empowerment — en nyetablert sosial stiftelse som bygger broer mellom næringsliv og sosialt entreprenørskap.</p>
+        <div class="we-hero__meta">
+          <div class="we-hero__meta-item">
+            <span class="we-hero__meta-label">År</span>
+            <span class="we-hero__meta-value">2024</span>
+          </div>
+          <div class="we-hero__meta-item">
+            <span class="we-hero__meta-label">Fag</span>
+            <span class="we-hero__meta-value">Strategisk design</span>
+          </div>
+          <div class="we-hero__meta-item">
+            <span class="we-hero__meta-label">Emne</span>
+            <span class="we-hero__meta-value">IDG2015</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="we-body">
+
+        <!-- 00 Oppdragsgiver -->
+        <section class="we-section">
+          <p class="we-section__num">00</p>
+          <h2 class="we-section__heading">Oppdragsgiver</h2>
+          <div class="we-client">
+            <div class="we-client__text">
+              <p>Stiftelsen WE (Women Empowerment) er en nyetablert sosial stiftelse grunnlagt av Ragnhild Slettner og Kirstine Holst. Stiftelsen arbeider for å skape nye veier inn i arbeidslivet for kvinner uten utdanning, arbeidserfaring eller nettverk — gjennom strukturert samarbeid med næringslivet.</p>
+              <p>Som brobygger mellom næringsliv og sosialt entreprenørskap er WE en ny type aktør: en stiftelse som matcher virksomheter med sosiale entreprenører og følger opp resultatene over tid.</p>
+              <p>Oppdraget ble gitt uten en fastsatt visuell retning — til og med logonavnet var udefinert ved oppstart. Det ga designerne reelt strategisk handlingsrom, men krevde egne valg og tett dialog underveis.</p>
+            </div>
+            <div class="we-quote">
+              <span class="we-quote__mark">"</span>
+              <p class="we-quote__text">Vi tror på muligheter som varer, ikke bare hjelp som forsvinner.</p>
+              <p class="we-quote__attr">Ragnhild Slettner · Gründer, Stiftelsen WE</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 01 Prosess -->
+        <section class="we-section">
+          <p class="we-section__num">01</p>
+          <h2 class="we-section__heading">Prosess</h2>
+          <div class="we-steps">
+            <div class="we-step">
+              <div class="we-step__num">01</div>
+              <div class="we-step__title">Innledende brief</div>
+              <div class="we-step__body">Zoom-møte med Ragnhild uten fastsatt retning — seriøst, men lekent og fargerikt.</div>
+            </div>
+            <div class="we-step">
+              <div class="we-step__num">02</div>
+              <div class="we-step__title">Konkurrentanalyse</div>
+              <div class="we-step__body">Kartlegging av Røde Kors, Amnesty, Ferd og FOKUS for å identifisere WEs posisjon.</div>
+            </div>
+            <div class="we-step">
+              <div class="we-step__num">03</div>
+              <div class="we-step__title">Intervju</div>
+              <div class="we-step__body">Samtale med designer Cecilie Melli ga et vendepunkt: identiteten trengte mer tyngde.</div>
+            </div>
+            <div class="we-step">
+              <div class="we-step__num">04</div>
+              <div class="we-step__title">Identitetsutvikling</div>
+              <div class="we-step__body">Logo, fargepalett og typografi utviklet iterativt fra skisse til ferdig system.</div>
+            </div>
+            <div class="we-step">
+              <div class="we-step__num">05</div>
+              <div class="we-step__title">Kontaktflater</div>
+              <div class="we-step__body">Nettside, visittkort, brosjyre, banner og sosiale medier tilpasset identiteten.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 Bildebruk -->
+        <section class="we-section">
+          <p class="we-section__num">02</p>
+          <h2 class="we-section__heading">Bildebruk</h2>
+          <div class="we-gallery">
+            <figure><img src="./assets/kitty.webp" alt="WE — sosiale medier" loading="lazy"></figure>
+            <figure><img src="./assets/doorskilt.webp" alt="WE — dørskilting" loading="lazy"></figure>
+            <figure><img src="./assets/storefront.webp" alt="WE — storefront" loading="lazy"></figure>
+            <figure><img src="./assets/skjema.webp" alt="WE — skjema" loading="lazy"></figure>
+            <figure><img src="./assets/newicon.webp" alt="WE — ikon" loading="lazy"></figure>
+            <figure><img src="./assets/weinsta.webp" alt="WE — Instagram" loading="lazy"></figure>
+            <figure><img src="./assets/wenettside.webp" alt="WE — nettside" loading="lazy"></figure>
+            <figure><img src="./assets/banner.webp" alt="WE — banner" loading="lazy"></figure>
+          </div>
+        </section>
+
+        <!-- 03 Logo -->
+        <section class="we-section">
+          <p class="we-section__num">03</p>
+          <h2 class="we-section__heading">Logo</h2>
+          <div class="we-logos">
+            <div class="we-logo-box" style="background:#30133d">
+              <div class="we-logo-mark">
+                <span class="we-logo-mark__we" style="color:#fcf7fa">WE</span>
+                <span class="we-logo-mark__sub" style="color:rgba(252,247,250,.6)">WOMEN EMPOWERMENT</span>
+              </div>
+              <span class="we-logo-box__label" style="color:rgba(252,247,250,.4)">Primær · mørk</span>
+            </div>
+            <div class="we-logo-box" style="background:#fcf7fa; border: 1px solid #e8e4e2">
+              <div class="we-logo-mark">
+                <span class="we-logo-mark__we" style="color:#30133d">WE</span>
+                <span class="we-logo-mark__sub" style="color:rgba(48,19,61,.5)">WOMEN EMPOWERMENT</span>
+              </div>
+              <span class="we-logo-box__label" style="color:#aaa">Primær · lys</span>
+            </div>
+            <div class="we-logo-box" style="background:#ace088">
+              <div class="we-logo-mark">
+                <span class="we-logo-mark__we" style="color:#30133d">WE</span>
+                <span class="we-logo-mark__sub" style="color:rgba(48,19,61,.6)">WOMEN EMPOWERMENT</span>
+              </div>
+              <span class="we-logo-box__label" style="color:rgba(48,19,61,.5)">Light green</span>
+            </div>
+            <div class="we-logo-box" style="background:#9495ce">
+              <div class="we-logo-mark">
+                <span class="we-logo-mark__we" style="color:#fcf7fa">WE</span>
+                <span class="we-logo-mark__sub" style="color:rgba(252,247,250,.7)">WOMEN EMPOWERMENT</span>
+              </div>
+              <span class="we-logo-box__label" style="color:rgba(252,247,250,.5)">Soft periwinkle</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 Fargepalett -->
+        <section class="we-section">
+          <p class="we-section__num">04</p>
+          <h2 class="we-section__heading">Fargepalett</h2>
+          <div class="we-palette">
+            <div class="we-swatch">
+              <div class="we-swatch__color" style="background:#30133d"></div>
+              <div class="we-swatch__info">
+                <span class="we-swatch__hex">#30133D</span>
+                <span class="we-swatch__name">Amethyst</span>
               </div>
             </div>
-            
-        <div class="slideshow__caption-bar" id="slideshowCaption"></div>
-        <div class="slideshow" id="slideshow">
-          <div class="slideshow__track" id="slideshowTrack">
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="eager" decoding="async" src="./assets/kitty.webp" alt="Stiftelsen WE — bilde 1">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/doorskilt.webp" alt="Stiftelsen WE — bilde 2">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/storefront.webp" alt="Stiftelsen WE — bilde 3">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/skjema.webp" alt="Stiftelsen WE — bilde 4">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/newicon.webp" alt="Stiftelsen WE — bilde 5">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/weinsta.webp" alt="Stiftelsen WE — bilde 6">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/wenettside.webp" alt="Stiftelsen WE — bilde 7">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/banner.webp" alt="Stiftelsen WE — bilde 8">
-              </figure>
-          </div>
-          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="slideshow__counter"><span id="slideIndex">1</span> / 8</div>
-        </div>
-            <div class="project-meta">
-              
-              
-              <a class="btn-pdf btn-pdf--green" href="./assets/we.pdf" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ Se hele PDF-en</a>
-              
+            <div class="we-swatch">
+              <div class="we-swatch__color" style="background:#ace088"></div>
+              <div class="we-swatch__info">
+                <span class="we-swatch__hex">#ACE088</span>
+                <span class="we-swatch__name">Lime</span>
+              </div>
+            </div>
+            <div class="we-swatch">
+              <div class="we-swatch__color" style="background:#9495ce"></div>
+              <div class="we-swatch__info">
+                <span class="we-swatch__hex">#9495CE</span>
+                <span class="we-swatch__name">Periwinkle</span>
+              </div>
+            </div>
+            <div class="we-swatch">
+              <div class="we-swatch__color" style="background:#fcf7fa; border: 1px solid #e8e4e2"></div>
+              <div class="we-swatch__info">
+                <span class="we-swatch__hex">#FCF7FA</span>
+                <span class="we-swatch__name">Snow</span>
+              </div>
             </div>
           </div>
+        </section>
+
+        <!-- 05 Typografi -->
+        <section class="we-section">
+          <p class="we-section__num">05</p>
+          <h2 class="we-section__heading">Typografi</h2>
+          <div class="we-typo">
+            <div class="we-typo-card we-typo-card--dark">
+              <p class="we-typo-card__label">DM Serif Display · Overskrifter</p>
+              <div class="we-typo-card__specimen">Kvinner <em>skaper</em> endring.</div>
+              <p class="we-typo-card__body">DM Serif Display brukes til overskrifter og fremhevede sitat. Italic som kontrastelementfor lekent og personlig uttrykk.</p>
+            </div>
+            <div class="we-typo-card we-typo-card--light">
+              <p class="we-typo-card__label">DM Sans · Brødtekst / UI</p>
+              <div class="we-typo-row"><span>DM Sans Light</span><span class="we-typo-weight">300</span></div>
+              <div class="we-typo-row"><span>DM Sans Regular</span><span class="we-typo-weight">400</span></div>
+              <div class="we-typo-row"><span>DM Sans Medium</span><span class="we-typo-weight">500</span></div>
+              <p class="we-typo-card__body" style="margin-top:16px">Ren og moderne grotesk for brødtekst og UI. Sikrer hierarki og lesbarhet på tvers av alle flater.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 06 SWOT -->
+        <section class="we-section">
+          <p class="we-section__num">06</p>
+          <h2 class="we-section__heading">SWOT-analyse</h2>
+          <div class="we-swot">
+            <div class="we-swot-cell we-swot-cell--s">
+              <p class="we-swot-cell__title">Styrker</p>
+              <ul>
+                <li>Tydelig visjon om å styrke kvinners selvstendighet</li>
+                <li>Styret består av erfarne sosiale entreprenører</li>
+                <li>Opererer utenfor offentlige strukturer — rask og selvstendig</li>
+                <li>Internasjonalt nedslagsfelt gir bredere påvirkning</li>
+              </ul>
+            </div>
+            <div class="we-swot-cell we-swot-cell--w">
+              <p class="we-swot-cell__title">Svakheter</p>
+              <ul>
+                <li>Begrenset synlighet som nyetablert organisasjon</li>
+                <li>Mangler stabil finansieringsstruktur</li>
+                <li>Må vise til konkrete resultater for å tiltrekke donorer</li>
+              </ul>
+            </div>
+            <div class="we-swot-cell we-swot-cell--o">
+              <p class="we-swot-cell__title">Muligheter</p>
+              <ul>
+                <li>Økende interesse for sosial bærekraft i næringslivet</li>
+                <li>Sosiale medier som effektiv plattform for synlighet</li>
+                <li>Partnerskap med andre stiftelser og aktører</li>
+              </ul>
+            </div>
+            <div class="we-swot-cell we-swot-cell--t">
+              <p class="we-swot-cell__title">Trusler</p>
+              <ul>
+                <li>Høy konkurranse om støtte fra samme givermiljø</li>
+                <li>Usikker global økonomi påvirker givernes kapasitet</li>
+                <li>Skepsis til nye aktører fremfor etablerte organisasjoner</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- CTA -->
+        <div class="we-cta">
+          <a href="./assets/we.pdf" target="_blank" rel="noopener">↗ Se hele brand guidelines PDF</a>
         </div>
-        
-        
-        
-        
-        
-        <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
-                <a class="related__card" href="./reina-fruktgard.html">
-                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
-                  <p class="related__title">Reina Fruktgård</p>
-                </a>
-                <a class="related__card" href="./stoppestedet.html">
-                  <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy">
-                  <p class="related__title">Stoppestedet</p>
-                </a>
-                <a class="related__card" href="./ansatts-portal.html">
-                  <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy">
-                  <p class="related__title">Tjønnås og Norvald</p>
-                </a></div></div>
-      
+
+      </div><!-- /we-body -->
+
+      <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
+        <a class="related__card" href="./reina-fruktgard.html">
+          <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+          <p class="related__title">Reina Fruktgård</p>
+        </a>
+        <a class="related__card" href="./stoppestedet.html">
+          <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy">
+          <p class="related__title">Stoppestedet</p>
+        </a>
+        <a class="related__card" href="./ansatts-portal.html">
+          <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy">
+          <p class="related__title">Tjønnås og Norvald</p>
+        </a>
+      </div></div>
+
     </article>
   </main>
 
   <script src="./projects.js?v=6"></script>
   <script>
     const $ = (s) => document.querySelector(s);
-    const id = "we-visuell-profil";
-
-    const project = (window.PROJECTS || []).find(p => p.id === id);
-    const yearEl = document.querySelector("#year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Slideshow
-    const track = $("#slideshowTrack");
-    if (track) {
-      const slides = [...track.querySelectorAll(".slideshow__slide")];
-      const counter = $("#slideIndex");
-      let current = 0;
-      let timer;
-      const slideshow = $("#slideshow");
-      const captionBar = $("#slideshowCaption");
-      let paused = false;
-      function goTo(n) {
-        current = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = current + 1;
-        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
-      }
-      function startAuto() {
-        clearInterval(timer);
-        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
-      }
-      track.addEventListener("click", () => {
-        paused = !paused;
-        slideshow.classList.toggle("slideshow--paused", paused);
-        if (paused) clearInterval(timer);
-        else startAuto();
-      });
-      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
-      let touchStartX = 0;
-      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-      }, { passive: true });
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
-        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
-      });
-      startAuto();
-    }
-
-    // Accordion
-    const accordion = document.getElementById("accordion");
-    const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
-    if (accordion) {
-      accordion.querySelectorAll(".accordion__item").forEach(item => {
-        item.querySelector(".accordion__trigger").addEventListener("click", () => {
-          if (project && project.noDrawer) {
-            const isOpen = item.classList.contains("accordion__item--open");
-            accordion.querySelectorAll(".accordion__item").forEach(i => {
-              i.classList.remove("accordion__item--open");
-              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
-            });
-            if (!isOpen) {
-              item.classList.add("accordion__item--open");
-              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
-            }
-          } else {
-            const idx = accordionItems.indexOf(item);
-            openDrawer();
-            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
-            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
-            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-          }
-        });
-      });
-    }
-
-    // Panel toggle
-    const projectLayout = document.querySelector(".project-layout");
-    const inlineAccordion = document.getElementById("inlineAccordion");
-    function syncToggles(isOpen) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => {
-        btn.setAttribute("aria-expanded", String(isOpen));
-        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
-      });
-    }
-    document.querySelectorAll(".panel-toggle").forEach(btn => {
-      btn.addEventListener("click", () => {
-        let isOpen;
-        if (inlineAccordion) {
-          isOpen = inlineAccordion.hidden;
-          inlineAccordion.hidden = !isOpen;
-        } else {
-          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
-        }
-        syncToggles(isOpen);
-      });
-    });
-
-    // Expandable gallery
-    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
-      cover.addEventListener("click", () => {
-        const section = cover.closest(".gallery-expandable");
-        const wasOpen = section.classList.contains("is-open");
-        section.classList.toggle("is-open");
-        if (!wasOpen && window.innerWidth <= 780) {
-          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-        }
-      });
-    });
-    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const section = btn.closest(".gallery-expandable");
-        section.classList.remove("is-open");
-        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
+    document.querySelector("#year").textContent = new Date().getFullYear();
 
     // Lightbox
     const lbOverlay = document.getElementById("lbOverlay");
@@ -262,13 +441,10 @@
     lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
     lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
     document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
+      const imgEl = e.target.tagName === "IMG" && e.target.closest(".we-gallery") ? e.target : null;
       if (imgEl) {
-        const section = imgEl.closest(".gallery-expandable");
-        if (section) {
-          const imgs = [...section.querySelectorAll(".project__figure img")];
-          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
-        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
+        const imgs = [...document.querySelectorAll(".we-gallery img")];
+        openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
@@ -278,54 +454,6 @@
       if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
     });
 
-    // Process drawer
-    const processToggle = document.getElementById("processToggle");
-    const processDrawer = document.getElementById("processDrawer");
-    const processBackdrop = document.getElementById("processBackdrop");
-    const processDrawerClose = document.getElementById("processDrawerClose");
-    const processDrawerContent = document.getElementById("processDrawerContent");
-
-    const allSections = accordionItems.map(item => ({
-      title: item.querySelector(".accordion__title").textContent,
-      content: item.querySelector(".accordion__panel-inner").innerHTML
-    }));
-    if (project && project.processText) {
-      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
-    }
-    function showDrawerIndex() {
-      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
-      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const i = btn.dataset.index;
-          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
-          const isOpen = !panel.hidden;
-          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
-          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
-          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-        });
-      });
-    }
-    function openDrawer() {
-      if (allSections.length === 1) {
-        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
-      } else { showDrawerIndex(); }
-      processDrawer.classList.add("process-drawer--open");
-      processBackdrop.classList.add("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "false");
-    }
-    function closeDrawer() {
-      processDrawer.classList.remove("process-drawer--open");
-      processBackdrop.classList.remove("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "true");
-    }
-    processToggle?.addEventListener("click", openDrawer);
-    if (project && !project.noDrawer) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
-    }
-    processDrawerClose?.addEventListener("click", closeDrawer);
-    processBackdrop?.addEventListener("click", closeDrawer);
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
-
     // Sidebar toggle
     const toggle = $("#sidebarToggle");
     toggle?.addEventListener("click", () => {
@@ -333,6 +461,6 @@
       const isOpen = sidebar.classList.toggle("sidebar--open");
       toggle.setAttribute("aria-expanded", String(isOpen));
     });
-    </script>
+  </script>
 </body>
 </html>
