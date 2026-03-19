@@ -373,6 +373,7 @@ window.PROJECTS = [
     tags: ["Strategisk design"],
     cover: "./assets/kitty.webp",
     images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
+    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" },
+    skipBuild: true
   }
 ];

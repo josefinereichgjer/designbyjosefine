@@ -755,6 +755,9 @@ def render_page(project):
 
 count = 0
 for project in PROJECTS:
+    if project.get("skipBuild"):
+        print(f'  (skipping {project["id"]}.html — skipBuild)')
+        continue
     html = render_page(project)
     out_path = os.path.join(SCRIPT_DIR, f'{project["id"]}.html')
     with open(out_path, "w", encoding="utf-8") as f:
