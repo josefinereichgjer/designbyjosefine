@@ -1,0 +1,908 @@
+#!/usr/bin/env node
+// Generates a static HTML file for each project in projects.js
+// Run with: node build.js
+// Output: reina-fruktgard.html, stoppestedet.html, etc.
+
+const fs = require("fs");
+const path = require("path");
+
+// Load projects
+const projectsCode = fs.readFileSync(path.join(__dirname, "projects.js"), "utf8");
+const mock = {};
+const wrappedCode = projectsCode.replace("window.PROJECTS", "mock.PROJECTS");
+eval(wrappedCode);
+const PROJECTS = mock.PROJECTS;
+
+// ── Rendering helpers (ported from project.html) ─────────────────────────────
+
+function escQ(str) {
+  return String(str || "").replace(/"/g, "&quot;");
+}
+
+function renderFigure(item, i, projectTitle) {
+  const src = typeof item === "string" ? item : item.src;
+  const caption = typeof item === "object" ? item.caption : null;
+  const wide = typeof item === "object" && item.wide;
+  const crop = typeof item === "object" && item.crop;
+  const cropScale = typeof item === "object" && item.cropScale;
+  const isVideo = typeof item === "object" && item.video;
+  const autoplay = typeof item === "object" && item.autoplay;
+  const cropX = typeof item === "object" && item.cropX;
+  const link = typeof item === "object" && item.link;
+  const captionLink = typeof item === "object" && item.captionLink;
+  const eager = typeof item === "object" && item.eager;
+  const grow = typeof item === "object" && item.grow;
+  const classes = [
+    "project__figure",
+    wide && "project__figure--wide",
+    crop && "project__figure--crop",
+    cropX && "project__figure--cropx",
+  ].filter(Boolean).join(" ");
+  const media = isVideo
+    ? autoplay
+      ? `<video class="project__video" src="${src}" autoplay muted loop playsinline></video>`
+      : `<video class="project__video" src="${src}" controls playsinline preload="metadata"></video>`
+    : `<img loading="${eager ? "eager" : "lazy"}" decoding="async" src="${src}" alt="${escQ(projectTitle)} — galleri ${i + 1}">`;
+  const figStyle = [
+    cropScale ? `--crop-scale:${cropScale}` : (cropX !== true && cropX ? `--crop-scale:${cropX}` : null),
+    grow ? `flex:${grow}` : null,
+  ].filter(Boolean).join(";");
+  const figure = `<figure class="${classes}"${figStyle ? ` style="${figStyle}"` : ""}>
+          ${media}
+          ${caption ? `<figcaption class="project__figcaption">${caption}${captionLink ? ` <a href="${captionLink}" target="_blank" rel="noopener" class="project__figcaption-link">Se nettside →</a>` : ""}</figcaption>` : ""}
+        </figure>`;
+  return link ? `<a href="${link}" target="_blank" rel="noopener" class="project__figure-link">${figure}</a>` : figure;
+}
+
+function renderAccordion(project) {
+  return (project.background || []).map(s => {
+    const bodyHTML = s.body ? s.body.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("") : "";
+    let inner = s.twoCols ? `<div class="bg__body-cols">${bodyHTML}</div>` : bodyHTML;
+    if (s.image) inner += `<img class="bg__img" src="${s.image}" alt="${escQ(s.heading)}" loading="lazy" decoding="async">`;
+    if (s.body2) inner += s.body2.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("");
+    if (s.image2) inner += `<img class="bg__img" src="${s.image2}" alt="${escQ(s.heading)}" loading="lazy" decoding="async">`;
+    if (s.body3) inner += s.body3.split("\n\n").map(p => `<p class="bg__body">${p}</p>`).join("");
+    if (s.images) {
+      inner += `<div class="bg__img-row">${s.images.map(src => `<img class="bg__img bg__img--small" src="${src}" alt="${escQ(s.heading)}" loading="lazy" decoding="async">`).join("")}</div>`;
+    }
+    if (s.palette) {
+      const isCards = s.palette.some(c => c.description);
+      if (isCards) {
+        inner += `<div class="palette palette--cards">${s.palette.map(c => `
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:${c.hex}"></div>
+                <div class="palette__info">
+                  <span class="palette__name">${c.name}</span>
+                  <span class="palette__hex">${c.hex}</span>
+                  <span class="palette__desc">${c.description}</span>
+                </div>
+              </div>`).join("")}</div>`;
+      } else {
+        inner += `<div class="palette">${s.palette.map(c => `
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:${c.hex}"></div>
+                <div class="palette__info">
+                  <span class="palette__hex">${c.hex}</span>
+                  <span class="palette__name">${c.name}</span>
+                  <span class="palette__val">RGB&nbsp;&nbsp;${c.rgb}</span>
+                  <span class="palette__val">CMYK&nbsp;${c.cmyk}</span>
+                  <span class="palette__val">${c.pantone}</span>
+                </div>
+              </div>`).join("")}</div>`;
+      }
+    }
+    if (s.imageSmall) inner += `<img class="bg__img bg__img--sm" src="${s.imageSmall}" alt="${escQ(s.heading)}" loading="lazy" decoding="async">`;
+    if (s.imageStack) {
+      inner += `<div class="bg__img-stack">${s.imageStack.map(src => `<img class="bg__img bg__img--stacked" src="${src}" alt="${escQ(s.heading)}" loading="lazy" decoding="async">`).join("")}</div>`;
+    }
+    if (s.imagePairs) {
+      inner += `<div class="bg__img-pairs">${s.imagePairs.map(([l, r]) => `<div class="bg__img-pair"><img class="bg__img" src="${l}" loading="lazy" decoding="async"><img class="bg__img" src="${r}" loading="lazy" decoding="async"></div>`).join("")}</div>`;
+    }
+    if (s.links) {
+      s.links.forEach(lnk => {
+        inner += lnk.plain
+          ? `<a class="accordion__link" href="${lnk.src}" target="_blank" rel="noopener">↗ ${lnk.label}</a>`
+          : `<a class="btn-pdf btn-pdf--green" href="${lnk.src}" target="_blank" rel="noopener" style="margin-top:12px;display:inline-block">↗ ${lnk.label}</a>`;
+      });
+    }
+    if (s.link) {
+      inner += s.link.plain
+        ? `<a class="accordion__link" href="${s.link.src}" target="_blank" rel="noopener">↗ ${s.link.label}</a>`
+        : `<a class="btn-pdf btn-pdf--green" href="${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${s.link.label}</a>`;
+    }
+    return `
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">${s.heading}</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner">${inner}</div>
+            </div>
+          </div>`;
+  }).join("");
+}
+
+function renderSlideshow(project) {
+  const allSlides = [
+    { src: project.cover, caption: project.coverCaption || null },
+    ...(project.images || []).map(img => typeof img === "string" ? { src: img, caption: null } : img),
+  ];
+  return `
+        <div class="slideshow__caption-bar" id="slideshowCaption">${allSlides[0]?.caption || ""}</div>
+        <div class="slideshow" id="slideshow">
+          <div class="slideshow__track" id="slideshowTrack">
+            ${allSlides.map((slide, i) => `
+              <figure class="slideshow__slide" data-caption="${slide.caption ? escQ(slide.caption) : ""}">
+                <img loading="${i === 0 ? "eager" : "lazy"}" decoding="async" src="${slide.src}" alt="${escQ(project.title)} — bilde ${i + 1}">
+              </figure>`).join("")}
+          </div>
+          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="slideshow__counter"><span id="slideIndex">1</span> / ${allSlides.length}</div>
+        </div>`;
+}
+
+function renderGallery(project) {
+  if (!(project.gallery || []).length) return "";
+  return `
+        <div class="project__gallery">
+          ${project.gallery.map((item, i) => {
+    if (item && item.type === "heading") {
+      return `<div class="project__gallery-heading">${item.text}</div>`;
+    }
+    if (item && item.type === "expandable") {
+      const coverFig = renderFigure(item.cover, i, project.title);
+      const restFigs = item.items.map((sub, j) => renderFigure(sub, i + j + 1, project.title)).join("");
+      return `<div class="gallery-expandable">
+                <div class="gallery-expandable__heading">${item.heading}</div>
+                <div class="gallery-expandable__strip">
+                  <div class="gallery-expandable__cover">${coverFig}</div>
+                  <div class="gallery-expandable__rest">${restFigs}</div>
+                </div>
+                <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
+              </div>`;
+    }
+    if (item && item.type === "row") {
+      return `<div class="project__gallery-row">
+                ${item.items.map((sub, j) => renderFigure(sub, i + j, project.title)).join("")}
+              </div>`;
+    }
+    return renderFigure(item, i, project.title);
+  }).join("")}
+        </div>`;
+}
+
+function renderSections(project) {
+  if (!(project.sections || []).length) return "";
+  return `<div class="proj-sections">${project.sections.map(s => {
+    const label = s.label ? `<p class="proj-section__label">${s.label}</p>` : "";
+    const heading = s.heading ? `<h2 class="proj-section__heading">${s.heading}</h2>` : "";
+    const body = s.body ? `<p class="proj-section__body">${s.body}</p>` : "";
+    const bg = s.bg || "krem";
+    if (s.type === "problem") {
+      const problemImg = s.image ? `<img class="proj-problem__img" src="${s.image}" alt="${escQ(s.label || "")}" loading="lazy" decoding="async">` : "";
+      const itemsLabel = s.itemsLabel ? `<p class="proj-problem-list__label">${s.itemsLabel}</p>` : "";
+      return `<div class="proj-section proj-section--${bg}"><div>${label}${heading}${body}</div><div class="proj-problem proj-problem--below">${problemImg ? `<div>${problemImg}</div>` : ""}<div class="proj-problem-list">${itemsLabel}${(s.items || []).map(it => `<div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>${it.title}</h4><p>${it.body}</p></div></div>`).join("")}</div></div></div>`;
+    }
+    if (s.type === "steps") {
+      return `<div class="proj-section proj-section--${bg}">${label}${heading}<div class="proj-steps-grid">${(s.steps || []).map(st => `<div class="proj-step"><div class="proj-step-num">${st.num}</div><h3>${st.title}</h3><p>${st.body}</p></div>`).join("")}</div></div>`;
+    }
+    if (s.type === "features") {
+      return `<div class="proj-section proj-section--${bg}">${label}${heading}${body}<div class="proj-features-grid">${(s.items || []).map(it => `<div class="proj-feature"><span class="proj-feature-num">${it.num}</span><div><h3>${it.title}</h3><p>${it.body}</p></div></div>`).join("")}</div></div>`;
+    }
+    if (s.type === "team") {
+      return `<div class="proj-section proj-section--${bg}"><div class="proj-team-header">${label}${heading}</div><div class="proj-team-grid">${(s.members || []).map(m => `<div class="proj-team-card"><div class="proj-team-avatar" style="background:${m.color}">${m.initials}</div><h4>${m.name}</h4><p>${m.role}</p></div>`).join("")}</div></div>`;
+    }
+    return "";
+  }).join("")}</div>`;
+}
+
+function renderScrollGalleries(project) {
+  return (project.scrollGalleries || []).map(g => `
+          <div class="scroll-gallery">
+            ${g.label ? `<p class="scroll-gallery__label">${g.label}</p>` : ""}
+            <p class="scroll-gallery__swipe-hint" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Sveip</p>
+            <div class="scroll-gallery__track">
+              ${g.images.map(src => `<img class="scroll-gallery__img${g.size === "ipad" ? " scroll-gallery__img--ipad" : g.size === "mobile" ? " scroll-gallery__img--mobile" : ""}" src="${src}" alt="${escQ(project.title)}" loading="lazy" decoding="async">`).join("")}
+            </div>
+          </div>`).join("");
+}
+
+function renderRelated(project) {
+  const others = PROJECTS.filter(p => p.id !== project.id).slice(0, 3);
+  if (!others.length) return "";
+  return `<div class="related">
+            <h2 class="related__heading">Mer å se på</h2>
+            <div class="related__grid">
+              ${others.map(p => `
+                <a class="related__card" href="./${p.id}.html">
+                  <img src="${p.cover}" alt="${escQ(p.title)}" loading="lazy">
+                  <p class="related__title">${p.title}</p>
+                </a>`).join("")}
+            </div>
+          </div>`;
+}
+
+function renderProjectContent(project) {
+  const accordionHTML = renderAccordion(project);
+  const metaRowsHTML = (project.projectMeta || []).map(row => `
+        <div class="pmeta__row">
+          <strong class="pmeta__label">${row.label}</strong>
+          <span class="pmeta__value">${row.value}</span>
+        </div>`).join("");
+
+  const mediaHTML = project.heroVideo
+    ? `<div class="${project.heroCollage ? "hero-media-row" : ""}">
+              <div class="hero-video">${project.videoLink ? `<a href="${project.videoLink}" target="_blank" rel="noopener" style="display:block"><video src="${project.heroVideo}" autoplay muted loop playsinline></video></a>` : `<video src="${project.heroVideo}" autoplay muted loop playsinline></video>`}</div>
+              ${project.heroCollage ? `
+              <div class="hero-collage-wrap">
+                <a class="hero-collage" href="${project.heroCollage.src}" target="_blank" rel="noopener">
+                  ${project.heroCollage.images.map(src => `<img src="${src}" alt="Designsystem" loading="lazy">`).join("")}
+                </a>
+                <a class="hero-collage__label" href="${project.heroCollage.src}" target="_blank" rel="noopener">${project.heroCollage.label}</a>
+              </div>` : ""}
+            </div>`
+    : !project.noSlideshow ? renderSlideshow(project) : "";
+
+  const hasGallery = (project.gallery || []).length > 0;
+
+  return `
+        <div class="project-layout">
+          <div class="project-layout__media">
+            <div class="project-header">
+              <h1 class="project-meta__title">${project.title}</h1>
+              ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro${project.introBorder ? " project-intro--border" : ""}">${p.replace(/\n/g, `<br><span class="intro-space"> </span>`)}</p>`).join("") : ""}
+              ${(project.introColumns || []).length ? `<div class="intro-cols">${project.introColumns.map(c => `<div class="intro-col"><strong class="intro-col__label">${c.label}</strong><p class="intro-col__body">${c.body}</p></div>`).join("")}</div>` : ""}
+              <div class="header-btns">
+                ${project.link ? `<a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗ ${project.link.label}</a>` : ""}
+                ${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
+              </div>
+            </div>
+            ${mediaHTML}
+            ${!hasGallery ? `<div class="project-meta">
+              ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
+              ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
+              ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
+              ${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
+            </div>` : ""}
+          </div>
+          ${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? `
+          <div class="project-layout__side">
+            <div class="project-layout__info" id="projectInfo">
+              <div class="project-layout__info-inner">
+                <div class="accordion" id="accordion">${accordionHTML}</div>
+                ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--mobile-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
+                ${project.pdf?.note ? `
+                <div class="pdf-note" style="margin-top:16px">
+                  <strong class="pdf-note__heading">${project.pdf.note.heading}</strong>
+                  <p class="pdf-note__body">${project.pdf.note.body}</p>
+                  ${project.pdf ? `<a class="btn-pdf btn-pdf--text" href="${project.pdf.src}" target="_blank" rel="noopener">↗ ${project.pdf.label}</a>` : ""}
+                </div>` : project.pdf ? `<a class="btn-pdf btn-pdf--text" href="${project.pdf.src}" target="_blank" rel="noopener">↗ ${project.pdf.label}</a>` : ""}
+              </div>
+            </div>
+          </div>` : ""}
+        </div>
+        ${renderGallery(project)}
+        ${hasGallery ? `<div class="project-meta" style="margin-top:var(--gap)">
+          ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
+          ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
+          ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
+        </div>` : ""}
+        ${renderScrollGalleries(project)}
+        ${renderSections(project)}
+        ${accordionHTML && (project.sections || []).length && !project.showAccordion ? `
+        <button class="panel-toggle panel-toggle--bottom" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
+        <div class="inline-accordion" id="inlineAccordion" hidden>
+          <div class="accordion" id="accordion">${accordionHTML}</div>
+        </div>` : ""}
+        ${renderRelated(project)}
+      `;
+}
+
+// ── Full page template ────────────────────────────────────────────────────────
+
+function renderPage(project) {
+  const description = project.intro
+    ? project.intro.replace(/<[^>]+>/g, "").replace(/\n/g, " ").trim().slice(0, 160)
+    : `${project.title} — DesignbyJosefine`;
+
+  const projectHTML = renderProjectContent(project);
+
+  return `<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="format-detection" content="telephone=no">
+  <title>${project.title} — DesignbyJosefine</title>
+  <meta name="description" content="${escQ(description)}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=20" />
+  <link rel="icon" href="assets/hvitlogo.png">
+</head>
+
+<body>
+  <a class="skip-link" href="#content">Hopp til innhold</a>
+  <div class="process-drawer" id="processDrawer" aria-hidden="true">
+    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
+    <div class="process-drawer__inner" id="processDrawerContent"></div>
+  </div>
+  <div class="process-drawer__backdrop" id="processBackdrop"></div>
+  <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
+    <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
+  </div>
+
+  <header class="sidebar sidebar--detail" id="sidebar">
+    <div class="sidebar__inner">
+      <div class="brand">
+        <a class="brand__mark" href="./projects.html" aria-label="Back to work">
+          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
+        </a>
+      </div>
+
+      <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+
+      <nav class="nav" aria-label="Main navigation">
+        <a class="nav__link" href="./projects.html"><span>Arbeider</span></a>
+        <a class="nav__link" href="./projects.html#about"><span>Om</span></a>
+        <a class="nav__link" href="./projects.html#contact"><span>Kontakt</span></a>
+      </nav>
+
+      <footer class="meta">
+        <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
+      </footer>
+
+      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">
+        Meny
+      </button>
+    </div>
+  </header>
+
+  <main id="content" class="content">
+    <article class="project" id="project">${projectHTML}
+    </article>
+  </main>
+
+  <script src="./projects.js?v=6"></script>
+  <script>
+    const $ = (s) => document.querySelector(s);
+    // Static file — project ID is baked in, no URL param needed
+    const id = ${JSON.stringify(project.id)};
+
+    const project = (window.PROJECTS || []).find(p => p.id === id);
+    const yearEl = document.querySelector("#year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    if (project) {
+      const metaRowsHTML = (project.projectMeta || []).map(row => \`
+        <div class="pmeta__row">
+          <strong class="pmeta__label">\${row.label}</strong>
+          <span class="pmeta__value">\${row.value}</span>
+        </div>\`).join("");
+
+      const allSlides = [
+        { src: project.cover, caption: project.coverCaption || null },
+        ...(project.images || []).map(img => typeof img === "string" ? { src: img, caption: null } : img)
+      ];
+      const slideshowHTML = \`
+        <div class="slideshow__caption-bar" id="slideshowCaption">\${allSlides[0]?.caption || ""}</div>
+        <div class="slideshow" id="slideshow">
+          <div class="slideshow__track" id="slideshowTrack">
+            \${allSlides.map((slide, i) => \`
+              <figure class="slideshow__slide" data-caption="\${slide.caption ? slide.caption.replace(/"/g, '&quot;') : ""}">
+                <img loading="\${i === 0 ? "eager" : "lazy"}" decoding="async" src="\${slide.src}" alt="\${project.title} — bilde \${i + 1}">
+              </figure>\`).join("")}
+          </div>
+          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="slideshow__counter"><span id="slideIndex">1</span> / \${allSlides.length}</div>
+        </div>\`;
+
+      const accordionHTML = (project.background || []).map(s => {
+        const bodyHTML = s.body ? s.body.split("\\n\\n").map(p => \`<p class="bg__body">\${p}</p>\`).join("") : "";
+        let inner = s.twoCols ? \`<div class="bg__body-cols">\${bodyHTML}</div>\` : bodyHTML;
+        if (s.image) {
+          inner += \`<img class="bg__img" src="\${s.image}" alt="\${s.heading}" loading="lazy" decoding="async">\`;
+        }
+        if (s.body2) {
+          inner += s.body2.split("\\n\\n").map(p => \`<p class="bg__body">\${p}</p>\`).join("");
+        }
+        if (s.image2) {
+          inner += \`<img class="bg__img" src="\${s.image2}" alt="\${s.heading}" loading="lazy" decoding="async">\`;
+        }
+        if (s.body3) {
+          inner += s.body3.split("\\n\\n").map(p => \`<p class="bg__body">\${p}</p>\`).join("");
+        }
+        if (s.images) {
+          inner += \`<div class="bg__img-row">\${s.images.map(src => \`<img class="bg__img bg__img--small" src="\${src}" alt="\${s.heading}" loading="lazy" decoding="async">\`).join("")}</div>\`;
+        }
+        if (s.palette) {
+          const isCards = s.palette.some(c => c.description);
+          if (isCards) {
+            inner += \`<div class="palette palette--cards">\${s.palette.map(c => \`
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:\${c.hex}"></div>
+                <div class="palette__info">
+                  <span class="palette__name">\${c.name}</span>
+                  <span class="palette__hex">\${c.hex}</span>
+                  <span class="palette__desc">\${c.description}</span>
+                </div>
+              </div>\`).join("")}</div>\`;
+          } else {
+            inner += \`<div class="palette">\${s.palette.map(c => \`
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:\${c.hex}"></div>
+                <div class="palette__info">
+                  <span class="palette__hex">\${c.hex}</span>
+                  <span class="palette__name">\${c.name}</span>
+                  <span class="palette__val">RGB\\\u00a0\\\u00a0\${c.rgb}</span>
+                  <span class="palette__val">CMYK\\\u00a0\${c.cmyk}</span>
+                  <span class="palette__val">\${c.pantone}</span>
+                </div>
+              </div>\`).join("")}</div>\`;
+          }
+        }
+        if (s.imageSmall) {
+          inner += \`<img class="bg__img bg__img--sm" src="\${s.imageSmall}" alt="\${s.heading}" loading="lazy" decoding="async">\`;
+        }
+        if (s.imageStack) {
+          inner += \`<div class="bg__img-stack">\${s.imageStack.map(src => \`<img class="bg__img bg__img--stacked" src="\${src}" alt="\${s.heading}" loading="lazy" decoding="async">\`).join("")}</div>\`;
+        }
+        if (s.imagePairs) {
+          inner += \`<div class="bg__img-pairs">\${s.imagePairs.map(([l, r]) => \`<div class="bg__img-pair"><img class="bg__img" src="\${l}" loading="lazy" decoding="async"><img class="bg__img" src="\${r}" loading="lazy" decoding="async"></div>\`).join("")}</div>\`;
+        }
+        if (s.links) {
+          s.links.forEach(lnk => {
+            inner += lnk.plain
+              ? \`<a class="accordion__link" href="\${lnk.src}" target="_blank" rel="noopener">↗ \${lnk.label}</a>\`
+              : \`<a class="btn-pdf btn-pdf--green" href="\${lnk.src}" target="_blank" rel="noopener" style="margin-top:12px;display:inline-block">↗ \${lnk.label}</a>\`;
+          });
+        }
+        if (s.link) {
+          inner += s.link.plain
+            ? \`<a class="accordion__link" href="\${s.link.src}" target="_blank" rel="noopener">↗ \${s.link.label}</a>\`
+            : \`<a class="btn-pdf btn-pdf--green" href="\${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ \${s.link.label}</a>\`;
+        }
+        return \`
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">\${s.heading}</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner">\${inner}</div>
+            </div>
+          </div>\`;
+      }).join("");
+
+      const renderFigure = (item, i) => {
+        const src = typeof item === "string" ? item : item.src;
+        const caption = typeof item === "object" ? item.caption : null;
+        const wide = typeof item === "object" && item.wide;
+        const crop = typeof item === "object" && item.crop;
+        const cropScale = typeof item === "object" && item.cropScale;
+        const isVideo = typeof item === "object" && item.video;
+        const autoplay = typeof item === "object" && item.autoplay;
+        const cropX = typeof item === "object" && item.cropX;
+        const link = typeof item === "object" && item.link;
+        const captionLink = typeof item === "object" && item.captionLink;
+        const eager = typeof item === "object" && item.eager;
+        const grow = typeof item === "object" && item.grow;
+        const classes = ["project__figure", wide && "project__figure--wide", crop && "project__figure--crop", cropX && "project__figure--cropx"].filter(Boolean).join(" ");
+        const media = isVideo
+          ? autoplay
+            ? \`<video class="project__video" src="\${src}" autoplay muted loop playsinline></video>\`
+            : \`<video class="project__video" src="\${src}" controls playsinline preload="metadata"></video>\`
+          : \`<img loading="\${eager ? "eager" : "lazy"}" decoding="async" src="\${src}" alt="\${project.title} — galleri \${i + 1}">\`;
+        const figStyle = [
+          cropScale ? \`--crop-scale:\${cropScale}\` : (cropX !== true && cropX ? \`--crop-scale:\${cropX}\` : null),
+          grow ? \`flex:\${grow}\` : null
+        ].filter(Boolean).join(";");
+        const figure = \`<figure class="\${classes}"\${figStyle ? \` style="\${figStyle}"\` : ""}>
+          \${media}
+          \${caption ? \`<figcaption class="project__figcaption">\${caption}\${captionLink ? \` <a href="\${captionLink}" target="_blank" rel="noopener" class="project__figcaption-link">Se nettside →</a>\` : ""}</figcaption>\` : ""}
+        </figure>\`;
+        return link ? \`<a href="\${link}" target="_blank" rel="noopener" class="project__figure-link">\${figure}</a>\` : figure;
+      };
+
+      const galleryHTML = (project.gallery || []).length ? \`
+        <div class="project__gallery">
+          \${project.gallery.map((item, i) => {
+            if (item && item.type === "heading") {
+              return \`<div class="project__gallery-heading">\${item.text}</div>\`;
+            }
+            if (item && item.type === "expandable") {
+              const coverFig = renderFigure(item.cover, i);
+              const restFigs = item.items.map((sub, j) => renderFigure(sub, i + j + 1)).join("");
+              return \`<div class="gallery-expandable">
+                <div class="gallery-expandable__heading">\${item.heading}</div>
+                <div class="gallery-expandable__strip">
+                  <div class="gallery-expandable__cover">\${coverFig}</div>
+                  <div class="gallery-expandable__rest">\${restFigs}</div>
+                </div>
+                <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
+              </div>\`;
+            }
+            if (item && item.type === "row") {
+              return \`<div class="project__gallery-row">
+                \${item.items.map((sub, j) => renderFigure(sub, i + j)).join("")}
+              </div>\`;
+            }
+            return renderFigure(item, i);
+          }).join("")}
+        </div>\` : "";
+
+      $("#project").innerHTML = \`
+        <div class="project-layout">
+          <div class="project-layout__media">
+            <div class="project-header">
+              <h1 class="project-meta__title">\${project.title}</h1>
+              \${project.intro ? project.intro.split("\\n\\n").map(p => \`<p class="project-intro\${project.introBorder ? " project-intro--border" : ""}">\${p.replace(/\\n/g, \`<br><span class="intro-space"> </span>\`)}</p>\`).join("") : ""}
+              \${(project.introColumns || []).length ? \`<div class="intro-cols">\${project.introColumns.map(c => \`<div class="intro-col"><strong class="intro-col__label">\${c.label}</strong><p class="intro-col__body">\${c.body}</p></div>\`).join("")}</div>\` : ""}
+              <div class="header-btns">
+                \${project.link ? \`<a class="btn-pdf btn-pdf--black" href="\${project.link.src}" target="_blank" rel="noopener">↗ \${project.link.label}</a>\` : ""}
+                \${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? \`<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>\` : ""}
+              </div>
+            </div>
+            \${project.heroVideo ? \`
+            <div class="\${project.heroCollage ? "hero-media-row" : ""}">
+              <div class="hero-video">\${project.videoLink ? \`<a href="\${project.videoLink}" target="_blank" rel="noopener" style="display:block"><video src="\${project.heroVideo}" autoplay muted loop playsinline></video></a>\` : \`<video src="\${project.heroVideo}" autoplay muted loop playsinline></video>\`}</div>
+              \${project.heroCollage ? \`
+              <div class="hero-collage-wrap">
+                <a class="hero-collage" href="\${project.heroCollage.src}" target="_blank" rel="noopener">
+                  \${project.heroCollage.images.map(src => \`<img src="\${src}" alt="Designsystem" loading="lazy">\`).join("")}
+                </a>
+                <a class="hero-collage__label" href="\${project.heroCollage.src}" target="_blank" rel="noopener">\${project.heroCollage.label}</a>
+              </div>\` : ""}
+            </div>\` : !project.noSlideshow ? slideshowHTML : ""}
+            \${!project.gallery?.length ? \`<div class="project-meta">
+              \${metaRowsHTML ? \`<div class="pmeta">\${metaRowsHTML}</div>\` : ""}
+              \${project.processText ? \`<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>\` : ""}
+              \${project.finalPdf ? \`<a class="btn-pdf btn-pdf--green" href="\${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ \${project.finalPdf.label}</a>\` : ""}
+              \${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? \`<button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>\` : ""}
+            </div>\` : ""}
+          </div>
+          \${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? \`
+          <div class="project-layout__side">
+            <div class="project-layout__info" id="projectInfo">
+              <div class="project-layout__info-inner">
+                <div class="accordion" id="accordion">\${accordionHTML}</div>
+                \${project.finalPdf ? \`<a class="btn-pdf btn-pdf--green btn-pdf--mobile-only" href="\${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗ \${project.finalPdf.label}</a>\` : ""}
+                \${project.pdf?.note ? \`
+                <div class="pdf-note" style="margin-top:16px">
+                  <strong class="pdf-note__heading">\${project.pdf.note.heading}</strong>
+                  <p class="pdf-note__body">\${project.pdf.note.body}</p>
+                  \${project.pdf ? \`<a class="btn-pdf btn-pdf--text" href="\${project.pdf.src}" target="_blank" rel="noopener">↗ \${project.pdf.label}</a>\` : ""}
+                </div>\` : project.pdf ? \`<a class="btn-pdf btn-pdf--text" href="\${project.pdf.src}" target="_blank" rel="noopener">↗ \${project.pdf.label}</a>\` : ""}
+              </div>
+            </div>
+          </div>\` : ""}
+        </div>
+        \${galleryHTML}
+        \${project.gallery?.length ? \`<div class="project-meta" style="margin-top:var(--gap)">
+          \${metaRowsHTML ? \`<div class="pmeta">\${metaRowsHTML}</div>\` : ""}
+          \${project.processText ? \`<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>\` : ""}
+          \${project.finalPdf ? \`<a class="btn-pdf btn-pdf--green" href="\${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ \${project.finalPdf.label}</a>\` : ""}
+        </div>\` : ""}
+        \${(project.scrollGalleries || []).map(g => \`
+          <div class="scroll-gallery">
+            \${g.label ? \`<p class="scroll-gallery__label">\${g.label}</p>\` : ""}
+            <p class="scroll-gallery__swipe-hint" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Sveip</p>
+            <div class="scroll-gallery__track">
+              \${g.images.map(src => \`<img class="scroll-gallery__img\${g.size === "ipad" ? " scroll-gallery__img--ipad" : g.size === "mobile" ? " scroll-gallery__img--mobile" : ""}" src="\${src}" alt="\${project.title}" loading="lazy" decoding="async">\`).join("")}
+            </div>
+          </div>\`).join("")}
+        \${(project.sections || []).length ? \`<div class="proj-sections">\${(project.sections || []).map(s => {
+          const label = s.label ? \`<p class="proj-section__label">\${s.label}</p>\` : "";
+          const heading = s.heading ? \`<h2 class="proj-section__heading">\${s.heading}</h2>\` : "";
+          const body = s.body ? \`<p class="proj-section__body">\${s.body}</p>\` : "";
+          const bg = s.bg || "krem";
+          if (s.type === "problem") {
+            const problemImg = s.image ? \`<img class="proj-problem__img" src="\${s.image}" alt="\${s.label || ""}" loading="lazy" decoding="async">\` : "";
+            const itemsLabel = s.itemsLabel ? \`<p class="proj-problem-list__label">\${s.itemsLabel}</p>\` : "";
+            return \`<div class="proj-section proj-section--\${bg}"><div>\${label}\${heading}\${body}</div><div class="proj-problem proj-problem--below">\${problemImg ? \`<div>\${problemImg}</div>\` : ""}<div class="proj-problem-list">\${itemsLabel}\${(s.items||[]).map(it=>\`<div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>\${it.title}</h4><p>\${it.body}</p></div></div>\`).join("")}</div></div></div>\`;
+          }
+          if (s.type === "steps") {
+            return \`<div class="proj-section proj-section--\${bg}">\${label}\${heading}<div class="proj-steps-grid">\${(s.steps||[]).map(st=>\`<div class="proj-step"><div class="proj-step-num">\${st.num}</div><h3>\${st.title}</h3><p>\${st.body}</p></div>\`).join("")}</div></div>\`;
+          }
+          if (s.type === "features") {
+            return \`<div class="proj-section proj-section--\${bg}">\${label}\${heading}\${body}<div class="proj-features-grid">\${(s.items||[]).map(it=>\`<div class="proj-feature"><span class="proj-feature-num">\${it.num}</span><div><h3>\${it.title}</h3><p>\${it.body}</p></div></div>\`).join("")}</div></div>\`;
+          }
+          if (s.type === "team") {
+            return \`<div class="proj-section proj-section--\${bg}"><div class="proj-team-header">\${label}\${heading}</div><div class="proj-team-grid">\${(s.members||[]).map(m=>\`<div class="proj-team-card"><div class="proj-team-avatar" style="background:\${m.color}">\${m.initials}</div><h4>\${m.name}</h4><p>\${m.role}</p></div>\`).join("")}</div></div>\`;
+          }
+          return "";
+        }).join("")}</div>\` : ""}
+        \${accordionHTML && (project.sections || []).length && !project.showAccordion ? \`
+        <button class="panel-toggle panel-toggle--bottom" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
+        <div class="inline-accordion" id="inlineAccordion" hidden>
+          <div class="accordion" id="accordion">\${accordionHTML}</div>
+        </div>\` : ""}
+        \${(() => {
+          const others = (window.PROJECTS || []).filter(p => p.id !== project.id).slice(0, 3);
+          if (!others.length) return "";
+          return \`<div class="related">
+            <h2 class="related__heading">Mer å se på</h2>
+            <div class="related__grid">
+              \${others.map(p => \`
+                <a class="related__card" href="./\${p.id}.html">
+                  <img src="\${p.cover}" alt="\${p.title}" loading="lazy">
+                  <p class="related__title">\${p.title}</p>
+                </a>\`).join("")}
+            </div>
+          </div>\`;
+        })()}
+      \`;
+    }
+
+    // Slideshow
+    const track = $("#slideshowTrack");
+    if (track) {
+      const slides = [...track.querySelectorAll(".slideshow__slide")];
+      const counter = $("#slideIndex");
+      let current = 0;
+      let timer;
+
+      const slideshow = $("#slideshow");
+      const captionBar = $("#slideshowCaption");
+      let paused = false;
+
+      function goTo(n) {
+        current = (n + slides.length) % slides.length;
+        track.style.transform = \`translateX(-\${current * 100}%)\`;
+        counter.textContent = current + 1;
+        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
+      }
+
+      function startAuto() {
+        clearInterval(timer);
+        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
+      }
+
+      track.addEventListener("click", () => {
+        paused = !paused;
+        slideshow.classList.toggle("slideshow--paused", paused);
+        if (paused) clearInterval(timer);
+        else startAuto();
+      });
+
+      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+
+      let touchStartX = 0;
+      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      }, { passive: true });
+
+      document.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
+        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
+      });
+
+      startAuto();
+    }
+
+    // Accordion
+    const accordion = document.getElementById("accordion");
+    if (accordion) {
+      accordion.querySelectorAll(".accordion__item").forEach(item => {
+        item.querySelector(".accordion__trigger").addEventListener("click", () => {
+          if (project && project.noDrawer) {
+            const isOpen = item.classList.contains("accordion__item--open");
+            accordion.querySelectorAll(".accordion__item").forEach(i => {
+              i.classList.remove("accordion__item--open");
+              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("accordion__item--open");
+              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
+            }
+          } else {
+            const idx = accordionItems.indexOf(item);
+            openDrawer();
+            const panel = document.getElementById(\`drawer-item-\${idx}\`)?.querySelector(".drawer-index__panel");
+            const btn = document.getElementById(\`drawer-item-\${idx}\`)?.querySelector(".drawer-index__btn");
+            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+          }
+        });
+      });
+    }
+
+    // Panel toggle
+    const projectLayout = document.querySelector(".project-layout");
+    const inlineAccordion = document.getElementById("inlineAccordion");
+    function syncToggles(isOpen) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => {
+        btn.setAttribute("aria-expanded", String(isOpen));
+        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
+      });
+    }
+    document.querySelectorAll(".panel-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        let isOpen;
+        if (inlineAccordion) {
+          isOpen = inlineAccordion.hidden;
+          inlineAccordion.hidden = !isOpen;
+        } else {
+          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+        }
+        syncToggles(isOpen);
+      });
+    });
+
+    // Expandable gallery sections
+    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
+      cover.addEventListener("click", () => {
+        const section = cover.closest(".gallery-expandable");
+        const wasOpen = section.classList.contains("is-open");
+        section.classList.toggle("is-open");
+        if (!wasOpen && window.innerWidth <= 780) {
+          setTimeout(() => {
+            section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 80);
+        }
+      });
+    });
+    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const section = btn.closest(".gallery-expandable");
+        section.classList.remove("is-open");
+        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    // Lightbox
+    const lbOverlay = document.getElementById("lbOverlay");
+    const lbImg = document.getElementById("lbImg");
+    const lbPrev = document.getElementById("lbPrev");
+    const lbNext = document.getElementById("lbNext");
+    let lbImages = [];
+    let lbIndex = 0;
+
+    function openLightbox(src, alt, images, index) {
+      lbImg.src = src;
+      lbImg.alt = alt || "";
+      lbImages = images || [];
+      lbIndex = index ?? 0;
+      lbPrev.style.display = lbImages.length > 1 ? "" : "none";
+      lbNext.style.display = lbImages.length > 1 ? "" : "none";
+      lbOverlay.classList.add("lb-open");
+    }
+    function closeLightbox() {
+      lbOverlay.classList.remove("lb-open");
+      lbImg.src = "";
+    }
+    function showLbImage(idx) {
+      lbIndex = (idx + lbImages.length) % lbImages.length;
+      lbImg.src = lbImages[lbIndex].src;
+      lbImg.alt = lbImages[lbIndex].alt || "";
+    }
+
+    lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
+    lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
+
+    document.addEventListener("click", e => {
+      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
+      if (imgEl) {
+        const section = imgEl.closest(".gallery-expandable");
+        if (section) {
+          const imgs = [...section.querySelectorAll(".project__figure img")];
+          const idx = imgs.indexOf(imgEl);
+          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), idx);
+        } else {
+          openLightbox(imgEl.src, imgEl.alt, [], 0);
+        }
+      } else if (e.target === lbOverlay || e.target.id === "lbClose") {
+        closeLightbox();
+      }
+    });
+    document.addEventListener("keydown", e => {
+      if (!lbOverlay.classList.contains("lb-open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showLbImage(lbIndex - 1);
+      if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
+    });
+
+    // Process drawer
+    const processToggle = document.getElementById("processToggle");
+    const processDrawer = document.getElementById("processDrawer");
+    const processBackdrop = document.getElementById("processBackdrop");
+    const processDrawerClose = document.getElementById("processDrawerClose");
+    const processDrawerContent = document.getElementById("processDrawerContent");
+
+    const accordionItems = [...(document.getElementById("accordion")?.querySelectorAll(".accordion__item") || [])];
+
+    const allSections = accordionItems.map(item => ({
+      title: item.querySelector(".accordion__title").textContent,
+      content: item.querySelector(".accordion__panel-inner").innerHTML
+    }));
+    if (project && project.processText) {
+      allSections.push({
+        title: "Mer om prosessen",
+        content: project.processText.split("\\n\\n").map(p => \`<p>\${p}</p>\`).join("")
+      });
+    }
+
+    function showDrawerIndex() {
+      processDrawerContent.innerHTML = \`
+        <ul class="drawer-index">
+          \${allSections.map((s, i) => \`
+            <li class="drawer-index__item" id="drawer-item-\${i}">
+              <button class="drawer-index__btn" data-index="\${i}">
+                <span>\${s.title}</span>
+                <span class="drawer-index__icon">+</span>
+              </button>
+              <div class="drawer-index__panel" hidden>\${s.content}</div>
+            </li>\`).join("")}
+        </ul>\`;
+      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const i = btn.dataset.index;
+          const panel = document.getElementById(\`drawer-item-\${i}\`).querySelector(".drawer-index__panel");
+          const isOpen = !panel.hidden;
+          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
+          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
+          if (!isOpen) {
+            panel.hidden = false;
+            btn.querySelector(".drawer-index__icon").textContent = "−";
+          }
+        });
+      });
+    }
+
+    function openDrawer() {
+      if (allSections.length === 1) {
+        processDrawerContent.innerHTML = \`<h2 class="process-drawer__heading">\${allSections[0].title}</h2>\${allSections[0].content}\`;
+      } else {
+        showDrawerIndex();
+      }
+      processDrawer.classList.add("process-drawer--open");
+      processBackdrop.classList.add("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "false");
+    }
+    function closeDrawer() {
+      processDrawer.classList.remove("process-drawer--open");
+      processBackdrop.classList.remove("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "true");
+    }
+
+    processToggle?.addEventListener("click", openDrawer);
+    if (project && !project.noDrawer) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
+    }
+    processDrawerClose?.addEventListener("click", closeDrawer);
+    processBackdrop?.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+    // Sidebar mobile toggle
+    const toggle = $("#sidebarToggle");
+    toggle?.addEventListener("click", () => {
+      const sidebar = $("#sidebar");
+      const isOpen = sidebar.classList.toggle("sidebar--open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+  </script>
+</body>
+</html>`;
+}
+
+// ── Generate files ────────────────────────────────────────────────────────────
+
+let count = 0;
+for (const project of PROJECTS) {
+  const html = renderPage(project);
+  const outPath = path.join(__dirname, `${project.id}.html`);
+  fs.writeFileSync(outPath, html, "utf8");
+  console.log(`✓ ${project.id}.html`);
+  count++;
+}
+console.log(`\nGenerated ${count} static project pages.`);
+console.log(`\nNext: update app.js to link to /{id}.html instead of /project.html?id={id}`);

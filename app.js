@@ -13,7 +13,7 @@ const projects = window.PROJECTS || [];
 
 function cardHTML(p){
   return `
-    <a class="card" href="./project.html?id=${encodeURIComponent(p.id)}">
+    <a class="card" href="./${p.id}.html">
       <img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${(p.coverPosition || p.coverFilter) ? ` style="${p.coverPosition ? `object-position:${p.coverPosition};` : ""}${p.coverFilter ? `filter:${p.coverFilter};` : ""}"` : ""}>
       <div class="card__caption">
         <p class="card__title">${p.title}</p>
