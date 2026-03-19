@@ -232,8 +232,8 @@ window.PROJECTS = [
         heading: "Trykte flater",
         cover: { src: "./assets/srhbrosk.webp", caption: "Brosjyre om universitetets bærekraftsarbeid", eager: true },
         items: [
-          { src: "./assets/bak.webp",            caption: "Brosjyre – bakside",    crop: true },
-          { src: "./assets/foran.webp",          caption: "Brosjyre – forside",    crop: true },
+          { src: "./assets/bak.webp",            caption: "Brosjyre – bakside",    cropX: 1.4 },
+          { src: "./assets/foran.webp",          caption: "Brosjyre – forside",    cropX: 1.4 },
           { src: "./assets/plakat_mockup.webp",  caption: "Plakat i A2-format" },
           { src: "./assets/srhbanner_mockup.webp", caption: "Roll-up banner" },
         ]

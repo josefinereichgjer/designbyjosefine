@@ -242,12 +242,14 @@ a:hover{opacity:.75}
   transform: scale(var(--crop-scale, 1.18));
   transform-origin: center bottom;
 }
-.project__figure--cropx img{
-  transform: scaleX(var(--crop-scale, 1.12));
+.project__figure--cropx{
+  overflow: hidden;
 }
+.project__figure--cropx img,
 .project__figure--cropx video{
-  width: 112%;
-  margin-left: -6%;
+  width: calc(var(--crop-scale, 1.12) * 100%);
+  margin-left: calc((1 - var(--crop-scale, 1.12)) * 50%);
+  margin-right: calc((1 - var(--crop-scale, 1.12)) * 50%);
 }
 .project__figcaption{
   margin-top: 9px;
@@ -287,14 +289,14 @@ a:hover{opacity:.75}
 /* Expandable gallery sections */
 .gallery-expandable{
   column-span: all;
-  margin-bottom: clamp(36px, 5vw, 64px);
+  margin-bottom: clamp(16px, 2.5vw, 28px);
 }
 .gallery-expandable__heading{
   font-size: clamp(18px, 2vw, 24px);
   font-weight: 700;
   letter-spacing: -.01em;
   color: #c44f24;
-  padding-top: clamp(36px, 5vw, 64px);
+  padding-top: clamp(16px, 2.5vw, 28px);
   border-top: 2px solid #c44f24;
   margin-bottom: clamp(16px, 2.5vw, 28px);
 }
@@ -360,6 +362,12 @@ a:hover{opacity:.75}
 .gallery-expandable__rest .project__figure-link .project__figure{ flex: none; }
 .gallery-expandable__rest img,
 .gallery-expandable__rest video{ width: 100%; height: auto; display: block; }
+.gallery-expandable__rest .project__figure--cropx img,
+.gallery-expandable__rest .project__figure--cropx video{
+  width: calc(var(--crop-scale, 1.12) * 100%);
+  margin-left: calc((1 - var(--crop-scale, 1.12)) * 50%);
+  margin-right: calc((1 - var(--crop-scale, 1.12)) * 50%);
+}
 .gallery-expandable__close-btn{ display: none; }
 @media(max-width:780px){
   .gallery-expandable__close-btn{
@@ -1377,6 +1385,8 @@ a:hover{opacity:.75}
 .btn-pdf--black:hover { background: #2a2a2a; }
 .btn-pdf--grey { background: #e0e0e0; color: #1a1a1a; }
 .btn-pdf--grey:hover { background: #cacaca; }
+.btn-pdf--green { background: none; border: 2px solid #0f0f0f; }
+.btn-pdf--green:hover { background: none; opacity: 0.6; }
 .btn-pdf--grey--active { background: #c8c8c8; }
 .intro-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; margin-top: 28px; }
 .intro-col__label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
