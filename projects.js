@@ -50,6 +50,11 @@ window.PROJECTS = [
             pantone: "Process Black C"
           }
         ]
+      },
+      {
+        heading: "Første utkast",
+        body: "Hvorfor endret jeg uttrykket i 2026? I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer som en del av hoveduttrykket. Selv om dette formidlet historien om familiebruket og fellesskapet, ble systemet ganske komplekst og litt visuelt rotete når det skulle brukes på ulike produkter. Derfor utviklet jeg i 2026 en ny løsning som er mer minimalistisk og renere. Ved å forenkle uttrykket og redusere antall elementer blir designet mer oversiktlig, lettere å tilpasse til flere produkter og mer konsistent som visuell identitet.",
+        link: { label: "Se første utkast", src: "./assets/forsteutkastemballasje.pdf" }
       }
     ],
     projectMeta: [
