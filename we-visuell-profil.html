@@ -53,59 +53,105 @@
           <div class="project-layout__media">
             <div class="project-header">
               <h1 class="project-meta__title">Stiftelsen WE</h1>
-              
-              
+              <p class="project-intro"></p>
+
               <div class="header-btns">
-                
-                
+
+                <button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
               </div>
             </div>
-            
-        <div class="slideshow__caption-bar" id="slideshowCaption"></div>
-        <div class="slideshow" id="slideshow">
-          <div class="slideshow__track" id="slideshowTrack">
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="eager" decoding="async" src="./assets/kitty.webp" alt="Stiftelsen WE — bilde 1">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/doorskilt.webp" alt="Stiftelsen WE — bilde 2">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/storefront.webp" alt="Stiftelsen WE — bilde 3">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/skjema.webp" alt="Stiftelsen WE — bilde 4">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/newicon.webp" alt="Stiftelsen WE — bilde 5">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/weinsta.webp" alt="Stiftelsen WE — bilde 6">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/wenettside.webp" alt="Stiftelsen WE — bilde 7">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/banner.webp" alt="Stiftelsen WE — bilde 8">
-              </figure>
-          </div>
-          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="slideshow__counter"><span id="slideIndex">1</span> / 8</div>
+
+        <div class="project__gallery">
+          <figure class="project__figure"><img loading="eager" decoding="async" src="./assets/kitty.webp" alt="Stiftelsen WE — bilde 1"></figure>
+          <figure class="project__figure"><img loading="lazy" decoding="async" src="./assets/doorskilt.webp" alt="Stiftelsen WE — bilde 2"></figure>
+          <figure class="project__figure"><img loading="lazy" decoding="async" src="./assets/storefront.webp" alt="Stiftelsen WE — bilde 3"></figure>
+          <figure class="project__figure"><img loading="lazy" decoding="async" src="./assets/skjema.webp" alt="Stiftelsen WE — bilde 4"></figure>
+          <figure class="project__figure"><img loading="lazy" decoding="async" src="./assets/newicon.webp" alt="Stiftelsen WE — bilde 5"></figure>
+          <figure class="project__figure"><img loading="lazy" decoding="async" src="./assets/weinsta.webp" alt="Stiftelsen WE — bilde 6"></figure>
+          <figure class="project__figure"><img loading="lazy" decoding="async" src="./assets/wenettside.webp" alt="Stiftelsen WE — bilde 7"></figure>
+          <figure class="project__figure"><img loading="lazy" decoding="async" src="./assets/banner.webp" alt="Stiftelsen WE — bilde 8"></figure>
         </div>
             <div class="project-meta">
-              
-              
+              <div class="pmeta">
+        <div class="pmeta__row">
+          <strong class="pmeta__label">År</strong>
+          <span class="pmeta__value">2026</span>
+        </div>
+        <div class="pmeta__row">
+          <strong class="pmeta__label">Fag</strong>
+          <span class="pmeta__value"></span>
+        </div>
+        <div class="pmeta__row">
+          <strong class="pmeta__label">Fag ansvarlig</strong>
+          <span class="pmeta__value"></span>
+        </div>
+        <div class="pmeta__row">
+          <strong class="pmeta__label">Verktøy</strong>
+          <span class="pmeta__value"></span>
+        </div></div>
+
               <a class="btn-pdf btn-pdf--green" href="./assets/we.pdf" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ Se hele PDF-en</a>
-              
+              <button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
+            </div>
+          </div>
+          <div class="project-layout__side">
+            <div class="project-layout__info" id="projectInfo">
+              <div class="project-layout__info-inner">
+                <div class="accordion" id="accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Innsikt i oppdragsgiver</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><p class="bg__body"></p></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Oppgaven</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><p class="bg__body"></p></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Logo</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><p class="bg__body"></p></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Typografi</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><p class="bg__body"></p></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Fargepalett</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><p class="bg__body"></p></div>
+            </div>
+          </div></div>
+              </div>
             </div>
           </div>
         </div>
-        
-        
-        
-        
-        
+
+
+
+
+
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
                   <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
@@ -119,7 +165,7 @@
                   <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy">
                   <p class="related__title">Tjønnås og Norvald</p>
                 </a></div></div>
-      
+
     </article>
   </main>
 
@@ -131,47 +177,6 @@
     const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Slideshow
-    const track = $("#slideshowTrack");
-    if (track) {
-      const slides = [...track.querySelectorAll(".slideshow__slide")];
-      const counter = $("#slideIndex");
-      let current = 0;
-      let timer;
-      const slideshow = $("#slideshow");
-      const captionBar = $("#slideshowCaption");
-      let paused = false;
-      function goTo(n) {
-        current = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = current + 1;
-        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
-      }
-      function startAuto() {
-        clearInterval(timer);
-        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
-      }
-      track.addEventListener("click", () => {
-        paused = !paused;
-        slideshow.classList.toggle("slideshow--paused", paused);
-        if (paused) clearInterval(timer);
-        else startAuto();
-      });
-      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
-      let touchStartX = 0;
-      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-      }, { passive: true });
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
-        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
-      });
-      startAuto();
-    }
 
     // Accordion
     const accordion = document.getElementById("accordion");
