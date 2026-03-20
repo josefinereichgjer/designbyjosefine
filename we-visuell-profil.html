@@ -274,7 +274,7 @@
             </div>
             <div class="we-step">
               <div class="we-step__num">02</div>
-              <div class="we-step__title">Konkurrentanalyse og <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button></div>
+              <div class="we-step__title"><button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button> og <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button></div>
               <div class="we-step__body">Kartlegging av Røde Kors, Amnesty, Ferd og FOKUS for å identifisere WEs posisjon.</div>
             </div>
             <div class="we-step">
@@ -484,6 +484,18 @@
 
     </article>
   </main>
+
+  <dialog id="weKonkModal">
+    <div class="we-posmap-modal__inner">
+      <button class="we-posmap-modal__close" onclick="document.getElementById('weKonkModal').close()" aria-label="Lukk">✕</button>
+      <h3 class="we-posmap-modal__heading">Hvorfor disse konkurrentene?</h3>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Disse aktørene er valgt fordi de jobber innen filantropi, sosialt arbeid og samfunnsutvikling – områder som overlapper med Stiftelsen WEs formål. De representerer ulike tilnærminger til sosial påvirkning og gir et relevant sammenligningsgrunnlag.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Røde Kors, CARE og Amnesty er etablerte organisasjoner med tydelige budskap og sterk kommunikasjon. De fokuserer på krisehjelp, rettigheter og bistand. FOKUS Kvinner har et mer spesialisert likestillingsfokus.</p>
+      <p style="font-size:13px;font-weight:600;color:#111;margin:0 0 8px;text-transform:uppercase;letter-spacing:.07em;">Hva skiller WE?</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Ferd og Kavlifondet kombinerer næringsliv og samfunnsansvar, og bruker eierskap og investeringer for å skape sosial verdi. WE skiller seg ved å ha en tydelig kobling mellom kvinner, arbeid og samarbeid med næringslivet.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0;">WE fungerer som en brobygger mellom kapital og sosial verdiskaping, og har en mer relasjonsbasert og konkret tilnærming enn mange andre aktører.</p>
+    </div>
+  </dialog>
 
   <dialog id="wePosmapModal">
     <div class="we-posmap-modal__inner">
