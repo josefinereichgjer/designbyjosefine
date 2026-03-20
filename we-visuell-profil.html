@@ -285,7 +285,7 @@
             <div class="we-step">
               <div class="we-step__num">04</div>
               <div class="we-step__title">Identitetsutvikling</div>
-              <div class="we-step__body">Logo, fargepalett og typografi utviklet iterativt fra skisse til ferdig system.</div>
+              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weLogoutvModal').showModal()">Logo</button>, fargepalett og typografi utviklet iterativt fra skisse til ferdig system.</div>
             </div>
             <div class="we-step">
               <div class="we-step__num">05</div>
@@ -484,6 +484,14 @@
 
     </article>
   </main>
+
+  <dialog id="weLogoutvModal">
+    <div class="we-posmap-modal__inner">
+      <button class="we-posmap-modal__close" onclick="document.getElementById('weLogoutvModal').close()" aria-label="Lukk">✕</button>
+      <h3 class="we-posmap-modal__heading">Logoutvikling</h3>
+      <img src="./assets/logoutvikling.webp" alt="Logoutvikling" style="width:100%;height:auto;display:block;">
+    </div>
+  </dialog>
 
   <dialog id="weKonkModal">
     <div class="we-posmap-modal__inner">
