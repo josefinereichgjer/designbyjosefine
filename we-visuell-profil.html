@@ -113,6 +113,15 @@
     .we-typo-col__name--italic { font-style: italic; }
     .we-typo-col__alphabet { font-size: 13px; line-height: 1.65; color: #333; }
 
+    /* Posisjoneringskart */
+    .we-posmap { display: grid; grid-template-columns: 2fr 3fr; gap: 48px; align-items: start; max-width: 780px; }
+    .we-posmap__label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--we-periwinkle); margin-bottom: 16px; font-weight: 600; }
+    .we-posmap__text p { font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 14px; }
+    .we-posmap__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .we-posmap__chip { font-size: 13px; padding: 6px 16px; border: 1.5px solid #333; border-radius: 999px; color: #333; background: transparent; }
+    .we-posmap__chip--filled { background: var(--we-lime); border-color: var(--we-lime); color: #111; font-weight: 500; }
+    .we-posmap__svg { width: 100%; height: auto; display: block; }
+
     /* SWOT */
     .we-swot { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
     .we-swot-cell { padding: 24px 20px; }
@@ -128,6 +137,16 @@
     .we-swot-cell--s li { color: rgba(255,255,255,.85); }
     .we-swot-cell--s li::before { color: var(--we-lime); }
 
+    /* Posmap trigger + modal */
+    .we-posmap-trigger { background: none; border: none; padding: 0; font: inherit; font-size: inherit; font-weight: inherit; color: var(--we-periwinkle); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+    .we-posmap-trigger:hover { color: var(--we-amethyst); }
+    #wePosmapModal { border: none; padding: 0; max-width: 680px; width: 90vw; background: #fff; box-shadow: 0 8px 48px rgba(0,0,0,.18); }
+    #wePosmapModal::backdrop { background: rgba(0,0,0,.45); }
+    .we-posmap-modal__inner { padding: 32px; position: relative; }
+    .we-posmap-modal__close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: #888; line-height: 1; padding: 4px; }
+    .we-posmap-modal__close:hover { color: #111; }
+    .we-posmap-modal__heading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: 22px; margin: 0 0 20px; color: #111; }
+
     .we-cta { padding: 32px 0 0; display: flex; justify-content: center; }
     .we-cta a {
       background: var(--we-amethyst); color: var(--we-snow);
@@ -142,6 +161,7 @@
       .we-body { padding: 0 20px 48px; }
       .we-client { grid-template-columns: 1fr; }
       .we-steps { grid-template-columns: 1fr 1fr; }
+      .we-posmap { grid-template-columns: 1fr; }
       .we-logos { grid-template-columns: 1fr 1fr; }
       .we-palette { grid-template-columns: 1fr 1fr; }
       .we-gallery { columns: 2; }
@@ -254,7 +274,7 @@
             </div>
             <div class="we-step">
               <div class="we-step__num">02</div>
-              <div class="we-step__title">Konkurrentanalyse</div>
+              <div class="we-step__title">Konkurrentanalyse og <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button></div>
               <div class="we-step__body">Kartlegging av Røde Kors, Amnesty, Ferd og FOKUS for å identifisere WEs posisjon.</div>
             </div>
             <div class="we-step">
@@ -336,9 +356,9 @@
           <p style="font-size:12px; color:#aaa; margin-top:10px;">Bilder hentet fra Adobe Stock</p>
         </section>
 
-        <!-- 03 Logo -->
+        <!-- 04 Logo -->
         <section class="we-section">
-          <p class="we-section__num">03</p>
+          <p class="we-section__num">04</p>
           <h2 class="we-section__heading">Logo</h2>
           <div style="display:flex; gap:32px; align-items:flex-start; margin-bottom:32px; flex-wrap:wrap; padding-bottom:32px; border-bottom:1px solid #c5b8d4;">
             <img src="./assets/primarywelogo.png" alt="Primærlogo — Women Empowerment" style="width:660px; max-width:100%; display:block; flex-shrink:0;" loading="lazy">
@@ -464,6 +484,14 @@
 
     </article>
   </main>
+
+  <dialog id="wePosmapModal">
+    <div class="we-posmap-modal__inner">
+      <button class="we-posmap-modal__close" onclick="document.getElementById('wePosmapModal').close()" aria-label="Lukk">✕</button>
+      <h3 class="we-posmap-modal__heading">Posisjoneringskart</h3>
+      <img src="./assets/posisjoneringwe.webp" alt="Posisjoneringskart for WE" style="width:100%;height:auto;display:block;">
+    </div>
+  </dialog>
 
   <script src="./projects.js?v=6"></script>
   <script>
