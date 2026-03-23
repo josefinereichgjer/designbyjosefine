@@ -26,8 +26,10 @@
     .we-monster-img{ width:min(180px,22vw); height:auto; display:block; }
     .we-monster-text{ flex:1 1 0; font-size:15px; line-height:1.7; color:#444; margin:0; min-width:0; }
     @media(max-width:600px){
-      .we-monster-img{ width:min(110px,26vw); }
-      .we-monster-text{ font-size:13px; }
+      .we-monster-layout{ flex-direction:column; gap:16px; }
+      .we-monster-imgs{ justify-content:flex-start; }
+      .we-monster-img{ width:min(140px,40vw); }
+      .we-monster-text{ font-size:13px; column-count:2; column-gap:20px; }
     }
 
     /* ── WE case study ── */

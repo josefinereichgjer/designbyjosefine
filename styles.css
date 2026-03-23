@@ -424,6 +424,20 @@ a:hover{opacity:.75}
     overflow-y: visible;
   }
   .gallery-expandable__cover{ flex: none; width: 92%; }
+  /* On mobile the strip is vertical — reset height-driven images to natural ratio */
+  .gallery-expandable--uniform-height .gallery-expandable__rest img{
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  .gallery-expandable--uniform-height .gallery-expandable__rest .project__figure{
+    width: 100%;
+  }
+  .gallery-expandable--uniform-cover .gallery-expandable__cover img{
+    width: 100%;
+    height: auto;
+  }
+  .gallery-expandable--uniform-cover .gallery-expandable__cover{ width: 92%; }
   .gallery-expandable__cover::after{ content: "↓"; }
   .gallery-expandable.is-open .gallery-expandable__cover::after{ content: "↑"; }
   .gallery-expandable__rest{
