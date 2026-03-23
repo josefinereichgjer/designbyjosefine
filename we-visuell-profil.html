@@ -19,6 +19,9 @@
     .we-body .gallery-expandable__close-btn{ background: #224942; }
     /* ── gallery image sizing ── */
     .we-body .gallery-expandable--wide-cover .gallery-expandable__cover{ flex: 0 0 clamp(560px, 86%, 1100px); width: 100%; }
+    @media(max-width:780px){
+      .we-body .gallery-expandable--wide-cover .gallery-expandable__cover{ flex: none; width: 100%; }
+    }
     .we-body .gallery-expandable .project__figure img{ cursor: zoom-in; }
     /* ── mønster two-column layout ── */
     .we-monster-layout{ display:flex; gap:clamp(16px,3vw,40px); align-items:flex-start; margin-top:8px; }
