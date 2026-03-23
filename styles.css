@@ -21,7 +21,8 @@
 
 *{box-sizing:border-box}
 button{color:inherit; font-family:inherit; background:none; border:none; padding:0; cursor:pointer; border-radius:0; -webkit-appearance:none; appearance:none; -webkit-tap-highlight-color:transparent}
-html,body{height:100%; overflow-x:hidden}
+html{scrollbar-gutter:stable; overflow-x:clip; overflow-y:scroll}
+body{min-height:100vh}
 body{
   margin:0;
   font-family:var(--font);
@@ -314,6 +315,8 @@ a:hover{opacity:.75}
 }
 .gallery-expandable.is-open .gallery-expandable__strip{
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
   padding-bottom: 10px;
 }
 .gallery-expandable__cover img,
@@ -363,6 +366,30 @@ a:hover{opacity:.75}
 .gallery-expandable__rest .project__figure-link .project__figure{ flex: none; }
 .gallery-expandable__rest img,
 .gallery-expandable__rest video{ width: 100%; height: auto; display: block; }
+.gallery-expandable--uniform-height .gallery-expandable__cover img{
+  width: 100%;
+  height: auto;
+  cursor: zoom-in;
+}
+.gallery-expandable--uniform-height .gallery-expandable__rest img{
+  width: auto;
+  height: var(--gallery-h, 300px);
+  max-width: none;
+  cursor: zoom-in;
+}
+.gallery-expandable--uniform-height .gallery-expandable__rest .project__figure{
+  flex: 0 0 auto;
+}
+/* Cover also matches height — use alongside --uniform-height */
+.gallery-expandable--uniform-cover .gallery-expandable__cover img{
+  width: auto;
+  height: var(--gallery-h, 300px);
+  max-width: none;
+  cursor: zoom-in;
+}
+.gallery-expandable--uniform-cover .gallery-expandable__cover{
+  flex: 0 0 auto;
+}
 .gallery-expandable__rest .project__figure--cropx img,
 .gallery-expandable__rest .project__figure--cropx video{
   width: calc(var(--crop-scale, 1.12) * 100%);
