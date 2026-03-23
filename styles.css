@@ -317,8 +317,11 @@ a:hover{opacity:.75}
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
   padding-bottom: 10px;
 }
+.gallery-expandable__cover,
+.gallery-expandable__rest{ scroll-snap-align: start; }
 .gallery-expandable__cover img,
 .gallery-expandable__cover video{
   width: 100%;
