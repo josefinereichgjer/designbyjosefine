@@ -28,6 +28,13 @@
       .we-body .gallery-expandable--wide-cover .gallery-expandable__cover{ flex: none; width: calc(100% + 32px); margin-left: -16px; }
     }
     .we-body .gallery-expandable .project__figure img{ cursor: zoom-in; }
+    /* ── desktop: galleries open by default ── */
+    @media(min-width:781px){
+      .we-body .gallery-expandable .gallery-expandable__strip{ overflow-x:auto; -webkit-overflow-scrolling:touch; scroll-snap-type:x proximity; padding-bottom:10px; }
+      .we-body .gallery-expandable .gallery-expandable__rest{ max-width:4000px; opacity:1; overflow:visible; }
+      .we-body .gallery-expandable__cover{ cursor:default; }
+      .we-body .gallery-expandable__cover::after{ display:none; }
+    }
     /* ── mønster two-column layout ── */
     .we-monster-layout{ display:flex; gap:clamp(16px,3vw,40px); align-items:flex-start; margin-top:8px; }
     .we-monster-imgs{ display:flex; gap:clamp(8px,1.5vw,16px); flex-shrink:0; }
