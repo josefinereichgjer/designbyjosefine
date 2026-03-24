@@ -294,13 +294,14 @@
     .we-cta a:hover { opacity: .75; }
 
     /* Refleksjon */
-    .we-reflection { background: #f8f6f3; padding: 40px; margin-top: 8px; }
+    .we-reflection { background: #f8f6f3; padding: 40px; margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start; }
     .we-reflection__quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(18px, 2.5vw, 26px); line-height: 1.45; color: var(--we-amethyst); margin: 0 0 28px; border-left: 3px solid var(--we-lime); padding-left: 24px; }
     .we-reflection__body { font-size: 15px; line-height: 1.8; color: #444; margin: 0 0 18px; }
-    .we-reflection__learnings-heading { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #111; margin: 28px 0 16px; }
+    .we-reflection__learnings-heading { font-size: 20px; font-weight: 400; text-transform: none; letter-spacing: 0; color: #111; margin: 36px 0 12px; }
     .we-reflection__learnings { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .we-reflection__learnings li { font-size: 14px; color: #333; padding-left: 28px; position: relative; line-height: 1.65; }
     .we-reflection__learnings li::before { content: '→'; position: absolute; left: 0; color: var(--we-periwinkle); font-weight: 600; }
+    .we-reflection__hl { color: #35685e; font-size: 1.15em; font-weight: 600; }
 
     /* Design section image helpers */
     .we-img-bleed { width: calc(100% + 80px); max-width: none; display: block; margin-top: 24px; margin-left: -40px; }
@@ -348,7 +349,7 @@
       .we-img-story { height: auto; width: 100%; max-width: 100%; margin-left: 0; }
       .we-img-pair { flex-direction: column; }
       .we-img-pair img { width: 100% !important; }
-      .we-reflection { padding: 28px 20px; }
+      .we-reflection { padding: 28px 20px; grid-template-columns: 1fr; }
       .we-logo-stage { width: calc(100% + 32px); margin-left: -16px; padding: 44px 16px; }
       .we-typo-specimen { width: calc(100% + 32px); margin-left: -16px; padding: 28px 16px; }
     }
@@ -683,6 +684,10 @@
                     <figcaption class="project__figcaption">Instagram karusell</figcaption>
                   </figure>
                   <figure class="project__figure">
+                    <img src="./assets/instaframewe.webp" alt="WE Instagram grid" loading="lazy" style="border: 1px solid #e0ddd9;">
+                    <figcaption class="project__figcaption">Instagram grid</figcaption>
+                  </figure>
+                  <figure class="project__figure">
                     <img src="./assets/insta-storypng.webp" alt="WE Instagram story" width="1920" height="1080" loading="lazy">
                     <figcaption class="project__figcaption">Instagram stories</figcaption>
                   </figure>
@@ -758,15 +763,23 @@
           <p class="we-section__num">09</p>
           <h2 class="we-section__heading">Refleksjon</h2>
           <div class="we-reflection">
-            <p class="we-reflection__body">Endepunktet i prosessen kom da vi identifiserte et misforhold mellom uttrykk og formål. Det første utkastet hadde visuell energi, men manglet tilstrekkelig tyngde og troverdighet. Vi hadde prioritert et ekspressivt uttrykk fremfor å bygge tillit.</p>
-            <p class="we-reflection__body">Dette førte til en strategisk justering, der identiteten ble utviklet som et kommunikasjonsverktøy med tydelig funksjon: å fungere for to ulike målgrupper med ulike behov.</p>
-            <p class="we-reflection__body">For næringslivet måtte uttrykket signalisere profesjonalitet og stabilitet. For målgruppen måtte det oppleves inkluderende, trygt og relevant. Identiteten ble derfor utviklet for å svare på to spørsmål samtidig: Kan vi stole på dere? og Er dette for meg?</p>
-            <p class="we-reflection__learnings-heading">Læring</p>
-            <ul class="we-reflection__learnings">
-              <li>Dobbel målgruppe krever tydelige prioriteringer fra start</li>
-              <li>Retning må forankres i funksjon, ikke kun uttrykk</li>
-              <li>En sterk identitet ligger i et konsistent system, ikke enkeltstående elementer</li>
-            </ul>
+            <div>
+              <p class="we-reflection__learnings-heading">Vendepunkt</p>
+              <p class="we-reflection__body">Vendepunktet i prosessen kom da vi identifiserte et misforhold mellom uttrykk og formål. Det første utkastet hadde visuell energi, men manglet tilstrekkelig tyngde og troverdighet. <span class="we-reflection__hl">Vi hadde prioritert et ekspressivt uttrykk fremfor å bygge tillit.</span></p>
+              <p class="we-reflection__learnings-heading">Strategisk justering</p>
+              <p class="we-reflection__body">Dette førte til en tydelig kursendring, der identiteten ble utviklet som et kommunikasjonsverktøy med klar funksjon: <span class="we-reflection__hl">å fungere for to ulike målgrupper med ulike behov.</span></p>
+              <p class="we-reflection__body">For næringslivet måtte uttrykket signalisere profesjonalitet og stabilitet. For målgruppen måtte det oppleves inkluderende, trygt og relevant. Identiteten ble derfor utviklet for å svare på to spørsmål samtidig:<br><span class="we-reflection__hl">Kan vi stole på dere?</span> og <span class="we-reflection__hl">Er dette for meg?</span></p>
+            </div>
+            <div>
+              <p class="we-reflection__learnings-heading">Refleksjon</p>
+              <p class="we-reflection__body">I arbeidet med å sikre troverdighet og tydelighet har uttrykket en bevisst balanse mot det trygge. Dette gir en robust og anvendelig identitet, men kan i enkelte sammenhenger oppleves noe <span class="we-reflection__hl">kontrollert</span>. Det åpner for videre utvikling, der <span class="we-reflection__hl">uttrykket kan utfordres</span> og gis mer særpreg uten å miste sin funksjon.</p>
+              <p class="we-reflection__learnings-heading">Læring</p>
+              <ul class="we-reflection__learnings">
+                <li>Dobbel målgruppe krever tydelige prioriteringer fra start</li>
+                <li>Retning må forankres i funksjon, ikke kun uttrykk</li>
+                <li>En sterk identitet ligger i et konsistent system, ikke enkeltstående elementer</li>
+              </ul>
+            </div>
           </div>
         </section>
 
