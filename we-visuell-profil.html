@@ -44,12 +44,12 @@
       .we-body .gallery-expandable__cover::after{ display:none; }
     }
     /* ── mønster two-column layout ── */
-    .we-monster-layout{ display:flex; gap:clamp(16px,3vw,40px); align-items:flex-start; margin-top:8px; }
+    .we-monster-layout{ display:flex; gap:clamp(32px,5vw,72px); align-items:flex-start; margin-top:8px; }
     .we-monster-imgs{ display:flex; gap:clamp(24px,4vw,48px); flex-shrink:0; }
     .we-monster-img{ width:min(180px,22vw); height:auto; display:block; animation: we-spin 18s linear infinite; }
     .we-monster-img:nth-child(2){ animation-direction: reverse; animation-duration: 24s; }
     @keyframes we-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-    .we-monster-text{ flex:1 1 0; font-size:var(--type-body); line-height:var(--lh-body); color:#444; margin:0; min-width:0; }
+    .we-monster-text{ flex:1 1 0; font-size:var(--type-body-lg); line-height:var(--lh-body); color:#444; margin:0; min-width:0; }
     @media(max-width:600px){
       .we-monster-layout{ flex-direction:column; gap:16px; }
       .we-monster-imgs{ justify-content:flex-start; }
@@ -68,7 +68,7 @@
       --type-h1:       clamp(32px, 4vw, 52px);     /* Section headings */
       --type-h2:       clamp(20px, 2.5vw, 28px);   /* Subheadings      */
       --type-h3:       18px;                        /* Card/block titles*/
-      --type-body-lg:  16px;                        /* Intro / lead     */
+      --type-body-lg:  18px;                        /* Intro / lead     */
       --type-body:     15px;                        /* Standard body    */
       --type-sm:       13px;                        /* Secondary info   */
       --type-caption:  11px;                        /* Labels / meta    */
@@ -267,7 +267,7 @@
     .we-credits__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
     .we-credits__list li { font-size: 13px; color: #555; line-height: 1.5; }
     .we-credits__list a { color: #555; }
-    @media (max-width: 600px) { .we-credits { grid-template-columns: 1fr; } }
+    @media (max-width: 400px) { .we-credits { grid-template-columns: 1fr; } }
 
     /* Scroll fade-in */
     .we-section.we-fade { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
@@ -547,7 +547,7 @@
     <div class="sidebar__inner">
       <div class="brand">
         <a class="brand__mark" href="./projects.html" aria-label="Back to work">
-          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
+          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo" loading="lazy" decoding="async">
         </a>
       </div>
       <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -608,15 +608,15 @@
                 </div>
                 <div class="gallery-expandable__rest">
                   <figure class="project__figure">
-                    <img src="./assets/instacarousel.webp" alt="WE Instagram-karusell" width="2946" height="1121" loading="lazy">
+                    <img src="./assets/instacarousel.webp" alt="WE Instagram-karusell" width="2946" height="1121" loading="lazy" decoding="async">
                     <figcaption class="project__figcaption">Instagram karusell</figcaption>
                   </figure>
                   <figure class="project__figure">
-                    <img src="./assets/insta-grid.webp" alt="WE Instagram grid" loading="lazy" style="border: 1px solid #e0ddd9;">
+                    <img src="./assets/insta-grid.webp" alt="WE Instagram grid" loading="lazy" decoding="async" style="border: 1px solid #e0ddd9;">
                     <figcaption class="project__figcaption">Instagram grid</figcaption>
                   </figure>
                   <figure class="project__figure">
-                    <img src="./assets/insta-storypng.webp" alt="WE Instagram story" width="1920" height="1080" loading="lazy">
+                    <img src="./assets/insta-storypng.webp" alt="WE Instagram story" width="1920" height="1080" loading="lazy" decoding="async">
                     <figcaption class="project__figcaption">Instagram stories</figcaption>
                   </figure>
                 </div>
@@ -634,21 +634,21 @@
               <div class="gallery-expandable__strip">
                 <div class="gallery-expandable__cover">
                   <figure class="project__figure">
-                    <img src="./assets/we-business-card.webp" alt="WE visittkort" width="4500" height="3000" loading="lazy">
+                    <img src="./assets/we-business-card.webp" alt="WE visittkort" width="4500" height="3000" loading="lazy" decoding="async">
                     <figcaption class="project__figcaption">Visittkort</figcaption>
                   </figure>
                 </div>
                 <div class="gallery-expandable__rest">
                   <figure class="project__figure">
-                    <img src="./assets/we-broski-bak@3x.webp" alt="WE brosjyre — forside og bakside" width="12312" height="11299" loading="lazy">
+                    <img src="./assets/we-broski-bak@3x.webp" alt="WE brosjyre — forside og bakside" width="12312" height="11299" loading="lazy" decoding="async">
                     <figcaption class="project__figcaption">Brosjyre bak/foran</figcaption>
                   </figure>
                   <figure class="project__figure">
-                    <img src="./assets/we-broski-inn@3x.webp" alt="WE brosjyre — innside" width="12445" height="11303" loading="lazy">
+                    <img src="./assets/we-broski-inn@3x.webp" alt="WE brosjyre — innside" width="12445" height="11303" loading="lazy" decoding="async">
                     <figcaption class="project__figcaption">Brosjyre inni</figcaption>
                   </figure>
                   <figure class="project__figure">
-                    <img src="./assets/webanner.webp" alt="WE banner" loading="lazy">
+                    <img src="./assets/webanner.webp" alt="WE banner" loading="lazy" decoding="async">
                     <figcaption class="project__figcaption">Banner</figcaption>
                   </figure>
                 </div>
@@ -665,14 +665,14 @@
           <div class="we-client-v2">
             <div class="we-client-v2__blocks">
               <div class="we-client-block">
-                <p class="we-client-block__text">Stiftelsen WE (Women Empowerment) er etablert for å skape innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk.</p>
-                <p class="we-client-block__text" style="margin-top:20px;">Identiteten bygger på en balanse mellom struktur og menneskelighet. Målet var å utvikle et uttrykk som fungerer i en profesjonell B2B-kontekst, og samtidig oppleves inkluderende og relevant for målgruppen.</p>
+                <p class="we-client-block__text" style="font-size:var(--type-body-lg);">Stiftelsen WE (Women Empowerment) er etablert for å skape innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk.</p>
+                <p class="we-client-block__text" style="margin-top:20px;font-size:var(--type-body-lg);">Identiteten bygger på en balanse mellom struktur og menneskelighet. Målet var å utvikle et uttrykk som fungerer i en profesjonell B2B-kontekst, og samtidig oppleves inkluderende og relevant for målgruppen.</p>
                 <p class="we-client-block__text" style="margin-top:20px; font-style:italic; color:#35685e; font-weight:500;">Identiteten er utviklet for å bygge tillit — ikke bare oppmerksomhet.</p>
               </div>
             </div>
             <figure class="we-client-v2__figure">
               <a href="https://www.linkedin.com/posts/kirstine-holst_kvinnedagen-sosialtentreprenaeorskap-stiftelsenwe-activity-7304195466643038208-b-LH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI0OqoBN-ikYxYK7sTRX62ULrtF7TQiGZ4" target="_blank" rel="noopener">
-                <img src="./assets/ragnhildkistine.webp" alt="Ragnhild Slettner og Kirstine Holst — grunnleggere av Stiftelsen WE" style="object-fit:cover;object-position:85% 20%;">
+                <img src="./assets/ragnhildkistine.webp" alt="Ragnhild Slettner og Kirstine Holst — grunnleggere av Stiftelsen WE" style="object-fit:cover;object-position:85% 20%;" loading="lazy" decoding="async">
               </a>
               <span class="we-client-v2__caption">Kirstine Holst (til venstre) og Ragnhild Slettner (til høyre)</span>
             </figure>
@@ -825,32 +825,32 @@
             <span class="we-logo-toggle__dot" id="weLogoToggleDot"></span><span id="weLogoToggleLabel">Lys bakgrunn</span>
           </button>
           <div class="we-logo-stage" id="weLogoStage">
-            <img src="./assets/prim.webp" alt="Primærlogo — Women Empowerment" loading="lazy">
+            <img src="./assets/prim.webp" alt="Primærlogo — Women Empowerment" loading="lazy" decoding="async">
           </div>
 
           <div class="we-logos">
             <div class="we-logo-box">
-              <img src="./assets/wegrepurp.webp" alt="WE logo — grønn på lilla" width="601" height="198" loading="lazy">
+              <img src="./assets/wegrepurp.webp" alt="WE logo — grønn på lilla" width="601" height="198" loading="lazy" decoding="async">
               <span class="we-logo-variant-label">Grønn på lilla</span>
             </div>
             <div class="we-logo-box">
-              <img src="./assets/wepurpur.webp" alt="WE logo — lilla på lilla" width="601" height="198" loading="lazy">
+              <img src="./assets/wepurpur.webp" alt="WE logo — lilla på lilla" width="601" height="198" loading="lazy" decoding="async">
               <span class="we-logo-variant-label">Lilla på lilla</span>
             </div>
             <div class="we-logo-box">
-              <img src="./assets/wepurgre.webp" alt="WE logo — lilla på grønn" width="601" height="198" loading="lazy">
+              <img src="./assets/wepurgre.webp" alt="WE logo — lilla på grønn" width="601" height="198" loading="lazy" decoding="async">
               <span class="we-logo-variant-label">Lilla på grønn</span>
             </div>
             <div class="we-logo-box">
-              <img src="./assets/wewhitepur.webp" alt="WE logo — hvit på lilla" width="601" height="198" loading="lazy">
+              <img src="./assets/wewhitepur.webp" alt="WE logo — hvit på lilla" width="601" height="198" loading="lazy" decoding="async">
               <span class="we-logo-variant-label">Hvit på lilla</span>
             </div>
             <div class="we-logo-box">
-              <img src="./assets/wehreen.webp" alt="WE logo — monokrom grønn" width="601" height="198" loading="lazy">
+              <img src="./assets/wehreen.webp" alt="WE logo — monokrom grønn" width="601" height="198" loading="lazy" decoding="async">
               <span class="we-logo-variant-label">Monokrom</span>
             </div>
             <div class="we-logo-box">
-              <img src="./assets/wewhite.webp" alt="WE logo — hvit på grønn" width="602" height="199" loading="lazy">
+              <img src="./assets/wewhite.webp" alt="WE logo — hvit på grønn" width="602" height="199" loading="lazy" decoding="async">
               <span class="we-logo-variant-label">Hvit på grønn</span>
             </div>
           </div>
@@ -936,7 +936,7 @@
             <div>
               <p class="we-credits__heading">Bilder</p>
               <ul class="we-credits__list">
-                <li>Fotografier — Adobe Stock eller hentet fra nettsider der Ragnhild og andre styremedlemmer har gitt tillatelse til bruk</li>
+                <li>Fotografier — Adobe Stock eller hentet fra nettsider der stiftelsen WE har gitt tillatelse til bruk</li>
                 <li>Mockups — Envato.com</li>
               </ul>
             </div>
@@ -962,15 +962,15 @@
 
       <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
         <a class="related__card" href="./reina-fruktgard.html">
-          <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+          <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
           <p class="related__title">Reina Fruktgård</p>
         </a>
         <a class="related__card" href="./stoppestedet.html">
-          <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy">
+          <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy" decoding="async">
           <p class="related__title">Stoppestedet</p>
         </a>
         <a class="related__card" href="./ansatts-portal.html">
-          <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy">
+          <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
           <p class="related__title">Tjønnås og Norvald</p>
         </a>
       </div></div>
@@ -982,7 +982,7 @@
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weIntervjuModal').close()" aria-label="Lukk">✕</button>
       <h3 class="we-posmap-modal__heading">Nøkkelinnsikt fra ekspertintervju</h3>
-      <img src="./assets/cecilie.webp" alt="Cecilie Melli" style="width:100%;display:block;margin:0 0 20px;">
+      <img src="./assets/cecilie.webp" alt="Cecilie Melli" style="width:100%;display:block;margin:0 0 20px;" loading="lazy" decoding="async">
       <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Vi intervjuet designer Cecilie Melli for å få et eksternt blikk på identiteten. Hun har erfaring med å balansere kreativitet og profesjonalitet, og ga verdifulle strategiske innspill.</p>
       <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Hun stilte spørsmålet: <em>«Hvem skal føle seg trygge når de ser dette?»</em><br>Uttrykket hadde energi, men manglet tyngde og ga assosiasjoner til noe midlertidig. Hun påpekte at identiteten må signalisere stabilitet, ansvar og tillit — spesielt i møte med næringslivet.</p>
       <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Melli fremhevet viktigheten av å kommunisere kvalitet, konsistens og kontroll — ikke bare kreativitet. Hun anbefalte en mer dempet fargepalett, færre kontraster og tydeligere struktur i typografi og layout.</p>
@@ -1037,8 +1037,8 @@
       <button class="we-posmap-modal__close" onclick="document.getElementById('weKravModal').close()" aria-label="Lukk">✕</button>
       <h3 class="we-posmap-modal__heading">Krav til friluft og minimumsstørrelse</h3>
       <div class="we-logo-spec-row we-logo-spec-row--friluft" style="margin-bottom:28px;">
-        <img class="we-spec-img-large" src="./assets/helekravlogo.webp" alt="Friluft — hele logoens krav" loading="lazy">
-        <img class="we-spec-img-small" src="./assets/litenkravlogo.webp" alt="Friluft — liten variant" loading="lazy">
+        <img class="we-spec-img-large" src="./assets/helekravlogo.webp" alt="Friluft — hele logoens krav" loading="lazy" decoding="async">
+        <img class="we-spec-img-small" src="./assets/litenkravlogo.webp" alt="Friluft — liten variant" loading="lazy" decoding="async">
         <div class="we-logo-specs__block">
           <p>For å sikre tydelighet og lesbarhet skal logoen alltid ha tilstrekkelig friluft rundt seg. Friluftsonen bestemmes av høyden på et utvalgt element i logoen og må opprettholdes på alle sider. Ingen tekst eller grafikk skal plasseres innenfor dette området.</p>
         </div>
@@ -1047,7 +1047,7 @@
         <div class="we-logo-specs__block">
           <p><strong>Minimumsstørrelsen</strong> er satt for å sikre at detaljer og typografi forblir tydelige både i trykk og på digitale flater. Logoen skal ikke brukes mindre enn angitte mål, slik at formspråk og lesbarhet ikke forringes.</p>
         </div>
-        <img class="we-spec-img-min" src="./assets/minimumstrls.webp" alt="Minimumsstørrelse" loading="lazy">
+        <img class="we-spec-img-min" src="./assets/minimumstrls.webp" alt="Minimumsstørrelse" loading="lazy" decoding="async">
       </div>
     </div>
   </dialog>
@@ -1148,7 +1148,7 @@
     </div>
   </dialog>
 
-  <script src="./projects.js?v=6"></script>
+  <script src="./projects.js?v=6" defer></script>
   <script>
     const $ = (s) => document.querySelector(s);
     document.querySelector("#year").textContent = new Date().getFullYear();
