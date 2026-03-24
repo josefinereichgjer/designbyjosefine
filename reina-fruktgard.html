@@ -31,7 +31,7 @@
     <div class="sidebar__inner">
       <div class="brand">
         <a class="brand__mark" href="./projects.html" aria-label="Back to work">
-          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
+          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo" decoding="async">
         </a>
       </div>
       <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
@@ -196,15 +196,15 @@ Reina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. M
         
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./stoppestedet.html">
-                  <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy">
+                  <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy" decoding="async">
                   <p class="related__title">Stoppestedet</p>
                 </a>
                 <a class="related__card" href="./ansatts-portal.html">
-                  <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy">
+                  <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
                   <p class="related__title">Tjønnås og Norvald</p>
                 </a>
                 <a class="related__card" href="./flerkanalspublisering.html">
-                  <img src="./assets/srhbrosk.webp" alt="Flerkanalspublisering" loading="lazy">
+                  <img src="./assets/srhbrosk.webp" alt="Flerkanalspublisering" loading="lazy" decoding="async">
                   <p class="related__title">Flerkanalspublisering</p>
                 </a></div></div>
       
@@ -290,25 +290,6 @@ Reina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. M
           isOpen = projectLayout.classList.toggle("project-layout--panel-open");
         }
         syncToggles(isOpen);
-      });
-    });
-
-    // Expandable gallery
-    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
-      cover.addEventListener("click", () => {
-        const section = cover.closest(".gallery-expandable");
-        const wasOpen = section.classList.contains("is-open");
-        section.classList.toggle("is-open");
-        if (!wasOpen && window.innerWidth <= 780) {
-          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-        }
-      });
-    });
-    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const section = btn.closest(".gallery-expandable");
-        section.classList.remove("is-open");
-        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
