@@ -53,11 +53,11 @@ if (!projects.length) {
 
 // Tool strip
 const TOOLS = [
-  { label: "Illustrator", src: "./assets/illustrator.png" },
-  { label: "Photoshop",   src: "./assets/photoshop.png"   },
-  { label: "InDesign",    src: "./assets/indesign.png"    },
-  { label: "Glyphs",      src: "./assets/glyphs.png"      },
-  { label: "Acrobat",     src: "./assets/acrobat.png"     },
+  { label: "Illustrator", src: "./assets/illustrator.webp" },
+  { label: "Photoshop",   src: "./assets/photoshop.webp"   },
+  { label: "InDesign",    src: "./assets/indesign.webp"    },
+  { label: "Glyphs",      src: "./assets/glyphs.webp"      },
+  { label: "Acrobat",     src: "./assets/acrobat.webp"     },
 ];
 
 const track = document.getElementById("toolsTrack");
