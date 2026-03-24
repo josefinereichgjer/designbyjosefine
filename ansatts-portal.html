@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
-  <link rel="icon" href="assets/hvitlogo.webp">
+  <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
 <body>
@@ -149,15 +149,15 @@
         
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
-                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
+                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
                   <p class="related__title">Reina Fruktgård</p>
                 </a>
                 <a class="related__card" href="./stoppestedet.html">
-                  <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy" decoding="async">
+                  <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy">
                   <p class="related__title">Stoppestedet</p>
                 </a>
                 <a class="related__card" href="./flerkanalspublisering.html">
-                  <img src="./assets/srhbrosk.webp" alt="Flerkanalspublisering" loading="lazy" decoding="async">
+                  <img src="./assets/srhbrosk.webp" alt="Flerkanalspublisering" loading="lazy">
                   <p class="related__title">Flerkanalspublisering</p>
                 </a></div></div>
       
@@ -172,6 +172,47 @@
     const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Slideshow
+    const track = $("#slideshowTrack");
+    if (track) {
+      const slides = [...track.querySelectorAll(".slideshow__slide")];
+      const counter = $("#slideIndex");
+      let current = 0;
+      let timer;
+      const slideshow = $("#slideshow");
+      const captionBar = $("#slideshowCaption");
+      let paused = false;
+      function goTo(n) {
+        current = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = current + 1;
+        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
+      }
+      function startAuto() {
+        clearInterval(timer);
+        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
+      }
+      track.addEventListener("click", () => {
+        paused = !paused;
+        slideshow.classList.toggle("slideshow--paused", paused);
+        if (paused) clearInterval(timer);
+        else startAuto();
+      });
+      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+      let touchStartX = 0;
+      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      }, { passive: true });
+      document.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
+        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
+      });
+      startAuto();
+    }
 
     // Accordion
     const accordion = document.getElementById("accordion");
