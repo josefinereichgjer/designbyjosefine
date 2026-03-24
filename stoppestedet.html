@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
-  <link rel="icon" href="assets/hvitlogo.png">
+  <link rel="icon" href="assets/hvitlogo.webp">
 </head>
 
 <body>
@@ -60,9 +60,9 @@
                 
               </div>
             </div>
-            <div class="hero-media-row"><div class="hero-video"><a href="./stoppestedet/index.html" target="_blank" rel="noopener" style="display:block"><video src="./stoppestedet/images/nystoppvid.mp4" autoplay muted loop playsinline></video></a></div>
+            <div class="hero-media-row"><div class="hero-video"><a href="./stoppestedet/index.html" target="_blank" rel="noopener" style="display:block"><video src="./stoppestedet/images/nystoppvid.mp4" autoplay muted loop playsinline poster="./stoppestedet/images/storefrontstoppis.webp"></video></a></div>
               <div class="hero-collage-wrap">
-                <a class="hero-collage" href="./stoppestedet/design.html" target="_blank" rel="noopener"><img src="./stoppestedet/images/skiltdesign.webp" alt="Designsystem" loading="lazy"><img src="./stoppestedet/images/storefrontstoppis.webp" alt="Designsystem" loading="lazy"><img src="./stoppestedet/images/skiltutestopp.webp" alt="Designsystem" loading="lazy"><img src="./stoppestedet/images/idcard.webp" alt="Designsystem" loading="lazy"></a>
+                <a class="hero-collage" href="./stoppestedet/design.html" target="_blank" rel="noopener"><img src="./stoppestedet/images/skiltdesign.webp" alt="Designsystem" loading="lazy" decoding="async"><img src="./stoppestedet/images/storefrontstoppis.webp" alt="Designsystem" loading="lazy" decoding="async"><img src="./stoppestedet/images/skiltutestopp.webp" alt="Designsystem" loading="lazy" decoding="async"><img src="./stoppestedet/images/idcard.webp" alt="Designsystem" loading="lazy" decoding="async"></a>
                 <a class="hero-collage__label" href="./stoppestedet/design.html" target="_blank" rel="noopener">Se tilhørende visuell identitet →</a>
               </div></div>
             <div class="project-meta">
@@ -83,7 +83,7 @@
           <strong class="pmeta__label">Verktøy</strong>
           <span class="pmeta__value">Illustrator, Photoshop, HTML/CSS/Javascript</span>
         </div></div>
-              <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>
+              <button class="btn-pdf btn-pdf--grey btn-pdf--mt" id="processToggle" type="button">Mer om prosessen</button>
               
               
             </div>
@@ -96,15 +96,15 @@
         
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
-                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
                   <p class="related__title">Reina Fruktgård</p>
                 </a>
                 <a class="related__card" href="./ansatts-portal.html">
-                  <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy">
+                  <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
                   <p class="related__title">Tjønnås og Norvald</p>
                 </a>
                 <a class="related__card" href="./flerkanalspublisering.html">
-                  <img src="./assets/srhbrosk.webp" alt="Flerkanalspublisering" loading="lazy">
+                  <img src="./assets/srhbrosk.webp" alt="Flerkanalspublisering" loading="lazy" decoding="async">
                   <p class="related__title">Flerkanalspublisering</p>
                 </a></div></div>
       
@@ -119,47 +119,6 @@
     const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Slideshow
-    const track = $("#slideshowTrack");
-    if (track) {
-      const slides = [...track.querySelectorAll(".slideshow__slide")];
-      const counter = $("#slideIndex");
-      let current = 0;
-      let timer;
-      const slideshow = $("#slideshow");
-      const captionBar = $("#slideshowCaption");
-      let paused = false;
-      function goTo(n) {
-        current = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = current + 1;
-        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
-      }
-      function startAuto() {
-        clearInterval(timer);
-        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
-      }
-      track.addEventListener("click", () => {
-        paused = !paused;
-        slideshow.classList.toggle("slideshow--paused", paused);
-        if (paused) clearInterval(timer);
-        else startAuto();
-      });
-      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
-      let touchStartX = 0;
-      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-      }, { passive: true });
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
-        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
-      });
-      startAuto();
-    }
 
     // Accordion
     const accordion = document.getElementById("accordion");

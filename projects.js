@@ -76,6 +76,7 @@ window.PROJECTS = [
   },
   {
     id: "stoppestedet",
+    skipBuild: true,
     title: "Stoppestedet",
     subtitle: "Visuell identitet & nettside",
     year: "2026",
