@@ -17,7 +17,7 @@
     .we-body .gallery-expandable__heading{ color: #224942; border-color: #224942; }
     .we-body .gallery-expandable__cover::after,
     .we-body .gallery-expandable__close-btn{ background: #224942; }
-    /* ── disable multi-column on gallery (all items span anyway) ── */
+    /* ── disable multi-column on gallery ── */
     .we-body .project__gallery{ columns: unset; display: block; }
     /* ── gallery image sizing ── */
     .we-body .gallery-expandable--wide-cover .gallery-expandable__cover{ flex: 0 0 clamp(500px, 72%, 900px); width: 100%; }
@@ -39,7 +39,7 @@
     .we-monster-layout{ display:flex; gap:clamp(16px,3vw,40px); align-items:flex-start; margin-top:8px; }
     .we-monster-imgs{ display:flex; gap:clamp(8px,1.5vw,16px); flex-shrink:0; }
     .we-monster-img{ width:min(180px,22vw); height:auto; display:block; }
-    .we-monster-text{ flex:1 1 0; font-size:15px; line-height:1.7; color:#444; margin:0; min-width:0; }
+    .we-monster-text{ flex:1 1 0; font-size:17px; line-height:1.7; color:#444; margin:0; min-width:0; }
     @media(max-width:600px){
       .we-monster-layout{ flex-direction:column; gap:16px; }
       .we-monster-imgs{ justify-content:flex-start; }
@@ -48,13 +48,21 @@
     }
 
     /* ── WE case study ── */
-    :root { --we-amethyst: #0d1e1b; --we-lime: #ace088; --we-periwinkle: #9495ce; --we-snow: #fcf7fa; }
+    :root { --we-amethyst: #0d1e1b; --we-lime: #ace088; --we-periwinkle: #9495ce; --we-periwinkle-text: #6868b2; --we-snow: #fcf7fa; }
     .we-page { font-family: 'neuzeit-grotesk', sans-serif; }
 
+    /* Scroll progress */
+    .we-progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px;
+      background: var(--we-lime); z-index: 1000; width: 0%;
+      pointer-events: none;
+    }
+
+    /* Hero */
     .we-hero {
       background: var(--we-amethyst);
       color: var(--we-snow);
-      padding: 36px 40px 32px;
+      padding: 64px 40px 52px;
       margin-top: -34px;
       margin-left: calc(-1 * clamp(20px, 3vw, 34px));
       margin-right: calc(-1 * clamp(20px, 3vw, 34px));
@@ -63,51 +71,144 @@
       display: inline-flex; align-items: center; gap: 8px;
       border: 1px solid rgba(255,255,255,.25); border-radius: 999px;
       font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
-      padding: 5px 14px; margin-bottom: 24px; color: rgba(255,255,255,.7);
+      padding: 5px 14px; margin-bottom: 28px; color: rgba(255,255,255,.7);
     }
     .we-hero__pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--we-lime); flex-shrink: 0; }
-    .we-hero__title { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: clamp(48px, 7vw, 88px); line-height: .95; margin: 0 0 24px; }
-    .we-hero__intro { font-size: 16px; line-height: 1.65; max-width: 520px; color: rgba(255,255,255,.8); margin-bottom: 28px; }
-    .we-hero__meta { display: flex; gap: 32px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.15); padding-top: 20px; }
+    .we-hero__title { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: clamp(52px, 7.5vw, 100px); line-height: .91; margin: 0 0 28px; }
+    .we-hero__intro { font-size: 16px; line-height: 1.72; max-width: 540px; color: rgba(255,255,255,.8); margin-bottom: 40px; }
+    .we-hero__meta { display: flex; gap: 32px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.15); padding-top: 24px; }
     .we-hero__meta-item { display: flex; flex-direction: column; gap: 4px; }
-    .we-hero__meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.45); }
+    .we-hero__meta-label { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.65); }
     .we-hero__meta-value { font-size: 13px; color: rgba(255,255,255,.85); }
 
-    .we-body { padding: 0 40px 60px; max-width: 1100px; overflow-x: clip; }
-
-    .we-section { padding: 48px 0; border-top: 1px solid #e8e4e2; }
-    .we-section__num { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #8c80ff; margin-bottom: 10px; }
-    .we-section__heading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: clamp(28px, 3.5vw, 44px); line-height: 1.1; margin: 0 0 28px; color: #111; }
-
-    /* Oppdragsgiver */
-    .we-client { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
-    .we-client__text p { font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 14px; }
-    .we-quote {
-      background: var(--we-amethyst); color: var(--we-snow);
-      padding: 28px 24px; position: relative;
+    /* Hero visual */
+    .we-hero-visual {
+      width: 100%; height: 460px; object-fit: cover;
+      object-position: center 35%; display: block;
     }
-    .we-quote__mark { font-family: 'DM Serif Display', serif; font-size: 64px; line-height: 0; color: rgba(255,255,255,.2); position: absolute; top: 24px; left: 28px; }
-    .we-quote__text { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 300; font-style: italic; font-size: 18px; line-height: 1.6; margin: 0 0 20px; padding-top: 24px; }
-    .we-quote__attr { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.5); }
+    @media (max-width: 780px) { .we-hero-visual { height: 280px; } }
+    @media (max-width: 480px) { .we-hero-visual { height: 200px; } }
+
+    /* Body */
+    .we-body { padding: 0 40px 80px; max-width: 1100px; overflow-x: clip; }
+
+    /* Sections */
+    .we-section { padding: 64px 0; border-top: 1px solid #e8e4e2; }
+    .we-section__num { font-family: 'Poppins', sans-serif; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--we-periwinkle-text); margin-bottom: 10px; }
+    .we-section__heading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; margin: 0 0 32px; color: #111; }
+    .we-section__intro { font-size: 15px; line-height: 1.78; color: #444; max-width: 640px; margin: 0 0 32px; }
+    .we-section__subheading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: 18px; color: #111; margin: 40px 0 16px; }
+
+    /* Konsept & oppdragsgiver — redesigned */
+    .we-client-v2 {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 72px;
+      align-items: start;
+    }
+    .we-client-v2__blocks {
+      display: flex;
+      flex-direction: column;
+    }
+    .we-client-block {
+      padding: 28px 0;
+      border-top: 1px solid #e8e4e2;
+    }
+    .we-client-block:first-child { border-top: none; padding-top: 0; }
+    .we-client-block__label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .13em;
+      color: var(--we-periwinkle-text);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .we-client-block__text {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      line-height: 1.85;
+      color: #444;
+      margin: 0;
+    }
+    .we-client-block__text strong {
+      font-weight: 600;
+      color: #111;
+    }
+    .we-client-v2__figure { margin: 0; }
+    .we-client-v2__figure img { width: 100%; display: block; }
+    .we-client-v2__caption {
+      font-family: 'Poppins', sans-serif;
+      font-size: 11px;
+      color: #999;
+      margin-top: 10px;
+      letter-spacing: .02em;
+      display: block;
+    }
+    @media (max-width: 900px) {
+      .we-client-v2 { grid-template-columns: 1fr; gap: 40px; }
+    }
+    .we-quote {
+      background: transparent;
+      padding: 0 0 0 20px;
+      border-left: 3px solid var(--we-lime);
+      position: relative;
+    }
+    .we-quote__text { font-family: 'Poppins', sans-serif; font-style: italic; font-size: 17px; line-height: 1.65; margin: 0 0 10px; color: #0d1e1b; }
+    .we-quote__attr { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: #767676; }
+
+    /* Målgruppe */
+    .we-audience { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 8px; }
+    .we-audience-cell { padding: 24px 0 0; border-top: 2px solid; }
+    .we-audience-cell--pri { border-color: var(--we-amethyst); }
+    .we-audience-cell--sec { border-color: #ddd; }
+    .we-audience-cell__label { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; font-weight: 600; display: block; }
+    .we-audience-cell--pri .we-audience-cell__label { color: var(--we-amethyst); }
+    .we-audience-cell--sec .we-audience-cell__label { color: var(--we-periwinkle); }
+    .we-audience-cell__title { font-family: 'neuzeit-grotesk', sans-serif; font-size: 22px; font-weight: 600; margin: 0 0 14px; line-height: 1.2; color: #111; }
+    .we-audience-cell__body { font-size: 14px; line-height: 1.78; margin: 0; color: #555; }
+    .we-mg-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 48px; max-width: 100%; }
+    .we-mg-blocks .we-client-block { border-top: none; padding-top: 0; }
+    .we-mg-blocks .we-client-block:nth-child(4) { grid-column: 1 / -1; padding-top: 40px; }
+    .we-mg-blocks .we-client-block:nth-child(5) { grid-column: 1 / -1; padding-top: 0; }
+    .we-mg-blocks .we-client-block:nth-child(n+4) .we-client-block__label { margin-bottom: 4px; }
+    .we-mg-blocks .we-client-block:nth-child(4) .we-quote { margin-top: 0; }
+    .we-quote__text { margin-bottom: 2px; }
+    .we-quote__attr { line-height: 1.4; }
+    @media (max-width: 700px) { .we-mg-blocks { grid-template-columns: 1fr; } .we-mg-blocks .we-client-block:nth-child(n+4) { grid-column: 1; } }
+    .we-mg-title { font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 600; color: #111; margin: 0 0 12px; line-height: 1.3; }
+    .we-posmap-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; align-items: center; }
+    .we-posmap-row__label { font-size: 11px; color: #767676; text-transform: uppercase; letter-spacing: .08em; }
 
     /* Prosess */
     .we-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
-    .we-step { border: 1px solid #e8e4e2; padding: 18px 16px; }
-    .we-step__num { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: 30px; color: #8c80ff; margin-bottom: 10px; }
-    .we-step__title { font-size: 13px; font-weight: 500; margin-bottom: 8px; }
-    .we-step__body { font-size: 12px; color: #666; line-height: 1.55; }
+    .we-step { border: 1px solid #e8e4e2; padding: 20px 16px; }
+    .we-step__num { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: 32px; color: var(--we-periwinkle); margin-bottom: 12px; line-height: 1; }
+    .we-step__title { font-size: 13px; font-weight: 600; margin-bottom: 8px; color: #111; }
+    .we-step__body { font-size: 12px; color: #666; line-height: 1.6; }
 
-    /* Gallery — strip slideshow */
+    /* Strip slideshow */
     .we-page .strip-ss__slide img { width: 100%; height: 300px; object-fit: cover; }
+
+    /* Logo on stage */
+    .we-logo-stage {
+      background: #f4faf9;
+      padding: 64px 40px;
+      width: calc(100% + 80px);
+      margin-left: -40px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 40px;
+    }
+    .we-logo-stage img { width: min(560px, 82%); height: auto; display: block; }
 
     /* Logo */
     .we-logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; align-items: start; }
     .we-logo-box { overflow: hidden; position: relative; }
-    .we-logo-box img { width: 100%; height: auto; display: block; }
-    .we-logo-badge {
-      position: absolute; top: 10px; left: 10px;
-      width: 28px; height: 28px;
-    }
+    .we-logo-box img { width: 100%; height: auto; display: block; transition: transform .3s ease; }
+    .we-logo-box:hover img { transform: scale(1.04); }
+    .we-logo-variant-label { font-size: 11px; color: #767676; text-transform: uppercase; letter-spacing: .07em; margin-top: 6px; display: block; }
+    .we-logo-badge { position: absolute; top: 10px; left: 10px; width: 28px; height: 28px; }
     .we-logo-badge img { width: 100%; height: 100%; }
 
     /* Logo specs */
@@ -125,19 +226,20 @@
 
     /* Palette */
     .we-palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
-    .we-swatch { }
-    .we-swatch__color { height: 90px; }
+    .we-swatch { transition: transform .2s ease; }
+    .we-swatch:hover { transform: translateY(-3px); }
+    .we-swatch__color { height: 100px; }
     .we-swatch__info { padding: 10px 0 0; }
     .we-swatch__hex { font-size: 13px; font-weight: 500; display: block; }
-    .we-swatch__rgb { font-size: 11px; color: #aaa; display: block; margin-top: 2px; }
-    .we-swatch__name { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: .07em; margin-top: 4px; display: block; }
+    .we-swatch__rgb { font-size: 11px; color: #767676; display: block; margin-top: 2px; }
+    .we-swatch__name { font-size: 11px; color: #767676; text-transform: uppercase; letter-spacing: .07em; margin-top: 4px; display: block; }
+    .we-swatch__use { font-size: 11px; color: #888; display: block; margin-top: 3px; font-style: italic; }
 
     /* Typography */
     .we-section__top { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; margin-bottom: 32px; }
     .we-section__top .we-section__heading { margin-bottom: 0; }
-    .we-section__top-meta { display: flex; justify-content: space-between; align-items: start; gap: 24px; padding-top: 8px; }
-    .we-section__top-desc { font-size: 13px; line-height: 1.65; color: #555; }
-    .we-section__top-year { font-size: 13px; color: #aaa; white-space: nowrap; }
+    .we-section__top-meta { padding-top: 8px; }
+    .we-section__top-desc { font-size: 14px; line-height: 1.75; color: #555; margin: 0; }
     .we-typo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
     .we-typo-col { font-family: 'neuzeit-grotesk', sans-serif; }
     .we-typo-col--bold { font-weight: 700; }
@@ -145,37 +247,21 @@
     .we-typo-col--regular { font-weight: 400; }
     .we-typo-col--italic { font-family: 'natom', 'neuzeit-grotesk', sans-serif; font-style: italic; font-weight: 400; }
     .we-typo-col__aa { font-size: clamp(72px, 9vw, 130px); line-height: 1; margin-bottom: 16px; color: #111; }
-    .we-typo-col__name { font-size: 14px; color: #8c80ff; margin-bottom: 20px; }
+    .we-typo-col__name { font-size: 13px; color: var(--we-periwinkle-text); margin-bottom: 20px; }
     .we-typo-col__name--bold { font-weight: 700; }
     .we-typo-col__name--italic { font-style: italic; }
     .we-typo-col__alphabet { font-size: 13px; line-height: 1.65; color: #333; }
+    .we-typo-specimen {
+      margin-top: 40px; padding: 40px;
+      background: var(--we-amethyst); color: var(--we-snow);
+      width: calc(100% + 80px); margin-left: -40px;
+    }
+    .we-typo-specimen__h1 { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: clamp(36px, 5.5vw, 76px); line-height: 1.0; margin: 0 0 20px; }
+    .we-typo-specimen__h1 strong { font-weight: 900; color: var(--we-lime); }
+    .we-typo-specimen__body { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,.7); max-width: 480px; margin: 0; font-weight: 400; }
 
-    /* Posisjoneringskart */
-    .we-posmap { display: grid; grid-template-columns: 2fr 3fr; gap: 48px; align-items: start; max-width: 780px; }
-    .we-posmap__label { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--we-periwinkle); margin-bottom: 16px; font-weight: 600; }
-    .we-posmap__text p { font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 14px; }
-    .we-posmap__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
-    .we-posmap__chip { font-size: 13px; padding: 6px 16px; border: 1.5px solid #333; border-radius: 999px; color: #333; background: transparent; }
-    .we-posmap__chip--filled { background: var(--we-lime); border-color: var(--we-lime); color: #111; font-weight: 500; }
-    .we-posmap__svg { width: 100%; height: auto; display: block; }
-
-    /* SWOT */
-    .we-swot { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .we-swot-cell { padding: 24px 20px; }
-    .we-swot-cell--s { background: var(--we-amethyst); color: var(--we-snow); }
-    .we-swot-cell--w { background: #f5f3f0; }
-    .we-swot-cell--o { background: var(--we-lime); }
-    .we-swot-cell--t { background: #f5f3f0; }
-    .we-swot-cell__title { font-size: 13px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .07em; }
-    .we-swot-cell--s .we-swot-cell__title { color: var(--we-lime); }
-    .we-swot-cell ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .we-swot-cell li { font-size: 13px; line-height: 1.4; padding-left: 14px; position: relative; }
-    .we-swot-cell li::before { content: '·'; position: absolute; left: 0; }
-    .we-swot-cell--s li { color: rgba(255,255,255,.85); }
-    .we-swot-cell--s li::before { color: var(--we-lime); }
-
-    /* Posmap trigger + modal */
-    .we-posmap-trigger { background: none; border: none; padding: 0; font: inherit; font-size: inherit; font-weight: inherit; color: var(--we-periwinkle); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
+    /* Posmap trigger + modals */
+    .we-posmap-trigger { background: none; border: none; padding: 0; font: inherit; font-size: inherit; font-weight: inherit; color: var(--we-periwinkle-text); text-decoration: underline; text-underline-offset: 2px; cursor: pointer; }
     .we-posmap-trigger:hover { color: var(--we-amethyst); }
     #wePosmapModal, #weKonkModal, #weLogoutvModal, #weIntervjuModal, #weMoodModal, #weKravModal, #weSwotModal { border: none; padding: 0; max-width: 480px; width: 90vw; background: #fff; box-shadow: 0 8px 48px rgba(0,0,0,.18); }
     #weSwotModal { max-width: 680px; }
@@ -189,72 +275,85 @@
     .we-posmap-modal__close:hover { color: #111; }
     .we-posmap-modal__heading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: 22px; margin: 0 0 20px; color: #111; }
 
-    .we-cta { padding: 32px 0 0; display: flex; justify-content: center; }
+    /* SWOT */
+    .we-swot { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid #111; }
+    .we-swot-cell { padding: 24px 20px; border: 1px solid #111; margin: -1px; }
+    .we-swot-cell__title { font-size: 13px; font-weight: 600; margin-bottom: 16px; text-transform: uppercase; letter-spacing: .07em; color: #111; }
+    .we-swot-cell ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .we-swot-cell li { font-size: 13px; line-height: 1.4; padding-left: 14px; position: relative; color: #333; }
+    .we-swot-cell li::before { content: '·'; position: absolute; left: 0; color: #111; }
+
+    /* CTA */
+    .we-cta { padding: 48px 0 0; display: flex; justify-content: center; }
     .we-cta a {
       background: var(--we-amethyst); color: var(--we-snow);
-      font-size: 14px; padding: 16px 32px; text-decoration: none;
-      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 14px; padding: 18px 36px; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 10px;
       transition: opacity .15s;
     }
     .we-cta a:hover { opacity: .75; }
 
+    /* Refleksjon */
+    .we-reflection { background: #f8f6f3; padding: 40px; margin-top: 8px; }
+    .we-reflection__quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(18px, 2.5vw, 26px); line-height: 1.45; color: var(--we-amethyst); margin: 0 0 28px; border-left: 3px solid var(--we-lime); padding-left: 24px; }
+    .we-reflection__body { font-size: 15px; line-height: 1.8; color: #444; margin: 0 0 18px; }
+    .we-reflection__learnings-heading { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #111; margin: 28px 0 16px; }
+    .we-reflection__learnings { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .we-reflection__learnings li { font-size: 14px; color: #333; padding-left: 28px; position: relative; line-height: 1.65; }
+    .we-reflection__learnings li::before { content: '→'; position: absolute; left: 0; color: var(--we-periwinkle); font-weight: 600; }
+
     /* Design section image helpers */
-    .we-img-bleed {
-      width: calc(100% + 80px); max-width: none; display: block;
-      margin-top: 24px; margin-left: -40px;
-    }
-    .we-img-story {
-      height: 580px; width: auto; max-width: calc(100% - 30px);
-      display: block; margin: 6px 0 0 30px;
-    }
+    .we-img-bleed { width: calc(100% + 80px); max-width: none; display: block; margin-top: 24px; margin-left: -40px; }
+    .we-img-story { height: 580px; width: auto; max-width: calc(100% - 30px); display: block; margin: 6px 0 0 30px; }
     .we-img-pair { display: flex; gap: 6px; margin-top: 6px; }
 
+    /* Responsive */
     @media (max-width: 900px) {
-      .we-hero { padding: 32px 20px 28px; }
-      .we-body { padding: 0 20px 48px; }
+      .we-hero { padding: 44px 20px 36px; }
+      .we-body { padding: 0 20px 60px; }
       .we-client { grid-template-columns: 1fr; }
       .we-steps { grid-template-columns: 1fr 1fr; }
-      .we-posmap { grid-template-columns: 1fr; }
       .we-logos { grid-template-columns: repeat(2, 1fr); }
       .we-palette { grid-template-columns: 1fr 1fr; }
-      .we-gallery { columns: 2; }
       .we-logo-spec-row { flex-direction: column; align-items: flex-start; }
       .we-logo-spec-row--friluft { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 12px; }
       .we-logo-spec-row--friluft .we-spec-img-large { height: 100px; width: auto; }
       .we-logo-spec-row--friluft .we-spec-img-small { height: 100px; width: auto; }
       .we-logo-spec-row--friluft .we-logo-specs__block { width: 100%; }
       .we-logo-spec-row--minsize .we-spec-img-min { width: 260px; }
-      /* Fix bleed for reduced we-body padding */
       .we-img-bleed { width: calc(100% + 40px); margin-left: -20px; }
       .we-img-story { width: 100%; height: auto; max-width: 100%; margin-left: 0; }
+      .we-logo-stage { width: calc(100% + 40px); margin-left: -20px; padding: 56px 20px; }
+      .we-typo-specimen { width: calc(100% + 40px); margin-left: -20px; padding: 32px 24px; }
     }
     @media (max-width: 600px) {
       .we-steps { grid-template-columns: 1fr 1fr; }
       .we-typo { grid-template-columns: 1fr 1fr; }
       .we-section__top { grid-template-columns: 1fr; }
       .we-swot { grid-template-columns: 1fr; }
-      .we-gallery { columns: 1; }
       .we-hero__meta { gap: 20px; }
+      .we-audience { grid-template-columns: 1fr; }
+      .we-section { padding: 48px 0; }
     }
     @media (max-width: 480px) {
-      .we-hero { padding: 24px 16px 20px; }
-      .we-body { padding: 0 16px 40px; }
-      .we-section { padding: 32px 0; }
+      .we-hero { padding: 32px 16px 28px; }
+      .we-body { padding: 0 16px 48px; }
+      .we-section { padding: 36px 0; }
       .we-steps { grid-template-columns: 1fr 1fr; }
       .we-logos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .we-palette { grid-template-columns: 1fr 1fr; }
       .we-logo-spec-row--minsize .we-spec-img-min { width: 100%; max-width: 260px; }
       .we-posmap-modal__inner { padding: 20px 16px; }
-      /* Design images */
       .we-img-bleed { width: calc(100% + 32px); margin-left: -16px; }
       .we-img-story { height: auto; width: 100%; max-width: 100%; margin-left: 0; }
       .we-img-pair { flex-direction: column; }
       .we-img-pair img { width: 100% !important; }
-      /* Carousel full width */
-      .we-img-carousel { max-width: 100% !important; }
+      .we-reflection { padding: 28px 20px; }
+      .we-logo-stage { width: calc(100% + 32px); margin-left: -16px; padding: 44px 16px; }
+      .we-typo-specimen { width: calc(100% + 32px); margin-left: -16px; padding: 28px 16px; }
     }
 
-    /* True viewport-wide full bleed (past sidebar) */
+    /* Viewport-wide full bleed */
     .we-img-vw {
       width: 100vw; max-width: none; display: block;
       margin-left: calc(-1 * (var(--sidebarW) + clamp(20px, 3vw, 34px) + 40px));
@@ -269,6 +368,8 @@
 </head>
 
 <body>
+  <div class="we-progress-bar" id="weProgressBar"></div>
+
   <a class="skip-link" href="#content">Hopp til innhold</a>
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
@@ -300,10 +401,9 @@
   <main id="content" class="content">
     <article class="project we-page" id="project">
 
-      <!-- Hero -->
+      <!-- HERO -->
       <div class="we-hero">
-<h1 class="we-hero__title">Stiftelsen WE</h1>
-        <p class="we-hero__intro">Utvikling av en helhetlig visuell identitet for Women Empowerment — en nyetablert sosial stiftelse som bygger broer mellom næringsliv og sosialt entreprenørskap.</p>
+        <h1 class="we-hero__title">Stiftelsen WE</h1>
         <div class="we-hero__meta">
           <div class="we-hero__meta-item">
             <span class="we-hero__meta-label">År</span>
@@ -330,61 +430,75 @@
 
       <div class="we-body">
 
-        <!-- 00 Oppdragsgiver -->
+        <!-- 01 Konsept & oppdragsgiver -->
         <section class="we-section">
-          <p class="we-section__num">00</p>
-          <h2 class="we-section__heading">Oppdragsgiver</h2>
-          <div class="we-client">
-            <div class="we-client__text">
-              <p>Stiftelsen WE (Women Empowerment) er en sosial stiftelse grunnlagt av Ragnhild Slettner og Kirstine Holst. Den arbeider for å skape nye veier inn i arbeidslivet for kvinner uten utdanning, arbeidserfaring eller nettverk, gjennom samarbeid med næringslivet.</p>
-              <p>WE fungerer som en brobygger mellom næringsliv og sosialt entreprenørskap, ved å koble virksomheter med sosiale entreprenører og følge opp resultatene over tid.</p>
-              <p><strong style="color:#30133d;">Oppdraget ble gitt uten en fastsatt visuell retning, noe som ga stort strategisk handlingsrom, men også krevde egne valg og tett dialog underveis.</strong></p>
+          <p class="we-section__num">01</p>
+          <h2 class="we-section__heading">Konsept & oppdragsgiver</h2>
+          <div class="we-client-v2">
+            <div class="we-client-v2__blocks">
+              <div class="we-client-block">
+                <p class="we-client-block__text">Stiftelsen WE (Women Empowerment) er etablert av Ragnhild Slettner, Kirstine Holst og Frode Heggdal Larsen for å skape innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk. Initiativet er i stor grad drevet frem av Slettners engasjement, i tett samarbeid med styret.</p>
+                <p class="we-client-block__text" style="margin-top:20px;">WE fungerer som en brobygger mellom kvinner utenfor arbeidslivet og næringslivet. Oppgaven var å utvikle en visuell identitet som balanserer profesjonalitet og varme, basert på en åpen brief med motstridende føringer.</p>
+              </div>
             </div>
-            <figure style="margin:0;">
-              <a href="https://www.linkedin.com/posts/kirstine-holst_kvinnedagen-sosialtentreprenaeorskap-stiftelsenwe-activity-7304195466643038208-b-LH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI0OqoBN-ikYxYK7sTRX62ULrtF7TQiGZ4" target="_blank" rel="noopener"><img src="./assets/ragnhildkistine.webp" alt="Ragnhild og Kirstine" style="width:100%;height:260px;object-fit:cover;object-position:85% 20%;display:block;"></a>
-              <figcaption style="font-size:13px;color:#111;margin-top:6px;">Til venstre: Kirstine Holst, til høyre: Ragnhild Slettner</figcaption>
+            <figure class="we-client-v2__figure">
+              <a href="https://www.linkedin.com/posts/kirstine-holst_kvinnedagen-sosialtentreprenaeorskap-stiftelsenwe-activity-7304195466643038208-b-LH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI0OqoBN-ikYxYK7sTRX62ULrtF7TQiGZ4" target="_blank" rel="noopener">
+                <img src="./assets/ragnhildkistine.webp" alt="Ragnhild Slettner og Kirstine Holst — grunnleggere av Stiftelsen WE" style="object-fit:cover;object-position:85% 20%;">
+              </a>
+              <span class="we-client-v2__caption">Kirstine Holst (til venstre) og Ragnhild Slettner (til høyre)</span>
             </figure>
           </div>
         </section>
 
-        <!-- 01 Prosess -->
+        <!-- 02 Målgruppe -->
         <section class="we-section">
-          <p class="we-section__num">01</p>
-          <h2 class="we-section__heading">Prosess</h2>
-          <div class="we-steps">
-            <div class="we-step">
-              <div class="we-step__num">01</div>
-              <div class="we-step__title">Innledende brief</div>
-              <div class="we-step__body">Zoom-møte med Ragnhild uten fastsatt retning — seriøst, men lekent og fargerikt.</div>
+          <p class="we-section__num">02</p>
+          <h2 class="we-section__heading">Målgruppe</h2>
+          <div class="we-mg-blocks">
+
+            <div class="we-client-block">
+              <span class="we-client-block__label">Primærmålgruppe</span>
+              <h3 class="we-mg-title">Kvinner uten nettverk</h3>
+              <p class="we-client-block__text">Kvinner uten utdanning, erfaring eller nettverk som søker en vei inn i arbeidslivet. Identiteten må formidle trygghet, tilhørighet og mulighet — uten å virke veldedig eller stigmatiserende.</p>
             </div>
-            <div class="we-step">
-              <div class="we-step__num">02</div>
-              <div class="we-step__title">Innsikt</div>
-              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button>, <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weSwotModal').showModal()">SWOT-analyse</button></div>
+
+            <div class="we-client-block">
+              <span class="we-client-block__label">Sekundærmålgruppe</span>
+              <h3 class="we-mg-title">Næringslivsaktører</h3>
+              <p class="we-client-block__text">Virksomheter og potensielle samarbeidspartnere som WE ønsker å engasjere. Overfor dem må identiteten fremstå profesjonell, strukturert og troverdig, med tydelig fokus på langsiktig og målbar sosial verdi.</p>
             </div>
-            <div class="we-step">
-              <div class="we-step__num">03</div>
-              <div class="we-step__title"><button class="we-posmap-trigger" onclick="document.getElementById('weIntervjuModal').showModal()">Intervju</button></div>
-              <div class="we-step__body">Samtale med designer Cecilie Melli ga et vendepunkt: identiteten trengte mer tyngde.</div>
+
+            <div class="we-client-block">
+              <span class="we-client-block__label">Designutfordring</span>
+              <p class="we-client-block__text">Den doble målgruppen skapte et krevende spenningsfelt: Identiteten skulle være fargerik og feminin, men unngå klisjeer, samtidig som den måtte fungere i en stram, B2B-kontekst overfor næringslivet.</p>
             </div>
-            <div class="we-step">
-              <div class="we-step__num">04</div>
-              <div class="we-step__title">Identitetsutvikling</div>
-              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weMoodModal').showModal()">Moodboarding</button>, <button class="we-posmap-trigger" onclick="document.getElementById('weLogoutvModal').showModal()">logo</button>, fargepalett og typografi utviklet iterativt fra skisse til ferdig system.</div>
+
+            <div class="we-client-block">
+              <div class="we-quote" style="margin-top:4px;">
+                <p class="we-quote__text">«Hvem skal føle seg trygge når de ser dette?»</p>
+                <p class="we-quote__attr">— Cecilie Melli, designer · ekspertintervju · <button class="we-posmap-trigger" style="font-size:11px;" onclick="document.getElementById('weIntervjuModal').showModal()">Les mer</button></p>
+              </div>
             </div>
-            <div class="we-step">
-              <div class="we-step__num">05</div>
-              <div class="we-step__title">Kontaktflater</div>
-              <div class="we-step__body">Nettside, visittkort, brosjyre, banner og sosiale medier tilpasset identiteten.</div>
+
+            <div class="we-client-block">
+              <span class="we-client-block__label">Se analyse</span>
+              <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:4px;">
+                <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">Posisjoneringskart</button>
+                <span style="color:#ddd;">·</span>
+                <button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button>
+                <span style="color:#ddd;">·</span>
+                <button class="we-posmap-trigger" onclick="document.getElementById('weSwotModal').showModal()">SWOT-analyse</button>
+              </div>
             </div>
+
           </div>
         </section>
 
-        <!-- 02 Fargepalett -->
+        <!-- 03 Fargesystem -->
         <section class="we-section">
-          <p class="we-section__num">02</p>
-          <h2 class="we-section__heading">Fargepalett</h2>
-          <p style="font-size:15px; line-height:1.7; color:#333; margin:0 0 28px;">Den dype grønne paletten symboliserer natur, trygghet og bærekraft, mens violetten tilfører energi og kontrast.</p>
+          <p class="we-section__num">03</p>
+          <h2 class="we-section__heading">Fargesystem</h2>
+          <p class="we-section__intro">Paletten balanserer forankring og energi. Dype grønntoner skaper en identitet knyttet til natur, tillit og bærekraft, og skiller WE fra konkurrentenes blådominerte uttrykk. Violett fungerer som en kontrasterende aksentfarge som tilfører energi og understreker det innovative ved arbeidet.</p>
           <div class="we-palette">
             <div class="we-swatch">
               <div class="we-swatch__color" style="background:#000000"></div>
@@ -392,6 +506,7 @@
                 <span class="we-swatch__hex">#000000</span>
                 <span class="we-swatch__rgb">rgb(0, 0, 0)</span>
                 <span class="we-swatch__name">Sort</span>
+                <span class="we-swatch__use">Overskrifter</span>
               </div>
             </div>
             <div class="we-swatch">
@@ -400,6 +515,7 @@
                 <span class="we-swatch__hex">#0D1E1B</span>
                 <span class="we-swatch__rgb">rgb(13, 30, 27)</span>
                 <span class="we-swatch__name">Natt</span>
+                <span class="we-swatch__use">Primær bakgrunn</span>
               </div>
             </div>
             <div class="we-swatch">
@@ -408,6 +524,7 @@
                 <span class="we-swatch__hex">#224942</span>
                 <span class="we-swatch__rgb">rgb(34, 73, 66)</span>
                 <span class="we-swatch__name">Skog</span>
+                <span class="we-swatch__use">Sekundær bakgrunn</span>
               </div>
             </div>
             <div class="we-swatch">
@@ -416,6 +533,7 @@
                 <span class="we-swatch__hex">#7FB5AA</span>
                 <span class="we-swatch__rgb">rgb(127, 181, 170)</span>
                 <span class="we-swatch__name">Salvie</span>
+                <span class="we-swatch__use">Grafikk, aksenter</span>
               </div>
             </div>
             <div class="we-swatch">
@@ -424,6 +542,7 @@
                 <span class="we-swatch__hex">#8C80FF</span>
                 <span class="we-swatch__rgb">rgb(140, 128, 255)</span>
                 <span class="we-swatch__name">Violet</span>
+                <span class="we-swatch__use">Energifarge, lenker</span>
               </div>
             </div>
             <div class="we-swatch">
@@ -432,66 +551,16 @@
                 <span class="we-swatch__hex">#F4FAF9</span>
                 <span class="we-swatch__rgb">rgb(244, 250, 249)</span>
                 <span class="we-swatch__name">Is</span>
+                <span class="we-swatch__use">Bakgrunn, pusterom</span>
               </div>
             </div>
           </div>
         </section>
 
-        <!-- 03 Bildebruk -->
-        <section class="we-section">
-          <p class="we-section__num">03</p>
-          <h2 class="we-section__heading">Bildebruk</h2>
-          <div class="strip-ss">
-            <div class="strip-ss__nav">
-              <button class="strip-ss__btn" id="weStripPrev" aria-label="Forrige bilde">←</button>
-              <button class="strip-ss__btn" id="weStripNext" aria-label="Neste bilde">→</button>
-            </div>
-            <div class="strip-ss__viewport">
-              <div class="strip-ss__track" id="weStripTrack">
-                <figure class="strip-ss__slide"><img loading="eager" decoding="async" draggable="false" src="./assets/webilde1.webp" alt="WE — bilde 1"></figure>
-                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/webilde2.webp" alt="WE — bilde 2"></figure>
-                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen4.webp" alt="WE — bilde 3"></figure>
-                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen5.webp" alt="WE — bilde 4"></figure>
-                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen6.webp" alt="WE — bilde 5"></figure>
-                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/ragnhild.webp" alt="WE — bilde 6"></figure>
-              </div>
-            </div>
-          </div>
-          <p style="font-size:14px; line-height:1.65; color:#111; margin-top:20px; max-width:640px;">Vi har valgt å hovedsakelig benytte bilder av kvinner, ofte i form av portretter eller i arbeidssituasjoner. Dette er et bevisst valg for å tydeliggjøre målgruppen og gjøre innholdet mer relevant og relaterbart for brukeren. Den konsistente bildebruken bidrar samtidig til å etablere en tydelig visuell identitet og skape en helhetlig sammenheng i designet.</p>
-          <p style="font-size:12px; color:#aaa; margin-top:10px;">Bilder hentet fra Adobe Stock</p>
-        </section>
-
-        <!-- 04 Logo -->
+        <!-- 04 Typografi -->
         <section class="we-section">
           <p class="we-section__num">04</p>
-          <h2 class="we-section__heading">Logo</h2>
-          <div style="display:flex; gap:32px; align-items:flex-start; margin-bottom:32px; flex-wrap:wrap; padding-bottom:32px; border-bottom:1px solid #c5b8d4;">
-            <img src="./assets/prim.webp" alt="Primærlogo — Women Empowerment" style="width:660px; max-width:100%; display:block; flex-shrink:0;" loading="lazy">
-            <p style="font-size:15px; line-height:1.7; color:#333; margin:0; flex:1; min-width:220px;">Denne logoen er valgt som primærlogo fordi den tydelig representerer Stiftelsen WE. De avrundede formene uttrykker fellesskap og inkludering, mens typografien gir et profesjonelt og tydelig uttrykk</p>
-          </div>
-          <div class="we-logos">
-            <div class="we-logo-box"><img src="./assets/wegrepurp.webp" alt="WE logo — grønn på lilla" width="601" height="198" loading="lazy"></div>
-            <div class="we-logo-box"><img src="./assets/wepurpur.webp" alt="WE logo — lilla på lilla" width="601" height="198" loading="lazy"></div>
-            <div class="we-logo-box"><img src="./assets/wepurgre.webp" alt="WE logo — lilla på grønn" width="601" height="198" loading="lazy"></div>
-            <div class="we-logo-box"><img src="./assets/wewhitepur.webp" alt="WE logo — hvit på lilla" width="601" height="198" loading="lazy"></div>
-            <div class="we-logo-box"><img src="./assets/wehreen.webp" alt="WE logo — grønn" width="601" height="198" loading="lazy"></div>
-            <div class="we-logo-box"><img src="./assets/wewhite.webp" alt="WE logo — hvit på grønn" width="602" height="199" loading="lazy"></div>
-          </div>
-        </section>
-
-          <div style="margin-top:24px;">
-            <button class="we-posmap-trigger" onclick="document.getElementById('weKravModal').showModal()">↗&#xFE0E; Krav til luft og mål</button>
-          </div>
-
-        <!-- 05 Typografi -->
-        <section class="we-section">
-          <p class="we-section__num">05</p>
-          <div class="we-section__top">
-            <h2 class="we-section__heading">Typografi</h2>
-            <div class="we-section__top-meta">
-              <p class="we-section__top-desc">Typografien er bygd opp rundt to skriftfamilier for å sikre tydelig hierarki og visuell konsistens. Trade Gothic Next LT Pro Bold benyttes til overskrifter på landingssider og viktige navn, mens Heavy-varianten fremhever enkeltord og nøkkelbegreper. Helvetica Regular utgjør brødteksten for klar lesbarhet, og Helvetica Oblique brukes til uthevinger og sitater uten å bryte helheten.</p>
-            </div>
-          </div>
+          <h2 class="we-section__heading">Typografi</h2>
           <div class="we-typo">
             <div class="we-typo-col we-typo-col--bold">
               <div class="we-typo-col__aa">Aa</div>
@@ -514,27 +583,91 @@
               <p class="we-typo-col__alphabet">Aa BbCc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br>Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0123456789!@#$%^&amp;*( )</p>
             </div>
           </div>
+          <p class="we-section__intro" style="margin-top:52px;">Typografisystemet er tredelt og designet for tydelig hierarki på tvers av digitale og trykte flater. Trade Gothic Next LT Pro fungerer som identitetens primærskrift — komprimert, kraftig og distinkt. Helvetica utgjør det nøytrale, lesbare fundamentet i brødtekst og informasjonsformidling, og sikrer at identiteten er like funksjonell som den er ekspressiv.</p>
         </section>
 
-
-        <!-- 06 Mønster -->
+        <!-- 05 Logo -->
         <section class="we-section">
-          <p class="we-section__num">06</p>
-          <h2 class="we-section__heading">Mønster</h2>
-          <div class="we-monster-layout">
-            <div class="we-monster-imgs">
-              <img src="./assets/monster1.png" alt="WE mønster 1" class="we-monster-img">
-              <img src="./assets/monster2.png" alt="WE mønster 2" class="we-monster-img">
+          <p class="we-section__num">05</p>
+          <h2 class="we-section__heading">Logo</h2>
+          <p class="we-section__intro" style="margin-bottom:28px;">Primærlogoen kombinerer det grafiske WE-monogrammet med det fulle stiftelsesnavnet. De avrundede formene i monogrammet speiler det organiske mønsterelementet og forsterker assosiasjonene til nettverk, samhørighet og relasjon. Logosystemet er utviklet for fleksibel bruk på tvers av bakgrunner — seks autoriserte varianter sikrer at identiteten fungerer konsistent uten at lesbarhet eller karakter kompromitteres.</p>
+
+          <div class="we-logo-stage">
+            <img src="./assets/prim.webp" alt="Primærlogo — Women Empowerment" loading="lazy">
+          </div>
+
+          <div class="we-logos">
+            <div class="we-logo-box">
+              <img src="./assets/wegrepurp.webp" alt="WE logo — grønn på lilla" width="601" height="198" loading="lazy">
+              <span class="we-logo-variant-label">Grønn på lilla</span>
             </div>
-            <p class="we-monster-text">Det organiske mønsteret er utviklet som en visuell metafor for <strong>nettverk</strong>, samarbeid og vekst. De sammenkoblede formene representerer relasjonene mellom kvinner, næringsliv og sosiale entreprenører, hvor stiftelsen fungerer som et <strong>bindeledd</strong>. Variasjonen i størrelse og struktur symboliserer mangfoldet av bakgrunner og forutsetninger, mens de tydelige nodene fremhever <strong>individer</strong> og muligheter som løftes frem. Samtidig balanserer det myke, menneskelige uttrykket med en systematisk oppbygning, noe som reflekterer både det sosiale formålet og profesjonaliteten rettet mot næringslivet.</p>
+            <div class="we-logo-box">
+              <img src="./assets/wepurpur.webp" alt="WE logo — lilla på lilla" width="601" height="198" loading="lazy">
+              <span class="we-logo-variant-label">Lilla på lilla</span>
+            </div>
+            <div class="we-logo-box">
+              <img src="./assets/wepurgre.webp" alt="WE logo — lilla på grønn" width="601" height="198" loading="lazy">
+              <span class="we-logo-variant-label">Lilla på grønn</span>
+            </div>
+            <div class="we-logo-box">
+              <img src="./assets/wewhitepur.webp" alt="WE logo — hvit på lilla" width="601" height="198" loading="lazy">
+              <span class="we-logo-variant-label">Hvit på lilla</span>
+            </div>
+            <div class="we-logo-box">
+              <img src="./assets/wehreen.webp" alt="WE logo — monokrom grønn" width="601" height="198" loading="lazy">
+              <span class="we-logo-variant-label">Monokrom</span>
+            </div>
+            <div class="we-logo-box">
+              <img src="./assets/wewhite.webp" alt="WE logo — hvit på grønn" width="602" height="199" loading="lazy">
+              <span class="we-logo-variant-label">Hvit på grønn</span>
+            </div>
+          </div>
+
+          <div style="margin-top:28px;">
+            <button class="we-posmap-trigger" onclick="document.getElementById('weKravModal').showModal()">↗&#xFE0E; Krav til friluft og minimumsstørrelse</button>
           </div>
         </section>
 
-        <!-- 07 Design -->
+        <!-- 06 Visuelt system -->
+        <section class="we-section">
+          <p class="we-section__num">06</p>
+          <h2 class="we-section__heading">Visuelt system</h2>
+          <h3 class="we-section__subheading">Mønster</h3>
+          <div class="we-monster-layout">
+            <div class="we-monster-imgs">
+              <img src="./assets/monster1.png" alt="WE mønster 1" class="we-monster-img" loading="lazy" decoding="async">
+              <img src="./assets/monster2.png" alt="WE mønster 2" class="we-monster-img" loading="lazy" decoding="async">
+            </div>
+            <p class="we-monster-text">Nettverksmønsteret er en metafor for WEs kjerne: sammenkoblingen mellom <strong>kvinner, næringsliv</strong> og <strong>sosiale entreprenører.</strong> Variasjonen i formene speiler mangfoldet av bakgrunner, mens nodene markerer mulighetene som løftes frem. Det visuelle uttrykket balanserer et mykt, menneskelig fokus med profesjonaliteten som kreves i næringslivet.</p>
+          </div>
+
+          <h3 class="we-section__subheading">Bildebruk</h3>
+          <div class="strip-ss">
+            <div class="strip-ss__nav">
+              <button class="strip-ss__btn" id="weStripPrev" aria-label="Forrige bilde">←</button>
+              <button class="strip-ss__btn" id="weStripNext" aria-label="Neste bilde">→</button>
+            </div>
+            <div class="strip-ss__viewport">
+              <div class="strip-ss__track" id="weStripTrack">
+                <figure class="strip-ss__slide"><img loading="eager" decoding="async" draggable="false" src="./assets/webilde1.webp" alt="WE — bilde 1"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/webilde2.webp" alt="WE — bilde 2"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen4.webp" alt="WE — bilde 3"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen5.webp" alt="WE — bilde 4"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/wewomen6.webp" alt="WE — bilde 5"></figure>
+                <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/ragnhild.webp" alt="WE — bilde 6"></figure>
+              </div>
+            </div>
+          </div>
+          <p style="font-size:15px; line-height:1.75; color:#333; margin-top:20px; max-width:640px;">Bildestilen prioriterer autentiske situasjoner med kvinner i fokus for å sikre gjenkjennelse hos målgruppen. Konsistent lys og fargebruk er avgjørende for å skape en helhetlig visuell identitet på alle flater.</p>
+          <p style="font-size:12px; color:#bbb; margin-top:10px;">Bilder hentet fra Adobe Stock</p>
+        </section>
+
+        <!-- 07 Anvendelse -->
         <section class="we-section">
           <p class="we-section__num">07</p>
-          <h2 class="we-section__heading">Design</h2>
-          <div class="project__gallery" style="margin-top:24px;">
+          <h2 class="we-section__heading">Anvendelse</h2>
+
+          <div class="project__gallery" style="margin-top:8px;">
             <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--wide-cover" style="--gallery-h:420px">
               <div class="gallery-expandable__heading">Digitale flater</div>
               <div class="gallery-expandable__strip">
@@ -547,7 +680,7 @@
                 <div class="gallery-expandable__rest">
                   <figure class="project__figure">
                     <img src="./assets/wecarousel.webp" alt="WE Instagram-karusell" width="2946" height="1121" loading="lazy">
-                    <figcaption class="project__figcaption">Instagram posts</figcaption>
+                    <figcaption class="project__figcaption">Instagram karusell</figcaption>
                   </figure>
                   <figure class="project__figure">
                     <img src="./assets/insta-storypng.webp" alt="WE Instagram story" width="1920" height="1080" loading="lazy">
@@ -557,7 +690,7 @@
               </div>
               <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
             </div>
-            <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--uniform-cover">
+            <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--uniform-cover" style="--gallery-h:440px">
               <div class="gallery-expandable__heading">Trykte flater</div>
               <div class="gallery-expandable__strip">
                 <div class="gallery-expandable__cover">
@@ -568,7 +701,7 @@
                 </div>
                 <div class="gallery-expandable__rest">
                   <figure class="project__figure">
-                    <img src="./assets/we-broski-bak@3x.webp" alt="WE brosjyre — forside" width="12312" height="11299" loading="lazy">
+                    <img src="./assets/we-broski-bak@3x.webp" alt="WE brosjyre — forside og bakside" width="12312" height="11299" loading="lazy">
                     <figcaption class="project__figcaption">Brosjyre bak/foran</figcaption>
                   </figure>
                   <figure class="project__figure">
@@ -585,6 +718,58 @@
             </div>
           </div>
         </section>
+
+        <!-- 08 Prosess -->
+        <section class="we-section">
+          <p class="we-section__num">08</p>
+          <h2 class="we-section__heading">Prosess</h2>
+
+          <div class="we-steps">
+            <div class="we-step">
+              <div class="we-step__num">01</div>
+              <div class="we-step__title">Innledende brief</div>
+              <div class="we-step__body">Møte med Ragnhild Slettner ga rammen for prosjektet: seriøst, men lekent og fargerikt — uten fastsatt visuell retning.</div>
+            </div>
+            <div class="we-step">
+              <div class="we-step__num">02</div>
+              <div class="we-step__title">Innsikt</div>
+              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button>, <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weSwotModal').showModal()">SWOT</button> kartla markedet og identifiserte WEs unike posisjon.</div>
+            </div>
+            <div class="we-step">
+              <div class="we-step__num">03</div>
+              <div class="we-step__title"><button class="we-posmap-trigger" onclick="document.getElementById('weIntervjuModal').showModal()">Ekspertintervju</button></div>
+              <div class="we-step__body">Samtale med designer Cecilie Melli ga et vendepunkt: identiteten trengte mer tyngde og tydeligere strategi.</div>
+            </div>
+            <div class="we-step">
+              <div class="we-step__num">04</div>
+              <div class="we-step__title">Identitetsutvikling</div>
+              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weMoodModal').showModal()">Moodboarding</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weLogoutvModal').showModal()">logoutvikling</button> iterert fra skisse til ferdig system gjennom tett samarbeid.</div>
+            </div>
+            <div class="we-step">
+              <div class="we-step__num">05</div>
+              <div class="we-step__title">Kontaktflater</div>
+              <div class="we-step__body">Nettside, visittkort, brosjyre, banner og sosiale medier tilpasset identitetssystemet og de to målgruppene.</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 09 Refleksjon -->
+        <section class="we-section">
+          <p class="we-section__num">09</p>
+          <h2 class="we-section__heading">Refleksjon</h2>
+          <div class="we-reflection">
+            <p class="we-reflection__body">Endepunktet i prosessen kom da vi identifiserte et misforhold mellom uttrykk og formål. Det første utkastet hadde visuell energi, men manglet tilstrekkelig tyngde og troverdighet. Vi hadde prioritert et ekspressivt uttrykk fremfor å bygge tillit.</p>
+            <p class="we-reflection__body">Dette førte til en strategisk justering, der identiteten ble utviklet som et kommunikasjonsverktøy med tydelig funksjon: å fungere for to ulike målgrupper med ulike behov.</p>
+            <p class="we-reflection__body">For næringslivet måtte uttrykket signalisere profesjonalitet og stabilitet. For målgruppen måtte det oppleves inkluderende, trygt og relevant. Identiteten ble derfor utviklet for å svare på to spørsmål samtidig: Kan vi stole på dere? og Er dette for meg?</p>
+            <p class="we-reflection__learnings-heading">Læring</p>
+            <ul class="we-reflection__learnings">
+              <li>Dobbel målgruppe krever tydelige prioriteringer fra start</li>
+              <li>Retning må forankres i funksjon, ikke kun uttrykk</li>
+              <li>En sterk identitet ligger i et konsistent system, ikke enkeltstående elementer</li>
+            </ul>
+          </div>
+        </section>
+
 
       </div><!-- /we-body -->
 
@@ -609,12 +794,12 @@
   <dialog id="weIntervjuModal">
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weIntervjuModal').close()" aria-label="Lukk">✕</button>
-      <h3 class="we-posmap-modal__heading">Nøkkelinnsikt fra intervju</h3>
+      <h3 class="we-posmap-modal__heading">Nøkkelinnsikt fra ekspertintervju</h3>
       <img src="./assets/cecilie.webp" alt="Cecilie Melli" style="width:100%;display:block;margin:0 0 20px;">
-      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Vi intervjuet designer Cecilie Melli for å få et eksternt blikk på identiteten. Hun har erfaring med å balansere kreativitet og profesjonalitet, og ga verdifulle innspill.</p>
-      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Hun stilte spørsmålet: <em>«Hvem skal føle seg trygge når de ser dette?»</em><br>Uttrykket vårt hadde energi, men manglet tyngde og ga assosiasjoner til noe midlertidig. Hun påpekte at identiteten må signalisere stabilitet, ansvar og tillit – spesielt i møte med næringslivet.</p>
-      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Melli fremhevet viktigheten av å kommunisere kvalitet, konsistens og kontroll, ikke bare kreativitet. Hun anbefalte en mer dempet fargepalett, mindre kontraster og tydeligere struktur i typografi og layout for å styrke profesjonaliteten.</p>
-      <p style="font-size:14px;line-height:1.75;color:#333;margin:0;">Dette ble et vendepunkt i prosessen. Vi utviklet et mer balansert, moderne og tillitsvekkende uttrykk, og så identiteten som et strategisk verktøy – ikke bare et visuelt uttrykk.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Vi intervjuet designer Cecilie Melli for å få et eksternt blikk på identiteten. Hun har erfaring med å balansere kreativitet og profesjonalitet, og ga verdifulle strategiske innspill.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Hun stilte spørsmålet: <em>«Hvem skal føle seg trygge når de ser dette?»</em><br>Uttrykket hadde energi, men manglet tyngde og ga assosiasjoner til noe midlertidig. Hun påpekte at identiteten må signalisere stabilitet, ansvar og tillit — spesielt i møte med næringslivet.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 14px;">Melli fremhevet viktigheten av å kommunisere kvalitet, konsistens og kontroll — ikke bare kreativitet. Hun anbefalte en mer dempet fargepalett, færre kontraster og tydeligere struktur i typografi og layout.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0;">Dette ble et vendepunkt i prosessen. Vi utviklet et mer balansert, moderne og tillitsvekkende uttrykk — og begynte å se identiteten som et strategisk verktøy, ikke bare et visuelt uttrykk.</p>
     </div>
   </dialog>
 
@@ -663,7 +848,7 @@
   <dialog id="weKravModal">
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weKravModal').close()" aria-label="Lukk">✕</button>
-      <h3 class="we-posmap-modal__heading">Krav til luft og mål</h3>
+      <h3 class="we-posmap-modal__heading">Krav til friluft og minimumsstørrelse</h3>
       <div class="we-logo-spec-row we-logo-spec-row--friluft" style="margin-bottom:28px;">
         <img class="we-spec-img-large" src="./assets/helekravlogo.webp" alt="Friluft — hele logoens krav" loading="lazy">
         <img class="we-spec-img-small" src="./assets/litenkravlogo.webp" alt="Friluft — liten variant" loading="lazy">
@@ -683,7 +868,7 @@
   <dialog id="weMoodModal">
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weMoodModal').close()" aria-label="Lukk">✕</button>
-      <img src="./assets/moodboard.webp" alt="Moodboard" style="width:100%;height:auto;display:block;">
+      <img src="./assets/moodboard.webp" alt="Moodboard — Stiftelsen WE" style="width:100%;height:auto;display:block;" loading="lazy" decoding="async">
     </div>
   </dialog>
 
@@ -691,21 +876,20 @@
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weLogoutvModal').close()" aria-label="Lukk">✕</button>
       <h3 class="we-posmap-modal__heading">Logoutvikling</h3>
-      <img src="./assets/logoutvikling.webp" alt="Logoutvikling" style="width:100%;height:auto;display:block;">
+      <img src="./assets/logoutvikling.webp" alt="Logoutvikling — fra skisse til ferdig logo" style="width:100%;height:auto;display:block;" loading="lazy" decoding="async">
     </div>
   </dialog>
 
   <dialog id="weKonkModal">
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weKonkModal').close()" aria-label="Lukk">✕</button>
-      <h3 class="we-posmap-modal__heading">Hvorfor disse konkurrentene?</h3>
-      <p style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px;">Konkurrenter</p>
+      <h3 class="we-posmap-modal__heading">Konkurrentanalyse</h3>
+      <p style="font-size:12px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px;">Analyserte aktører</p>
       <p style="font-size:14px;font-weight:500;color:#111;margin:0 0 20px;">Kavlifondet, Røde Kors, Ferd, FOKUS Kvinner, Amnesty, Care Norge</p>
-      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Disse aktørene er valgt fordi de jobber innen filantropi, sosialt arbeid og samfunnsutvikling – områder som overlapper med Stiftelsen WEs formål. De representerer ulike tilnærminger til sosial påvirkning og gir et relevant sammenligningsgrunnlag.</p>
-      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Røde Kors, CARE og Amnesty er etablerte organisasjoner med tydelige budskap og sterk kommunikasjon. De fokuserer på krisehjelp, rettigheter og bistand. FOKUS Kvinner har et mer spesialisert likestillingsfokus.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Aktørene er valgt fordi de opererer innen filantropi, sosialt arbeid og samfunnsutvikling — områder som overlapper med Stiftelsen WEs formål. De representerer ulike tilnærminger til sosial påvirkning og gir et relevant sammenligningsgrunnlag.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Røde Kors, CARE og Amnesty er etablerte organisasjoner med tydelige budskap og sterk visuell kommunikasjon, orientert mot krisehjelp og rettigheter. FOKUS Kvinner har et mer spesialisert likestillingsfokus med et litt mer lavmælt uttrykk.</p>
       <p style="font-size:13px;font-weight:600;color:#111;margin:0 0 8px;text-transform:uppercase;letter-spacing:.07em;">Hva skiller WE?</p>
-      <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Ferd og Kavlifondet kombinerer næringsliv og samfunnsansvar, og bruker eierskap og investeringer for å skape sosial verdi. WE skiller seg ved å ha en tydelig kobling mellom kvinner, arbeid og samarbeid med næringslivet.</p>
-      <p style="font-size:14px;line-height:1.75;color:#333;margin:0;">WE fungerer som en brobygger mellom kapital og sosial verdiskaping, og har en mer relasjonsbasert og konkret tilnærming enn mange andre aktører.</p>
+      <p style="font-size:14px;line-height:1.75;color:#333;margin:0;">Ferd og Kavlifondet kombinerer næringsliv og samfunnsansvar, men WE skiller seg ved å ha en tydelig kobling mellom kvinner, arbeid og relasjonsbasert samarbeid med næringslivet. WE posisjonerer seg i skjæringspunktet mellom det profesjonelle og det menneskelige — og identiteten er designet for å bære den dobbeltheten.</p>
     </div>
   </dialog>
 
@@ -713,7 +897,7 @@
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('wePosmapModal').close()" aria-label="Lukk">✕</button>
       <h3 class="we-posmap-modal__heading">Posisjoneringskart</h3>
-      <img src="./assets/posisjoneringwe.webp" alt="Posisjoneringskart for WE" style="width:100%;height:auto;display:block;">
+      <img src="./assets/posisjoneringwe.webp" alt="Posisjoneringskart for Stiftelsen WE" style="width:100%;height:auto;display:block;" loading="lazy" decoding="async">
     </div>
   </dialog>
 
@@ -721,6 +905,20 @@
   <script>
     const $ = (s) => document.querySelector(s);
     document.querySelector("#year").textContent = new Date().getFullYear();
+
+    // Scroll progress bar
+    (function() {
+      const bar = document.getElementById("weProgressBar");
+      if (!bar) return;
+      function updateProgress() {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = pct + "%";
+      }
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      updateProgress();
+    })();
 
     // Strip slideshow
     (function() {
