@@ -544,7 +544,7 @@ body::before {
 .featured-card {
     position: relative;
     min-height: 400px;
-    background-image: url('../images/moteplass.jpg');
+    background-image: url('../images/moteplass.webp');
     background-size: cover;
     background-position: center;
     display: flex;

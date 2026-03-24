@@ -410,46 +410,6 @@
             if (badge && !open) badge.style.display = 'none';
         })();
 
-        // ── Booking: room selection ──────────────────────────────────────────
-        function selectRoom(btn) {
-            document.querySelectorAll('.room-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            updateSelectedInfo();
-        }
-
-        function selectTime(btn) {
-            document.querySelectorAll('.time-slot:not(.taken)').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            updateSelectedInfo();
-        }
-
-        function updateSelectedInfo() {
-            const room = document.querySelector('.room-btn.active')?.dataset.room || '';
-            const time = document.querySelector('.time-slot.active')?.textContent || '';
-            const el = document.getElementById('selectedInfo');
-            if (room && time) {
-                el.textContent = `Valgt: ${room} kl. ${time}`;
-            } else if (room) {
-                el.textContent = `Valgt: ${room} — velg et tidspunkt`;
-            } else {
-                el.textContent = '';
-            }
-        }
-
-        function submitBooking(e) {
-            e.preventDefault();
-            document.getElementById('bookingForm').style.display = 'none';
-            document.getElementById('bookingConfirmation').style.display = 'block';
-        }
-
-        function resetBooking() {
-            document.getElementById('bookingForm').reset();
-            document.getElementById('bookingForm').style.display = 'block';
-            document.getElementById('bookingConfirmation').style.display = 'none';
-            document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('active'));
-            updateSelectedInfo();
-        }
-
         // ── Focus trap ───────────────────────────────────────────────────────
         let _lastFocus = null;
         const FOCUSABLE = 'a[href],button:not([disabled]),input,textarea,select,[tabindex]:not([tabindex="-1"])';
@@ -521,10 +481,6 @@
                 btn.setAttribute('aria-expanded', expanded);
             });
         });
-
-        // ── Set today's date as min for booking ──────────────────────────────
-        const dateInput = document.querySelector('#bookingForm input[name="date"]');
-        if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
 
         // ── Close modal on Escape ────────────────────────────────────────────
         document.addEventListener('keydown', e => {
