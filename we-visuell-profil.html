@@ -37,8 +37,10 @@
     }
     /* ── mønster two-column layout ── */
     .we-monster-layout{ display:flex; gap:clamp(16px,3vw,40px); align-items:flex-start; margin-top:8px; }
-    .we-monster-imgs{ display:flex; gap:clamp(8px,1.5vw,16px); flex-shrink:0; }
-    .we-monster-img{ width:min(180px,22vw); height:auto; display:block; }
+    .we-monster-imgs{ display:flex; gap:clamp(24px,4vw,48px); flex-shrink:0; }
+    .we-monster-img{ width:min(180px,22vw); height:auto; display:block; animation: we-spin 18s linear infinite; }
+    .we-monster-img:nth-child(2){ animation-direction: reverse; animation-duration: 24s; }
+    @keyframes we-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .we-monster-text{ flex:1 1 0; font-size:17px; line-height:1.7; color:#444; margin:0; min-width:0; }
     @media(max-width:600px){
       .we-monster-layout{ flex-direction:column; gap:16px; }
@@ -160,7 +162,7 @@
 
     /* Målgruppe */
     .we-audience { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 8px; }
-    .we-audience-cell { padding: 24px 0 0; border-top: 2px solid; }
+    .we-audience-cell { padding: 24px 20px 24px; border-top: 2px solid; transition: background .2s ease, box-shadow .2s ease, transform .2s ease; }
     .we-audience-cell--pri { border-color: var(--we-amethyst); }
     .we-audience-cell--sec { border-color: #ddd; }
     .we-audience-cell__label { font-size: 10px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; font-weight: 600; display: block; }
@@ -169,7 +171,8 @@
     .we-audience-cell__title { font-family: 'neuzeit-grotesk', sans-serif; font-size: 22px; font-weight: 600; margin: 0 0 14px; line-height: 1.2; color: #111; }
     .we-audience-cell__body { font-size: 14px; line-height: 1.78; margin: 0; color: #555; }
     .we-mg-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 48px; max-width: 100%; }
-    .we-mg-blocks .we-client-block { border-top: none; padding-top: 0; }
+    .we-mg-blocks .we-client-block { border-top: none; padding-top: 20px; padding-left: 20px; padding-right: 20px; padding-bottom: 20px; transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .we-mg-blocks .we-client-block:nth-child(-n+3):hover { background: #f4faf9; transform: translateY(-5px); box-shadow: 0 8px 28px rgba(0,0,0,.08); }
     .we-mg-blocks .we-client-block:nth-child(4) { grid-column: 1 / -1; padding-top: 40px; }
     .we-mg-blocks .we-client-block:nth-child(5) { grid-column: 1 / -1; padding-top: 0; }
     .we-mg-blocks .we-client-block:nth-child(n+4) .we-client-block__label { margin-bottom: 4px; }
@@ -199,7 +202,21 @@
       margin-left: -40px;
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 40px;
+      transition: background .45s ease;
     }
+    .we-logo-stage--dark { background: var(--we-amethyst); }
+    .we-logo-toggle {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 12px; color: #555; background: none; border: 1px solid #d4d0cb;
+      padding: 5px 13px; cursor: pointer; margin-bottom: 20px;
+      transition: border-color .2s, color .2s;
+    }
+    .we-logo-toggle:hover { border-color: #999; color: #111; }
+    .we-logo-toggle__dot { width: 10px; height: 10px; border-radius: 50%; background: #111; transition: background .45s ease; flex-shrink: 0; }
+
+    /* Scroll fade-in */
+    .we-section.we-fade { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .we-section.we-fade.is-visible { opacity: 1; transform: none; }
     .we-logo-stage img { width: min(560px, 82%); height: auto; display: block; }
 
     /* Logo */
@@ -226,8 +243,26 @@
 
     /* Palette */
     .we-palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
-    .we-swatch { transition: transform .2s ease; }
-    .we-swatch:hover { transform: translateY(-3px); }
+    .we-swatch { transition: transform .2s ease; cursor: pointer; }
+    .we-swatch:hover { transform: translateY(-5px); }
+    .we-swatch__copied { font-size: 10px; color: #35685e; font-weight: 600; display: block; margin-top: 3px; min-height: 14px; letter-spacing: .04em; }
+
+    /* Audience cell hover */
+    .we-audience-cell:hover { background: #f4faf9; box-shadow: 0 6px 24px rgba(0,0,0,.07); transform: translateY(-4px); }
+
+    /* Stagger entrance */
+    @keyframes we-stagger-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+    .we-stagger { opacity: 0; }
+    .we-stagger.is-in { animation: we-stagger-in .45s ease both; }
+
+    /* Toast */
+    .we-toast {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(8px);
+      background: #0d1e1b; color: #ace088; padding: 9px 20px;
+      font-size: 13px; pointer-events: none; z-index: 9999;
+      opacity: 0; transition: opacity .2s ease, transform .2s ease;
+    }
+    .we-toast.is-show { opacity: 1; transform: translateX(-50%) translateY(0); }
     .we-swatch__color { height: 100px; }
     .we-swatch__info { padding: 10px 0 0; }
     .we-swatch__hex { font-size: 13px; font-weight: 500; display: block; }
@@ -501,7 +536,7 @@
           <h2 class="we-section__heading">Fargesystem</h2>
           <p class="we-section__intro">Paletten balanserer forankring og energi. Dype grønntoner skaper en identitet knyttet til natur, tillit og bærekraft, og skiller WE fra konkurrentenes blådominerte uttrykk. Violett fungerer som en kontrasterende aksentfarge som tilfører energi og understreker det innovative ved arbeidet.</p>
           <div class="we-palette">
-            <div class="we-swatch">
+            <div class="we-swatch we-stagger">
               <div class="we-swatch__color" style="background:#000000"></div>
               <div class="we-swatch__info">
                 <span class="we-swatch__hex">#000000</span>
@@ -510,7 +545,7 @@
                 <span class="we-swatch__use">Overskrifter</span>
               </div>
             </div>
-            <div class="we-swatch">
+            <div class="we-swatch we-stagger">
               <div class="we-swatch__color" style="background:#0d1e1b"></div>
               <div class="we-swatch__info">
                 <span class="we-swatch__hex">#0D1E1B</span>
@@ -519,7 +554,7 @@
                 <span class="we-swatch__use">Primær bakgrunn</span>
               </div>
             </div>
-            <div class="we-swatch">
+            <div class="we-swatch we-stagger">
               <div class="we-swatch__color" style="background:#224942"></div>
               <div class="we-swatch__info">
                 <span class="we-swatch__hex">#224942</span>
@@ -528,7 +563,7 @@
                 <span class="we-swatch__use">Sekundær bakgrunn</span>
               </div>
             </div>
-            <div class="we-swatch">
+            <div class="we-swatch we-stagger">
               <div class="we-swatch__color" style="background:#7fb5aa"></div>
               <div class="we-swatch__info">
                 <span class="we-swatch__hex">#7FB5AA</span>
@@ -537,7 +572,7 @@
                 <span class="we-swatch__use">Grafikk, aksenter</span>
               </div>
             </div>
-            <div class="we-swatch">
+            <div class="we-swatch we-stagger">
               <div class="we-swatch__color" style="background:#8c80ff"></div>
               <div class="we-swatch__info">
                 <span class="we-swatch__hex">#8C80FF</span>
@@ -546,7 +581,7 @@
                 <span class="we-swatch__use">Energifarge, lenker</span>
               </div>
             </div>
-            <div class="we-swatch">
+            <div class="we-swatch we-stagger">
               <div class="we-swatch__color" style="background:#f4faf9; border: 1px solid #e0ecea"></div>
               <div class="we-swatch__info">
                 <span class="we-swatch__hex">#F4FAF9</span>
@@ -593,7 +628,10 @@
           <h2 class="we-section__heading">Logo</h2>
           <p class="we-section__intro" style="margin-bottom:28px;">Primærlogoen kombinerer det grafiske WE-monogrammet med det fulle stiftelsesnavnet. De avrundede formene i monogrammet speiler det organiske mønsterelementet og forsterker assosiasjonene til nettverk, samhørighet og relasjon. Logosystemet er utviklet for fleksibel bruk på tvers av bakgrunner — seks autoriserte varianter sikrer at identiteten fungerer konsistent uten at lesbarhet eller karakter kompromitteres.</p>
 
-          <div class="we-logo-stage">
+          <button class="we-logo-toggle" id="weLogoToggle" aria-label="Bytt bakgrunn">
+            <span class="we-logo-toggle__dot" id="weLogoToggleDot"></span><span id="weLogoToggleLabel">Lys bakgrunn</span>
+          </button>
+          <div class="we-logo-stage" id="weLogoStage">
             <img src="./assets/prim.webp" alt="Primærlogo — Women Empowerment" loading="lazy">
           </div>
 
@@ -730,27 +768,27 @@
           <h2 class="we-section__heading">Prosess</h2>
 
           <div class="we-steps">
-            <div class="we-step">
+            <div class="we-step we-stagger">
               <div class="we-step__num">01</div>
               <div class="we-step__title">Innledende brief</div>
               <div class="we-step__body">Møte med Ragnhild Slettner ga rammen for prosjektet: seriøst, men lekent og fargerikt — uten fastsatt visuell retning.</div>
             </div>
-            <div class="we-step">
+            <div class="we-step we-stagger">
               <div class="we-step__num">02</div>
               <div class="we-step__title">Innsikt</div>
               <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button>, <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weSwotModal').showModal()">SWOT</button> kartla markedet og identifiserte WEs unike posisjon.</div>
             </div>
-            <div class="we-step">
+            <div class="we-step we-stagger">
               <div class="we-step__num">03</div>
               <div class="we-step__title"><button class="we-posmap-trigger" onclick="document.getElementById('weIntervjuModal').showModal()">Ekspertintervju</button></div>
               <div class="we-step__body">Samtale med designer Cecilie Melli ga et vendepunkt: identiteten trengte mer tyngde og tydeligere strategi.</div>
             </div>
-            <div class="we-step">
+            <div class="we-step we-stagger">
               <div class="we-step__num">04</div>
               <div class="we-step__title">Identitetsutvikling</div>
               <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weMoodModal').showModal()">Moodboarding</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weLogoutvModal').showModal()">logoutvikling</button> iterert fra skisse til ferdig system gjennom tett samarbeid.</div>
             </div>
-            <div class="we-step">
+            <div class="we-step we-stagger">
               <div class="we-step__num">05</div>
               <div class="we-step__title">Kontaktflater</div>
               <div class="we-step__body">Nettside, visittkort, brosjyre, banner og sosiale medier tilpasset identitetssystemet og de to målgruppene.</div>
@@ -1020,6 +1058,59 @@
       const isOpen = sidebar.classList.toggle("sidebar--open");
       toggle.setAttribute("aria-expanded", String(isOpen));
     });
+
+    // Scroll fade-in + stagger
+    (function() {
+      const sections = document.querySelectorAll(".we-section");
+      if (!sections.length || !window.IntersectionObserver) return;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add("is-visible");
+            e.target.querySelectorAll(".we-stagger").forEach((el, i) => {
+              setTimeout(() => el.classList.add("is-in"), i * 70);
+            });
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.07, rootMargin: "0px 0px -40px 0px" });
+      sections.forEach(s => { s.classList.add("we-fade"); obs.observe(s); });
+    })();
+
+    // Click-to-copy hex on swatches
+    (function() {
+      const toast = document.createElement("div");
+      toast.className = "we-toast";
+      document.body.appendChild(toast);
+      let timer;
+      document.querySelectorAll(".we-swatch").forEach(swatch => {
+        swatch.addEventListener("click", () => {
+          const hex = swatch.querySelector(".we-swatch__hex")?.textContent?.trim();
+          if (!hex) return;
+          navigator.clipboard.writeText(hex).catch(() => {});
+          toast.textContent = hex + " kopiert";
+          toast.classList.add("is-show");
+          clearTimeout(timer);
+          timer = setTimeout(() => toast.classList.remove("is-show"), 1800);
+        });
+      });
+    })();
+
+    // Logo background toggle
+    (function() {
+      const btn = document.getElementById("weLogoToggle");
+      const stage = document.getElementById("weLogoStage");
+      const dot = document.getElementById("weLogoToggleDot");
+      const label = document.getElementById("weLogoToggleLabel");
+      if (!btn || !stage) return;
+      let dark = false;
+      btn.addEventListener("click", () => {
+        dark = !dark;
+        stage.classList.toggle("we-logo-stage--dark", dark);
+        dot.style.background = dark ? "#ace088" : "#111";
+        label.textContent = dark ? "Mørk bakgrunn" : "Lys bakgrunn";
+      });
+    })();
   </script>
 </body>
 </html>
