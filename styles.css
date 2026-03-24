@@ -1430,6 +1430,7 @@ a:hover{opacity:.75}
 .btn-pdf--black:hover { background: #2a2a2a; }
 .btn-pdf--grey { background: #e0e0e0; color: #1a1a1a; }
 .btn-pdf--grey:hover { background: #cacaca; }
+.btn-pdf--mt { margin-top: 16px; }
 .btn-pdf--green { background: none; border: 2px solid #0f0f0f; }
 .btn-pdf--green:hover { background: none; opacity: 0.6; }
 .btn-pdf--grey--active { background: #c8c8c8; }
