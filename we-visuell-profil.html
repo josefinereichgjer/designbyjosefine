@@ -15,6 +15,14 @@
   <style>
     /* ── override accent colour ── */
     .we-body .gallery-expandable__heading{ color: #224942; border-color: #224942; }
+    .we-body .gallery-expandable__header { display: flex; align-items: center; justify-content: space-between; }
+    .we-body .gallery-expandable__arrows { display: flex; gap: 4px; }
+    .we-body .gallery-expandable__arrow {
+      background: none; border: none; cursor: pointer;
+      font-size: 20px; color: #111; padding: 4px 8px;
+      line-height: 1; opacity: .5; transition: opacity .15s;
+    }
+    .we-body .gallery-expandable__arrow:hover { opacity: 1; }
     .we-body .gallery-expandable__cover::after,
     .we-body .gallery-expandable__close-btn{ background: #224942; }
     /* ── disable multi-column on gallery ── */
@@ -108,7 +116,7 @@
 
     /* Sections */
     .we-section { padding: 64px 0; border-top: 1px solid #e8e4e2; }
-    .we-body .we-section:first-of-type { border-top: none; }
+    .we-body .we-section:first-of-type { border-top: none; padding-top: 24px; }
     .we-section__num { font-family: 'Poppins', sans-serif; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--we-periwinkle-text); margin-bottom: 10px; }
     .we-section__heading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; margin: 0 0 32px; color: #111; }
     .we-section__intro { font-size: 15px; line-height: 1.78; color: #444; max-width: 640px; margin: 0 0 32px; }
@@ -228,7 +236,7 @@
     .we-logo-toggle__dot { width: 10px; height: 10px; border-radius: 50%; background: #111; transition: background .45s ease; flex-shrink: 0; }
 
     /* Table of contents */
-    .we-toc { display: flex; overflow-x: auto; border-bottom: 1px solid #e8e4e2; margin-bottom: 56px; gap: 0; }
+    .we-toc { display: flex; overflow-x: auto; border-bottom: 1px solid #e8e4e2; margin-bottom: 24px; gap: 0; }
     .we-toc__link { font-size: 11px; text-transform: uppercase; letter-spacing: .09em; color: #999; text-decoration: none; padding: 14px 18px 12px; white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .2s, border-color .2s; }
     .we-toc__link:hover { color: #111; }
     .we-toc__link.is-active { color: #111; border-color: var(--we-amethyst); }
@@ -347,6 +355,78 @@
     .we-swot-cell li { font-size: 13px; line-height: 1.4; padding-left: 14px; position: relative; color: #333; }
     .we-swot-cell li::before { content: '·'; position: absolute; left: 0; color: #111; }
 
+    /* Nøkkelpunkter button + accordion modal */
+    .we-nokkel-btn {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: #111; color: #fff;
+      border: none; padding: 14px 24px; margin-top: 36px;
+      font-family: var(--we-font); font-size: 15px; font-weight: 500; letter-spacing: .01em;
+      cursor: pointer; transition: background .15s;
+    }
+    .we-nokkel-btn:hover { background: #2a2a2a; }
+    .we-nokkel-btn--lg { font-size: 20px; padding: 22px 40px; }
+    .we-pr-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .we-nokkel-btn__plus { font-size: 20px; font-weight: 300; line-height: 1; }
+    #weProsessModal {
+      border: none; padding: 0; max-width: 900px; width: 95vw;
+      background: #fff; box-shadow: 0 8px 48px rgba(0,0,0,.18);
+    }
+    #weRefleksjonModal {
+      border: none; padding: 0; max-width: 720px; width: 95vw;
+      background: #fff; box-shadow: 0 8px 48px rgba(0,0,0,.18);
+    }
+    .we-reflection--modal {
+      background: #fff; padding: 0; margin-top: 0;
+      gap: 0 48px;
+    }
+    .we-reflection--modal .we-reflection__learnings-heading {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: #35685e;
+      margin: 32px 0 10px; padding-bottom: 10px;
+      border-bottom: 1px solid #e4e0dd;
+    }
+    .we-reflection--modal .we-reflection__learnings-heading:first-child { margin-top: 0; }
+    .we-reflection--modal .we-reflection__body { font-size: 14px; color: #333; }
+    .we-reflection--modal .we-reflection__hl {
+      color: #35685e; font-size: 1em; font-weight: 600;
+      background: rgba(53,104,94,.08); padding: 1px 4px;
+    }
+    .we-reflection--modal .we-reflection__learnings li { font-size: 14px; }
+    @media (max-width: 540px) { .we-reflection--modal { grid-template-columns: 1fr; } }
+    #weProsessModal::backdrop, #weRefleksjonModal::backdrop { background: rgba(0,0,0,.45); }
+    .we-steps--modal { grid-template-columns: repeat(5, 1fr); }
+    @media (max-width: 700px) { .we-steps--modal { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 420px) { .we-steps--modal { grid-template-columns: 1fr; } }
+    .we-nokkel-modal__inner { padding: 36px 32px; position: relative; }
+    .we-nokkel-modal__close {
+      position: absolute; top: 16px; right: 16px;
+      background: none; border: none; font-size: 20px; cursor: pointer;
+      color: #888; line-height: 1; padding: 4px;
+    }
+    .we-nokkel-modal__close:hover { color: #111; }
+    .we-nokkel-modal__heading { font-family: var(--we-font); font-weight: 600; font-size: 20px; margin: 0 0 28px; color: #111; }
+    .we-accordion { list-style: none; padding: 0; margin: 0; }
+    .we-accordion__item { border-bottom: 1px solid #e4e0dd; }
+    .we-accordion__trigger {
+      width: 100%; background: none; border: none;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 0; cursor: pointer;
+      font-family: var(--we-font); font-size: 16px; font-weight: 600;
+      text-align: left; color: #111; gap: 16px;
+    }
+    .we-accordion__trigger__icon {
+      font-size: 22px; font-weight: 300; flex-shrink: 0; color: #888;
+      transition: transform .2s;
+    }
+    .we-accordion__trigger[aria-expanded="true"] .we-accordion__trigger__icon { transform: rotate(45deg); color: #111; }
+    .we-accordion__body {
+      font-size: 14px; line-height: 1.78; color: #555;
+      overflow: hidden; max-height: 0; transition: max-height .25s ease, padding .25s ease;
+      padding: 0;
+    }
+    .we-accordion__body.is-open { max-height: 200px; padding-bottom: 18px; }
+    @media (max-width: 480px) { .we-nokkel-modal__inner { padding: 24px 20px; } }
+
     /* CTA */
     .we-cta { padding: 48px 0 0; display: flex; justify-content: center; }
     .we-cta a {
@@ -358,7 +438,7 @@
     .we-cta a:hover { opacity: .75; }
 
     /* Refleksjon */
-    .we-reflection { background: #f8f6f3; padding: 40px; margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start; }
+    .we-reflection { background: #fff; padding: 40px; margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 56px; align-items: start; }
     .we-reflection__quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(18px, 2.5vw, 26px); line-height: 1.45; color: var(--we-amethyst); margin: 0 0 28px; border-left: 3px solid var(--we-lime); padding-left: 24px; }
     .we-reflection__body { font-size: 15px; line-height: 1.8; color: #444; margin: 0 0 18px; }
     .we-reflection__learnings-heading { font-size: 20px; font-weight: 400; text-transform: none; letter-spacing: 0; color: #111; margin: 36px 0 12px; }
@@ -492,7 +572,13 @@
           <h2 class="we-section__heading">Design</h2>
           <div class="project__gallery" style="margin-top:8px;">
             <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--wide-cover" style="--gallery-h:420px">
-              <div class="gallery-expandable__heading">Digitale flater</div>
+              <div class="gallery-expandable__header">
+                <div class="gallery-expandable__heading">Digitale flater</div>
+                <div class="gallery-expandable__arrows">
+                  <button class="gallery-expandable__arrow" data-dir="-1" aria-label="Forrige">←</button>
+                  <button class="gallery-expandable__arrow" data-dir="1" aria-label="Neste">→</button>
+                </div>
+              </div>
               <div class="gallery-expandable__strip">
                 <div class="gallery-expandable__cover">
                   <figure class="project__figure">
@@ -518,7 +604,13 @@
               <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
             </div>
             <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--uniform-cover" style="--gallery-h:440px">
-              <div class="gallery-expandable__heading">Trykte flater</div>
+              <div class="gallery-expandable__header">
+                <div class="gallery-expandable__heading">Trykte flater</div>
+                <div class="gallery-expandable__arrows">
+                  <button class="gallery-expandable__arrow" data-dir="-1" aria-label="Forrige">←</button>
+                  <button class="gallery-expandable__arrow" data-dir="1" aria-label="Neste">→</button>
+                </div>
+              </div>
               <div class="gallery-expandable__strip">
                 <div class="gallery-expandable__cover">
                   <figure class="project__figure">
@@ -783,62 +875,16 @@
           <p style="font-size:12px; color:#bbb; margin-top:10px;">Bilder hentet fra Adobe Stock</p>
         </section>
 
-        <!-- 08 Prosess -->
+        <!-- 08-09 Prosess & Refleksjon -->
         <section class="we-section" id="sec-prosess">
-          <p class="we-section__num">08</p>
-          <h2 class="we-section__heading">Prosess</h2>
-
-          <div class="we-steps">
-            <div class="we-step we-stagger">
-              <div class="we-step__num">01</div>
-              <div class="we-step__title">Innledende brief</div>
-              <div class="we-step__body">Møte med Ragnhild Slettner ga rammen for prosjektet: seriøst, men lekent og fargerikt — uten fastsatt visuell retning.</div>
-            </div>
-            <div class="we-step we-stagger">
-              <div class="we-step__num">02</div>
-              <div class="we-step__title">Innsikt</div>
-              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button>, <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weSwotModal').showModal()">SWOT</button> kartla markedet og identifiserte WEs unike posisjon.</div>
-            </div>
-            <div class="we-step we-stagger">
-              <div class="we-step__num">03</div>
-              <div class="we-step__title"><button class="we-posmap-trigger" onclick="document.getElementById('weIntervjuModal').showModal()">Ekspertintervju</button></div>
-              <div class="we-step__body">Samtale med designer Cecilie Melli ga et vendepunkt: identiteten trengte mer tyngde og tydeligere strategi.</div>
-            </div>
-            <div class="we-step we-stagger">
-              <div class="we-step__num">04</div>
-              <div class="we-step__title">Identitetsutvikling</div>
-              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weMoodModal').showModal()">Moodboarding</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weLogoutvModal').showModal()">logoutvikling</button> iterert fra skisse til ferdig system gjennom tett samarbeid.</div>
-            </div>
-            <div class="we-step we-stagger">
-              <div class="we-step__num">05</div>
-              <div class="we-step__title">Kontaktflater</div>
-              <div class="we-step__body">Nettside, visittkort, brosjyre, banner og sosiale medier tilpasset identitetssystemet og de to målgruppene.</div>
-            </div>
-          </div>
-        </section>
-
-        <!-- 09 Refleksjon -->
-        <section class="we-section" id="sec-refleksjon">
-          <p class="we-section__num">09</p>
-          <h2 class="we-section__heading">Refleksjon</h2>
-          <div class="we-reflection">
-            <div>
-              <p class="we-reflection__learnings-heading">Vendepunkt</p>
-              <p class="we-reflection__body">Vendepunktet i prosessen kom da vi identifiserte et misforhold mellom uttrykk og formål. Det første utkastet hadde visuell energi, men manglet tilstrekkelig tyngde og troverdighet. <span class="we-reflection__hl">Vi hadde prioritert et ekspressivt uttrykk fremfor å bygge tillit.</span></p>
-              <p class="we-reflection__learnings-heading">Strategisk justering</p>
-              <p class="we-reflection__body">Dette førte til en tydelig kursendring, der identiteten ble utviklet som et kommunikasjonsverktøy med klar funksjon: <span class="we-reflection__hl">å fungere for to ulike målgrupper med ulike behov.</span></p>
-              <p class="we-reflection__body">For næringslivet måtte uttrykket signalisere profesjonalitet og stabilitet. For målgruppen måtte det oppleves inkluderende, trygt og relevant. Identiteten ble derfor utviklet for å svare på to spørsmål samtidig:<br><span class="we-reflection__hl">Kan vi stole på dere?</span> og <span class="we-reflection__hl">Er dette for meg?</span></p>
-            </div>
-            <div>
-              <p class="we-reflection__learnings-heading">Refleksjon</p>
-              <p class="we-reflection__body">I arbeidet med å sikre troverdighet og tydelighet har uttrykket en bevisst balanse mot det trygge. Dette gir en robust og anvendelig identitet, men kan i enkelte sammenhenger oppleves noe <span class="we-reflection__hl">kontrollert</span>. Det åpner for videre utvikling, der <span class="we-reflection__hl">uttrykket kan utfordres</span> og gis mer særpreg uten å miste sin funksjon.</p>
-              <p class="we-reflection__learnings-heading">Læring</p>
-              <ul class="we-reflection__learnings">
-                <li>Dobbel målgruppe krever tydelige prioriteringer fra start</li>
-                <li>Retning må forankres i funksjon, ikke kun uttrykk</li>
-                <li>En sterk identitet ligger i et konsistent system, ikke enkeltstående elementer</li>
-              </ul>
-            </div>
+          <span id="sec-refleksjon"></span>
+          <div class="we-pr-btns">
+            <button class="we-nokkel-btn we-nokkel-btn--lg" onclick="document.getElementById('weProsessModal').showModal()">
+              Prosess <span class="we-nokkel-btn__plus">+</span>
+            </button>
+            <button class="we-nokkel-btn we-nokkel-btn--lg" onclick="document.getElementById('weRefleksjonModal').showModal()">
+              Refleksjon <span class="we-nokkel-btn__plus">+</span>
+            </button>
           </div>
         </section>
 
@@ -1015,6 +1061,66 @@
     </div>
   </dialog>
 
+  <dialog id="weProsessModal">
+    <div class="we-nokkel-modal__inner">
+      <button class="we-nokkel-modal__close" onclick="document.getElementById('weProsessModal').close()" aria-label="Lukk">✕</button>
+      <h3 class="we-nokkel-modal__heading">Prosess</h3>
+      <div class="we-steps we-steps--modal">
+        <div class="we-step">
+          <div class="we-step__num">01</div>
+          <div class="we-step__title">Innledende brief</div>
+          <div class="we-step__body">Møte med Ragnhild Slettner ga rammen for prosjektet: seriøst, men lekent og fargerikt — uten fastsatt visuell retning.</div>
+        </div>
+        <div class="we-step">
+          <div class="we-step__num">02</div>
+          <div class="we-step__title">Innsikt</div>
+          <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button>, <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weSwotModal').showModal()">SWOT</button> kartla markedet og identifiserte WEs unike posisjon.</div>
+        </div>
+        <div class="we-step">
+          <div class="we-step__num">03</div>
+          <div class="we-step__title"><button class="we-posmap-trigger" onclick="document.getElementById('weIntervjuModal').showModal()">Ekspertintervju</button></div>
+          <div class="we-step__body">Samtale med designer Cecilie Melli ga et vendepunkt: identiteten trengte mer tyngde og tydeligere strategi.</div>
+        </div>
+        <div class="we-step">
+          <div class="we-step__num">04</div>
+          <div class="we-step__title">Identitetsutvikling</div>
+          <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weMoodModal').showModal()">Moodboarding</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weLogoutvModal').showModal()">logoutvikling</button> iterert fra skisse til ferdig system gjennom tett samarbeid.</div>
+        </div>
+        <div class="we-step">
+          <div class="we-step__num">05</div>
+          <div class="we-step__title">Kontaktflater</div>
+          <div class="we-step__body">Nettside, visittkort, brosjyre, banner og sosiale medier tilpasset identitetssystemet og de to målgruppene.</div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="weRefleksjonModal">
+    <div class="we-nokkel-modal__inner">
+      <button class="we-nokkel-modal__close" onclick="document.getElementById('weRefleksjonModal').close()" aria-label="Lukk">✕</button>
+      <h3 class="we-nokkel-modal__heading">Refleksjon</h3>
+      <div class="we-reflection we-reflection--modal">
+        <div>
+          <p class="we-reflection__learnings-heading">Vendepunkt</p>
+          <p class="we-reflection__body">Vendepunktet i prosessen kom da vi identifiserte et misforhold mellom uttrykk og formål. Det første utkastet hadde visuell energi, men manglet tilstrekkelig tyngde og troverdighet. <span class="we-reflection__hl">Vi hadde prioritert et ekspressivt uttrykk fremfor å bygge tillit.</span></p>
+          <p class="we-reflection__learnings-heading">Strategisk justering</p>
+          <p class="we-reflection__body">Dette førte til en tydelig kursendring, der identiteten ble utviklet som et kommunikasjonsverktøy med klar funksjon: <span class="we-reflection__hl">å fungere for to ulike målgrupper med ulike behov.</span></p>
+          <p class="we-reflection__body">For næringslivet måtte uttrykket signalisere profesjonalitet og stabilitet. For målgruppen måtte det oppleves inkluderende, trygt og relevant. Identiteten ble derfor utviklet for å svare på to spørsmål samtidig:<br><span class="we-reflection__hl">Kan vi stole på dere?</span> og <span class="we-reflection__hl">Er dette for meg?</span></p>
+        </div>
+        <div>
+          <p class="we-reflection__learnings-heading">Refleksjon</p>
+          <p class="we-reflection__body">I arbeidet med å sikre troverdighet og tydelighet har uttrykket en bevisst balanse mot det trygge. Dette gir en robust og anvendelig identitet, men kan i enkelte sammenhenger oppleves noe <span class="we-reflection__hl">kontrollert</span>. Det åpner for videre utvikling, der <span class="we-reflection__hl">uttrykket kan utfordres</span> og gis mer særpreg uten å miste sin funksjon.</p>
+          <p class="we-reflection__learnings-heading">Læring</p>
+          <ul class="we-reflection__learnings">
+            <li>Dobbel målgruppe krever tydelige prioriteringer fra start</li>
+            <li>Retning må forankres i funksjon, ikke kun uttrykk</li>
+            <li>En sterk identitet ligger i et konsistent system, ikke enkeltstående elementer</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
   <dialog id="wePosmapModal">
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('wePosmapModal').close()" aria-label="Lukk">✕</button>
@@ -1114,6 +1220,15 @@
         }
       });
     });
+    document.querySelectorAll(".gallery-expandable__arrow").forEach(btn => {
+      btn.addEventListener("click", e => {
+        e.stopPropagation();
+        const strip = btn.closest(".gallery-expandable").querySelector(".gallery-expandable__strip");
+        const step = strip.offsetWidth * 0.75;
+        strip.scrollBy({ left: parseInt(btn.dataset.dir) * step, behavior: "smooth" });
+      });
+    });
+
     document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         const section = btn.closest(".gallery-expandable");
@@ -1192,6 +1307,23 @@
         });
       });
     })();
+
+    // Accordion in nokkel modals
+    document.querySelectorAll(".we-accordion").forEach(acc => {
+      acc.querySelectorAll(".we-accordion__trigger").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const body = btn.nextElementSibling;
+          const isOpen = body.classList.contains("is-open");
+          // close all in this accordion
+          acc.querySelectorAll(".we-accordion__body").forEach(b => b.classList.remove("is-open"));
+          acc.querySelectorAll(".we-accordion__trigger").forEach(b => b.setAttribute("aria-expanded", "false"));
+          if (!isOpen) {
+            body.classList.add("is-open");
+            btn.setAttribute("aria-expanded", "true");
+          }
+        });
+      });
+    });
 
     // Logo background toggle
     (function() {
