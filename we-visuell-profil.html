@@ -84,18 +84,31 @@
     .we-hero__meta-value { font-size: 13px; color: rgba(255,255,255,.85); }
 
     /* Hero visual */
-    .we-hero-visual {
-      width: 100%; height: 460px; object-fit: cover;
-      object-position: center 35%; display: block;
+    .we-hero-visual-wrap {
+      position: relative; height: 580px; overflow: hidden;
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
     }
-    @media (max-width: 780px) { .we-hero-visual { height: 280px; } }
-    @media (max-width: 480px) { .we-hero-visual { height: 200px; } }
+    .we-hero-visual {
+      position: absolute; top: -15%; left: 0;
+      width: 100%; height: 130%; object-fit: cover;
+      object-position: center 60%; display: block;
+      will-change: transform;
+    }
+    .we-hero-visual-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(13,30,27,.45) 0%, transparent 40%, rgba(255,255,255,.7) 100%);
+      pointer-events: none;
+    }
+    @media (max-width: 780px) { .we-hero-visual-wrap { height: 300px; } }
+    @media (max-width: 480px) { .we-hero-visual-wrap { height: 220px; } }
 
     /* Body */
     .we-body { padding: 0 40px 80px; max-width: 1100px; overflow-x: clip; }
 
     /* Sections */
     .we-section { padding: 64px 0; border-top: 1px solid #e8e4e2; }
+    .we-body .we-section:first-of-type { border-top: none; }
     .we-section__num { font-family: 'Poppins', sans-serif; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--we-periwinkle-text); margin-bottom: 10px; }
     .we-section__heading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: clamp(32px, 4vw, 52px); line-height: 1.05; margin: 0 0 32px; color: #111; }
     .we-section__intro { font-size: 15px; line-height: 1.78; color: #444; max-width: 640px; margin: 0 0 32px; }
@@ -214,6 +227,20 @@
     .we-logo-toggle:hover { border-color: #999; color: #111; }
     .we-logo-toggle__dot { width: 10px; height: 10px; border-radius: 50%; background: #111; transition: background .45s ease; flex-shrink: 0; }
 
+    /* Table of contents */
+    .we-toc { display: flex; overflow-x: auto; border-bottom: 1px solid #e8e4e2; margin-bottom: 56px; gap: 0; }
+    .we-toc__link { font-size: 11px; text-transform: uppercase; letter-spacing: .09em; color: #999; text-decoration: none; padding: 14px 18px 12px; white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .2s, border-color .2s; }
+    .we-toc__link:hover { color: #111; }
+    .we-toc__link.is-active { color: #111; border-color: var(--we-amethyst); }
+
+    /* Credits */
+    .we-credits { border-top: 1px solid #e8e4e2; padding: 48px 0 0; margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 56px; }
+    .we-credits__heading { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #111; margin: 0 0 12px; }
+    .we-credits__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+    .we-credits__list li { font-size: 13px; color: #555; line-height: 1.5; }
+    .we-credits__list a { color: #555; }
+    @media (max-width: 600px) { .we-credits { grid-template-columns: 1fr; } }
+
     /* Scroll fade-in */
     .we-section.we-fade { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
     .we-section.we-fade.is-visible { opacity: 1; transform: none; }
@@ -275,17 +302,19 @@
     .we-section__top .we-section__heading { margin-bottom: 0; }
     .we-section__top-meta { padding-top: 8px; }
     .we-section__top-desc { font-size: 14px; line-height: 1.75; color: #555; margin: 0; }
-    .we-typo { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
-    .we-typo-col { font-family: 'neuzeit-grotesk', sans-serif; }
-    .we-typo-col--bold { font-weight: 700; }
-    .we-typo-col--heavy { font-weight: 900; }
-    .we-typo-col--regular { font-weight: 400; }
-    .we-typo-col--italic { font-family: 'natom', 'neuzeit-grotesk', sans-serif; font-style: italic; font-weight: 400; }
-    .we-typo-col__aa { font-size: clamp(72px, 9vw, 130px); line-height: 1; margin-bottom: 16px; color: #111; }
-    .we-typo-col__name { font-size: 13px; color: var(--we-periwinkle-text); margin-bottom: 20px; }
-    .we-typo-col__name--bold { font-weight: 700; }
-    .we-typo-col__name--italic { font-style: italic; }
-    .we-typo-col__alphabet { font-size: 13px; line-height: 1.65; color: #333; }
+    .we-typo { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+    .we-typo__aa { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: clamp(100px, 16vw, 200px); line-height: .88; color: #111; margin-bottom: 28px; }
+    .we-typo__alpha { font-family: 'neuzeit-grotesk', sans-serif; font-size: 15px; line-height: 1.6; color: #111; margin-bottom: 8px; }
+    .we-typo__alpha--bold { font-weight: 700; }
+    .we-typo__alpha--regular { font-weight: 400; color: #444; }
+    .we-typo__scale { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
+    .we-typo__row-label { font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: .09em; margin-bottom: 4px; }
+    .we-typo__sample-h1 { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 5vw, 60px); line-height: 1; color: #111; margin: 0; }
+    .we-typo__sample-h2 { font-family: 'neuzeit-grotesk', sans-serif; font-size: clamp(20px, 3vw, 32px); line-height: 1.15; color: #111; margin: 0; }
+    .we-typo__sample-h2 strong { font-weight: 700; display: block; }
+    .we-typo__sample-h2 span { font-weight: 400; display: block; color: #555; }
+    .we-typo__sample-body { font-family: 'neuzeit-grotesk', sans-serif; font-size: 16px; line-height: 1.5; color: #111; margin: 0; }
+    .we-typo__sample-body span { display: block; color: #777; font-style: italic; }
     .we-typo-specimen {
       margin-top: 40px; padding: 40px;
       background: var(--we-amethyst); color: var(--we-snow);
@@ -441,35 +470,85 @@
       <div class="we-hero">
         <h1 class="we-hero__title">Stiftelsen WE</h1>
         <p class="we-hero__intro">WE kobler kvinner utenfor arbeidslivet med nye muligheter. En visuell identitet utviklet for å balansere profesjonalitet og varme i møte med to ulike målgrupper.</p>
-        <div class="we-hero__meta">
-          <div class="we-hero__meta-item">
-            <span class="we-hero__meta-label">År</span>
-            <span class="we-hero__meta-value">2024</span>
-          </div>
-          <div class="we-hero__meta-item">
-            <span class="we-hero__meta-label">Fag</span>
-            <span class="we-hero__meta-value">Strategisk design</span>
-          </div>
-          <div class="we-hero__meta-item">
-            <span class="we-hero__meta-label">Emne</span>
-            <span class="we-hero__meta-value">IDG2015</span>
-          </div>
-          <div class="we-hero__meta-item">
-            <span class="we-hero__meta-label">Fagansvarlig</span>
-            <span class="we-hero__meta-value">Vera Pahle</span>
-          </div>
-          <div class="we-hero__meta-item">
-            <span class="we-hero__meta-label">Samarbeid med</span>
-            <span class="we-hero__meta-value">Tia Linnea Dahl</span>
-          </div>
-        </div>
       </div>
 
       <div class="we-body">
 
-        <!-- 01 Konsept & oppdragsgiver -->
-        <section class="we-section">
+        <nav class="we-toc" aria-label="Innhold">
+          <a class="we-toc__link" href="#sec-anvendelse">Design</a>
+          <a class="we-toc__link" href="#sec-konsept">Konsept</a>
+          <a class="we-toc__link" href="#sec-malgruppe">Målgruppe</a>
+          <a class="we-toc__link" href="#sec-farge">Fargesystem</a>
+          <a class="we-toc__link" href="#sec-typografi">Typografi</a>
+          <a class="we-toc__link" href="#sec-logo">Logo</a>
+          <a class="we-toc__link" href="#sec-visuelt">Visuelt system</a>
+          <a class="we-toc__link" href="#sec-prosess">Prosess</a>
+          <a class="we-toc__link" href="#sec-refleksjon">Refleksjon</a>
+        </nav>
+
+        <!-- 01 Design -->
+        <section class="we-section" id="sec-anvendelse">
           <p class="we-section__num">01</p>
+          <h2 class="we-section__heading">Design</h2>
+          <div class="project__gallery" style="margin-top:8px;">
+            <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--wide-cover" style="--gallery-h:420px">
+              <div class="gallery-expandable__heading">Digitale flater</div>
+              <div class="gallery-expandable__strip">
+                <div class="gallery-expandable__cover">
+                  <figure class="project__figure">
+                    <img src="./assets/wenettsideny.webp" alt="Nettside — Women Empowerment" width="4500" height="3000" loading="eager">
+                    <figcaption class="project__figcaption">Nettside for stiftelsen</figcaption>
+                  </figure>
+                </div>
+                <div class="gallery-expandable__rest">
+                  <figure class="project__figure">
+                    <img src="./assets/instacarousel.webp" alt="WE Instagram-karusell" width="2946" height="1121" loading="lazy">
+                    <figcaption class="project__figcaption">Instagram karusell</figcaption>
+                  </figure>
+                  <figure class="project__figure">
+                    <img src="./assets/insta-grid.webp" alt="WE Instagram grid" loading="lazy" style="border: 1px solid #e0ddd9;">
+                    <figcaption class="project__figcaption">Instagram grid</figcaption>
+                  </figure>
+                  <figure class="project__figure">
+                    <img src="./assets/insta-storypng.webp" alt="WE Instagram story" width="1920" height="1080" loading="lazy">
+                    <figcaption class="project__figcaption">Instagram stories</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
+            </div>
+            <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--uniform-cover" style="--gallery-h:440px">
+              <div class="gallery-expandable__heading">Trykte flater</div>
+              <div class="gallery-expandable__strip">
+                <div class="gallery-expandable__cover">
+                  <figure class="project__figure">
+                    <img src="./assets/we-business-card.webp" alt="WE visittkort" width="4500" height="3000" loading="lazy">
+                    <figcaption class="project__figcaption">Visittkort</figcaption>
+                  </figure>
+                </div>
+                <div class="gallery-expandable__rest">
+                  <figure class="project__figure">
+                    <img src="./assets/we-broski-bak@3x.webp" alt="WE brosjyre — forside og bakside" width="12312" height="11299" loading="lazy">
+                    <figcaption class="project__figcaption">Brosjyre bak/foran</figcaption>
+                  </figure>
+                  <figure class="project__figure">
+                    <img src="./assets/we-broski-inn@3x.webp" alt="WE brosjyre — innside" width="12445" height="11303" loading="lazy">
+                    <figcaption class="project__figcaption">Brosjyre inni</figcaption>
+                  </figure>
+                  <figure class="project__figure">
+                    <img src="./assets/webanner.webp" alt="WE banner" loading="lazy">
+                    <figcaption class="project__figcaption">Banner</figcaption>
+                  </figure>
+                </div>
+              </div>
+              <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 02 Konsept & oppdragsgiver -->
+        <section class="we-section" id="sec-konsept">
+          <p class="we-section__num">02</p>
           <h2 class="we-section__heading">Konsept & oppdragsgiver</h2>
           <div class="we-client-v2">
             <div class="we-client-v2__blocks">
@@ -488,8 +567,8 @@
           </div>
         </section>
 
-        <!-- 02 Målgruppe -->
-        <section class="we-section">
+        <!-- 03 Målgruppe -->
+        <section class="we-section" id="sec-malgruppe">
           <p class="we-section__num">02</p>
           <h2 class="we-section__heading">Målgruppe</h2>
           <div class="we-mg-blocks">
@@ -532,8 +611,8 @@
           </div>
         </section>
 
-        <!-- 03 Fargesystem -->
-        <section class="we-section">
+        <!-- 04 Fargesystem -->
+        <section class="we-section" id="sec-farge">
           <p class="we-section__num">03</p>
           <h2 class="we-section__heading">Fargesystem</h2>
           <p class="we-section__intro">Paletten balanserer forankring og energi. Dype grønntoner skaper en identitet knyttet til natur, tillit og bærekraft, og skiller WE fra konkurrentenes blådominerte uttrykk. Violett fungerer som en kontrasterende aksentfarge som tilfører energi og understreker det innovative ved arbeidet.</p>
@@ -595,37 +674,38 @@
           </div>
         </section>
 
-        <!-- 04 Typografi -->
-        <section class="we-section">
+        <!-- 05 Typografi -->
+        <section class="we-section" id="sec-typografi">
           <p class="we-section__num">04</p>
           <h2 class="we-section__heading">Typografi</h2>
           <div class="we-typo">
-            <div class="we-typo-col we-typo-col--bold">
-              <div class="we-typo-col__aa">Aa</div>
-              <p class="we-typo-col__name we-typo-col__name--bold">Trade Gothic Next LT Pro, Bold</p>
-              <p class="we-typo-col__alphabet">Aa BbCc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br>Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0123456789!@#$%^&amp;*( )</p>
+            <div>
+              <div class="we-typo__aa">Aa</div>
+              <p class="we-typo__alpha we-typo__alpha--bold">ABCDEFGHIJKLMN<br>OPQRSTUVWXYZÆØÅ</p>
+              <p class="we-typo__alpha we-typo__alpha--regular">abcdefghijklmnop<br>qrstuvwxyzæøå</p>
             </div>
-            <div class="we-typo-col we-typo-col--heavy">
-              <div class="we-typo-col__aa">Aa</div>
-              <p class="we-typo-col__name we-typo-col__name--bold">Trade Gothic Next LT Pro, Heavy</p>
-              <p class="we-typo-col__alphabet">Aa BbCc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br>Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0123456789!@#$%^&amp;*( )</p>
-            </div>
-            <div class="we-typo-col we-typo-col--regular">
-              <div class="we-typo-col__aa">Aa</div>
-              <p class="we-typo-col__name">Helvetica, Regular</p>
-              <p class="we-typo-col__alphabet">Aa BbCc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br>Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0123456789!@#$%^&amp;*( )</p>
-            </div>
-            <div class="we-typo-col we-typo-col--italic">
-              <div class="we-typo-col__aa">Aa</div>
-              <p class="we-typo-col__name we-typo-col__name--italic">Helvetica, Oblique</p>
-              <p class="we-typo-col__alphabet">Aa BbCc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo<br>Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz<br>0123456789!@#$%^&amp;*( )</p>
+            <div class="we-typo__scale">
+              <div>
+                <p class="we-typo__row-label">Tittel</p>
+                <p class="we-typo__sample-h1">Trade Gothic Bold</p>
+              </div>
+              <div>
+                <p class="we-typo__row-label">Tittel</p>
+                <p class="we-typo__sample-h2">
+                  <strong>Trade Gothic Bold</strong>
+                  <span>Trade Gothic Regular</span>
+                </p>
+              </div>
+              <div>
+                <p class="we-typo__row-label">Brødtekst</p>
+                <p class="we-typo__sample-body">Helvetica Regular<span>Helvetica Oblique</span></p>
+              </div>
             </div>
           </div>
-          <p class="we-section__intro" style="margin-top:52px;">Typografisystemet er tredelt og designet for tydelig hierarki på tvers av digitale og trykte flater. Trade Gothic Next LT Pro fungerer som identitetens primærskrift — komprimert, kraftig og distinkt. Helvetica utgjør det nøytrale, lesbare fundamentet i brødtekst og informasjonsformidling, og sikrer at identiteten er like funksjonell som den er ekspressiv.</p>
         </section>
 
-        <!-- 05 Logo -->
-        <section class="we-section">
+        <!-- 06 Logo -->
+        <section class="we-section" id="sec-logo">
           <p class="we-section__num">05</p>
           <h2 class="we-section__heading">Logo</h2>
           <p class="we-section__intro" style="margin-bottom:28px;">Primærlogoen kombinerer det grafiske WE-monogrammet med det fulle stiftelsesnavnet. De avrundede formene i monogrammet speiler det organiske mønsterelementet og forsterker assosiasjonene til nettverk, samhørighet og relasjon. Logosystemet er utviklet for fleksibel bruk på tvers av bakgrunner — seks autoriserte varianter sikrer at identiteten fungerer konsistent uten at lesbarhet eller karakter kompromitteres.</p>
@@ -669,8 +749,8 @@
           </div>
         </section>
 
-        <!-- 06 Visuelt system -->
-        <section class="we-section">
+        <!-- 07 Visuelt system -->
+        <section class="we-section" id="sec-visuelt">
           <p class="we-section__num">06</p>
           <h2 class="we-section__heading">Visuelt system</h2>
           <h3 class="we-section__subheading">Mønster</h3>
@@ -703,69 +783,8 @@
           <p style="font-size:12px; color:#bbb; margin-top:10px;">Bilder hentet fra Adobe Stock</p>
         </section>
 
-        <!-- 07 Anvendelse -->
-        <section class="we-section">
-          <p class="we-section__num">07</p>
-          <h2 class="we-section__heading">Anvendelse</h2>
-
-          <div class="project__gallery" style="margin-top:8px;">
-            <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--wide-cover" style="--gallery-h:420px">
-              <div class="gallery-expandable__heading">Digitale flater</div>
-              <div class="gallery-expandable__strip">
-                <div class="gallery-expandable__cover">
-                  <figure class="project__figure">
-                    <img src="./assets/wenettsideny.webp" alt="Nettside — Women Empowerment" width="4500" height="3000" loading="eager">
-                    <figcaption class="project__figcaption">Nettside for stiftelsen</figcaption>
-                  </figure>
-                </div>
-                <div class="gallery-expandable__rest">
-                  <figure class="project__figure">
-                    <img src="./assets/instacarousel.webp" alt="WE Instagram-karusell" width="2946" height="1121" loading="lazy">
-                    <figcaption class="project__figcaption">Instagram karusell</figcaption>
-                  </figure>
-                  <figure class="project__figure">
-                    <img src="./assets/insta-grid.webp" alt="WE Instagram grid" loading="lazy" style="border: 1px solid #e0ddd9;">
-                    <figcaption class="project__figcaption">Instagram grid</figcaption>
-                  </figure>
-                  <figure class="project__figure">
-                    <img src="./assets/insta-storypng.webp" alt="WE Instagram story" width="1920" height="1080" loading="lazy">
-                    <figcaption class="project__figcaption">Instagram stories</figcaption>
-                  </figure>
-                </div>
-              </div>
-              <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
-            </div>
-            <div class="gallery-expandable gallery-expandable--uniform-height gallery-expandable--uniform-cover" style="--gallery-h:440px">
-              <div class="gallery-expandable__heading">Trykte flater</div>
-              <div class="gallery-expandable__strip">
-                <div class="gallery-expandable__cover">
-                  <figure class="project__figure">
-                    <img src="./assets/we-business-card.webp" alt="WE visittkort" width="4500" height="3000" loading="lazy">
-                    <figcaption class="project__figcaption">Visittkort</figcaption>
-                  </figure>
-                </div>
-                <div class="gallery-expandable__rest">
-                  <figure class="project__figure">
-                    <img src="./assets/we-broski-bak@3x.webp" alt="WE brosjyre — forside og bakside" width="12312" height="11299" loading="lazy">
-                    <figcaption class="project__figcaption">Brosjyre bak/foran</figcaption>
-                  </figure>
-                  <figure class="project__figure">
-                    <img src="./assets/we-broski-inn@3x.webp" alt="WE brosjyre — innside" width="12445" height="11303" loading="lazy">
-                    <figcaption class="project__figcaption">Brosjyre inni</figcaption>
-                  </figure>
-                  <figure class="project__figure">
-                    <img src="./assets/webanner.webp" alt="WE banner" loading="lazy">
-                    <figcaption class="project__figcaption">Banner</figcaption>
-                  </figure>
-                </div>
-              </div>
-              <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
-            </div>
-          </div>
-        </section>
-
         <!-- 08 Prosess -->
-        <section class="we-section">
+        <section class="we-section" id="sec-prosess">
           <p class="we-section__num">08</p>
           <h2 class="we-section__heading">Prosess</h2>
 
@@ -799,7 +818,7 @@
         </section>
 
         <!-- 09 Refleksjon -->
-        <section class="we-section">
+        <section class="we-section" id="sec-refleksjon">
           <p class="we-section__num">09</p>
           <h2 class="we-section__heading">Refleksjon</h2>
           <div class="we-reflection">
@@ -823,6 +842,56 @@
           </div>
         </section>
 
+
+        <!-- 10 Krediter -->
+        <section class="we-section" id="sec-krediter">
+          <p class="we-section__num">10</p>
+          <h2 class="we-section__heading">Krediter</h2>
+          <div class="we-credits">
+            <div>
+              <p class="we-credits__heading">Gruppe</p>
+              <ul class="we-credits__list">
+                <li>Josefine Reichgjer Gjertsen</li>
+                <li>Tia Linnea Dahl</li>
+              </ul>
+            </div>
+            <div>
+              <p class="we-credits__heading">Veileder</p>
+              <ul class="we-credits__list">
+                <li>Vera Pahle</li>
+              </ul>
+            </div>
+            <div>
+              <p class="we-credits__heading">Oppdragsgiver</p>
+              <ul class="we-credits__list">
+                <li>Stiftelsen WE — Women Empowerment</li>
+                <li>Ragnhild Slettner (kontaktperson)</li>
+              </ul>
+            </div>
+            <div>
+              <p class="we-credits__heading">Bilder</p>
+              <ul class="we-credits__list">
+                <li>Fotografier — Adobe Stock eller hentet fra nettsider der Ragnhild og andre styremedlemmer har gitt tillatelse til bruk</li>
+                <li>Mockups — Envato.com</li>
+              </ul>
+            </div>
+            <div>
+              <p class="we-credits__heading">Verktøy</p>
+              <ul class="we-credits__list">
+                <li>Adobe Illustrator</li>
+                <li>Adobe Photoshop</li>
+                <li>Figma</li>
+              </ul>
+            </div>
+            <div>
+              <p class="we-credits__heading">Emne</p>
+              <ul class="we-credits__list">
+                <li>IDG2015 — Strategisk design</li>
+                <li>NTNU, 2024</li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
       </div><!-- /we-body -->
 
@@ -1060,6 +1129,32 @@
       const isOpen = sidebar.classList.toggle("sidebar--open");
       toggle.setAttribute("aria-expanded", String(isOpen));
     });
+
+    // ToC active link
+    (function() {
+      const links = document.querySelectorAll(".we-toc__link");
+      const sections = [...links].map(l => document.querySelector(l.getAttribute("href")));
+      function update() {
+        let active = 0;
+        sections.forEach((s, i) => { if (s && s.getBoundingClientRect().top <= 100) active = i; });
+        links.forEach((l, i) => l.classList.toggle("is-active", i === active));
+      }
+      window.addEventListener("scroll", update, { passive: true });
+      update();
+    })();
+
+    // Hero parallax
+    (function() {
+      const img = document.getElementById("weHeroVisual");
+      if (!img || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      function tick() {
+        const wrap = img.parentElement;
+        const top = wrap.getBoundingClientRect().top;
+        img.style.transform = "translateY(" + (-top * 0.25) + "px)";
+      }
+      window.addEventListener("scroll", tick, { passive: true });
+      tick();
+    })();
 
     // Scroll fade-in + stagger
     (function() {

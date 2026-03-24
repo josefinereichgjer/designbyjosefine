@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stiftelsen WE — Women Empowerment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/fsf3tmv.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --natt:    #0d1e1b;
+      --skog:    #224942;
+      --salvie:  #7fb5aa;
+      --violet:  #8c80ff;
+      --lime:    #ace088;
+      --is:      #f4faf9;
+      --font:    'neuzeit-grotesk', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(0,0,0,.07);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(24px,5vw,72px); height: 68px;
+    }
+    .nav__logo { height: 36px; width: auto; }
+    .nav__links { display: flex; gap: 40px; align-items: center; }
+    .nav__link { font-size: 15px; color: #333; transition: color .2s; }
+    .nav__link:hover { color: var(--skog); }
+    .nav__cta {
+      background: var(--violet); color: #fff;
+      padding: 10px 22px; font-size: 14px; font-weight: 600;
+      transition: background .2s;
+    }
+    .nav__cta:hover { background: #7068e8; color: #fff; }
+    @media (max-width: 640px) {
+      .nav__links { gap: 20px; }
+      .nav__link:not(.nav__cta) { display: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--natt); min-height: 100vh;
+      display: grid; grid-template-columns: 5fr 6fr;
+      padding-top: 68px;
+    }
+    .hero__left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: clamp(48px,8vw,96px) clamp(24px,5vw,72px);
+    }
+    .hero__eyebrow {
+      font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--salvie); margin-bottom: 24px;
+    }
+    .hero__title {
+      font-weight: 700; font-size: clamp(40px, 5.5vw, 76px);
+      line-height: .96; color: #fff; margin-bottom: 28px;
+    }
+    .hero__title em { font-style: normal; color: var(--lime); }
+    .hero__body { font-size: 16px; line-height: 1.72; color: rgba(255,255,255,.72); max-width: 420px; margin-bottom: 40px; }
+    .hero__btn {
+      display: inline-block; border: 2px solid rgba(255,255,255,.55);
+      color: #fff; padding: 14px 32px; font-size: 14px; font-weight: 600;
+      letter-spacing: .04em; align-self: flex-start;
+      transition: background .2s, border-color .2s;
+    }
+    .hero__btn:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+
+    .hero__right {
+      display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+      gap: 4px; overflow: hidden;
+    }
+    .hero__photo { width: 100%; height: 100%; object-fit: cover; }
+    .hero__photo--tall { grid-row: 1 / 3; }
+    .hero__pattern {
+      background: var(--skog);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .hero__pattern img { width: 80%; opacity: .9; }
+
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero__right { height: 55vw; grid-template-rows: 1fr; }
+      .hero__photo--tall { grid-row: auto; }
+    }
+
+    /* ── STEG ── */
+    .steps { background: var(--is); padding: clamp(64px,8vw,112px) clamp(24px,5vw,72px); }
+    .steps__eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--skog); margin-bottom: 12px; }
+    .steps__heading { font-weight: 700; font-size: clamp(28px,4vw,52px); line-height: 1.05; color: var(--skog); margin-bottom: 48px; max-width: 640px; }
+    .steps__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .step {
+      background: var(--natt); color: #fff;
+      padding: 36px 28px; display: flex; flex-direction: column; gap: 16px;
+    }
+    .step__num { font-size: 36px; font-weight: 700; color: var(--violet); line-height: 1; }
+    .step__title { font-size: 16px; font-weight: 600; line-height: 1.3; }
+    .step__body { font-size: 14px; line-height: 1.72; color: rgba(255,255,255,.68); }
+    @media (max-width: 720px) { .steps__grid { grid-template-columns: 1fr; } }
+
+    /* ── QUOTE ── */
+    .quote-block {
+      background: var(--natt); padding: clamp(56px,8vw,100px) clamp(24px,5vw,72px);
+      display: flex; gap: 40px; align-items: flex-start;
+    }
+    .quote-block__pattern { width: 72px; flex-shrink: 0; margin-top: 8px; }
+    .quote-block__text {
+      font-weight: 700; font-size: clamp(22px,3.5vw,44px);
+      line-height: 1.2; color: #fff; max-width: 820px; margin-bottom: 20px;
+    }
+    .quote-block__text em { font-style: normal; color: var(--salvie); }
+    .quote-block__attr {
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+    @media (max-width: 640px) { .quote-block__pattern { display: none; } }
+
+    /* ── OM ── */
+    .om { padding: clamp(64px,8vw,112px) clamp(24px,5vw,72px); }
+    .om__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .om__eyebrow { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--violet); margin-bottom: 16px; }
+    .om__heading { font-weight: 700; font-size: clamp(28px,3.5vw,48px); line-height: 1.05; margin-bottom: 24px; }
+    .om__body { font-size: 15px; line-height: 1.8; color: #444; margin-bottom: 28px; }
+    .om__link { font-size: 14px; font-weight: 600; color: var(--skog); border-bottom: 1.5px solid var(--skog); padding-bottom: 2px; transition: opacity .2s; }
+    .om__link:hover { opacity: .7; }
+    .om__img { width: 100%; height: 440px; object-fit: cover; object-position: center 20%; }
+    @media (max-width: 720px) { .om__grid { grid-template-columns: 1fr; } .om__img { height: 280px; } }
+
+    /* ── FOOTER ── */
+    .footer-nav { border-top: 1px solid #e8e4e2; padding: clamp(48px,6vw,80px) clamp(24px,5vw,72px); }
+    .footer-nav__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 48px; }
+    .footer-nav__heading { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--skog); margin-bottom: 20px; }
+    .footer-nav__list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-nav__list a { font-size: 15px; color: var(--skog); transition: opacity .2s; }
+    .footer-nav__list a:hover { opacity: .6; }
+    @media (max-width: 640px) { .footer-nav__grid { grid-template-columns: 1fr 1fr; } }
+
+    .footer-bottom {
+      background: var(--natt); padding: 32px clamp(24px,5vw,72px);
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-bottom__logo { height: 32px; width: auto; }
+    .footer-bottom__right { display: flex; align-items: center; gap: 28px; }
+    .footer-bottom__legal { font-size: 12px; color: rgba(255,255,255,.4); }
+    .footer-bottom__socials { display: flex; gap: 16px; }
+    .footer-bottom__socials a {
+      width: 36px; height: 36px; border: 1px solid rgba(255,255,255,.25);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.6); font-size: 14px; transition: border-color .2s, color .2s;
+    }
+    .footer-bottom__socials a:hover { border-color: var(--salvie); color: var(--salvie); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <img src="./assets/prim.webp" alt="Stiftelsen WE" class="nav__logo">
+    <nav class="nav__links">
+      <a class="nav__link" href="#om">Om oss</a>
+      <a class="nav__link" href="#slik">Slik fungerer det</a>
+      <a class="nav__link nav__cta" href="#kontakt">Bli partner</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__left">
+      <p class="hero__eyebrow">Stiftelsen Women Empowerment</p>
+      <h1 class="hero__title">Vi tror på<br>muligheter<br>som <em>varer</em></h1>
+      <p class="hero__body">Vi hjelper bedrifter skape reell sosial verdi gjennom samarbeid, oppfølging og dokumenterte resultater.</p>
+      <a class="hero__btn" href="#slik">Les mer</a>
+    </div>
+    <div class="hero__right">
+      <img class="hero__photo hero__photo--tall" src="./assets/wewomen1.webp" alt="Kvinne i arbeid" loading="eager">
+      <div class="hero__pattern">
+        <img src="./assets/monster1.png" alt="">
+      </div>
+      <img class="hero__photo" src="./assets/wewomen5.webp" alt="Kvinne i arbeid" loading="eager">
+    </div>
+  </section>
+
+  <!-- STEG -->
+  <section class="steps" id="slik">
+    <p class="steps__eyebrow">Slik fungerer det</p>
+    <h2 class="steps__heading">Tre steg til varig effekt</h2>
+    <div class="steps__grid">
+      <div class="step">
+        <div class="step__num">1</div>
+        <div class="step__title">Første møte og behovskartlegging</div>
+        <p class="step__body">Vi setter oss inn i din bedrift og kartlegger hvilke muligheter som finnes for inkluderende arbeidsliv.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <div class="step__title">Matching & tilrettelegging</div>
+        <p class="step__body">Vi matcher deltakere med din virksomhet og tilrettelegger for en god start; praktisk og sosialt.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <div class="step__title">Samarbeidsavtale & oppfølging</div>
+        <p class="step__body">Vi inngår formell avtale og følger tett opp med dokumenterte resultater og innsikt i sosial effekt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-block">
+    <img class="quote-block__pattern" src="./assets/monster2.png" alt="">
+    <div>
+      <p class="quote-block__text">«Vi tror på muligheter som <em>varer</em>, ikke bare hjelp som forsvinner.»</p>
+      <p class="quote-block__attr">— Ragnhild Slettner, gründer, Stiftelsen Women Empowerment</p>
+    </div>
+  </section>
+
+  <!-- OM OSS -->
+  <section class="om" id="om">
+    <div class="om__grid">
+      <div>
+        <p class="om__eyebrow">Om oss</p>
+        <h2 class="om__heading">En brobygger mellom kvinner og arbeidslivet</h2>
+        <p class="om__body">Stiftelsen WE ble etablert for å skape reelle innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk. Vi opererer i skjæringspunktet mellom næringsliv og sosial verdi — og vi jobber for varig endring.</p>
+        <a class="om__link" href="#kontakt">Ta kontakt →</a>
+      </div>
+      <img class="om__img" src="./assets/ragnhildkistine.webp" alt="Ragnhild Slettner og Kirstine Holst" loading="lazy">
+    </div>
+  </section>
+
+  <!-- FOOTER NAV -->
+  <footer class="footer-nav" id="kontakt">
+    <div class="footer-nav__grid">
+      <div>
+        <p class="footer-nav__heading">Hvem vi er</p>
+        <ul class="footer-nav__list">
+          <li><a href="#">Verdier og visjon</a></li>
+          <li><a href="#">Vår tilnærming</a></li>
+          <li><a href="#">Møt teamet</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-nav__heading">Hvordan vi jobber</p>
+        <ul class="footer-nav__list">
+          <li><a href="#">Partnerskap og finansiering</a></li>
+          <li><a href="#">Langsiktig utvikling</a></li>
+          <li><a href="#">Måling av resultater</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-nav__heading">Hva vi gjør</p>
+        <ul class="footer-nav__list">
+          <li><a href="#">Prosjekter og programmer</a></li>
+          <li><a href="#">Jobbskaping og entrepenørskap</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="footer-bottom">
+    <img class="footer-bottom__logo" src="./assets/hvitlogo.webp" alt="Stiftelsen WE">
+    <div class="footer-bottom__right">
+      <span class="footer-bottom__legal">Personvern · Kontakt oss</span>
+      <div class="footer-bottom__socials">
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="YouTube">▷</a>
+        <a href="#" aria-label="Instagram">◻</a>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
