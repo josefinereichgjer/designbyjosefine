@@ -231,6 +231,7 @@ window.PROJECTS = [
   },
   {
     id: "flerkanalspublisering",
+    skipBuild: true,
     title: "Flerkanalspublisering",
     subtitle: "Identity refinement",
     year: "2024",

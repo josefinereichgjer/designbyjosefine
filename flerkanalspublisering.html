@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
-  <link rel="icon" href="assets/hvitlogo.png">
+  <link rel="icon" href="assets/hvitlogo.webp">
 </head>
 
 <body>
@@ -82,7 +82,7 @@
               <span class="accordion__icon"></span>
             </button>
             <div class="accordion__panel">
-              <div class="accordion__panel-inner"><p class="bg__body"><ul class="bg__list"><li>Plakat i A2-format</li><li>Roll-up banner (850 × 2000 mm)</li><li>Brosjyre om universitetets bærekraftsarbeid</li><li>LinkedIn-karusell for promotering av arrangementet</li><li>PowerPoint-mal for presentasjoner</li><li>Digitale reklamebannere</li><li>Facebook event cover for mobil og desktop</li><li>Designmanual for den visuelle identiteten</li></ul></p></div>
+              <div class="accordion__panel-inner"><ul class="bg__list"><li>Plakat i A2-format</li><li>Roll-up banner (850 × 2000 mm)</li><li>Brosjyre om universitetets bærekraftsarbeid</li><li>LinkedIn-karusell for promotering av arrangementet</li><li>PowerPoint-mal for presentasjoner</li><li>Digitale reklamebannere</li><li>Facebook event cover for mobil og desktop</li><li>Designmanual for den visuelle identiteten</li></ul></div>
             </div>
           </div>
           <div class="accordion__item">
@@ -178,7 +178,7 @@
                 <div class="gallery-expandable__heading">Digitale flater</div>
                 <div class="gallery-expandable__strip">
                   <div class="gallery-expandable__cover"><figure class="project__figure">
-          <video class="project__video" src="./assets/srhvideo.mp4" autoplay muted loop playsinline></video>
+          <video class="project__video" src="./assets/srhvideo.mp4" autoplay muted loop playsinline poster="./assets/srhbrosk.webp"></video>
           <figcaption class="project__figcaption">Tilhørende nettside <a href="./srh-open-day-3/index.html" target="_blank" rel="noopener" class="project__figcaption-link">Se nettside →</a></figcaption>
         </figure></div>
                   <div class="gallery-expandable__rest"><figure class="project__figure">
@@ -221,15 +221,15 @@
         
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
-                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
                   <p class="related__title">Reina Fruktgård</p>
                 </a>
                 <a class="related__card" href="./stoppestedet.html">
-                  <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy">
+                  <img src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy" decoding="async">
                   <p class="related__title">Stoppestedet</p>
                 </a>
                 <a class="related__card" href="./ansatts-portal.html">
-                  <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy">
+                  <img src="./assets/tjonnipadiphone.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
                   <p class="related__title">Tjønnås og Norvald</p>
                 </a></div></div>
       
@@ -244,47 +244,6 @@
     const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Slideshow
-    const track = $("#slideshowTrack");
-    if (track) {
-      const slides = [...track.querySelectorAll(".slideshow__slide")];
-      const counter = $("#slideIndex");
-      let current = 0;
-      let timer;
-      const slideshow = $("#slideshow");
-      const captionBar = $("#slideshowCaption");
-      let paused = false;
-      function goTo(n) {
-        current = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = current + 1;
-        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
-      }
-      function startAuto() {
-        clearInterval(timer);
-        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
-      }
-      track.addEventListener("click", () => {
-        paused = !paused;
-        slideshow.classList.toggle("slideshow--paused", paused);
-        if (paused) clearInterval(timer);
-        else startAuto();
-      });
-      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
-      let touchStartX = 0;
-      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-      }, { passive: true });
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
-        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
-      });
-      startAuto();
-    }
 
     // Accordion
     const accordion = document.getElementById("accordion");
