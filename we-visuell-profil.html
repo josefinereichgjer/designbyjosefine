@@ -253,7 +253,8 @@
     .we-logo-toggle__dot { width: 10px; height: 10px; border-radius: 50%; background: #111; transition: background .45s ease; flex-shrink: 0; }
 
     /* Table of contents */
-    .we-toc { display: flex; overflow-x: auto; border-bottom: 1px solid #e8e4e2; margin-bottom: 24px; gap: 0; }
+    .we-toc { display: flex; overflow-x: auto; border-bottom: 1px solid #e8e4e2; margin-bottom: 24px; gap: 0; scrollbar-width: none; }
+    .we-toc::-webkit-scrollbar { display: none; }
     .we-toc__link { font-size: 11px; text-transform: uppercase; letter-spacing: .09em; color: #999; text-decoration: none; padding: 14px 18px 12px; white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .2s, border-color .2s; }
     .we-toc__link:hover { color: #111; }
     .we-toc__link.is-active { color: #111; border-color: var(--we-amethyst); }
