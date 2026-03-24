@@ -143,6 +143,7 @@ a:hover{opacity:.75}
 /* Main */
 .section{padding:10px 0 80px}
 .section--thin{max-width:980px}
+.section--contact{margin-top:60px}
 .section--dark {
   background: #000;
   color: #fff;
