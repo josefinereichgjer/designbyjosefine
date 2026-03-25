@@ -60,21 +60,6 @@
                 
               </div>
             </div>
-            
-        <div class="slideshow__caption-bar" id="slideshowCaption"></div>
-        <div class="slideshow" id="slideshow">
-          <div class="slideshow__track" id="slideshowTrack">
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="eager" decoding="async" src="./assets/kitty.webp" alt="Tidsskrift — bilde 1">
-              </figure>
-              <figure class="slideshow__slide" data-caption="">
-                <img loading="lazy" decoding="async" src="./assets/me.webp" alt="Tidsskrift — bilde 2">
-              </figure>
-          </div>
-          <button class="slideshow__btn slideshow__btn--prev" id="slidePrev" aria-label="Forrige bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="slideshow__btn slideshow__btn--next" id="slideNext" aria-label="Neste bilde"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M1 1L8 8L1 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="slideshow__counter"><span id="slideIndex">1</span> / 2</div>
-        </div>
             <div class="project-meta">
               
               
@@ -113,47 +98,6 @@
     const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Slideshow
-    const track = $("#slideshowTrack");
-    if (track) {
-      const slides = [...track.querySelectorAll(".slideshow__slide")];
-      const counter = $("#slideIndex");
-      let current = 0;
-      let timer;
-      const slideshow = $("#slideshow");
-      const captionBar = $("#slideshowCaption");
-      let paused = false;
-      function goTo(n) {
-        current = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = current + 1;
-        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
-      }
-      function startAuto() {
-        clearInterval(timer);
-        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
-      }
-      track.addEventListener("click", () => {
-        paused = !paused;
-        slideshow.classList.toggle("slideshow--paused", paused);
-        if (paused) clearInterval(timer);
-        else startAuto();
-      });
-      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
-      let touchStartX = 0;
-      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-      }, { passive: true });
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
-        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
-      });
-      startAuto();
-    }
 
     // Accordion
     const accordion = document.getElementById("accordion");

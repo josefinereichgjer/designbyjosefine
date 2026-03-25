@@ -316,7 +316,7 @@ window.PROJECTS = [
     subtitle: "Redaksjonell design",
     year: "2026",
     tags: ["Redaksjonell"],
-    cover: "./assets/kitty.webp",
+    cover: "./stoppestedet/images/lockin.webp",
     images: ["./assets/me.webp"],
   },
   {
@@ -325,7 +325,7 @@ window.PROJECTS = [
     subtitle: "UX + redesign",
     year: "2026",
     tags: ["Redesign/UX"],
-    cover: "./assets/kitty.webp",
+    cover: "./stoppestedet/images/lockin.webp",
     images: ["./assets/me.webp"],
     noSlideshow: true,
   },
