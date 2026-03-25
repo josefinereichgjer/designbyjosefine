@@ -205,6 +205,8 @@ a:hover{opacity:.75}
   display:block;
   background:#f3f3f3;
 }
+.card:hover { opacity: 1; }
+.card:hover .card__img { opacity: 1; }
 .card__caption{
   display:flex;
   justify-content:space-between;
@@ -274,7 +276,7 @@ a:hover{opacity:.75}
   cursor:zoom-in;
   transition:opacity .2s;
 }
-.project__figure img:hover{ opacity:.8; }
+.project__figure img:hover{ opacity:1; }
 .project__video{ width:100%; display:block; }
 .project__figure-link{ display:block; cursor:pointer; }
 .project__gallery-heading{
