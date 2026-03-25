@@ -113,6 +113,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["UX"],
     cover: "./assets/tjonnipadiphone.webp",
+    coverScale: 1.25,
     images: ["./assets/tjonnipadiphone.webp"],
     noSlideshow: true,
     introBorder: true,
@@ -305,7 +306,7 @@ window.PROJECTS = [
     subtitle: "Lettering + layout explorations",
     year: "2026",
     tags: ["Strategisk design"],
-    cover: "./assets/wenettsideny.webp",
+    cover: "./assets/stationary.png",
     images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
     finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
   },
