@@ -53,7 +53,7 @@
           <div class="project-layout__media">
             <div class="project-header">
               <h1 class="project-meta__title">Reina Fruktgård</h1>
-              <p class="project-intro">I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Målet var å utvikle et helhetlig uttrykk som formidler opprinnelse, kvalitet og det lokale, autentiske preget.</p>
+              <p class="project-intro" style="font-size:18px;">I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Målet var å utvikle et helhetlig uttrykk som formidler opprinnelse, kvalitet og det lokale, autentiske preget.</p>
               
               <div class="header-btns">
                 
@@ -61,20 +61,31 @@
               </div>
             </div>
             
-        <div class="strip-ss">
+        <div class="strip-ss gallery-expandable">
           <div class="strip-ss__nav">
             <button class="strip-ss__btn" id="stripPrev" aria-label="Forrige bilde">←</button>
             <button class="strip-ss__btn" id="stripNext" aria-label="Neste bilde">→</button>
           </div>
           <div class="strip-ss__viewport">
             <div class="strip-ss__track" id="stripTrack">
-              <figure class="strip-ss__slide"><img loading="eager" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 1"></figure>
-              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 2"></figure>
-              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinaside.webp" alt="Reina Fruktgård — bilde 3"></figure>
-              <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinastor.webp" alt="Reina Fruktgård — bilde 4"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/reina.webp" alt="Reina Fruktgård — bilde 1"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinastor.webp" alt="Reina Fruktgård — bilde 2"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinaside.webp" alt="Reina Fruktgård — bilde 3"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 4"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 5"></figure>
             </div>
           </div>
         </div>
+
+        <div class="gallery-expandable" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:80px;max-width:80%;margin-left:auto;margin-right:auto">
+          <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/foranreina.webp" alt="Reina Fruktgård foran" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
+          <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/bakreina.webp" alt="Reina Fruktgård bak" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
+          <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/reinaramp-foran.webp" alt="Reinarampen foran" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
+          <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/reinaramp-bak.webp" alt="Reinarampen bak" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
+          <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/syltforan.webp" alt="Sylteøl foran" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
+          <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/syltreina.webp" alt="Sylteøl bak" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
+        </div>
+
             <div class="project-meta">
               <div class="pmeta">
         <div class="pmeta__row">
@@ -233,11 +244,12 @@ Reina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. M
       }
       document.getElementById("stripNext")?.addEventListener("click", () => scrollTo(current + 1));
       document.getElementById("stripPrev")?.addEventListener("click", () => scrollTo(current - 1));
-      let dragging = false, startX = 0, scrollLeft = 0;
-      track.addEventListener("mousedown", e => { dragging = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; track.style.cursor = "grabbing"; });
+      let dragging = false, didDrag = false, startX = 0, scrollLeft = 0;
+      track.addEventListener("mousedown", e => { dragging = true; didDrag = false; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; track.style.cursor = "grabbing"; });
       track.addEventListener("mouseleave", () => { dragging = false; track.style.cursor = ""; });
       track.addEventListener("mouseup", () => { dragging = false; track.style.cursor = ""; });
-      track.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX); });
+      track.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); if (Math.abs(e.pageX - track.offsetLeft - startX) > 4) didDrag = true; track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX); });
+      track.addEventListener("click", e => { if (didDrag) { e.stopPropagation(); didDrag = false; } });
       track.addEventListener("scroll", () => {
         const w = slides[0]?.offsetWidth || 1;
         current = Math.round(track.scrollLeft / w);
