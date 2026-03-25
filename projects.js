@@ -299,6 +299,17 @@ window.PROJECTS = [
     finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
   },
   {
+    id: "we-visuell-profil",
+    skipBuild: true,
+    title: "Stiftelsen WE",
+    subtitle: "Lettering + layout explorations",
+    year: "2026",
+    tags: ["Strategisk design"],
+    cover: "./assets/wenettsideny.webp",
+    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
+    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
+  },
+  {
     id: "tidsskrift",
     title: "Tidsskrift",
     subtitle: "Redaksjonell design",
@@ -367,16 +378,5 @@ window.PROJECTS = [
       { label: "Fagansvarlig", value: "Martin Asbjørnsen" },
       { label: "Verktøy", value: "Illustrator, Photoshop" }
     ]
-  },
-  {
-    id: "we-visuell-profil",
-    skipBuild: true,
-    title: "Stiftelsen WE",
-    subtitle: "Lettering + layout explorations",
-    year: "2026",
-    tags: ["Strategisk design"],
-    cover: "./assets/kitty.webp",
-    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
   }
 ];
