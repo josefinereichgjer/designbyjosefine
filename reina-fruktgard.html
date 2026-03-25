@@ -24,6 +24,7 @@
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
     <img id="lbImg" src="" alt="">
+    <p id="lbCaption" style="display:none;position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:#fff;font-size:20px;padding:6px 14px;border-radius:4px;white-space:nowrap;pointer-events:none;"></p>
     <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
   </div>
 
@@ -68,11 +69,11 @@
           </div>
           <div class="strip-ss__viewport">
             <div class="strip-ss__track" id="stripTrack">
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/reina.webp" alt="Reina Fruktgård — bilde 1"></figure>
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinastor.webp" alt="Reina Fruktgård — bilde 2"></figure>
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinaside.webp" alt="Reina Fruktgård — bilde 3"></figure>
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 4"></figure>
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 5"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/reinanyeple.jpg" alt="Reina Fruktgård — bilde 1"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reina.webp" alt="Reina Fruktgård — bilde 2"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 3" data-caption="Bildekvaliteten er komprimert for å redusere filstørrelsen"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 6"></figure>
+              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinajuice.jpg" alt="Reina Fruktgård — bilde 7"></figure>
             </div>
           </div>
         </div>
@@ -310,18 +311,25 @@ Reina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. M
     const lbImg = document.getElementById("lbImg");
     const lbPrev = document.getElementById("lbPrev");
     const lbNext = document.getElementById("lbNext");
+    const lbCaption = document.getElementById("lbCaption");
     let lbImages = [], lbIndex = 0;
+    function setCaption(caption) {
+      if (caption) { lbCaption.textContent = caption; lbCaption.style.display = ""; }
+      else { lbCaption.style.display = "none"; }
+    }
     function openLightbox(src, alt, images, index) {
       lbImg.src = src; lbImg.alt = alt || "";
       lbImages = images || []; lbIndex = index ?? 0;
       lbPrev.style.display = lbImages.length > 1 ? "" : "none";
       lbNext.style.display = lbImages.length > 1 ? "" : "none";
+      setCaption(lbImages[lbIndex]?.caption || "");
       lbOverlay.classList.add("lb-open");
     }
     function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
     function showLbImage(idx) {
       lbIndex = (idx + lbImages.length) % lbImages.length;
       lbImg.src = lbImages[lbIndex].src; lbImg.alt = lbImages[lbIndex].alt || "";
+      setCaption(lbImages[lbIndex].caption || "");
     }
     lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
     lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
@@ -331,7 +339,7 @@ Reina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. M
         const section = imgEl.closest(".gallery-expandable");
         if (section) {
           const imgs = [...section.querySelectorAll(".project__figure img")];
-          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
+          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt, caption: i.dataset.caption || "" })), imgs.indexOf(imgEl));
         } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
