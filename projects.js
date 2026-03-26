@@ -317,7 +317,6 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Redaksjonell"],
     cover: "./stoppestedet/images/lockin.webp",
-    images: ["./assets/me.webp"],
   },
   {
     id: "emanuel-viegeland",
