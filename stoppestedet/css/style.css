@@ -38,7 +38,6 @@ body {
 
 section {
     padding: 80px 0;
-    border-bottom: 1px solid #222;
 }
 
 section p {
@@ -52,7 +51,7 @@ section p {
     color: #aaa;
     max-width: 600px;
     line-height: 1.8;
-    margin-top: 16px;
+    margin-top: 24px;
 }
 
 /* --- SKIP LINK (WCAG 2.4.1) --- */
@@ -129,8 +128,8 @@ header .container {
     text-decoration: none;
     font-size: 12px;
     text-transform: uppercase;
-    font-weight: bold;
-    transition: 0.3s;
+    font-weight: 400;
+    transition: color 0.2s;
 }
 
 .nav-links a:hover,
@@ -139,11 +138,11 @@ header .container {
 }
 
 .nav-links a.nav-cta {
-    color: var(--purple);
+    color: #888;
 }
 
 .nav-links a.nav-cta:hover {
-    color: #d990ed;
+    color: var(--green);
 }
 
 /* Mobile nav */
@@ -233,7 +232,7 @@ header .container {
 .hero-content h1 {
     font-size: clamp(2.5rem, 8vw, 5rem);
     text-transform: uppercase;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     position: relative;
     top: 40px;
     letter-spacing: -2px;
@@ -265,7 +264,7 @@ header .container {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    margin-top: 28px;
+    margin-top: 24px;
     flex-wrap: wrap;
 }
 
@@ -312,14 +311,14 @@ header .container {
 /* ── HERO CTA ────────────────────────────────────────────────────────────── */
 .hero-cta {
     display: inline-block;
-    margin-top: 36px;
+    margin-top: 32px;
     padding: 13px 30px;
     border: 1px solid rgba(255,255,255,0.25);
     color: var(--white);
     text-decoration: none;
     font-family: 'Space Mono', monospace;
     font-size: 10px;
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     transition: border-color 0.25s, color 0.25s;
 }
@@ -358,21 +357,16 @@ header .container {
     color: var(--purple);
 }
 
-/* Modal close → teal on hover */
+/* Modal close → green on hover */
 .modal-close:hover {
-    border-color: var(--teal);
-    color: var(--teal);
+    border-color: var(--green);
+    color: var(--green);
 }
 
-/* Scroll-to-top → teal on hover */
+/* Scroll-to-top → green on hover */
 #scrollTop:hover {
-    border-color: var(--teal);
-    color: var(--teal);
-}
-
-/* Event row: alternate hover accent */
-.event-row:nth-child(even):hover {
-    border-left-color: var(--teal);
+    border-color: var(--green);
+    color: var(--green);
 }
 
 /* FAQ --- */
@@ -387,7 +381,7 @@ header .container {
     display: grid;
     grid-template-columns: 1fr;
     gap: 8px;
-    padding: 28px 0;
+    padding: 32px 0;
     padding-left: 0;
     border-bottom: 1px solid #1e1e1e;
     border-left: 2px solid transparent;
@@ -621,11 +615,12 @@ body::before {
 }
 
 .event-panel__label {
-    font-size: 9px;
+    font-size: 10px;
     color: var(--green);
-    letter-spacing: 3px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
     font-family: 'Space Mono', monospace;
+    font-weight: 400;
     padding: 24px 28px 16px;
     border-bottom: 1px solid #1e1e1e;
 }
@@ -714,7 +709,6 @@ body::before {
 
 /* ── INTRO ──────────────────────────────────────────────────────────────── */
 .intro-section {
-    border-bottom: 1px solid #1e1e1e;
     padding: 112px 0;
 }
 
@@ -728,7 +722,7 @@ body::before {
     font-weight: bold;
     letter-spacing: -0.5px;
     color: var(--white);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .intro-text {
@@ -815,36 +809,33 @@ body::before {
 }
 
 .evt-body {
-    padding: 18px 2px 0;
+    padding: 16px 0 0;
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
 .evt-category {
     font-family: 'Space Mono', monospace !important;
-    font-size: 9px;
-    letter-spacing: 2px;
+    font-size: 10px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     color: var(--green);
-    font-weight: bold;
+    font-weight: 400;
 }
 
 .evt-title {
     font-size: clamp(1rem, 1.6vw, 1.2rem);
-    text-transform: uppercase;
     color: var(--white);
     letter-spacing: -0.5px;
     border: none;
     padding: 0;
-    margin-top: 2px;
 }
 
 .evt-time {
     font-family: 'IBM Plex Sans', sans-serif !important;
     font-size: 13px;
     color: #888;
-    margin-top: 2px;
 }
 
 .evt-location {
@@ -890,19 +881,21 @@ h2 {
     font-size: clamp(1.5rem, 3vw, 2rem);
     letter-spacing: -0.5px;
     display: flex;
-    align-items: center;
-    gap: 14px;
+    align-items: flex-start;
+    gap: 12px;
 }
 
 h2::before {
     content: '';
     display: block;
     flex-shrink: 0;
-    width: 56px;
-    height: 56px;
+    width: 28px;
+    height: 28px;
     background-image: url('../icons/grafisk_element.png');
     background-size: contain;
     background-repeat: no-repeat;
+    opacity: 0.5;
+    margin-top: 4px;
 }
 
 /* --- CARDS --- */
@@ -1224,7 +1217,7 @@ h2::before {
     color: #555;
     font-family: 'Space Mono', monospace;
     font-size: 10px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
     padding: 10px 0 4px;
@@ -1240,7 +1233,7 @@ h2::before {
 .volunteer-grid {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 32px;
     margin-top: 40px;
 }
 
@@ -1323,7 +1316,7 @@ h2::before {
     color: var(--white);
     font-family: 'Space Mono', monospace;
     font-size: 10px;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     text-transform: uppercase;
     padding: 10px 16px;
     cursor: pointer;
@@ -1577,8 +1570,9 @@ h2::before {
 
     /* Smaller h2 icon on mobile */
     h2::before {
-        width: 36px;
-        height: 36px;
+        width: 20px;
+        height: 20px;
+        margin-top: 3px;
     }
 
     /* Hero corners: smaller and less opaque */
@@ -1707,11 +1701,11 @@ footer {
 
 .design-credit {
     margin-top: 40px;
-    padding: 20px;
-    border: 1px solid var(--green);
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(163,175,14,0.3);
     display: inline-block;
     font-size: 11px;
-    color: var(--green);
+    color: #666;
 }
 
 .btn {

@@ -541,7 +541,7 @@
                 if (entry.isIntersecting) {
                     const siblings = Array.from(entry.target.parentElement.children);
                     const idx = siblings.indexOf(entry.target);
-                    entry.target.style.transitionDelay = (idx * 80) + 'ms';
+                    entry.target.style.transitionDelay = (idx * 40) + 'ms';
                     entry.target.classList.add('is-visible');
                     revealObserver.unobserve(entry.target);
                 }
