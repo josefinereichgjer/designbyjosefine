@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kontakt — Stoppestedet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #E84E1B;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --purple: #9B8CE8;
+      --lime: #C8E600;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 72px;
+      position: relative;
+    }
+
+    .logo { height: 48px; width: auto; flex-shrink: 0; margin-top: 5px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a.active { color: var(--orange); }
+    .nav-links a.current { font-weight: 600; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    /* PAGE */
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 72px 56px 96px;
+    }
+
+    .page h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(40px, 5vw, 72px);
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .page-intro {
+      font-size: 17px;
+      line-height: 1.65;
+      color: #444;
+      max-width: 520px;
+      margin-bottom: 64px;
+    }
+
+    /* GRID */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    /* FORM */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--black);
+      background: var(--white);
+      border: 2.5px solid #e0e0e0;
+      padding: 14px 16px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--lime);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .btn-submit {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      padding: 16px 40px;
+      background: var(--orange);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.01em;
+      transition: opacity 0.15s;
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    .btn-submit:hover { opacity: 0.85; }
+
+    /* INFO SIDE */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .info-block h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .info-block p,
+    .info-block a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+      text-decoration: none;
+      display: block;
+    }
+
+    .info-block a:hover { color: var(--orange); }
+
+    .info-block .highlight {
+      background: var(--lime);
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .info-block .highlight p,
+    .info-block .highlight a {
+      font-size: 17px;
+      color: var(--black);
+      font-weight: 400;
+    }
+
+    .info-block .highlight a:hover { color: var(--orange); }
+
+    .map-iframe {
+      width: 100%;
+      height: 280px;
+      border: none;
+      display: block;
+    }
+
+    .opening-hours {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opening-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      color: #333;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .opening-row:last-child { border-bottom: none; }
+
+    /* FOOTER */
+    footer {
+      background: var(--purple);
+      padding: 64px 56px 40px;
+      margin-top: 0;
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .footer-contact h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3.5vw, 52px);
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .footer-contact p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 20px;
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 48px;
+      justify-self: end;
+      text-align: right;
+    }
+
+    .footer-link-group { display: flex; flex-direction: column; gap: 4px; }
+
+    .footer-link-group a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 22px;
+      color: var(--black);
+      text-decoration: none;
+      line-height: 1.6;
+      transition: color 0.15s;
+    }
+
+    .footer-link-group a:hover { color: var(--lime); }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 56px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .footer-bottom p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      color: var(--black);
+      opacity: 0.7;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .nav-links { gap: 24px; }
+      .nav-links a { font-size: 14px; }
+      .page { padding: 56px 32px 72px; }
+      .contact-grid { gap: 32px; }
+      footer { padding: 48px 32px 32px; }
+    }
+
+    @media (max-width: 767px) {
+      nav { padding: 0 20px; height: 64px; }
+      .logo { height: 38px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--black);
+        padding: 8px 0 16px;
+        z-index: 100;
+        gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
+      .page { padding: 40px 20px 64px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      footer { padding: 48px 20px 32px; }
+      .footer-links { justify-self: start; text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html"><img src="assets/logoskrift-hg.png" alt="Stoppestedet logo" class="logo" /></a>
+    <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="verkstedet.html">Verkstedet</a></li>
+      <li><a href="verktoysliste.html">Verktøyliste</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="kalender.html">Kalender</a></li>
+      <li><a href="kontakt.html" class="current">Kontakt</a></li>
+      <li><a href="index.html#priser" class="active">Priser</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <h1>Kontakt oss</h1>
+    <p class="page-intro">Har du spørsmål, ønsker å booke grupperom, eller vil høre mer om Stoppestedet? Send oss en melding så svarer vi så fort vi kan.</p>
+
+    <div class="contact-grid">
+
+      <!-- FORM -->
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="navn">Navn</label>
+            <input type="text" id="navn" placeholder="Ditt navn" />
+          </div>
+          <div class="form-group">
+            <label for="epost">E-post</label>
+            <input type="email" id="epost" placeholder="din@epost.no" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="emne">Emne</label>
+          <select id="emne">
+            <option value="">Velg emne</option>
+            <option>Generelt spørsmål</option>
+            <option>Medlemskap</option>
+            <option>Drop-in booking</option>
+            <option>Grupperom / bedriftsleie</option>
+            <option>Kurs og arrangementer</option>
+            <option>Annet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="melding">Melding</label>
+          <textarea id="melding" placeholder="Skriv din melding her..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Send melding</button>
+        <p id="form-success" style="display:none; font-size:15px; color:#2a7a2a; margin-top:4px;">Takk! Vi tar kontakt så snart vi kan.</p>
+      </form>
+
+      <!-- INFO -->
+      <div class="contact-info">
+
+        <div class="info-block">
+          <h3>Besøk oss</h3>
+          <div class="highlight">
+            <p>Dronning Eufemias gate 6A, Oslo</p>
+            <p>Åpent: kl. 07–22 alle dager</p>
+          </div>
+          <iframe
+            class="map-iframe"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2000.5!2d10.7522!3d59.9069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416ddb33af1dbf%3A0x6eac1f8c8a0d0469!2sDronning%20Eufemias%20gate%206A%2C%200194%20Oslo!5e0!3m2!1sno!2sno!4v1711634400000!5m2!1sno!2sno">
+          </iframe>
+        </div>
+
+        <div class="info-block">
+          <h3>Direktekontakt</h3>
+          <a href="mailto:Stoppestedet@gmail.com">Stoppestedet@gmail.com</a>
+          <a href="tel:+4712345678">+47 123 45 678</a>
+        </div>
+
+        <div class="info-block">
+          <h3>Åpningstider</h3>
+          <div class="opening-hours">
+            <div class="opening-row"><span>Mandag – fredag</span><span>07:00 – 22:00</span></div>
+            <div class="opening-row"><span>Lørdag</span><span>09:00 – 20:00</span></div>
+            <div class="opening-row"><span>Søndag</span><span>10:00 – 18:00</span></div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <h3>Kontakt oss</h3>
+        <p>Stoppestedet@gmail.com<br>+47 123 45 678</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <a href="#">Om oss</a>
+          <a href="#">Brukervilkår</a>
+          <a href="#">personvernererklæring</a>
+          <a href="#">Cookie-erklæring</a>
+        </div>
+        <div class="footer-link-group">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Linkedin</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Stoppestedet As. All rights served</p>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      document.getElementById('form-success').style.display = 'block';
+      e.target.reset();
+    }
+  </script>
+
+</body>
+</html>

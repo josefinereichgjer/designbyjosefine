@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Stoppestedet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --orange: #E84E1B;
+      --black: #0a0a0a;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 72px;
+      position: relative;
+    }
+
+    footer {
+      background: #9B8CE8;
+      padding: 64px 56px 40px;
+      margin-top: 48px;
+    }
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+    .footer-contact h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3.5vw, 52px);
+      letter-spacing: -0.02em;
+      color: #0a0a0a;
+      margin-bottom: 16px;
+    }
+    .footer-contact p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 20px;
+      color: #0a0a0a;
+      line-height: 1.7;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 48px;
+      justify-self: end;
+      text-align: right;
+    }
+    .footer-link-group { display: flex; flex-direction: column; gap: 4px; }
+    .footer-link-group a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 22px;
+      color: #0a0a0a;
+      text-decoration: none;
+      line-height: 1.6;
+      transition: color 0.15s;
+    }
+    .footer-link-group a:hover { color: #C8E600; }
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 56px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,0,0,0.15);
+    }
+    .footer-bottom p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      color: #0a0a0a;
+      opacity: 0.7;
+    }
+    @media (max-width: 767px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      footer { padding: 48px 20px 32px; margin-top: 32px; }
+      .footer-links { justify-self: start; text-align: left; }
+    }
+
+    .logo { height: 48px; width: auto; flex-shrink: 0;
+      margin-top: 5px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a.active { color: var(--orange); }
+    .nav-links a.current { font-weight: 600; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    /* PAGE */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 56px 120px;
+    }
+
+    .page h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(40px, 5vw, 68px);
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .page-intro {
+      font-size: 17px;
+      line-height: 1.65;
+      color: #333;
+      max-width: 520px;
+      margin-bottom: 48px;
+    }
+
+    /* FAQ ITEMS */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq-item {
+      border: 2.5px solid var(--orange);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 24px;
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+    }
+
+    .faq-question span {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.4;
+    }
+
+    .faq-icon {
+      flex-shrink: 0;
+      margin-top: 5px;
+      color: var(--orange);
+      font-size: 24px;
+      font-weight: 300;
+      line-height: 1;
+      transition: transform 0.25s;
+      user-select: none;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 24px;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-answer p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .faq-answer p + p {
+      margin-top: 12px;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .nav-links { gap: 24px; }
+      .nav-links a { font-size: 14px; }
+      .page { padding: 56px 32px 80px; }
+    }
+
+    @media (max-width: 767px) {
+      nav { padding: 0 20px; height: 64px; }
+      .logo { height: 38px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--black);
+        padding: 8px 0 16px;
+        z-index: 100;
+        gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
+      .page { padding: 40px 20px 72px; }
+      .faq-question { padding: 18px 16px; }
+      .faq-answer { padding: 0 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html"><img src="assets/logoskrift-hg.png" alt="Stoppestedet logo" class="logo" /></a>
+    <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="verkstedet.html">Verkstedet</a></li>
+      <li><a href="verktoysliste.html">Verktøyliste</a></li>
+      <li><a href="faq.html" class="current">FAQ</a></li>
+      <li><a href="kalender.html">Kalender</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+
+      <li><a href="index.html#priser" class="active">Priser</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <h1>Spørsmål og svar</h1>
+    <p class="page-intro">Alt du trenger å vite om Stoppestedet og hvordan medlemskapet fungerer. Les gjerne gjennom vanligste spørsmålene vi får her før du kontakter oss:</p>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span>Har dere aldersgrense?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p>Inntil videre har vi 16 års aldersgrense for all bruk av våre fasiliteter og tilbud.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span>Er lokalene bemannet?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p>Stoppestedet er bemannet i åpningstidene. Medlemmer har i tillegg tilgang til lokalene utenom bemannet åpningstid.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span>Kan man leie grupperom?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p>Ja, vi har grupperom tilgjengelig for utleie. Ta kontakt med oss for mer informasjon og priser.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span>Hva skjer hvis jeg skader et verktøy?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p>Normalt slitasje er inkludert. Dersom et verktøy skades grunnet feil bruk, ber vi deg melde fra til personalet så snart som mulig slik at vi kan håndtere det.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span>Trenger jeg å booke plass på forhånd?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p>For drop-in kan du bare møte opp. Noen verktøy og maskiner krever kurs og eventuelt forhåndsbooking. Sjekk verktøylisten for detaljer.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span>Hva er inkludert i medlemskapet?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p>Medlemskapet gir deg tilgang til alle fasiliteter og verktøy, ingen ekstra kostnad for bruk av verktøy, 10% rabatt på PTtimer, samt tilgang utenom bemannet åpningstid.</p>
+          <p>Det er ingen bindingstid — du kan avslutte når som helst.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span>Kan jeg ta med egne materialer?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p>Ja, du er velkommen til å ta med egne materialer. Vi har også et utvalg materialer tilgjengelig i lokalene.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggle(this)">
+          <span>Tilbyr dere kurs?</span>
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          <p>Ja! Vi arrangerer jevnlig kurs, workshops og konkurranser. Følg med på kalenderen vår for kommende arrangementer.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function toggle(btn) {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('open');
+    }
+  </script>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <h3>Kontakt oss</h3>
+        <p>Stoppestedet@gmail.com<br>+47 123 45 678</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <a href="#">Om oss</a>
+          <a href="#">Brukervilkår</a>
+          <a href="#">personvernererklæring</a>
+          <a href="#">Cookie-erklæring</a>
+        </div>
+        <div class="footer-link-group">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Linkedin</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Stoppestedet As. All rights served</p>
+    </div>
+  </footer>
+
+</body>
+</html>

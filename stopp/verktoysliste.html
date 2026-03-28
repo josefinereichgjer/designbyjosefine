@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verktøyliste — Stoppestedet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --orange: #E84E1B;
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --purple: #9B8CE8;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 72px;
+      position: relative;
+    }
+
+    footer {
+      background: #9B8CE8;
+      padding: 64px 56px 40px;
+      margin-top: 48px;
+    }
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+    .footer-contact h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3.5vw, 52px);
+      letter-spacing: -0.02em;
+      color: #0a0a0a;
+      margin-bottom: 16px;
+    }
+    .footer-contact p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 20px;
+      color: #0a0a0a;
+      line-height: 1.7;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 48px;
+      justify-self: end;
+      text-align: right;
+    }
+    .footer-link-group { display: flex; flex-direction: column; gap: 4px; }
+    .footer-link-group a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 22px;
+      color: #0a0a0a;
+      text-decoration: none;
+      line-height: 1.6;
+      transition: color 0.15s;
+    }
+    .footer-link-group a:hover { color: #C8E600; }
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 56px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,0,0,0.15);
+    }
+    .footer-bottom p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      color: #0a0a0a;
+      opacity: 0.7;
+    }
+    @media (max-width: 767px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      footer { padding: 48px 20px 32px; margin-top: 32px; }
+      .footer-links { justify-self: start; text-align: left; }
+    }
+
+    .logo { height: 48px; width: auto; flex-shrink: 0;
+      margin-top: 5px; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.15s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: #E84E1B; }
+    .nav-links a.active { color: var(--orange); }
+    .nav-links a.current { color: var(--white); font-weight: 600; }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    /* PAGE */
+    .page {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 72px 56px 96px;
+    }
+
+    .page h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(40px, 4.5vw, 64px);
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+
+    /* FILTER BUTTONS */
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .filter-btn {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 12px 28px;
+      border: 2.5px solid var(--purple);
+      background: none;
+      color: var(--black);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .filter-btn:hover { background: var(--purple); color: var(--white); }
+    .filter-btn.active { background: var(--purple); color: var(--white); }
+
+    /* TABLE */
+    .table-wrap {
+      background: var(--purple);
+      padding: 24px;
+      border-radius: 0;
+    }
+
+    .tool-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .tool-table thead tr {
+      background: transparent;
+    }
+
+    .tool-table th {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--black);
+      text-align: left;
+      padding: 12px 20px 16px;
+    }
+
+    .tool-table tbody tr {
+      background: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .tool-table tbody tr + tr {
+      margin-top: 8px;
+    }
+
+    /* gap between rows using box-shadow trick */
+    .tool-table tbody td {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      color: var(--black);
+      padding: 18px 20px;
+      border-top: 8px solid var(--purple);
+    }
+
+    .tool-table tbody tr:first-child td {
+      border-top: none;
+    }
+
+    .kurs-badge {
+      display: inline-block;
+      background: #E84E1B;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 3px 10px;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .kurs-nei {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    .tool-row { transition: opacity 0.15s; }
+    .tool-row.hidden { display: none; }
+
+    /* MOBILE */
+    @media (max-width: 1024px) {
+      nav { padding: 0 32px; }
+      .nav-links { gap: 24px; }
+      .nav-links a { font-size: 14px; }
+      .page { padding: 56px 32px 72px; }
+    }
+
+    @media (max-width: 767px) {
+      nav { padding: 0 20px; height: 64px; position: relative; }
+      .logo { height: 38px; }
+      .nav-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 64px; left: 0; right: 0;
+        background: var(--black);
+        padding: 8px 0 16px;
+        z-index: 100;
+        gap: 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
+      .page { padding: 40px 16px 64px; }
+      .table-wrap { padding: 12px; overflow-x: auto; }
+      .tool-table th, .tool-table tbody td { padding: 12px 12px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html"><img src="assets/logoskrift-hg.png" alt="Stoppestedet logo" class="logo" /></a>
+    <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="verkstedet.html">Verkstedet</a></li>
+      <li><a href="verktoysliste.html" class="current">Verktøyliste</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="kalender.html">Kalender</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+
+      <li><a href="index.html#priser" class="active">Priser</a></li>
+    </ul>
+  </nav>
+
+  <div class="page">
+    <h1>Verktøyliste</h1>
+
+    <div class="filters">
+      <button class="filter-btn active" data-filter="alle">Alle</button>
+      <button class="filter-btn" data-filter="Diverse">Diverse</button>
+      <button class="filter-btn" data-filter="Måleverktøy">Måleverktøy</button>
+      <button class="filter-btn" data-filter="Maling">Maling</button>
+      <button class="filter-btn" data-filter="Maletilbehør">Maletilbehør</button>
+      <button class="filter-btn" data-filter="Leire">Leire</button>
+      <button class="filter-btn" data-filter="Verneutstyr">Verneutstyr</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="tool-table">
+        <thead>
+          <tr>
+            <th>Verktøy</th>
+            <th>Kategori</th>
+            <th>Type</th>
+            <th>Produsent</th>
+            <th>Modell</th>
+            <th>Kurs påkrevd</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="tool-row" data-cat="Diverse">
+            <td>Limpistol</td><td>Diverse</td><td>Elektrisk håndverktøy</td><td>Bosch</td><td>PKP 18 E</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Diverse">
+            <td>Stiftemaskin</td><td>Diverse</td><td>Elektrisk håndverktøy</td><td>Stanley</td><td>TR250</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Diverse">
+            <td>Skrulrekker</td><td>Diverse</td><td>Elektrisk håndverktøy</td><td>Makita</td><td>DF333D</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Måleverktøy">
+            <td>Vater</td><td>Måleverktøy</td><td>Måleapparat</td><td>Stanley</td><td>STHT1-43103</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Måleverktøy">
+            <td>Lasermåler</td><td>Måleverktøy</td><td>Digitalt måleinstrument</td><td>Bosch</td><td>PLR 40 C</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Måleverktøy">
+            <td>Vinkelhake</td><td>Måleverktøy</td><td>Håndverktøy</td><td>Irwin</td><td>T-Square</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Maling">
+            <td>Spraypistol</td><td>Maling</td><td>Elektrisk malingsutstyr</td><td>Wagner</td><td>W 550</td><td><span class="kurs-badge">Kurs</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Maling">
+            <td>Malerrulle sett</td><td>Maling</td><td>Manuelt maleutstyr</td><td>Anza</td><td>—</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Maletilbehør">
+            <td>Malertape</td><td>Maletilbehør</td><td>Forbruksvare</td><td>Scotch</td><td>2090</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Maletilbehør">
+            <td>Malerbrett</td><td>Maletilbehør</td><td>Tilbehør</td><td>—</td><td>—</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Leire">
+            <td>Dreieskive</td><td>Leire</td><td>Elektrisk maskin</td><td>Shimpo</td><td>RK-3E</td><td><span class="kurs-badge">Kurs</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Leire">
+            <td>Leirekniver</td><td>Leire</td><td>Håndverktøy</td><td>Kemper</td><td>—</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Leire">
+            <td>Brennovn</td><td>Leire</td><td>Elektrisk maskin</td><td>Rohde</td><td>Ecotop 43</td><td><span class="kurs-badge">Kurs</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Verneutstyr">
+            <td>Vernebriller</td><td>Verneutstyr</td><td>Personlig verneutstyr</td><td>3M</td><td>2720</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Verneutstyr">
+            <td>Hørselsvern</td><td>Verneutstyr</td><td>Personlig verneutstyr</td><td>3M</td><td>Peltor H510A</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+          <tr class="tool-row" data-cat="Verneutstyr">
+            <td>Støvmaske</td><td>Verneutstyr</td><td>Personlig verneutstyr</td><td>3M</td><td>8810</td><td><span class="kurs-nei">—</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.tool-row').forEach(row => {
+          row.classList.toggle('hidden', filter !== 'alle' && row.dataset.cat !== filter);
+        });
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <h3>Kontakt oss</h3>
+        <p>Stoppestedet@gmail.com<br>+47 123 45 678</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <a href="#">Om oss</a>
+          <a href="#">Brukervilkår</a>
+          <a href="#">personvernererklæring</a>
+          <a href="#">Cookie-erklæring</a>
+        </div>
+        <div class="footer-link-group">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Linkedin</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Stoppestedet As. All rights served</p>
+    </div>
+  </footer>
+
+</body>
+</html>

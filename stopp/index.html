@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stoppestedet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --orange: #E84E1B;
+      --black: #0a0a0a;
+      --white: #ffffff;
+    }
+
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    /* NAV */
+    nav {
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 56px;
+      height: 72px;
+    }
+
+    .logo {
+      height: 48px;
+      width: auto;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: opacity 0.15s;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      color: #E84E1B;
+    }
+
+    .nav-links a.active {
+      color: var(--orange);
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+      padding: 96px 56px 96px 56px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .hero-text h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(40px, 4.5vw, 64px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .hero-text p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: #1a1a1a;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+      padding-bottom: 48px;
+    }
+
+    .btn {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      padding: 16px 32px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      letter-spacing: 0.01em;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    .btn-orange {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-black {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* IMAGE */
+    .hero-image-wrap {
+      position: relative;
+    }
+
+    .hero-image-wrap img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    /* SECTION 2 */
+    .section-alt {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 64px;
+      padding: 96px 56px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .section-image-wrap img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .section-text {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .section-text h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(36px, 4vw, 58px);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .section-text p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: #1a1a1a;
+      max-width: 520px;
+    }
+
+    /* SLIDESHOW */
+    .slideshow {
+      width: 100%;
+      background: #fff;
+      padding: 108px 0 116px;
+    }
+
+    .slideshow-track-wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    .slideshow-row {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .slide-btn {
+      flex-shrink: 0;
+      margin-top: 5px;
+      background: #fff;
+      border: none;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .slide-btn:hover { opacity: 0.7; }
+    .slide-btn.clicked line,
+    .slide-btn.clicked path { stroke: #E84E1B; }
+
+    .slideshow-main {
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .slideshow-main img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      display: none;
+    }
+
+    .slideshow-main img.active { display: block; }
+
+    .slideshow-thumbs {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .slideshow-thumbs::-webkit-scrollbar { display: none; }
+
+    .slideshow-thumbs img {
+      width: 120px;
+      height: 78px;
+      object-fit: cover;
+      cursor: pointer;
+      opacity: 0.45;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .slideshow-thumbs img.active,
+    .slideshow-thumbs img:hover { opacity: 1; }
+
+    @media (max-width: 1024px) {
+      .slideshow-track-wrap { padding: 0 32px; }
+      .slideshow-main img { height: 340px; }
+      .slideshow-thumbs img { width: 90px; height: 60px; }
+    }
+
+    @media (max-width: 767px) {
+      .slideshow { padding: 32px 0 40px; }
+      .slideshow-track-wrap { padding: 0 12px; }
+      .slideshow-main img { height: 220px; }
+      .slide-btn { padding: 10px 12px; }
+      .slideshow-thumbs img { width: 66px; height: 44px; }
+    }
+
+    /* PRICING */
+    .pricing {
+      padding: 80px 56px 96px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .pricing h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(36px, 4vw, 60px);
+      letter-spacing: -0.02em;
+      text-align: center;
+      margin-bottom: 56px;
+      color: var(--black);
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .pricing-card {
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pricing-card.green {
+      background: #C8E600;
+    }
+
+    .pricing-card.outline {
+      background: var(--white);
+      border: 3px solid #C8E600;
+    }
+
+    .pricing-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: 44px;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      line-height: 1;
+    }
+
+    .pricing-price strong {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 52px;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .pricing-price span {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .pricing-subtitle {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--black);
+      margin-top: 10px;
+      margin-bottom: 16px;
+    }
+
+    .dropin-intro-offer {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .dropin-intro-badge {
+      display: none;
+    }
+
+    .dropin-intro-offer p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--black);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .dropin-intro-offer p::before {
+      content: '▪';
+      position: absolute;
+      left: 0;
+    }
+
+    .pricing-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .pricing-list li {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--black);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .pricing-list li::before {
+      content: '▪';
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal {
+      background: #fff;
+      width: 100%;
+      max-width: 960px;
+      max-height: 90vh;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+      z-index: 10;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: #000; }
+
+    .modal-left {
+      background: #C8E600;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-left-logo {
+      height: auto;
+      width: auto;
+      max-height: 72px;
+      max-width: 220px;
+      object-fit: contain;
+      margin-bottom: 32px;
+    }
+
+    .modal-left-card {
+      background: #fff;
+      padding: 32px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .modal-left-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: 36px;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .modal-left-card .modal-subtitle {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: var(--black);
+      margin-top: -8px;
+    }
+
+    .modal-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .modal-list li {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      color: var(--black);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .modal-list li::before {
+      content: '▪';
+      position: absolute;
+      left: 0;
+    }
+
+    .modal-divider {
+      border: none;
+      border-top: 2px solid #C8E600;
+      margin: 8px 0;
+    }
+
+    .modal-pricing-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .modal-pricing-row span:first-child {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      color: var(--black);
+    }
+
+    .modal-pricing-row span:last-child {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--black);
+    }
+
+    .modal-pricing-row.small span:last-child {
+      font-weight: 400;
+      font-size: 15px;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    .modal-right {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .modal-right h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 400;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      color: var(--black);
+    }
+
+    .modal-right p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #444;
+    }
+
+    .modal-vipps {
+      display: block;
+      width: 100%;
+      max-width: 320px;
+    }
+
+    .modal-personvern {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      color: #4a7fc1;
+      text-decoration: none;
+    }
+
+    .modal-personvern:hover { text-decoration: underline; }
+
+    @media (max-width: 767px) {
+      .modal { grid-template-columns: 1fr; }
+      .modal-left { padding: 32px 24px; }
+      .modal-right { padding: 32px 24px; }
+    }
+
+    /* BOOKING MODAL */
+    .booking-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #C8E600;
+      z-index: 1000;
+      align-items: flex-start;
+      justify-content: center;
+      overflow-y: auto;
+      padding: 32px 16px;
+    }
+
+    .booking-card {
+      background: #fff;
+      width: 100%;
+      max-width: 560px;
+      padding: 40px;
+      position: relative;
+    }
+
+    .booking-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+      line-height: 1;
+    }
+
+    .booking-logo {
+      height: auto;
+      width: auto;
+      max-height: 56px;
+      max-width: 180px;
+      object-fit: contain;
+      margin-bottom: 32px;
+    }
+
+    .booking-label {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .booking-select {
+      width: 100%;
+      padding: 14px 16px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      border: 3px solid #C8E600;
+      background: #fff;
+      color: var(--black);
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='16' height='10' viewBox='0 0 16 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L8 9L15 1' stroke='%230d0d2e' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .booking-select:focus {
+      outline: none;
+      border-color: #E84E1B;
+    }
+
+    .booking-rabatt {
+      background: #C8E600;
+      padding: 14px 16px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 32px;
+    }
+
+    .booking-rabatt-input {
+      display: none;
+      padding: 12px 16px 0;
+    }
+
+    .booking-rabatt-input input {
+      width: 100%;
+      border: 2px solid #C8E600;
+      padding: 10px 14px;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      outline: none;
+    }
+
+    .booking-rabatt-input input:focus {
+      border-color: #E84E1B;
+    }
+
+    /* CALENDAR */
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .cal-header h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: 22px;
+      color: var(--black);
+    }
+
+    .cal-nav {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      transition: opacity 0.15s;
+    }
+    .cal-nav:hover { opacity: 0.5; }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .cal-dow {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+      padding: 4px 0 8px;
+    }
+
+    .cal-day {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      text-align: center;
+      padding: 10px 4px;
+      cursor: pointer;
+      border-radius: 2px;
+      color: var(--black);
+      border: none;
+      background: none;
+      transition: background 0.15s;
+    }
+
+    .cal-day:hover:not(.inactive):not(.selected) {
+      background: #f0f0f0;
+    }
+
+    .cal-day.inactive {
+      color: #ccc;
+      cursor: default;
+    }
+
+    .cal-day.today {
+      font-weight: 700;
+    }
+
+    .cal-day.selected {
+      background: #E84E1B;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* TIME SLOTS */
+    .timeslots {
+      margin-top: 28px;
+      border-top: 2px solid #f0f0f0;
+      padding-top: 20px;
+    }
+
+    .timeslots-label {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .timeslots-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .timeslot {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      padding: 8px 16px;
+      border: 2px solid #e0e0e0;
+      background: none;
+      cursor: pointer;
+      color: var(--black);
+      transition: all 0.15s;
+    }
+
+    .timeslot:hover { border-color: #C8E600; }
+    .timeslot.selected { border-color: #E84E1B; background: #E84E1B; color: #fff; }
+    .timeslot.unavailable { color: #ccc; border-color: #f0f0f0; cursor: default; text-decoration: line-through; }
+
+    .booking-confirm {
+      margin-top: 24px;
+      width: 100%;
+      background: var(--black);
+      color: #fff;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      padding: 16px;
+      border: none;
+      cursor: pointer;
+      display: none;
+      transition: opacity 0.15s;
+    }
+    .booking-confirm:hover { opacity: 0.8; }
+    .booking-confirm.visible { display: block; }
+
+    /* FOOTER */
+    footer {
+      background: #9B8CE8;
+      padding: 64px 56px 40px;
+      margin-top: 48px;
+    }
+
+    .footer-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+    }
+
+    .footer-contact h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: clamp(32px, 3.5vw, 52px);
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 16px;
+    }
+
+    .footer-contact p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--black);
+      line-height: 1.7;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 48px;
+      justify-self: end;
+      text-align: right;
+    }
+
+    .footer-link-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-link-group a {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      line-height: 1.6;
+      transition: opacity 0.15s;
+    }
+
+    .footer-link-group a:hover {
+      opacity: 1;
+      color: #C8E600;
+    }
+
+    .footer-bottom {
+      max-width: 1400px;
+      margin: 56px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .footer-bottom p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--black);
+      opacity: 0.7;
+    }
+
+    /* HAMBURGER */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+
+    /* TABLET — iPad (≤1024px) */
+    @media (max-width: 1024px) {
+      nav {
+        padding: 0 32px;
+      }
+
+      .nav-links {
+        gap: 24px;
+      }
+
+      .nav-links a {
+        font-size: 14px;
+      }
+
+      .hero,
+      .section-alt {
+        gap: 40px;
+        padding: 64px 32px;
+      }
+
+      .pricing-card {
+        padding: 36px;
+      }
+    }
+
+    /* MOBILE (≤767px) */
+    @media (max-width: 767px) {
+      nav {
+        padding: 0 20px;
+        height: 64px;
+        position: relative;
+      }
+
+      .logo {
+        height: 38px;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--black);
+        padding: 8px 0 16px;
+        z-index: 100;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+      }
+
+      .nav-links a {
+        display: block;
+        padding: 12px 20px;
+        font-size: 16px;
+      }
+
+      .hero,
+      .section-alt {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 48px 20px;
+      }
+
+      /* on mobile, section-alt image goes below text */
+      .section-alt {
+        direction: ltr;
+      }
+      .section-alt .section-image-wrap {
+        order: -1;
+      }
+
+      .hero-text h1 {
+        font-size: 36px;
+      }
+
+      .section-text h2,
+      .pricing h2 {
+        font-size: 32px;
+      }
+
+      .pricing {
+        padding: 48px 20px 64px;
+      }
+
+      .pricing-cards,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        padding: 48px 20px 32px;
+        margin-top: 32px;
+      }
+
+      .footer-contact h3 {
+        font-size: 32px;
+      }
+
+      .footer-link-group a {
+        font-size: 18px;
+      }
+
+      .pricing-card {
+        padding: 32px;
+      }
+
+      .pricing-card h3 {
+        font-size: 36px;
+      }
+
+      .pricing-price strong {
+        font-size: 42px;
+      }
+
+      .hero-text p,
+      .section-text p {
+        font-size: 16px;
+        max-width: 100%;
+      }
+
+      .btn {
+        font-size: 16px;
+        padding: 14px 28px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-self: start;
+        text-align: left;
+      }
+
+      .booking-card {
+        padding: 24px 16px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-text h1 {
+        font-size: 28px;
+      }
+
+      .pricing-card h3 {
+        font-size: 28px;
+      }
+
+      .pricing-price strong {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html"><img src="assets/logoskrift-hg.png" alt="Stoppestedet logo" class="logo" /></a>
+    <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="verkstedet.html">Verkstedet</a></li>
+      <li><a href="verktoysliste.html">Verktøyliste</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="kalender.html">Kalender</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+
+      <li><a href="#" class="active">Priser</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Har du en idé, men mangler verktøyene?</h1>
+      <p>Vi har fjernet barrierene slik at du kan fokusere på prosessen. Her får du tilgang til profesjonelle fasiliteter og et unikt fellesskap av frivillige fagfolk. Enten du trenger en arbeidsplass for en kveld eller et fast sted å utvikle prosjektet ditt, er Stoppestedet plassen hvor du kan stoppe opp og faktisk gjøre noe.</p>
+      <div class="hero-buttons">
+        <a href="#priser" class="btn btn-orange">Bli medlem</a>
+        <a href="#" class="btn btn-black" onclick="openBooking(); return false;">Bestill time</a>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <img src="assets/front.webp" alt="Folk som arbeider på verkstedet" />
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="section-image-wrap">
+      <img src="assets/front2.webp" alt="Folk på kurs og arrangement" />
+    </div>
+    <div class="section-text">
+      <h2>Kurs, arrangementer og konkurranser</h2>
+      <p>Dette er ikke bare et sted du kommer for å lage noe, det er et sted du oppdager hva du faktisk har lyst til å gjøre.</p>
+      <p>Du kan teste, feile, lære litt underveis og møte folk som er i samme prosess som deg.</p>
+      <div style="padding-bottom: 48px;">
+        <a href="#" class="btn btn-orange">Les mer</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="slideshow">
+    <div class="slideshow-track-wrap">
+      <div class="slideshow-row">
+        <button class="slide-btn" onclick="slide(-1, this)" aria-label="Forrige">
+          <svg width="40" height="22" viewBox="0 0 40 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="40" y1="11" x2="2" y2="11" stroke="#0d0d2e" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M11 2L2 11L11 20" stroke="#0d0d2e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="slideshow-main">
+          <img src="assets/bilde3.webp" class="active" alt="Bilde 1" />
+          <img src="assets/bilde4.webp" alt="Bilde 2" />
+          <img src="assets/bilde6.webp" alt="Bilde 3" />
+          <img src="assets/bilde7.webp" alt="Bilde 4" />
+          <img src="assets/bilde8.webp" alt="Bilde 5" />
+        </div>
+        <button class="slide-btn" onclick="slide(1, this)" aria-label="Neste">
+          <svg width="40" height="22" viewBox="0 0 40 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="0" y1="11" x2="38" y2="11" stroke="#0d0d2e" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M29 2L38 11L29 20" stroke="#0d0d2e" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+      <div class="slideshow-thumbs">
+        <img src="assets/bilde3.webp" class="active" onclick="goTo(0)" alt="Thumb 1" />
+        <img src="assets/bilde4.webp" onclick="goTo(1)" alt="Thumb 2" />
+        <img src="assets/bilde6.webp" onclick="goTo(2)" alt="Thumb 3" />
+        <img src="assets/bilde7.webp" onclick="goTo(3)" alt="Thumb 4" />
+        <img src="assets/bilde8.webp" onclick="goTo(4)" alt="Thumb 5" />
+        <img src="assets/bilde3.webp" onclick="goTo(0)" alt="Thumb 1b" />
+        <img src="assets/bilde4.webp" onclick="goTo(1)" alt="Thumb 2b" />
+        <img src="assets/bilde6.webp" onclick="goTo(2)" alt="Thumb 3b" />
+        <img src="assets/bilde7.webp" onclick="goTo(3)" alt="Thumb 4b" />
+        <img src="assets/bilde8.webp" onclick="goTo(4)" alt="Thumb 5b" />
+      </div>
+    </div>
+  </div>
+
+  <section class="pricing" id="priser">
+    <h2>Klar for å sette i gang?</h2>
+    <div class="pricing-cards">
+
+      <div class="pricing-card green">
+        <h3>Medlemskap</h3>
+        <div>
+          <div class="pricing-price">
+            <strong>120,-</strong>
+            <span>per måned</span>
+          </div>
+          <p class="pricing-subtitle">Kom og gå når du vil</p>
+        </div>
+        <ul class="pricing-list">
+          <li>Ingen binding</li>
+          <li>Ingen ekstra kostand for bruk av verktøy</li>
+          <li>10% rabatt for PTtimer</li>
+          <li>Tilgang utenom bemannet åpningstid</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 24px; padding-bottom: 48px;">
+          <a href="#" class="btn btn-orange" onclick="document.getElementById('modal-medlem').style.display='flex'; return false;">Bli medlem</a>
+        </div>
+      </div>
+
+      <div class="pricing-card outline">
+        <h3>Prøvetime</h3>
+        <div>
+          <div class="pricing-price">
+            <strong>50,-</strong>
+            <span>per time</span>
+          </div>
+          <p class="pricing-subtitle">Prøv det ut først</p>
+        </div>
+        <div class="dropin-intro-offer">
+          <span class="dropin-intro-badge">Introduksjon</span>
+          <p>De 3 første gangene koster kun 50,- per time.</p>
+          <p>Etter dette varierer prisen ut fra hvilket kurs eller tilbud du velger.</p>
+        </div>
+        <div style="margin-top: auto; padding-top: 24px; padding-bottom: 48px;">
+          <a href="#" class="btn btn-orange" onclick="openBooking(); return false;">Bestill time</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <h3>Kontakt oss</h3>
+        <p>Stoppestedet@gmail.com<br>+47 123 45 678</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <a href="#">Om oss</a>
+          <a href="#">Brukervilkår</a>
+          <a href="#">personvernererklæring</a>
+          <a href="#">Cookie-erklæring</a>
+        </div>
+        <div class="footer-link-group">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Linkedin</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Stoppestedet As. All rights served</p>
+    </div>
+  </footer>
+
+  <!-- BOOKING MODAL -->
+  <div class="booking-overlay" id="modal-dropin">
+    <div class="booking-card">
+      <button class="booking-close" onclick="document.getElementById('modal-dropin').style.display='none'">&times;</button>
+      <img src="assets/logoskrift-gg.png" alt="Stoppestedet" class="booking-logo" />
+
+      <p class="booking-label">Velg lengde:</p>
+      <select class="booking-select" id="booking-duration">
+        <option>1 time</option>
+        <option>2 timer</option>
+        <option>3 timer</option>
+        <option>4 timer</option>
+      </select>
+
+      <button class="booking-rabatt" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">
+        + Bruk Rabattkode / Gavekortkode
+      </button>
+      <div class="booking-rabatt-input">
+        <input type="text" placeholder="Skriv inn kode..." />
+      </div>
+
+      <div class="cal-header">
+        <button class="cal-nav" id="cal-prev">
+          <svg width="28" height="16" viewBox="0 0 28 16" fill="none"><line x1="28" y1="8" x2="2" y2="8" stroke="#0d0d2e" stroke-width="2.5" stroke-linecap="round"/><path d="M8 2L2 8L8 14" stroke="#0d0d2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <h3 id="cal-title"></h3>
+        <button class="cal-nav" id="cal-next">
+          <svg width="28" height="16" viewBox="0 0 28 16" fill="none"><line x1="0" y1="8" x2="26" y2="8" stroke="#0d0d2e" stroke-width="2.5" stroke-linecap="round"/><path d="M20 2L26 8L20 14" stroke="#0d0d2e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+      <div class="cal-grid" id="cal-grid"></div>
+
+      <div class="timeslots" id="timeslots" style="display:none;">
+        <p class="timeslots-label">Velg tidspunkt:</p>
+        <div class="timeslots-grid" id="timeslots-grid"></div>
+      </div>
+
+      <button class="booking-confirm" id="booking-confirm">Bekreft booking</button>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modal-medlem" onclick="if(event.target===this)this.style.display='none'">
+    <div class="modal">
+      <button class="modal-close" onclick="document.getElementById('modal-medlem').style.display='none'">&times;</button>
+
+      <div class="modal-left">
+        <img src="assets/logoskrift-gg.png" alt="Stoppestedet" class="modal-left-logo" />
+        <div class="modal-left-card">
+          <h2>Medlem</h2>
+          <p class="modal-subtitle">Kos deg på Stoppestedet som medlem!</p>
+          <ul class="modal-list">
+            <li>Ingen binding</li>
+            <li>Ingen ekstra kostand for bruk av verktøy</li>
+            <li>10% rabatt for PTtimer</li>
+            <li>Tilgang utenom bemannet åpningstid</li>
+          </ul>
+          <hr class="modal-divider" />
+          <div class="modal-pricing-row">
+            <span>Første betaling</span>
+            <span>120 kr</span>
+          </div>
+          <div class="modal-pricing-row small">
+            <span>Deretter</span>
+            <span>120 kr/månded</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-right">
+        <h3>Logg inn for å fortsette</h3>
+        <p>For å tegne medlemskap må du ha en konto. Dette gir deg enklere oversikt over dine medlemskap og lar deg logge inn slik at du får eventuelle medlemsrabatter ved kjøp.</p>
+        <img src="assets/logg-inn-med-vipps.webp" alt="Logg inn med Vipps" class="modal-vipps" />
+        <a href="#" class="modal-personvern">Personvern</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slideshow-main img');
+    const allThumbs = document.querySelectorAll('.slideshow-thumbs img');
+    const total = slides.length;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      allThumbs[current].classList.remove('active');
+      allThumbs[current + total].classList.remove('active');
+      current = (n + total) % total;
+      slides[current].classList.add('active');
+      allThumbs[current].classList.add('active');
+      allThumbs[current + total].classList.add('active');
+    }
+
+    // BOOKING
+    const norwegianMonths = ['Januar','Februar','Mars','April','Mai','Juni','Juli','August','September','Oktober','November','Desember'];
+    const norwegianDays = ['man','tir','ons','tor','fre','lør','søn'];
+    const slots = ['07:00','08:00','09:00','10:00','11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','19:00','20:00'];
+    const unavailable = ['08:00','11:00','15:00','18:00'];
+
+    let calYear, calMonth, selectedDate = null, selectedSlot = null;
+
+    function openBooking() {
+      const now = new Date();
+      calYear = now.getFullYear();
+      calMonth = now.getMonth();
+      selectedDate = null; selectedSlot = null;
+      document.getElementById('timeslots').style.display = 'none';
+      document.getElementById('booking-confirm').classList.remove('visible');
+      renderCal();
+      document.getElementById('modal-dropin').style.display = 'flex';
+    }
+
+    function renderCal() {
+      const title = document.getElementById('cal-title');
+      const grid = document.getElementById('cal-grid');
+      title.textContent = norwegianMonths[calMonth] + ' ' + calYear;
+      grid.innerHTML = '';
+
+      norwegianDays.forEach(d => {
+        const el = document.createElement('div');
+        el.className = 'cal-dow';
+        el.textContent = d;
+        grid.appendChild(el);
+      });
+
+      const first = new Date(calYear, calMonth, 1);
+      // Monday-based: 0=Mon … 6=Sun
+      let startPad = (first.getDay() + 6) % 7;
+      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      for (let i = 0; i < startPad; i++) {
+        const prev = new Date(calYear, calMonth, -startPad + i + 1);
+        const btn = document.createElement('button');
+        btn.className = 'cal-day inactive';
+        btn.textContent = prev.getDate();
+        grid.appendChild(btn);
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const date = new Date(calYear, calMonth, d);
+        const btn = document.createElement('button');
+        btn.textContent = d;
+        btn.className = 'cal-day';
+        if (date < today) btn.classList.add('inactive');
+        if (date.toDateString() === today.toDateString()) btn.classList.add('today');
+        if (selectedDate && date.toDateString() === selectedDate.toDateString()) btn.classList.add('selected');
+        if (!btn.classList.contains('inactive')) {
+          btn.onclick = () => selectDate(date);
+        }
+        grid.appendChild(btn);
+      }
+
+      // fill remaining
+      const total = startPad + daysInMonth;
+      const remainder = total % 7 === 0 ? 0 : 7 - (total % 7);
+      for (let d = 1; d <= remainder; d++) {
+        const btn = document.createElement('button');
+        btn.className = 'cal-day inactive';
+        btn.textContent = d;
+        grid.appendChild(btn);
+      }
+    }
+
+    function selectDate(date) {
+      selectedDate = date;
+      selectedSlot = null;
+      renderCal();
+      renderSlots();
+      document.getElementById('timeslots').style.display = 'block';
+      document.getElementById('booking-confirm').classList.remove('visible');
+    }
+
+    function renderSlots() {
+      const grid = document.getElementById('timeslots-grid');
+      grid.innerHTML = '';
+      slots.forEach(s => {
+        const btn = document.createElement('button');
+        btn.textContent = s;
+        btn.className = 'timeslot' + (unavailable.includes(s) ? ' unavailable' : '');
+        if (selectedSlot === s) btn.classList.add('selected');
+        if (!unavailable.includes(s)) {
+          btn.onclick = () => { selectedSlot = s; renderSlots(); document.getElementById('booking-confirm').classList.add('visible'); };
+        }
+        grid.appendChild(btn);
+      });
+    }
+
+    document.getElementById('cal-prev').onclick = () => {
+      calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCal();
+    };
+    document.getElementById('cal-next').onclick = () => {
+      calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCal();
+    };
+
+    function slide(dir, btn) {
+      goTo(current + dir);
+      btn.classList.add('clicked');
+      setTimeout(() => btn.classList.remove('clicked'), 150);
+    }
+  </script>
+</body>
+</html>

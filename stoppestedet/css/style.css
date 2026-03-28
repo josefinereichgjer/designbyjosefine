@@ -734,7 +734,25 @@ body::before {
 
 /* ── ARRANGEMENTER ──────────────────────────────────────────────────────── */
 #arrangementer {
-    background: #0c0c0c;
+    background: #ffffff;
+    color: #0f0f0f;
+}
+
+#arrangementer h2 { color: #0f0f0f; }
+
+#arrangementer .section-intro { color: #555; }
+
+#arrangementer .evt-category { color: var(--green); }
+
+#arrangementer .evt-title { color: #0f0f0f; }
+
+#arrangementer .evt-time { color: #666; }
+
+#arrangementer .evt-location { color: #888; }
+
+#arrangementer .evt-card:hover .evt-date {
+    background: var(--green);
+    color: #000;
 }
 
 .evt-grid {
@@ -889,13 +907,13 @@ h2::before {
     content: '';
     display: block;
     flex-shrink: 0;
-    width: 28px;
-    height: 28px;
+    width: 36px;
+    height: 36px;
     background-image: url('../icons/grafisk_element.png');
     background-size: contain;
     background-repeat: no-repeat;
-    opacity: 0.5;
-    margin-top: 4px;
+    opacity: 0.85;
+    margin-top: 2px;
 }
 
 /* --- CARDS --- */
