@@ -455,21 +455,23 @@
 
     .modal-left {
       background: #C8E600;
-      padding: 0 0 48px 0;
+      padding: 0;
       display: flex;
       flex-direction: column;
     }
 
     .modal-left-logo-bar {
       background: #fff;
-      padding: 16px 40px;
-      margin-bottom: 32px;
+      padding: 16px 32px;
+      margin-bottom: 0;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .modal-left-logo {
       height: auto;
       width: auto;
-      max-height: 56px;
+      max-height: 52px;
       max-width: 200px;
       object-fit: contain;
       display: block;
@@ -477,7 +479,8 @@
 
     .modal-left-card {
       background: #fff;
-      padding: 32px;
+      padding: 28px 32px 32px;
+      margin: 24px 24px 32px;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -518,7 +521,7 @@
     }
 
     .modal-list li::before {
-      content: '▪';
+      content: '–';
       position: absolute;
       left: 0;
     }
@@ -533,12 +536,14 @@
       display: flex;
       justify-content: space-between;
       align-items: baseline;
+      gap: 12px;
     }
 
     .modal-pricing-row span:first-child {
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 15px;
       color: var(--black);
+      white-space: nowrap;
     }
 
     .modal-pricing-row span:last-child {
@@ -546,6 +551,7 @@
       font-weight: 700;
       font-size: 20px;
       color: var(--black);
+      white-space: nowrap;
     }
 
     .modal-pricing-row.small span:last-child {
@@ -594,7 +600,8 @@
 
     @media (max-width: 767px) {
       .modal { grid-template-columns: 1fr; }
-      .modal-left { padding: 32px 24px; }
+      .modal-left { padding: 0; }
+      .modal-left-card { margin: 16px 16px 24px; }
       .modal-right { padding: 32px 24px; }
     }
 
@@ -1448,7 +1455,7 @@
         <div class="modal-left-logo-bar">
           <img src="assets/logoskrift-gg.png" alt="Stoppestedet" class="modal-left-logo" />
         </div>
-        <div class="modal-left-card" style="margin: 0 40px">
+        <div class="modal-left-card">
           <h2>Medlem</h2>
           <p class="modal-subtitle">Kos deg på Stoppestedet som medlem!</p>
           <ul class="modal-list">

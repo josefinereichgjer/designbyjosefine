@@ -150,14 +150,14 @@
         if (s.links) {
           s.links.forEach(lnk => {
             inner += lnk.plain
-              ? `<a class="accordion__link" href="${lnk.src}" target="_blank" rel="noopener">↗ ${lnk.label}</a>`
-              : `<a class="btn-pdf btn-pdf--green" href="${lnk.src}" target="_blank" rel="noopener" style="margin-top:12px;display:inline-block">↗ ${lnk.label}</a>`;
+              ? `<a class="accordion__link" href="${lnk.src}" target="_blank" rel="noopener">↗&#xFE0E; ${lnk.label}</a>`
+              : `<a class="btn-pdf btn-pdf--green" href="${lnk.src}" target="_blank" rel="noopener" style="margin-top:12px;display:inline-block">↗&#xFE0E; ${lnk.label}</a>`;
           });
         }
         if (s.link) {
           inner += s.link.plain
-            ? `<a class="accordion__link" href="${s.link.src}" target="_blank" rel="noopener">↗ ${s.link.label}</a>`
-            : `<a class="btn-pdf btn-pdf--green" href="${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗ ${s.link.label}</a>`;
+            ? `<a class="accordion__link" href="${s.link.src}" target="_blank" rel="noopener">↗&#xFE0E; ${s.link.label}</a>`
+            : `<a class="btn-pdf btn-pdf--green" href="${s.link.src}" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗&#xFE0E; ${s.link.label}</a>`;
         }
         return `
           <div class="accordion__item">
@@ -216,7 +216,7 @@
                   <div class="gallery-expandable__cover">${coverFig}</div>
                   <div class="gallery-expandable__rest">${restFigs}</div>
                 </div>
-                <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
+                <button class="gallery-expandable__close-btn" aria-label="Lukk">↑&#xFE0E; Lukk</button>
               </div>`;
             }
             if (item && item.type === "row") {
@@ -236,7 +236,7 @@
               ${project.intro ? project.intro.split("\n\n").map(p => `<p class="project-intro${project.introBorder ? " project-intro--border" : ""}">${p.replace(/\n/g, `<br><span class="intro-space"> </span>`)}</p>`).join("") : ""}
               ${(project.introColumns || []).length ? `<div class="intro-cols">${project.introColumns.map(c => `<div class="intro-col"><strong class="intro-col__label">${c.label}</strong><p class="intro-col__body">${c.body}</p></div>`).join("")}</div>` : ""}
               <div class="header-btns">
-                ${project.link ? `<a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗ ${project.link.label}</a>` : ""}
+                ${project.link ? `<a class="btn-pdf btn-pdf--black" href="${project.link.src}" target="_blank" rel="noopener">↗&#xFE0E; ${project.link.label}</a>` : ""}
                 ${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? `<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
               </div>
             </div>
@@ -254,7 +254,7 @@
             ${!project.gallery?.length ? `<div class="project-meta">
               ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
               ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
-              ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
+              ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗&#xFE0E; ${project.finalPdf.label}</a>` : ""}
               ${accordionHTML && (!(project.sections || []).length || project.showAccordion) ? `<button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>` : ""}
             </div>` : ""}
           </div>
@@ -263,13 +263,13 @@
             <div class="project-layout__info" id="projectInfo">
               <div class="project-layout__info-inner">
                 <div class="accordion" id="accordion">${accordionHTML}</div>
-                ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--mobile-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
+                ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green btn-pdf--mobile-only" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗&#xFE0E; ${project.finalPdf.label}</a>` : ""}
                 ${project.pdf?.note ? `
                 <div class="pdf-note" style="margin-top:16px">
                   <strong class="pdf-note__heading">${project.pdf.note.heading}</strong>
                   <p class="pdf-note__body">${project.pdf.note.body}</p>
-                  ${project.pdf ? `<a class="btn-pdf btn-pdf--text" href="${project.pdf.src}" target="_blank" rel="noopener">↗ ${project.pdf.label}</a>` : ""}
-                </div>` : project.pdf ? `<a class="btn-pdf btn-pdf--text" href="${project.pdf.src}" target="_blank" rel="noopener">↗ ${project.pdf.label}</a>` : ""}
+                  ${project.pdf ? `<a class="btn-pdf btn-pdf--text" href="${project.pdf.src}" target="_blank" rel="noopener">↗&#xFE0E; ${project.pdf.label}</a>` : ""}
+                </div>` : project.pdf ? `<a class="btn-pdf btn-pdf--text" href="${project.pdf.src}" target="_blank" rel="noopener">↗&#xFE0E; ${project.pdf.label}</a>` : ""}
               </div>
             </div>
           </div>` : ""}
@@ -278,7 +278,7 @@
         ${project.gallery?.length ? `<div class="project-meta" style="margin-top:var(--gap)">
           ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
           ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
-          ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ ${project.finalPdf.label}</a>` : ""}
+          ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗&#xFE0E; ${project.finalPdf.label}</a>` : ""}
         </div>` : ""}
         ${(project.scrollGalleries || []).map(g => `
           <div class="scroll-gallery">

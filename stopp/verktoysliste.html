@@ -275,9 +275,13 @@
       .nav-links li { width: 100%; }
       .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
       .page { padding: 40px 16px 64px; }
-      .table-wrap { padding: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .tool-table { min-width: 360px; }
-      .tool-table th, .tool-table tbody td { padding: 10px 10px; font-size: 13px; }
+      .table-wrap { padding: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+      .tool-table { min-width: 0; width: 100%; table-layout: fixed; }
+      .tool-table th, .tool-table tbody td { padding: 10px 8px; font-size: 13px; word-break: break-word; }
+      .tool-table th:nth-child(1), .tool-table td:nth-child(1) { width: 28%; }
+      .tool-table th:nth-child(2), .tool-table td:nth-child(2) { width: 32%; }
+      .tool-table th:nth-child(3), .tool-table td:nth-child(3) { width: 24%; }
+      .tool-table th:nth-child(4), .tool-table td:nth-child(4) { width: 16%; }
       /* Skjul Kategori (kol 2) og Produsent (kol 4) på mobil */
       .tool-table th:nth-child(2),
       .tool-table td:nth-child(2),
