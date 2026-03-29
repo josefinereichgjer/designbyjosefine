@@ -1071,6 +1071,125 @@
       }
     }
 
+    /* KURS MODAL */
+    .kurs-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 40px 24px 60px;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .kurs-overlay.open { display: block; }
+
+    .kurs-card {
+      background: #fff;
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .kurs-card__header {
+      background: var(--black);
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .kurs-card__logo {
+      height: 36px;
+      width: auto;
+    }
+
+    .kurs-card__close {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 28px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+      opacity: 0.7;
+      transition: opacity 0.15s;
+    }
+
+    .kurs-card__close:hover { opacity: 1; }
+
+    .kurs-card__body {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .kurs-section {
+      padding: 32px 0;
+      border-bottom: 2px solid #f0f0f0;
+    }
+
+    .kurs-section:first-child { padding-top: 0; }
+    .kurs-section:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .kurs-section__tag {
+      display: inline-block;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+    }
+
+    .kurs-section__tag--green { background: #C8E600; color: var(--black); }
+    .kurs-section__tag--orange { background: var(--orange); color: #fff; }
+    .kurs-section__tag--purple { background: #9B8CE8; color: #fff; }
+
+    .kurs-section h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: 28px;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .kurs-section p {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .kurs-section p:last-of-type { margin-bottom: 0; }
+
+    .kurs-section__link {
+      display: inline-block;
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--black);
+      text-decoration: none;
+      border-bottom: 2px solid #C8E600;
+      padding-bottom: 2px;
+      margin-top: 16px;
+      transition: border-color 0.15s;
+    }
+
+    .kurs-section__link:hover { border-color: var(--orange); }
+
+    @media (max-width: 767px) {
+      .kurs-overlay { padding: 20px 12px 48px; }
+      .kurs-card__header { padding: 20px 24px; }
+      .kurs-card__body { padding: 32px 24px; }
+      .kurs-section h3 { font-size: 22px; }
+    }
+
     @media (max-width: 400px) {
       .hero-text h1 {
         font-size: 28px;
@@ -1127,7 +1246,7 @@
       <p>Dette er ikke bare et sted du kommer for å lage noe, det er et sted du oppdager hva du faktisk har lyst til å gjøre.</p>
       <p>Du kan teste, feile, lære litt underveis og møte folk som er i samme prosess som deg.</p>
       <div style="padding-bottom: 48px;">
-        <a href="#" class="btn btn-orange">Les mer</a>
+        <a href="#" class="btn btn-orange" onclick="document.getElementById('modal-kurs').classList.add('open'); return false;">Les mer</a>
       </div>
     </div>
   </section>
@@ -1279,6 +1398,41 @@
       </div>
 
       <button class="booking-confirm" id="booking-confirm">Bekreft booking</button>
+    </div>
+  </div>
+
+  <!-- KURS MODAL -->
+  <div class="kurs-overlay" id="modal-kurs" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="kurs-card">
+      <div class="kurs-card__header">
+        <img src="assets/logoskrift-hg.png" alt="Stoppestedet" class="kurs-card__logo" />
+        <button class="kurs-card__close" onclick="document.getElementById('modal-kurs').classList.remove('open')">&times;</button>
+      </div>
+      <div class="kurs-card__body">
+
+        <div class="kurs-section">
+          <span class="kurs-section__tag kurs-section__tag--green">Kurs</span>
+          <h3>Lær noe nytt</h3>
+          <p>Vi tilbyr jevnlige kurs innen håndverk, design og teknologi — ledet av fagfolk med lidenskap for å dele kunnskap. Kursene passer for alle nivåer, enten du er nybegynner eller vil fordype deg.</p>
+          <p>Kursene holdes i våre egne lokaler og krever ingen forkunnskaper med mindre annet er spesifisert.</p>
+          <a href="kalender.html" class="kurs-section__link">Se kommende kurs →</a>
+        </div>
+
+        <div class="kurs-section">
+          <span class="kurs-section__tag kurs-section__tag--orange">Arrangementer</span>
+          <h3>Møt fellesskapet</h3>
+          <p>Fra åpne verkstedsaftener til temakvelder og utstillinger — vi skaper arenaer der du kan vise frem det du lager, bli inspirert av andre, og bli en del av miljøet på Stoppestedet.</p>
+          <a href="kalender.html" class="kurs-section__link">Se alle arrangementer →</a>
+        </div>
+
+        <div class="kurs-section">
+          <span class="kurs-section__tag kurs-section__tag--purple">Konkurranser</span>
+          <h3>Test deg selv</h3>
+          <p>Vi arrangerer åpne konkurranser der du kan utfordre deg selv og måle kreftene med andre. Alle kan delta — det handler om prosessen, ikke bare resultatet.</p>
+          <a href="kalender.html" class="kurs-section__link">Se aktive konkurranser →</a>
+        </div>
+
+      </div>
     </div>
   </div>
 
