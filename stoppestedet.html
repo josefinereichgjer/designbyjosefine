@@ -7,7 +7,7 @@
   <title>Stoppestedet — DesignbyJosefine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.webp">
   <style>
@@ -26,8 +26,9 @@
     .ps .ps-color__n,
     .ps .ps-color__h,
     .ps .ps-v1palette + p,
-    .ps .ps-typespec__fl { font-family: 'Space Mono', monospace; }
-    .ps { max-width: 720px; padding-bottom: 100px; }
+    .ps .ps-typespec__fl { font-family: 'Poppins', sans-serif; }
+    .ps { max-width: 100%; padding-bottom: 100px; }
+    .ps-concept, .ps-process, footer { max-width: 1100px; margin-left: auto; margin-right: auto; }
 
     /* ─── 1. RESULT ───────────────────────────────────────────── */
     .ps-result {
@@ -58,7 +59,7 @@
       bottom: 20px; right: 20px;
       display: inline-flex; align-items: center; gap: 8px;
       background: #E84E1B; color: #fff;
-      font-family: 'Space Mono', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 10px; font-weight: 700;
       letter-spacing: 2px; text-transform: uppercase;
       padding: 12px 20px; text-decoration: none;
@@ -95,7 +96,7 @@
     }
     .ps-intro__left { min-width: 0; }
     .ps-intro__kicker {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 9px; letter-spacing: 4px;
       text-transform: uppercase; color: #aaa;
       display: block; margin-bottom: 10px;
@@ -111,7 +112,7 @@
     }
     .ps-intro__link {
       display: inline-flex; align-items: center; gap: 6px;
-      font-family: 'Space Mono', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 9px; letter-spacing: 2px;
       text-transform: uppercase; color: #111;
       border: 1px solid #111; padding: 9px 16px;
@@ -123,28 +124,28 @@
 
     /* ─── 3. CONCEPT ──────────────────────────────────────────── */
     .ps-concept {
-      margin-top: 52px;
-      padding-bottom: 52px;
+      margin-top: 120px;
+      padding-bottom: 120px;
       border-bottom: 1px solid #e0e0e0;
     }
     .ps-label {
-      font-family: 'Space Mono', monospace;
-      font-size: 13px; letter-spacing: 2px;
-      text-transform: uppercase; color: #111;
+      font-family: 'Poppins', sans-serif;
+      font-size: 30px; letter-spacing: 0;
+      text-transform: none; color: #111;
       display: block; margin-bottom: 16px;
-      font-weight: 700;
+      font-weight: 400;
     }
     .ps-h {
-      font-size: clamp(16px, 2vw, 20px); font-weight: 500;
+      font-size: clamp(20px, 2.5vw, 26px); font-weight: 500;
       letter-spacing: -.01em; margin: 0 0 14px; line-height: 1.2;
     }
     .ps-p {
-      font-size: 14px; line-height: 1.85; color: #444;
-      max-width: 600px; margin: 0 0 12px;
+      font-size: 17px; line-height: 1.85; color: #444;
+      max-width: 900px; margin: 0 0 12px;
     }
     .ps-p:last-child { margin-bottom: 0; }
     .ps-pull {
-      margin: 20px 0; padding: 0 0 0 16px;
+      margin: 56px 0; padding: 0 0 0 16px;
       border-left: 2px solid #111;
     }
     .ps-pull p {
@@ -169,8 +170,8 @@
       flex: 1; display: flex; flex-direction: column;
       justify-content: flex-end; padding: 6px 8px;
     }
-    .ps-color__n { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 1px; text-transform: uppercase; opacity: .65; }
-    .ps-color__h { font-family: 'Space Mono', monospace; font-size: 8px; margin-top: 1px; }
+    .ps-color__n { font-family: 'Poppins', sans-serif; font-size: 7px; letter-spacing: 1px; text-transform: uppercase; opacity: .65; }
+    .ps-color__h { font-family: 'Poppins', sans-serif; font-size: 8px; margin-top: 1px; }
 
     /* Logo box */
     .ps-logobox {
@@ -186,7 +187,7 @@
     }
     .ps-typespec__row { display: block; }
     .ps-typespec__fl {
-      font-family: 'Space Mono', monospace; font-size: 8px;
+      font-family: 'Poppins', sans-serif; font-size: 8px;
       letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 4px;
     }
 
@@ -206,7 +207,7 @@
     }
     @media(max-width:480px) { .ps-process__imgs { grid-template-columns: 1fr 1fr; } }
     .ps-figcap {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 9px; letter-spacing: 2px;
       text-transform: uppercase; color: #aaa;
       margin-top: 8px;
@@ -217,7 +218,7 @@
     .ps-expand__body.is-open { display: block; }
     .ps-expand__btn {
       background: none; border: none; padding: 0;
-      font-family: 'Space Mono', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 9px; letter-spacing: 2px;
       text-transform: uppercase; color: #aaa;
       cursor: pointer; margin-top: 12px;
@@ -231,7 +232,7 @@
       font-size: 13px; margin-top: 20px;
     }
     .ps-compare th {
-      text-align: left; font-family: 'Space Mono', monospace;
+      text-align: left; font-family: 'Poppins', sans-serif;
       font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #888;
       padding: 10px 12px 10px 0; border-bottom: 1px solid #e0e0e0;
     }
@@ -242,7 +243,7 @@
     }
     .ps-compare td:not(:first-child) { padding-left: 14px; }
     .ps-compare td:first-child {
-      font-family: 'Space Mono', monospace; font-size: 9px;
+      font-family: 'Poppins', sans-serif; font-size: 9px;
       letter-spacing: 1px; color: #888; white-space: nowrap;
     }
     .ps-compare tr:last-child td { border-bottom: none; }
@@ -262,7 +263,7 @@
     @media(max-width:480px) { .ps-tech { grid-template-columns: 1fr 1fr; } }
     .ps-tech__item { display: block; }
     .ps-tech__label {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 8px; letter-spacing: 3px;
       text-transform: uppercase; color: #bbb;
       display: block; margin-bottom: 5px;
@@ -274,7 +275,7 @@
     /* PDF link */
     .ps-pdflink {
       display: inline-flex; align-items: center; gap: 7px;
-      font-family: 'Space Mono', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 9px; letter-spacing: 2px;
       text-transform: uppercase; color: #111;
       border: 1px solid #111; padding: 9px 16px;
@@ -282,6 +283,61 @@
       transition: background .12s, color .12s;
     }
     .ps-pdflink:hover { background: #111; color: #fff; opacity: 1; }
+
+    /* ─── LOGO DO'S & DON'TS ────────────────────────────── */
+    .ps-logo-dd { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
+    @media(max-width:560px) { .ps-logo-dd { grid-template-columns: 1fr; } }
+    .ps-logo-dd__col-label {
+      font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
+      margin-bottom: 10px; display: block;
+    }
+    .ps-logo-dd__col-label--do { color: #2a7a2a; }
+    .ps-logo-dd__col-label--dont { color: #c0392b; }
+    .ps-logo-dd__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .ps-logo-dd__grid--two { grid-template-columns: 1fr 1fr; }
+    .ps-logo-dd__img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
+
+    /* ─── DESIGN MANUAL ─────────────────────────────────── */
+    .ps-dm { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+    .ps-dm__row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    @media(max-width:560px) { .ps-dm__row { grid-template-columns: 1fr; } }
+    .ps-dm__block { padding: 22px 24px; background: #f8f8f8; }
+    .ps-dm__block--dark { background: #0a0a0a; }
+
+    /* Colour swatches */
+    .ps-dm__swatches { display: flex; height: 88px; gap: 0; margin-top: 14px; }
+    .ps-dm__swatch { flex: 1; padding: 7px 9px; display: flex; flex-direction: column; justify-content: flex-end; gap: 1px; }
+    .ps-dm__swatch span { font-family: 'Poppins', sans-serif; }
+    .ps-dm__swatch-name { font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; opacity: .65; }
+    .ps-dm__swatch-hex { font-size: 8px; }
+    .ps-dm__swatch-use { font-family: 'Poppins', sans-serif !important; font-size: 9px; opacity: .6; margin-top: 3px; line-height: 1.3; }
+    .ps-dm .ps-label { font-size: 20px; }
+
+    /* Type scale */
+    .ps-dm__type { margin-top: 14px; display: flex; flex-direction: column; }
+    .ps-dm__type-row {
+      display: grid; grid-template-columns: 130px 1fr;
+      gap: 16px; align-items: center;
+      padding: 13px 0; border-bottom: 1px solid #efefef;
+    }
+    .ps-dm__type-row:last-child { border-bottom: none; }
+    .ps-dm__type-label { font-family: 'Poppins', sans-serif; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 3px; }
+    .ps-dm__type-where { font-family: 'Poppins', sans-serif; font-size: 7px; letter-spacing: 1px; color: #ddd; display: block; }
+
+    /* Buttons */
+    .ps-dm__btns { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
+    .ps-dm__btn { border: none; cursor: default; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 24px; letter-spacing: .01em; }
+    .ps-dm__btn--orange { background: #E84E1B; color: #fff; }
+    .ps-dm__btn--black  { background: #0a0a0a; color: #fff; }
+    .ps-dm__btn--filter { background: none; color: #0a0a0a; border: 2.5px solid #9B8CE8; font-size: 13px; }
+
+    /* Badges */
+    .ps-dm__badges { display: flex; gap: 10px; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+    .ps-dm__badge { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; font-weight: 600; padding: 4px 12px; display: inline-block; }
+    .ps-dm__badge--orange { background: #E84E1B; color: #fff; }
+    .ps-dm__badge--lime   { background: #C8E600; color: #0a0a0a; }
+    .ps-dm__badge--purple { background: #9B8CE8; color: #fff; }
+    .ps-dm__badge--muted  { background: none; color: #aaa; font-size: 13px; }
 
     /* ─── PROCESS MODAL ──────────────────────────────────── */
     .ps-process-trigger {
@@ -313,7 +369,7 @@
     }
     .ps-modal__close {
       position: absolute; top: 16px; right: 20px;
-      font-family: 'Space Mono', monospace;
+      font-family: 'Poppins', sans-serif;
       font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
       color: #aaa; background: none; border: none;
       cursor: pointer; transition: color .12s;
@@ -323,10 +379,10 @@
 
     /* Poppins throughout modal, varied weights */
     .ps-modal, .ps-modal * { font-family: 'Poppins', sans-serif; }
-    .ps-modal .ps-h         { font-weight: 600; }
-    .ps-modal .ps-label     { font-weight: 700; letter-spacing: .02em; }
-    .ps-modal .ps-p         { font-weight: 300; }
-    .ps-modal .ps-pull p    { font-weight: 500; font-style: italic; }
+    .ps-modal .ps-h         { font-weight: 600; font-size: 15px; }
+    .ps-modal .ps-label     { font-weight: 700; letter-spacing: .02em; font-size: 13px; }
+    .ps-modal .ps-p         { font-weight: 300; font-size: 13px; line-height: 1.75; max-width: 100%; }
+    .ps-modal .ps-pull p    { font-weight: 500; font-style: italic; font-size: 13px; }
     .ps-modal .ps-figcap    { font-weight: 400; letter-spacing: .04em; }
     .ps-modal .ps-compare th { font-family: 'Poppins', sans-serif; font-weight: 600; letter-spacing: .02em; }
     .ps-modal .ps-compare td { font-family: 'Poppins', sans-serif; font-weight: 300; }
@@ -368,63 +424,165 @@
       <div class="ps-intro">
         <div class="ps-intro__left">
 <h1 class="ps-intro__title">Stoppestedet</h1>
-          <p class="ps-intro__desc">Stoppestedet er et åpent verksted og kreativt fellesskap i Oslo — for deg som har en idé, men mangler verktøyene eller plassen til å gjennomføre den. Gratis inngang, profesjonelle fasiliteter, kurs fra fagfolk og et miljø der det er lov å lære ved å feile. Terskelen for å skape noe skal være lav.</p>
-          <a class="ps-intro__link" href="./stopp/index.html" target="_blank" rel="noopener" style="margin-top:20px">Åpne ↗</a>
+          <p class="ps-intro__desc">Stoppestedet er et fiktivt, åpent verksted og kreativt fellesskap i Oslo. Det er utviklet for å senke terskelen for å skape — for mennesker med ideer, men uten tilgang til verktøy, plass eller erfaring. Gjennom prøvetimer, medlemskap, fasiliteter og kurs fra fagfolk legges det til rette for utforsking, læring og eksperimentering.</p>
+          <a class="btn-pdf btn-pdf--black" href="./stopp/index.html" target="_blank" rel="noopener" style="margin-top:20px">↗ Åpne nettsiden</a>
         </div>
         <img class="ps-intro__img" src="./stopp/assets/utenfor.webp" alt="Stoppestedet eksteriør" loading="eager">
       </div>
 
       <!-- ── 3. KONSEPT ────────────────────────────────────── -->
       <section class="ps-concept">
-        <span class="ps-label">Konsept</span>
-        <h2 class="ps-h">Et tilbud som føles åpent</h2>
-        <p class="ps-p">Designoppgaven handlet om å lage nettside og visuell identitet for et makerspace med et konkret tilbud: verksted, kurs, arrangementer og medlemskap. Utfordringen var å presentere disse tilbudene på en måte som faktisk inviterer — ikke bare informerer. Makerspaces kan lett fremstå tekniske og nisjepregede. Designmålet var å snu det: tydelig struktur, lav terskel i tone, og et visuelt uttrykk som sier «kom og prøv» like mye som «her er hva vi tilbyr».</p>
+        <span class="ps-label">Konsept — lav terskel for å skape</span>
+        <p class="ps-p">Oppgaven var å utvikle nettside og visuell identitet for et makerspace med verksted, kurs, arrangementer og medlemskap. Målet var ikke bare å formidle tilbudet, men å gjøre det tilgjengelig og inviterende.</p>
 
-        <div class="ps-pull">
-          <p>Lav terskel er ikke et designelement. Det er et designmål.</p>
+        <p class="ps-p">Makerspaces kan ofte oppleves som tekniske og lukkede. Her var ambisjonen å senke terskelen, både visuelt og språklig. Designet legger derfor vekt på tydelig struktur, enkel navigasjon og en tone som oppmuntrer til å delta.</p>
+
+        <div class="ps-pull" style="margin-top:16px">
+          <p>Lav terskel er ikke et virkemiddel i seg selv, men et overordnet prinsipp.</p>
         </div>
 
-        <p class="ps-p">Det endelige designet bruker oransje som primærfarge — en aktivitetsfarge med umiddelbar, åpen energi — og Syne som skrifttype: varm, bred, tilgjengelig. Hvit bakgrunn og høy kontrast holder uttrykket tydelig og lettlest.</p>
+        <!-- Design manual -->
+        <h2 class="ps-label" style="font-size:30px;margin-top:160px;margin-bottom:24px;font-weight:400;text-transform:none;letter-spacing:0">Designmanual</h2>
+        <div class="ps-dm">
 
-        <!-- Identity overview -->
-        <div class="ps-identity">
-          <!-- Colours -->
-          <div>
-            <span class="ps-label" style="margin-bottom:8px">Farger</span>
-            <div class="ps-colors">
-              <div class="ps-color" style="background:#0a0a0a;color:#fff">
-                <span class="ps-color__n">Svart</span>
-                <span class="ps-color__h">#0A0A0A</span>
+          <!-- Logo Do's & Don'ts -->
+          <div class="ps-dm__block" style="background:#f8f8f8">
+            <span class="ps-label" style="margin-bottom:20px;display:block">Logo — bruk og misbruk</span>
+            <div class="ps-logo-dd">
+
+              <div>
+                <span class="ps-logo-dd__col-label ps-logo-dd__col-label--do">✓ Gjør dette</span>
+                <div class="ps-logo-dd__grid">
+                  <img class="ps-logo-dd__img" src="./stopp/assets/do1@3x.webp" alt="Do 1">
+                  <img class="ps-logo-dd__img" src="./stopp/assets/do2@3x.webp" alt="Do 2">
+                  <img class="ps-logo-dd__img" src="./stopp/assets/do3@3x.webp" alt="Do 3">
+                  <img class="ps-logo-dd__img" src="./stopp/assets/do4@3x.webp" alt="Do 4">
+                </div>
               </div>
-              <div class="ps-color" style="background:#E84E1B;color:#fff">
-                <span class="ps-color__n">Orange</span>
-                <span class="ps-color__h">#E84E1B</span>
+
+              <div>
+                <span class="ps-logo-dd__col-label ps-logo-dd__col-label--dont">✕ Ikke gjør dette</span>
+                <div class="ps-logo-dd__grid ps-logo-dd__grid--two">
+                  <img class="ps-logo-dd__img" src="./stopp/assets/dont1@3x.webp" alt="Don't 1">
+                  <img class="ps-logo-dd__img" src="./stopp/assets/dont2@3x.webp" alt="Don't 2">
+                  <img class="ps-logo-dd__img" src="./stopp/assets/dont3@3x.webp" alt="Don't 3">
+                </div>
               </div>
-              <div class="ps-color" style="background:#b0a8dc;color:#000">
-                <span class="ps-color__n">Lavendel</span>
-                <span class="ps-color__h">#B0A8DC</span>
-              </div>
-              <div class="ps-color" style="background:#C8E600;color:#000">
-                <span class="ps-color__n">Lime</span>
-                <span class="ps-color__h">#C8E600</span>
-              </div>
+
             </div>
           </div>
-          <!-- Logo -->
-          <div class="ps-logobox">
-            <img src="./stopp/assets/logoskrift-hg.png" alt="Stoppestedet logo" loading="lazy">
+
+          <!-- Row 1: Colours -->
+          <div class="ps-dm__block">
+              <span class="ps-label" style="margin-bottom:0">Farger</span>
+              <div class="ps-dm__swatches">
+                <div class="ps-dm__swatch" style="background:#0a0a0a;color:#fff">
+                  <span class="ps-dm__swatch-name">Svart</span>
+                  <span class="ps-dm__swatch-hex">#0A0A0A</span>
+                  <span class="ps-dm__swatch-use">Nav, tekst, bakgrunn</span>
+                </div>
+                <div class="ps-dm__swatch" style="background:#E84E1B;color:#fff">
+                  <span class="ps-dm__swatch-name">Orange</span>
+                  <span class="ps-dm__swatch-hex">#E84E1B</span>
+                  <span class="ps-dm__swatch-use">CTA, aktiv nav, badges</span>
+                </div>
+                <div class="ps-dm__swatch" style="background:#C8E600;color:#0a0a0a">
+                  <span class="ps-dm__swatch-name">Lime</span>
+                  <span class="ps-dm__swatch-hex">#C8E600</span>
+                  <span class="ps-dm__swatch-use">Modal, booking, prislister</span>
+                </div>
+                <div class="ps-dm__swatch" style="background:#9B8CE8;color:#fff">
+                  <span class="ps-dm__swatch-name">Lilla</span>
+                  <span class="ps-dm__swatch-hex">#9B8CE8</span>
+                  <span class="ps-dm__swatch-use">Footer, filtre, tabeller</span>
+                </div>
+                <div class="ps-dm__swatch" style="background:#ffffff;color:#111;border:1px solid #e0e0e0">
+                  <span class="ps-dm__swatch-name">Hvit</span>
+                  <span class="ps-dm__swatch-hex">#FFFFFF</span>
+                  <span class="ps-dm__swatch-use">Bakgrunn, kort, modal</span>
+                </div>
+              </div>
           </div>
-          <!-- Type spec -->
-          <div class="ps-typespec" style="grid-column: 1 / -1">
-            <div class="ps-typespec__row">
-              <p class="ps-typespec__fl">Syne — Overskrifter</p>
-              <p style="font-family:'Syne',sans-serif;font-size:clamp(20px,3.5vw,34px);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0;color:#111">Bare dukk opp.</p>
-            </div>
-            <div class="ps-typespec__row" style="border-top:1px solid #f0f0f0;padding-top:12px">
-              <p class="ps-typespec__fl">IBM Plex Sans — Brødtekst</p>
-              <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.72;font-weight:300;color:#444;margin:0">Du trenger ikke melde deg på eller ha en grunn til å komme.</p>
+
+          <!-- Row 2: Typography -->
+          <div class="ps-dm__block">
+            <span class="ps-label">Skriftvalg</span>
+            <div class="ps-dm__type">
+
+              <div class="ps-dm__type-row">
+                <div>
+                  <span class="ps-dm__type-label">Syne 500</span>
+                  <span class="ps-dm__type-where">H1 — Herooverskrift</span>
+                </div>
+                <p style="font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1;margin:0;color:#111">Har du en idé?</p>
+              </div>
+
+              <div class="ps-dm__type-row">
+                <div>
+                  <span class="ps-dm__type-label">Syne 500</span>
+                  <span class="ps-dm__type-where">H2 — Seksjonstittler</span>
+                </div>
+                <p style="font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,34px);font-weight:500;letter-spacing:-.02em;line-height:1.1;margin:0;color:#111">Kurs, arrangementer og konkurranser</p>
+              </div>
+
+              <div class="ps-dm__type-row">
+                <div>
+                  <span class="ps-dm__type-label">Syne 700</span>
+                  <span class="ps-dm__type-where">Priser — Beløp</span>
+                </div>
+                <p style="font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1;margin:0;color:#111">120<span style="font-size:.45em;font-weight:400;opacity:.6"> kr/mnd</span></p>
+              </div>
+
+              <div class="ps-dm__type-row">
+                <div>
+                  <span class="ps-dm__type-label">IBM Plex Sans 600</span>
+                  <span class="ps-dm__type-where">Nav, knapper</span>
+                </div>
+                <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;font-weight:600;letter-spacing:.01em;margin:0;color:#111">Bli medlem · Verkstedet · Kalender</p>
+              </div>
+
+              <div class="ps-dm__type-row">
+                <div>
+                  <span class="ps-dm__type-label">IBM Plex Sans 400</span>
+                  <span class="ps-dm__type-where">Ingress, avsnitt</span>
+                </div>
+                <p style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;font-weight:400;line-height:1.65;margin:0;color:#1a1a1a">Du trenger ikke melde deg på eller ha en grunn til å komme.</p>
+              </div>
+
+              <div class="ps-dm__type-row">
+                <div>
+                  <span class="ps-dm__type-label">IBM Plex Sans 300</span>
+                  <span class="ps-dm__type-where">Lister, sekundærtekst</span>
+                </div>
+                <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;font-weight:300;line-height:1.65;margin:0;color:#444">Kursene passer for alle nivåer, enten du er nybegynner eller vil fordype deg.</p>
+              </div>
+
             </div>
           </div>
+
+          <!-- Row 3: Buttons + Badges -->
+          <div class="ps-dm__row">
+            <div class="ps-dm__block">
+              <span class="ps-label">Knapper</span>
+              <div class="ps-dm__btns">
+                <span class="ps-dm__btn ps-dm__btn--orange">Bli medlem</span>
+                <span class="ps-dm__btn ps-dm__btn--black">Les mer</span>
+                <span class="ps-dm__btn ps-dm__btn--filter">Alle</span>
+              </div>
+              <p style="font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#ccc;margin-top:10px">Orange = primær CTA · Svart = sekundær · Filter = lilla kant</p>
+            </div>
+            <div class="ps-dm__block">
+              <span class="ps-label">Merkelapper og statuser</span>
+              <div class="ps-dm__badges">
+                <span class="ps-dm__badge ps-dm__badge--orange">Kurs</span>
+                <span class="ps-dm__badge ps-dm__badge--lime">Arrangementer</span>
+                <span class="ps-dm__badge ps-dm__badge--purple">Konkurranser</span>
+                <span class="ps-dm__badge ps-dm__badge--muted">—</span>
+              </div>
+              <p style="font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#ccc;margin-top:10px">IBM Plex Sans 600 · brukt i kalender og verktøyliste</p>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -438,14 +596,6 @@
       <!-- ── 5. TECH ────────────────────────────────────────── -->
       <footer>
         <div class="ps-tech">
-          <div class="ps-tech__item">
-            <span class="ps-tech__label">Overskrift</span>
-            <span class="ps-tech__val">Syne<br>Bonjour Monde, 2017</span>
-          </div>
-          <div class="ps-tech__item">
-            <span class="ps-tech__label">Brødtekst</span>
-            <span class="ps-tech__val">IBM Plex Sans<br>IBM / Bold Monday, 2017</span>
-          </div>
           <div class="ps-tech__item">
             <span class="ps-tech__label">Plattform</span>
             <span class="ps-tech__val">HTML / CSS<br>JavaScript</span>

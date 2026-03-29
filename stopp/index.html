@@ -455,18 +455,24 @@
 
     .modal-left {
       background: #C8E600;
-      padding: 48px 40px;
+      padding: 0 0 48px 0;
       display: flex;
       flex-direction: column;
+    }
+
+    .modal-left-logo-bar {
+      background: #fff;
+      padding: 16px 40px;
+      margin-bottom: 32px;
     }
 
     .modal-left-logo {
       height: auto;
       width: auto;
-      max-height: 72px;
-      max-width: 220px;
+      max-height: 56px;
+      max-width: 200px;
       object-fit: contain;
-      margin-bottom: 32px;
+      display: block;
     }
 
     .modal-left-card {
@@ -1439,8 +1445,10 @@
       <button class="modal-close" onclick="document.getElementById('modal-medlem').style.display='none'">&times;</button>
 
       <div class="modal-left">
-        <img src="assets/logoskrift-gg.png" alt="Stoppestedet" class="modal-left-logo" />
-        <div class="modal-left-card">
+        <div class="modal-left-logo-bar">
+          <img src="assets/logoskrift-gg.png" alt="Stoppestedet" class="modal-left-logo" />
+        </div>
+        <div class="modal-left-card" style="margin: 0 40px">
           <h2>Medlem</h2>
           <p class="modal-subtitle">Kos deg på Stoppestedet som medlem!</p>
           <ul class="modal-list">
