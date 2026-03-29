@@ -1221,7 +1221,7 @@
       <li><a href="kalender.html">Kalender</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
 
-      <li><a href="#" class="active">Priser</a></li>
+      <li><a href="#priser" class="active">Priser</a></li>
     </ul>
   </nav>
 
@@ -1282,11 +1282,6 @@
         <img src="assets/bilde6.webp" onclick="goTo(2)" alt="Thumb 3" />
         <img src="assets/bilde7.webp" onclick="goTo(3)" alt="Thumb 4" />
         <img src="assets/bilde8.webp" onclick="goTo(4)" alt="Thumb 5" />
-        <img src="assets/bilde3.webp" onclick="goTo(0)" alt="Thumb 1b" />
-        <img src="assets/bilde4.webp" onclick="goTo(1)" alt="Thumb 2b" />
-        <img src="assets/bilde6.webp" onclick="goTo(2)" alt="Thumb 3b" />
-        <img src="assets/bilde7.webp" onclick="goTo(3)" alt="Thumb 4b" />
-        <img src="assets/bilde8.webp" onclick="goTo(4)" alt="Thumb 5b" />
       </div>
     </div>
   </div>
@@ -1306,7 +1301,7 @@
         </div>
         <ul class="pricing-list">
           <li>Ingen binding</li>
-          <li>Ingen ekstra kostand for bruk av verktøy</li>
+          <li>Ingen ekstra kostnad for bruk av verktøy</li>
           <li>10% rabatt for PTtimer</li>
           <li>Tilgang utenom bemannet åpningstid</li>
         </ul>
@@ -1358,7 +1353,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Stoppestedet As. All rights served</p>
+      <p>© 2026 Stoppestedet As. All rights reserved</p>
     </div>
   </footer>
 
@@ -1450,7 +1445,7 @@
           <p class="modal-subtitle">Kos deg på Stoppestedet som medlem!</p>
           <ul class="modal-list">
             <li>Ingen binding</li>
-            <li>Ingen ekstra kostand for bruk av verktøy</li>
+            <li>Ingen ekstra kostnad for bruk av verktøy</li>
             <li>10% rabatt for PTtimer</li>
             <li>Tilgang utenom bemannet åpningstid</li>
           </ul>
@@ -1461,7 +1456,7 @@
           </div>
           <div class="modal-pricing-row small">
             <span>Deretter</span>
-            <span>120 kr/månded</span>
+            <span>120 kr/måneden</span>
           </div>
         </div>
       </div>
@@ -1484,11 +1479,9 @@
     function goTo(n) {
       slides[current].classList.remove('active');
       allThumbs[current].classList.remove('active');
-      allThumbs[current + total].classList.remove('active');
       current = (n + total) % total;
       slides[current].classList.add('active');
       allThumbs[current].classList.add('active');
-      allThumbs[current + total].classList.add('active');
     }
 
     // BOOKING
