@@ -28,7 +28,9 @@
       justify-content: space-between;
       padding: 0 56px;
       height: 72px;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 200;
     }
 
     footer {
@@ -247,7 +249,7 @@
     }
 
     @media (max-width: 767px) {
-      nav { padding: 0 20px; height: 64px; position: relative; }
+      nav { padding: 0 20px; height: 64px; position: sticky; }
       .logo { height: 38px; }
       .nav-toggle { display: flex; }
       .nav-links {

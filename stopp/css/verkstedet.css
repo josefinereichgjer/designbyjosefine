@@ -28,7 +28,9 @@
       justify-content: space-between;
       padding: 0 56px;
       height: 72px;
-      position: relative;
+      position: sticky;
+      top: 0;
+      z-index: 200;
     }
 
     .logo { height: 48px; width: auto; flex-shrink: 0;
