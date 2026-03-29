@@ -28,6 +28,9 @@
       justify-content: space-between;
       padding: 0 56px;
       height: 72px;
+      position: sticky;
+      top: 0;
+      z-index: 200;
     }
 
     .logo {
@@ -268,7 +271,7 @@
       .slideshow { padding: 32px 0 40px; }
       .slideshow-track-wrap { padding: 0 6px; }
       .slideshow-main img { height: 300px; }
-      .slide-btn { padding: 8px 6px; }
+      .slide-btn { padding: 14px 16px; min-width: 44px; min-height: 44px; }
       .slide-btn svg { width: 24px; height: 13px; }
       .slideshow-thumbs img { width: 66px; height: 44px; }
     }
@@ -940,6 +943,15 @@
       .pricing-card {
         padding: 36px;
       }
+    }
+
+    /* TABLET (≤900px) */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 13px; }
+      .hero, .section-alt { flex-direction: column; padding: 48px 32px; gap: 32px; }
+      .pricing-cards { gap: 16px; }
     }
 
     /* MOBILE (≤767px) */
