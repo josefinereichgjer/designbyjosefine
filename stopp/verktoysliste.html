@@ -27,6 +27,7 @@
       font-family: 'IBM Plex Sans', sans-serif;
       background: var(--white);
       color: var(--black);
+      overflow-x: hidden;
     }
 
     /* NAV */
@@ -274,8 +275,14 @@
       .nav-links li { width: 100%; }
       .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
       .page { padding: 40px 16px 64px; }
-      .table-wrap { padding: 12px; overflow-x: auto; }
-      .tool-table th, .tool-table tbody td { padding: 12px 12px; font-size: 13px; }
+      .table-wrap { padding: 10px; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .tool-table { min-width: 360px; }
+      .tool-table th, .tool-table tbody td { padding: 10px 10px; font-size: 13px; }
+      /* Skjul Kategori (kol 2) og Produsent (kol 4) på mobil */
+      .tool-table th:nth-child(2),
+      .tool-table td:nth-child(2),
+      .tool-table th:nth-child(4),
+      .tool-table td:nth-child(4) { display: none; }
     }
   </style>
 </head>
