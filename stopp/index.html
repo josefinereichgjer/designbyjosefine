@@ -1377,12 +1377,17 @@
       <img src="assets/logoskrift-gg.png" alt="Stoppestedet" class="booking-logo" />
 
       <p class="booking-label">Velg lengde:</p>
-      <select class="booking-select" id="booking-duration">
-        <option>1 time</option>
-        <option>2 timer</option>
-        <option>3 timer</option>
-        <option>4 timer</option>
+      <select class="booking-select" id="booking-duration" onchange="updateBookingPrice()">
+        <option value="100">1 time — 100 kr</option>
+        <option value="180">2 timer — 180 kr</option>
+        <option value="250">3 timer — 250 kr</option>
+        <option value="320">4 timer — 320 kr</option>
       </select>
+
+      <div style="display:flex;justify-content:space-between;align-items:baseline;margin-top:8px;padding:12px 0;border-top:1px solid #eee;border-bottom:1px solid #eee;">
+        <span style="font-family:'IBM Plex Sans',sans-serif;font-size:14px;color:#555;">Pris</span>
+        <span id="booking-price-display" style="font-family:'Syne',sans-serif;font-weight:700;font-size:22px;color:#0a0a0a;">100 kr</span>
+      </div>
 
       <button class="booking-rabatt" onclick="this.nextElementSibling.style.display=this.nextElementSibling.style.display==='block'?'none':'block'">
         + Bruk Rabattkode / Gavekortkode
@@ -1425,6 +1430,7 @@
           <h3>Lær noe nytt</h3>
           <p>Vi tilbyr jevnlige kurs innen håndverk, design og teknologi — ledet av fagfolk med lidenskap for å dele kunnskap. Kursene passer for alle nivåer, enten du er nybegynner eller vil fordype deg.</p>
           <p>Kursene holdes i våre egne lokaler og krever ingen forkunnskaper med mindre annet er spesifisert.</p>
+          <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-top:12px;color:#0a0a0a;">Fra 250 kr</p>
           <a href="kalender.html" class="kurs-section__link">Se kommende kurs →</a>
         </div>
 
@@ -1432,6 +1438,7 @@
           <span class="kurs-section__tag kurs-section__tag--orange">Arrangementer</span>
           <h3>Møt fellesskapet</h3>
           <p>Fra åpne verkstedsaftener til temakvelder og utstillinger — vi skaper arenaer der du kan vise frem det du lager, bli inspirert av andre, og bli en del av miljøet på Stoppestedet.</p>
+          <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-top:12px;color:#0a0a0a;">Gratis inngang</p>
           <a href="kalender.html" class="kurs-section__link">Se alle arrangementer →</a>
         </div>
 
@@ -1439,6 +1446,7 @@
           <span class="kurs-section__tag kurs-section__tag--purple">Konkurranser</span>
           <h3>Test deg selv</h3>
           <p>Vi arrangerer åpne konkurranser der du kan utfordre deg selv og måle kreftene med andre. Alle kan delta — det handler om prosessen, ikke bare resultatet.</p>
+          <p style="font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-top:12px;color:#0a0a0a;">Gratis å delta</p>
           <a href="kalender.html" class="kurs-section__link">Se aktive konkurranser →</a>
         </div>
 
@@ -1506,6 +1514,12 @@
     const unavailable = ['08:00','11:00','15:00','18:00'];
 
     let calYear, calMonth, selectedDate = null, selectedSlot = null;
+
+    function updateBookingPrice() {
+      const sel = document.getElementById('booking-duration');
+      const price = sel.options[sel.selectedIndex].value;
+      document.getElementById('booking-price-display').textContent = price + ' kr';
+    }
 
     function openBooking() {
       const now = new Date();
