@@ -7,14 +7,336 @@
   <title>Stoppestedet — DesignbyJosefine</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.webp">
+  <style>
+
+    /* ─── Page shell ──────────────────────────────────────────── */
+    .ps, .ps * { font-family: 'Poppins', sans-serif; }
+    .ps .ps-label,
+    .ps .ps-figcap,
+    .ps .ps-intro__kicker,
+    .ps .ps-intro__link,
+    .ps .ps-expand__btn,
+    .ps .ps-pdflink,
+    .ps .ps-compare th,
+    .ps .ps-compare td:first-child,
+    .ps .ps-tech__label,
+    .ps .ps-color__n,
+    .ps .ps-color__h,
+    .ps .ps-v1palette + p,
+    .ps .ps-typespec__fl { font-family: 'Space Mono', monospace; }
+    .ps { max-width: 720px; padding-bottom: 100px; }
+
+    /* ─── 1. RESULT ───────────────────────────────────────────── */
+    .ps-result {
+      margin-top: 0;
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
+      position: relative;
+    }
+    .ps-result__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 2px;
+    }
+    .ps-result__grid img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .ps-result__main {
+      grid-row: 1 / 3;
+      aspect-ratio: 3/4;
+    }
+    .ps-result__side {
+      aspect-ratio: 3/2;
+    }
+    .ps-result__cta {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #E84E1B; color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 12px 20px; text-decoration: none;
+      transition: opacity .15s;
+    }
+    .ps-result__cta:hover { opacity: .85; }
+    @media(max-width:560px) {
+      .ps-result__grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .ps-result__main { grid-row: auto; aspect-ratio: 4/3; }
+    }
+
+    /* ─── 2. TITLE + INTRO ────────────────────────────────────── */
+    .ps-intro {
+      margin-top: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #e0e0e0;
+      display: grid;
+      grid-template-columns: minmax(0, 380px) 1fr;
+      gap: 48px;
+      align-items: center;
+      /* Bleed to right edge of viewport */
+      width: calc(100vw - var(--sidebarW) - clamp(20px, 3vw, 34px));
+      max-width: none;
+      /* Push text more towards center */
+      padding-left: clamp(0px, 4vw, 60px);
+    }
+    .ps-intro__img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media(max-width:560px) {
+      .ps-intro { grid-template-columns: 1fr; width: 100%; padding-left: 0; }
+    }
+    .ps-intro__left { min-width: 0; }
+    .ps-intro__kicker {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; letter-spacing: 4px;
+      text-transform: uppercase; color: #aaa;
+      display: block; margin-bottom: 10px;
+    }
+    .ps-intro__title {
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 500; letter-spacing: -.025em;
+      line-height: 1.0; margin: 0 0 16px;
+    }
+    .ps-intro__desc {
+      font-size: 16px; line-height: 1.8; color: #444;
+      max-width: 520px; margin: 0;
+    }
+    .ps-intro__link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: #111;
+      border: 1px solid #111; padding: 9px 16px;
+      text-decoration: none; white-space: nowrap;
+      align-self: flex-end;
+      transition: background .12s, color .12s;
+    }
+    .ps-intro__link:hover { background: #111; color: #fff; opacity: 1; }
+
+    /* ─── 3. CONCEPT ──────────────────────────────────────────── */
+    .ps-concept {
+      margin-top: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .ps-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px; letter-spacing: 2px;
+      text-transform: uppercase; color: #111;
+      display: block; margin-bottom: 16px;
+      font-weight: 700;
+    }
+    .ps-h {
+      font-size: clamp(16px, 2vw, 20px); font-weight: 500;
+      letter-spacing: -.01em; margin: 0 0 14px; line-height: 1.2;
+    }
+    .ps-p {
+      font-size: 14px; line-height: 1.85; color: #444;
+      max-width: 600px; margin: 0 0 12px;
+    }
+    .ps-p:last-child { margin-bottom: 0; }
+    .ps-pull {
+      margin: 20px 0; padding: 0 0 0 16px;
+      border-left: 2px solid #111;
+    }
+    .ps-pull p {
+      font-size: 15px; line-height: 1.65;
+      color: #111; font-style: italic; margin: 0;
+    }
+
+    /* Concept identity grid */
+    .ps-identity {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    @media(max-width:480px) { .ps-identity { grid-template-columns: 1fr; } }
+
+    /* Color strip */
+    .ps-colors {
+      display: flex; height: 64px; gap: 0;
+    }
+    .ps-color {
+      flex: 1; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 6px 8px;
+    }
+    .ps-color__n { font-family: 'Space Mono', monospace; font-size: 7px; letter-spacing: 1px; text-transform: uppercase; opacity: .65; }
+    .ps-color__h { font-family: 'Space Mono', monospace; font-size: 8px; margin-top: 1px; }
+
+    /* Logo box */
+    .ps-logobox {
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px 20px; background: #0a0a0a;
+    }
+    .ps-logobox img { max-width: 160px; width: 100%; height: auto; display: block; }
+
+    /* Type specimen — compact */
+    .ps-typespec {
+      padding: 20px; border: 1px solid #e8e8e8;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .ps-typespec__row { display: block; }
+    .ps-typespec__fl {
+      font-family: 'Space Mono', monospace; font-size: 8px;
+      letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 4px;
+    }
+
+    /* ─── 4. PROCESS ──────────────────────────────────────────── */
+    .ps-process {
+      margin-top: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .ps-process__imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px; margin-top: 20px;
+    }
+    .ps-process__imgs img {
+      width: 100%; height: auto; display: block;
+    }
+    @media(max-width:480px) { .ps-process__imgs { grid-template-columns: 1fr 1fr; } }
+    .ps-figcap {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: #aaa;
+      margin-top: 8px;
+    }
+
+    /* Expand toggle */
+    .ps-expand__body { display: none; }
+    .ps-expand__body.is-open { display: block; }
+    .ps-expand__btn {
+      background: none; border: none; padding: 0;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: #aaa;
+      cursor: pointer; margin-top: 12px;
+      transition: color .12s; display: block;
+    }
+    .ps-expand__btn:hover { color: #111; }
+
+    /* Comparison table */
+    .ps-compare {
+      width: 100%; border-collapse: collapse;
+      font-size: 13px; margin-top: 20px;
+    }
+    .ps-compare th {
+      text-align: left; font-family: 'Space Mono', monospace;
+      font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #888;
+      padding: 10px 12px 10px 0; border-bottom: 1px solid #e0e0e0;
+    }
+    .ps-compare th:not(:first-child) { padding-left: 14px; }
+    .ps-compare td {
+      padding: 10px 12px 10px 0; border-bottom: 1px solid #f0f0f0;
+      vertical-align: top; line-height: 1.55; color: #333; font-size: 13px;
+    }
+    .ps-compare td:not(:first-child) { padding-left: 14px; }
+    .ps-compare td:first-child {
+      font-family: 'Space Mono', monospace; font-size: 9px;
+      letter-spacing: 1px; color: #888; white-space: nowrap;
+    }
+    .ps-compare tr:last-child td { border-bottom: none; }
+    .ps-dot { display: inline-block; width: 8px; height: 8px; vertical-align: middle; margin-right: 3px; }
+
+    /* V1 small palette strip */
+    .ps-v1palette { display: flex; height: 20px; gap: 0; margin-top: 16px; }
+    .ps-v1palette div { flex: 1; }
+
+    /* ─── 5. TECH INFO ────────────────────────────────────────── */
+    .ps-tech {
+      margin-top: 52px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px 28px;
+    }
+    @media(max-width:480px) { .ps-tech { grid-template-columns: 1fr 1fr; } }
+    .ps-tech__item { display: block; }
+    .ps-tech__label {
+      font-family: 'Space Mono', monospace;
+      font-size: 8px; letter-spacing: 3px;
+      text-transform: uppercase; color: #bbb;
+      display: block; margin-bottom: 5px;
+    }
+    .ps-tech__val {
+      font-size: 12px; color: #333; line-height: 1.6;
+    }
+
+    /* PDF link */
+    .ps-pdflink {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; letter-spacing: 2px;
+      text-transform: uppercase; color: #111;
+      border: 1px solid #111; padding: 9px 16px;
+      text-decoration: none; margin-top: 40px;
+      transition: background .12s, color .12s;
+    }
+    .ps-pdflink:hover { background: #111; color: #fff; opacity: 1; }
+
+    /* ─── PROCESS MODAL ──────────────────────────────────── */
+    .ps-process-trigger {
+      background: none; border: none; padding: 0; cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px; letter-spacing: 0;
+      text-transform: uppercase; color: #111;
+      font-weight: 700; display: inline-flex; align-items: center; gap: 6px;
+      transition: opacity .12s;
+    }
+    .ps-process-trigger:hover { opacity: .5; }
+
+    .ps-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 900;
+      overflow-y: auto;
+      padding: clamp(20px, 5vw, 60px) clamp(16px, 4vw, 40px);
+    }
+    .ps-overlay.is-open { display: block; }
+
+    .ps-modal {
+      background: #fff;
+      max-width: 680px;
+      margin: 0 auto;
+      position: relative;
+      padding: 40px clamp(24px, 5vw, 52px) 52px;
+    }
+    .ps-modal__close {
+      position: absolute; top: 16px; right: 20px;
+      font-family: 'Space Mono', monospace;
+      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      color: #aaa; background: none; border: none;
+      cursor: pointer; transition: color .12s;
+    }
+    .ps-modal__close:hover { color: #111; }
+    .ps-modal .ps-process__imgs { margin-top: 0; }
+
+    /* Poppins throughout modal, varied weights */
+    .ps-modal, .ps-modal * { font-family: 'Poppins', sans-serif; }
+    .ps-modal .ps-h         { font-weight: 600; }
+    .ps-modal .ps-label     { font-weight: 700; letter-spacing: .02em; }
+    .ps-modal .ps-p         { font-weight: 300; }
+    .ps-modal .ps-pull p    { font-weight: 500; font-style: italic; }
+    .ps-modal .ps-figcap    { font-weight: 400; letter-spacing: .04em; }
+    .ps-modal .ps-compare th { font-family: 'Poppins', sans-serif; font-weight: 600; letter-spacing: .02em; }
+    .ps-modal .ps-compare td { font-family: 'Poppins', sans-serif; font-weight: 300; }
+    .ps-modal .ps-compare td:first-child { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 11px; }
+    .ps-modal .ps-pdflink   { font-family: 'Poppins', sans-serif; font-weight: 600; letter-spacing: .04em; }
+
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#content">Hopp til innhold</a>
-
   <header class="sidebar sidebar--detail" id="sidebar">
     <div class="sidebar__inner">
       <div class="brand">
@@ -22,7 +344,11 @@
           <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
         </a>
       </div>
-      <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider">
+        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true">
+          <path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
       <nav class="nav" aria-label="Main navigation">
         <a class="nav__link" href="./projects.html"><span>Arbeider</span></a>
         <a class="nav__link" href="./projects.html#about"><span>Om</span></a>
@@ -36,23 +362,213 @@
   </header>
 
   <main id="content" class="content">
-    <div style="display:flex;align-items:center;justify-content:center;height:100%;min-height:60vh;">
-      <a class="btn-pdf btn-pdf--black" href="./stopp/index.html" target="_blank" rel="noopener">↗ Åpne Stoppestedet</a>
-    </div>
+    <article class="ps">
+
+      <!-- ── 2. TITLE + INTRO ──────────────────────────────── -->
+      <div class="ps-intro">
+        <div class="ps-intro__left">
+<h1 class="ps-intro__title">Stoppestedet</h1>
+          <p class="ps-intro__desc">Stoppestedet er et åpent verksted og kreativt fellesskap i Oslo — for deg som har en idé, men mangler verktøyene eller plassen til å gjennomføre den. Gratis inngang, profesjonelle fasiliteter, kurs fra fagfolk og et miljø der det er lov å lære ved å feile. Terskelen for å skape noe skal være lav.</p>
+          <a class="ps-intro__link" href="./stopp/index.html" target="_blank" rel="noopener" style="margin-top:20px">Åpne ↗</a>
+        </div>
+        <img class="ps-intro__img" src="./stopp/assets/utenfor.webp" alt="Stoppestedet eksteriør" loading="eager">
+      </div>
+
+      <!-- ── 3. KONSEPT ────────────────────────────────────── -->
+      <section class="ps-concept">
+        <span class="ps-label">Konsept</span>
+        <h2 class="ps-h">Et tilbud som føles åpent</h2>
+        <p class="ps-p">Designoppgaven handlet om å lage nettside og visuell identitet for et makerspace med et konkret tilbud: verksted, kurs, arrangementer og medlemskap. Utfordringen var å presentere disse tilbudene på en måte som faktisk inviterer — ikke bare informerer. Makerspaces kan lett fremstå tekniske og nisjepregede. Designmålet var å snu det: tydelig struktur, lav terskel i tone, og et visuelt uttrykk som sier «kom og prøv» like mye som «her er hva vi tilbyr».</p>
+
+        <div class="ps-pull">
+          <p>Lav terskel er ikke et designelement. Det er et designmål.</p>
+        </div>
+
+        <p class="ps-p">Det endelige designet bruker oransje som primærfarge — en aktivitetsfarge med umiddelbar, åpen energi — og Syne som skrifttype: varm, bred, tilgjengelig. Hvit bakgrunn og høy kontrast holder uttrykket tydelig og lettlest.</p>
+
+        <!-- Identity overview -->
+        <div class="ps-identity">
+          <!-- Colours -->
+          <div>
+            <span class="ps-label" style="margin-bottom:8px">Farger</span>
+            <div class="ps-colors">
+              <div class="ps-color" style="background:#0a0a0a;color:#fff">
+                <span class="ps-color__n">Svart</span>
+                <span class="ps-color__h">#0A0A0A</span>
+              </div>
+              <div class="ps-color" style="background:#E84E1B;color:#fff">
+                <span class="ps-color__n">Orange</span>
+                <span class="ps-color__h">#E84E1B</span>
+              </div>
+              <div class="ps-color" style="background:#b0a8dc;color:#000">
+                <span class="ps-color__n">Lavendel</span>
+                <span class="ps-color__h">#B0A8DC</span>
+              </div>
+              <div class="ps-color" style="background:#C8E600;color:#000">
+                <span class="ps-color__n">Lime</span>
+                <span class="ps-color__h">#C8E600</span>
+              </div>
+            </div>
+          </div>
+          <!-- Logo -->
+          <div class="ps-logobox">
+            <img src="./stopp/assets/logoskrift-hg.png" alt="Stoppestedet logo" loading="lazy">
+          </div>
+          <!-- Type spec -->
+          <div class="ps-typespec" style="grid-column: 1 / -1">
+            <div class="ps-typespec__row">
+              <p class="ps-typespec__fl">Syne — Overskrifter</p>
+              <p style="font-family:'Syne',sans-serif;font-size:clamp(20px,3.5vw,34px);font-weight:700;letter-spacing:-.02em;line-height:1.05;margin:0;color:#111">Bare dukk opp.</p>
+            </div>
+            <div class="ps-typespec__row" style="border-top:1px solid #f0f0f0;padding-top:12px">
+              <p class="ps-typespec__fl">IBM Plex Sans — Brødtekst</p>
+              <p style="font-family:'IBM Plex Sans',sans-serif;font-size:15px;line-height:1.72;font-weight:300;color:#444;margin:0">Du trenger ikke melde deg på eller ha en grunn til å komme.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 4. PROSESS ────────────────────────────────────── -->
+      <section class="ps-process">
+        <h2 class="ps-h">Prosessen — Ærlig talt: det var rotete</h2>
+        <p class="ps-p" style="margin-top:12px">Jeg hoppet mellom ideer og mistet ofte målet av syne, noe som var frustrerende, men også lærerikt. Etter hvert som feilene ble tydeligere, forsto jeg hva som ikke fungerte. Det ga meg både retning og en mer strukturert måte å jobbe på. Etter hvert jobbet jeg raskere og mer effektivt enn før, og det ble tydelig hva jeg faktisk ønsket å oppnå til slutt.</p>
+        <button class="ps-process-trigger" id="processBtn" style="margin-top:20px">Les mer om det her ↗</button>
+      </section>
+
+      <!-- ── 5. TECH ────────────────────────────────────────── -->
+      <footer>
+        <div class="ps-tech">
+          <div class="ps-tech__item">
+            <span class="ps-tech__label">Overskrift</span>
+            <span class="ps-tech__val">Syne<br>Bonjour Monde, 2017</span>
+          </div>
+          <div class="ps-tech__item">
+            <span class="ps-tech__label">Brødtekst</span>
+            <span class="ps-tech__val">IBM Plex Sans<br>IBM / Bold Monday, 2017</span>
+          </div>
+          <div class="ps-tech__item">
+            <span class="ps-tech__label">Plattform</span>
+            <span class="ps-tech__val">HTML / CSS<br>JavaScript</span>
+          </div>
+          <div class="ps-tech__item">
+            <span class="ps-tech__label">Verktøy</span>
+            <span class="ps-tech__val">Adobe Illustrator<br>Adobe Photoshop</span>
+          </div>
+          <div class="ps-tech__item">
+            <span class="ps-tech__label">Fag</span>
+            <span class="ps-tech__val">IDG3015<br>NTNU Gjøvik</span>
+          </div>
+          <div class="ps-tech__item">
+            <span class="ps-tech__label">År</span>
+            <span class="ps-tech__val">2026</span>
+          </div>
+        </div>
+
+      </footer>
+
+    </article>
   </main>
 
-  <script>
-    const yearEl = document.querySelector("#year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  <!-- ── PROCESS MODAL ──────────────────────────────────── -->
+  <div class="ps-overlay" id="processOverlay">
+    <div class="ps-modal">
+      <button class="ps-modal__close" id="processClose">Lukk ×</button>
 
-    const sidebar = document.getElementById("sidebar");
-    const sidebarToggle = document.getElementById("sidebarToggle");
-    if (sidebarToggle) {
-      sidebarToggle.addEventListener("click", () => {
-        const isOpen = sidebar.classList.toggle("sidebar--open");
-        sidebarToggle.setAttribute("aria-expanded", String(isOpen));
-      });
-    }
+      <h2 class="ps-h" style="margin-bottom:20px">Fra mørkt og nesten ferdig — til å begynne på nytt</h2>
+
+      <p class="ps-label" style="margin-bottom:6px">Ærlig talt: det var rotete</p>
+      <p class="ps-p">Jeg skal ikke pynte på det — prosessen var ganske kaotisk i starten. Jeg hoppet mellom ideer, endret retning flere ganger og hadde ikke alltid kontroll på hva jeg egentlig prøvde å løse. Det var frustrerende, men det var også der læringen skjedde. Etter hvert som feilene hopet seg opp og jeg begynte å forstå hvorfor de var feil, ble prosessen plutselig mye mer strukturert. Jeg visste hva jeg ville unngå — og det ga meg et mye klarere utgangspunkt for hva jeg ville oppnå.</p>
+
+      <p class="ps-label" style="margin-top:28px;margin-bottom:6px">Et system som hang sammen</p>
+      <p class="ps-p">Prosjektet startet med en helt annen identitet: mørk bakgrunn, olivengrønn palett, Space Mono. Designet var gjennomarbeidet, konsistent og nesten ferdig. Jeg hadde bygget opp et visuelt system jeg var fornøyd med — logomark, fargepalett, typografi, skiltdesign, visittkort. Alt hang sammen.</p>
+
+      <p class="ps-label" style="margin-top:28px;margin-bottom:6px">Hvem er dette faktisk for?</p>
+      <p class="ps-p">Så stopp. Jeg tok et skritt tilbake og stilte det spørsmålet jeg burde ha stilt først. Et mørkt, monospaced system signaliserer seriøsitet, nisje og en slags innsiderkode — du må allerede vite at dette er for deg. Det er riktig for et plateselskap eller en tech-startup. Det er feil for et sted som skal senke terskelen for unge mennesker som kanskje aldri har prøvd å lage noe før.</p>
+
+      <div class="ps-pull" style="margin:24px 0">
+        <p>V1 var et sterkt svar på feil spørsmål. V2 er et enklere svar på riktig spørsmål.</p>
+      </div>
+
+      <p class="ps-label" style="margin-bottom:6px">Blindveien var ikke bortkastet</p>
+      <p class="ps-p">Jeg valgte å starte på nytt. Ikke fordi arbeidet var bortkastet — prosessen lærte meg noe viktig om hva stedet ikke skulle føles som. Noen ganger er en blindvei det mest verdifulle du kan gå ned.</p>
+
+      <p class="ps-label" style="margin-top:28px;margin-bottom:6px">Målgruppen endret alt</p>
+      <p class="ps-p">Jeg endret målgruppen fra en snever kreativ nisje til folk i alle aldre — fra 16 og oppover. Det høres ut som en liten justering, men det forandret alt. Noen som aldri har sett seg selv som «kreativ» skal ikke møte et design som allerede forutsetter at det er det. Referansen ble spon.no — ikke visuelt, men strukturelt. Måten de organiserer informasjon på: hva stedet er, hva du kan gjøre der, hvordan du kommer i gang. Ingen unødvendig friksjon, ingen mystikk. Det var den informasjonsarkitekturen jeg lot meg inspirere av. Det visuelle — farger, typografi, identitet — utviklet jeg helt fra bunnen med Stoppestedet som utgangspunkt. Oransje i stedet for olivengrønt — en aktivitetsfarge, ikke en nisjemarkør. Syne i stedet for Space Mono — varm og bred, ikke kul og lukket. Bare: kom hit.</p>
+
+      <!-- V2 design images -->
+      <span class="ps-label" style="margin-top:40px;display:block">Ferdig design fra Versjon 1:</span>
+
+      <video src="./stoppestedet/images/nystoppvid.mp4" autoplay muted loop playsinline style="width:100%;display:block;margin-top:12px"></video>
+
+      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr;margin-top:2px">
+        <figure style="margin:0">
+          <img src="./stoppestedet/images/primlogo.png" alt="Primærlogo" loading="lazy" style="background:#0a0a0a;padding:24px">
+        </figure>
+        <figure style="margin:0">
+          <img src="./stoppestedet/images/seklogo.png" alt="Sekundærlogo" loading="lazy" style="background:#0a0a0a;padding:24px">
+        </figure>
+      </div>
+
+      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr 1fr;margin-top:2px">
+        <figure style="margin:0"><img src="./stoppestedet/images/businesscard.webp" alt="Visittkort" loading="lazy"></figure>
+        <figure style="margin:0"><img src="./stoppestedet/images/idcard.webp" alt="ID-kort" loading="lazy"></figure>
+        <figure style="margin:0"><img src="./stoppestedet/images/stoppstick.webp" alt="Stickere" loading="lazy"></figure>
+      </div>
+
+      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr;margin-top:2px">
+        <figure style="margin:0"><img src="./stoppestedet/images/skiltdesign.webp" alt="Skiltdesign" loading="lazy"></figure>
+        <figure style="margin:0"><img src="./stoppestedet/images/skiltutestopp.webp" alt="Skilt ute" loading="lazy"></figure>
+      </div>
+
+      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr;margin-top:2px">
+        <figure style="margin:0"><img src="./stoppestedet/images/storefrontstoppis.webp" alt="Utsiden" loading="lazy"></figure>
+        <figure style="margin:0"><img src="./stoppestedet/images/insidestopp.webp" alt="Innendørs" loading="lazy"></figure>
+      </div>
+
+      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr;margin-top:2px">
+        <figure style="margin:0"><img src="./stoppestedet/images/stairstopp.webp" alt="Veggdesign" loading="lazy"></figure>
+        <figure style="margin:0;display:grid;grid-template-columns:1fr 1fr;gap:2px">
+          <img src="./stoppestedet/images/hedda.webp" alt="Hedda" loading="lazy">
+          <img src="./stoppestedet/images/josef.webp" alt="Josef" loading="lazy">
+          <img src="./stoppestedet/images/joline.webp" alt="Joline" loading="lazy">
+          <img src="./stoppestedet/images/henrik.webp" alt="Henrik" loading="lazy">
+        </figure>
+      </div>
+
+      <table class="ps-compare" style="margin-top:40px">
+        <thead><tr><th></th><th>Versjon 1</th><th>Versjon 2</th></tr></thead>
+        <tbody>
+          <tr><td>Målgruppe</td><td>18–28, kreativ praksis</td><td>16+, alle aldre</td></tr>
+          <tr><td>Bakgrunn</td><td><span class="ps-dot" style="background:#0f0f0f;border:1px solid #555"></span>Nær-svart</td><td><span class="ps-dot" style="background:#fff;border:1px solid #ccc"></span>Hvit</td></tr>
+          <tr><td>Primærfarge</td><td><span class="ps-dot" style="background:#A3AF0E"></span>Olivengrønn</td><td><span class="ps-dot" style="background:#E84E1B"></span>Orange</td></tr>
+          <tr><td>Overskrift</td><td>Space Mono</td><td>Syne</td></tr>
+        </tbody>
+      </table>
+
+      <a class="ps-pdflink" href="./stoppestedet/images/stoppestedetprosess_original.pdf" target="_blank" rel="noopener" style="margin-top:40px">
+        Prosessrapport (PDF) ↗
+      </a>
+
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const sidebar = document.getElementById('sidebar');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    sidebarToggle.addEventListener('click', () => {
+      const open = sidebar.classList.toggle('sidebar--open');
+      sidebarToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    const overlay = document.getElementById('processOverlay');
+    function openModal() { overlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { overlay.classList.remove('is-open'); document.body.style.overflow = ''; }
+    document.getElementById('processBtn').addEventListener('click', openModal);
+    document.getElementById('processClose').addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
   </script>
 </body>
 </html>
