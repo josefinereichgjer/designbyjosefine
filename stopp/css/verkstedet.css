@@ -203,9 +203,10 @@
     }
 
     .how-list li::before {
-      content: '▪';
+      content: '▪\FE0E';
       position: absolute;
       left: 0;
+      font-family: 'IBM Plex Sans', sans-serif;
     }
 
     .how-image {
