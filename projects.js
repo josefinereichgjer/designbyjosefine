@@ -98,9 +98,10 @@ window.PROJECTS = [
     },
     projectMeta: [
       { label: "År", value: "2026" },
-      { label: "Fag", value: "Emneoverbyggende" },
-      { label: "Fag ansvarlig", value: "Jesper Christian Egemar" },
-      { label: "Verktøy", value: "Illustrator, Photoshop, HTML/CSS/Javascript" }
+      { label: "Plattform", value: "HTML / CSS, JavaScript" },
+      { label: "Verktøy", value: "Adobe Illustrator, Adobe Photoshop, Figma" },
+      { label: "Fag", value: "IDG3015 — Emneoverbyggende prosjekt" },
+      { label: "Fag ansvarlig", value: "Jesper Egemar" }
     ],
     intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.\n\nJeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.",
     link: { label: "Åpne nettsiden", src: "./stoppestedet/index.html" },

@@ -339,6 +339,31 @@
     .ps-dm__badge--purple { background: #9B8CE8; color: #fff; }
     .ps-dm__badge--muted  { background: none; color: #aaa; font-size: 13px; }
 
+    /* ─── NETTSIDEANALYSE ────────────────────────────────── */
+    .ps-siteana {
+      margin-top: 52px;
+      padding-bottom: 52px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .ps-siteana__img {
+      width: 100%; height: auto; display: block;
+      margin-bottom: 48px;
+    }
+    .ps-siteana__entries {
+      display: flex; flex-direction: column; gap: 44px;
+    }
+    .ps-siteana__name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px; font-weight: 600; letter-spacing: -.01em;
+      color: #111; margin: 0 0 10px;
+    }
+    .ps-siteana__summary {
+      font-size: 15px; font-style: italic; color: #444;
+      margin-top: 12px; padding-left: 14px;
+      border-left: 2px solid #111;
+      line-height: 1.65;
+    }
+
     /* ─── PROCESS MODAL ──────────────────────────────────── */
     .ps-process-trigger {
       background: none; border: none; padding: 0; cursor: pointer;
@@ -424,7 +449,7 @@
       <div class="ps-intro">
         <div class="ps-intro__left">
 <h1 class="ps-intro__title">Stoppestedet</h1>
-          <p class="ps-intro__desc">Stoppestedet er et fiktivt, åpent verksted og kreativt fellesskap i Oslo. Det er utviklet for å senke terskelen for å skape — for mennesker med ideer, men uten tilgang til verktøy, plass eller erfaring. Gjennom prøvetimer, medlemskap, fasiliteter og kurs fra fagfolk legges det til rette for utforsking, læring og eksperimentering.</p>
+          <p class="ps-intro__desc">Stoppestedet er et (fiktivt) åpent, kreativt verksted i Oslo som gjør det enklere å skape. Her får du tilgang til verktøy, plass og faglig veiledning gjennom prøvetimer, kurs og medlemskap.</p>
           <a class="btn-pdf btn-pdf--black" href="./stopp/index.html" target="_blank" rel="noopener" style="margin-top:20px">↗&#xFE0E; Åpne nettsiden</a>
         </div>
         <img class="ps-intro__img" src="./stopp/assets/utenfor.webp" alt="Stoppestedet eksteriør" loading="eager">
@@ -432,13 +457,13 @@
 
       <!-- ── 3. KONSEPT ────────────────────────────────────── -->
       <section class="ps-concept">
-        <span class="ps-label">Konsept — lav terskel for å skape</span>
-        <p class="ps-p">Oppgaven var å utvikle nettside og visuell identitet for et makerspace med verksted, kurs, arrangementer og medlemskap. Målet var ikke bare å formidle tilbudet, men å gjøre det tilgjengelig og inviterende.</p>
+        <span class="ps-label">Konsept — å gjøre skapende arbeid tilgjengelig</span>
+        <p class="ps-p">Oppgaven var å utvikle nettside og visuell identitet for et makerspace med verksted, kurs, arrangementer og medlemskap. Målet var å presentere tilbudet på en klar og inviterende måte.</p>
 
-        <p class="ps-p">Makerspaces kan ofte oppleves som tekniske og lukkede. Her var ambisjonen å senke terskelen, både visuelt og språklig. Designet legger derfor vekt på tydelig struktur, enkel navigasjon og en tone som oppmuntrer til å delta.</p>
+        <p class="ps-p">Makerspaces kan ofte oppleves som tekniske og lukkede. Her var ambisjonen å åpne opp, både visuelt og språklig. Designet vektlegger tydelig struktur, enkel navigasjon og en tone som oppmuntrer til deltakelse.</p>
 
         <div class="ps-pull" style="margin-top:16px">
-          <p>Lav terskel er ikke et virkemiddel i seg selv, men et overordnet prinsipp.</p>
+          <p>Tilgjengelighet fungerer som et overordnet prinsipp i hele løsningen.</p>
         </div>
 
         <!-- Design manual -->
@@ -470,6 +495,7 @@
               </div>
 
             </div>
+            <button class="ps-process-trigger" id="logoutviklingBtn" style="margin-top:24px">Logoutvikling ↗&#xFE0E;</button>
           </div>
 
           <!-- Row 1: Colours -->
@@ -603,7 +629,10 @@
       <section class="ps-process">
         <h2 class="ps-h">Prosessen — Ærlig talt: det var rotete</h2>
         <p class="ps-p" style="margin-top:12px">Jeg hoppet mellom ideer og mistet ofte målet av syne, noe som var frustrerende, men også lærerikt. Etter hvert som feilene ble tydeligere, forsto jeg hva som ikke fungerte. Det ga meg både retning og en mer strukturert måte å jobbe på. Etter hvert jobbet jeg raskere og mer effektivt enn før, og det ble tydelig hva jeg faktisk ønsket å oppnå til slutt.</p>
-        <button class="ps-process-trigger" id="processBtn" style="margin-top:20px">Les mer om det her ↗&#xFE0E;</button>
+        <div style="display:flex;flex-direction:column;gap:40px;margin-top:20px">
+          <button class="ps-process-trigger" id="processBtn">Les mer om det her ↗&#xFE0E;</button>
+          <button class="ps-process-trigger" id="siteanaBtn">Digital konkurrentanalyse og posisjonering ↗&#xFE0E;</button>
+        </div>
       </section>
 
       <!-- ── 5. TECH ────────────────────────────────────────── -->
@@ -615,11 +644,19 @@
           </div>
           <div class="ps-tech__item">
             <span class="ps-tech__label">Verktøy</span>
-            <span class="ps-tech__val">Adobe Illustrator<br>Adobe Photoshop</span>
+            <span class="ps-tech__val">Adobe Illustrator<br>Adobe Photoshop<br>Figma</span>
           </div>
           <div class="ps-tech__item">
             <span class="ps-tech__label">Fag</span>
-            <span class="ps-tech__val">IDG3015<br>NTNU Gjøvik</span>
+            <span class="ps-tech__val">IDG3015 — Emneoverbyggende prosjekt</span>
+          </div>
+          <div class="ps-tech__item">
+            <span class="ps-tech__label">Fagansvarlig</span>
+            <span class="ps-tech__val">Jesper Egemar</span>
+          </div>
+          <div class="ps-tech__item">
+            <span class="ps-tech__label">Bilder</span>
+            <span class="ps-tech__val">Fotografier — Adobe Stock og Envato<br>Mockups — Envato.com</span>
           </div>
           <div class="ps-tech__item">
             <span class="ps-tech__label">År</span>
@@ -715,6 +752,72 @@
     </div>
   </div>
 
+  <!-- ── LOGOUTVIKLING MODAL ──────────────────────────────── -->
+  <div class="ps-overlay" id="logoutviklingOverlay">
+    <div class="ps-modal">
+      <button class="ps-modal__close" id="logoutviklingClose">Lukk ×</button>
+      <h2 class="ps-h" style="margin-bottom:20px">Logoutvikling</h2>
+      <img src="./stopp/assets/logoutviklingstoppi.webp" alt="Logoutvikling" style="width:100%;display:block;margin-bottom:28px">
+      <p class="ps-p">Logoen er inspirert av makerspace-idéen, der enkle former fungerer som byggeklosser som kan settes sammen til noe større. De ulike elementene symboliserer materialer, verktøy og idéer som kombineres i kreative prosesser. Fargene gir et lekent og inkluderende uttrykk, mens det stramme rutenettet skaper struktur og balanse. Dette reflekterer hvordan et makerspace kombinerer kreativ utfoldelse med teknisk presisjon. Utviklingen fra fragmenterte former til en samlet logo visualiserer også selve prosessen i et makerspace: fra idé til ferdig resultat.</p>
+    </div>
+  </div>
+
+  <!-- ── NETTSIDEANALYSE MODAL ─────────────────────────────── -->
+  <div class="ps-overlay" id="siteanaOverlay">
+    <div class="ps-modal">
+      <button class="ps-modal__close" id="siteanaClose">Lukk ×</button>
+
+      <img src="./stopp/assets/nettside-analyse.webp" alt="Nettsideanalyse" style="width:100%;display:block;margin-bottom:40px">
+
+      <div style="display:flex;flex-direction:column;gap:36px">
+
+        <div>
+          <p class="ps-siteana__name">FabCafe — Tokyo</p>
+          <p class="ps-p">Nettsiden til FabCafe er visuelt tung og inspirasjonsdrevet, med fokus på prosjekter, events og kreativ utforskning. Den fungerer mer som en plattform for idéutveksling enn en tradisjonell informasjonsnettside. Brukeren møtes av bilder, artikler og prosjekter fremfor en tydelig inngang til hva stedet faktisk er.</p>
+          <p class="ps-siteana__summary">— Oppleves kreativ og inspirerende, men lite strukturert og ikke umiddelbart lavterskel.</p>
+        </div>
+
+        <div>
+          <p class="ps-siteana__name">Shibuya QWS</p>
+          <p class="ps-p">Nettsiden er moderne og konseptuell, med fokus på samarbeid, innovasjon og community. Den bruker grafikk og visuelle elementer for å formidle stemning og aktivitet, men gir mindre konkret informasjon om hvordan stedet tas i bruk.</p>
+          <p class="ps-siteana__summary">— Oppleves inspirerende, men abstrakt og mindre tilgjengelig for nye brukere.</p>
+        </div>
+
+        <div>
+          <p class="ps-siteana__name">Folkehuset Absalon — Danmark</p>
+          <p class="ps-p">Nettsiden er enkel, varm og direkte. Den kommuniserer tydelig hva man kan gjøre der, med fokus på aktiviteter, mat og fellesskap. Informasjonen er lett å forstå, og det er lav terskel for å delta.</p>
+          <p class="ps-siteana__summary">— Veldig tilgjengelig og nærmest Stoppestedet i kommunikasjon.</p>
+        </div>
+
+        <div>
+          <p class="ps-siteana__name">Makerversity — London</p>
+          <p class="ps-p">Nettsiden er profesjonell og tydelig strukturert, med fokus på medlemskap, fasiliteter og samarbeid. Den kommuniserer et sterkt verdiforslag, men retter seg mot en etablert og kreativt aktiv målgruppe.</p>
+          <p class="ps-siteana__summary">— Oppleves eksklusiv og mer «proff» enn lavterskel.</p>
+        </div>
+
+        <div>
+          <p class="ps-siteana__name">Deichman Bjørvika (Folkeverkstedet) — Oslo</p>
+          <p class="ps-p">Nettsiden er informativ og funksjonell, med tydelig navigasjon og praktisk informasjon. Den forklarer tilbudet godt, men har mindre fokus på stemning og visuell identitet.</p>
+          <p class="ps-siteana__summary">— Veldig tilgjengelig, men mindre inspirerende visuelt.</p>
+        </div>
+
+        <div>
+          <p class="ps-siteana__name">Mesh — Oslo</p>
+          <p class="ps-p">Nettsiden er stilren og kommersiell, med fokus på nettverk, arrangementer og arbeidsplasser. Den er oversiktlig og tydelig, men retter seg mot gründere og profesjonelle brukere.</p>
+          <p class="ps-siteana__summary">— Oppleves som et mer lukket og målrettet miljø.</p>
+        </div>
+
+        <div style="margin-top:12px;padding-top:36px;border-top:1px solid #e0e0e0">
+          <p class="ps-siteana__name">Stoppestedets posisjon:</p>
+          <p class="ps-p">Felles for nettsidene er at de enten legger vekt på visuell inspirasjon eller tydelig struktur og funksjon. Dette skaper ofte en ubalanse, der noen oppleves kreative men lite tilgjengelige, mens andre er enkle å forstå, men mer lukkede eller målrettede.</p>
+          <p class="ps-p">Stoppestedet plasserer seg i skjæringspunktet mellom disse. Konseptet tar en tydelig posisjon som et åpent og lavterskel alternativ, hvor både kommunikasjon og opplevelse er utformet for å være lett å forstå og lett å ta i bruk.</p>
+          <p class="ps-p">Målet er ikke å fremstå som eksklusivt eller spesialisert, men som et sted man kan komme til uten forkunnskaper, og likevel føle at man hører til.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -731,7 +834,21 @@
     document.getElementById('processBtn').addEventListener('click', openModal);
     document.getElementById('processClose').addEventListener('click', closeModal);
     overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    const logoutviklingOverlay = document.getElementById('logoutviklingOverlay');
+    function openLogoutvikling() { logoutviklingOverlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+    function closeLogoutvikling() { logoutviklingOverlay.classList.remove('is-open'); document.body.style.overflow = ''; }
+    document.getElementById('logoutviklingBtn').addEventListener('click', openLogoutvikling);
+    document.getElementById('logoutviklingClose').addEventListener('click', closeLogoutvikling);
+    logoutviklingOverlay.addEventListener('click', e => { if (e.target === logoutviklingOverlay) closeLogoutvikling(); });
+
+    const siteanaOverlay = document.getElementById('siteanaOverlay');
+    function openSiteana() { siteanaOverlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
+    function closeSiteana() { siteanaOverlay.classList.remove('is-open'); document.body.style.overflow = ''; }
+    document.getElementById('siteanaBtn').addEventListener('click', openSiteana);
+    document.getElementById('siteanaClose').addEventListener('click', closeSiteana);
+    siteanaOverlay.addEventListener('click', e => { if (e.target === siteanaOverlay) closeSiteana(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeSiteana(); closeLogoutvikling(); } });
   </script>
 </body>
 </html>
