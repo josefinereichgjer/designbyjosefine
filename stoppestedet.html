@@ -316,13 +316,13 @@
     /* Type scale */
     .ps-dm__type { margin-top: 14px; display: flex; flex-direction: column; }
     .ps-dm__type-row {
-      display: grid; grid-template-columns: 130px 1fr;
+      display: grid; grid-template-columns: 150px 1fr;
       gap: 16px; align-items: center;
-      padding: 13px 0; border-bottom: 1px solid #efefef;
+      padding: 18px 0; border-bottom: 1px solid #efefef;
     }
     .ps-dm__type-row:last-child { border-bottom: none; }
-    .ps-dm__type-label { font-family: 'Poppins', sans-serif; font-size: 7.5px; letter-spacing: 1.5px; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 3px; }
-    .ps-dm__type-where { font-family: 'Poppins', sans-serif; font-size: 7px; letter-spacing: 1px; color: #ddd; display: block; }
+    .ps-dm__type-label { font-family: 'Poppins', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #999; display: block; margin-bottom: 4px; }
+    .ps-dm__type-where { font-family: 'Poppins', sans-serif; font-size: 10px; letter-spacing: 0.5px; color: #bbb; display: block; }
 
     /* Buttons */
     .ps-dm__btns { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
@@ -586,9 +586,15 @@
           <!-- Instagram mock -->
           <span class="ps-label" style="font-size:20px;margin-bottom:12px">Tilhørende Instagram profil</span>
           <p class="ps-p" style="margin-bottom:24px">En Instagram-profil gjør det fiksjonelle stedet mer levende og troverdig. Den viser hvordan merkevaren fungerer i en ekte kontekst, og gir en helhetlig visuell identitet på tvers av flater.</p>
-          <div style="width:50vw;margin-left:calc(-25vw + 50%);overflow:hidden;line-height:0">
+          <div class="stopp-mock-wrap" style="overflow:hidden;line-height:0">
             <img src="./stopp/assets/stopp-mock.01" alt="Instagram mock" style="width:100%;display:block">
           </div>
+          <style>
+            .stopp-mock-wrap { width: 50vw; margin-left: calc(-25vw + 50%); }
+            @media (max-width: 600px) {
+              .stopp-mock-wrap { width: 92vw; margin-left: calc(-46vw + 50%); }
+            }
+          </style>
 
         </div>
       </section>
