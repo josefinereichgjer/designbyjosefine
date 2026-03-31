@@ -251,7 +251,16 @@
 
     /* ── Large desktop (1440px+) ── */
     @media (min-width: 1440px) {
-      .collage-scene { transform: none; }
+      .landing__bio { font-size: 17px; max-width: 560px; }
+      .landing__cta { font-size: 18px; padding: 16px 38px; }
+      .collage-scene { transform: scale(1.2); }
+    }
+
+    /* ── XL desktop (1920px+) ── */
+    @media (min-width: 1920px) {
+      .landing__bio { font-size: 19px; max-width: 620px; }
+      .landing__cta { font-size: 21px; padding: 20px 46px; }
+      .collage-scene { transform: scale(1.45); }
     }
   </style>
 </head>
