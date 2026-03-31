@@ -33,13 +33,13 @@
     <div class="hero-text">
       <h1>Har du en idé, men mangler verktøyene?</h1>
       <p>Vi har fjernet barrierene slik at du kan fokusere på prosessen. Her får du tilgang til profesjonelle fasiliteter og et unikt fellesskap av frivillige fagfolk. Enten du trenger en arbeidsplass for en kveld eller et fast sted å utvikle prosjektet ditt, er Stoppestedet plassen hvor du kan stoppe opp og faktisk gjøre noe.</p>
-      <div class="hero-buttons">
-        <a href="#priser" class="btn btn-orange">Bli medlem</a>
-        <a href="#" class="btn btn-black" onclick="openBooking(); return false;">Bestill time</a>
-      </div>
     </div>
     <div class="hero-image-wrap">
       <img src="assets/front.webp" alt="Folk som arbeider på verkstedet" />
+    </div>
+    <div class="hero-buttons">
+      <a href="#priser" class="btn btn-orange">Bli medlem</a>
+      <a href="#" class="btn btn-black" onclick="openBooking(); return false;">Bestill time</a>
     </div>
   </section>
 
@@ -51,9 +51,9 @@
       <h2>Kurs, arrangementer og konkurranser</h2>
       <p>Dette er ikke bare et sted du kommer for å lage noe, det er et sted du oppdager hva du faktisk har lyst til å gjøre.</p>
       <p>Du kan teste, feile, lære litt underveis og møte folk som er i samme prosess som deg.</p>
-      <div style="padding-bottom: 48px;">
-        <a href="#" class="btn btn-orange" onclick="document.getElementById('modal-kurs').classList.add('open'); return false;">Les mer</a>
-      </div>
+    </div>
+    <div class="section-buttons">
+      <a href="#" class="btn btn-orange" onclick="document.getElementById('modal-kurs').classList.add('open'); return false;">Les mer</a>
     </div>
   </section>
 
@@ -296,6 +296,10 @@
       current = (n + total) % total;
       slides[current].classList.add('active');
       allThumbs[current].classList.add('active');
+    }
+
+    if (window.innerWidth <= 767) {
+      setInterval(() => goTo(current + 1), 4000);
     }
 
     // BOOKING
