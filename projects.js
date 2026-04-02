@@ -389,7 +389,9 @@ window.PROJECTS = [
     cover: "./assets/lovechildbabi.webp",
     noSlideshow: true,
     gallery: [
-      { src: "./assets/lovechildbabi.webp", wide: true }
+      { src: "./assets/lovechildbabi.webp", wide: true },
+      { src: "./assets/babylogo@3x.webp", wide: true },
+      { src: "./assets/brotmockup.webp", wide: true }
     ]
   }
 ];
