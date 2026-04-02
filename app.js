@@ -19,7 +19,7 @@ function cardHTML(p){
       </div>
       <div class="card__caption">
         <p class="card__title">${p.title}</p>
-        <p class="card__tags">${p.tags[0] || ""}</p>
+        <p class="card__tags">${p.subtitle || p.tags[0] || ""}</p>
       </div>
     </a>
   `;

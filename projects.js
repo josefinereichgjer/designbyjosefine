@@ -382,17 +382,14 @@ window.PROJECTS = [
   },
   {
     id: "skriptabi",
-    title: "Skriptabi",
+    title: "Weit & Weiter",
+    subtitle: "visuell identitet",
     year: "2026",
     tags: [],
-    cover: "./assets/skriptabi-baby.webp",
+    cover: "./assets/lovechildbabi.webp",
     noSlideshow: true,
     gallery: [
-      { src: "./assets/kaffeidentiet.webp", wide: true },
-      { src: "./assets/kaffekort.webp", wide: true },
-      { src: "./assets/skriptabi-baby.webp", wide: true },
-      { src: "./assets/apron.jpg", wide: true },
-      { src: "./assets/skriptabifonten.webp", wide: true }
+      { src: "./assets/lovechildbabi.webp", wide: true }
     ]
   }
 ];
