@@ -379,5 +379,20 @@ window.PROJECTS = [
       { label: "Fagansvarlig", value: "Martin Asbjørnsen" },
       { label: "Verktøy", value: "Illustrator, Photoshop" }
     ]
+  },
+  {
+    id: "skriptabi",
+    title: "Skriptabi",
+    year: "2026",
+    tags: [],
+    cover: "./assets/skriptabi-baby.webp",
+    noSlideshow: true,
+    gallery: [
+      { src: "./assets/skriptabifonten.webp", wide: true },
+      { src: "./assets/kaffeidentiet.webp", wide: true },
+      { src: "./assets/kaffekort.webp", wide: true },
+      { src: "./assets/skriptabi-baby.webp", wide: true },
+      { src: "./assets/apron.jpg", wide: true }
+    ]
   }
 ];
