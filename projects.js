@@ -388,11 +388,11 @@ window.PROJECTS = [
     cover: "./assets/skriptabi-baby.webp",
     noSlideshow: true,
     gallery: [
-      { src: "./assets/skriptabifonten.webp", wide: true },
       { src: "./assets/kaffeidentiet.webp", wide: true },
       { src: "./assets/kaffekort.webp", wide: true },
       { src: "./assets/skriptabi-baby.webp", wide: true },
-      { src: "./assets/apron.jpg", wide: true }
+      { src: "./assets/apron.jpg", wide: true },
+      { src: "./assets/skriptabifonten.webp", wide: true }
     ]
   }
 ];
