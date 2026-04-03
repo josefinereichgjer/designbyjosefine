@@ -8,7 +8,7 @@
   <meta name="description" content="Weit & Weiter — DesignbyJosefine" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
@@ -51,13 +51,17 @@
     <article class="project" id="project">
         <div class="project-layout">
           <div class="project-layout__media">
-            <div class="project-header">
-              <h1 class="project-meta__title">Weit & Weiter</h1>
-              
-              
-              <div class="header-btns">
-                
-                
+            <div class="ww-header">
+              <button class="ww-title" id="wwToggle" aria-expanded="false" aria-controls="wwPanel">Weit &amp; Weiter <span class="ww-icon">+</span></button>
+              <div class="ww-panel" id="wwPanel" aria-hidden="true">
+                <div class="ww-panel__inner">
+                  <p class="ww-panel__lead">Visuell identitet for kafé</p>
+                  <p>Weit &amp; Weiter er et konsept utviklet for en moderne kafé med fokus på håndverk, kvalitet og tilstedeværelse. Navnet, som betyr "vidt og videre", fungerer som en metafor for prosessene bak kaffe og bakst – fra råvare til ferdig produkt. Identiteten bygger på idéen om kontinuitet, utvikling og små pauser i hverdagen.</p>
+                  <p>Valget av et tysk navn i en norsk kontekst er bevisst. Det tilfører en følelse av europeisk tradisjon og håndverkskvalitet, samtidig som det skaper et tydelig og særegent uttrykk i markedet.</p>
+                  <p>Det visuelle uttrykket er utviklet med inspirasjon fra fonten Lovechild, som kombinerer myke, organiske former med tydelig kontrast. Typografien gir identiteten en balanse mellom det lekne og det sofistikerte, med referanser til klassisk emballasjedesign og skiltmaleri.</p>
+                  <p>En sentral inspirasjonskilde er SIA Glass og deres ikoniske figur "Den svenska gräddglassens skyddsängel". Denne referansen har påvirket den emosjonelle retningen i prosjektet, hvor "baby"-elementet symboliserer noe nært, omsorgsfullt og autentisk.</p>
+                  <p>Resultatet er en identitet som kombinerer det nostalgiske og det moderne, og som formidler en varm, personlig og gjennomført kaféopplevelse.</p>
+                </div>
               </div>
             </div>
             
@@ -67,11 +71,11 @@
         
         <div class="project__gallery">
           <figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/3.april.webp" alt="Weit & Weiter — galleri 1">
-          
+          <img loading="lazy" decoding="async" src="./assets/babilogo.webp" alt="Weit & Weiter — galleri 1">
+
         </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/babilogo.webp" alt="Weit & Weiter — galleri 2">
-          
+          <img loading="lazy" decoding="async" src="./assets/3.april.webp" alt="Weit & Weiter — galleri 2">
+
         </figure><figure class="project__figure project__figure--wide">
           <img loading="lazy" decoding="async" src="./assets/3.april-brot.webp" alt="Weit & Weiter — galleri 3">
           
@@ -80,15 +84,10 @@
           
         </figure>
         </div>
-        <div class="project-meta" style="margin-top:var(--gap)">
-          
-          
-          
-        </div>
         
         
         
-        <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
+<div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
                   <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
                   <p class="related__title">Reina Fruktgård</p>
@@ -307,6 +306,16 @@
     processDrawerClose?.addEventListener("click", closeDrawer);
     processBackdrop?.addEventListener("click", closeDrawer);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+    // Weit & Weiter slide-out panel
+    const wwToggle = document.getElementById("wwToggle");
+    const wwPanel = document.getElementById("wwPanel");
+    wwToggle?.addEventListener("click", () => {
+      const isOpen = wwPanel.classList.toggle("is-open");
+      wwPanel.setAttribute("aria-hidden", String(!isOpen));
+      wwToggle.setAttribute("aria-expanded", String(isOpen));
+      wwToggle.querySelector(".ww-icon").textContent = isOpen ? "−" : "+";
+    });
 
     // Sidebar toggle
     const toggle = $("#sidebarToggle");
