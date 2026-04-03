@@ -391,7 +391,8 @@ window.PROJECTS = [
     gallery: [
       { src: "./assets/3.april.webp", wide: true },
       { src: "./assets/babilogo.webp", wide: true },
-      { src: "./assets/3.april-brot.webp", wide: true }
+      { src: "./assets/3.april-brot.webp", wide: true },
+      { src: "./assets/baby-stand.webp", wide: true }
     ]
   }
 ];
