@@ -386,12 +386,12 @@ window.PROJECTS = [
     subtitle: "visuell identitet",
     year: "2026",
     tags: [],
-    cover: "./assets/lovechildbabi.webp",
+    cover: "./assets/3.april.webp",
     noSlideshow: true,
     gallery: [
-      { src: "./assets/lovechildbabi.webp", wide: true },
-      { src: "./assets/babylogo@3x.webp", wide: true },
-      { src: "./assets/brotmockup.webp", wide: true }
+      { src: "./assets/3.april.webp", wide: true },
+      { src: "./assets/babilogo.webp", wide: true },
+      { src: "./assets/3.april-brot.webp", wide: true }
     ]
   }
 ];
