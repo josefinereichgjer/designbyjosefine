@@ -287,6 +287,16 @@ a:hover{opacity:.75}
   margin: 0 0 1em;
   color: var(--text);
 }
+@media (max-width: 700px) {
+  .ww-header {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ww-panel,
+  .ww-panel.is-open {
+    max-width: 100%;
+  }
+}
 
 /* Project page */
 .project__gallery{
@@ -2033,6 +2043,7 @@ a:hover{opacity:.75}
 .ww-identity {
   display: flex;
   justify-content: center;
+  align-items: center;
   padding: 4rem 3.5rem;
   gap: 5rem;
 }
@@ -2080,6 +2091,7 @@ a:hover{opacity:.75}
   text-transform: uppercase;
   color: #451122;
   margin: 0 0 0.5rem;
+  white-space: nowrap;
 }
 .ww-palette__swatch {
   aspect-ratio: 1;
@@ -2096,8 +2108,24 @@ a:hover{opacity:.75}
   text-transform: uppercase;
 }
 @media (max-width: 700px) {
-  .ww-identity { flex-direction: column; padding: 2.5rem 1.5rem; gap: 2rem; }
-  .ww-palette { flex: none; flex-direction: row; height: 80px; }
+  .ww-identity { flex-direction: column; align-items: center; padding: 2.5rem 1.5rem; gap: 2rem; }
+  .ww-typesample { width: 100%; }
+  .ww-palette { flex: none; width: 100%; flex-direction: row; }
+}
+.ww-video-fig {
+  margin-top: clamp(90px, 8vw, 110px);
+}
+@media (max-width: 700px) {
+  .ww-video-fig {
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+  .ww-video-fig video {
+    width: 100% !important;
+    height: 100%;
+    object-fit: cover;
+    margin: 0 !important;
+  }
 }
 
 /* Tablet portrait / large mobile gap fix */
