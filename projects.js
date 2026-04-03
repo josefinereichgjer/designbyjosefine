@@ -393,7 +393,8 @@ window.PROJECTS = [
       { src: "./assets/babilogo.webp", wide: true },
       { src: "./assets/3.april.webp", wide: true },
       { src: "./assets/3.april-brot.webp", wide: true },
-      { src: "./assets/baby-stand.webp", wide: true }
+      { src: "./assets/baby-skilt.webp", wide: true },
+      { src: "./assets/baby-tote.webp", wide: true }
     ]
   }
 ];
