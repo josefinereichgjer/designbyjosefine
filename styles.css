@@ -116,6 +116,7 @@ a:hover{opacity:.75}
   justify-content:space-between;
   padding:6px 0;
 }
+.nav__link--personal { margin-top: 20px; opacity: 0.7; font-size: 13px; }
 .chip{
   display:inline-flex;
   gap:8px;
