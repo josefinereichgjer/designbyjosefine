@@ -2116,6 +2116,36 @@ a:hover{opacity:.75}
 .ww-video-fig {
   margin-top: clamp(90px, 8vw, 110px);
 }
+.ai-reveal {
+  margin-top: clamp(40px, 6vw, 64px);
+}
+.ai-reveal__btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 20px;
+  background: none;
+  border: 1.5px solid #451122;
+  color: #451122;
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: clamp(13px, 1.4vw, 15px);
+  cursor: pointer;
+  text-align: left;
+}
+.ai-reveal__btn:hover { background: #451122; color: #d8ceb7; }
+.ai-reveal__icon { flex-shrink: 0; font-style: normal; transition: transform 0.3s; }
+.ai-reveal__panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+}
+.ai-reveal__panel.is-open {
+  max-height: 2000px;
+  opacity: 1;
+}
 @media (max-width: 700px) {
   .ww-video-fig {
     overflow: hidden;
