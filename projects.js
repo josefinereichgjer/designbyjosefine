@@ -381,7 +381,7 @@ window.PROJECTS = [
     ]
   },
   {
-    id: "skriptabi",
+    id: "lovechild",
     title: "Weit & Weiter",
     subtitle: "visuell identitet",
     year: "2026",
