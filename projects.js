@@ -109,6 +109,7 @@ window.PROJECTS = [
   },
   {
     id: "bokomslag",
+    skipBuild: true,
     title: "Bokomslag",
     subtitle: "Redaksjonell design",
     year: "2026",
