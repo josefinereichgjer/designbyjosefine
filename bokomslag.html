@@ -10,6 +10,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
   <style>:root { --font: "Poppins", system-ui, sans-serif; }
+  @media (min-width: 769px) {
+    .boks-video {
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
+    }
+  }
   @media (max-width: 768px) {
     .boks-top { display: flex; flex-direction: column; }
     .boks-intro { order: 2; }
