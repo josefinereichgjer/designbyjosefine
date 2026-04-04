@@ -8,7 +8,8 @@
   <meta name="description" content="Bokomslag — DesignbyJosefine" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>:root { --font: "Poppins", system-ui, sans-serif; }</style>
   <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
@@ -57,69 +58,73 @@
         <div style="margin-bottom:clamp(32px,5vw,64px);">
           <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline style="width:100%;height:auto;display:block;" id="bokserieVideo"></video>
           <script>document.getElementById("bokserieVideo").playbackRate = 0.5;</script>
-          <div style="display:flex;gap:0;">
-            <img loading="lazy" decoding="async" src="./assets/red-1.webp" alt="Bokomslag — galleri 1" style="flex:1;width:0;display:block;">
-            <img loading="lazy" decoding="async" src="./assets/red-2.webp" alt="Bokomslag — galleri 2" style="flex:1;width:0;display:block;">
-            <img loading="lazy" decoding="async" src="./assets/red-3.webp" alt="Bokomslag — galleri 3" style="flex:1;width:0;display:block;">
-          </div>
         </div>
         
         <div class="project__gallery">
+          <p class="project__gallery-heading" style="font-size:clamp(14px,1.3vw,17px);font-weight:400;letter-spacing:0;line-height:1.7;margin-top:0;margin-bottom:clamp(16px,2vw,28px);"><strong>Subtil preging:</strong> Tittelen er blindpreget (embossed) i tekstilet. Den nedtonede effekten gjør at typografien må "oppdages" avhengig av hvordan lyset faller, en visuell metafor for skjulte følelser og samfunnets tildekkede sannheter.</p>
           <figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/red-1.webp" alt="Bokomslag — galleri 1">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/red-2.webp" alt="Bokomslag — galleri 2">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/red-3.webp" alt="Bokomslag — galleri 3">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4">
-          
-        </figure><div class="project__gallery-heading">Prototyper</div><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Bokomslag — galleri 6">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Bokomslag — galleri 7">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Bokomslag — galleri 8">
-          
-        </figure><div class="palette palette--cards" style="column-span:all;margin-bottom:clamp(20px,3vw,36px)">
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:rgba(206, 46, 39, 0.62)"></div>
-                <div class="palette__info">
-                  <span class="palette__name">Forrådt</span>
-                  <span class="palette__hex">#ce2e27</span>
-                  <span class="palette__desc">Opasitet 62%</span>
-                </div>
-              </div>
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:rgba(255, 238, 168, 0.62)"></div>
-                <div class="palette__info">
-                  <span class="palette__name">Jenny</span>
-                  <span class="palette__hex">#ffeea8</span>
-                  <span class="palette__desc">Opasitet 62%</span>
-                </div>
-              </div>
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:rgba(74, 179, 225, 0.25)"></div>
-                <div class="palette__info">
-                  <span class="palette__name">Amtmandens Døtre</span>
-                  <span class="palette__hex">#4ab3e1</span>
-                  <span class="palette__desc">Opasitet 25%</span>
-                </div>
-              </div></div>
-        </div>
-        <div class="project-meta" style="margin-top:var(--gap)">
-          
-          
-          
+            <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4">
+          </figure>
+          <div class="project__gallery-heading" style="column-span:all;margin-top:clamp(24px,3vw,40px);">Prototyper</div>
+          <div style="column-span:all;display:flex;flex-direction:column;gap:0;margin-top:clamp(16px,2vw,24px);">
+            <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Prototyper — Forrådt" style="width:100%;display:block;border:1px solid rgba(0,0,0,0.1);">
+            <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Prototyper — Amtmandens Døtre" style="width:100%;display:block;border:1px solid rgba(0,0,0,0.1);">
+            <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Prototyper — Jenny" style="width:100%;display:block;border:1px solid rgba(0,0,0,0.1);">
+          </div>
         </div>
         
         
         
+        <div class="project-meta" style="margin-top:300px">
+          <p class="project-intro" style="font-size:clamp(15px,1.4vw,18px);margin-top:clamp(12px,1.5vw,20px);"><strong>Typografi:</strong> Valget falt på Baskerville. Med sine historiske røtter og sobre eleganse, forankrer fonten verkene i deres litterære kontekst samtidig som den oppleves moderne i et strippet oppsett.</p>
+          <p class="project-intro" style="font-size:clamp(15px,1.4vw,18px);margin-top:clamp(12px,1.5vw,20px);"><strong>Fargefelt:</strong> Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
+
+          <style>.bokomslag-palette.palette--cards .palette__swatch { height: 200px; } .bokomslag-palette.palette--cards .palette__name { font-size: 15px; } .bokomslag-palette.palette--cards .palette__hex { font-size: 13px; } .bokomslag-palette.palette--cards .palette__desc { font-size: 13px; color: #111; }</style>
+          <div class="palette palette--cards bokomslag-palette" style="margin-top:clamp(16px,2vw,28px);grid-template-columns:repeat(3,1fr)">
+            <div class="palette__item">
+              <div class="palette__swatch" style="background:rgba(74, 179, 225, 0.25)"></div>
+              <div class="palette__info">
+                <span class="palette__name">Amtmandens Døtre</span>
+                <span class="palette__hex">#4ab3e1 — Opasitet: 25%</span>
+                <span class="palette__hex" style="color:#888;">CMYK: 67, 20, 0, 12</span>
+                <span class="palette__desc">Gir en følelse av ro, litt tristhet og noe kjølig og dannet</span>
+              </div>
+            </div>
+            <div class="palette__item">
+              <div class="palette__swatch" style="background:rgba(206, 46, 39, 0.62)"></div>
+              <div class="palette__info">
+                <span class="palette__name">Forrådt</span>
+                <span class="palette__hex">#ce2e27 — Opasitet: 63%</span>
+                <span class="palette__hex" style="color:#888;">CMYK: 0, 78, 81, 19</span>
+                <span class="palette__desc">Står for sterke følelser, konflikt og svik</span>
+              </div>
+            </div>
+            <div class="palette__item">
+              <div class="palette__swatch" style="background:rgba(255, 238, 168, 0.62)"></div>
+              <div class="palette__info">
+                <span class="palette__name">Jenny</span>
+                <span class="palette__hex">#ffeea8 — Opasitet: 63%</span>
+                <span class="palette__hex" style="color:#888;">CMYK: 0, 7, 34, 0</span>
+                <span class="palette__desc">Gir inntrykk av varme, liv og en lengsel etter frihet</span>
+              </div>
+            </div>
+          </div>
+          <p class="project-intro" style="font-size:clamp(13px,1.1vw,15px);margin-top:clamp(16px,2vw,24px);color:#444;">Fargene er definert i <strong>RGB</strong> for skjermvisning, men siden dette er bokomslag som skal trykkes, er de også konvertert til <strong>CMYK</strong>. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget. Det betyr at den faktiske fargeopplevelsen vil variere noe avhengig av fargerom og trykkmetode.</p>
+
+          <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:clamp(24px,3vw,40px);background:#fff;border:1.5px solid #111;color:#111;">Prosess</button>
+          <div id="processPanel" style="display:none;margin-top:clamp(20px,3vw,36px);">
+            <div class="prosess-row">
+              <img src="./assets/prosess1.png" alt="Prosess" style="height:auto;display:block;">
+              <img src="./assets/prosess2.png" alt="Prosess" style="height:auto;display:block;">
+            </div>
+            <style>
+              .prosess-row { display:flex; gap:clamp(12px,2vw,24px); }
+              .prosess-row img { width:50%; }
+              @media(max-width:600px){ .prosess-row { flex-direction:column; } .prosess-row img { width:100%; } }
+            </style>
+          </div>
+        </div>
+
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
                   <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
@@ -332,7 +337,11 @@
       processBackdrop.classList.remove("process-drawer__backdrop--visible");
       processDrawer.setAttribute("aria-hidden", "true");
     }
-    processToggle?.addEventListener("click", openDrawer);
+    processToggle?.addEventListener("click", () => {
+      const panel = document.getElementById("processPanel");
+      const isOpen = panel.style.display !== "none";
+      panel.style.display = isOpen ? "none" : "block";
+    });
     if (project && !project.noDrawer) {
       document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
     }
