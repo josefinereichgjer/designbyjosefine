@@ -8,8 +8,7 @@
   <meta name="description" content="Bokomslag — DesignbyJosefine" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>:root { --font: "Poppins", system-ui, sans-serif; }</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
@@ -64,9 +63,18 @@
             <img loading="lazy" decoding="async" src="./assets/red-3.webp" alt="Bokomslag — galleri 3" style="flex:1;width:0;display:block;">
           </div>
         </div>
-
+        
         <div class="project__gallery">
-          <div class="project__gallery-heading" style="font-size:clamp(14px,1.3vw,17px);font-weight:400;letter-spacing:0;line-height:1.7;margin-top:clamp(24px,3vw,40px);margin-bottom:clamp(16px,2vw,28px);">Subtil preging: Tittelen er blindpreget (embossed) i tekstilet. Den nedtonede effekten gjør at typografien må «oppdages» avhengig av hvordan lyset faller — en visuell metafor for skjulte følelser og samfunnets tildekkede sannheter.</div><figure class="project__figure project__figure--wide">
+          <figure class="project__figure project__figure--wide">
+          <img loading="lazy" decoding="async" src="./assets/red-1.webp" alt="Bokomslag — galleri 1">
+          
+        </figure><figure class="project__figure project__figure--wide">
+          <img loading="lazy" decoding="async" src="./assets/red-2.webp" alt="Bokomslag — galleri 2">
+          
+        </figure><figure class="project__figure project__figure--wide">
+          <img loading="lazy" decoding="async" src="./assets/red-3.webp" alt="Bokomslag — galleri 3">
+          
+        </figure><figure class="project__figure project__figure--wide">
           <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4">
           
         </figure><div class="project__gallery-heading">Prototyper</div><figure class="project__figure project__figure--wide">
@@ -78,53 +86,36 @@
         </figure><figure class="project__figure project__figure--wide">
           <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Bokomslag — galleri 8">
           
-        </figure>
+        </figure><div class="palette palette--cards" style="column-span:all;margin-bottom:clamp(20px,3vw,36px)">
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:rgba(206, 46, 39, 0.62)"></div>
+                <div class="palette__info">
+                  <span class="palette__name">Forrådt</span>
+                  <span class="palette__hex">#ce2e27</span>
+                  <span class="palette__desc">Opasitet 62%</span>
+                </div>
+              </div>
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:rgba(255, 238, 168, 0.62)"></div>
+                <div class="palette__info">
+                  <span class="palette__name">Jenny</span>
+                  <span class="palette__hex">#ffeea8</span>
+                  <span class="palette__desc">Opasitet 62%</span>
+                </div>
+              </div>
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:rgba(74, 179, 225, 0.25)"></div>
+                <div class="palette__info">
+                  <span class="palette__name">Amtmandens Døtre</span>
+                  <span class="palette__hex">#4ab3e1</span>
+                  <span class="palette__desc">Opasitet 25%</span>
+                </div>
+              </div></div>
         </div>
         <div class="project-meta" style="margin-top:var(--gap)">
-
-<p class="project-intro" style="font-size:clamp(15px,1.4vw,18px);margin-top:clamp(12px,1.5vw,20px);"><strong>Typografi:</strong> Valget falt på Baskerville. Med sine historiske røtter og sobre eleganse, forankrer fonten verkene i deres litterære kontekst samtidig som den oppleves moderne i et strippet oppsett.</p>
-          <p class="project-intro" style="font-size:clamp(15px,1.4vw,18px);margin-top:clamp(12px,1.5vw,20px);"><strong>Fargefelt:</strong> Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
-
-          <div class="palette palette--cards" style="margin-top:clamp(16px,2vw,28px);grid-template-columns:repeat(3,1fr)">
-            <div class="palette__item">
-              <div class="palette__swatch" style="background:rgba(206, 46, 39, 0.62)"></div>
-              <div class="palette__info">
-                <span class="palette__name">Forrådt</span>
-                <span class="palette__hex">#ce2e27</span>
-                <span class="palette__desc">Opasitet 62%</span>
-              </div>
-            </div>
-            <div class="palette__item">
-              <div class="palette__swatch" style="background:rgba(255, 238, 168, 0.62)"></div>
-              <div class="palette__info">
-                <span class="palette__name">Jenny</span>
-                <span class="palette__hex">#ffeea8</span>
-                <span class="palette__desc">Opasitet 62%</span>
-              </div>
-            </div>
-            <div class="palette__item">
-              <div class="palette__swatch" style="background:rgba(74, 179, 225, 0.25)"></div>
-              <div class="palette__info">
-                <span class="palette__name">Amtmandens Døtre</span>
-                <span class="palette__hex">#4ab3e1</span>
-                <span class="palette__desc">Opasitet 25%</span>
-              </div>
-            </div>
-          </div>
-
-          <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:clamp(24px,3vw,40px);background:#fff;border:1.5px solid #111;color:#111;">Prosess</button>
-          <div id="processPanel" style="display:none;margin-top:clamp(20px,3vw,36px);">
-            <div class="prosess-row">
-              <img src="./assets/prosess1.png" alt="Prosess" style="height:auto;display:block;">
-              <img src="./assets/prosess2.png" alt="Prosess" style="height:auto;display:block;">
-            </div>
-            <style>
-              .prosess-row { display:flex; gap:clamp(12px,2vw,24px); }
-              .prosess-row img { width:50%; }
-              @media(max-width:600px){ .prosess-row { flex-direction:column; } .prosess-row img { width:100%; } }
-            </style>
-          </div>
-
+          
+          
+          
         </div>
         
         
@@ -315,12 +306,6 @@
     if (project && project.processText) {
       allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
     }
-    // Process dropdown
-    const processPanel = document.getElementById("processPanel");
-    document.getElementById("processToggle")?.addEventListener("click", () => {
-      const open = processPanel.style.display === "none";
-      processPanel.style.display = open ? "block" : "none";
-    });
     function showDrawerIndex() {
       processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
       processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
@@ -347,6 +332,7 @@
       processBackdrop.classList.remove("process-drawer__backdrop--visible");
       processDrawer.setAttribute("aria-hidden", "true");
     }
+    processToggle?.addEventListener("click", openDrawer);
     if (project && !project.noDrawer) {
       document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
     }
