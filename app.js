@@ -9,7 +9,7 @@ sidebarToggle?.addEventListener("click", () => {
   sidebarToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
-const projects = window.PROJECTS || [];
+const projects = (window.PROJECTS || []).filter(p => !p.personal);
 
 function cardHTML(p){
   return `

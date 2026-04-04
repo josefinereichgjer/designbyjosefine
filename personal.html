@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="format-detection" content="telephone=no">
+  <title>Personlige prosjekter — DesignbyJosefine</title>
+  <meta name="description" content="Personlige prosjekter — DesignbyJosefine" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=20" />
+  <link rel="icon" href="assets/hvitlogo.png">
+</head>
+
+<body>
+  <a class="skip-link" href="#content">Hopp til innhold</a>
+
+  <header class="sidebar sidebar--detail" id="sidebar">
+    <div class="sidebar__inner">
+      <div class="brand">
+        <a class="brand__mark" href="./projects.html" aria-label="Back to work">
+          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
+        </a>
+      </div>
+      <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a class="nav__link" href="./projects.html"><span>Arbeider</span></a>
+        <a class="nav__link" href="./projects.html#about"><span>Om</span></a>
+        <a class="nav__link" href="./projects.html#contact"><span>Kontakt</span></a>
+      </nav>
+      <footer class="meta">
+        <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
+      </footer>
+      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
+    </div>
+  </header>
+
+  <main id="content" class="content">
+    <section class="section" id="work">
+      <div class="masonry" id="grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <script src="./projects.js?v=6"></script>
+  <script>
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    document.getElementById("sidebarToggle")?.addEventListener("click", () => {
+      const sidebar = document.getElementById("sidebar");
+      const isOpen = sidebar.classList.toggle("sidebar--open");
+      document.getElementById("sidebarToggle").setAttribute("aria-expanded", String(isOpen));
+    });
+
+    const personalProjects = (window.PROJECTS || []).filter(p => p.personal);
+    const grid = document.getElementById("grid");
+    if (grid) {
+      grid.innerHTML = personalProjects.map(p => `
+        <a class="card" href="./${p.id}.html">
+          <div class="card__img-wrap">
+            <img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${p.coverPosition ? ` style="object-position:${p.coverPosition}"` : ""}>
+          </div>
+          <div class="card__caption">
+            <p class="card__title">${p.title}</p>
+            <p class="card__tags">${p.subtitle || ""}</p>
+          </div>
+        </a>
+      `).join("");
+    }
+  </script>
+</body>
+</html>

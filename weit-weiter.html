@@ -4,12 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
-  <title>Bokomslag — DesignbyJosefine</title>
-  <meta name="description" content="Bokomslag — DesignbyJosefine" />
+  <title>Weit & Weiter — DesignbyJosefine</title>
+  <meta name="description" content="Weit & Weiter — DesignbyJosefine" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>:root { --font: "Poppins", system-ui, sans-serif; }</style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
@@ -50,86 +49,93 @@
 
   <main id="content" class="content">
     <article class="project" id="project">
-        <div style="margin-bottom:clamp(24px,3vw,40px);">
-          <h2 style="font-size:clamp(16px,1.5vw,22px);font-weight:700;letter-spacing:-.01em;margin-bottom:10px;">En Redesign av Norske Klassikere</h2>
-          <p class="project-intro" style="font-size:clamp(13px,1.2vw,17px);">Dette prosjektet omfatter en ny utgave av tre grunnpilarer i norsk litteraturhistorie: <em>Amtmandens Døtre</em> av Camilla Collett, <em>Forrådt</em> av Amalie Skram og <em>Jenny</em> av Sigrid Undset. Ved&nbsp;å fjerne kommersiell støy, får materialiteten og&nbsp;de symbolske fargeflatene rom til&nbsp;å kommunisere. For&nbsp;å understreke bøkenes status som tidløse klassikere, er utgavene utformet som&nbsp;tekstiltrukne hardcover-bind.</p>
-        </div>
-
-        <div style="margin-bottom:clamp(32px,5vw,64px);">
-          <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline style="width:100%;height:auto;display:block;" id="bokserieVideo"></video>
-          <script>document.getElementById("bokserieVideo").playbackRate = 0.5;</script>
-          <div style="display:flex;gap:0;">
-            <img loading="lazy" decoding="async" src="./assets/red-1.webp" alt="Bokomslag — galleri 1" style="flex:1;width:0;display:block;">
-            <img loading="lazy" decoding="async" src="./assets/red-2.webp" alt="Bokomslag — galleri 2" style="flex:1;width:0;display:block;">
-            <img loading="lazy" decoding="async" src="./assets/red-3.webp" alt="Bokomslag — galleri 3" style="flex:1;width:0;display:block;">
+        <div class="project-layout">
+          <div class="project-layout__media">
+            <div class="ww-header">
+              <button class="ww-title" id="wwToggle" aria-expanded="false" aria-controls="wwPanel">Weit &amp; Weiter <span class="ww-icon">+</span></button>
+              <div class="ww-panel" id="wwPanel" aria-hidden="true">
+                <div class="ww-panel__inner">
+                  <p class="ww-panel__lead">Visuell identitet for kafé</p>
+                  <p>Weit &amp; Weiter er et konsept utviklet for en moderne kafé med fokus på håndverk, kvalitet og tilstedeværelse. Navnet, som betyr "vidt og videre", fungerer som en metafor for prosessene bak kaffe og bakst – fra råvare til ferdig produkt. Identiteten bygger på idéen om kontinuitet, utvikling og små pauser i hverdagen.</p>
+                  <p>Valget av et tysk navn i en norsk kontekst er bevisst. Det tilfører en følelse av europeisk tradisjon og håndverkskvalitet, samtidig som det skaper et tydelig og særegent uttrykk i markedet.</p>
+                  <p>Det visuelle uttrykket er utviklet med inspirasjon fra fonten Lovechild, som kombinerer myke, organiske former med tydelig kontrast. Typografien gir identiteten en balanse mellom det lekne og det sofistikerte, med referanser til klassisk emballasjedesign og skiltmaleri.</p>
+                  <p>En sentral inspirasjonskilde er SIA Glass og deres ikoniske figur "Den svenska gräddglassens skyddsängel". Denne referansen har påvirket den emosjonelle retningen i prosjektet, hvor "baby"-elementet symboliserer noe nært, omsorgsfullt og autentisk.</p>
+                  <p>Resultatet er en identitet som kombinerer det nostalgiske og det moderne, og som formidler en varm, personlig og gjennomført kaféopplevelse.</p>
+                </div>
+              </div>
+            </div>
+            
+            
           </div>
         </div>
-
+        
         <div class="project__gallery">
-          <div class="project__gallery-heading" style="font-size:clamp(14px,1.3vw,17px);font-weight:400;letter-spacing:0;line-height:1.7;margin-top:clamp(24px,3vw,40px);margin-bottom:clamp(16px,2vw,28px);">Subtil preging: Tittelen er blindpreget (embossed) i tekstilet. Den nedtonede effekten gjør at typografien må «oppdages» avhengig av hvordan lyset faller — en visuell metafor for skjulte følelser og samfunnets tildekkede sannheter.</div><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4">
-          
-        </figure><div class="project__gallery-heading">Prototyper</div><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Bokomslag — galleri 6">
+          <figure class="project__figure project__figure--wide">
+          <img loading="lazy" decoding="async" src="./assets/babilogo.webp" alt="Weit & Weiter — galleri 1">
+
+        </figure><figure class="project__figure project__figure--wide">
+          <img loading="lazy" decoding="async" src="./assets/3.april.webp" alt="Weit & Weiter — galleri 2">
+
+        </figure><figure class="project__figure project__figure--wide">
+          <img loading="lazy" decoding="async" src="./assets/3.april-brot.webp" alt="Weit & Weiter — galleri 3">
           
         </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Bokomslag — galleri 7">
+          <img loading="lazy" decoding="async" src="./assets/baby-skilt.webp" alt="Weit & Weiter — galleri 4">
           
         </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Bokomslag — galleri 8">
-          
+          <img loading="lazy" decoding="async" src="./assets/twomock.webp" alt="Weit & Weiter — galleri 5">
+
         </figure>
         </div>
-        <div class="project-meta" style="margin-top:var(--gap)">
 
-<p class="project-intro" style="font-size:clamp(15px,1.4vw,18px);margin-top:clamp(12px,1.5vw,20px);"><strong>Typografi:</strong> Valget falt på Baskerville. Med sine historiske røtter og sobre eleganse, forankrer fonten verkene i deres litterære kontekst samtidig som den oppleves moderne i et strippet oppsett.</p>
-          <p class="project-intro" style="font-size:clamp(15px,1.4vw,18px);margin-top:clamp(12px,1.5vw,20px);"><strong>Fargefelt:</strong> Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
-
-          <div class="palette palette--cards" style="margin-top:clamp(16px,2vw,28px);grid-template-columns:repeat(3,1fr)">
-            <div class="palette__item">
-              <div class="palette__swatch" style="background:rgba(206, 46, 39, 0.62)"></div>
-              <div class="palette__info">
-                <span class="palette__name">Forrådt</span>
-                <span class="palette__hex">#ce2e27</span>
-                <span class="palette__desc">Opasitet 62%</span>
+        <div class="ww-identity">
+          <div class="ww-typesample">
+            <p class="ww-typesample__label">Lovechild Regular</p>
+            <div class="ww-typesample__display">Aa</div>
+            <div class="ww-typesample__alphabet">ABCDEFHIJKLMN<br>OPQRSTUVWXYZÆØÅ</div>
+            <div class="ww-typesample__alphabet ww-typesample__alphabet--lower">abcdefghijklnop<br>qrstuvwxyzæøå</div>
+          </div>
+          <div class="ww-palette">
+            <div class="ww-palette__col">
+              <p class="ww-palette__label">Primær farger</p>
+              <div class="ww-palette__swatch" style="background:#451122">
+                <span class="ww-palette__hex" style="color:#d8ceb7">#451122</span>
+              </div>
+              <div class="ww-palette__swatch" style="background:#d8ceb7">
+                <span class="ww-palette__hex" style="color:#451122">#d8ceb7</span>
               </div>
             </div>
-            <div class="palette__item">
-              <div class="palette__swatch" style="background:rgba(255, 238, 168, 0.62)"></div>
-              <div class="palette__info">
-                <span class="palette__name">Jenny</span>
-                <span class="palette__hex">#ffeea8</span>
-                <span class="palette__desc">Opasitet 62%</span>
+            <div class="ww-palette__col">
+              <p class="ww-palette__label">Sekundær farger</p>
+              <div class="ww-palette__swatch" style="background:#19181c">
+                <span class="ww-palette__hex" style="color:#d8ceb7">#19181c</span>
               </div>
-            </div>
-            <div class="palette__item">
-              <div class="palette__swatch" style="background:rgba(74, 179, 225, 0.25)"></div>
-              <div class="palette__info">
-                <span class="palette__name">Amtmandens Døtre</span>
-                <span class="palette__hex">#4ab3e1</span>
-                <span class="palette__desc">Opasitet 25%</span>
+              <div class="ww-palette__swatch ww-palette__swatch--border" style="background:#ebe6da">
+                <span class="ww-palette__hex" style="color:#451122">#ebe6da</span>
               </div>
             </div>
           </div>
-
-          <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:clamp(24px,3vw,40px);background:#fff;border:1.5px solid #111;color:#111;">Prosess</button>
-          <div id="processPanel" style="display:none;margin-top:clamp(20px,3vw,36px);">
-            <div class="prosess-row">
-              <img src="./assets/prosess1.png" alt="Prosess" style="height:auto;display:block;">
-              <img src="./assets/prosess2.png" alt="Prosess" style="height:auto;display:block;">
-            </div>
-            <style>
-              .prosess-row { display:flex; gap:clamp(12px,2vw,24px); }
-              .prosess-row img { width:50%; }
-              @media(max-width:600px){ .prosess-row { flex-direction:column; } .prosess-row img { width:100%; } }
-            </style>
-          </div>
-
         </div>
-        
-        
-        
-        <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
+
+        <figure class="project__figure project__figure--wide ww-video-fig">
+          <video src="./assets/babis-video.mp4" autoplay muted loop playsinline style="width:70%;display:block;margin:0 auto;" oncanplay="this.playbackRate=1.2"></video>
+        </figure>
+        <p class="project__figcaption" style="text-transform:none;letter-spacing:0;font-family:'Libre Baskerville',Georgia,serif;margin-top:10px;text-align:center;">Denne enkle animasjonen over lagde jeg selv i Canva. Det er meningen at animasjonen er litt hoppete, for å gjøre den litt mer livlig og autentisk.</p>
+
+        <div class="ai-reveal">
+          <button class="ai-reveal__btn" id="aiVideoToggle" aria-expanded="false" aria-controls="aiVideoPanel">
+            Klikk for å se hvordan jeg fikk AI til å bringe babyen til live!
+            <span class="ai-reveal__icon">↓</span>
+          </button>
+          <div class="ai-reveal__panel" id="aiVideoPanel" aria-hidden="true">
+            <figure class="project__figure project__figure--wide" style="margin-bottom:0">
+              <video src="./assets/baby-video-2.mp4" muted loop playsinline style="width:100%;display:block;" id="aiVideo"></video>
+
+            </figure>
+          </div>
+        </div>
+
+<div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
                   <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
                   <p class="related__title">Reina Fruktgård</p>
@@ -149,7 +155,7 @@
   <script src="./projects.js?v=6"></script>
   <script>
     const $ = (s) => document.querySelector(s);
-    const id = "bokomslag";
+    const id = "weit-weiter";
 
     const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
@@ -315,12 +321,6 @@
     if (project && project.processText) {
       allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
     }
-    // Process dropdown
-    const processPanel = document.getElementById("processPanel");
-    document.getElementById("processToggle")?.addEventListener("click", () => {
-      const open = processPanel.style.display === "none";
-      processPanel.style.display = open ? "block" : "none";
-    });
     function showDrawerIndex() {
       processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
       processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
@@ -347,12 +347,36 @@
       processBackdrop.classList.remove("process-drawer__backdrop--visible");
       processDrawer.setAttribute("aria-hidden", "true");
     }
+    processToggle?.addEventListener("click", openDrawer);
     if (project && !project.noDrawer) {
       document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
     }
     processDrawerClose?.addEventListener("click", closeDrawer);
     processBackdrop?.addEventListener("click", closeDrawer);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+    // Weit & Weiter slide-out panel
+    const wwToggle = document.getElementById("wwToggle");
+    const wwPanel = document.getElementById("wwPanel");
+    wwToggle?.addEventListener("click", () => {
+      const isOpen = wwPanel.classList.toggle("is-open");
+      wwPanel.setAttribute("aria-hidden", String(!isOpen));
+      wwToggle.setAttribute("aria-expanded", String(isOpen));
+      wwToggle.querySelector(".ww-icon").textContent = isOpen ? "−" : "+";
+    });
+
+    // AI video reveal
+    const aiVideoToggle = document.getElementById("aiVideoToggle");
+    const aiVideoPanel = document.getElementById("aiVideoPanel");
+    const aiVideo = document.getElementById("aiVideo");
+    aiVideoToggle?.addEventListener("click", () => {
+      const isOpen = aiVideoPanel.classList.toggle("is-open");
+      aiVideoPanel.setAttribute("aria-hidden", String(!isOpen));
+      aiVideoToggle.setAttribute("aria-expanded", String(isOpen));
+      aiVideoToggle.querySelector(".ai-reveal__icon").textContent = isOpen ? "↑" : "↓";
+      if (isOpen) aiVideo.play();
+      else aiVideo.pause();
+    });
 
     // Sidebar toggle
     const toggle = $("#sidebarToggle");
