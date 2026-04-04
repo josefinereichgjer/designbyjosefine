@@ -225,7 +225,7 @@
               </div>`;
             }
             if (item && item.type === "palette") {
-              return `<div class="palette palette--cards" style="column-span:all;margin-bottom:clamp(20px,3vw,36px)">
+              return `<div class="palette palette--cards" style="column-span:all;margin-bottom:clamp(20px,3vw,36px);grid-template-columns:repeat(${item.colors.length},1fr)">
                 ${item.colors.map(c => `
                   <div class="palette__item">
                     <div class="palette__swatch" style="background:${c.color}"></div>
@@ -290,7 +290,7 @@
         ${galleryHTML}
         ${project.gallery?.length ? `<div class="project-meta" style="margin-top:var(--gap)">
           ${metaRowsHTML ? `<div class="pmeta">${metaRowsHTML}</div>` : ""}
-          ${project.processText ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>` : ""}
+          ${(project.processText || project.processImages?.length) ? `<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">${project.processImages?.length && !project.processText ? "Prosess" : "Mer om prosessen"}</button>` : ""}
           ${project.finalPdf ? `<a class="btn-pdf btn-pdf--green" href="${project.finalPdf.src}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗&#xFE0E; ${project.finalPdf.label}</a>` : ""}
         </div>` : ""}
         ${(project.scrollGalleries || []).map(g => `
@@ -565,7 +565,9 @@
     }
 
     function openDrawer() {
-      if (allSections.length === 1) {
+      if (project.processImages?.length && !project.processText && !allSections.length) {
+        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">Prosess</h2>${project.processImages.map(src => `<img src="${src}" alt="Prosess" style="width:100%;height:auto;display:block;margin-top:16px;">`).join("")}`;
+      } else if (allSections.length === 1) {
         processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
       } else {
         showDrawerIndex();

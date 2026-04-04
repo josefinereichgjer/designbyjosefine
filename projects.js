@@ -347,12 +347,13 @@ window.PROJECTS = [
       { src: "./assets/rot.webp", wide: true },
       { src: "./assets/gul.webp", wide: true },
       { src: "./assets/bla.webp", wide: true },
-      { type: "palette", colors: [
+      { type: "palette", wide: true, colors: [
         { name: "Forrådt",           hex: "#ce2e27", color: "rgba(206, 46, 39, 0.62)",  description: "Opasitet 62%" },
         { name: "Jenny",             hex: "#ffeea8", color: "rgba(255, 238, 168, 0.62)", description: "Opasitet 62%" },
         { name: "Amtmandens Døtre",  hex: "#4ab3e1", color: "rgba(74, 179, 225, 0.25)",  description: "Opasitet 25%" }
       ]}
-    ]
+    ],
+    processImages: ["./assets/prosess1.png", "./assets/prosess2.png"]
   },
   {
     id: "lovechild",
