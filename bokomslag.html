@@ -22,6 +22,14 @@
       margin-left: calc(-1 * clamp(20px, 3vw, 34px));
       margin-right: calc(-1 * clamp(20px, 3vw, 34px));
       margin-bottom: clamp(20px, 3vw, 32px);
+      height: 99vw;
+      overflow: hidden;
+    }
+    .boks-video video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      object-position: left center;
     }
   }
   </style>
@@ -98,7 +106,7 @@
         
         <div class="project-meta" style="margin-top:clamp(40px,6vw,80px)">
           <button id="typografiToggle" type="button" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:clamp(12px,1.1vw,15px);font-weight:700;margin-top:clamp(12px,1.5vw,20px);">
-            Typografi <span id="typografiIcon" style="font-size:18px;font-weight:300;line-height:1;">+</span>
+            Skriftvalg <span id="typografiIcon" style="font-size:18px;font-weight:300;line-height:1;">+</span>
           </button>
           <div id="typografiPanel" style="display:none;margin-top:clamp(10px,1.5vw,16px);">
             <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);"><strong>Tittel og forfatter:</strong> Her er det tatt utgangspunkt i Baskerville, men bokstavformene er manuelt bearbeidet. Ved å øke vekten og justere detaljene, sikres både bedre lesbarhet og et mer robust resultat under pregeprosessen i tekstilet. Dette gir titlene et mer fysisk og "røft" nærvær på omslaget.</p>
@@ -114,7 +122,7 @@
             });
           </script>
           <button id="fargeToggle" type="button" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:clamp(12px,1.1vw,15px);font-weight:700;margin-top:clamp(12px,1.5vw,20px);">
-            Fargefelt <span id="fargeIcon" style="font-size:18px;font-weight:300;line-height:1;">+</span>
+            Fargepalettet <span id="fargeIcon" style="font-size:18px;font-weight:300;line-height:1;">+</span>
           </button>
           <div id="fargePanel" style="display:none;margin-top:clamp(10px,1.5vw,16px);">
             <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);">Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
