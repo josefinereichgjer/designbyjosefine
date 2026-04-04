@@ -224,6 +224,19 @@
                 ${item.items.map((sub, j) => renderFigure(sub, i + j)).join("")}
               </div>`;
             }
+            if (item && item.type === "palette") {
+              return `<div class="palette palette--cards" style="column-span:all;margin-bottom:clamp(20px,3vw,36px)">
+                ${item.colors.map(c => `
+                  <div class="palette__item">
+                    <div class="palette__swatch" style="background:${c.color}"></div>
+                    <div class="palette__info">
+                      <span class="palette__name">${c.name}</span>
+                      <span class="palette__hex">${c.hex}</span>
+                      ${c.description ? `<span class="palette__desc">${c.description}</span>` : ""}
+                    </div>
+                  </div>`).join("")}
+              </div>`;
+            }
             return renderFigure(item, i);
           }).join("")}
         </div>` : "";

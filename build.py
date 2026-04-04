@@ -269,6 +269,17 @@ def render_gallery(project):
         elif item and item.get("type") == "row":
             row_figs = "".join(render_figure(sub, i + j, project["title"]) for j, sub in enumerate(item["items"]))
             parts.append(f'<div class="project__gallery-row">{row_figs}</div>')
+        elif item and item.get("type") == "palette":
+            color_items = "".join(f'''
+              <div class="palette__item">
+                <div class="palette__swatch" style="background:{c["color"]}"></div>
+                <div class="palette__info">
+                  <span class="palette__name">{c["name"]}</span>
+                  <span class="palette__hex">{c["hex"]}</span>
+                  {f'<span class="palette__desc">{c["description"]}</span>' if c.get("description") else ""}
+                </div>
+              </div>''' for c in item["colors"])
+            parts.append(f'<div class="palette palette--cards" style="column-span:all;margin-bottom:clamp(20px,3vw,36px)">{color_items}</div>')
         else:
             parts.append(render_figure(item, i, project["title"]))
     return f'\n        <div class="project__gallery">\n          {"".join(parts)}\n        </div>'
