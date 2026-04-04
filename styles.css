@@ -354,7 +354,8 @@ a:hover{opacity:.75}
   height:auto;
   display:block;
   cursor:zoom-in;
-  transition:opacity .2s;
+  opacity:1;
+  border: 1px solid #e0e0e0;
 }
 .project__figure img:hover{ opacity:1; }
 .project__video{ width:100%; display:block; }
@@ -364,12 +365,12 @@ a:hover{opacity:.75}
   font-size: clamp(18px, 2vw, 24px);
   font-weight: 700;
   letter-spacing: -.01em;
-  color: #c44f24;
+  color: #0f0f0f;
   padding-top: clamp(36px, 5vw, 64px);
-  border-top: 2px solid #c44f24;
+  margin-top: 130px;
   margin-bottom: clamp(12px, 2vw, 20px);
 }
-.project__gallery-heading:first-child{ border-top: none; padding-top: 0; }
+.project__gallery-heading:first-child{ padding-top: 0; }
 
 /* Expandable gallery sections */
 .gallery-expandable{

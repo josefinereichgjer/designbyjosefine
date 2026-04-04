@@ -341,7 +341,11 @@ window.PROJECTS = [
     gallery: [
       { src: "./assets/red-1.webp", wide: true },
       { src: "./assets/red-2.webp", wide: true },
-      { src: "./assets/red-3.webp", wide: true }
+      { src: "./assets/red-3.webp", wide: true },
+      { type: "heading", text: "Prototyper" },
+      { src: "./assets/rot.webp", wide: true },
+      { src: "./assets/gul.webp", wide: true },
+      { src: "./assets/bla.webp", wide: true }
     ]
   },
   {
