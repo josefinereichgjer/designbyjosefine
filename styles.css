@@ -304,9 +304,6 @@ a:hover{opacity:.75}
   margin-top:var(--gap);
   columns: 2;
   column-gap: clamp(20px, 3vw, 36px);
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
 }
 @media(max-width:780px){
   .project__gallery{ columns: 1; }

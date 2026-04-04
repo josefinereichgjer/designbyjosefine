@@ -337,7 +337,12 @@ window.PROJECTS = [
     tags: ["Redaksjonell"],
     cover: "./assets/scenebok.webp",
     coverFilter: "brightness(1.2)",
-    noSlideshow: true
+    noSlideshow: true,
+    gallery: [
+      { src: "./assets/red-1.webp", wide: true },
+      { src: "./assets/red-2.webp", wide: true },
+      { src: "./assets/red-3.webp", wide: true }
+    ]
   },
   {
     id: "lovechild",
