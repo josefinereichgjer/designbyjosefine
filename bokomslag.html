@@ -13,7 +13,13 @@
   @media (max-width: 768px) {
     .boks-top { display: flex; flex-direction: column; }
     .boks-intro { order: 2; }
-    .boks-video { order: 1; }
+    .boks-video {
+      order: 1;
+      margin-top: -34px;
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-bottom: clamp(20px, 3vw, 32px);
+    }
   }
   </style>
   <link rel="stylesheet" href="./styles.css?v=20" />
