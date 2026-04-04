@@ -11,9 +11,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
   <style>:root { --font: "Poppins", system-ui, sans-serif; }
   @media (max-width: 768px) {
-    #project { display: flex; flex-direction: column; }
+    .boks-top { display: flex; flex-direction: column; }
     .boks-intro { order: 2; }
-    .boks-video { order: 1; margin-bottom: 0; }
+    .boks-video { order: 1; }
   }
   </style>
   <link rel="stylesheet" href="./styles.css?v=20" />
@@ -56,6 +56,7 @@
 
   <main id="content" class="content">
     <article class="project" id="project">
+      <div class="boks-top">
         <div class="boks-intro" style="margin-bottom:clamp(24px,3vw,40px);">
           <h2 style="font-size:clamp(16px,1.5vw,22px);font-weight:700;letter-spacing:-.01em;margin-bottom:10px;">En redesign av norske klassikere</h2>
           <p class="project-intro" style="font-size:clamp(13px,1.2vw,17px);">Dette prosjektet omfatter en ny utgave av tre grunnpilarer i norsk litteraturhistorie: <em>Amtmandens Døtre</em> av Camilla Collett, <em>Forrådt</em> av Amalie Skram og <em>Jenny</em> av Sigrid Undset. Ved&nbsp;å fjerne kommersiell støy, får materialiteten og&nbsp;de symbolske fargeflatene rom til&nbsp;å kommunisere. For&nbsp;å understreke bøkenes status som tidløse klassikere, er utgavene utformet som&nbsp;tekstiltrukne hardcover-bind.</p>
@@ -65,6 +66,7 @@
           <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline style="width:100%;height:auto;display:block;" id="bokserieVideo"></video>
           <script>document.getElementById("bokserieVideo").playbackRate = 0.5;</script>
         </div>
+      </div>
         
         <div class="project__gallery">
           <p class="project__gallery-heading" style="font-size:clamp(14px,1.3vw,17px);font-weight:400;letter-spacing:0;line-height:1.7;margin-top:0;margin-bottom:clamp(16px,2vw,28px);"><strong>Subtil preging:</strong> Tittelen er blindpreget (embossed) i tekstilet. Den nedtonede effekten gjør at typografien må "oppdages" avhengig av hvordan lyset faller, en visuell metafor for skjulte følelser og samfunnets tildekkede sannheter.</p>
