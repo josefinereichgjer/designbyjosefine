@@ -13,6 +13,9 @@
   @media (max-width: 768px) {
     .boks-top { display: flex; flex-direction: column; }
     .boks-intro { order: 2; }
+    .boks-preging { display: flex; flex-direction: column; }
+    .boks-preging-tekst { order: 2; margin-top: clamp(12px,2vw,20px); margin-bottom: 0; }
+    .boks-preging-bilde { order: 1; }
     .boks-video {
       order: 1;
       margin-top: -34px;
@@ -75,10 +78,12 @@
       </div>
         
         <div class="project__gallery">
-          <p class="project__gallery-heading" style="font-size:clamp(14px,1.3vw,17px);font-weight:400;letter-spacing:0;line-height:1.7;margin-top:0;margin-bottom:clamp(16px,2vw,28px);"><strong>Subtil preging:</strong> Tittelen er blindpreget (embossed) i tekstilet. Den nedtonede effekten gjør at typografien må "oppdages" avhengig av hvordan lyset faller, en visuell metafor for skjulte følelser og samfunnets tildekkede sannheter.</p>
-          <figure class="project__figure project__figure--wide">
-            <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4">
-          </figure>
+          <div class="boks-preging" style="column-span:all;">
+            <p class="boks-preging-tekst project__gallery-heading" style="font-size:clamp(14px,1.3vw,17px);font-weight:400;letter-spacing:0;line-height:1.7;margin-top:0;margin-bottom:clamp(16px,2vw,28px);"><strong>Subtil preging:</strong> Tittelen er blindpreget (embossed) i tekstilet. Den nedtonede effekten gjør at typografien må "oppdages" avhengig av hvordan lyset faller, en visuell metafor for skjulte følelser og samfunnets tildekkede sannheter.</p>
+            <figure class="boks-preging-bilde project__figure project__figure--wide" style="margin-bottom:0;">
+              <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4">
+            </figure>
+          </div>
           <div class="project__gallery-heading" style="column-span:all;margin-top:clamp(24px,3vw,40px);">Prototyper</div>
           <div style="column-span:all;display:flex;flex-direction:column;gap:0;margin-top:clamp(16px,2vw,24px);">
             <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Prototyper — Forrådt" style="width:100%;display:block;border:1px solid rgba(0,0,0,0.1);">
