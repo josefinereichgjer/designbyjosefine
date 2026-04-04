@@ -55,6 +55,26 @@ if (!projects.length) {
   grid.innerHTML = projects.map(cardHTML).join("");
 }
 
+// Tap-to-reveal overlay on touch devices (mobile + tablet)
+if (window.matchMedia('(hover: none)').matches) {
+  document.addEventListener('click', function(e) {
+    const card = e.target.closest('#grid .card');
+    const activeCards = document.querySelectorAll('#grid .card--touch-active');
+
+    if (!card) {
+      activeCards.forEach(c => c.classList.remove('card--touch-active'));
+      return;
+    }
+
+    if (!card.classList.contains('card--touch-active')) {
+      e.preventDefault();
+      activeCards.forEach(c => c.classList.remove('card--touch-active'));
+      card.classList.add('card--touch-active');
+    }
+    // Second tap: allow navigation (default)
+  });
+}
+
 // Tool strip
 const TOOLS = [
   { label: "Illustrator", src: "./assets/illustrator.webp" },

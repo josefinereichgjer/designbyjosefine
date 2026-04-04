@@ -237,6 +237,8 @@ a:hover{opacity:.75}
   letter-spacing:0.01em;
 }
 .card:hover .card__overlay { opacity:1; }
+.card--touch-active .card__overlay { opacity:1; }
+.card--touch-active .card__img { transform:scale(1.04); }
 .card__caption{
   display:flex;
   justify-content:space-between;
@@ -247,9 +249,7 @@ a:hover{opacity:.75}
 .card__title{margin:0; font-size:14px; font-weight:500}
 .card__tags{margin:0; font-size:13px; color:var(--muted)}
 .card:focus-visible{outline:3px solid #000; outline-offset:4px}
-@media(min-width:769px){
-  .card__caption { display:none; }
-}
+.card__caption { display:none; }
 
 /* Skriptabi slide-out header */
 .ww-header {
