@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="./assets/me.webp" as="image">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@300;600;700&family=Caveat:wght@400&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/hvitlogo.webp">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 
@@ -97,6 +97,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      opacity: 0;
     }
 
     /* ── "Portfolio" — top-left, big, links to the portfolio ── */
@@ -116,10 +117,10 @@
     .landing__name {
       display: flex;
       align-items: center;
-      font-family: "Poppins", sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: 0.01em;
+      font-family: "Caveat", cursive;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
       color: #fff;
       margin-top: 6px;
     }
@@ -152,8 +153,9 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 14px;
+      gap: 20px;
       pointer-events: none;
+      opacity: 0;
     }
 
     .landing__logo {
@@ -174,40 +176,60 @@
       margin-top: 10px;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 9px 18px;
+      gap: 18px;
+      padding: 6px 20px;
       border-radius: 0;
-      background: #bcd8f0;
-      color: #000;
-      font-family: inherit;
-      font-size: 12px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-family: "Poppins", sans-serif;
+      font-size: 15px;
       font-weight: 500;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #fff;
       text-decoration: none;
       pointer-events: all;
-      box-shadow: 0 4px 18px rgba(0,0,0,.18);
-      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      position: relative;
+      overflow: hidden;
+      transition: opacity .2s ease;
     }
-    .landing__cta:hover {
-      background: #a3c8e8;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0,0,0,.24);
+    .landing__cta:hover { opacity: 0.7; }
+    .landing__cta:active { transform: scale(0.98); }
+
+    /* arrow track — clips overflow so arrow can slide out */
+    .landing__cta-arrow-track {
+      display: inline-flex;
+      align-items: center;
+      overflow: hidden;
+      width: 48px;
+      flex-shrink: 0;
     }
-    .landing__cta:active { transform: translateY(0); }
     .landing__cta-arrow {
       flex-shrink: 0;
-      transition: transform .18s ease;
+      transition: transform .38s cubic-bezier(0.25,0.46,0.45,0.94);
     }
-    .landing__cta:hover .landing__cta-arrow { transform: translateX(3px); }
+    .landing__cta:hover .landing__cta-arrow { transform: translateX(6px); }
+    /* click burst state — added by JS */
+    .landing__cta.is-leaving,
+    .landing__cta.is-leaving .landing__cta-arrow-track {
+      overflow: visible;
+    }
+    .landing__cta.is-leaving .landing__cta-arrow {
+      transform: translateX(180px);
+      opacity: 0;
+      transition: transform .38s cubic-bezier(0.4,0,1,1), opacity .28s ease .1s;
+    }
 
     /* ── Bio ── */
     .landing__bio {
       max-width: none;
-      font-size: 12px;
-      font-weight: 300;
-      line-height: 1.85;
-      letter-spacing: 0.015em;
-      color: rgba(255,255,255,1);
+      font-family: "Poppins", sans-serif;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.75;
+      letter-spacing: 0.01em;
+      color: rgba(255,255,255,0.75);
       overflow-wrap: break-word;
     }
 
@@ -219,7 +241,7 @@
       .landing__topleft { top: 28px; left: 28px; }
       .landing__brand { left: 28px; bottom: 28px; right: auto; }
       .landing__portfolio-link { font-size: 108px; }
-      .landing__name { font-size: 30px; display: block; }
+      .landing__name { font-size: 46px; display: block; }
       .landing__wip { font-size: 34px; }
       .landing__logo-desktop { display: inline-block; }
       .landing__logo-mobile { display: none; }
@@ -227,20 +249,20 @@
       .landing__cta-label--short { display: none; }
       .landing__bio--full { display: inline; }
       .landing__bio--short { display: none; }
-      .landing__bio { font-size: 15px; max-width: 520px; line-height: 1.75; }
-      .landing__cta { font-size: 20px; padding: 18px 40px; margin-top: 0; }
+      .landing__bio { font-size: 17px; max-width: 520px; line-height: 1.5; }
+      .landing__cta { font-size: 27px; padding: 6px 20px; margin-top: 0; }
       .collage-scene { transform: scale(1.4) translateX(-22%); transform-origin: center; }
     }
 
     /* ── Small desktop (1024px+) ── */
     @media (min-width: 1024px) {
       .landing__topleft { top: 36px; left: 44px; }
-      .landing__brand { left: 44px; bottom: 36px; }
+      .landing__brand { left: 44px; bottom: 44px; top: auto; transform: none; }
       .landing__portfolio-link { font-size: clamp(52px, 7vw, 96px); }
-      .landing__name { font-size: clamp(18px, 2vw, 28px); }
+      .landing__name { font-size: clamp(32px, 3vw, 48px); }
       .landing__wip { font-size: clamp(20px, 2.4vw, 32px); }
-      .landing__bio { font-size: clamp(12px, 1vw, 14px); max-width: 480px; line-height: 1.85; }
-      .landing__cta { font-size: 14px; padding: 14px 32px; margin-top: 6px; }
+      .landing__bio { font-size: clamp(12px, 0.9vw, 14px); max-width: 420px; line-height: 1.75; }
+      .landing__cta { font-size: 15px; padding: 0; margin-top: 4px; }
       .collage-scene { transform: scale(.92); transform-origin: center; }
     }
 
@@ -251,15 +273,15 @@
 
     /* ── Large desktop (1440px+) ── */
     @media (min-width: 1440px) {
-      .landing__bio { font-size: 17px; max-width: 560px; }
-      .landing__cta { font-size: 18px; padding: 16px 38px; }
+      .landing__bio { font-size: 18px; max-width: 560px; }
+      .landing__cta { font-size: 15px; padding: 0; }
       .collage-scene { transform: scale(1.2); }
     }
 
     /* ── XL desktop (1920px+) ── */
     @media (min-width: 1920px) {
       .landing__bio { font-size: 19px; max-width: 620px; }
-      .landing__cta { font-size: 21px; padding: 20px 46px; }
+      .landing__cta { font-size: 15px; padding: 0; }
       .collage-scene { transform: scale(1.45); }
     }
   </style>
@@ -273,21 +295,23 @@
 
     <!-- Top-left block -->
     <div class="landing__topleft">
-      <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO<img src="./assets/hvitlogo.webp" alt="" class="landing__logo-between landing__logo-desktop" aria-hidden="true"><span class="landing__name">JOSEFINE REICHELT GJERTSEN<img src="./assets/hvitlogo.webp" alt="" class="landing__logo-between landing__logo-mobile" aria-hidden="true"></span></a><span class="landing__wip">(IN PROGRESS!!)</span>
-    </div>
+      <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO<span class="landing__name">JOSEFINE REICHELT GJERTSEN</span></a>    </div>
 
-    <!-- Bottom-left: button + bio -->
+    <!-- Bottom-left: bio + button -->
     <div class="landing__brand">
+      <p class="landing__bio">
+        <span class="landing__bio--full"></span>
+        <span class="landing__bio--short"></span>
+      </p>
       <a class="landing__cta" href="./projects.html">
         <span class="landing__cta-label--full">Se arbeidene mine</span><span class="landing__cta-label--short">Arbeider</span>
-        <svg class="landing__cta-arrow" width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-          <path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="miter"/>
-        </svg>
+        <span class="landing__cta-arrow-track" aria-hidden="true">
+          <svg class="landing__cta-arrow" width="48" height="12" viewBox="0 0 48 12" fill="none">
+            <line x1="0" y1="6" x2="40" y2="6" stroke="currentColor" stroke-width="1"/>
+            <polyline points="35,1 41,6 35,11" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </span>
       </a>
-      <p class="landing__bio">
-        <span class="landing__bio--full">Hei! Jeg er en grafisk designer født i 2002 med fokus på strategisk design og visuell kommunikasjon. Jeg fullfører bacheloren min juni 2026. Jeg har erfaring med typografi, visuell identitet og UI/UX, og er opptatt av å skape løsninger som er både estetiske og funksjonelle!</span>
-        <span class="landing__bio--short">Hei! Grafisk designer med fokus på strategisk design og visuell kommunikasjon. Ferdig med bachelor juni 2026.</span>
-      </p>
     </div>
 
   </main>

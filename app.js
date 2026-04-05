@@ -12,12 +12,18 @@ sidebarToggle?.addEventListener("click", () => {
 const projects = (window.PROJECTS || []).filter(p => !p.personal);
 
 function cardHTML(p){
-  const overlayLabel = [p.title, p.subtitle || p.tags[0] || ""].filter(Boolean).join(" — ");
+  const tag = p.subtitle || p.tags[0] || "";
+  const mediaStyle = (p.coverPosition || p.coverFilter || p.coverScale)
+    ? ` style="${p.coverPosition ? `object-position:${p.coverPosition};` : ""}${p.coverFilter ? `filter:${p.coverFilter};` : ""}${p.coverScale ? `transform:scale(${p.coverScale});` : ""}"`
+    : "";
+  const media = p.coverVideo
+    ? `<video class="card__img" src="${p.coverVideo}" autoplay muted loop playsinline${mediaStyle}></video>`
+    : `<img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${mediaStyle}>`;
   return `
     <a class="card" href="./${p.id}.html">
       <div class="card__img-wrap">
-        <img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${(p.coverPosition || p.coverFilter || p.coverScale) ? ` style="${p.coverPosition ? `object-position:${p.coverPosition};` : ""}${p.coverFilter ? `filter:${p.coverFilter};` : ""}${p.coverScale ? `transform:scale(${p.coverScale});` : ""}"` : ""}>
-        <div class="card__overlay"><span>${overlayLabel}</span></div>
+        ${media}
+        <div class="card__overlay"><span>${p.title}${tag ? ` — ${tag}` : ""}</span></div>
       </div>
       <div class="card__caption">
         <p class="card__title">${p.title}</p>
@@ -55,6 +61,8 @@ if (!projects.length) {
   grid.innerHTML = projects.map(cardHTML).join("");
 }
 
+grid.querySelectorAll("video.card__img").forEach(v => { v.playbackRate = 0.25; });
+
 // Tap-to-reveal overlay on touch devices (mobile + tablet)
 if (window.matchMedia('(hover: none)').matches) {
   document.addEventListener('click', function(e) {
@@ -89,7 +97,37 @@ if (track) {
   track.innerHTML = [...TOOLS, ...TOOLS]
     .map(t => `<div class="tool-pill">
       <img class="tool-icon-img" src="${t.src}" alt="${t.label}">
-      ${t.label}
     </div>`).join("");
 }
+
+// Typewriter for about pull-quote — triggers when scrolled into view
+(function () {
+  var el = document.querySelector('.about-pullquote');
+  if (!el) return;
+  var fullText = el.textContent;
+  el.textContent = '';
+  var started = false;
+
+  function type() {
+    var i = 0;
+    function tick() {
+      if (i < fullText.length) {
+        el.textContent += fullText[i];
+        i++;
+        setTimeout(tick, 45 + Math.random() * 20);
+      }
+    }
+    tick();
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    if (entries[0].isIntersecting && !started) {
+      started = true;
+      setTimeout(type, 200);
+      observer.disconnect();
+    }
+  }, { threshold: 0.3 });
+
+  observer.observe(el);
+})();
 

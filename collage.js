@@ -45,7 +45,8 @@
 
     cards.forEach(function (c, i) {
       const t  = { x: TARGETS[i].x - xShift, y: TARGETS[i].y, rot: TARGETS[i].rot, z: TARGETS[i].z };
-      const el = document.createElement('div');
+      const el = document.createElement('a');
+      el.href        = './projects.html';
       el.className   = 'collage-card';
       el.style.width  = W + 'px';
       el.style.height = H + 'px';
@@ -80,15 +81,166 @@
         rotation: t.rot,
         scale:    1,
         opacity:  1,
-        duration: isMobile ? 0.9 + Math.random() * 0.2 : 1.45 + Math.random() * 0.25,
-        delay:    0.1 + i * 0.08,
-        ease:     isMobile ? 'power2.out' : 'elastic.out(1, 0.72)',
+        duration: isMobile ? 1.1 + Math.random() * 0.2 : 1.9 + Math.random() * 0.35,
+        delay:    0.08 + i * 0.13,
+        ease:     isMobile ? 'power3.out' : 'expo.out',
         onComplete: function () { startFloat(el, i); },
       });
 
       el.addEventListener('mouseenter', function () { onHover(i); });
       el.addEventListener('mouseleave', function () { onLeave(i); });
     });
+
+    /* Fade in UI text after cards begin settling */
+    var brand   = document.querySelector('.landing__brand');
+    var topleft = document.querySelector('.landing__topleft');
+    if (brand) {
+      gsap.fromTo(brand,
+        { opacity: 0, y: 14 },
+        { opacity: 0.9, y: 0, duration: 1.4, delay: 0.7, ease: 'power2.out' }
+      );
+    }
+    if (topleft) {
+      gsap.fromTo(topleft,
+        { opacity: 0, y: -10 },
+        { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: 'power2.out' }
+      );
+    }
+
+    /* Typewriter effect on CTA label */
+    var twStyle = document.createElement('style');
+    twStyle.textContent = [
+      '.tw-cursor{',
+        'display:inline-block;width:2px;height:0.85em;',
+        'background:currentColor;margin-left:2px;',
+        'vertical-align:middle;',
+        'animation:tw-blink 0.7s step-end infinite;',
+      '}',
+      '@keyframes tw-blink{0%,100%{opacity:1}50%{opacity:0}}',
+    ].join('');
+    document.head.appendChild(twStyle);
+
+    /* Inject bio-big style */
+    var bioBigStyle = document.createElement('style');
+    bioBigStyle.textContent = [
+      '.bio-big{font-size:1.5em;line-height:1;letter-spacing:0.01em;font-weight:400;',
+        'display:inline-block;position:relative;',
+        'transition:font-size 0.5s ease,letter-spacing 0.4s ease;}',
+      '.bio-sparkle{position:absolute;width:7px;height:7px;pointer-events:none;opacity:0;}',
+      '.bio-sparkle::before{content:"";display:block;width:100%;height:100%;background:#fff;',
+        'clip-path:polygon(50% 0%,56% 44%,100% 50%,56% 56%,50% 100%,44% 56%,0% 50%,44% 44%);}',
+      '@keyframes sparkle-twinkle{',
+        '0%{opacity:0;transform:scale(0) rotate(0deg)}',
+        '25%{opacity:1;transform:scale(1.3) rotate(20deg)}',
+        '60%{opacity:0.7;transform:scale(0.85) rotate(-10deg)}',
+        '80%{opacity:1;transform:scale(1.1) rotate(15deg)}',
+        '100%{opacity:0;transform:scale(0.5) rotate(30deg)}}',
+    ].join('');
+    document.head.appendChild(bioBigStyle);
+
+    /* Segment-aware typewriter — segments: [{text, cls}] */
+    function typewriter(el, segments, speed) {
+      el.innerHTML = '';
+      var cursor = document.createElement('span');
+      cursor.className = 'tw-cursor';
+      el.appendChild(cursor);
+
+      var si = 0, ci = 0, span = null;
+
+      function tick() {
+        if (si >= segments.length) {
+          setTimeout(function () {
+            if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
+          }, 600);
+          return;
+        }
+        var seg = segments[si];
+        if (ci === 0) {
+          span = document.createElement('span');
+          if (seg.cls) span.className = seg.cls;
+          /* use a dedicated text node so sparkles aren't wiped */
+          span._textNode = document.createTextNode('');
+          span.appendChild(span._textNode);
+          el.insertBefore(span, cursor);
+          /* spawn sparkles when highlighted segment begins */
+          if (seg.cls === 'bio-big') {
+            var sparklePositions = [
+              { top: '-12px', left: '2%' },
+              { top: '-14px', left: '40%' },
+              { top: '-11px', left: '80%' },
+              { bottom: '-12px', left: '12%' },
+              { bottom: '-11px', left: '60%' },
+              { top: '0%',      left: '103%' },
+            ];
+            var activeSparkles = [];
+            sparklePositions.forEach(function (pos, idx) {
+              var s = document.createElement('span');
+              s.className = 'bio-sparkle';
+              Object.keys(pos).forEach(function (k) { s.style[k] = pos[k]; });
+              s.style.animationName = 'sparkle-twinkle';
+              s.style.animationDuration = (550 + idx * 90) + 'ms';
+              s.style.animationDelay = (idx * 110) + 'ms';
+              s.style.animationIterationCount = 'infinite';
+              s.style.animationFillMode = 'both';
+              span.appendChild(s);
+              activeSparkles.push(s);
+            });
+            span._sparkles = activeSparkles;
+          }
+        }
+        span._textNode.nodeValue += seg.text[ci];
+        ci++;
+        if (ci >= seg.text.length) {
+          if (seg.cls && span) {
+            var doneSpan = span;
+            setTimeout(function () {
+              doneSpan.style.fontSize = '1em';
+              doneSpan.style.letterSpacing = 'inherit';
+              if (doneSpan._sparkles) {
+                doneSpan._sparkles.forEach(function (s) {
+                  s.style.animationIterationCount = '1';
+                });
+              }
+            }, 80);
+          }
+          si++; ci = 0;
+        }
+        setTimeout(tick, speed);
+      }
+      tick();
+    }
+
+    var BIO_SEGMENTS_FULL = [
+      { text: 'Hei! Jeg er Josefine, en ',  cls: null },
+      { text: 'grafisk designer',            cls: 'bio-big' },
+      { text: ' som drives\u00A0av å løse problemer gjennom visuell kommunikasjon. Mine styrker ligger i typografi, merkevarebygging og UI/UX. Mitt mål er alltid å designe løsninger som ikke bare ser bra ut, men som faktisk fungerer.', cls: null },
+    ];
+    var BIO_SEGMENTS_SHORT = [
+      { text: 'Hei! Jeg er Josefine, en ',  cls: null },
+      { text: 'grafisk designer',            cls: 'bio-big' },
+      { text: ' som drives\u00A0av å løse problemer gjennom visuell kommunikasjon.', cls: null },
+    ];
+
+    var bioFull  = document.querySelector('.landing__bio--full');
+    var bioShort = document.querySelector('.landing__bio--short');
+    var TW_DELAY = 1600;
+    var TW_SPEED = 32;
+
+    setTimeout(function () {
+      if (bioFull)  typewriter(bioFull,  BIO_SEGMENTS_FULL,  TW_SPEED);
+      if (bioShort) typewriter(bioShort, BIO_SEGMENTS_SHORT, TW_SPEED);
+    }, TW_DELAY);
+
+    /* Arrow shoots off on CTA click, then navigate */
+    var cta = document.querySelector('.landing__cta');
+    if (cta) {
+      cta.addEventListener('click', function (e) {
+        e.preventDefault();
+        var href = cta.getAttribute('href');
+        cta.classList.add('is-leaving');
+        setTimeout(function () { window.location.href = href; }, 420);
+      });
+    }
   }
 
   function startFloat(el, idx) {

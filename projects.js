@@ -82,6 +82,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Redaksjonell"],
     cover: "./assets/blaa.png",
+    coverVideo: "./assets/bokserie-film.mp4",
     coverFilter: "brightness(1.2)",
     noSlideshow: true,
     gallery: [
