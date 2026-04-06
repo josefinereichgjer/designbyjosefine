@@ -10,6 +10,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
+  <style>
+    @media (max-width: 640px) {
+      .babilogo-img { width: 100% !important; max-width: none !important; }
+      .project__gallery,
+      .project__figure,
+      .project__figure--wide { margin-left: -20px; margin-right: -20px; }
+      .project__figure img, .project__figure video { width: 100%; display: block; }
+      .ww-video-fig { margin-bottom: -160px !important; }
+      .ww-video-fig img { margin-bottom: 0; }
+      .project__figure:has(.no-bleed) { margin-left: 0; margin-right: 0; }
+      .ww-typesample__display { font-size: clamp(100px, 28vw, 160px); }
+      .ww-typesample__alphabet { font-size: clamp(18px, 5vw, 28px); }
+    }
+  </style>
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
@@ -65,10 +79,10 @@
         
         <div class="project__gallery">
           <figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/babilogo.webp" alt="Weit & Weiter — galleri 1">
+          <img loading="lazy" decoding="async" src="./assets/babilogo.webp" alt="Weit & Weiter — galleri 1" class="babilogo-img" style="filter:url(#babyWobble);">
 
         </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/3.april.webp" alt="Weit & Weiter — galleri 2">
+          <img loading="lazy" decoding="async" src="./assets/3.april.webp" alt="Weit & Weiter — galleri 2" class="no-bleed">
 
         </figure><figure class="project__figure project__figure--wide">
           <img loading="lazy" decoding="async" src="./assets/3.april-brot.webp" alt="Weit & Weiter — galleri 3">
@@ -81,6 +95,18 @@
 
         </figure>
         </div>
+
+        <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
+          <defs>
+            <filter id="babyWobble" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence id="baby-turb" type="turbulence" baseFrequency="0.008" numOctaves="2" seed="1" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+          </defs>
+        </svg>
+        <figure class="project__figure project__figure--wide ww-video-fig">
+          <img id="babyAnim" src="./assets/01@3x.png" alt="Weit & Weiter baby animasjon" style="width:42%;display:block;margin:0 auto;filter:url(#babyWobble);">
+        </figure>
 
         <div class="ww-identity">
           <div class="ww-typesample">
@@ -111,23 +137,32 @@
           </div>
         </div>
 
-        <figure class="project__figure project__figure--wide ww-video-fig">
-          <video src="./assets/babis-video.mp4" autoplay muted loop playsinline style="width:70%;display:block;margin:0 auto;" oncanplay="this.playbackRate=1.2"></video>
-        </figure>
-        <p class="project__figcaption" style="text-transform:none;letter-spacing:0;font-family:'Libre Baskerville',Georgia,serif;margin-top:10px;text-align:center;">Denne enkle animasjonen over lagde jeg selv i Canva. Det er meningen at animasjonen er litt hoppete, for å gjøre den litt mer livlig og autentisk.</p>
+        <script>
+          (function () {
+            var frames = [
+              { src: './assets/01@3x.png', hold: 520 },
+              { src: './assets/02@3x.png', hold: 280 },
+              { src: './assets/03@3x.png', hold: 320 },
+              { src: './assets/04@3x.png', hold: 420 },
+            ];
+            var img = document.getElementById('babyAnim');
+            var i = 0;
+            function next() {
+              i = (i + 1) % frames.length;
+              img.src = frames[i].src;
+              setTimeout(next, frames[i].hold);
+            }
+            setTimeout(next, frames[0].hold);
 
-        <div class="ai-reveal">
-          <button class="ai-reveal__btn" id="aiVideoToggle" aria-expanded="false" aria-controls="aiVideoPanel">
-            Klikk for å se hvordan jeg fikk AI til å bringe babyen til live!
-            <span class="ai-reveal__icon">↓</span>
-          </button>
-          <div class="ai-reveal__panel" id="aiVideoPanel" aria-hidden="true">
-            <figure class="project__figure project__figure--wide" style="margin-bottom:0">
-              <video src="./assets/baby-video-2.mp4" muted loop playsinline style="width:100%;display:block;" id="aiVideo"></video>
+            var turb = document.getElementById('baby-turb');
+            var seed = 1;
+            setInterval(function () {
+              seed = (seed % 30) + 1;
+              turb.setAttribute('seed', seed);
+            }, 220);
+          })();
+        </script>
 
-            </figure>
-          </div>
-        </div>
 
 <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
                 <a class="related__card" href="./reina-fruktgard.html">
