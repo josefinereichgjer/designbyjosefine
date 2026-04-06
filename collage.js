@@ -265,8 +265,8 @@
 
     var ctaArrow = document.querySelector('.landing__cta-arrow-track');
     if (ctaArrow) {
-      gsap.set(ctaArrow, { opacity: 0, y: 6, color: '#b48de8' });
-      gsap.to(ctaArrow, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', delay: 1.8 });
+      gsap.set(ctaArrow, { opacity: 0, x: -window.innerWidth, color: '#b48de8' });
+      gsap.to(ctaArrow, { opacity: 1, x: 0, duration: 1.4, ease: 'expo.out', delay: 1.8 });
     }
 
     /* Arrow shoots off on CTA click, then navigate */
