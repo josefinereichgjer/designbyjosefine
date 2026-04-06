@@ -286,7 +286,7 @@
   function startFloat(el, idx) {
     const t    = TARGETS[idx];
     const adjY = t.y + yShift;
-    const yAmp = 10 + Math.random() * 12;
+    const yAmp = 4 + Math.random() * 5;
     const rAmp = 0.8 + Math.random() * 1.2;
     const yDur = 4.5 + Math.random() * 3.0;
     const rDur = 6.0 + Math.random() * 4.0;

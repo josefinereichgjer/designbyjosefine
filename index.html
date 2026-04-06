@@ -29,6 +29,7 @@
       inset: 0;
       overflow: hidden;
       background: #000;
+      contain: strict;
     }
 
     /* Edge fades */
@@ -342,17 +343,5 @@
   </main>
 
   <script src="./collage.js?v=1" defer></script>
-  <script>
-    (function () {
-      var turb = document.getElementById('scribble-turb');
-      var arrowTurb = document.getElementById('arrow-turb');
-      var seed = 1;
-      setInterval(function () {
-        seed = (seed % 30) + 1;
-        if (turb) turb.setAttribute('seed', seed);
-        if (arrowTurb) arrowTurb.setAttribute('seed', seed);
-      }, 120);
-    })();
-  </script>
 </body>
 </html>
