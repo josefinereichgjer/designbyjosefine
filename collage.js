@@ -33,6 +33,7 @@
 
   let cardEls    = [];
   let floatTweens = [];
+  let yShift = 0;
 
   function init() {
     const scene = document.getElementById('collage-scene');
@@ -41,6 +42,7 @@
     /* On mobile, fewer cards + simpler easing for performance */
     const isMobile = window.innerWidth <= 600;
     const xShift   = isMobile ? 267 : 0;
+    yShift         = isMobile ? 0 : 15;
     const cards    = isMobile ? CARDS.slice(0, 5) : CARDS;
 
     cards.forEach(function (c, i) {
@@ -48,7 +50,7 @@
       const cW = isMe ? W : Math.round(W * 0.78);
       const cH = isMe ? H : Math.round(H * 0.78);
 
-      const t  = { x: TARGETS[i].x - xShift, y: TARGETS[i].y, rot: TARGETS[i].rot, z: TARGETS[i].z };
+      const t  = { x: TARGETS[i].x - xShift, y: TARGETS[i].y + yShift, rot: TARGETS[i].rot, z: TARGETS[i].z };
       const el = document.createElement('a');
       el.href        = './projects.html';
       el.className   = 'collage-card';
@@ -283,6 +285,7 @@
 
   function startFloat(el, idx) {
     const t    = TARGETS[idx];
+    const adjY = t.y + yShift;
     const yAmp = 10 + Math.random() * 12;
     const rAmp = 0.8 + Math.random() * 1.2;
     const yDur = 4.5 + Math.random() * 3.0;
@@ -292,8 +295,8 @@
 
     floatTweens[idx] = {
       y: gsap.fromTo(el,
-        { y: t.y },
-        { y: t.y + yAmp * sY, ease: 'sine.inOut', yoyo: true, repeat: -1, duration: yDur }),
+        { y: adjY },
+        { y: adjY + yAmp * sY, ease: 'sine.inOut', yoyo: true, repeat: -1, duration: yDur }),
       r: gsap.fromTo(el,
         { rotation: t.rot },
         { rotation: t.rot + rAmp * sR, ease: 'sine.inOut', yoyo: true, repeat: -1, duration: rDur }),
@@ -308,7 +311,7 @@
     }
     const t = TARGETS[idx];
     gsap.to(cardEls[idx], {
-      y:        t.y - 28,
+      y:        t.y + yShift - 28,
       scale:    1.1,
       rotation: t.rot * 0.3,
       zIndex:   20,
@@ -321,7 +324,7 @@
   function onLeave(idx) {
     const t = TARGETS[idx];
     gsap.to(cardEls[idx], {
-      y:        t.y,
+      y:        t.y + yShift,
       scale:    1,
       rotation: t.rot,
       duration: 0.45,

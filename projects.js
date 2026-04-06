@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var track = document.createElement('span');
     track.className = 'nav__arrow-track';
     track.setAttribute('aria-hidden', 'true');
-    track.innerHTML = '<svg class="nav__arrow" width="36" height="10" viewBox="0 0 36 10" fill="none"><line x1="0" y1="5" x2="28" y2="5" stroke="currentColor" stroke-width="1"/><polyline points="24,1 29,5 24,9" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+    track.innerHTML = '<svg class="nav__arrow" width="33" height="12" viewBox="0 0 33 12" fill="none" style="overflow:visible"><path class="nav__arrow-path" d="M 8,6 C 8,1 1,1 1,6 C 1,11 8,11 8,6 L 30,6 M 25,2 L 31,6 L 25,10" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" filter="url(#navArrowWobble)"/></svg>';
     link.appendChild(track);
 
     var href = link.getAttribute('href');

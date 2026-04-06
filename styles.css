@@ -140,13 +140,18 @@ a:hover{opacity:.75}
 .nav__link--personal { margin-top: 20px; color: #b48de8; opacity: 1; }
 
 .nav__arrow-track {
-  display: inline-flex;
-  align-items: center;
-  overflow: hidden;
-  width: 40px;
-  flex-shrink: 0;
-  opacity: 0;
-  transition: opacity .25s ease;
+  display: none;
+}
+@media (min-width: 768px) {
+  .nav__arrow-track {
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    width: 40px;
+    flex-shrink: 0;
+    opacity: 0;
+    transition: opacity .25s ease;
+  }
 }
 .nav__arrow {
   flex-shrink: 0;
@@ -280,18 +285,23 @@ a:hover{opacity:.75}
 @media (hover: hover) {
 .card:hover .card__img { transform:scale(1.1); }
 }
+@keyframes card-purple-in {
+  0%   { background: rgba(180,141,232,0); }
+  55%  { background: rgba(110,50,190,0.48); }
+  100% { background: rgba(180,141,232,0.35); }
+}
 .card__img-wrap::after {
   content: '';
   position: absolute;
   inset: 0;
   background: rgba(180,141,232,0);
-  transition: background 0.36s ease;
+  transition: background 0.3s ease;
   pointer-events: none;
   z-index: 1;
 }
 @media (hover: hover) {
 .card:hover .card__img-wrap::after {
-  background: rgba(180,141,232,0.35);
+  animation: card-purple-in 1.1s ease-out forwards;
 }
 }
 .card__overlay{
