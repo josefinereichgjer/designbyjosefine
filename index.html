@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="./assets/me.webp" as="image">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@300;600;700&family=Caveat:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/hvitlogo.webp">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 
@@ -19,7 +19,7 @@
     html, body {
       margin: 0; padding: 0;
       height: 100%; overflow: hidden;
-      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-family: system-ui, -apple-system, sans-serif;
       background: #000;
     }
 
@@ -103,45 +103,15 @@
     /* ── "Portfolio" — top-left, big, links to the portfolio ── */
     .landing__portfolio-link {
       z-index: 50;
-      font-family: "Poppins", sans-serif;
-      font-size: 58px;
-      font-weight: 700;
-      letter-spacing: 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(46px, 15vw, 80px);
+      font-weight: 300;
+      letter-spacing: 0.07em;
       line-height: 1;
       color: #fff;
       text-decoration: none;
     }
     .landing__portfolio-link:hover { opacity: .7; }
-    .landing__portfolio-link:hover .landing__name { opacity: .7; }
-
-    .landing__name {
-      display: flex;
-      align-items: center;
-      font-family: "Caveat", cursive;
-      font-size: 36px;
-      font-weight: 400;
-      letter-spacing: 0.03em;
-      color: #fff;
-      margin-top: 6px;
-    }
-
-    .landing__wip {
-      display: block;
-      font-family: "Poppins", sans-serif;
-      font-size: 20px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: #bcd8f0;
-      margin-top: 4px;
-    }
-
-    .landing__logo-between {
-      display: inline-block;
-      width: clamp(36px, 4.5vw, 60px);
-      height: auto;
-      margin-left: 8px;
-      vertical-align: top;
-    }
 
     /* ── CTA + bio — bottom-left ── */
     .landing__brand {
@@ -158,41 +128,31 @@
       opacity: 0;
     }
 
-    .landing__logo {
-      width: clamp(130px, 14vw, 190px);
-      height: auto;
-      display: block;
-    }
-
     /* Mobile: show short variants, hide full */
-    .landing__logo-mobile { display: inline-block; vertical-align: middle; margin-left: 8px; }
-    .landing__logo-desktop { display: none; }
     .landing__cta-label--short { display: inline; }
     .landing__cta-label--full { display: none; }
     .landing__bio--short { display: inline; }
     .landing__bio--full { display: none; }
 
     .landing__cta {
-      margin-top: 10px;
       display: inline-flex;
       align-items: center;
       gap: 18px;
-      padding: 6px 20px;
+      padding: 0;
       border-radius: 0;
       background: none;
       border: none;
       color: #fff;
-      font-family: "Poppins", sans-serif;
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
+      font-family: "Raleway", sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #fff;
       text-decoration: none;
-      pointer-events: all;
-      position: relative;
       overflow: hidden;
       transition: opacity .2s ease;
+      pointer-events: auto;
+      z-index: 50;
     }
     .landing__cta:hover { opacity: 0.7; }
     .landing__cta:active { transform: scale(0.98); }
@@ -224,10 +184,11 @@
     /* ── Bio ── */
     .landing__bio {
       max-width: none;
-      font-family: "Poppins", sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.75;
+      font-family: "Raleway", sans-serif;
+      font-size: 15px;
+      font-weight: 300;
+      font-style: normal;
+      line-height: 1.8;
       letter-spacing: 0.01em;
       color: rgba(255,255,255,0.75);
       overflow-wrap: break-word;
@@ -239,30 +200,24 @@
     /* ── Tablet (768px+) ── */
     @media (min-width: 768px) {
       .landing__topleft { top: 28px; left: 28px; }
-      .landing__brand { left: 28px; bottom: 28px; right: auto; }
-      .landing__portfolio-link { font-size: 108px; }
-      .landing__name { font-size: 46px; display: block; }
-      .landing__wip { font-size: 34px; }
-      .landing__logo-desktop { display: inline-block; }
-      .landing__logo-mobile { display: none; }
+      .landing__brand { left: 28px; bottom: auto; right: auto; top: 50%; transform: translateY(-50%); }
+      .landing__portfolio-link { font-size: 150px; }
       .landing__cta-label--full { display: inline; }
       .landing__cta-label--short { display: none; }
       .landing__bio--full { display: inline; }
       .landing__bio--short { display: none; }
-      .landing__bio { font-size: 17px; max-width: 520px; line-height: 1.5; }
-      .landing__cta { font-size: 27px; padding: 6px 20px; margin-top: 0; }
+      .landing__bio { font-size: 22px; max-width: 560px; line-height: 1.5; }
+      .landing__cta { position: fixed; bottom: 0px; right: 28px; font-size: 13px; padding: 0; }
       .collage-scene { transform: scale(1.4) translateX(-22%); transform-origin: center; }
     }
 
     /* ── Small desktop (1024px+) ── */
     @media (min-width: 1024px) {
       .landing__topleft { top: 36px; left: 44px; }
-      .landing__brand { left: 44px; bottom: 44px; top: auto; transform: none; }
-      .landing__portfolio-link { font-size: clamp(52px, 7vw, 96px); }
-      .landing__name { font-size: clamp(32px, 3vw, 48px); }
-      .landing__wip { font-size: clamp(20px, 2.4vw, 32px); }
-      .landing__bio { font-size: clamp(12px, 0.9vw, 14px); max-width: 420px; line-height: 1.75; }
-      .landing__cta { font-size: 15px; padding: 0; margin-top: 4px; }
+      .landing__brand { left: 44px; bottom: auto; top: 50%; transform: translateY(-50%); }
+      .landing__portfolio-link { font-size: clamp(120px, 11vw, 180px); }
+      .landing__bio { font-size: clamp(22px, 2vw, 32px); max-width: 580px; line-height: 1.4; }
+      .landing__cta { position: fixed; bottom: 6px; right: 44px; font-size: 15px; padding: 0; }
       .collage-scene { transform: scale(.92); transform-origin: center; }
     }
 
@@ -273,14 +228,14 @@
 
     /* ── Large desktop (1440px+) ── */
     @media (min-width: 1440px) {
-      .landing__bio { font-size: 18px; max-width: 560px; }
+      .landing__bio { font-size: clamp(26px, 2.2vw, 36px); max-width: 620px; }
       .landing__cta { font-size: 15px; padding: 0; }
       .collage-scene { transform: scale(1.2); }
     }
 
     /* ── XL desktop (1920px+) ── */
     @media (min-width: 1920px) {
-      .landing__bio { font-size: 19px; max-width: 620px; }
+      .landing__bio { font-size: clamp(28px, 2.4vw, 40px); max-width: 660px; }
       .landing__cta { font-size: 15px; padding: 0; }
       .collage-scene { transform: scale(1.45); }
     }
@@ -295,9 +250,10 @@
 
     <!-- Top-left block -->
     <div class="landing__topleft">
-      <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO<span class="landing__name">JOSEFINE REICHELT GJERTSEN</span></a>    </div>
+      <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO</a>
+    </div>
 
-    <!-- Bottom-left: bio + button -->
+    <!-- Bottom-left: bio + CTA (mobile: stacked; desktop: CTA fixed bottom-right) -->
     <div class="landing__brand">
       <p class="landing__bio">
         <span class="landing__bio--full"></span>

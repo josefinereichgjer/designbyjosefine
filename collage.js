@@ -22,13 +22,13 @@
   /* Small x/y offsets + rotations — tight pile, me.webp top layer */
   const TARGETS = [
     { x:  270, y:  -20, rot:   2, z: 8 },  // me.webp  — top
-    { x:  220, y:  -10, rot:  -9, z: 7 },
-    { x:  320, y:  -15, rot:  13, z: 6 },
-    { x:  235, y:  -30, rot:  -5, z: 5 },
-    { x:  310, y:   -5, rot: -12, z: 4 },
-    { x:  205, y:  -18, rot:   8, z: 3 },
-    { x:  295, y:  -25, rot: -15, z: 2 },
-    { x:  250, y:   -8, rot:  10, z: 1 },
+    { x:  198, y:    2, rot:  -9, z: 7 },
+    { x:  348, y:  -22, rot:  13, z: 6 },
+    { x:  212, y:  -52, rot:  -5, z: 5 },
+    { x:  338, y:   14, rot: -12, z: 4 },
+    { x:  172, y:  -16, rot:   8, z: 3 },
+    { x:  314, y:  -50, rot: -15, z: 2 },
+    { x:  248, y:   22, rot:  10, z: 1 },
   ];
 
   let cardEls    = [];
@@ -44,14 +44,18 @@
     const cards    = isMobile ? CARDS.slice(0, 5) : CARDS;
 
     cards.forEach(function (c, i) {
+      const isMe = i === 0;
+      const cW = isMe ? W : Math.round(W * 0.78);
+      const cH = isMe ? H : Math.round(H * 0.78);
+
       const t  = { x: TARGETS[i].x - xShift, y: TARGETS[i].y, rot: TARGETS[i].rot, z: TARGETS[i].z };
       const el = document.createElement('a');
       el.href        = './projects.html';
       el.className   = 'collage-card';
-      el.style.width  = W + 'px';
-      el.style.height = H + 'px';
-      el.style.left   = 'calc(50% - ' + (W / 2) + 'px)';
-      el.style.top    = 'calc(50% - ' + (H / 2) + 'px)';
+      el.style.width  = cW + 'px';
+      el.style.height = cH + 'px';
+      el.style.left   = 'calc(50% - ' + (cW / 2) + 'px)';
+      el.style.top    = 'calc(50% - ' + (cH / 2) + 'px)';
 
       const img          = document.createElement('img');
       img.src            = c.src;
@@ -81,10 +85,21 @@
         rotation: t.rot,
         scale:    1,
         opacity:  1,
-        duration: isMobile ? 1.1 + Math.random() * 0.2 : 1.9 + Math.random() * 0.35,
+        duration: isMe
+          ? (isMobile ? 2.0 : 3.2)
+          : (isMobile ? 1.1 + Math.random() * 0.2 : 1.9 + Math.random() * 0.35),
         delay:    0.08 + i * 0.13,
-        ease:     isMobile ? 'power3.out' : 'expo.out',
-        onComplete: function () { startFloat(el, i); },
+        ease:     isMe ? 'expo.out' : (isMobile ? 'power3.out' : 'expo.out'),
+        onComplete: function () {
+          if (isMe) {
+            /* 3D pulse: drift forward then ease back */
+            gsap.timeline({ delay: 0.4, onComplete: function () { gsap.set(el, { z: 0 }); startFloat(el, i); } })
+              .to(el, { scale: 1.06, z: 36, transformPerspective: 1000, duration: 2.2, ease: 'sine.inOut' })
+              .to(el, { scale: 1.0,  z: 0,  transformPerspective: 1000, duration: 2.2, ease: 'sine.inOut' });
+          } else {
+            startFloat(el, i);
+          }
+        },
       });
 
       el.addEventListener('mouseenter', function () { onHover(i); });
@@ -95,141 +110,164 @@
     var brand   = document.querySelector('.landing__brand');
     var topleft = document.querySelector('.landing__topleft');
     if (brand) {
-      gsap.fromTo(brand,
-        { opacity: 0, y: 14 },
-        { opacity: 0.9, y: 0, duration: 1.4, delay: 0.7, ease: 'power2.out' }
-      );
+      gsap.set(brand, { opacity: 1 });
     }
     if (topleft) {
-      gsap.fromTo(topleft,
-        { opacity: 0, y: -10 },
-        { opacity: 1, y: 0, duration: 1.2, delay: 0.5, ease: 'power2.out' }
-      );
-    }
+      gsap.set(topleft, { opacity: 1 });
 
-    /* Typewriter effect on CTA label */
-    var twStyle = document.createElement('style');
-    twStyle.textContent = [
-      '.tw-cursor{',
-        'display:inline-block;width:2px;height:0.85em;',
-        'background:currentColor;margin-left:2px;',
-        'vertical-align:middle;',
-        'animation:tw-blink 0.7s step-end infinite;',
-      '}',
-      '@keyframes tw-blink{0%,100%{opacity:1}50%{opacity:0}}',
-    ].join('');
-    document.head.appendChild(twStyle);
-
-    /* Inject bio-big style */
-    var bioBigStyle = document.createElement('style');
-    bioBigStyle.textContent = [
-      '.bio-big{font-size:1.5em;line-height:1;letter-spacing:0.01em;font-weight:400;',
-        'display:inline-block;position:relative;',
-        'transition:font-size 0.5s ease,letter-spacing 0.4s ease;}',
-      '.bio-sparkle{position:absolute;width:7px;height:7px;pointer-events:none;opacity:0;}',
-      '.bio-sparkle::before{content:"";display:block;width:100%;height:100%;background:#fff;',
-        'clip-path:polygon(50% 0%,56% 44%,100% 50%,56% 56%,50% 100%,44% 56%,0% 50%,44% 44%);}',
-      '@keyframes sparkle-twinkle{',
-        '0%{opacity:0;transform:scale(0) rotate(0deg)}',
-        '25%{opacity:1;transform:scale(1.3) rotate(20deg)}',
-        '60%{opacity:0.7;transform:scale(0.85) rotate(-10deg)}',
-        '80%{opacity:1;transform:scale(1.1) rotate(15deg)}',
-        '100%{opacity:0;transform:scale(0.5) rotate(30deg)}}',
-    ].join('');
-    document.head.appendChild(bioBigStyle);
-
-    /* Segment-aware typewriter — segments: [{text, cls}] */
-    function typewriter(el, segments, speed) {
-      el.innerHTML = '';
-      var cursor = document.createElement('span');
-      cursor.className = 'tw-cursor';
-      el.appendChild(cursor);
-
-      var si = 0, ci = 0, span = null;
-
-      function tick() {
-        if (si >= segments.length) {
-          setTimeout(function () {
-            if (cursor.parentNode) cursor.parentNode.removeChild(cursor);
-          }, 600);
-          return;
-        }
-        var seg = segments[si];
-        if (ci === 0) {
-          span = document.createElement('span');
-          if (seg.cls) span.className = seg.cls;
-          /* use a dedicated text node so sparkles aren't wiped */
-          span._textNode = document.createTextNode('');
-          span.appendChild(span._textNode);
-          el.insertBefore(span, cursor);
-          /* spawn sparkles when highlighted segment begins */
-          if (seg.cls === 'bio-big') {
-            var sparklePositions = [
-              { top: '-12px', left: '2%' },
-              { top: '-14px', left: '40%' },
-              { top: '-11px', left: '80%' },
-              { bottom: '-12px', left: '12%' },
-              { bottom: '-11px', left: '60%' },
-              { top: '0%',      left: '103%' },
-            ];
-            var activeSparkles = [];
-            sparklePositions.forEach(function (pos, idx) {
-              var s = document.createElement('span');
-              s.className = 'bio-sparkle';
-              Object.keys(pos).forEach(function (k) { s.style[k] = pos[k]; });
-              s.style.animationName = 'sparkle-twinkle';
-              s.style.animationDuration = (550 + idx * 90) + 'ms';
-              s.style.animationDelay = (idx * 110) + 'ms';
-              s.style.animationIterationCount = 'infinite';
-              s.style.animationFillMode = 'both';
-              span.appendChild(s);
-              activeSparkles.push(s);
-            });
-            span._sparkles = activeSparkles;
+      /* ── Char-split "PORTFOLIO" ── */
+      var portLink = topleft.querySelector('.landing__portfolio-link');
+      if (portLink) {
+        var textNode = null;
+        for (var ni = 0; ni < portLink.childNodes.length; ni++) {
+          if (portLink.childNodes[ni].nodeType === 3 && portLink.childNodes[ni].nodeValue.trim()) {
+            textNode = portLink.childNodes[ni]; break;
           }
         }
-        span._textNode.nodeValue += seg.text[ci];
-        ci++;
-        if (ci >= seg.text.length) {
-          if (seg.cls && span) {
-            var doneSpan = span;
-            setTimeout(function () {
-              doneSpan.style.fontSize = '1em';
-              doneSpan.style.letterSpacing = 'inherit';
-              if (doneSpan._sparkles) {
-                doneSpan._sparkles.forEach(function (s) {
-                  s.style.animationIterationCount = '1';
-                });
-              }
-            }, 80);
+        if (textNode) {
+          var rawText = textNode.nodeValue;
+          var frag = document.createDocumentFragment();
+          var charEls = [];
+          for (var ci = 0; ci < rawText.length; ci++) {
+            var clip = document.createElement('span');
+            clip.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:bottom;';
+            var ch = document.createElement('span');
+            ch.textContent = rawText[ci] === ' ' ? '\u00A0' : rawText[ci];
+            ch.style.cssText = 'display:inline-block;';
+            clip.appendChild(ch);
+            frag.appendChild(clip);
+            charEls.push(ch);
           }
-          si++; ci = 0;
+          portLink.insertBefore(frag, textNode);
+          portLink.removeChild(textNode);
+          gsap.fromTo(charEls,
+            { y: '110%', opacity: 0 },
+            { y: '0%', opacity: 1, duration: 1.0, ease: 'expo.out', stagger: 0.05, delay: 0.3 }
+          );
         }
-        setTimeout(tick, speed);
       }
-      tick();
+
     }
 
     var BIO_SEGMENTS_FULL = [
-      { text: 'Hei! Jeg er Josefine, en ',  cls: null },
-      { text: 'grafisk designer',            cls: 'bio-big' },
-      { text: ' som drives\u00A0av å løse problemer gjennom visuell kommunikasjon. Mine styrker ligger i typografi, merkevarebygging og UI/UX. Mitt mål er alltid å designe løsninger som ikke bare ser bra ut, men som faktisk fungerer.', cls: null },
+      { text: 'Hei! Josefine her; en ' },
+      { text: 'grafisk designer', keepColor: true },
+      { text: ' som løser problemer gjennom visuell kommunikasjon!' },
     ];
     var BIO_SEGMENTS_SHORT = [
-      { text: 'Hei! Jeg er Josefine, en ',  cls: null },
-      { text: 'grafisk designer',            cls: 'bio-big' },
-      { text: ' som drives\u00A0av å løse problemer gjennom visuell kommunikasjon.', cls: null },
+      { text: 'Hei! Josefine her; en ' },
+      { text: 'grafisk designer', keepColor: true },
+      { text: ' som løser problemer gjennom visuell kommunikasjon!' },
     ];
+
+    /* ── Roll-up: letter-by-letter, word-level clip so lines break naturally ── */
+    /* textOrSegments: string OR [{text, fontFamily?, fontWeight?, fontSize?, keepColor?}] */
+    /* keepColor:true — those chars stay at fromColor; function returns them for external use */
+    function splitCharReveal(el, textOrSegments, delay, staggerTime, dur, fromColor, toColor) {
+      if (!el || !textOrSegments) return { chars: [], wclips: [] };
+      el.innerHTML = '';
+      var allCharEls = [];
+      var keepCharEls = [];
+      var keepWclipEls = [];
+      var segments = typeof textOrSegments === 'string'
+        ? [{ text: textOrSegments }]
+        : textOrSegments;
+      segments.forEach(function (seg) {
+        var tokens = seg.text.split(/(\s+)/);
+        tokens.forEach(function (tok) {
+          if (/^\s+$/.test(tok)) {
+            el.appendChild(document.createTextNode(' '));
+          } else {
+            var wclip = document.createElement('span');
+            wclip.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:bottom;';
+            if (seg.keepColor) keepWclipEls.push(wclip);
+            for (var j = 0; j < tok.length; j++) {
+              var cspan = document.createElement('span');
+              cspan.textContent = tok[j];
+              cspan.style.cssText = 'display:inline-block;';
+              if (seg.fontFamily) cspan.style.fontFamily = seg.fontFamily;
+              if (seg.fontWeight) cspan.style.fontWeight = seg.fontWeight;
+              if (seg.fontSize)   cspan.style.fontSize   = seg.fontSize;
+              wclip.appendChild(cspan);
+              allCharEls.push(cspan);
+              if (seg.keepColor) keepCharEls.push(cspan);
+            }
+            el.appendChild(wclip);
+          }
+        });
+      });
+      if (!allCharEls.length) return { chars: keepCharEls, wclips: keepWclipEls };
+
+      if (fromColor) allCharEls.forEach(function (c) { c.style.color = fromColor; });
+
+      gsap.fromTo(allCharEls,
+        { y: '110%', opacity: 0 },
+        { y: '0%', opacity: 1, duration: dur || 0.55, ease: 'expo.out', stagger: staggerTime || 0.018, delay: delay }
+      );
+
+      /* color fade only for chars that don't keepColor */
+      var transitionChars = keepCharEls.length
+        ? allCharEls.filter(function (c) { return keepCharEls.indexOf(c) === -1; })
+        : allCharEls;
+      if (fromColor && toColor && transitionChars.length) {
+        gsap.to(transitionChars, {
+          color: toColor,
+          duration: (dur || 0.55) * 1.1,
+          ease: 'power1.inOut',
+          stagger: staggerTime || 0.018,
+          delay: delay + (dur || 0.55) * 0.4,
+        });
+      }
+
+      return { chars: keepCharEls, wclips: keepWclipEls };
+    }
 
     var bioFull  = document.querySelector('.landing__bio--full');
     var bioShort = document.querySelector('.landing__bio--short');
-    var TW_DELAY = 1600;
-    var TW_SPEED = 32;
+    var bioResultFull  = splitCharReveal(bioFull,  BIO_SEGMENTS_FULL,  0.9, 0.03, 1.2, '#b48de8', 'rgba(255,255,255,0.75)');
+    var bioResultShort = splitCharReveal(bioShort, BIO_SEGMENTS_SHORT, 0.9, 0.03, 1.2, '#b48de8', 'rgba(255,255,255,0.75)');
 
-    setTimeout(function () {
-      if (bioFull)  typewriter(bioFull,  BIO_SEGMENTS_FULL,  TW_SPEED);
-      if (bioShort) typewriter(bioShort, BIO_SEGMENTS_SHORT, TW_SPEED);
-    }, TW_DELAY);
+    /* after full text settles: color breath + float on "grafisk designer" */
+    /* bio has ~88 chars × 0.03s stagger + 0.9s delay + 1.2s dur ≈ 4.7s total */
+    var bioSettleDelay = 4.8;
+    [bioResultFull, bioResultShort].forEach(function (result) {
+      if (!result) return;
+      if (result.chars.length) {
+        gsap.to(result.chars, {
+          color: '#c8a4f5',
+          duration: 3.5,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: bioSettleDelay,
+        });
+      }
+      if (result.wclips.length) {
+        gsap.to(result.wclips, {
+          y: -4,
+          duration: 6.5,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: bioSettleDelay,
+        });
+      }
+    });
+
+
+    /* ── Roll-up: CTA label ── */
+    var ctaFull  = document.querySelector('.landing__cta-label--full');
+    var ctaShort = document.querySelector('.landing__cta-label--short');
+    var ctaFullText  = ctaFull  ? ctaFull.textContent  : '';
+    var ctaShortText = ctaShort ? ctaShort.textContent : '';
+    splitCharReveal(ctaFull,  ctaFullText,  0.9, 0.05, 1.2);
+    splitCharReveal(ctaShort, ctaShortText, 0.9, 0.05, 1.2);
+
+    var ctaArrow = document.querySelector('.landing__cta-arrow-track');
+    if (ctaArrow) {
+      gsap.set(ctaArrow, { opacity: 0, y: 6, color: '#b48de8' });
+      gsap.to(ctaArrow, { opacity: 1, y: 0, duration: 0.7, ease: 'expo.out', delay: 1.8 });
+    }
 
     /* Arrow shoots off on CTA click, then navigate */
     var cta = document.querySelector('.landing__cta');
