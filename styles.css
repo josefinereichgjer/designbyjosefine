@@ -255,7 +255,7 @@ a:hover{opacity:.75}
   background:#fff;
   box-shadow:none;
   transform:translateZ(0);
-  border:1px solid var(--hair);
+  border: none;
   transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card:hover{
@@ -454,7 +454,7 @@ a:hover{opacity:.75}
   display:block;
   cursor:zoom-in;
   opacity:1;
-  border: 1px solid #e0e0e0;
+  border: none;
 }
 .project__figure img:hover{ opacity:1; }
 .project__video{ width:100%; display:block; }
@@ -1203,21 +1203,21 @@ a:hover{opacity:.75}
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 16px;
-  font-weight: 400;
-  font-family: "Caveat", cursive;
+  font-size: 11px;
+  font-weight: 300;
+  font-family: "Raleway", sans-serif;
   text-transform: uppercase;
   cursor: pointer;
-  padding: 12px 24px;
+  padding: 8px 16px;
   white-space: nowrap;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.22em;
   color: #fff;
   background: #111;
   transition: opacity 0.15s;
 }
 .project-header .panel-toggle {
   margin-top: 16px;
-  padding: 10px 20px;
+  padding: 8px 16px;
 }
 .panel-toggle--below {
   display: none;
@@ -1232,7 +1232,16 @@ a:hover{opacity:.75}
   margin-bottom: 40px;
 }
 .inline-accordion[hidden] { display: none; }
-.panel-toggle:hover { opacity: 0.6; }
+.panel-toggle:hover { opacity: 0.8; }
+.project-layout--panel-open .panel-toggle,
+.gallery-expandable.is-open > .gallery-expandable__strip .panel-toggle,
+.inline-accordion:not([hidden]) ~ .panel-toggle,
+.panel-toggle[aria-expanded="true"] {
+  background: #b48de8;
+  color: #fff;
+}
+.btn-pdf:active,
+.panel-toggle:active { background: #b48de8; color: #fff; opacity: 1; }
 .panel-toggle__icon {
   font-size: 18px;
   line-height: 1;
@@ -1618,7 +1627,7 @@ a:hover{opacity:.75}
   align-items: center;
   gap: 6px;
   margin-top: 20px;
-  padding: 10px 18px;
+  padding: 8px 16px;
   border-radius: 0;
   border: none;
   font-size: 11px;
@@ -1639,6 +1648,7 @@ a:hover{opacity:.75}
 .btn-pdf--mt { margin-top: 16px; }
 .btn-pdf--green { background: none; border: 2px solid #0f0f0f; }
 .btn-pdf--green:hover { background: none; opacity: 0.6; }
+.btn-pdf--green:active { background: #b48de8; border-color: #b48de8; color: #fff; opacity: 1; }
 .btn-pdf--grey--active { background: #c8c8c8; }
 .intro-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; margin-top: 28px; }
 .intro-col__label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 6px; }
