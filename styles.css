@@ -258,9 +258,11 @@ a:hover{opacity:.75}
   border: none;
   transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
+@media (hover: hover) {
 .card:hover{
   transform:translateY(-7px);
   box-shadow:0 20px 48px rgba(0,0,0,0.18);
+}
 }
 .card__img-wrap{
   overflow:hidden;
@@ -275,7 +277,9 @@ a:hover{opacity:.75}
   display:block;
   transition:transform 0.45s ease;
 }
+@media (hover: hover) {
 .card:hover .card__img { transform:scale(1.1); }
+}
 .card__img-wrap::after {
   content: '';
   position: absolute;
@@ -285,8 +289,10 @@ a:hover{opacity:.75}
   pointer-events: none;
   z-index: 1;
 }
+@media (hover: hover) {
 .card:hover .card__img-wrap::after {
   background: rgba(180,141,232,0.35);
+}
 }
 .card__overlay{
   position:absolute;
@@ -309,14 +315,13 @@ a:hover{opacity:.75}
   transform:translateY(10px);
   transition:opacity 0.26s ease 0.14s, transform 0.26s ease 0.14s;
 }
+@media (hover: hover) {
 .card:hover .card__overlay { transform:translateY(0); }
 .card:hover .card__overlay span {
   opacity:1;
   transform:translateY(0);
 }
-.card--touch-active .card__overlay { transform:translateY(0); }
-.card--touch-active .card__overlay span { opacity:1; transform:translateY(0); }
-.card--touch-active .card__img { transform:scale(1.06); }
+}
 .card__caption{
   display:flex;
   justify-content:space-between;
