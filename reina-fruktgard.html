@@ -11,6 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@300;400;500&family=Caveat:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <style>@media(max-width:600px){.info-cards{grid-template-columns:1fr!important}}
+  .strip-dots { display: flex; gap: 8px; justify-content: center; margin-top: 14px; }
+  .strip-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #e0dde8; border: none; padding: 0; cursor: pointer;
+    transition: background .2s; flex-shrink: 0;
+  }
+  .strip-dot.is-active { background: #960C0C; }
   .project__figure img { border: none; }
   .original-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center}
   .original-modal--open{display:flex}
@@ -97,6 +104,7 @@
             </div>
           </div>
         </div>
+        <div class="strip-dots" id="stripDots"></div>
 
         <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:16px" class="info-cards">
           <div style="background:#fff;padding:24px 28px">
@@ -263,24 +271,42 @@
     (function() {
       const track = document.getElementById("stripTrack");
       if (!track) return;
+      const viewport = track.parentElement; // .strip-ss__viewport — this is the scroll container
       const slides = [...track.querySelectorAll(".strip-ss__slide")];
       const N = slides.length;
       let current = 0;
+
+      // Dots
+      const dotsEl = document.getElementById("stripDots");
+      const dots = slides.map((_, i) => {
+        const btn = document.createElement("button");
+        btn.className = "strip-dot" + (i === 0 ? " is-active" : "");
+        btn.setAttribute("aria-label", "Bilde " + (i + 1));
+        btn.addEventListener("click", () => scrollTo(i));
+        dotsEl?.appendChild(btn);
+        return btn;
+      });
+      function updateDots() {
+        dots.forEach((d, i) => d.classList.toggle("is-active", i === current));
+      }
+
       function scrollTo(n) {
         current = (n + N) % N;
-        track.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
+        viewport.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
+        updateDots();
       }
       document.getElementById("stripNext")?.addEventListener("click", () => scrollTo(current + 1));
       document.getElementById("stripPrev")?.addEventListener("click", () => scrollTo(current - 1));
       let dragging = false, didDrag = false, startX = 0, scrollLeft = 0;
-      track.addEventListener("mousedown", e => { dragging = true; didDrag = false; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; track.style.cursor = "grabbing"; });
-      track.addEventListener("mouseleave", () => { dragging = false; track.style.cursor = ""; });
-      track.addEventListener("mouseup", () => { dragging = false; track.style.cursor = ""; });
-      track.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); if (Math.abs(e.pageX - track.offsetLeft - startX) > 4) didDrag = true; track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX); });
-      track.addEventListener("click", e => { if (didDrag) { e.stopPropagation(); didDrag = false; } });
-      track.addEventListener("scroll", () => {
+      viewport.addEventListener("mousedown", e => { dragging = true; didDrag = false; startX = e.pageX - viewport.offsetLeft; scrollLeft = viewport.scrollLeft; viewport.style.cursor = "grabbing"; });
+      viewport.addEventListener("mouseleave", () => { dragging = false; viewport.style.cursor = ""; });
+      viewport.addEventListener("mouseup", () => { dragging = false; viewport.style.cursor = ""; });
+      viewport.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); if (Math.abs(e.pageX - viewport.offsetLeft - startX) > 4) didDrag = true; viewport.scrollLeft = scrollLeft - (e.pageX - viewport.offsetLeft - startX); });
+      viewport.addEventListener("click", e => { if (didDrag) { e.stopPropagation(); didDrag = false; } });
+      viewport.addEventListener("scroll", () => {
         const w = slides[0]?.offsetWidth || 1;
-        current = Math.round(track.scrollLeft / w);
+        current = Math.round(viewport.scrollLeft / w);
+        updateDots();
       }, { passive: true });
     })();
 
