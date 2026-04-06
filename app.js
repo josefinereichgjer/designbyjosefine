@@ -9,6 +9,15 @@ sidebarToggle?.addEventListener("click", () => {
   sidebarToggle.setAttribute("aria-expanded", String(isOpen));
 });
 
+// Close menu when a nav link is tapped
+document.querySelectorAll(".nav .nav__link").forEach(link => {
+  link.addEventListener("click", () => {
+    const sidebar = document.getElementById("sidebar");
+    if (sidebar) sidebar.classList.remove("sidebar--open");
+    if (sidebarToggle) sidebarToggle.setAttribute("aria-expanded", "false");
+  });
+});
+
 const projects = (window.PROJECTS || []).filter(p => !p.personal);
 
 function cardHTML(p){

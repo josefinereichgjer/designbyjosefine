@@ -666,11 +666,8 @@ a:hover{opacity:.75}
 /* Sidebar mobile */
 .sidebar__toggle{
   display:none;
-  width:100%;
-  padding:10px 12px;
-  border:1px solid var(--hair);
-  background:#fff;
 }
+.hamburger-line { display: none; }
 
 .about-layout {
   display: grid;
@@ -2186,6 +2183,85 @@ a:hover{opacity:.75}
   .about-layout { grid-template-columns: 1fr; gap: 32px; }
   .about-photo-col { align-items: center; }
   .about-photo { width: 60%; max-width: 260px; height: auto; aspect-ratio: 3 / 4; }
+  .cv-link { margin-top: 32px; display: inline-block; }
+  .tool-icon-img { width: 36px; height: 36px; }
+  .tools-track { gap: 12px; }
+}
+
+/* Small mobile: collapse nav to hamburger */
+@media (max-width: 640px) {
+  .sidebar__toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .hamburger-line {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #fff;
+    border-radius: 0;
+    transition: transform 0.3s ease, opacity 0.2s ease, background 0.2s ease;
+  }
+  .sidebar--open .hamburger-line { background: #b48de8; }
+  .sidebar--open .hamburger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .sidebar--open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .sidebar--open .hamburger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: #000;
+    border-bottom: 1px solid #222;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0 16px;
+    align-items: stretch;
+    z-index: 99;
+    margin-top: 0;
+  }
+  .sidebar--open .nav { display: flex; }
+  .nav .nav__link {
+    padding: 14px 20px;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .nav .nav__link:last-child { border-bottom: none; }
+  .nav .nav__arrow-track { display: none; }
+  .back-btn, .sidebar .back-btn { display: none; }
+  .content { padding-top: 72px; }
+  .card__caption {
+    display: flex;
+    background: #fff;
+    padding: 8px 2px;
+    border-top: none;
+  }
+  .card__title {
+    font-family: "Raleway", sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: #111;
+  }
+  .card__tags {
+    font-family: "Raleway", sans-serif;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    color: #888;
+  }
 }
 
 /* Weit & Weiter: skriftprøve + palett */
