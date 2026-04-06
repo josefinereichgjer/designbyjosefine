@@ -388,6 +388,7 @@
     }
 
     // Accordion
+    const accordionItems = [...(document.getElementById("accordion")?.querySelectorAll(".accordion__item") || [])];
     const accordion = document.getElementById("accordion");
     if (accordion) {
       accordion.querySelectorAll(".accordion__item").forEach(item => {
@@ -407,7 +408,7 @@
             openDrawer();
             const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
             const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
-            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+            if (panel && btn) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
           }
         });
       });
@@ -515,9 +516,6 @@
     const processBackdrop = document.getElementById("processBackdrop");
     const processDrawerClose = document.getElementById("processDrawerClose");
     const processDrawerContent = document.getElementById("processDrawerContent");
-
-    // Build sections index from accordion items
-    const accordionItems = [...(document.getElementById("accordion")?.querySelectorAll(".accordion__item") || [])];
 
     // Add processText as a virtual section if present
     const allSections = accordionItems.map(item => ({

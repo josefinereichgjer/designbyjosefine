@@ -40,8 +40,9 @@
     if (!scene || typeof gsap === 'undefined') return;
 
     /* On mobile, fewer cards + simpler easing for performance */
-    const isMobile = window.innerWidth <= 600;
-    const xShift   = isMobile ? 267 : 0;
+    const isMobile  = window.innerWidth <= 600;
+    const showShort = window.innerWidth < 768;
+    const xShift    = isMobile ? 267 : 0;
     yShift         = isMobile ? 0 : 15;
     const cards    = isMobile ? CARDS.slice(0, 5) : CARDS;
 
@@ -94,10 +95,14 @@
         ease:     isMe ? 'expo.out' : (isMobile ? 'power3.out' : 'expo.out'),
         onComplete: function () {
           if (isMe) {
-            /* 3D pulse: drift forward then ease back */
-            gsap.timeline({ delay: 0.4, onComplete: function () { gsap.set(el, { z: 0 }); startFloat(el, i); } })
-              .to(el, { scale: 1.06, z: 36, transformPerspective: 1000, duration: 2.2, ease: 'sine.inOut' })
-              .to(el, { scale: 1.0,  z: 0,  transformPerspective: 1000, duration: 2.2, ease: 'sine.inOut' });
+            if (isMobile) {
+              startFloat(el, i);
+            } else {
+              /* 3D pulse: drift forward then ease back */
+              gsap.timeline({ delay: 0.4, onComplete: function () { gsap.set(el, { z: 0 }); startFloat(el, i); } })
+                .to(el, { scale: 1.06, z: 36, transformPerspective: 1000, duration: 2.2, ease: 'sine.inOut' })
+                .to(el, { scale: 1.0,  z: 0,  transformPerspective: 1000, duration: 2.2, ease: 'sine.inOut' });
+            }
           } else {
             startFloat(el, i);
           }
@@ -226,8 +231,8 @@
 
     var bioFull  = document.querySelector('.landing__bio--full');
     var bioShort = document.querySelector('.landing__bio--short');
-    var bioResultFull  = splitCharReveal(bioFull,  BIO_SEGMENTS_FULL,  0.9, 0.03, 1.2, '#b48de8', 'rgba(255,255,255,0.75)');
-    var bioResultShort = splitCharReveal(bioShort, BIO_SEGMENTS_SHORT, 0.9, 0.03, 1.2, '#b48de8', 'rgba(255,255,255,0.75)');
+    var bioResultFull  = !showShort ? splitCharReveal(bioFull,  BIO_SEGMENTS_FULL,  0.9, 0.03, 1.2, '#b48de8', 'rgba(255,255,255,0.75)') : null;
+    var bioResultShort =  showShort ? splitCharReveal(bioShort, BIO_SEGMENTS_SHORT, 0.9, 0.03, 1.2, '#b48de8', 'rgba(255,255,255,0.75)') : null;
 
     /* after full text settles: color breath + float on "grafisk designer" */
     /* bio has ~88 chars × 0.03s stagger + 0.9s delay + 1.2s dur ≈ 4.7s total */
@@ -262,8 +267,8 @@
     var ctaShort = document.querySelector('.landing__cta-label--short');
     var ctaFullText  = ctaFull  ? ctaFull.textContent  : '';
     var ctaShortText = ctaShort ? ctaShort.textContent : '';
-    splitCharReveal(ctaFull,  ctaFullText,  0.9, 0.025, 0.7);
-    splitCharReveal(ctaShort, ctaShortText, 0.9, 0.025, 0.7);
+    if (!showShort) splitCharReveal(ctaFull,  ctaFullText,  0.9, 0.025, 0.7);
+    if (showShort)  splitCharReveal(ctaShort, ctaShortText, 0.9, 0.025, 0.7);
 
     var ctaArrow = document.querySelector('.landing__cta-arrow-track');
     if (ctaArrow) {
@@ -284,6 +289,7 @@
   }
 
   function startFloat(el, idx) {
+    if (window.innerWidth <= 600) return;
     const t    = TARGETS[idx];
     const adjY = t.y + yShift;
     const yAmp = 4 + Math.random() * 5;

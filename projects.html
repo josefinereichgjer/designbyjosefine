@@ -97,7 +97,6 @@
       </div>
       <div class="about-scribble about-scribble--bottom" aria-hidden="true">
         <svg viewBox="-80 0 660 640" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <use href="#handDrawn-path"/>
           <path filter="url(#handDrawn)"
             d="M 260,40 C 360,10 500,60 520,160 C 540,260 460,340 360,330 C 260,320 180,260 190,170 C 200,80 310,50 390,90 C 470,130 500,240 470,320 C 440,400 340,440 240,420 C 140,400 80,330 100,250 C 120,170 220,150 300,190 C 380,230 410,330 380,410 C 350,490 250,530 150,510 C 50,490 0,420 20,350 C 40,280 130,260 200,300 C 270,340 290,430 260,500 C 230,570 140,600 60,580 C -20,560 -50,490 -20,440 C 10,390 80,390 120,430 C 160,470 160,550 120,580 C 80,610 20,600 -10,570 M 320,200 C 420,180 520,230 540,320 C 560,410 490,480 400,470 C 310,460 260,390 280,310 C 300,230 390,200 460,240 C 530,280 550,380 520,450 C 490,520 400,550 320,530 C 240,510 200,450 220,380"
             stroke="rgba(180,141,232,0.35)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
@@ -177,7 +176,7 @@
         seed = (seed % 30) + 1;
         if (turb)    turb.setAttribute('seed', seed);
         if (navTurb) navTurb.setAttribute('seed', seed);
-      }, 120);
+      }, 900);
     })();
   </script>
 </body>
