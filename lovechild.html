@@ -12,7 +12,9 @@
   <link rel="stylesheet" href="./styles.css?v=20" />
   <style>
     @media (max-width: 640px) {
-      .babilogo-img { width: 100% !important; max-width: none !important; }
+      .babilogo-img { width: 100% !important; max-width: none !important; filter: none !important; }
+      #babyAnim { filter: none !important; }
+      .ww-frames-row { margin-top: 3rem !important; }
       .project__gallery,
       .project__figure,
       .project__figure--wide { margin-left: -20px; margin-right: -20px; }
@@ -104,6 +106,13 @@
             </filter>
           </defs>
         </svg>
+        <p style="text-align:center;font-family:'Libre Baskerville',serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:1rem;">Ekstra illustrasjoner</p>
+        <figure class="project__figure project__figure--wide ww-frames-row" style="display:flex;gap:0;justify-content:center;align-items:flex-end;margin-bottom:0;">
+          <img src="./assets/01@3x.png" alt="Baby frame 1" style="width:25%;object-fit:contain;">
+          <img src="./assets/02@3x.png" alt="Baby frame 2" style="width:25%;object-fit:contain;">
+          <img src="./assets/04@3x.png" alt="Baby frame 3" style="width:25%;object-fit:contain;">
+          <img src="./assets/03@3x.png" alt="Baby frame 4" style="width:25%;object-fit:contain;">
+        </figure>
         <figure class="project__figure project__figure--wide ww-video-fig">
           <img id="babyAnim" src="./assets/01@3x.png" alt="Weit & Weiter baby animasjon" style="width:42%;display:block;margin:0 auto;filter:url(#babyWobble);">
         </figure>
@@ -142,8 +151,8 @@
             var frames = [
               { src: './assets/01@3x.png', hold: 750 },
               { src: './assets/02@3x.png', hold: 420 },
-              { src: './assets/03@3x.png', hold: 480 },
-              { src: './assets/04@3x.png', hold: 620 },
+              { src: './assets/04@3x.png', hold: 480 },
+              { src: './assets/03@3x.png', hold: 620 },
             ];
             var img = document.getElementById('babyAnim');
             var offsets = ['0px', '-8px', '-14px', '-5px'];
