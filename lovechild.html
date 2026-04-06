@@ -99,8 +99,8 @@
         <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
           <defs>
             <filter id="babyWobble" x="-5%" y="-5%" width="110%" height="110%">
-              <feTurbulence id="baby-turb" type="turbulence" baseFrequency="0.008" numOctaves="2" seed="1" result="noise"/>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+              <feTurbulence id="baby-turb" type="turbulence" baseFrequency="0.079" numOctaves="2" seed="1" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
             </filter>
           </defs>
         </svg>
@@ -140,16 +140,18 @@
         <script>
           (function () {
             var frames = [
-              { src: './assets/01@3x.png', hold: 520 },
-              { src: './assets/02@3x.png', hold: 280 },
-              { src: './assets/03@3x.png', hold: 320 },
-              { src: './assets/04@3x.png', hold: 420 },
+              { src: './assets/01@3x.png', hold: 750 },
+              { src: './assets/02@3x.png', hold: 420 },
+              { src: './assets/03@3x.png', hold: 480 },
+              { src: './assets/04@3x.png', hold: 620 },
             ];
             var img = document.getElementById('babyAnim');
+            var offsets = ['0px', '-8px', '-14px', '-5px'];
             var i = 0;
             function next() {
               i = (i + 1) % frames.length;
               img.src = frames[i].src;
+              img.style.transform = 'translateY(' + offsets[i] + ')';
               setTimeout(next, frames[i].hold);
             }
             setTimeout(next, frames[0].hold);
@@ -159,7 +161,7 @@
             setInterval(function () {
               seed = (seed % 30) + 1;
               turb.setAttribute('seed', seed);
-            }, 220);
+            }, 320);
           })();
         </script>
 
