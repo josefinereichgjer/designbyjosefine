@@ -23,7 +23,7 @@
   --radius: 16px;
   --sidebarW: 180px;
   --gap: 10px;
-  --font: "Poppins", system-ui, -apple-system, sans-serif;
+  --font: "Raleway", system-ui, -apple-system, sans-serif;
 }
 
 *{box-sizing:border-box}
@@ -81,12 +81,13 @@ a:hover{opacity:.75}
 .back-btn,
 .sidebar .back-btn {
   display: inline-block;
-  font-size: 30px;
-  font-weight: 500;
+  font-family: "Raleway", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: #fff;
-  color: #bcd8f0;
   text-decoration: none;
-  letter-spacing: 0.01em;
   transition: opacity .15s ease;
 }
 .back-btn:hover { opacity: 0.7; }
@@ -129,32 +130,40 @@ a:hover{opacity:.75}
   align-items:center;
   justify-content:space-between;
   padding:6px 0;
-  font-family:"Poppins", sans-serif;
-  font-size:13px;
-  font-weight:500;
-  letter-spacing:0.14em;
+  font-family:"Raleway", sans-serif;
+  font-size:11px;
+  font-weight:300;
+  letter-spacing:0.22em;
   text-transform:uppercase;
   color:#fff;
 }
-.nav__link--personal { margin-top: 20px; opacity: 0.7; }
+.nav__link--personal { margin-top: 20px; color: #b48de8; opacity: 1; }
 
 .nav__arrow-track {
   display: inline-flex;
   align-items: center;
   overflow: hidden;
-  width: 36px;
+  width: 40px;
   flex-shrink: 0;
   opacity: 0;
   transition: opacity .25s ease;
 }
 .nav__arrow {
   flex-shrink: 0;
-  transform: translateX(-10px);
-  transition: transform .38s cubic-bezier(0.25,0.46,0.45,0.94), opacity .25s ease;
+  color: #b48de8;
+  transition: transform .38s cubic-bezier(0.25,0.46,0.45,0.94);
 }
 .nav__link:hover .nav__arrow-track { opacity: 1; }
-.nav__link:hover .nav__arrow { transform: translateX(0); }
+.nav__link:hover .nav__arrow { transform: translateX(5px); }
 .nav__link:hover { opacity: 0.7; }
+/* shoot-off on click */
+.nav__link--leaving,
+.nav__link--leaving .nav__arrow-track { overflow: visible; }
+.nav__link--leaving .nav__arrow {
+  transform: translateX(120px);
+  opacity: 0;
+  transition: transform .38s cubic-bezier(0.4,0,1,1), opacity .28s ease .1s;
+}
 .chip{
   display:inline-flex;
   gap:8px;
@@ -210,7 +219,7 @@ a:hover{opacity:.75}
 .section--dark .muted { opacity: 0.6; }
 .grid-header{display:flex; align-items:flex-end; justify-content:space-between; gap:16px}
 .title,
-.h2{margin:0; font-size:38px; font-weight:400; letter-spacing:0; font-family:"Caveat", cursive; text-transform:uppercase;}
+.h2{margin:0; font-size:clamp(42px, 5vw, 72px); font-weight:300; letter-spacing:0.05em; font-family:"Cormorant Garamond", Georgia, serif; text-transform:none;}
 .subtitle{margin:0; color:var(--muted)}
 
 /* Grid */
@@ -267,6 +276,18 @@ a:hover{opacity:.75}
   transition:transform 0.45s ease;
 }
 .card:hover .card__img { transform:scale(1.1); }
+.card__img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(180,141,232,0);
+  transition: background 0.36s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.card:hover .card__img-wrap::after {
+  background: rgba(180,141,232,0.35);
+}
 .card__overlay{
   position:absolute;
   bottom:0; left:0; right:0;
@@ -276,6 +297,7 @@ a:hover{opacity:.75}
   transition:transform 0.36s cubic-bezier(0.25,0.46,0.45,0.94);
   color:#fff;
   text-align:left;
+  z-index: 2;
 }
 .card__overlay span {
   display:block;
@@ -657,11 +679,11 @@ a:hover{opacity:.75}
   margin-top: auto;
 }
 .about-bio-col .list .muted {
-  font-family: "Caveat", cursive;
-  font-size: 22px;
-  font-weight: 400;
+  font-family: "Raleway", sans-serif;
+  font-size: 13px;
+  font-weight: 300;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.18em;
   margin-right: 16px;
   color: #fff;
   opacity: 1;
@@ -673,12 +695,12 @@ a:hover{opacity:.75}
 
 .about-pullquote,
 .about-bio-col .about-pullquote {
-  font-family: "Caveat", cursive !important;
-  font-size: 42px !important;
-  font-weight: 400 !important;
-  line-height: 1.15 !important;
+  font-family: "Raleway", sans-serif !important;
+  font-size: clamp(22px, 2.4vw, 36px) !important;
+  font-weight: 300 !important;
+  line-height: 1.5 !important;
   letter-spacing: 0.01em;
-  text-transform: uppercase;
+  text-transform: none;
   color: #fff !important;
   margin: 0 0 28px;
 }
@@ -686,9 +708,9 @@ a:hover{opacity:.75}
 .about-bio-col p,
 .about-bio-col li,
 .about-bio-col .list {
-  font-family: "Poppins", sans-serif;
+  font-family: "Raleway", sans-serif;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.75;
   color: rgba(255,255,255,0.75);
 }
@@ -1599,11 +1621,11 @@ a:hover{opacity:.75}
   padding: 10px 18px;
   border-radius: 0;
   border: none;
-  font-size: 20px;
-  font-weight: 400;
-  font-family: "Caveat", cursive;
+  font-size: 11px;
+  font-weight: 300;
+  font-family: "Raleway", sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.22em;
   color: var(--text);
   background: #bcd8f0;
   transition: background .15s;
@@ -2074,10 +2096,13 @@ a:hover{opacity:.75}
 .contact-email-link {
   display: inline-block;
   margin-top: 12px;
-  font-size: 1rem;
-  color: var(--text);
+  font-family: "Raleway", sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: #b48de8;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 4px;
 }
 .contact-email-link:hover { opacity: 0.6; }
 

@@ -112,7 +112,15 @@ if (track) {
     var i = 0;
     function tick() {
       if (i < fullText.length) {
-        el.textContent += fullText[i];
+        var span = document.createElement('span');
+        span.textContent = fullText[i];
+        span.style.color = '#b48de8';
+        el.appendChild(span);
+        /* transition to white after char is painted */
+        setTimeout(function (s) {
+          s.style.transition = 'color 1.4s ease';
+          s.style.color = 'rgba(255,255,255,0.9)';
+        }, 50, span);
         i++;
         setTimeout(tick, 45 + Math.random() * 20);
       }
