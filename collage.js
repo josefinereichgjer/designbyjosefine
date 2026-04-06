@@ -262,8 +262,8 @@
     var ctaShort = document.querySelector('.landing__cta-label--short');
     var ctaFullText  = ctaFull  ? ctaFull.textContent  : '';
     var ctaShortText = ctaShort ? ctaShort.textContent : '';
-    splitCharReveal(ctaFull,  ctaFullText,  0.9, 0.05, 1.2);
-    splitCharReveal(ctaShort, ctaShortText, 0.9, 0.05, 1.2);
+    splitCharReveal(ctaFull,  ctaFullText,  0.9, 0.025, 0.7);
+    splitCharReveal(ctaShort, ctaShortText, 0.9, 0.025, 0.7);
 
     var ctaArrow = document.querySelector('.landing__cta-arrow-track');
     if (ctaArrow) {
