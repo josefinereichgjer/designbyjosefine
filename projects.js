@@ -81,7 +81,7 @@ window.PROJECTS = [
     subtitle: "Redaksjonell design",
     year: "2026",
     tags: ["Redaksjonell"],
-    cover: "./assets/blaa.png",
+    cover: "./assets/blaa.webp",
     coverVideo: "./assets/bokserie-film.mp4",
     coverFilter: "brightness(1.2)",
     noSlideshow: true,
@@ -100,7 +100,7 @@ window.PROJECTS = [
         { name: "Amtmandens Døtre",  hex: "#4ab3e1", color: "rgba(74, 179, 225, 0.25)",  description: "Opasitet 25%" }
       ]}
     ],
-    processImages: ["./assets/prosess1.png", "./assets/prosess2.png"]
+    processImages: ["./assets/prosess1.webp", "./assets/prosess2.webp"]
   },
   {
     id: "stoppestedet",
