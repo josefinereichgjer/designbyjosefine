@@ -29,7 +29,7 @@
 *{box-sizing:border-box}
 button{color:inherit; font-family:inherit; background:none; border:none; padding:0; cursor:pointer; border-radius:0; -webkit-appearance:none; appearance:none; -webkit-tap-highlight-color:transparent}
 html{scrollbar-gutter:stable; overflow-x:clip; overflow-y:scroll}
-body{min-height:100vh}
+body{min-height:100vh; overflow-x:hidden}
 body{
   margin:0;
   font-family:var(--font);
@@ -406,6 +406,7 @@ a:hover{opacity:.75}
 .ww-panel__intro {
   font-family: "Libre Baskerville", Georgia, serif;
 }
+.ww-panel__mobile-intro { display: none; }
 .ww-panel__intro h3 {
   font-size: clamp(12px, 1.2vw, 13px);
   font-weight: 700;
