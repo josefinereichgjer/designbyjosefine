@@ -295,6 +295,7 @@
     dialog { border: none; padding: 0; max-width: 480px; width: 90vw; background: #fff; box-shadow: 0 8px 48px rgba(0,0,0,.18); }
     #weSwotModal { max-width: 680px; }
     #weLogoutvModal { max-width: 760px; }
+    #weDoDontModal { max-width: 960px; }
     #weIntervjuModal { max-width: 740px; }
     #weMoodModal { max-width: 760px; }
     #weKravModal { max-width: 820px; }
@@ -815,42 +816,9 @@
           <p class="we-section__num">06</p>
           <h2 class="we-section__heading">Logo</h2>
 
-          <button class="we-logo-toggle" id="weLogoToggle" aria-label="Bytt bakgrunn">
-            <span class="we-logo-toggle__dot" id="weLogoToggleDot"></span><span id="weLogoToggleLabel">Lys bakgrunn</span>
-          </button>
-          <div class="we-logo-stage" id="weLogoStage">
-            <img src="./assets/prim.webp" alt="Primærlogo — Women Empowerment" loading="lazy" decoding="async">
-          </div>
-
-          <div class="we-logos">
-            <div class="we-logo-box">
-              <img src="./assets/wegrepurp.webp" alt="WE logo — grønn på lilla" width="601" height="198" loading="lazy" decoding="async">
-              <span class="we-logo-variant-label">Grønn på lilla</span>
-            </div>
-            <div class="we-logo-box">
-              <img src="./assets/wepurpur.webp" alt="WE logo — lilla på lilla" width="601" height="198" loading="lazy" decoding="async">
-              <span class="we-logo-variant-label">Lilla på lilla</span>
-            </div>
-            <div class="we-logo-box">
-              <img src="./assets/wepurgre.webp" alt="WE logo — lilla på grønn" width="601" height="198" loading="lazy" decoding="async">
-              <span class="we-logo-variant-label">Lilla på grønn</span>
-            </div>
-            <div class="we-logo-box">
-              <img src="./assets/wewhitepur.webp" alt="WE logo — hvit på lilla" width="601" height="198" loading="lazy" decoding="async">
-              <span class="we-logo-variant-label">Hvit på lilla</span>
-            </div>
-            <div class="we-logo-box">
-              <img src="./assets/wehreen.webp" alt="WE logo — monokrom grønn" width="601" height="198" loading="lazy" decoding="async">
-              <span class="we-logo-variant-label">Monokrom</span>
-            </div>
-            <div class="we-logo-box">
-              <img src="./assets/wewhite.webp" alt="WE logo — hvit på grønn" width="602" height="199" loading="lazy" decoding="async">
-              <span class="we-logo-variant-label">Hvit på grønn</span>
-            </div>
-          </div>
-
-          <div style="margin-top:28px;">
-            <button class="we-posmap-trigger" onclick="document.getElementById('weKravModal').showModal()">↗&#xFE0E; Krav til friluft og minimumsstørrelse</button>
+          <div style="display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;">
+            <img src="./assets/main-logo4x.png" alt="Women Empowerment primærlogo" style="width:100%;max-width:380px;height:auto;display:block;" loading="lazy" decoding="async">
+            <button class="we-posmap-trigger" onclick="document.getElementById('weDoDontModal').showModal()">↗&#xFE0E; Do's and dont's</button>
           </div>
         </section>
 
@@ -1056,6 +1024,13 @@
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weMoodModal').close()" aria-label="Lukk">✕</button>
       <img src="./assets/moodboard.webp" alt="Moodboard — Stiftelsen WE" style="width:100%;height:auto;display:block;" loading="lazy" decoding="async">
+    </div>
+  </dialog>
+
+  <dialog id="weDoDontModal">
+    <div class="we-posmap-modal__inner">
+      <button class="we-posmap-modal__close" onclick="document.getElementById('weDoDontModal').close()" aria-label="Lukk">✕</button>
+      <img src="./assets/do-dont-logo4x.png" alt="Logo — do's and dont's" style="width:100%;height:auto;display:block;" loading="lazy" decoding="async">
     </div>
   </dialog>
 
