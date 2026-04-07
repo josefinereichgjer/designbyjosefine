@@ -315,7 +315,7 @@
     .we-swot-cell li { font-size: 13px; line-height: 1.4; padding-left: 14px; position: relative; color: #333; }
     .we-swot-cell li::before { content: '·'; position: absolute; left: 0; color: #111; }
 
-    /* Nøkkelpunkter button + accordion modal */
+    /* Nøkkelpunkter button + accordion modal (MINDRE OG TETTERE NÅ) */
     .we-nokkel-btn {
       display: inline-flex; align-items: center; gap: 14px;
       background: #111; color: #fff;
@@ -324,8 +324,10 @@
       cursor: pointer; transition: background .15s;
     }
     .we-nokkel-btn:hover { background: #2a2a2a; }
-    .we-nokkel-btn--lg { font-size: 20px; padding: 22px 40px; }
-    .we-pr-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    /* Gjort knappene mindre */
+    .we-nokkel-btn--lg { font-size: 16px; padding: 14px 28px; }
+    /* Tettere avstand mellom knappene */
+    .we-pr-btns { display: flex; gap: 8px; flex-wrap: wrap; }
     .we-nokkel-btn__plus { font-size: 20px; font-weight: 300; line-height: 1; }
     
     .we-reflection--modal { background: #fff; padding: 0; margin-top: 0; gap: 0 48px; }
@@ -372,11 +374,34 @@
       .we-design-showcase__stories { margin-right: -40px; }
       .we-stories-dots { margin-right: -40px; }
       
-      /* Laptopen blir Slide 1 */
-      .we-design-showcase__left { padding-left: calc(40px + clamp(20px, 3vw, 34px)); flex: 0 0 100%; scroll-snap-align: start; box-sizing: border-box; position: relative; display:flex; flex-direction:column; justify-content:center;}
+      /* Laptopen er Slide 1 (Lagt til padding-left for å pushe den til venstre) */
+      .we-design-showcase__left { 
+          padding-left: 20px; 
+          flex: 0 0 100%; 
+          scroll-snap-align: start; 
+          box-sizing: border-box; 
+          position: relative; 
+          display:flex; 
+          flex-direction:column; 
+          justify-content:center;
+      }
       
-      /* Den rullbare boksen blir Slide 2 (ved siden av laptopen) */
-      .we-site-scroll { padding-left: calc(40px + clamp(20px, 3vw, 34px)); padding-right: 40px; flex: 0 0 100%; scroll-snap-align: start; overflow-y: auto; overflow-x: hidden; position: relative; box-sizing: border-box; -webkit-overflow-scrolling: touch; cursor: default; scrollbar-width: thin; scrollbar-color: rgba(34,73,66,.5) transparent; background: #fafafa;}
+      /* Den rullbare boksen ligger ved siden av (Slide 2). IKKE absolute. */
+      .we-site-scroll { 
+          padding-left: 20px; 
+          padding-right: 20px; 
+          flex: 0 0 100%; 
+          scroll-snap-align: start; 
+          overflow-y: auto; 
+          overflow-x: hidden; 
+          position: relative; 
+          box-sizing: border-box; 
+          -webkit-overflow-scrolling: touch; 
+          cursor: default; 
+          scrollbar-width: thin; 
+          scrollbar-color: rgba(34,73,66,.5) transparent; 
+          background: #fafafa;
+      }
     }
     
     .we-hscroll-dots { display: flex; gap: 8px; justify-content: center; }
@@ -402,7 +427,6 @@
     .we-print-row::-webkit-scrollbar { display: none; }
     .we-print-row:active { cursor: grabbing; }
     
-    /* Bildene tar nå nesten hele bredden per scroll ("samme størrelse som laptop") */
     .we-print-row img { flex: 0 0 100%; max-width: 900px; height: auto; object-fit: contain; scroll-snap-align: start; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
     .we-print-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; margin-bottom: 64px; }
     .we-print-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
@@ -413,7 +437,7 @@
     .we-site-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 4px; }
     .we-site-scroll::-webkit-scrollbar-thumb { background: rgba(34,73,66,.5); border-radius: 4px; }
 
-    /* ── The bouncing Scroll Cue (Original Størrelse) ── */
+    /* ── The bouncing Scroll Cue ── */
     .we-scroll-cue-container {
       position: sticky; top: 85%; height: 0; display: flex; justify-content: center; z-index: 10; overflow: visible;
     }
@@ -428,9 +452,9 @@
     @keyframes weBounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
     .we-site-scroll.is-scrolled .we-scroll-cue { opacity: 0; }
 
-    /* Bildene inni scroll-boksen er gjort mindre (80%) og sentrert, med god plass rundt */
-    .we-site-track { display: flex; flex-direction: column; gap: 40px; align-items: center; max-width: 800px; margin: 0 auto; padding-top: 40px;}
-    .we-site-track img { width: 80%; display: block; user-select: none; -webkit-user-drag: none; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); margin-bottom: 40px; }
+    /* Bildene inni scroll-boksen er gjort litt mindre og sentrert for ikke å kuttes på desktop */
+    .we-site-track { display: flex; flex-direction: column; gap: 40px; align-items: center; max-width: 800px; margin: 0 auto; padding: 40px 20px;}
+    .we-site-track img { width: 90%; max-width: 700px; display: block; user-select: none; -webkit-user-drag: none; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .we-site-dots { display: none; }
 
     /* Knapp som KUN vises på mobil */
@@ -443,7 +467,6 @@
       .we-hero { padding: 44px 20px 36px; }
       .we-body { padding: 0 20px 60px; }
       
-      /* Fiks for squished kolonner på Konsept */
       .we-client-v2 { grid-template-columns: 1fr; gap: 40px; }
       .we-steps { grid-template-columns: 1fr 1fr; }
       .we-logos { grid-template-columns: repeat(2, 1fr); }
@@ -463,9 +486,12 @@
       .we-hscroll-dots { display: none !important; }
       .we-design-showcase__stories img { height: 220px; }
       
-      /* Mobile Laptop Logic (Skjuler scroll innvendig, viser knapp under laptopen) */
+      /* Mobile Laptop Logic - Laptopen gjøres større og fullbredde */
+      .we-design-showcase__laptop { margin: 0 -20px; width: calc(100% + 40px); }
+      .we-design-showcase__laptop img { width: 100%; display: block; }
+      
       .we-site-scroll { display: none !important; } 
-      .we-design-showcase__left { margin-bottom: 0px; display: flex; flex-direction: column; align-items: center;} 
+      .we-design-showcase__left { margin-bottom: 0px; display: flex; flex-direction: column; align-items: center; padding: 0; } 
       .we-mobile-nettside-btn {
           display: inline-flex; align-items: center; justify-content: center;
           margin: 16px auto 32px; background: var(--we-amethyst); color: var(--we-snow);
@@ -475,8 +501,8 @@
       }
       .we-mobile-nettside-btn:active { background: #224942; }
 
-      /* Mindre bilder på Print-seksjonen på mobil (med litt padding på siden) */
-      .we-print-row img { flex: 0 0 75%; max-width: 300px; margin: 0 auto; }
+      /* Mindre bilder på Print-seksjonen på mobil (ca 85% bredde slik at den titter fram litt på siden) */
+      .we-print-row img { flex: 0 0 85%; max-width: 400px; margin: 0 auto; }
       
       .we-mg-blocks { grid-template-columns: 1fr; }
       .we-mg-blocks .we-client-block:nth-child(n+4) { grid-column: 1; }
@@ -491,7 +517,7 @@
         --type-body-lg: 15px;
       }
       
-      /* Spesifikk tekst-fiks på mobil for renere lesbarhet (fjerner også column-count) */
+      /* Spesifikk tekst-fiks på mobil for renere lesbarhet (fjerner column-count så det ikke blir "squished") */
       .we-monster-text, .we-client-block__text, .we-section__intro, .we-audience-cell__body {
         font-size: 14px !important;
         line-height: 1.65 !important;
