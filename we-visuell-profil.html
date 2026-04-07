@@ -214,14 +214,44 @@
     .we-section.we-fade.is-visible { opacity: 1; transform: none; }
     .we-logo-stage img { width: min(560px, 82%); height: auto; display: block; }
 
-    /* Logo */
-    .we-logos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; align-items: start; }
-    .we-logo-box { overflow: hidden; position: relative; }
-    .we-logo-box img { width: 100%; height: auto; display: block; transition: transform .3s ease; }
-    .we-logo-box:hover img { transform: scale(1.04); }
-    .we-logo-variant-label { font-size: 11px; color: #767676; text-transform: uppercase; letter-spacing: .07em; margin-top: 6px; display: block; }
-    .we-logo-badge { position: absolute; top: 10px; left: 10px; width: 28px; height: 28px; }
-    .we-logo-badge img { width: 100%; height: 100%; }
+    /* Logo Grid */
+    .we-logo-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 40px; 
+      align-items: center; 
+      margin-top: 32px; 
+    }
+    .we-logo-item { 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center; 
+    }
+    .we-logo-item img { 
+      width: 100%; 
+      max-width: 340px; 
+      height: auto; 
+      display: block; 
+      margin-bottom: 20px; 
+      object-fit: contain; 
+    }
+    .we-logo-item:last-child img {
+      max-width: 170px; /* Ikonlogoen er 50% mindre */
+    }
+    .we-logo-caption { 
+      font-family: 'Poppins', sans-serif; 
+      font-size: 13px; 
+      color: #555; 
+      line-height: 1.6; 
+      margin: 0; 
+      max-width: 300px; 
+    }
+    .we-logo-actions { 
+      margin-top: 48px; 
+      display: flex; 
+      justify-content: center; 
+    }
 
     /* Logo specs */
     .we-logo-specs { margin-top: 32px; display: flex; flex-direction: column; gap: 32px; }
@@ -236,11 +266,42 @@
     .we-logo-specs__block p { font-size: 12px; line-height: 1.75; color: #555; margin: 0; }
     .we-logo-specs__block strong { font-size: 12px; font-weight: 600; color: #111; display: inline; }
 
-    /* Palette */
-    .we-palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0; }
-    .we-swatch { transition: transform .2s ease; cursor: pointer; }
-    .we-swatch:hover { transform: translateY(-5px); }
+    /* NY Palett CSS */
+    .we-palette-row { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 56px; 
+      margin-bottom: 32px; 
+      align-items: start; 
+    }
+    .we-palette-group-title { 
+      font-family: var(--we-font); 
+      font-size: 15px; 
+      font-weight: 600; 
+      margin: 0 0 16px; 
+      color: #111; 
+      text-transform: uppercase; 
+      letter-spacing: 0.05em; 
+    }
+    .we-palette { 
+      display: grid; 
+      gap: 16px; 
+    }
+    .we-swatch { 
+      transition: transform .2s ease; 
+      cursor: pointer; 
+    }
+    .we-swatch:hover { 
+      transform: translateY(-5px); 
+    }
     .we-swatch__copied { font-size: 10px; color: #35685e; font-weight: 600; display: block; margin-top: 3px; min-height: 14px; letter-spacing: .04em; }
+
+    /* Mindre høyde for strammere utseende */
+    .we-swatch__color { height: 80px; border-radius: 4px; }
+    .we-swatch__info { padding: 12px 0 0; }
+    .we-swatch__hex { font-size: 13px; font-weight: 600; display: block; }
+    .we-swatch__name { font-size: 11px; color: #767676; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; display: block; }
+    .we-swatch__use { font-size: 12px; color: #555; display: block; margin-top: 6px; line-height: 1.45; }
 
     /* Stagger entrance */
     @keyframes we-stagger-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
@@ -255,31 +316,38 @@
       opacity: 0; transition: opacity .2s ease, transform .2s ease;
     }
     .we-toast.is-show { opacity: 1; transform: translateX(-50%) translateY(0); }
-    .we-swatch__color { height: 256px; }
-    .we-swatch__info { padding: 10px 0 0; }
-    .we-swatch__hex { font-size: 14px; font-weight: 500; display: block; }
-    .we-swatch__rgb { font-size: 12px; color: #767676; display: block; margin-top: 2px; }
-    .we-swatch__name { font-size: 12px; color: #767676; text-transform: uppercase; letter-spacing: .07em; margin-top: 4px; display: block; }
-    .we-swatch__use { font-size: 12px; color: #888; display: block; margin-top: 3px; font-style: italic; }
 
-    /* Typography */
+    /* NY Typografi CSS */
     .we-section__top { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; margin-bottom: 32px; }
     .we-section__top .we-section__heading { margin-bottom: 0; }
     .we-section__top-meta { padding-top: 8px; }
     .we-section__top-desc { font-size: var(--type-body); line-height: var(--lh-body); color: #555; margin: 0; }
-    .we-typo { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-    .we-typo__aa { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: clamp(100px, 16vw, 200px); line-height: .88; color: #111; margin-bottom: 28px; }
-    .we-typo__alpha { font-family: 'neuzeit-grotesk', sans-serif; font-size: 15px; line-height: 1.6; color: #111; margin-bottom: 8px; }
-    .we-typo__alpha--bold { font-weight: 700; }
-    .we-typo__alpha--regular { font-weight: 400; color: #444; }
-    .we-typo__scale { display: flex; flex-direction: column; gap: 28px; padding-top: 8px; }
-    .we-typo__row-label { font-size: 11px; color: #aaa; text-transform: uppercase; letter-spacing: .09em; margin-bottom: 4px; }
-    .we-typo__sample-h1 { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: clamp(32px, 5vw, 60px); line-height: 1; color: #111; margin: 0; }
-    .we-typo__sample-h2 { font-family: 'neuzeit-grotesk', sans-serif; font-size: clamp(20px, 3vw, 32px); line-height: 1.15; color: #111; margin: 0; }
-    .we-typo__sample-h2 strong { font-weight: 700; display: block; }
-    .we-typo__sample-h2 span { font-weight: 400; display: block; color: #555; }
-    .we-typo__sample-body { font-family: 'neuzeit-grotesk', sans-serif; font-size: 16px; line-height: 1.5; color: #111; margin: 0; }
-    .we-typo__sample-body span { display: block; color: #777; font-style: italic; }
+    
+    .we-typo-list { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 48px; 
+      max-width: 680px; 
+      padding-top: 8px; 
+    }
+    .we-typo-item { }
+    .we-typo__name { 
+      font-family: 'neuzeit-grotesk', sans-serif; 
+      font-size: clamp(24px, 4vw, 32px); 
+      font-weight: 400; 
+      color: #111; 
+      margin: 0 0 12px; 
+      line-height: 1.1; 
+    }
+    .we-typo__use { 
+      font-size: 15px; 
+      line-height: 1.65; 
+      color: #444; 
+      margin: 0; 
+      padding-left: 16px; 
+      border-left: 2px solid #D2E1DF; 
+    }
+
     .we-typo-specimen {
       margin-top: 40px; padding: 40px;
       background: var(--we-amethyst); color: var(--we-snow);
@@ -464,20 +532,27 @@
     /* ========================================================================= */
     /* ========================== MOBILE OVERRIDES ============================= */
     /* ========================================================================= */
+    
+    /* Tablet/Medium Breakpoints */
     @media (max-width: 900px) {
       .we-hero { padding: 44px 20px 36px; }
       .we-body { padding: 0 20px 60px; }
       
       .we-client-v2 { grid-template-columns: 1fr; gap: 40px; }
       .we-steps { grid-template-columns: 1fr 1fr; }
-      .we-logos { grid-template-columns: repeat(2, 1fr); }
-      .we-swatch__color { height: 140px; }
       .we-logo-spec-row { flex-direction: column; align-items: flex-start; }
       .we-logo-spec-row--friluft { flex-direction: row; flex-wrap: wrap; align-items: flex-start; gap: 12px; }
       .we-logo-spec-row--friluft .we-spec-img-large { height: 100px; width: auto; }
       .we-logo-spec-row--friluft .we-spec-img-small { height: 100px; width: auto; }
       .we-logo-spec-row--friluft .we-logo-specs__block { width: 100%; }
       .we-logo-spec-row--minsize .we-spec-img-min { width: 260px; }
+      
+      /* Logo Grid Tablet */
+      .we-logo-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+      .we-logo-item:nth-child(3) { grid-column: 1 / -1; } 
+
+      /* Palette Tablet */
+      .we-palette-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
     }
 
     @media (max-width: 700px) {
@@ -487,7 +562,7 @@
       .we-hscroll-dots { display: none !important; }
       .we-design-showcase__stories img { height: 220px; }
       
-      /* Mobile Laptop Logic - Laptopen gjøres større og fullbredde */
+      /* Mobile Laptop Logic */
       .we-design-showcase__laptop { margin: 0 -20px; width: calc(100% + 40px); }
       .we-design-showcase__laptop img { width: 100%; display: block; }
       
@@ -502,7 +577,6 @@
       }
       .we-mobile-nettside-btn:active { background: #224942; }
 
-      /* Mindre bilder på Print-seksjonen på mobil (ca 85% bredde slik at den titter fram litt på siden) */
       .we-print-row img { flex: 0 0 85%; max-width: 400px; margin: 0 auto; }
       
       .we-mg-blocks { grid-template-columns: 1fr; }
@@ -518,7 +592,6 @@
         --type-body-lg: 15px;
       }
       
-      /* Spesifikk tekst-fiks på mobil for renere lesbarhet (fjerner column-count så det ikke blir "squished") */
       .we-monster-text, .we-client-block__text, .we-section__intro, .we-audience-cell__body {
         font-size: 14px !important;
         line-height: 1.65 !important;
@@ -526,9 +599,6 @@
       }
 
       .we-steps { grid-template-columns: 1fr 1fr; }
-      .we-typo { grid-template-columns: 1fr; }
-      .we-typo > div:first-child { display: none; }
-      .we-logo-variant-label { display: none; }
       .we-section__top { grid-template-columns: 1fr; }
       .we-swot { grid-template-columns: 1fr; }
       .we-hero__meta { gap: 20px; }
@@ -539,15 +609,15 @@
       .we-monster-layout { flex-direction: column; gap: 24px; align-items: flex-start; text-align: left;}
       .we-monster-imgs { justify-content: flex-start; width: 100%; }
 
-      /* Palett i 3 kolonner på mobil */
-      .we-palette { grid-template-columns: repeat(3, 1fr); }
+      /* Logo Grid Mobile */
+      .we-logo-grid { grid-template-columns: 1fr; gap: 48px; }
+      .we-logo-item:nth-child(3) { grid-column: auto; }
     }
 
     @media (max-width: 480px) {
       .we-hero { padding: 32px 16px 28px; }
       .we-body { padding: 0 16px 48px; }
       .we-section { padding: 36px 0; }
-      .we-logos { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       
       .we-logo-spec-row--minsize .we-spec-img-min { width: 100%; max-width: 260px; }
       .we-posmap-modal__inner { padding: 20px 16px; }
@@ -725,59 +795,95 @@
           <p class="we-section__num">04</p>
           <h2 class="we-section__heading">Fargesystem</h2>
           <p class="we-section__intro">Paletten balanserer forankring og energi. Dype grønntoner skaper en identitet knyttet til natur, tillit og bærekraft, og skiller WE fra konkurrentenes blådominerte uttrykk. Violett fungerer som en kontrasterende aksentfarge som tilfører energi og understreker det innovative ved arbeidet.</p>
-          <div class="we-palette">
-            <div class="we-swatch we-stagger">
-              <div class="we-swatch__color" style="background:#000000"></div>
-              <div class="we-swatch__info">
-                <span class="we-swatch__hex">#000000</span>
-                <span class="we-swatch__rgb">rgb(0, 0, 0)</span>
-                <span class="we-swatch__name">Sort</span>
-                <span class="we-swatch__use">Overskrifter</span>
+          
+          <div class="we-palette-row">
+            <div>
+              <h3 class="we-palette-group-title">Primærfarger</h3>
+              <div class="we-palette" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="we-swatch we-stagger">
+                  <div class="we-swatch__color" style="background:#071F1B"></div>
+                  <div class="we-swatch__info">
+                    <span class="we-swatch__hex">#071F1B</span>
+                    <span class="we-swatch__name">Hovedbakgrunn</span>
+                    <span class="we-swatch__use">Brukes som hovedbakgrunn i designet (hero, rollups, sosiale medier).</span>
+                  </div>
+                </div>
+                <div class="we-swatch we-stagger">
+                  <div class="we-swatch__color" style="background:#0F4A42"></div>
+                  <div class="we-swatch__info">
+                    <span class="we-swatch__hex">#0F4A42</span>
+                    <span class="we-swatch__name">Sekundær bakgrunn</span>
+                    <span class="we-swatch__use">Brukes i seksjoner for å skape dybde og visuell balanse.</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="we-swatch we-stagger">
-              <div class="we-swatch__color" style="background:#0d1e1b"></div>
-              <div class="we-swatch__info">
-                <span class="we-swatch__hex">#0D1E1B</span>
-                <span class="we-swatch__rgb">rgb(13, 30, 27)</span>
-                <span class="we-swatch__name">Natt</span>
-                <span class="we-swatch__use">Primær bakgrunn</span>
+
+            <div>
+              <h3 class="we-palette-group-title">Støttefarger</h3>
+              <div class="we-palette" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="we-swatch we-stagger">
+                  <div class="we-swatch__color" style="background:#F2F9F8; border: 1px solid #e0ecea;"></div>
+                  <div class="we-swatch__info">
+                    <span class="we-swatch__hex">#F2F9F8</span>
+                    <span class="we-swatch__name">Lys bakgrunn</span>
+                    <span class="we-swatch__use">Brukes på lyse flater som flyers, kort og nettsider.</span>
+                  </div>
+                </div>
+                <div class="we-swatch we-stagger">
+                  <div class="we-swatch__color" style="background:#D2E1DF"></div>
+                  <div class="we-swatch__info">
+                    <span class="we-swatch__hex">#D2E1DF</span>
+                    <span class="we-swatch__name">Flater / bokser</span>
+                    <span class="we-swatch__use">Brukes til kort, informasjonsbokser og innholdsområder.</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="we-swatch we-stagger">
-              <div class="we-swatch__color" style="background:#224942"></div>
-              <div class="we-swatch__info">
-                <span class="we-swatch__hex">#224942</span>
-                <span class="we-swatch__rgb">rgb(34, 73, 66)</span>
-                <span class="we-swatch__name">Skog</span>
-                <span class="we-swatch__use">Sekundær bakgrunn</span>
+          </div>
+
+          <div class="we-palette-row">
+            <div>
+              <h3 class="we-palette-group-title">Aksentfarger</h3>
+              <div class="we-palette" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="we-swatch we-stagger">
+                  <div class="we-swatch__color" style="background:#6EB6A9"></div>
+                  <div class="we-swatch__info">
+                    <span class="we-swatch__hex">#6EB6A9</span>
+                    <span class="we-swatch__name">Utheving</span>
+                    <span class="we-swatch__use">Brukes til å fremheve viktige ord og elementer (f.eks. “impact”, “innovation”). Skaper kontrast mot mørk bakgrunn.</span>
+                  </div>
+                </div>
+                <div class="we-swatch we-stagger">
+                  <div class="we-swatch__color" style="background:#8E7FFF"></div>
+                  <div class="we-swatch__info">
+                    <span class="we-swatch__hex">#8E7FFF</span>
+                    <span class="we-swatch__name">Aksent</span>
+                    <span class="we-swatch__use">Mørkere lilla som brukes kun på sirkelen i det grafiske elementet.</span>
+                  </div>
+                </div>
+                <div class="we-swatch we-stagger">
+                  <div class="we-swatch__color" style="background:#AFA4FF"></div>
+                  <div class="we-swatch__info">
+                    <span class="we-swatch__hex">#AFA4FF</span>
+                    <span class="we-swatch__name">Logofarge</span>
+                    <span class="we-swatch__use">Lysere lilla som til logo for god kontrast på mørk bakgrunn.</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="we-swatch we-stagger">
-              <div class="we-swatch__color" style="background:#7fb5aa"></div>
-              <div class="we-swatch__info">
-                <span class="we-swatch__hex">#7FB5AA</span>
-                <span class="we-swatch__rgb">rgb(127, 181, 170)</span>
-                <span class="we-swatch__name">Salvie</span>
-                <span class="we-swatch__use">Grafikk, aksenter</span>
-              </div>
-            </div>
-            <div class="we-swatch we-stagger">
-              <div class="we-swatch__color" style="background:#8c80ff"></div>
-              <div class="we-swatch__info">
-                <span class="we-swatch__hex">#8C80FF</span>
-                <span class="we-swatch__rgb">rgb(140, 128, 255)</span>
-                <span class="we-swatch__name">Violet</span>
-                <span class="we-swatch__use">Energifarge, lenker</span>
-              </div>
-            </div>
-            <div class="we-swatch we-stagger">
-              <div class="we-swatch__color" style="background:#f4faf9; border: 1px solid #e0ecea"></div>
-              <div class="we-swatch__info">
-                <span class="we-swatch__hex">#F4FAF9</span>
-                <span class="we-swatch__rgb">rgb(244, 250, 249)</span>
-                <span class="we-swatch__name">Is</span>
-                <span class="we-swatch__use">Bakgrunn, pusterom</span>
+
+            <div>
+              <h3 class="we-palette-group-title">Tekstfarge</h3>
+              <div class="we-palette" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="we-swatch we-stagger">
+                  <div class="we-swatch__color" style="background:#000000; border: 1px solid #e0ecea;"></div>
+                  <div class="we-swatch__info">
+                    <span class="we-swatch__hex">#000000</span>
+                    <span class="we-swatch__name">Primær tekst</span>
+                    <span class="we-swatch__use">Brukes på lyse bakgrunner for maksimal lesbarhet.</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -786,28 +892,36 @@
         <section class="we-section" id="sec-typografi">
           <p class="we-section__num">05</p>
           <h2 class="we-section__heading">Typografi</h2>
-          <div class="we-typo">
-            <div>
-              <div class="we-typo__aa">Aa</div>
-              <p class="we-typo__alpha we-typo__alpha--bold">ABCDEFGHIJKLMN<br>OPQRSTUVWXYZÆØÅ</p>
-              <p class="we-typo__alpha we-typo__alpha--regular">abcdefghijklmnop<br>qrstuvwxyzæøå</p>
+          
+          <div class="we-typo-list">
+            <div class="we-typo-item we-stagger">
+              <h3 class="we-typo__name" style="font-weight: 400;">Forma DJR Micro Regular</h3>
+              <p class="we-typo__use">
+                <strong>Brukes til:</strong><br>
+                - Logo og merkevaretekst (“Foundation Women Empowerment”)<br>
+                - Informasjonsbokser og kortere tekster<br>
+                - Små tekststørrelser og UI-elementer
+              </p>
             </div>
-            <div class="we-typo__scale">
-              <div>
-                <p class="we-typo__row-label">Tittel</p>
-                <p class="we-typo__sample-h1">Trade Gothic Bold</p>
-              </div>
-              <div>
-                <p class="we-typo__row-label">Tittel</p>
-                <p class="we-typo__sample-h2">
-                  <strong>Trade Gothic Bold</strong>
-                  <span>Trade Gothic Regular</span>
-                </p>
-              </div>
-              <div>
-                <p class="we-typo__row-label">Brødtekst</p>
-                <p class="we-typo__sample-body">Helvetica Regular<span>Helvetica Oblique</span></p>
-              </div>
+            
+            <div class="we-typo-item we-stagger">
+              <h3 class="we-typo__name" style="font-weight: 700;">Trade Gothic Next LT Pro Bold</h3>
+              <p class="we-typo__use">
+                <strong>Brukes til:</strong><br>
+                - Brødtekst og hovedinnhold<br>
+                - Sitater (quotes)<br>
+                - Generell løpende tekst i designet
+              </p>
+            </div>
+            
+            <div class="we-typo-item we-stagger">
+              <h3 class="we-typo__name" style="font-weight: 900;">Trade Gothic Next LT Pro Heavy</h3>
+              <p class="we-typo__use">
+                <strong>Brukes til:</strong><br>
+                - Utheving av nøkkelord og viktige budskap<br>
+                - Ord som skal skille seg ut visuelt, spesielt i overskrifter<br>
+                - Brukes ofte i fargen <span style="color:#6EB6A9; font-weight:600;">#6EB6A9</span> for ekstra fokus
+              </p>
             </div>
           </div>
         </section>
@@ -816,8 +930,22 @@
           <p class="we-section__num">06</p>
           <h2 class="we-section__heading">Logo</h2>
 
-          <div style="display:flex;align-items:flex-end;gap:20px;flex-wrap:wrap;">
-            <img src="./assets/main-logo4x.png" alt="Women Empowerment primærlogo" style="width:100%;max-width:380px;height:auto;display:block;" loading="lazy" decoding="async">
+          <div class="we-logo-grid">
+            <div class="we-logo-item">
+              <img src="./assets/main-logo4x.png" alt="Monokrom logo" loading="lazy" decoding="async">
+              <p class="we-logo-caption">Monokrom logo – brukt på print som brosjyre</p>
+            </div>
+            <div class="we-logo-item">
+              <img src="./assets/main-logo-purple4x.png" alt="Hovedlogo med farger" loading="lazy" decoding="async">
+              <p class="we-logo-caption">Hovedlogo med farger: #071f1b og #afa4ff (WCAG-kontrast: 7.84:1)</p>
+            </div>
+            <div class="we-logo-item">
+              <img src="./assets/logo-icon4x.png" alt="Ikonlogo" loading="lazy" decoding="async">
+              <p class="we-logo-caption">Ikonlogo brukt for Instagram, Facebook og andre sosiale medier</p>
+            </div>
+          </div>
+          
+          <div class="we-logo-actions">
             <button class="we-posmap-trigger" onclick="document.getElementById('weDoDontModal').showModal()">↗&#xFE0E; Do's and dont's</button>
           </div>
         </section>
