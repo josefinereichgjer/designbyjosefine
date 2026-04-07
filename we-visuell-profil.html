@@ -87,19 +87,19 @@
     }
     .we-hero__logo-bg {
       position: absolute;
-      top: -8%;
+      top: -10%;
       right: -3%;
-      height: 118%;
+      height: 125%;
       width: auto;
       opacity: 0.28;
       pointer-events: none;
       user-select: none;
     }
-    @media (max-width: 767px) { .we-hero__logo-bg { opacity: 0.10; right: -25%; } }
+    @media (max-width: 767px) { .we-hero__logo-bg { opacity: 0.10; right: -25%; height: 118%; top: -8%; } }
     .we-hero {
       background: var(--we-amethyst);
       color: var(--we-snow);
-      padding: 64px 40px 52px;
+      padding: 96px 40px 80px;
     }
     .we-hero__pill {
       display: inline-flex; align-items: center; gap: 8px;
@@ -108,7 +108,7 @@
       padding: 5px 14px; margin-bottom: 28px; color: rgba(255,255,255,.7);
     }
     .we-hero__pill::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--we-lime); flex-shrink: 0; }
-    .we-hero__title { font-family: var(--we-font); font-weight: 700; font-size: var(--type-display); line-height: .91; margin: 0 0 28px; }
+    .we-hero__title { font-family: 'forma-djr-micro', var(--we-font); font-weight: 400; font-size: var(--type-display); line-height: 1.0; margin: 0 0 28px; }
     .we-hero__intro { font-size: var(--type-body-lg); line-height: var(--lh-body); max-width: 540px; color: rgba(255,255,255,.8); margin-bottom: 40px; }
 
     /* Hero visual */
@@ -278,6 +278,12 @@
     .we-toc__link { font-size: 11px; text-transform: uppercase; letter-spacing: .09em; color: #ffffff; text-decoration: none; padding: 14px 18px 12px; white-space: nowrap; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
     .we-toc__link:hover { color: #ffffff; border-bottom-color: var(--we-periwinkle); }
     .we-toc__link.is-active { color: #ffffff; border-bottom-color: var(--we-periwinkle); }
+    .we-toc__break { display: none; }
+    @media (max-width: 700px) {
+      .we-toc__inner { flex-wrap: wrap; justify-content: center; }
+      .we-toc__break { display: block; flex-basis: 100%; height: 0; }
+      .we-toc__link { padding: 11px 14px 9px; }
+    }
 
     /* Credits */
     .we-credits { padding: 48px 0 0; margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 56px; }
@@ -549,7 +555,7 @@
     /* ========================================================================= */
     
     @media (max-width: 900px) {
-      .we-hero { padding: 44px 20px 36px; }
+      .we-hero { padding: 64px 20px 52px; }
       .we-body { padding: 0 20px 60px; }
       
       .we-client-v2 { grid-template-columns: 1fr; gap: 40px; }
@@ -575,11 +581,11 @@
       .we-site-scroll { display: none !important; } 
       .we-design-showcase__left { margin-bottom: 0px; display: flex; flex-direction: column; align-items: center; padding: 0; } 
       .we-mobile-nettside-btn {
-          display: inline-flex; align-items: center; justify-content: center;
-          margin: 16px auto 32px; background: var(--we-amethyst); color: var(--we-snow);
-          border: none; padding: 14px 28px; border-radius: 99px;
+          display: flex; align-items: center; justify-content: center;
+          margin: 0 -20px 32px; background: var(--we-amethyst); color: var(--we-snow);
+          border: none; padding: 16px 28px; border-radius: 0;
           font-family: var(--we-font); font-size: 15px; font-weight: 500;
-          cursor: pointer; transition: background .15s; width: max-content;
+          cursor: pointer; transition: background .15s; width: calc(100% + 40px);
       }
       .we-mobile-nettside-btn:active { background: #224942; }
 
@@ -623,12 +629,27 @@
     }
 
     @media (max-width: 480px) {
-      .we-hero { padding: 32px 16px 28px; }
+      .we-hero { padding: 48px 16px 44px; }
       .we-body { padding: 0 16px 48px; }
       .we-section { padding: 36px 0; }
-      
+
       .we-posmap-modal__inner { padding: 20px 16px; }
       .we-reflection { padding: 24px 16px; }
+    }
+
+    /* Nav: two rows on mid-mobile (641–820px) */
+    @media (min-width: 641px) and (max-width: 820px) {
+      .sidebar__inner { flex-wrap: wrap; row-gap: 0; padding-bottom: 6px; }
+      .back-btn { order: 1; }
+      .brand { order: 2; }
+      .meta { display: none; }
+      .nav { order: 3; flex: 0 0 100%; justify-content: flex-start; margin-top: 4px; gap: 4px; }
+      .content { padding-top: 130px; }
+    }
+
+    /* No emoji before "Se utdrag fra prosessen" on mobile */
+    @media (max-width: 820px) {
+      .we-prosess-arrow { display: none; }
     }
   </style>
 </head>
@@ -674,6 +695,7 @@
           <a class="we-toc__link" href="#sec-innsikt">Innsikt</a>
           <a class="we-toc__link" href="#sec-retning">Retning</a>
           <a class="we-toc__link" href="#sec-identitet">Identitet</a>
+          <span class="we-toc__break"></span>
           <a class="we-toc__link" href="#sec-prosess">Prosess</a>
           <a class="we-toc__link" href="#sec-refleksjon">Refleksjon</a>
         </div>
@@ -1038,7 +1060,7 @@
           </div>
           
           <div style="margin-top: 32px;">
-            <button class="we-posmap-trigger" onclick="document.getElementById('weProsessModal').showModal()">↗ Se utdrag fra prosessen</button>
+            <button class="we-posmap-trigger" onclick="document.getElementById('weProsessModal').showModal()"><span class="we-prosess-arrow">↗ </span>Se utdrag fra prosessen</button>
           </div>
         </section>
 
