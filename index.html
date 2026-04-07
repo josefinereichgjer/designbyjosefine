@@ -202,6 +202,8 @@
 
     @media (max-width: 600px) {
       .landing__cta-arrow path { filter: none; }
+      /* Disable heavy SVG filter on mobile for butter-smooth performance */
+      .scribble-path { filter: none; } 
     }
 
     /* ── Tablet (768px+) ── */
@@ -294,7 +296,6 @@
 <body>
   <main class="landing">
 
-    <!-- Decorative scribble (must be before collage-scene so it paints behind) -->
     <div class="scribble-deco" aria-hidden="true">
       <svg viewBox="-80 0 660 640" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -314,15 +315,12 @@
       </svg>
     </div>
 
-    <!-- Cards injected here by collage.js -->
     <div class="collage-scene" id="collage-scene" aria-hidden="true"></div>
 
-    <!-- Top-left block -->
     <div class="landing__topleft">
       <a class="landing__portfolio-link" href="./projects.html">PORTFOLIO</a>
     </div>
 
-    <!-- Bottom-left: bio + CTA -->
     <div class="landing__brand">
       <p class="landing__bio">
         <span class="landing__bio--full"></span>
@@ -349,5 +347,16 @@
   </main>
 
   <script src="./collage.js?v=1" defer></script>
+  
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      gsap.to(".landing__topleft, .landing__brand", {
+        opacity: 1,
+        duration: 0.6, // Change this number to make it even faster (e.g. 0.3) or slower
+        ease: "power2.out",
+        delay: 0.2 // A tiny delay just so it doesn't pop in before the background is ready
+      });
+    });
+  </script>
 </body>
 </html>
