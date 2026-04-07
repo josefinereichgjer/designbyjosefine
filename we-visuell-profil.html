@@ -78,13 +78,28 @@
     }
 
     /* Hero */
+    .we-hero-wrap {
+      position: relative;
+      overflow: clip;
+      margin-top: -34px;
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
+    }
+    .we-hero__logo-bg {
+      position: absolute;
+      top: -8%;
+      right: -3%;
+      height: 118%;
+      width: auto;
+      opacity: 0.28;
+      pointer-events: none;
+      user-select: none;
+    }
+    @media (max-width: 767px) { .we-hero__logo-bg { opacity: 0.10; right: -25%; } }
     .we-hero {
       background: var(--we-amethyst);
       color: var(--we-snow);
       padding: 64px 40px 52px;
-      margin-top: -34px;
-      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
     }
     .we-hero__pill {
       display: inline-flex; align-items: center; gap: 8px;
@@ -119,17 +134,29 @@
     /* Body */
     .we-body { padding: 0 40px 80px; max-width: 1100px; overflow-x: visible; margin: 0 auto; }
 
-    /* Snapshot (TL;DR) */
-    .we-snapshot { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 24px; 
-      background: #f4faf9; 
-      padding: 32px; 
-      border-radius: 8px; 
-      margin-bottom: 48px; 
-      margin-top: 16px;
-      border-left: 4px solid var(--we-amethyst); 
+    /* Snapshot (TL;DR) - UPDATED TO FEEL MORE PORTFOLIO LIKE */
+    .we-snapshot {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      padding: 40px 0;
+      margin-bottom: 64px;
+      margin-top: 24px;
+      border-bottom: 1px solid #e8e4e2;
+      text-align: left;
+      align-items: flex-start;
+    }
+    .we-snapshot__meta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      width: 100%;
+    }
+    .we-snapshot__item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
     }
     .we-snapshot__label {
       font-family: 'Poppins', sans-serif;
@@ -139,7 +166,7 @@
       letter-spacing: .1em;
       color: var(--we-periwinkle-text);
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
     .we-snapshot__text {
       font-size: 15px;
@@ -148,24 +175,29 @@
       margin: 0;
     }
     .we-snapshot__list {
-      margin: 4px 0 0;
-      padding-left: 16px;
-      list-style-type: disc;
+      margin: 0;
+      padding: 0;
+      list-style-position: inside;
       color: #111;
       font-size: 15px;
       line-height: 1.5;
     }
-    .we-snapshot__list li { margin-bottom: 2px; }
+    .we-snapshot__list li { margin-bottom: 4px; }
+    .we-snapshot__challenge {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
     .we-snapshot__challenge .we-snapshot__text {
-      font-size: 18px;
+      font-size: 19px;
       line-height: 1.6;
       font-style: italic;
       color: #0d1e1b;
     }
     @media (min-width: 768px) {
-      .we-snapshot { flex-direction: row; gap: 48px; }
-      .we-snapshot__meta { flex: 1; display: flex; flex-direction: column; gap: 20px; }
-      .we-snapshot__challenge { flex: 1.2; border-left: 1px solid #d2e1df; padding-left: 40px; display: flex; flex-direction: column; justify-content: center;}
+      .we-snapshot { flex-direction: row; justify-content: flex-start; gap: 64px; }
+      .we-snapshot__meta { flex: 1; display: flex; align-items: flex-start; justify-content: flex-start; }
+      .we-snapshot__challenge { flex: 1; border-left: 1px solid #e8e4e2; padding-left: 64px; align-items: flex-start; }
     }
 
     /* Sections */
@@ -175,7 +207,8 @@
     .we-section__num { font-family: 'Poppins', sans-serif; font-size: var(--type-caption); letter-spacing: .1em; text-transform: uppercase; color: var(--we-periwinkle-text); margin-bottom: 10px; }
     .we-section__heading { font-family: var(--we-font); font-weight: 400; font-size: var(--type-h1); line-height: var(--lh-heading); margin: 0 0 32px; color: #111; } 
     .we-section__intro { font-size: var(--type-body); line-height: var(--lh-body); color: #444; max-width: 640px; margin: 0 0 32px; }
-    .we-section__subheading { font-family: var(--we-font); font-weight: 500; font-size: var(--type-h2); color: #111; margin: 40px 0 16px; } 
+    .we-section__subheading { font-family: var(--we-font); font-weight: 500; font-size: var(--type-h2); color: #111; margin: 40px 0 16px; }
+    @media (min-width: 768px) { .we-subheading-block { padding-top: 96px; } } 
 
     /* Konsept & oppdragsgiver */
     .we-client-v2 { display: grid; grid-template-columns: 5fr 4fr; gap: 72px; align-items: start; }
@@ -229,11 +262,22 @@
     .we-page .strip-ss__slide img { width: 100%; height: 300px; object-fit: cover; }
 
     /* Table of contents */
-    .we-toc { display: flex; overflow-x: auto; border-bottom: 1px solid #e8e4e2; margin-bottom: 24px; gap: 0; scrollbar-width: none; }
+    .we-toc {
+      display: block;
+      background-color: var(--we-amethyst);
+      margin-bottom: 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
     .we-toc::-webkit-scrollbar { display: none; }
-    .we-toc__link { font-size: 11px; text-transform: uppercase; letter-spacing: .09em; color: #999; text-decoration: none; padding: 14px 18px 12px; white-space: nowrap; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color .2s, border-color .2s; }
-    .we-toc__link:hover { color: #111; }
-    .we-toc__link.is-active { color: #111; border-color: var(--we-amethyst); }
+    .we-toc__inner {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+    }
+    .we-toc__link { font-size: 11px; text-transform: uppercase; letter-spacing: .09em; color: #ffffff; text-decoration: none; padding: 14px 18px 12px; white-space: nowrap; border-bottom: 2px solid transparent; transition: color .2s, border-color .2s; }
+    .we-toc__link:hover { color: #ffffff; border-bottom-color: var(--we-periwinkle); }
+    .we-toc__link.is-active { color: #ffffff; border-bottom-color: var(--we-periwinkle); }
 
     /* Credits */
     .we-credits { padding: 48px 0 0; margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 56px; }
@@ -335,11 +379,17 @@
 
     /* Typografi CSS */
     .we-typo-list { 
-      display: flex; 
-      flex-direction: column; 
+      display: grid; 
+      grid-template-columns: 1fr;
       gap: 48px; 
-      max-width: 680px; 
+      max-width: 100%; 
       padding-top: 8px; 
+    }
+    @media (min-width: 768px) {
+      .we-typo-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+      }
     }
     .we-typo__name { 
       font-family: 'neuzeit-grotesk', sans-serif; 
@@ -548,8 +598,7 @@
         --type-body-lg: 15px;
       }
       
-      .we-snapshot { padding: 24px; }
-      .we-snapshot__challenge { border-top: 1px solid #d2e1df; padding-top: 24px; }
+      .we-snapshot { padding: 32px 0; }
       
       .we-monster-text, .we-client-block__text, .we-section__intro, .we-audience-cell__body {
         font-size: 14px !important;
@@ -561,6 +610,7 @@
       .we-swot { grid-template-columns: 1fr; }
       .we-hero__meta { gap: 20px; }
       .we-audience { grid-template-columns: 1fr; }
+      .we-audience-cell { border-right: none; }
       .we-section { padding: 48px 0; }
       
       .we-monster-layout { flex-direction: column; gap: 24px; align-items: flex-start; text-align: left;}
@@ -612,32 +662,28 @@
   <main id="content" class="content">
     <article class="project we-page" id="project">
 
-      <div class="we-hero">
-        <h1 class="we-hero__title">Stiftelsen WE</h1>
-        <p class="we-hero__intro">WE kobler kvinner utenfor arbeidslivet med nye muligheter. En visuell identitet utviklet for å balansere profesjonalitet og varme i møte med to ulike målgrupper.</p>
-      </div>
-
-      <div class="we-body">
+      <div class="we-hero-wrap">
+        <img src="./assets/logo-hero-we4x.png" alt="" class="we-hero__logo-bg" aria-hidden="true" />
+        <div class="we-hero">
+          <h1 class="we-hero__title">Stiftelsen Women Empowerment</h1>
+        </div>
 
         <nav class="we-toc" aria-label="Innhold">
+        <div class="we-toc__inner">
           <a class="we-toc__link" href="#sec-konsept">Konsept</a>
           <a class="we-toc__link" href="#sec-innsikt">Innsikt</a>
           <a class="we-toc__link" href="#sec-retning">Retning</a>
           <a class="we-toc__link" href="#sec-identitet">Identitet</a>
           <a class="we-toc__link" href="#sec-prosess">Prosess</a>
           <a class="we-toc__link" href="#sec-refleksjon">Refleksjon</a>
-        </nav>
+        </div>
+      </nav>
+      </div><!-- /.we-hero-wrap -->
+
+      <div class="we-body">
 
         <div class="we-snapshot">
           <div class="we-snapshot__meta">
-            <div class="we-snapshot__item">
-              <span class="we-snapshot__label">Min rolle</span>
-              <span class="we-snapshot__text">Visuell identitet, UI-design, Strategi</span>
-            </div>
-            <div class="we-snapshot__item">
-              <span class="we-snapshot__label">Varighet</span>
-              <span class="we-snapshot__text">Ca. 4 uker</span>
-            </div>
             <div class="we-snapshot__item">
               <span class="we-snapshot__label">Leveranser</span>
               <ul class="we-snapshot__list">
@@ -655,13 +701,14 @@
         </div>
         <section class="we-section" id="sec-konsept">
           <p class="we-section__num">01</p>
-          <h2 class="we-section__heading">Konsept & oppdragsgiver</h2>
+          <h2 class="we-section__heading">Oppdragsgiver</h2>
           <div class="we-client-v2">
             <div class="we-client-v2__blocks">
               <div class="we-client-block">
-                <p class="we-client-block__text" style="font-size:var(--type-body-lg);">Stiftelsen WE (Women Empowerment) er etablert for å skape innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk.</p>
-                <p class="we-client-block__text" style="margin-top:20px;font-size:var(--type-body-lg);">Identiteten bygger på en balanse mellom struktur og menneskelighet. Målet var å utvikle et uttrykk som fungerer i en profesjonell B2B-kontekst, og samtidig oppleves inkluderende og relevant for målgruppen.</p>
-                <p class="we-client-block__text" style="margin-top:20px; font-style:italic; color:#35685e; font-weight:500;">Identiteten er utviklet for å bygge tillit — ikke bare oppmerksomhet.</p>
+                <p class="we-client-block__text" style="font-size:var(--type-body-lg);">Stiftelsen WE (Women Empowerment) arbeider for å styrke kvinners muligheter til selvstendighet ved å skape innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk. Gjennom å legge til rette for kompetanseutvikling, nettverksbygging og arbeidsmuligheter, er målet å bidra til økt deltakelse i samfunnet og en mer inkluderende arbeidsarena.</p>
+                <div class="we-quote" style="margin-top: 32px;">
+                  <p class="we-quote__text" style="font-size: 16px;">«For designløsningen til stiftelsen vår, ønsker vi noe <b>tillitsskapende</b>, <b>lekent</b> og <b>moderne!</b>»</p>
+                </div>
               </div>
             </div>
             <figure class="we-client-v2__figure">
@@ -669,11 +716,6 @@
                 <img src="./assets/ragnhildkistine.webp" alt="Ragnhild Slettner og Kirstine Holst — grunnleggere av Stiftelsen WE" style="object-fit:cover;object-position:85% 20%;" loading="lazy" decoding="async">
               </a>
               <span class="we-client-v2__caption">Kirstine Holst (til venstre) og Ragnhild Slettner (til høyre)</span>
-              
-              <div class="we-quote" style="margin-top: 24px;">
-                <p class="we-quote__text" style="font-size: 16px;">«For designløsningen til stiftelsen vår, ønsker vi noe <b>tillitsskapende</b>, <b>lekent</b> og <b>moderne!</b>»</p>
-              </div>
-
             </figure>
           </div>
         </section>
@@ -700,7 +742,7 @@
               <p class="we-client-block__text">WE henvender seg til to målgrupper med <strong>ulike behov</strong>. For målgruppen med identiteten oppleves trygg og inkluderende. For næringslivet må den signalisere profesjonalitet, struktur og troverdighet.</p>
             </div>
 
-            <div class="we-client-block">
+            <div class="we-client-block" style="border-top: none;">
               <div class="we-quote" style="margin-top:4px;">
                 <p class="we-quote__text">«Hvem skal føle seg trygge når de ser dette?»</p>
                 <p class="we-quote__attr">— Cecilie Melli, designer · ekspertintervju · <button class="we-posmap-trigger" style="font-size:11px;" onclick="document.getElementById('weIntervjuModal').showModal()">Les mer</button></p>
@@ -771,7 +813,7 @@
 
         </section>
 
-        <section class="we-section" id="sec-identitet">
+        <section class="we-section" id="sec-identitet" style="border-top: none;">
           <p class="we-section__num">04</p>
           <h2 class="we-section__heading">Visuell Identitet</h2>
 
@@ -796,7 +838,7 @@
             </div>
           </div>
 
-          <div style="margin-bottom: 80px;">
+          <div class="we-subheading-block" style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Fargesystem</h3>
             <p class="we-section__intro">Paletten balanserer forankring og energi. Dype grønntoner skaper en identitet knyttet til natur, tillit og bærekraft, og skiller WE fra konkurrentenes blådominerte uttrykk. Violett fungerer som en kontrasterende aksentfarge som tilfører energi og understreker det innovative ved arbeidet.</p>
             
@@ -893,7 +935,7 @@
             </div>
           </div>
 
-          <div style="margin-bottom: 80px;">
+          <div class="we-subheading-block" style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Typografi</h3>
             <div class="we-typo-list">
               <div class="we-typo-item we-stagger">
@@ -928,7 +970,7 @@
             </div>
           </div>
 
-          <div>
+          <div class="we-subheading-block">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Visuelt system & Bildebruk</h3>
             
             <h4 style="font-family: var(--we-font); font-size: 16px; margin: 24px 0 12px; color: #111;">Mønster</h4>
