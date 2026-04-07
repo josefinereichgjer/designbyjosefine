@@ -336,9 +336,17 @@
       .nav-links li { width: 100%; }
       .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
       .page { padding: 40px 20px 64px; }
+      .page-intro { font-size: 16px; margin-bottom: 40px; }
       .contact-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
+      .btn-submit { width: 100%; text-align: center; }
       .footer-inner { grid-template-columns: 1fr; }
       footer { padding: 48px 20px 32px; }
       .footer-links { justify-self: start; text-align: left; }
+    }
+
+    @media (max-width: 400px) {
+      .page h1 { font-size: 36px; }
+      .info-block h3 { font-size: 19px; }
+      .info-block p, .info-block a { font-size: 15px; }
     }

@@ -357,13 +357,21 @@
       .nav-links li { width: 100%; }
       .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
       .hero { padding: 40px 20px 0; }
+      .hero-intro { font-size: 16px; margin-bottom: 32px; }
       .location-row,
       .how-inner,
       .before { grid-template-columns: 1fr; padding: 0 20px 48px; }
       .how { padding: 48px 20px; }
       .before { padding: 48px 20px 64px; }
       .map-iframe { height: 260px; }
+      .btn { font-size: 16px; padding: 14px 28px; }
       .footer-inner { grid-template-columns: 1fr; }
       footer { padding: 48px 20px 32px; }
       .footer-links { justify-self: start; text-align: left; }
+    }
+
+    @media (max-width: 400px) {
+      .hero h1 { font-size: 32px; }
+      .how h2, .before h2 { font-size: 28px; }
+      .how-list li, .before p { font-size: 15px; }
     }
