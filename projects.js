@@ -82,8 +82,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Strategisk design"],
     cover: "./assets/laptop-mockup.webp",
-    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/weinsta.webp", "./assets/wenettside.webp", "./assets/banner.webp"],
-    finalPdf: { label: "Se hele PDF-en", src: "./assets/we.pdf" }
+    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/banner.webp"],
   },
   {
     id: "stoppestedet",
