@@ -89,9 +89,9 @@
         scale:    1,
         opacity:  1,
         duration: isMe
-          ? (isMobile ? 1.1 : 1.6)
-          : (isMobile ? 0.65 + Math.random() * 0.12 : 1.0 + Math.random() * 0.2),
-        delay:    0.05 + i * 0.07,
+          ? (isMobile ? 0.9 : 1.3)
+          : (isMobile ? 0.55 + Math.random() * 0.1 : 0.8 + Math.random() * 0.15),
+        delay:    0.04 + i * 0.055,
         ease:     isMe ? 'expo.out' : (isMobile ? 'power3.out' : 'expo.out'),
         onComplete: function () {
           if (isMe) {
@@ -149,7 +149,7 @@
           portLink.removeChild(textNode);
           gsap.fromTo(charEls,
             { y: '110%', opacity: 0 },
-            { y: '0%', opacity: 1, duration: 0.6, ease: 'expo.out', stagger: 0.03, delay: 0.15 }
+            { y: '0%', opacity: 1, duration: 0.45, ease: 'expo.out', stagger: 0.022, delay: 0.1 }
           );
         }
       }
@@ -231,12 +231,12 @@
 
     var bioFull  = document.querySelector('.landing__bio--full');
     var bioShort = document.querySelector('.landing__bio--short');
-    var bioResultFull  = !showShort ? splitCharReveal(bioFull,  BIO_SEGMENTS_FULL,  0.5, 0.018, 0.7, '#b48de8', 'rgba(255,255,255,0.75)') : null;
-    var bioResultShort =  showShort ? splitCharReveal(bioShort, BIO_SEGMENTS_SHORT, 0.5, 0.018, 0.7, '#b48de8', 'rgba(255,255,255,0.75)') : null;
+    var bioResultFull  = !showShort ? splitCharReveal(bioFull,  BIO_SEGMENTS_FULL,  0.35, 0.013, 0.55, '#b48de8', 'rgba(255,255,255,0.75)') : null;
+    var bioResultShort =  showShort ? splitCharReveal(bioShort, BIO_SEGMENTS_SHORT, 0.35, 0.013, 0.55, '#b48de8', 'rgba(255,255,255,0.75)') : null;
 
     /* after full text settles: color breath + float on "grafisk designer" */
-    /* bio has ~88 chars × 0.018s stagger + 0.5s delay + 0.7s dur ≈ 2.8s total */
-    var bioSettleDelay = 3.0;
+    /* bio has ~88 chars × 0.013s stagger + 0.35s delay + 0.55s dur ≈ 2.0s total */
+    var bioSettleDelay = 2.2;
     [bioResultFull, bioResultShort].forEach(function (result) {
       if (!result) return;
       if (result.chars.length) {
@@ -267,13 +267,13 @@
     var ctaShort = document.querySelector('.landing__cta-label--short');
     var ctaFullText  = ctaFull  ? ctaFull.textContent  : '';
     var ctaShortText = ctaShort ? ctaShort.textContent : '';
-    if (!showShort) splitCharReveal(ctaFull,  ctaFullText,  0.5, 0.015, 0.45);
-    if (showShort)  splitCharReveal(ctaShort, ctaShortText, 0.5, 0.015, 0.45);
+    if (!showShort) splitCharReveal(ctaFull,  ctaFullText,  0.25, 0.01, 0.3);
+    if (showShort)  splitCharReveal(ctaShort, ctaShortText, 0.25, 0.01, 0.3);
 
     var ctaArrow = document.querySelector('.landing__cta-arrow-track');
     if (ctaArrow) {
       gsap.set(ctaArrow, { opacity: 0, x: -window.innerWidth, color: '#b48de8' });
-      gsap.to(ctaArrow, { opacity: 1, x: 0, duration: 0.8, ease: 'expo.out', delay: 1.0 });
+      gsap.to(ctaArrow, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out', delay: 0.7 });
     }
 
     /* Arrow shoots off on CTA click, then navigate */
