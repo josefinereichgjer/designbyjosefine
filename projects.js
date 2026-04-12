@@ -343,7 +343,8 @@ window.PROJECTS = [
     subtitle: "Redaksjonell design",
     year: "2026",
     tags: ["Redaksjonell"],
-    cover: "./stoppestedet/images/lockin.webp",
+    cover: "./assets/krit.webp",
+    skipBuild: true,
   },
   {
     id: "emanuel-viegeland",
