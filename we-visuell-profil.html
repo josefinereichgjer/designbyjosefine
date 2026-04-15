@@ -219,7 +219,7 @@
     .we-client-block__text { font-family: 'Poppins', sans-serif; font-size: var(--type-body); line-height: var(--lh-body); color: #444; margin: 0; }
     .we-client-block__text strong { font-weight: 600; color: #111; }
     .we-client-v2__figure { margin: 0; }
-    .we-client-v2__figure img { width: 100%; display: block; border-radius: 4px; }
+    .we-client-v2__figure img { width: 100%; display: block; border-radius: 8px; }
     .we-client-v2__caption { font-family: 'Poppins', sans-serif; font-size: 11px; color: #999; margin-top: 10px; letter-spacing: .02em; display: block; }
 
     .we-quote { background: transparent; padding: 0 0 0 20px; border-left: 3px solid var(--we-lime); position: relative; }
@@ -259,7 +259,7 @@
     .we-step__body { font-size: var(--type-sm); color: #666; line-height: var(--lh-sm); }
 
     /* Strip slideshow */
-    .we-page .strip-ss__slide img { width: 100%; height: 300px; object-fit: cover; }
+    .we-page .strip-ss__slide img { width: 100%; height: 300px; object-fit: cover; border-radius: 8px; }
 
     /* Table of contents */
     .we-toc {
@@ -501,13 +501,13 @@
     
     .we-design-showcase { display: contents; }
     .we-design-showcase__laptop { margin: 0; padding: 0; }
-    .we-design-showcase__laptop img { width: 100%; display: block; }
+    .we-design-showcase__laptop img { width: 100%; display: block; border-radius: 8px; }
     
     /* Instagram Stories */
     .we-design-showcase__stories { display: flex; gap: 2px; padding-top: 2px; overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; cursor: grab; scrollbar-width: none; }
     .we-design-showcase__stories::-webkit-scrollbar { display: none; }
     .we-design-showcase__stories:active { cursor: grabbing; }
-    .we-design-showcase__stories img { flex: 0 0 auto; height: 540px; width: auto; display: block; scroll-snap-align: start; }
+    .we-design-showcase__stories img { flex: 0 0 auto; height: 540px; width: auto; display: block; scroll-snap-align: start; border-radius: 8px; }
     .we-stories-dots { display: flex; gap: 8px; justify-content: center; margin-top: 24px; margin-bottom: 140px; }
     .we-stories-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
     .we-stories-dot.is-active { background: #6868b2; }
@@ -517,7 +517,9 @@
     .we-print-row::-webkit-scrollbar { display: none; }
     .we-print-row:active { cursor: grabbing; }
     
-    .we-print-row img { flex: 0 0 100%; max-width: 900px; height: auto; object-fit: contain; scroll-snap-align: start; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .we-print-row img { flex: 0 0 100%; max-width: 900px; height: auto; object-fit: contain; scroll-snap-align: start; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .we-idkort-row img { height: 504px; width: auto; flex: 0 0 auto; max-width: none; border-radius: 8px; }
+    .we-card-row img { height: 560px; width: auto; flex: 0 0 auto; max-width: none; }
     .we-print-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; margin-bottom: 64px; }
     .we-print-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
     .we-print-dot.is-active { background: #6868b2; }
@@ -544,7 +546,7 @@
 
     /* Bildene inni scroll-boksen er gjort litt mindre og sentrert for ikke å kuttes på desktop */
     .we-site-track { display: flex; flex-direction: column; gap: 40px; align-items: center; max-width: 800px; margin: 0 auto; padding: 40px 20px;}
-    .we-site-track img { width: 90%; max-width: 700px; display: block; user-select: none; -webkit-user-drag: none; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .we-site-track img { width: 90%; max-width: 700px; display: block; user-select: none; -webkit-user-drag: none; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
     .we-site-dots { display: none; }
 
     /* Knapp som KUN vises på mobil */
@@ -576,7 +578,7 @@
       .we-design-showcase__stories img { height: 220px; }
       
       .we-design-showcase__laptop { margin: 0 -20px; width: calc(100% + 40px); }
-      .we-design-showcase__laptop img { width: 100%; display: block; }
+      .we-design-showcase__laptop img { width: 100%; display: block; border-radius: 8px; }
       
       .we-site-scroll { display: none !important; } 
       .we-design-showcase__left { margin-bottom: 0px; display: flex; flex-direction: column; align-items: center; padding: 0; } 
@@ -709,8 +711,8 @@
               <ul class="we-snapshot__list">
                 <li>Design av nettside</li>
                 <li>Instagram posts og stories</li>
-                <li>Visittkort, banner og brosjyre</li>
-                <li>To valgfrie flater</li>
+                <li>Visittkort og brosjyre</li>
+                <li>To valgfrie flater: id-kort og messe-banner</li>
               </ul>
             </div>
           </div>
@@ -823,18 +825,19 @@
           </div>
           <div class="we-stories-dots" id="weStoriesDots"></div>
 
-          <p class="we-showcase-label" style="margin-top: 64px;">Visittkort, Messe-banner og Broskjyre</p>
-          <div class="we-print-row" id="wePrintScroll">
+          <p class="we-showcase-label" style="margin-top: 64px;">Visittkort og Brosjyre</p>
+          <div class="we-print-row we-card-row" id="wePrintScroll">
             <img src="./assets/businesscard.webp" alt="Visittkort" loading="lazy" draggable="false">
-            <img src="./assets/we-banner.webp" alt="Messe-banner" loading="lazy" draggable="false">
             <img src="./assets/broskjyre.webp" alt="Brosjyre" loading="lazy" draggable="false">
           </div>
           <div class="we-print-dots" id="wePrintDots"></div>
 
-        <p class="we-showcase-label" style="margin-top: 64px;">VALGFRI FLATE: Id-kort</p>
-<div class="we-print-row">
-  <img src="./assets/id-kort.webp" alt="Id-kort" loading="lazy" draggable="false" style="max-width: 630px; flex: 0 0 70%; margin: 0;">
+        <p class="we-showcase-label" style="margin-top: 64px;">Valgfrie flater: Id-kort og messebanner</p>
+<div class="we-print-row we-idkort-row" id="weIdkortScroll">
+  <img src="./assets/id-kort.webp" alt="Id-kort" loading="lazy" draggable="false">
+  <img src="./assets/we-banner.webp" alt="Messe-banner" loading="lazy" draggable="false">
 </div>
+<div class="we-print-dots" id="weIdkortDots"></div>
 
         </section>
 
@@ -1165,9 +1168,9 @@
     <div class="we-posmap-modal__inner" style="padding: 16px; background: #fafafa; max-height: 90vh; overflow-y: auto;">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weNettsideModal').close()" aria-label="Lukk" style="background: #fff; border-radius: 50%; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 10;">✕</button>
       <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 24px;">
-          <img src="./assets/side-1-we2x.webp" alt="Side 1" loading="lazy" decoding="async" style="width: 100%; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-          <img src="./assets/side-2-we2x.webp" alt="Side 2" loading="lazy" decoding="async" style="width: 100%; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
-          <img src="./assets/side-3-we2x.webp" alt="Side 3" loading="lazy" decoding="async" style="width: 100%; border-radius: 4px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <img src="./assets/side-1-we2x.webp" alt="Side 1" loading="lazy" decoding="async" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <img src="./assets/side-2-we2x.webp" alt="Side 2" loading="lazy" decoding="async" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+          <img src="./assets/side-3-we2x.webp" alt="Side 3" loading="lazy" decoding="async" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
       </div>
     </div>
   </dialog>
@@ -1294,8 +1297,8 @@
       <button class="we-posmap-modal__close" onclick="document.getElementById('weProsessModal').close()" aria-label="Lukk">✕</button>
       <h3 class="we-posmap-modal__heading">Utdrag fra prosessen</h3>
       <div style="display: flex; flex-direction: column; gap: 24px;">
-        <img src="./assets/prosess-14x.webp" alt="Prosess - Skisser og utforskning 1" style="width:100%;height:auto;display:block;border-radius:4px;" loading="lazy" decoding="async">
-        <img src="./assets/prosess-24x.webp" alt="Prosess - Skisser og utforskning 2" style="width:100%;height:auto;display:block;border-radius:4px;" loading="lazy" decoding="async">
+        <img src="./assets/prosess-14x.webp" alt="Prosess - Skisser og utforskning 1" style="width:100%;height:auto;display:block;border-radius:8px;" loading="lazy" decoding="async">
+        <img src="./assets/prosess-24x.webp" alt="Prosess - Skisser og utforskning 2" style="width:100%;height:auto;display:block;border-radius:8px;" loading="lazy" decoding="async">
       </div>
     </div>
   </dialog>
@@ -1596,7 +1599,7 @@
       el.addEventListener('mouseup', () => { down = false; el.style.cursor = 'grab'; });
       el.addEventListener('mousemove', e => { if (!down) return; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX); });
 
-      const dots = [0, 1, 2].map((i) => {
+      const dots = [0, 1].map((i) => {
         const btn = document.createElement('button');
         btn.className = 'we-print-dot' + (i === 0 ? ' is-active' : '');
         btn.setAttribute('aria-label', 'Bilde ' + (i + 1));
@@ -1610,6 +1613,37 @@
       function updateDots() {
         const max = el.scrollWidth - el.clientWidth;
         const active = max > 0 ? Math.round((el.scrollLeft / max) * 2) : 0;
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
+      }
+      el.addEventListener('scroll', updateDots, { passive: true });
+    })();
+
+    // Id-kort og messebanner scroll + dots
+    (function() {
+      const el = document.getElementById('weIdkortScroll');
+      const dotsEl = document.getElementById('weIdkortDots');
+      if (!el || !dotsEl) return;
+
+      let down = false, startX, scrollLeft;
+      el.addEventListener('mousedown', e => { down = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; el.style.cursor = 'grabbing'; });
+      el.addEventListener('mouseleave', () => { down = false; el.style.cursor = 'grab'; });
+      el.addEventListener('mouseup', () => { down = false; el.style.cursor = 'grab'; });
+      el.addEventListener('mousemove', e => { if (!down) return; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX); });
+
+      const dots = [0, 1].map((i) => {
+        const btn = document.createElement('button');
+        btn.className = 'we-print-dot' + (i === 0 ? ' is-active' : '');
+        btn.setAttribute('aria-label', 'Bilde ' + (i + 1));
+        btn.addEventListener('click', () => {
+          const max = el.scrollWidth - el.clientWidth;
+          el.scrollTo({ left: max * (i / 1), behavior: 'smooth' });
+        });
+        dotsEl.appendChild(btn);
+        return btn;
+      });
+      function updateDots() {
+        const max = el.scrollWidth - el.clientWidth;
+        const active = max > 0 ? Math.round(el.scrollLeft / max) : 0;
         dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
       }
       el.addEventListener('scroll', updateDots, { passive: true });
@@ -1632,5 +1666,136 @@
     })();
   </script>
   <script src="./transition.js"></script>
+
+  <!-- Lightbox -->
+  <div id="weLightbox" style="
+    display:none; position:fixed; inset:0; z-index:9999;
+    background:rgba(0,0,0,0.92);
+    align-items:center; justify-content:center;
+    overflow:hidden;
+  ">
+    <button id="weLightboxClose" aria-label="Lukk" style="
+      position:fixed; top:20px; right:24px;
+      background:rgba(255,255,255,0.12); border:none; color:#fff;
+      width:40px; height:40px; border-radius:50%; font-size:20px;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      z-index:10001; transition:background .2s;
+    ">✕</button>
+    <button id="weLightboxPrev" aria-label="Forrige" style="
+      position:fixed; left:16px; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.12); border:none; color:#fff;
+      width:44px; height:44px; border-radius:50%; font-size:22px;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      z-index:10001; transition:background .2s;
+    ">‹</button>
+    <button id="weLightboxNext" aria-label="Neste" style="
+      position:fixed; right:16px; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.12); border:none; color:#fff;
+      width:44px; height:44px; border-radius:50%; font-size:22px;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+      z-index:10001; transition:background .2s;
+    ">›</button>
+    <div id="weLightboxInner" style="
+      overflow:auto; width:100%; height:100%;
+      display:flex; align-items:center; justify-content:center;
+      cursor:zoom-in;
+    ">
+      <img id="weLightboxImg" src="" alt="" style="
+        width:auto; height:auto; max-width:90vw; max-height:90vh;
+        border-radius:8px;
+        display:block; user-select:none;
+      ">
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    const lb      = document.getElementById('weLightbox');
+    const lbInner = document.getElementById('weLightboxInner');
+    const lbImg   = document.getElementById('weLightboxImg');
+    const lbClose = document.getElementById('weLightboxClose');
+    const lbPrev  = document.getElementById('weLightboxPrev');
+    const lbNext  = document.getElementById('weLightboxNext');
+    let images = [];
+    let currentIndex = 0;
+    let zoomed = false;
+
+    function resetZoom() {
+      zoomed = false;
+      lbImg.style.width = 'auto';
+      lbImg.style.height = 'auto';
+      lbImg.style.maxWidth = '90vw';
+      lbImg.style.maxHeight = '90vh';
+      lbInner.style.alignItems = 'center';
+      lbInner.style.justifyContent = 'center';
+      lbInner.style.cursor = 'zoom-in';
+      lbInner.scrollTop = 0;
+      lbInner.scrollLeft = 0;
+    }
+
+    function show(index) {
+      currentIndex = (index + images.length) % images.length;
+      const img = images[currentIndex];
+      lbImg.src = img.src;
+      lbImg.alt = img.alt || '';
+      resetZoom();
+      lbPrev.style.display = images.length > 1 ? 'flex' : 'none';
+      lbNext.style.display = images.length > 1 ? 'flex' : 'none';
+    }
+
+    function open(index) {
+      show(index);
+      lb.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lb.style.display = 'none';
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    function toggleZoom(e) {
+      e.stopPropagation();
+      if (!zoomed) {
+        lbImg.style.maxWidth = 'none';
+        lbImg.style.maxHeight = 'none';
+        lbInner.style.cursor = 'zoom-out';
+        lbInner.style.alignItems = 'flex-start';
+        lbInner.style.justifyContent = 'flex-start';
+      } else {
+        resetZoom();
+      }
+      zoomed = !zoomed;
+    }
+
+    lbImg.addEventListener('click', toggleZoom);
+    lb.addEventListener('click', function(e) { if (e.target === lb || e.target === lbInner) close(); });
+    lbClose.addEventListener('click', close);
+    lbPrev.addEventListener('click', function(e) { e.stopPropagation(); show(currentIndex - 1); });
+    lbNext.addEventListener('click', function(e) { e.stopPropagation(); show(currentIndex + 1); });
+    document.addEventListener('keydown', function(e) {
+      if (lb.style.display === 'none') return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') show(currentIndex - 1);
+      if (e.key === 'ArrowRight') show(currentIndex + 1);
+    });
+
+    // Collect all content images
+    document.querySelectorAll(
+      '.we-client-v2__figure img, .we-design-showcase__stories img, ' +
+      '.we-print-row img, .we-site-track img, ' +
+      '#weNettsideModal img, #weProsessModal img'
+    ).forEach(function(img) {
+      img.style.cursor = 'zoom-in';
+      const index = images.length;
+      images.push(img);
+      img.addEventListener('click', function(e) {
+        e.stopPropagation();
+        open(index);
+      });
+    });
+  })();
+  </script>
 </body>
 </html>

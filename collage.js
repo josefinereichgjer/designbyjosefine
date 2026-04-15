@@ -93,20 +93,7 @@
           : (isMobile ? 0.55 + Math.random() * 0.1 : 0.8 + Math.random() * 0.15),
         delay:    0.04 + i * 0.055,
         ease:     isMe ? 'expo.out' : (isMobile ? 'power3.out' : 'expo.out'),
-        onComplete: function () {
-          if (isMe) {
-            if (isMobile) {
-              startFloat(el, i);
-            } else {
-              /* 3D pulse: drift forward then ease back */
-              gsap.timeline({ delay: 0.2, onComplete: function () { gsap.set(el, { z: 0 }); startFloat(el, i); } })
-                .to(el, { scale: 1.06, z: 36, transformPerspective: 1000, duration: 1.1, ease: 'sine.inOut' })
-                .to(el, { scale: 1.0,  z: 0,  transformPerspective: 1000, duration: 1.1, ease: 'sine.inOut' });
-            }
-          } else {
-            startFloat(el, i);
-          }
-        },
+        onComplete: function () { startFloat(el, i); },
       });
 
       el.addEventListener('mouseenter', function () { onHover(i); });
