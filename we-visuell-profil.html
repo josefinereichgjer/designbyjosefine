@@ -559,12 +559,17 @@
     @media (max-width: 900px) {
       .we-hero { padding: 64px 20px 52px; }
       .we-body { padding: 0 20px 60px; }
-      
+
       .we-client-v2 { grid-template-columns: 1fr; gap: 40px; }
-      
+
       /* Logo Grid Tablet */
       .we-logo-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-      .we-logo-item:nth-child(3) { grid-column: 1 / -1; } 
+      .we-logo-item:nth-child(3) { grid-column: 1 / -1; }
+
+      /* Scale down fixed-height scroll rows on tablet */
+      .we-design-showcase__stories img { height: 380px; }
+      .we-card-row img { height: 380px; }
+      .we-idkort-row img { height: 340px; }
 
       /* Palette Tablet */
       .we-palette-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
@@ -592,7 +597,14 @@
       .we-mobile-nettside-btn:active { background: #224942; }
 
       .we-print-row img { flex: 0 0 85%; max-width: 400px; margin: 0 auto; }
-      
+
+      /* Switch fixed-height rows to width-based on mobile */
+      .we-card-row img,
+      .we-idkort-row img { height: auto; width: 85%; flex: 0 0 85%; max-width: 380px; margin: 0 auto; }
+
+      /* Tighten dots spacing on mobile */
+      .we-print-dots { margin-bottom: 32px; }
+
       .we-mg-blocks { grid-template-columns: 1fr; }
       .we-mg-blocks .we-client-block:nth-child(n+4) { grid-column: 1; }
       .we-mg-blocks .we-client-block { border-right: none; }
@@ -637,6 +649,11 @@
 
       .we-posmap-modal__inner { padding: 20px 16px; }
       .we-reflection { padding: 24px 16px; }
+
+      /* Lightbox: smaller arrows, close button on mobile */
+      #weLightboxPrev, #weLightboxNext { width: 36px; height: 36px; font-size: 18px; left: 8px; }
+      #weLightboxNext { left: auto; right: 8px; }
+      #weLightboxClose { top: 12px; right: 12px; width: 34px; height: 34px; font-size: 16px; }
     }
 
     /* Nav: two rows on mid-mobile (641–820px) */
