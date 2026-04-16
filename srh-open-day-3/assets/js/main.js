@@ -1,6 +1,4 @@
 (() => {
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
   // Hero background — no animation
   const heroBg = document.querySelector(".hero-bg");
   if (heroBg) heroBg.classList.add("loaded");
