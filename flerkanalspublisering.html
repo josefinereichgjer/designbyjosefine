@@ -78,17 +78,40 @@
     @media (max-width: 768px) {
       .srh-hero-meta { flex-direction: column !important; gap: 32px !important; margin-bottom: 64px !important; padding: 0 16px; }
       .srh-hero-meta > div { width: 100% !important; margin-left: 0 !important; max-width: 100% !important; }
-      
-      .srh-linkedin-section { flex-direction: column !important; padding: 0 16px; }
+      /* Fix OPPGAVE left-alignment — remove double padding inside the meta block */
+      .srh-hero-meta .srh-label { padding: 0 !important; }
+
+      /* Hero: full-bleed edge-to-edge */
+      .hero-section { position: relative; left: 50%; transform: translateX(-50%); width: 100vw; }
+
+      /* Sliders: full-bleed */
+      .brosyre-slider { position: relative; left: 50%; transform: translateX(-50%); width: 100vw; }
+      /* Verktøy icons: one row, no text labels on mobile */
+      .tools-row { flex-wrap: nowrap !important; gap: 14px !important; align-items: center !important; }
+      .tools-row img { width: 26px !important; height: 26px !important; }
+      .tools-row span { display: none !important; }
+      .tools-row > div { gap: 0 !important; }
+
+      /* Video: full-bleed */
+      video { position: relative; left: 50%; transform: translateX(-50%); width: 100vw !important; }
+
+      /* LinkedIn carousel: fix scroll */
+      .srh-linkedin-section { flex-direction: column !important; padding: 0 !important; }
       .srh-linkedin-section > img { width: 60% !important; max-width: 240px; margin: 0 auto 24px auto !important; }
-      #linkedinPostsScroll { margin-top: 0 !important; }
-      
-      .srh-reklame-section { flex-direction: column !important; padding: 0 16px; }
+      #linkedinPostsScroll { margin-top: 0 !important; touch-action: pan-x; }
+      #linkedinPostsScroll img { min-width: 700px; }
+      .linkedin-scroll-hint { top: 0 !important; height: 100% !important; z-index: 2; }
+
+      /* Facebook / Reklame: remove zoom overlay, show full image */
+      .img-zoom__overlay { display: none !important; }
+      .srh-reklame-section { flex-direction: column !important; padding: 0 !important; }
       .srh-reklame-section > div { flex: unset !important; width: 100% !important; }
-      
+      .srh-reklame-section .img-zoom img { height: auto !important; object-fit: unset !important; }
+      .srh-reklame-section .img-zoom { border: none !important; }
+
       .typo-block { padding: 24px !important; gap: 32px !important; }
       .typo-item { flex-direction: column !important; gap: 16px !important; }
-      
+
       .srh-desc--solo, .srh-label { padding: 0 16px; }
       .color-swatches { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important; gap: 12px !important; padding: 0 16px; }
     }
@@ -156,7 +179,7 @@
             <p class="srh-label">Oppgave</p>
             <p class="srh-desc" style="margin-bottom:24px;">IDG1009 Flerkanalpublisering<br>Høst 2024</p>
             <p class="srh-label">Verktøy</p>
-            <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <div class="tools-row" style="display:flex;gap:12px;flex-wrap:wrap;">
               <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
                 <img src="./srh-open-day-3/assets/img/figma.png" alt="Figma" loading="lazy" decoding="async" style="width:32px;height:32px;object-fit:contain;">
                 <span class="srh-desc">Figma</span>
@@ -198,7 +221,7 @@
 
         <p class="srh-label">Nettside (event)</p>
         <video src="./assets/srh-video.mp4" autoplay muted loop playsinline controls preload="metadata" style="display:block;width:100%;height:auto;margin-bottom:12px;"></video>
-        <p class="srh-desc srh-desc--solo" style="margin-bottom:88px;">Nettsiden er holdt veldig enkel, med fokus på å formidle informasjon om arrangementet på en rask og oversiktlig måte. Den er laget for at brukeren raskt skal forstå hva, hvor og når. <a href="./srh-open-day-3/index.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Åpne nettsiden ↗</a></p>
+        <p class="srh-desc srh-desc--solo" style="margin-bottom:88px;">Nettsiden er holdt veldig enkel, med fokus på å formidle informasjon om arrangementet på en rask og oversiktlig måte. Den er laget for at brukeren raskt skal forstå hva, hvor og når. <a href="./srh-open-day-3/index.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Åpne nettsiden ↗&#xFE0E;</a></p>
 
         <p class="srh-label">Brosjyre</p>
         <div class="brosyre-slider">
@@ -215,7 +238,7 @@
             <div id="linkedinPostsScroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;cursor:grab;margin-top:120px;">
               <img src="./assets/linkedin-posts.webp" alt="LinkedIn-karusell – oversikt" loading="lazy" decoding="async" style="display:block;height:320px;width:auto;max-width:none;">
             </div>
-            <div style="position:absolute;top:120px;right:0;width:80px;height:320px;background:linear-gradient(to right,transparent,rgba(255,255,255,0.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;">
+            <div class="linkedin-scroll-hint" style="position:absolute;top:120px;right:0;width:80px;height:320px;background:linear-gradient(to right,transparent,rgba(255,255,255,0.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;">
               <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="white" stroke="#ddd"/><path d="M11.5 9l5 5-5 5" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <span style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;font-family:inherit;">scroll</span>
@@ -552,6 +575,41 @@
       const img = document.getElementById('brosyreImg');
       img.src = brosyreImgs[brosyreIdx].src;
       img.alt = brosyreImgs[brosyreIdx].alt;
+    }
+
+    // Touch swipe for sliders on mobile
+    function addSwipe(el, navFn) {
+      let startX = null;
+      el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+      el.addEventListener('touchend', e => {
+        if (startX === null) return;
+        const dx = e.changedTouches[0].clientX - startX;
+        if (Math.abs(dx) > 40) navFn(dx < 0 ? 1 : -1);
+        startX = null;
+      }, { passive: true });
+    }
+    const bannerSliderEl = document.getElementById('bannerPosterImg')?.closest('.brosyre-slider');
+    const brosyreSliderEl = document.getElementById('brosyreImg')?.closest('.brosyre-slider');
+    if (bannerSliderEl) addSwipe(bannerSliderEl, bannerPosterNav);
+    if (brosyreSliderEl) addSwipe(brosyreSliderEl, brosyreNav);
+
+    // Mouse drag-to-scroll for LinkedIn strip (makes it work in devtools + desktop)
+    const scrollEl = document.getElementById('linkedinPostsScroll');
+    if (scrollEl) {
+      let isDown = false, startX, scrollLeft;
+      scrollEl.addEventListener('mousedown', e => {
+        isDown = true;
+        scrollEl.style.cursor = 'grabbing';
+        startX = e.pageX - scrollEl.offsetLeft;
+        scrollLeft = scrollEl.scrollLeft;
+      });
+      scrollEl.addEventListener('mouseleave', () => { isDown = false; scrollEl.style.cursor = 'grab'; });
+      scrollEl.addEventListener('mouseup', () => { isDown = false; scrollEl.style.cursor = 'grab'; });
+      scrollEl.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        scrollEl.scrollLeft = scrollLeft - (e.pageX - scrollEl.offsetLeft - startX);
+      });
     }
 
     // Sidebar toggle
