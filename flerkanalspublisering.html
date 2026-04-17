@@ -109,8 +109,8 @@
       .srh-reklame-section .img-zoom img { height: auto !important; object-fit: unset !important; }
       .srh-reklame-section .img-zoom { border: none !important; }
 
-      .typo-block { padding: 24px !important; gap: 32px !important; }
-      .typo-item { flex-direction: column !important; gap: 16px !important; }
+      .typo-row { flex-direction: column !important; padding: 20px 0 !important; }
+      .typo-row > div:last-child { padding-left: 0 !important; margin-top: 16px; }
 
       .srh-desc--solo, .srh-label { padding: 0 16px; }
       .color-swatches { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important; gap: 12px !important; padding: 0 16px; }
@@ -275,59 +275,60 @@
           </div>
         </div>
 
-        <div style="margin-bottom:88px; max-width:100%;">
-          <p class="srh-label">Fontvalg & Typografi</p>
-          
-          <div style="margin-bottom:32px;">
-            <div class="typo-block" style="display:flex; flex-wrap:wrap; gap:48px; align-items:flex-start; background:#fbfbfb; padding:48px; border-radius:12px;">
-              
-              <div class="typo-item" style="display:flex; gap:32px; flex:1; min-width:280px; font-family:'All Round Gothic', sans-serif;">
-                <div>
-                  <div style="font-size:80px; font-weight:600; line-height:1; letter-spacing:-0.02em; color:#111;">Aa</div>
-                  <div style="font-size:14px; font-weight:600; margin-top:16px; line-height:1.4; color:#111;">
-                    ABCDEFGHIJKLMN<br>OPQRSTUVWXYZÆØÅ
-                  </div>
-                  <div style="font-size:14px; font-weight:400; margin-top:12px; line-height:1.4; color:#111;">
-                    abcdefghijklmn<br>opqrstuvwxyzæøå
-                  </div>
+        <div style="margin-bottom:56px; max-width:100%;">
+          <p class="srh-label">Fontvalg</p>
+
+          <div style="max-width:820px; margin:0 auto; margin-bottom:48px;">
+
+            <!-- Row 1: All Round Gothic -->
+            <div class="typo-row" style="display:flex; align-items:center; gap:0; padding:28px 0;">
+              <div style="flex:1; min-width:0; font-family:'All Round Gothic', sans-serif;">
+                <div style="font-size:clamp(64px,7vw,96px); font-weight:600; line-height:1; color:#111; letter-spacing:-0.02em;">Aa</div>
+                <div style="margin-top:14px; font-size:clamp(12px,1.1vw,14px); font-weight:600; line-height:1.5; color:#111; letter-spacing:0.01em;">
+                  ABCDEFGHIJKLMN<br>OPQRSTUVWXYZÆØÅ
                 </div>
-                <div style="display:flex; flex-direction:column; justify-content:center; gap:24px;">
-                  <div>
-                    <div style="font-size:12px; color:#666; margin-bottom:4px; font-family:'Poppins', sans-serif;">Logo / Tittel:</div>
-                    <div style="font-size:20px; font-weight:600; color:#111;">All Round Gothic Demi</div>
-                  </div>
+                <div style="margin-top:6px; font-size:clamp(12px,1.1vw,14px); font-weight:600; line-height:1.5; color:#111;">
+                  abcdefghijklmn<br>opqrstuvwxyzæøå
                 </div>
               </div>
-
-              <div class="typo-item" style="display:flex; gap:32px; flex:1; min-width:280px; font-family:'Neulis Sans', 'Poppins', sans-serif;">
-                <div>
-                  <div style="font-size:80px; font-weight:500; line-height:1; letter-spacing:-0.02em; color:#111;">Aa</div>
-                  <div style="font-size:14px; font-weight:500; margin-top:16px; line-height:1.4; color:#111;">
-                    ABCDEFGHIJKLMN<br>OPQRSTUVWXYZÆØÅ
-                  </div>
-                  <div style="font-size:14px; font-weight:400; margin-top:12px; line-height:1.4; color:#111;">
-                    abcdefghijklmn<br>opqrstuvwxyzæøå
-                  </div>
-                </div>
-                <div style="display:flex; flex-direction:column; justify-content:center; gap:24px;">
-                  <div>
-                    <div style="font-size:12px; color:#666; margin-bottom:4px; font-family:'Poppins', sans-serif;">Overskrifter / Brødtekst:</div>
-                    <div style="font-size:20px; font-weight:500; color:#111; margin-bottom:8px;">Neulis Sans Medium</div>
-                    <div style="font-size:20px; font-weight:400; color:#111;">Neulis Sans Regular</div>
-                  </div>
-                </div>
+              <div style="flex:1; min-width:0; padding-left:clamp(24px,5vw,64px);">
+                <div style="font-size:12px; color:#888; font-family:'Poppins',sans-serif; margin-bottom:6px; letter-spacing:0.02em;">Logo:</div>
+                <div style="font-size:clamp(18px,2vw,28px); font-weight:600; color:#111; font-family:'All Round Gothic',sans-serif; line-height:1.2;">All Round Gothic Demi</div>
               </div>
-
             </div>
+
+            <!-- Row 2: Neulis Sans -->
+            <div class="typo-row" style="display:flex; align-items:center; gap:0; padding:28px 0; border-top:1px solid #ebebeb;">
+              <div style="flex:1; min-width:0; font-family:'Neulis Sans','Poppins',sans-serif;">
+                <div style="font-size:clamp(64px,7vw,96px); font-weight:500; line-height:1; color:#111; letter-spacing:-0.02em;">Aa</div>
+                <div style="margin-top:14px; font-size:clamp(12px,1.1vw,14px); font-weight:500; line-height:1.5; color:#111; letter-spacing:0.01em;">
+                  ABCDEFGHIJKLMN<br>OPQRSTUVWXYZÆØÅ
+                </div>
+                <div style="margin-top:6px; font-size:clamp(12px,1.1vw,14px); font-weight:400; line-height:1.5; color:#111;">
+                  abcdefghijklmn<br>opqrstuvwxyzæøå
+                </div>
+              </div>
+              <div style="flex:1; min-width:0; padding-left:clamp(24px,5vw,64px); display:flex; flex-direction:column; gap:14px;">
+                <div>
+                  <div style="font-size:12px; color:#888; font-family:'Poppins',sans-serif; margin-bottom:6px; letter-spacing:0.02em;">Overskrifter / Brødtekst:</div>
+                  <div style="font-size:clamp(18px,2vw,28px); font-weight:500; color:#111; font-family:'Neulis Sans','Poppins',sans-serif; line-height:1.2;">Neulis Sans Medium</div>
+                </div>
+                <div>
+                  <div style="font-size:12px; color:#888; font-family:'Poppins',sans-serif; margin-bottom:6px; letter-spacing:0.02em;">Brødtekst:</div>
+                  <div style="font-size:clamp(18px,2vw,28px); font-weight:400; color:#111; font-family:'Neulis Sans','Poppins',sans-serif; line-height:1.2;">Neulis Sans Regular</div>
+                </div>
+              </div>
+            </div>
+
           </div>
 
-          <div style="display:flex; flex-direction:column; gap: 24px; max-width: 100%; margin-bottom: 64px;">
-            <p class="srh-desc srh-desc--solo" style="max-width: 100%; margin:0;">Logoen benytter All Round Gothic – Demi, da denne ligger nærmest typografien brukt på den originale nettsiden og tilhørende flater. For resten av den visuelle identiteten er Neulis Sans valgt i vektene Medium og Regular, for å skape una mer lesbar og moderne typografisk helhet.</p>
-            <p class="srh-desc srh-desc--solo" style="max-width: 100%; margin:0;">I førsteutkastet, se <a href="./assets/srh_pdf.pdf" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px;color:inherit;font-weight:500;">srh_pdf.pdf</a> ble All Round Gothic brukt gjennomgående i hele designet. Dette viste seg imidlertid å fungere mindre godt, da fonten blir for dominerende i lengre tekstmengder og svekker lesbarheten. I tillegg opplevdes den beige fargepaletten som lite treffsikker, da den ikke i tilstrekkelig grad støttet opp under det visuelle uttrykket og identiteten som ønskes formidlet.</p>
+          <div style="display:flex; flex-direction:column; gap:16px; max-width:680px; margin-bottom:72px;">
+            <p class="srh-desc" style="margin:0;">Logoen benytter All Round Gothic – Demi, da denne ligger nærmest typografien brukt på den originale nettsiden og tilhørende flater. For resten av den visuelle identiteten er Neulis Sans valgt i vektene Medium og Regular, for å skape una mer lesbar og moderne typografisk helhet.</p>
+            <p class="srh-desc" style="margin:0;">I førsteutkastet, se <a href="./assets/srh_pdf.pdf" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px;color:inherit;font-weight:500;">srh_pdf.pdf</a> ble All Round Gothic brukt gjennomgående i hele designet. Dette viste seg imidlertid å fungere mindre godt, da fonten blir for dominerende i lengre tekstmengder og svekker lesbarheten. I tillegg opplevdes den beige fargepaletten som lite treffsikker, da den ikke i tilstrekkelig grad støttet opp under det visuelle uttrykket og identiteten som ønskes formidlet.</p>
           </div>
 
-          <p class="srh-label">Fargepalett</p>
-          <div class="color-swatches" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap:16px; margin-top:16px;">
+          <p class="srh-label" style="text-align:center; margin-bottom:28px;">Fargepalett</p>
+          <div class="color-swatches" style="display:flex; justify-content:center; flex-wrap:nowrap; gap:24px 32px; margin-top:0;">
             <div style="display:flex; flex-direction:column; gap:12px;">
               <div style="width:90px; height:90px; border-radius:50%; background-color:#971b14; box-shadow:0 2px 6px rgba(0,0,0,0.08);"></div>
               <div style="font-family:'Poppins', sans-serif; font-size:0.75rem; color:#444; line-height:1.6;">
@@ -373,6 +374,24 @@
                 CMYK: 0, 0, 0, 0
               </div>
             </div>
+          </div>
+        </div>
+
+        <div class="related">
+          <h2 class="related__heading">Mer å se på</h2>
+          <div class="related__grid">
+            <a class="related__card" href="./stoppestedet.html">
+              <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="lazy" decoding="async">
+              <p class="related__title">Stoppestedet</p>
+            </a>
+            <a class="related__card" href="./ansatts-portal.html">
+              <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
+              <p class="related__title">Tjønnås og Norvald</p>
+            </a>
+            <a class="related__card" href="./reina-fruktgard.html">
+              <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
+              <p class="related__title">Reina Fruktgård</p>
+            </a>
           </div>
         </div>
 

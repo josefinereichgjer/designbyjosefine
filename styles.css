@@ -14,12 +14,12 @@
 }
 
 :root{
-  --bg:#ffffff;
-  --text:#111111;
-  --muted:#6f6f6f;
-  --hair:#e9e9e9;
-  --chip:#f6f6f6;
-  --shadow: 0 12px 40px rgba(0,0,0,.08);
+  --bg:#191919;
+  --text:#e8e8e8;
+  --muted:#888888;
+  --hair:#2d2d2d;
+  --chip:#242424;
+  --shadow: 0 12px 40px rgba(0,0,0,.35);
   --radius: 16px;
   --sidebarW: 180px;
   --gap: 10px;
@@ -252,27 +252,21 @@ a:hover{opacity:.75}
   margin-top:32px;
   display:grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap:var(--gap);
+  gap:32px;
 }
 .card{
   display:block;
   overflow:hidden;
-  background:#fff;
+  background:var(--bg);
   box-shadow:none;
   transform:translateZ(0);
   border: none;
   transition:transform 0.3s ease, box-shadow 0.3s ease;
 }
-@media (hover: hover) {
-.card:hover{
-  transform:translateY(-7px);
-  box-shadow:0 20px 48px rgba(0,0,0,0.18);
-}
-}
 .card__img-wrap{
   overflow:hidden;
   aspect-ratio:4/3;
-  background:#f3f3f3;
+  background:#2a2a2a;
   position:relative;
 }
 .card__img{
@@ -280,29 +274,6 @@ a:hover{opacity:.75}
   height:100%;
   object-fit:cover;
   display:block;
-  transition:transform 0.45s ease;
-}
-@media (hover: hover) {
-.card:hover .card__img { transform:scale(1.1); }
-}
-@keyframes card-purple-in {
-  0%   { background: rgba(180,141,232,0); }
-  55%  { background: rgba(110,50,190,0.48); }
-  100% { background: rgba(180,141,232,0.35); }
-}
-.card__img-wrap::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(180,141,232,0);
-  transition: background 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-@media (hover: hover) {
-.card:hover .card__img-wrap::after {
-  animation: card-purple-in 1.1s ease-out forwards;
-}
 }
 .card__overlay{
   position:absolute;
@@ -310,7 +281,7 @@ a:hover{opacity:.75}
   background:rgba(0,0,0,0.82);
   padding:18px 18px;
   transform:translateY(100%);
-  transition:transform 0.36s cubic-bezier(0.25,0.46,0.45,0.94);
+  transition:transform 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
   color:#fff;
   text-align:left;
   z-index: 2;
@@ -322,15 +293,12 @@ a:hover{opacity:.75}
   letter-spacing:0.03em;
   line-height:1.4;
   opacity:0;
-  transform:translateY(10px);
-  transition:opacity 0.26s ease 0.14s, transform 0.26s ease 0.14s;
+  transform:translateY(8px);
+  transition:opacity 0.22s ease 0.1s, transform 0.22s ease 0.1s;
 }
 @media (hover: hover) {
 .card:hover .card__overlay { transform:translateY(0); }
-.card:hover .card__overlay span {
-  opacity:1;
-  transform:translateY(0);
-}
+.card:hover .card__overlay span { opacity:1; transform:translateY(0); }
 }
 .card__caption{
   display:flex;
@@ -2272,7 +2240,7 @@ a:hover{opacity:.75}
   .content { padding-top: 72px; }
   .card__caption {
     display: flex;
-    background: #fff;
+    background: var(--bg);
     padding: 8px 2px;
     border-top: none;
   }

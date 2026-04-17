@@ -100,48 +100,11 @@
       el.addEventListener('mouseleave', function () { onLeave(i); });
     });
 
-    /* Fade in UI text after cards begin settling */
+    /* Set UI text visible immediately */
     var brand   = document.querySelector('.landing__brand');
     var topleft = document.querySelector('.landing__topleft');
-    if (brand) {
-      gsap.set(brand, { opacity: 1 });
-    }
-    if (topleft) {
-      gsap.set(topleft, { opacity: 1 });
-
-      /* ── Char-split "PORTFOLIO" ── */
-      var portLink = topleft.querySelector('.landing__portfolio-link');
-      if (portLink) {
-        var textNode = null;
-        for (var ni = 0; ni < portLink.childNodes.length; ni++) {
-          if (portLink.childNodes[ni].nodeType === 3 && portLink.childNodes[ni].nodeValue.trim()) {
-            textNode = portLink.childNodes[ni]; break;
-          }
-        }
-        if (textNode) {
-          var rawText = textNode.nodeValue;
-          var frag = document.createDocumentFragment();
-          var charEls = [];
-          for (var ci = 0; ci < rawText.length; ci++) {
-            var clip = document.createElement('span');
-            clip.style.cssText = 'display:inline-block;overflow:hidden;vertical-align:bottom;';
-            var ch = document.createElement('span');
-            ch.textContent = rawText[ci] === ' ' ? '\u00A0' : rawText[ci];
-            ch.style.cssText = 'display:inline-block;';
-            clip.appendChild(ch);
-            frag.appendChild(clip);
-            charEls.push(ch);
-          }
-          portLink.insertBefore(frag, textNode);
-          portLink.removeChild(textNode);
-          gsap.fromTo(charEls,
-            { y: '110%', opacity: 0 },
-            { y: '0%', opacity: 1, duration: 0.45, ease: 'expo.out', stagger: 0.022, delay: 0.1 }
-          );
-        }
-      }
-
-    }
+    if (brand)   gsap.set(brand,   { opacity: 1 });
+    if (topleft) gsap.set(topleft, { opacity: 1 });
 
     var BIO_SEGMENTS_FULL = [
       { text: 'Hei! Josefine her; en ' },
@@ -218,50 +181,9 @@
 
     var bioFull  = document.querySelector('.landing__bio--full');
     var bioShort = document.querySelector('.landing__bio--short');
-    var bioResultFull  = !showShort ? splitCharReveal(bioFull,  BIO_SEGMENTS_FULL,  0.35, 0.013, 0.55, '#b48de8', 'rgba(255,255,255,0.75)') : null;
-    var bioResultShort =  showShort ? splitCharReveal(bioShort, BIO_SEGMENTS_SHORT, 0.35, 0.013, 0.55, '#b48de8', 'rgba(255,255,255,0.75)') : null;
-
-    /* after full text settles: color breath + float on "grafisk designer" */
-    /* bio has ~88 chars × 0.013s stagger + 0.35s delay + 0.55s dur ≈ 2.0s total */
-    var bioSettleDelay = 2.2;
-    [bioResultFull, bioResultShort].forEach(function (result) {
-      if (!result) return;
-      if (result.chars.length) {
-        gsap.to(result.chars, {
-          color: '#c8a4f5',
-          duration: 3.5,
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1,
-          delay: bioSettleDelay,
-        });
-      }
-      if (result.wclips.length) {
-        gsap.to(result.wclips, {
-          y: -4,
-          duration: 6.5,
-          ease: 'sine.inOut',
-          yoyo: true,
-          repeat: -1,
-          delay: bioSettleDelay,
-        });
-      }
-    });
-
-
-    /* ── Roll-up: CTA label ── */
-    var ctaFull  = document.querySelector('.landing__cta-label--full');
-    var ctaShort = document.querySelector('.landing__cta-label--short');
-    var ctaFullText  = ctaFull  ? ctaFull.textContent  : '';
-    var ctaShortText = ctaShort ? ctaShort.textContent : '';
-    if (!showShort) splitCharReveal(ctaFull,  ctaFullText,  0.25, 0.01, 0.3);
-    if (showShort)  splitCharReveal(ctaShort, ctaShortText, 0.25, 0.01, 0.3);
-
-    var ctaArrow = document.querySelector('.landing__cta-arrow-track');
-    if (ctaArrow) {
-      gsap.set(ctaArrow, { opacity: 0, x: -window.innerWidth, color: '#b48de8' });
-      gsap.to(ctaArrow, { opacity: 1, x: 0, duration: 0.6, ease: 'expo.out', delay: 0.7 });
-    }
+    var BIO_TEXT = BIO_SEGMENTS_FULL.map(function (s) { return s.text; }).join('');
+    if (!showShort && bioFull)  bioFull.textContent  = BIO_TEXT;
+    if ( showShort && bioShort) bioShort.textContent = BIO_TEXT;
 
     /* Arrow shoots off on CTA click, then navigate */
     var cta = document.querySelector('.landing__cta');

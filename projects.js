@@ -275,7 +275,7 @@ window.PROJECTS = [
     subtitle: "Redesign",
     year: "2024",
     tags: ["Redesign"],
-    cover: "./assets/srhbrosk.webp",
+    cover: "./assets/poster-srh.webp",
     coverCaption: "Brosjyre om universitetets bærekraftsarbeid",
     noSlideshow: true,
     gallery: [
