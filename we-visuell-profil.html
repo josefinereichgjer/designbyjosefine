@@ -132,7 +132,7 @@
     @media (max-width: 480px) { .we-hero-visual-wrap { height: 220px; } }
 
     /* Body */
-    .we-body { padding: 0 40px 80px; max-width: 1100px; overflow-x: visible; margin: 0 auto; }
+    .we-body { padding: 0 0 80px clamp(16px, 2vw, 28px); max-width: 1100px; overflow-x: visible; margin: 0; }
 
     /* Snapshot (TL;DR) - UPDATED TO FEEL MORE PORTFOLIO LIKE */
     .we-snapshot {
@@ -201,7 +201,7 @@
     }
 
     /* Sections */
-    .we-section { padding: 64px 0; border-top: 1px solid #e8e4e2; }
+    .we-section { padding: 96px 0; border-top: 1px solid #e8e4e2; }
     .we-body .we-section:first-of-type { border-top: none; padding-top: 24px; }
     #sec-refleksjon, #sec-krediter { border-top: none; }
     .we-section__num { font-family: 'Poppins', sans-serif; font-size: var(--type-caption); letter-spacing: .1em; text-transform: uppercase; color: var(--we-periwinkle-text); margin-bottom: 10px; }
@@ -518,7 +518,7 @@
     .we-print-row:active { cursor: grabbing; }
     
     .we-print-row img { flex: 0 0 100%; max-width: 900px; height: auto; object-fit: contain; scroll-snap-align: start; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .we-idkort-row img { height: 504px; width: auto; flex: 0 0 auto; max-width: none; border-radius: 8px; }
+    .we-idkort-row img { height: 680px; width: auto; flex: 0 0 auto; max-width: none; border-radius: 8px; }
     .we-card-row img { height: 560px; width: auto; flex: 0 0 auto; max-width: none; }
     .we-print-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; margin-bottom: 64px; }
     .we-print-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
@@ -569,7 +569,7 @@
       /* Scale down fixed-height scroll rows on tablet */
       .we-design-showcase__stories img { height: 380px; }
       .we-card-row img { height: 380px; }
-      .we-idkort-row img { height: 340px; }
+      .we-idkort-row img { height: 500px; }
 
       /* Palette Tablet */
       .we-palette-row { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
@@ -1028,11 +1028,21 @@
             </div>
 
             <h4 style="font-family: var(--we-font); font-size: 16px; margin: 64px 0 16px; color: #111;">Bilder</h4>
-            <div class="strip-ss">
-              <div class="strip-ss__nav">
+            <div class="strip-ss" style="position:relative;">
+              <div class="strip-ss__nav" style="display:none;">
                 <button class="strip-ss__btn" id="weStripPrev" aria-label="Forrige bilde">←</button>
                 <button class="strip-ss__btn" id="weStripNext" aria-label="Neste bilde">→</button>
               </div>
+              <button aria-label="Forrige bilde" onclick="document.getElementById('weStripPrev').click()"
+                style="position:absolute;left:14px;top:50%;transform:translateY(-50%);z-index:10;
+                       width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.88);
+                       border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;
+                       justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.15);">‹</button>
+              <button aria-label="Neste bilde" onclick="document.getElementById('weStripNext').click()"
+                style="position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:10;
+                       width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.88);
+                       border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;
+                       justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.15);">›</button>
               <div class="strip-ss__viewport">
                 <div class="strip-ss__track" id="weStripTrack">
                   <figure class="strip-ss__slide"><img loading="lazy" decoding="async" draggable="false" src="./assets/webilde1.webp" alt="WE — bilde 1"></figure>
