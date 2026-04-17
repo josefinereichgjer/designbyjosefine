@@ -44,32 +44,49 @@
 
   <main id="content" class="content">
     <article class="project" id="project">
-        <p style="font-family:inherit;font-size:1.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#c44f24;margin:0 0 12px 0;">STILL IN PROGRESS!! im redesigning my redesign :D</p>
-        <div style="display:flex;gap:var(--gap,32px);margin-bottom:var(--gap,32px);align-items:flex-start;flex-wrap:wrap;">
-          <img src="./assets/poster-srh.webp" alt="Poster SRH" style="display:block;width:75%;height:auto;min-width:0;">
-          <img src="./assets/banner-srh.webp" alt="Banner SRH" style="display:block;width:calc(50% - var(--gap,32px)/2);height:auto;min-width:0;">
-          <img src="./assets/brosyre-inn-srh.webp" alt="Brosjyre – innside" style="display:block;width:calc(50% - var(--gap,32px)/2);height:auto;min-width:0;">
-          <img src="./assets/brosyre-ute-srh.webp" alt="Brosjyre – utside" style="display:block;width:calc(50% - var(--gap,32px)/2);height:auto;min-width:0;">
-        </div>
-        <div style="display:flex;gap:var(--gap,32px);margin-bottom:var(--gap,32px);align-items:flex-start;flex-wrap:wrap;">
-          <img src="./assets/linkedin-posts.webp" alt="LinkedIn-karusell – oversikt" style="display:block;width:100%;height:auto;">
-          <img src="./assets/linkedin-post@3x.webp" alt="LinkedIn-karusell – enkeltpost" style="display:block;width:35%;height:auto;min-width:0;">
-        </div>
-        <div class="project-layout">
+        <p style="font-family:inherit;font-size:1.6rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#c44f24;margin:0 0 24px 0;">STILL IN PROGRESS!! im redesigning my redesign :D</p>
+
+        <!-- Project header — title, description, buttons -->
+        <div class="project-layout" style="margin-bottom:56px;">
           <div class="project-layout__media">
             <div class="project-header">
               <h1 class="project-meta__title">Flerkanalspublisering</h1>
               <p class="project-intro">Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.</p>
-              
               <div class="header-btns">
                 <a class="btn-pdf btn-pdf--black" href="./srh-open-day-3/index.html" target="_blank" rel="noopener">↗&#xFE0E; Åpne nettsiden</a>
                 <button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
               </div>
             </div>
-            
-            
           </div>
-      
+        </div>
+
+        <!-- Poster — full width -->
+        <img src="./assets/poster-srh.webp" alt="Poster SRH" style="display:block;width:100%;height:auto;margin-bottom:var(--gap,32px);">
+
+        <!-- Video — full width -->
+        <video src="./assets/srh-video.mp4" autoplay muted loop playsinline controls style="display:block;width:100%;height:auto;margin-bottom:var(--gap,32px);"></video>
+
+        <!-- Banner (left) + brochures stacked (right) -->
+        <div style="display:flex;gap:var(--gap,32px);margin-bottom:var(--gap,32px);align-items:flex-start;">
+          <img src="./assets/banner-srh.webp" alt="Banner SRH" style="display:block;width:calc(50% - var(--gap,32px)/2);height:auto;min-width:0;">
+          <div style="display:flex;flex-direction:column;gap:var(--gap,32px);width:calc(50% - var(--gap,32px)/2);min-width:0;">
+            <img src="./assets/brosyre-ute-srh.webp" alt="Brosjyre – utside" style="display:block;width:100%;height:auto;">
+            <img src="./assets/brosyre-inn-srh.webp" alt="Brosjyre – innside" style="display:block;width:100%;height:auto;">
+          </div>
+        </div>
+
+        <!-- LinkedIn carousel — full width -->
+        <img src="./assets/linkedin-posts.webp" alt="LinkedIn-karusell – oversikt" style="display:block;width:100%;height:auto;margin-bottom:var(--gap,32px);">
+
+        <!-- LinkedIn single post (left) + reklamebanner (right) -->
+        <div style="display:flex;gap:var(--gap,32px);margin-bottom:var(--gap,32px);align-items:flex-start;">
+          <img src="./assets/linkedin-post@3x.webp" alt="LinkedIn-karusell – enkeltpost" style="display:block;width:calc(35% - var(--gap,32px)/2);height:auto;min-width:0;">
+          <img src="./assets/reklamebanner.webp" alt="Reklamebanner – Finn.no" style="display:block;width:calc(65% - var(--gap,32px)/2);height:auto;min-width:0;">
+        </div>
+
+        <!-- Facebook cover -->
+        <img src="./assets/facebookcover.webp" alt="Facebook cover" style="display:block;width:50%;height:auto;">
+
     </article>
   </main>
 
