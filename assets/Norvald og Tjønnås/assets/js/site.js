@@ -54,13 +54,13 @@
         <input placeholder="Søk etter modul, vakt, melding…">
       </div>
       <button class="icon-btn" title="Meldinger" onclick="location.href='chat.html'">${ICONS.chat}<span class="dot">2</span></button>
-      <button class="icon-btn" title="Varsler">${ICONS.bell}<span class="dot">3</span></button>
+      <button class="icon-btn" title="Varsler" onclick="window._showToast && window._showToast('3 nye varsler: ny vakt, HMS-påminnelse og melding fra Linn.')">${ICONS.bell}<span class="dot">3</span></button>
     </header>`;
   }
 
   function mobileNavHTML(active){
     const items = [
-      ['hjem.html','home'],['vaktliste.html','cal'],['min-trening.html','book'],
+      ['hjem.html','home'],['vaktliste.html','cal'],['mal.html','target'],
       ['chat.html','chat'],['profil.html','user']
     ];
     return `<nav class="mobile-nav">${items.map(([h,i])=>
@@ -82,4 +82,15 @@
 
   // small build-icon helper for inline use
   window.icon = function(name){ return ICONS[name] || ''; };
+
+  // shared toast — pages may override with their own showToast
+  window._showToast = function(msg){
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 2800);
+  };
 })();

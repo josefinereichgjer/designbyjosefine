@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <title>Vaktliste — Tjønnås & Norvald</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -55,7 +57,7 @@
           <span class="role" style="background:var(--red);color:white">Ledig</span>
         </div>
 
-        <button class="btn" style="margin-top:18px">Be om bytte</button>
+        <button class="btn" style="margin-top:18px" onclick="showToast('Bytteforespørsel sendt til din leder.')">Be om bytte</button>
       </article>
     </div>
   </main>
@@ -63,6 +65,16 @@
 <script src="assets/js/site.js"></script>
 <script>
 mountShell('vaktliste.html'); mountTopbar();
+
+function showToast(msg) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2800);
+}
 
 const SHIFTS = {6:'today',9:'on',11:'on',12:'on',15:'open',20:'on',23:'on',26:'on',29:'on'};
 let cur = new Date(2026,9,1);

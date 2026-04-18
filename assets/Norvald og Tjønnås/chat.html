@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <title>Meldinger — Tjønnås & Norvald</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
 <div class="app">
   <div id="shell"></div>
-  <main class="main">
+  <main class="main chat-page">
     <div id="topbar"></div>
-    <h1 class="page-title" style="font-size:44px">Meldinger</h1>
-    <p class="page-sub">Snakk med vakten din, baksteteamet og lederen.</p>
+    <h1 class="page-title" style="font-size:clamp(28px,4vw,44px)">Meldinger</h1>
+    <p class="page-sub" style="margin-bottom:16px">Snakk med vakten din, baksteteamet og lederen.</p>
 
     <section class="chat">
       <aside class="chat-list">
@@ -192,6 +194,7 @@ function selectThread(id){
   renderThreads(document.getElementById('threadSearch').value);
   renderPane();
   document.querySelector('.chat').classList.add('show-pane');
+  document.body.classList.add('chat-pane-open');
   document.getElementById('input').focus();
 }
 

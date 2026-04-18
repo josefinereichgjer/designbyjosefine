@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <title>Profil — Tjønnås & Norvald</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
@@ -13,14 +15,14 @@
   <main class="main">
     <div id="topbar"></div>
 
-    <section style="display:flex;align-items:center;gap:24px;margin-bottom:28px;flex-wrap:wrap">
-      <div class="avatar" style="width:96px;height:96px;font-size:32px;flex:0 0 96px">EM</div>
+    <div class="profil-header">
+      <div class="avatar" style="width:80px;height:80px;font-size:28px;flex:0 0 80px">EM</div>
       <div>
-        <h1 class="page-title" style="font-size:48px;margin:0">Emma Lind</h1>
+        <h1 class="page-title" style="margin:0">Emma Lind</h1>
         <p class="page-sub" style="margin:6px 0 0">Ansatt siden mars 2024 · Kasse, kaffe, bakst</p>
       </div>
-      <button class="btn gold" style="margin-left:auto;width:auto">Rediger profil</button>
-    </section>
+      <button class="btn gold" onclick="showToast('Profilredigering er ikke tilgjengelig i demoversjon.')">Rediger profil</button>
+    </div>
 
     <div class="row-3">
       <article class="card">
@@ -65,6 +67,18 @@
   </main>
 </div>
 <script src="assets/js/site.js"></script>
-<script>mountShell('profil.html'); mountTopbar();</script>
+<script>
+mountShell('profil.html'); mountTopbar();
+
+function showToast(msg) {
+  const existing = document.querySelector('.toast');
+  if (existing) existing.remove();
+  const t = document.createElement('div');
+  t.className = 'toast';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(() => t.remove(), 2800);
+}
+</script>
 </body>
 </html>

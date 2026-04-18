@@ -2,6 +2,9 @@
    Tjønnås & Norvald — Workplace training & shift app
    ============================================================ */
 
+/* Normalize: ensure [hidden] always wins over display declarations */
+[hidden] { display: none !important; }
+
 :root {
   --cream:        #FCFAEB;
   --cream-2:      #F4F0DC;
@@ -31,7 +34,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
 body {
   font-family: var(--ui);
   background: var(--cream);
@@ -143,6 +146,10 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   padding: 36px 48px 64px;
   max-width: 1240px;
   width: 100%;
+  min-width: 0;
+}
+@media (max-width: 960px) {
+  .main { padding-left: 28px; padding-right: 28px; }
 }
 @media (max-width: 720px) {
   .main { padding: 24px 18px 90px; }
@@ -156,6 +163,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 }
 .search {
   flex: 1;
+  min-width: 0;
   max-width: 420px;
   display: flex;
   align-items: center;
@@ -327,6 +335,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   background: var(--cream-2);
   padding: 6px 12px;
   border-radius: var(--r-pill);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Goals progress */
@@ -810,6 +820,9 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   z-index: 1000;
   animation: toastIn .25s ease;
 }
+@media (max-width: 880px) {
+  .toast { bottom: 80px; }
+}
 @keyframes toastIn { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
 @media (max-width: 720px) {
   .form-grid { grid-template-columns: 1fr; }
@@ -852,8 +865,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   border: 1px solid var(--line-2);
   border-radius: var(--r-lg);
   overflow: hidden;
-  height: calc(100vh - 200px);
-  min-height: 560px;
+  height: calc(100dvh - 290px);
+  min-height: 520px;
 }
 .chat-list {
   border-right: 1px solid var(--line-2);
@@ -1182,10 +1195,10 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 .osk-key.space { flex: 4; font-size: 12px; color: var(--muted); }
 .osk-key.primary { background: var(--red); color: white; font-weight: 700; }
 
-body.osk-open .chat { height: calc(100vh - 200px); }
+body.osk-open .chat { height: calc(100dvh - 290px); }
 
 @media (max-width: 880px) {
-  .chat { grid-template-columns: 1fr; height: calc(100vh - 180px); }
+  .chat { grid-template-columns: 1fr; height: calc(100dvh - 200px); min-height: 300px; }
   .chat-list { display: flex; }
   .chat-pane { display: none; }
   .chat.show-pane .chat-list { display: none; }
@@ -1193,6 +1206,11 @@ body.osk-open .chat { height: calc(100vh - 200px); }
   .back-btn { display: flex; }
   .msg { max-width: 82%; }
   .emoji-panel { grid-template-columns: repeat(8, 1fr); width: 260px; }
+  .chat-page .page-title,
+  .chat-page .page-sub { display: none; }
+  #kbToggle, #osk { display: none !important; }
+  body.chat-pane-open #topbar { display: none; }
+  body.chat-pane-open .chat { height: calc(100dvh - 120px); }
 }
 
 /* ---------- Vaktliste ---------- */
@@ -1276,8 +1294,11 @@ body.osk-open .chat { height: calc(100vh - 200px); }
 
 /* utilities */
 .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.row-2 > *, .row-3 > * { min-width: 0; }
 .row-3 { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 18px; }
 @media (max-width: 880px) { .row-2, .row-3 { grid-template-columns: 1fr; } }
+/* When sidebar is present (>960px) the main column is narrower — equalise the 3 cols */
+@media (min-width: 961px) and (max-width: 1220px) { .row-3 { grid-template-columns: repeat(3, 1fr); } }
 .spacer { height: 24px; }
 .muted { color: var(--muted); font-size: 13px; }
 
@@ -1298,3 +1319,43 @@ body.osk-open .chat { height: calc(100vh - 200px); }
   .modules { grid-template-columns: 1fr !important; }
   .main { padding: 16px 14px 80px; }
 }
+
+/* Empty state for filtered module lists */
+.modules-empty {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--muted);
+  font-size: 15px;
+}
+.modules-empty svg { display: block; margin: 0 auto 14px; opacity: .4; }
+
+/* Profil header on small screens */
+.profil-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+.profil-header .btn { margin-left: auto; width: auto; }
+@media (max-width: 500px) {
+  .profil-header { gap: 16px; }
+  .profil-header .btn { margin-left: 0; }
+}
+
+/* Module hero: ensure art has minimum usable height on small screens */
+@media (max-width: 600px) {
+  .module-art { min-height: 220px; }
+  .thumbs { height: 56px; }
+}
+
+/* Goal row: prevent number from wrapping */
+.goal-row span { white-space: nowrap; }
+
+/* Pill filter active removes dark variant */
+.pills .pill.active { background: var(--red); color: white; border-color: var(--red); }
+
+/* Toast for non-destructive feedback */
+.toast { z-index: 200; }
