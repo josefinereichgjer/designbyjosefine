@@ -1353,23 +1353,30 @@
     (function() {
       const track = document.getElementById("weStripTrack");
       if (!track) return;
+      const viewport = track.parentElement;
       const slides = [...track.querySelectorAll(".strip-ss__slide")];
       const N = slides.length;
       let current = 0;
-      function scrollTo(n) {
+      function goTo(n) {
         current = (n + N) % N;
-        track.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
+        viewport.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
       }
-      document.getElementById("weStripNext")?.addEventListener("click", () => scrollTo(current + 1));
-      document.getElementById("weStripPrev")?.addEventListener("click", () => scrollTo(current - 1));
+      document.getElementById("weStripNext")?.addEventListener("click", () => goTo(current + 1));
+      document.getElementById("weStripPrev")?.addEventListener("click", () => goTo(current - 1));
       let dragging = false, startX = 0, scrollLeft = 0;
-      track.addEventListener("mousedown", e => { dragging = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; track.style.cursor = "grabbing"; });
-      track.addEventListener("mouseleave", () => { dragging = false; track.style.cursor = ""; });
-      track.addEventListener("mouseup", () => { dragging = false; track.style.cursor = ""; });
-      track.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX); });
-      track.addEventListener("scroll", () => {
+      viewport.addEventListener("mousedown", e => { dragging = true; startX = e.pageX - viewport.offsetLeft; scrollLeft = viewport.scrollLeft; viewport.style.cursor = "grabbing"; });
+      viewport.addEventListener("mouseleave", () => { dragging = false; viewport.style.cursor = ""; });
+      viewport.addEventListener("mouseup", () => { dragging = false; viewport.style.cursor = ""; });
+      viewport.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); viewport.scrollLeft = scrollLeft - (e.pageX - viewport.offsetLeft - startX); });
+      viewport.addEventListener("scroll", () => {
         const w = slides[0]?.offsetWidth || 1;
-        current = Math.round(track.scrollLeft / w);
+        current = Math.round(viewport.scrollLeft / w);
+      }, { passive: true });
+      let tsx = 0;
+      viewport.addEventListener("touchstart", e => { tsx = e.touches[0].clientX; }, { passive: true });
+      viewport.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - tsx;
+        if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
       }, { passive: true });
     })();
 

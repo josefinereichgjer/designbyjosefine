@@ -98,8 +98,12 @@
       /* LinkedIn carousel: fix scroll */
       .srh-linkedin-section { flex-direction: column !important; padding: 0 !important; }
       .srh-linkedin-section > img { width: 60% !important; max-width: 240px; margin: 0 auto 24px auto !important; }
-      #linkedinPostsScroll { margin-top: 0 !important; touch-action: pan-x; }
+      #linkedinPostsScroll { margin-top: 0 !important; touch-action: pan-x; overflow-x: scroll !important; }
       #linkedinPostsScroll img { min-width: 700px; }
+      .color-swatches { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 16px 20px !important; }
+      .color-swatches > div > div:first-child { width: 60px !important; height: 60px !important; }
+      .color-swatches > div > div:last-child { font-size: 0.65rem !important; }
+      .color-swatches > div > div:last-child strong { font-size: 0.75rem !important; }
       .linkedin-scroll-hint { top: 0 !important; height: 100% !important; z-index: 2; }
 
       /* Facebook / Reklame: remove zoom overlay, show full image */
@@ -629,6 +633,15 @@
         e.preventDefault();
         scrollEl.scrollLeft = scrollLeft - (e.pageX - scrollEl.offsetLeft - startX);
       });
+      let touchStartX = 0, touchScrollLeft = 0;
+      scrollEl.addEventListener('touchstart', e => {
+        touchStartX = e.touches[0].clientX;
+        touchScrollLeft = scrollEl.scrollLeft;
+      }, { passive: true });
+      scrollEl.addEventListener('touchmove', e => {
+        const dx = touchStartX - e.touches[0].clientX;
+        scrollEl.scrollLeft = touchScrollLeft + dx;
+      }, { passive: true });
     }
 
     // Sidebar toggle
