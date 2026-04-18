@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Logg inn — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<main class="login">
+  <div class="login-art">
+    <div class="quote">
+      Et sted for de som dyrker, brygger og bærer dagen sammen.
+      <small>Norvald gård · Etablert 1947</small>
+    </div>
+  </div>
+  <section class="login-form">
+    <div class="inner">
+      <div class="brand">Tjønnås<br>& Norvald</div>
+      <p>Logg inn for å se vaktene dine og fortsette treningen.</p>
+
+      <form onsubmit="event.preventDefault(); window.location='hjem.html';">
+        <label class="field">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          <input type="text" placeholder="Brukernavn..." value="emma.lind" required>
+        </label>
+        <label class="field">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+          <input type="password" placeholder="Passord..." value="••••••••" required>
+        </label>
+
+        <div class="row">
+          <label class="checkbox"><input type="checkbox" checked> Husk meg</label>
+          <a href="#" class="link">Glemt passord?</a>
+        </div>
+
+        <button class="btn" type="submit">Logg inn</button>
+        <div class="divider">eller</div>
+        <a href="#" class="btn ghost" style="display:flex">Opprett ny bruker</a>
+
+        <p class="signup" style="margin-top:24px">
+          Ny på gården? <a href="#">Be om tilgang</a>
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>

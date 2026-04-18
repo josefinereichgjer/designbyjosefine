@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Meldinger — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+    <h1 class="page-title" style="font-size:44px">Meldinger</h1>
+    <p class="page-sub">Snakk med vakten din, baksteteamet og lederen.</p>
+
+    <section class="chat">
+      <aside class="chat-list">
+        <div class="head">
+          <span>Samtaler</span>
+          <button class="icon-btn" title="Ny samtale" style="background:var(--cream);border:0;color:var(--burgundy);width:30px;height:30px;border-radius:50%">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
+        </div>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+          <input id="threadSearch" placeholder="Søk i samtaler…">
+        </div>
+        <div id="threads"></div>
+      </aside>
+
+      <section class="chat-pane">
+        <header class="chat-head">
+          <button class="back-btn" id="backBtn" title="Tilbake">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <div class="av" id="paneAv">NK</div>
+          <div class="peer">
+            <b id="paneName">Nora Kjær</b>
+            <span id="paneStatus"><i class="dot-live"></i> Aktiv nå · Bakst</span>
+          </div>
+          <div class="pane-actions">
+            <button class="icon-btn" title="Ring"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></button>
+            <button class="icon-btn" title="Info"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg></button>
+          </div>
+        </header>
+
+        <div class="chat-msgs" id="msgs"></div>
+
+        <div class="typing-row" id="typing" hidden>
+          <span class="av-sm" id="typingAv">NK</span>
+          <span class="typing-bubble"><i></i><i></i><i></i></span>
+        </div>
+
+        <div class="quick-replies" id="quickReplies"></div>
+
+        <form class="chat-input" id="chatForm" autocomplete="off">
+          <button type="button" class="icon-btn" id="emojiBtn" title="Emoji">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
+          </button>
+          <button type="button" class="icon-btn" title="Vedlegg">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11l-9 9a5 5 0 01-7-7l10-10a3 3 0 014 4L9 17a1 1 0 01-1.4-1.4L17 6"/></svg>
+          </button>
+          <textarea id="input" rows="1" placeholder="Skriv en melding til Nora…"></textarea>
+          <button type="button" class="icon-btn" id="kbToggle" title="Vis/skjul tastatur">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/></svg>
+          </button>
+          <button class="send" type="submit" id="sendBtn" title="Send" disabled>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+
+        <div class="osk" id="osk" hidden>
+          <div class="osk-row" data-row="0"></div>
+          <div class="osk-row" data-row="1"></div>
+          <div class="osk-row" data-row="2"></div>
+          <div class="osk-row" data-row="3">
+            <button class="osk-key wide" data-key="123">123</button>
+            <button class="osk-key wide" data-key=",">,</button>
+            <button class="osk-key space" data-key=" ">mellomrom</button>
+            <button class="osk-key wide" data-key=".">.</button>
+            <button class="osk-key wide primary" data-key="send">send</button>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>
+mountShell('chat.html'); mountTopbar();
+
+// ---------- Data ----------
+const THREADS = [
+  { id:'t1', name:'Nora Kjær',      initials:'NK', bg:'var(--gold)',     status:'Aktiv nå · Bakst',      unread:2, when:'12:14',
+    msgs:[
+      {t:'them', txt:'Hei Emma! Jobber du på lørdag fortsatt?', time:'12:02'},
+      {t:'me',   txt:'Ja, jeg er på kassa fra 10. Hvorfor?',     time:'12:08'},
+      {t:'them', txt:'Kan du dekke første timen min? Jeg må til tannlegen.', time:'12:10'},
+      {t:'them', txt:'Jeg tar lukkevakten din neste uke i bytte 🙏', time:'12:11'},
+      {t:'me',   txt:'Ja, det går fint! Jeg legger inn byttet i vaktlisten.', time:'12:14'},
+    ],
+    quick:['Ja, det går fint!','Kan vi ta det i morgen?','Jeg sjekker og sier fra.'] },
+  { id:'t2', name:'Sander Lien',    initials:'SL', bg:'var(--burgundy)', status:'Sist sett 09:30 · Leder vakt', unread:0, when:'10:02',
+    msgs:[
+      {t:'them', txt:'God morgen! Husk å bestille mer kaffebønner før vakten starter.', time:'09:58'},
+      {t:'me',   txt:'Skal gjøre det nå, takk for påminnelsen!', time:'10:02'},
+    ],
+    quick:['Mottatt 👌','Skal sjekke lageret nå.','Bestiller i dag.'] },
+  { id:'t3', name:'Bakstgjengen',   initials:'BG', bg:'var(--olive)',    status:'6 medlemmer · Gruppe',   unread:5, when:'09:48',
+    msgs:[
+      {t:'them', name:'Ida', txt:'Bollene står til heving 🥯', time:'09:30'},
+      {t:'them', name:'Kari', txt:'Ovn nr. 2 er klar kl 10.', time:'09:35'},
+      {t:'them', name:'Ida', txt:'Hvem dekker bordet etter bakst?', time:'09:48'},
+    ],
+    quick:['Jeg dekker bordet!','Kommer straks ned.','Takk for info 💛'] },
+  { id:'t4', name:'Linn (Leder)',   initials:'LM', bg:'var(--red)',      status:'Sist sett i går · Leder', unread:0, when:'i går',
+    msgs:[
+      {t:'them', txt:'Flott jobba med modul 2! Du er halvveis i opplæringen 💪', time:'i går 16:20'},
+      {t:'me',   txt:'Tusen takk Linn, det motiverer!', time:'i går 16:45'},
+    ],
+    quick:['Tusen takk!','Skal fortsette i kveld.','Noen tips til modul 3?'] },
+  { id:'t5', name:'Jonas Tveit',    initials:'JT', bg:'#8B6B3C',         status:'Sist sett i går · Kasse', unread:0, when:'i går',
+    msgs:[
+      {t:'them', txt:'Bytter du vakt med meg torsdag? Jeg skal på konsert 🎸', time:'i går 19:12'},
+    ],
+    quick:['Ja, det går fint.','Beklager, opptatt den dagen.','Hvilken vakt har du?'] },
+];
+
+// ---------- State ----------
+let activeId = localStorage.getItem('tn.chat.active') || 't1';
+if (!THREADS.find(t=>t.id===activeId)) activeId = 't1';
+let oskOpen = false;
+let oskMode = 'abc'; // abc | 123
+
+// ---------- Rendering ----------
+const threadsEl = document.getElementById('threads');
+function renderThreads(filter=''){
+  const q = filter.trim().toLowerCase();
+  threadsEl.innerHTML = THREADS
+    .filter(t => !q || t.name.toLowerCase().includes(q) || (t.msgs.at(-1)?.txt || '').toLowerCase().includes(q))
+    .map(t => {
+      const last = t.msgs.at(-1);
+      const preview = last ? (last.t==='me' ? 'Du: ' : '') + (last.name ? last.name+': ' : '') + last.txt : '';
+      return `<div class="thread ${t.id===activeId?'active':''}" data-id="${t.id}">
+        <div class="av" style="background:${t.bg}">${t.initials}</div>
+        <div class="meta"><b>${t.name}</b><span>${escapeHtml(preview)}</span></div>
+        <div class="aside">
+          <div class="when">${t.when}</div>
+          ${t.unread ? `<span class="badge">${t.unread}</span>` : ''}
+        </div>
+      </div>`;
+    }).join('');
+  threadsEl.querySelectorAll('.thread').forEach(el=>{
+    el.onclick = () => selectThread(el.dataset.id);
+  });
+}
+
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+const msgsEl = document.getElementById('msgs');
+function renderPane(){
+  const t = THREADS.find(x=>x.id===activeId);
+  document.getElementById('paneName').textContent = t.name;
+  document.getElementById('paneStatus').innerHTML = `<i class="dot-live"></i> ${t.status}`;
+  document.getElementById('paneAv').textContent = t.initials;
+  document.getElementById('paneAv').style.background = t.bg;
+  document.getElementById('typingAv').textContent = t.initials;
+  document.getElementById('typingAv').style.background = t.bg;
+  document.getElementById('input').placeholder = 'Skriv en melding til ' + t.name.split(' ')[0] + '…';
+
+  msgsEl.innerHTML = '<div class="day">I dag</div>' + t.msgs.map(m =>
+    `<div class="msg ${m.t}">${m.name ? `<b class="from">${m.name}</b>` : ''}${escapeHtml(m.txt)}<span class="time">${m.time}</span></div>`
+  ).join('');
+
+  // quick replies
+  const qr = document.getElementById('quickReplies');
+  qr.innerHTML = (t.quick || []).map(q => `<button class="chip" data-q="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join('');
+  qr.querySelectorAll('.chip').forEach(b => {
+    b.onclick = () => { sendText(b.dataset.q); };
+  });
+
+  setTimeout(()=>{ msgsEl.scrollTop = msgsEl.scrollHeight; }, 0);
+}
+
+function selectThread(id){
+  activeId = id;
+  localStorage.setItem('tn.chat.active', id);
+  const t = THREADS.find(x=>x.id===id);
+  if (t) t.unread = 0;
+  renderThreads(document.getElementById('threadSearch').value);
+  renderPane();
+  document.querySelector('.chat').classList.add('show-pane');
+  document.getElementById('input').focus();
+}
+
+// ---------- Sending ----------
+const input = document.getElementById('input');
+const sendBtn = document.getElementById('sendBtn');
+const form = document.getElementById('chatForm');
+
+function autosize(){
+  input.style.height = 'auto';
+  input.style.height = Math.min(120, input.scrollHeight) + 'px';
+  sendBtn.disabled = input.value.trim().length === 0;
+}
+input.addEventListener('input', autosize);
+
+input.addEventListener('keydown', (e)=>{
+  if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
+    e.preventDefault();
+    sendCurrent();
+  }
+});
+
+form.addEventListener('submit', (e)=>{ e.preventDefault(); sendCurrent(); });
+
+function sendCurrent(){
+  const txt = input.value.trim();
+  if (!txt) return;
+  sendText(txt);
+  input.value = '';
+  autosize();
+}
+
+function nowTime(){
+  return new Date().toLocaleTimeString('no-NO',{hour:'2-digit',minute:'2-digit'});
+}
+
+function sendText(txt){
+  const t = THREADS.find(x=>x.id===activeId);
+  const time = nowTime();
+  t.msgs.push({t:'me', txt, time});
+  t.when = time;
+  renderThreads(document.getElementById('threadSearch').value);
+  renderPane();
+
+  // fake reply
+  const typing = document.getElementById('typing');
+  typing.hidden = false;
+  msgsEl.scrollTop = msgsEl.scrollHeight;
+  setTimeout(()=>{
+    typing.hidden = true;
+    const pool = (t.quick && t.quick.length) ? ['Mottatt!','Ok, snakkes!','Skal sjekke og si fra.','Takk 💛','Høres bra ut!'] : ['Mottatt!','Ok!'];
+    const r = pool[Math.floor(Math.random()*pool.length)];
+    t.msgs.push({t:'them', txt:r, time: nowTime()});
+    t.when = nowTime();
+    renderThreads(document.getElementById('threadSearch').value);
+    renderPane();
+  }, 1100 + Math.random()*900);
+}
+
+// ---------- Search ----------
+document.getElementById('threadSearch').addEventListener('input', (e)=> renderThreads(e.target.value));
+
+// ---------- Back button (mobile) ----------
+document.getElementById('backBtn').onclick = () => {
+  document.querySelector('.chat').classList.remove('show-pane');
+};
+
+// ---------- Emoji ----------
+const EMOJIS = ['😀','😅','😂','🥲','😊','😍','🤔','👍','👏','🙏','💛','🔥','✨','🥯','☕','🎉','✅','❌','💪','👀'];
+document.getElementById('emojiBtn').onclick = () => {
+  let panel = document.getElementById('emojiPanel');
+  if (panel) { panel.remove(); return; }
+  panel = document.createElement('div');
+  panel.id = 'emojiPanel';
+  panel.className = 'emoji-panel';
+  panel.innerHTML = EMOJIS.map(e => `<button type="button" class="emoji">${e}</button>`).join('');
+  document.querySelector('.chat-input').appendChild(panel);
+  panel.querySelectorAll('.emoji').forEach(b => {
+    b.onclick = () => {
+      insertAtCursor(input, b.textContent);
+      autosize();
+      input.focus();
+    };
+  });
+  document.addEventListener('click', function close(e){
+    if (!panel.contains(e.target) && e.target.id !== 'emojiBtn' && !e.target.closest('#emojiBtn')) {
+      panel.remove();
+      document.removeEventListener('click', close);
+    }
+  });
+};
+
+function insertAtCursor(el, text){
+  const start = el.selectionStart ?? el.value.length;
+  const end = el.selectionEnd ?? el.value.length;
+  el.value = el.value.slice(0,start) + text + el.value.slice(end);
+  const pos = start + text.length;
+  el.setSelectionRange(pos, pos);
+}
+
+// ---------- On-screen keyboard ----------
+const OSK_ABC = [
+  ['q','w','e','r','t','y','u','i','o','p','å'],
+  ['a','s','d','f','g','h','j','k','l','ø','æ'],
+  ['⇧','z','x','c','v','b','n','m','⌫'],
+];
+const OSK_123 = [
+  ['1','2','3','4','5','6','7','8','9','0'],
+  ['-','/',':',';','(',')','kr','&','@','"'],
+  ['#+=','.',',','?','!','\'','⌫'],
+];
+
+let oskShift = false;
+
+function buildOsk(){
+  const rows = oskMode === 'abc' ? OSK_ABC : OSK_123;
+  rows.forEach((row, i) => {
+    const rowEl = document.querySelector(`.osk-row[data-row="${i}"]`);
+    rowEl.innerHTML = row.map(k => {
+      const cls = ['osk-key'];
+      if (k === '⌫' || k === '⇧' || k === '#+=') cls.push('wide');
+      if (k === '⇧' && oskShift) cls.push('active');
+      const label = (oskMode==='abc' && oskShift && k.length===1 && /[a-zæøå]/.test(k)) ? k.toUpperCase() : k;
+      return `<button class="${cls.join(' ')}" data-key="${escapeHtml(k)}">${label}</button>`;
+    }).join('');
+  });
+  document.querySelectorAll('.osk-row .osk-key').forEach(b => {
+    b.onclick = () => handleOskKey(b.dataset.key);
+  });
+}
+
+function handleOskKey(k){
+  if (k === '⌫') {
+    const s = input.selectionStart, e = input.selectionEnd;
+    if (s === e && s > 0) {
+      input.value = input.value.slice(0, s-1) + input.value.slice(s);
+      input.setSelectionRange(s-1, s-1);
+    } else {
+      input.value = input.value.slice(0, s) + input.value.slice(e);
+      input.setSelectionRange(s, s);
+    }
+  } else if (k === '⇧') {
+    oskShift = !oskShift; buildOsk();
+  } else if (k === '123') {
+    oskMode = oskMode === '123' ? 'abc' : '123'; buildOsk();
+  } else if (k === '#+=') {
+    oskMode = 'abc'; buildOsk();
+  } else if (k === 'send') {
+    sendCurrent();
+  } else {
+    const ch = (oskMode === 'abc' && oskShift && k.length===1 && /[a-zæøå]/.test(k)) ? k.toUpperCase() : k;
+    insertAtCursor(input, ch);
+    if (oskShift && k.length===1) { oskShift = false; buildOsk(); }
+  }
+  autosize();
+  input.focus();
+}
+
+document.getElementById('kbToggle').onclick = () => {
+  oskOpen = !oskOpen;
+  document.getElementById('osk').hidden = !oskOpen;
+  document.body.classList.toggle('osk-open', oskOpen);
+  if (oskOpen) buildOsk();
+};
+
+// ---------- Init ----------
+renderThreads();
+renderPane();
+autosize();
+buildOsk();
+</script>
+</body>
+</html>

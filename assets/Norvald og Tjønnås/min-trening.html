@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Min trening — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+
+    <h1 class="page-title">Min trening</h1>
+    <p class="page-sub">Ni moduler bygd for hverdagen på gården. Velg et tema og fortsett der du slapp.</p>
+
+    <div class="pills">
+      <button class="pill dark">Nytt</button>
+      <button class="pill active">Arkiv</button>
+      <button class="pill">Pågår</button>
+      <button class="pill">Ferdig</button>
+      <button class="pill">Sertifisert</button>
+    </div>
+
+    <div class="modules">
+      <a href="modul.html?m=kasse" class="module">
+        <div class="bg" style="background-image:url(assets/img/coffee-beans.jpg)"></div>
+        <h4>Modul 1 — Kasse</h4>
+        <p class="summary">Refusjon · Kontant · Feilbetaling</p>
+        <div class="progress"><div class="ring" style="--p:43"><span>43%</span></div> Pågår</div>
+      </a>
+      <a href="modul.html?m=hms" class="module">
+        <div class="bg" style="background-image:url(assets/img/walnuts.jpg)"></div>
+        <h4>Modul 2 — HMS</h4>
+        <p class="summary">Helse · Miljø · Sikkerhet</p>
+        <div class="progress"><div class="ring" style="--p:67"><span>67%</span></div> Pågår</div>
+      </a>
+      <a href="modul.html?m=apne" class="module">
+        <div class="bg" style="background-image:url(assets/img/farm-house.jpg)"></div>
+        <h4>Modul 3 — Åpne</h4>
+        <p class="summary">Åpne butikk · Åpne kasse · Rutine</p>
+        <div class="progress"><div class="ring" style="--p:17"><span>17%</span></div> Ny</div>
+      </a>
+      <a href="modul.html?m=varer" class="module">
+        <div class="bg" style="background-image:url(assets/img/squash.jpg)"></div>
+        <h4>Modul 4 — Varer</h4>
+        <p class="summary">Type · Region · Land</p>
+        <div class="progress"><div class="ring" style="--p:19"><span>19%</span></div> Ny</div>
+      </a>
+      <a href="modul.html?m=kaffe" class="module">
+        <div class="bg" style="background-image:url(assets/img/coffee-beans.jpg)"></div>
+        <h4>Modul 5 — Kaffe</h4>
+        <p class="summary">Land · Type · Roast</p>
+        <div class="progress"><div class="ring" style="--p:47"><span>47%</span></div> Pågår</div>
+      </a>
+      <a href="modul.html?m=mat" class="module">
+        <div class="bg" style="background-image:url(assets/img/dates.jpg)"></div>
+        <h4>Modul 6 — Mat</h4>
+        <p class="summary">Påsmurt · Bakst · Ferdig mat</p>
+        <div class="progress"><div class="ring" style="--p:83"><span>83%</span></div> Snart</div>
+      </a>
+      <a href="modul.html?m=stenge" class="module">
+        <div class="bg" style="background-image:url(assets/img/grapes.jpg)"></div>
+        <h4>Modul 7 — Stenge</h4>
+        <p class="summary">Stenge kasse · Rydde · Låse</p>
+        <div class="progress"><div class="ring" style="--p:78"><span>78%</span></div> Pågår</div>
+      </a>
+      <a href="modul.html?m=vask" class="module">
+        <div class="bg" style="background-image:url(assets/img/melons.jpg)"></div>
+        <h4>Modul 8 — Vask</h4>
+        <p class="summary">Vask · Rengjøring · Sanitet</p>
+        <div class="progress"><div class="ring" style="--p:23"><span>23%</span></div> Ny</div>
+      </a>
+      <a href="modul.html?m=bakst" class="module">
+        <div class="bg" style="background-image:url(assets/img/figs.jpg)"></div>
+        <h4>Modul 9 — Bakst</h4>
+        <p class="summary">Boller · Brød · Diverse bakst</p>
+        <div class="progress"><div class="ring" style="--p:23"><span>23%</span></div> Ny</div>
+      </a>
+    </div>
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>mountShell('min-trening.html'); mountTopbar();</script>
+</body>
+</html>

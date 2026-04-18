@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Vaktliste — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+    <h1 class="page-title">Vaktliste</h1>
+    <p class="page-sub">Oktober 2026 · 4 vakter denne uken · 22 timer totalt</p>
+
+    <div class="row-2">
+      <article class="calendar">
+        <div class="cal-head">
+          <h3 id="month">Oktober 2026</h3>
+          <div class="arrows">
+            <button onclick="changeMonth(-1)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6"/></svg></button>
+            <button onclick="changeMonth(1)"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg></button>
+          </div>
+        </div>
+        <div class="cal" id="cal"></div>
+      </article>
+
+      <article class="card shifts">
+        <h3>Kommende vakter</h3>
+        <div class="shift">
+          <span class="pip"></span>
+          <div class="when"><b>I dag · 6. oktober</b><span>15:00 – 20:00 · Kasse</span></div>
+          <span class="role">Kasse</span>
+        </div>
+        <div class="shift amber">
+          <span class="pip"></span>
+          <div class="when"><b>Tor 9. oktober</b><span>15:00 – 20:00 · Bakst</span></div>
+          <span class="role">Bakst</span>
+        </div>
+        <div class="shift amber">
+          <span class="pip"></span>
+          <div class="when"><b>Lør 11. oktober</b><span>10:00 – 16:00 · Butikk</span></div>
+          <span class="role">Butikk</span>
+        </div>
+        <div class="shift">
+          <span class="pip"></span>
+          <div class="when"><b>Søn 12. oktober</b><span>15:00 – 20:00 · Kaffe</span></div>
+          <span class="role">Kaffe</span>
+        </div>
+        <div class="shift red">
+          <span class="pip"></span>
+          <div class="when"><b>Ons 15. oktober</b><span>Ledig — meld deg!</span></div>
+          <span class="role" style="background:var(--red);color:white">Ledig</span>
+        </div>
+
+        <button class="btn" style="margin-top:18px">Be om bytte</button>
+      </article>
+    </div>
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>
+mountShell('vaktliste.html'); mountTopbar();
+
+const SHIFTS = {6:'today',9:'on',11:'on',12:'on',15:'open',20:'on',23:'on',26:'on',29:'on'};
+let cur = new Date(2026,9,1);
+
+function renderCal(){
+  const dows = ['Man','Tir','Ons','Tor','Fre','Lør','Søn'];
+  const cal = document.getElementById('cal');
+  cal.innerHTML = dows.map(d=>`<div class="dow">${d}</div>`).join('');
+  const first = new Date(cur.getFullYear(), cur.getMonth(), 1);
+  const startDow = (first.getDay()+6)%7; // mon=0
+  const last = new Date(cur.getFullYear(), cur.getMonth()+1, 0).getDate();
+  for(let i=0;i<startDow;i++) cal.insertAdjacentHTML('beforeend',`<div class="day-cell muted"></div>`);
+  for(let d=1;d<=last;d++){
+    const flag = SHIFTS[d];
+    let cls='day-cell';
+    if(flag==='today') cls+=' today has-shift';
+    else if(flag==='on') cls+=' has-shift';
+    else if(flag==='open') cls+=' has-shift';
+    cal.insertAdjacentHTML('beforeend',`<div class="${cls}">${d}</div>`);
+  }
+  document.getElementById('month').textContent =
+    cur.toLocaleString('no-NO',{month:'long',year:'numeric'}).replace(/^./,c=>c.toUpperCase());
+}
+function changeMonth(d){ cur.setMonth(cur.getMonth()+d); renderCal(); }
+renderCal();
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Profil — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+
+    <section style="display:flex;align-items:center;gap:24px;margin-bottom:28px;flex-wrap:wrap">
+      <div class="avatar" style="width:96px;height:96px;font-size:32px;flex:0 0 96px">EM</div>
+      <div>
+        <h1 class="page-title" style="font-size:48px;margin:0">Emma Lind</h1>
+        <p class="page-sub" style="margin:6px 0 0">Ansatt siden mars 2024 · Kasse, kaffe, bakst</p>
+      </div>
+      <button class="btn gold" style="margin-left:auto;width:auto">Rediger profil</button>
+    </section>
+
+    <div class="row-3">
+      <article class="card">
+        <h3>Sertifiseringer</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:12px">
+          <span class="tag olive">HMS Grunnkurs</span>
+          <span class="tag olive">Kasse Nivå 2</span>
+          <span class="tag gold">Barista I</span>
+          <span class="tag">Bakst — under arbeid</span>
+        </div>
+      </article>
+      <article class="card">
+        <h3>Timer i år</h3>
+        <div style="font-family:var(--display);font-size:48px;font-weight:800;color:var(--burgundy);line-height:1">782t</div>
+        <p class="muted" style="margin:6px 0 0">Mål: 1 100t innen 31. desember.</p>
+      </article>
+      <article class="card">
+        <h3>Trening</h3>
+        <div style="font-family:var(--display);font-size:48px;font-weight:800;color:var(--burgundy);line-height:1">5 / 9</div>
+        <p class="muted" style="margin:6px 0 0">Moduler påbegynt eller fullført.</p>
+      </article>
+    </div>
+
+    <div class="spacer"></div>
+
+    <article class="card">
+      <h3>Innstillinger</h3>
+      <div class="goal-row" style="margin-top:14px">
+        <b>Varsler om vakter</b><span>På</span>
+      </div>
+      <div class="goal-row">
+        <b>Påminnelser om trening</b><span>Hver torsdag</span>
+      </div>
+      <div class="goal-row">
+        <b>Språk</b><span>Norsk (bokmål)</span>
+      </div>
+      <div class="goal-row">
+        <b>Tema</b><span>Lyst</span>
+      </div>
+      <button class="btn ghost" style="margin-top:14px;width:auto" onclick="location.href='index.html'">Logg ut</button>
+    </article>
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>mountShell('profil.html'); mountTopbar();</script>
+</body>
+</html>

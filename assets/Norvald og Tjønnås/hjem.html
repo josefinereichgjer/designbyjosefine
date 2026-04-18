@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Hjem — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+
+    <h1 class="page-title">God morgen,<br>Emma.</h1>
+    <p class="page-sub">Du har én vakt i dag og to nye moduler å fullføre denne uken.</p>
+
+    <section class="row-3">
+      <article class="card earnings">
+        <h3>Lønn denne måneden</h3>
+        <div class="bar">
+          <div class="bar-fill" style="width:72%"><span>7&nbsp;453&nbsp;kr</span></div>
+          <span class="bar-cap">10&nbsp;300&nbsp;kr</span>
+        </div>
+        <p class="muted" style="margin:14px 0 0">Beregnet utbetaling 25. oktober.</p>
+      </article>
+
+      <article class="card">
+        <h3>Timer i dag</h3>
+        <div style="font-family:var(--display);font-size:48px;font-weight:800;color:var(--burgundy);line-height:1;margin-top:6px">5,0t</div>
+        <p class="muted" style="margin:8px 0 0">Vakt 15:00 – 20:00 · Kasse 2</p>
+      </article>
+
+      <article class="card">
+        <h3>Vakter denne uken</h3>
+        <div style="font-family:var(--display);font-size:48px;font-weight:800;color:var(--burgundy);line-height:1;margin-top:6px">4</div>
+        <p class="muted" style="margin:8px 0 0">22 timer totalt · 1 ledig kveld</p>
+      </article>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section class="row-2">
+      <article class="card shifts">
+        <h3>Dine vakter</h3>
+        <div class="shift">
+          <span class="pip"></span>
+          <div class="when"><b>I dag · 6. oktober</b><span>15:00 – 20:00 · Kasse</span></div>
+          <span class="role">I dag</span>
+        </div>
+        <div class="shift amber">
+          <span class="pip"></span>
+          <div class="when"><b>Tor 9. oktober</b><span>15:00 – 20:00 · Bakst</span></div>
+          <span class="role">Bakst</span>
+        </div>
+        <div class="shift amber">
+          <span class="pip"></span>
+          <div class="when"><b>Lør 11. oktober</b><span>10:00 – 16:00 · Butikk</span></div>
+          <span class="role">Butikk</span>
+        </div>
+        <div class="shift">
+          <span class="pip"></span>
+          <div class="when"><b>Søn 12. oktober</b><span>15:00 – 20:00 · Kaffe</span></div>
+          <span class="role">Kaffe</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <h3>Mål for dagen</h3>
+        <p class="muted" style="margin:0 0 18px">Hvor nær er du dagens mål?</p>
+
+        <div class="goal-row">
+          <b>Solgte kaffekopper</b><span>32 / 50</span>
+          <div class="thin-bar"><div style="width:64%"></div></div>
+        </div>
+        <div class="goal-row">
+          <b>Bakst — boller</b><span>40 / 60</span>
+          <div class="thin-bar"><div style="width:66%;background:var(--gold)"></div></div>
+        </div>
+        <div class="goal-row">
+          <b>Treningsmoduler</b><span>3 / 4</span>
+          <div class="thin-bar"><div style="width:75%;background:var(--olive)"></div></div>
+        </div>
+
+        <a href="mal.html" class="btn red" style="margin-top:18px">Se alle mål</a>
+      </article>
+    </section>
+
+    <div class="sec-title">
+      <h2>Nye moduler å trene på</h2>
+      <a href="min-trening.html">Se alt →</a>
+    </div>
+
+    <div class="modules" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+      <a href="modul.html?m=kaffe" class="module">
+        <div class="bg" style="background-image:url(assets/img/coffee-beans.jpg)"></div>
+        <h4>Modul 5 — Kaffe</h4>
+        <p class="summary">Land · Type · Roast — finn favorittene fra Tjønnås.</p>
+        <div class="progress"><div class="ring" style="--p:47"><span>47%</span></div> Pågår</div>
+      </a>
+      <a href="modul.html?m=mat" class="module">
+        <div class="bg" style="background-image:url(assets/img/figs.jpg)"></div>
+        <h4>Modul 6 — Mat</h4>
+        <p class="summary">Påsmurt · Bakst · Ferdig mat fra dagens kjøkken.</p>
+        <div class="progress"><div class="ring" style="--p:83"><span>83%</span></div> Snart ferdig</div>
+      </a>
+      <a href="modul.html?m=hms" class="module">
+        <div class="bg" style="background-image:url(assets/img/walnuts.jpg)"></div>
+        <h4>Modul 2 — HMS</h4>
+        <p class="summary">Helse, Miljø og Sikkerhet — oppdatert kvartalsvis.</p>
+        <div class="progress"><div class="ring" style="--p:67"><span>67%</span></div> Pågår</div>
+      </a>
+      <a href="modul.html?m=bakst" class="module">
+        <div class="bg" style="background-image:url(assets/img/figs.jpg)"></div>
+        <h4>Modul 9 — Bakst</h4>
+        <p class="summary">Boller, brød og diverse bakst etter familieoppskrift.</p>
+        <div class="progress"><div class="ring" style="--p:23"><span>23%</span></div> Ny</div>
+      </a>
+    </div>
+    <div style="margin-top:32px;padding:24px 0;border-top:1px solid rgba(0,0,0,0.08);text-align:center">
+      <a href="../../ansatts-portal.html" class="btn red">Gå til ansattsportalen →</a>
+    </div>
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>mountShell('hjem.html'); mountTopbar();</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Modul — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+
+    <p class="muted" style="margin:0 0 8px">
+      <a href="min-trening.html" style="color:var(--gold)">← Min trening</a> &nbsp;/&nbsp; <span id="crumb">Modul 1</span>
+    </p>
+    <h1 class="page-title" id="modtitle">Modul 1: Kasse</h1>
+    <p class="page-sub" id="modlead">Klar for å lære mer om vårt kassesystem? Steg 1 starter med åpning av kasse.</p>
+
+    <section class="module-hero">
+      <div class="module-media">
+        <div class="module-art" id="modart">
+          <div class="play"><button title="Spill av video"><svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button></div>
+        </div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+
+      <div class="module-info">
+        <span class="step">Steg <b id="curstep" style="margin-left:6px">2</b> &nbsp;av&nbsp; 4</span>
+        <h1 id="stepTitle">Åpne kassen</h1>
+        <p class="lead" id="stepLead">Start dagen med å åpne kassen og gjøre den klar for første kunde.</p>
+
+        <ul class="checklist" id="check"></ul>
+
+        <div class="steps-row">
+          <span class="dot-step" data-s="1">1</span>
+          <span class="dot-step" data-s="2">2</span>
+          <span class="dot-step" data-s="3">3</span>
+          <span class="dot-step" data-s="4">4</span>
+        </div>
+
+        <div class="actions">
+          <button class="btn ghost sm" id="prevBtn" onclick="prevStep()">← Forrige steg</button>
+          <span class="spacer"></span>
+          <button class="btn red sm" id="nextBtn" onclick="nextStep()">Neste steg →</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="progress-strip"><div style="width:25%"></div></div>
+
+    <div class="sec-title"><h2>Andre moduler</h2><a href="min-trening.html">Se alle →</a></div>
+
+    <div class="modules" style="grid-template-columns:repeat(auto-fill,minmax(200px,1fr))">
+      <a href="modul.html?m=kaffe" class="module">
+        <div class="bg" style="background-image:url(assets/img/coffee-beans.jpg)"></div>
+        <h4>Modul 5 — Kaffe</h4>
+        <div class="progress"><div class="ring" style="--p:47"><span>47%</span></div> Pågår</div>
+      </a>
+      <a href="modul.html?m=mat" class="module">
+        <div class="bg" style="background-image:url(assets/img/dates.jpg)"></div>
+        <h4>Modul 6 — Mat</h4>
+        <div class="progress"><div class="ring" style="--p:83"><span>83%</span></div> Snart</div>
+      </a>
+      <a href="modul.html?m=bakst" class="module">
+        <div class="bg" style="background-image:url(assets/img/figs.jpg)"></div>
+        <h4>Modul 9 — Bakst</h4>
+        <div class="progress"><div class="ring" style="--p:23"><span>23%</span></div> Ny</div>
+      </a>
+      <a href="modul.html?m=vask" class="module">
+        <div class="bg" style="background-image:url(assets/img/melons.jpg)"></div>
+        <h4>Modul 8 — Vask</h4>
+        <div class="progress"><div class="ring" style="--p:23"><span>23%</span></div> Ny</div>
+      </a>
+    </div>
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>
+mountShell('min-trening.html'); mountTopbar();
+
+const KASSE_STEPS = [
+  {
+    title: 'Åpne kassen',
+    lead:  'Start dagen med å åpne kassen og gjøre den klar for første kunde.',
+    img:   'kasse-1.jpg',
+    items: [
+      'Slå på kasseterminal og skjerm',
+      'Logg inn med ditt bruker-ID og passord',
+      'Velg «Åpne kasse» fra hovedmenyen',
+      'Kontroller at kvitteringspapir er tilgjengelig',
+      'Tell og bekreft startbeløpet i skuffen'
+    ]
+  },
+  {
+    title: 'Ta imot betaling',
+    lead:  'Slik tar du imot betaling med kort eller kontant — uten stress i køen.',
+    img:   'kasse-2.jpg',
+    items: [
+      'Scan alle varer før du trykker «Totalt»',
+      'Bekreft beløpet høyt for kunden',
+      'Velg betalingsmåte: kort, kontant eller faktura',
+      'Vent til terminalen gir grønt lys',
+      'Skriv ut kvittering og gi veksel'
+    ]
+  },
+  {
+    title: 'Kundeservice i kassen',
+    lead:  'Et smil, en hilsen og riktig tonalitet — slik bygger vi lojale kunder.',
+    img:   'kasse-3.jpg',
+    items: [
+      'Hils alltid med øyekontakt og et smil',
+      'Spør om kunden fant det de lette etter',
+      'Tilby medlemskort ved større kjøp',
+      'Takk for handelen og ønsk god dag',
+      'Hold kasseområdet ryddig mellom kunder'
+    ]
+  },
+  {
+    title: 'Stenge kassen',
+    lead:  'Avslutt vakten trygt og korrekt — klart for neste skift.',
+    img:   'kasse-1.jpg',
+    items: [
+      'Velg «Stenge kasse» fra hovedmenyen',
+      'Tell kontanter og sammenlign med rapport',
+      'Registrér eventuelle differanser',
+      'Lever bankpose til leder',
+      'Slå av terminal og skjerm'
+    ]
+  }
+];
+
+const MODULES = {
+  kasse:  {n:1, title:'Kasse',  img:'kasse-1.jpg',       lead:'Klar for å lære mer om vårt kassesystem?',              steps: KASSE_STEPS},
+  hms:    {n:2, title:'HMS',    img:'walnuts.jpg',       lead:'Helse, Miljø og Sikkerhet — alt du trenger på ett sted.'},
+  apne:   {n:3, title:'Åpne',   img:'farm-house.jpg',    lead:'Slik åpner du butikken trygt og effektivt.'},
+  varer:  {n:4, title:'Varer',  img:'squash.jpg',        lead:'Bli kjent med varene vi fører — region for region.'},
+  kaffe:  {n:5, title:'Kaffe',  img:'coffee-beans.jpg',  lead:'Land, type og roast — kaffekompasset til Tjønnås.'},
+  mat:    {n:6, title:'Mat',    img:'dates.jpg',         lead:'Påsmurt, bakst og ferdig mat fra dagens kjøkken.'},
+  stenge: {n:7, title:'Stenge', img:'grapes.jpg',        lead:'Rutiner for å stenge kassen og låse butikken.'},
+  vask:   {n:8, title:'Vask',   img:'melons.jpg',        lead:'Vask, rengjøring og sanitet — uten snarveier.'},
+  bakst:  {n:9, title:'Bakst',  img:'figs.jpg',          lead:'Boller, brød og diverse bakst etter familieoppskrift.'}
+};
+const params = new URLSearchParams(location.search);
+const key = params.get('m') || 'kasse';
+const m = MODULES[key] || MODULES.kasse;
+const steps = m.steps || [
+  { title: m.title, lead: m.lead, img: m.img, items: ['Les gjennom leksjonen','Se gjennom videoen','Fullfør praktisk oppgave','Ta sluttquiz'] }
+];
+
+document.title = `Modul ${m.n}: ${m.title} — Tjønnås & Norvald`;
+document.getElementById('crumb').textContent = `Modul ${m.n}: ${m.title}`;
+document.getElementById('modtitle').textContent = `Modul ${m.n}: ${m.title}`;
+document.getElementById('modlead').textContent = m.lead;
+
+// thumbnails (kasse only — uses the 3 uploaded images)
+const thumbWrap = document.getElementById('thumbs');
+if (key === 'kasse') {
+  ['kasse-1.jpg','kasse-2.jpg','kasse-3.jpg'].forEach((img,i)=>{
+    const b = document.createElement('button');
+    b.className = 'thumb' + (i===1?' active':'');
+    b.style.backgroundImage = `url(assets/img/${img})`;
+    b.onclick = () => {
+      document.getElementById('modart').style.backgroundImage = `url(assets/img/${img})`;
+      document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+      b.classList.add('active');
+    };
+    thumbWrap.appendChild(b);
+  });
+} else {
+  thumbWrap.style.display = 'none';
+}
+
+let step = 2; // start on step 2 to match "in-progress" feel
+
+function render(){
+  const s = steps[step-1] || steps[0];
+  document.getElementById('curstep').textContent = step;
+  document.getElementById('stepTitle').textContent = s.title;
+  document.getElementById('stepLead').textContent = s.lead;
+  document.getElementById('modart').style.backgroundImage = `url(assets/img/${s.img})`;
+
+  // checklist: first (step-1) items shown as done to match progress
+  const chk = document.getElementById('check');
+  chk.innerHTML = s.items.map((item,i)=>{
+    const done = i < Math.min(2, s.items.length-1);
+    return `<li class="${done?'done':''}"><span class="check">${done?'<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"><path d=\"M5 12l5 5L20 7\"/></svg>':''}</span> ${item}</li>`;
+  }).join('');
+
+  document.querySelectorAll('.dot-step').forEach((el)=>{
+    const i = +el.dataset.s;
+    el.classList.toggle('done', i < step);
+    el.classList.toggle('active', i === step);
+  });
+  document.querySelector('.progress-strip>div').style.width = (step/steps.length*100)+'%';
+
+  document.getElementById('prevBtn').disabled = step === 1;
+  document.getElementById('nextBtn').textContent = step === steps.length ? 'Fullfør ✓' : 'Neste steg →';
+
+  // reflect thumb
+  if (key === 'kasse') {
+    document.querySelectorAll('.thumb').forEach((t,i)=>t.classList.toggle('active', i===(step-1)%3));
+  }
+}
+function nextStep(){ step = Math.min(steps.length, step+1); render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function prevStep(){ step = Math.max(1, step-1); render(); window.scrollTo({top:0,behavior:'smooth'}); }
+render();
+</script>
+</body>
+</html>

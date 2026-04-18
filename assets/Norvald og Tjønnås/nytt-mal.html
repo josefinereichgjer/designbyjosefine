@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Nytt mål — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+
+    <p class="muted" style="margin:0 0 8px">
+      <a href="mal.html" style="color:var(--gold)">← Mål</a> &nbsp;/&nbsp; Nytt mål
+    </p>
+    <h1 class="page-title">Legg til nytt mål</h1>
+    <p class="page-sub">Sett et klart mål — vi hjelper deg å holde tellingen.</p>
+
+    <form class="goal-form" id="goalForm" onsubmit="return saveGoal(event)">
+      <div class="form-grid">
+
+        <label class="field full">
+          <span>Hva vil du oppnå?</span>
+          <input id="f_title" required maxlength="80" placeholder="F.eks. Selg 200 kopper kaffe">
+        </label>
+
+        <label class="field">
+          <span>Type mål</span>
+          <div class="seg" role="tablist">
+            <button type="button" class="seg-opt active" data-scope="mine">Mitt mål</button>
+            <button type="button" class="seg-opt" data-scope="lag">Lagets mål</button>
+          </div>
+          <input type="hidden" id="f_scope" value="mine">
+        </label>
+
+        <label class="field">
+          <span>Frist</span>
+          <input id="f_deadline" type="date">
+        </label>
+
+        <label class="field">
+          <span>Målverdi</span>
+          <input id="f_target" type="number" min="1" value="100" required>
+        </label>
+
+        <label class="field">
+          <span>Allerede fullført</span>
+          <input id="f_progress" type="number" min="0" value="0" required>
+        </label>
+
+        <label class="field">
+          <span>Enhet</span>
+          <div class="seg">
+            <button type="button" class="seg-opt active" data-unit="stk">stk</button>
+            <button type="button" class="seg-opt" data-unit="kr">kr</button>
+            <button type="button" class="seg-opt" data-unit="%">%</button>
+            <button type="button" class="seg-opt" data-unit="timer">timer</button>
+          </div>
+          <input type="hidden" id="f_unit" value="stk">
+        </label>
+
+        <div class="field full">
+          <span>Farge</span>
+          <div class="color-row">
+            <button type="button" class="color-dot active" data-color="var(--red)"      style="background:var(--red)"></button>
+            <button type="button" class="color-dot"        data-color="var(--burgundy)" style="background:var(--burgundy)"></button>
+            <button type="button" class="color-dot"        data-color="var(--gold)"     style="background:var(--gold)"></button>
+            <button type="button" class="color-dot"        data-color="var(--olive)"    style="background:var(--olive)"></button>
+          </div>
+          <input type="hidden" id="f_color" value="var(--red)">
+        </div>
+
+        <label class="field full">
+          <span>Notat <i class="opt">(valgfritt)</i></span>
+          <textarea id="f_note" rows="3" placeholder="Hvorfor er dette målet viktig for deg?"></textarea>
+        </label>
+
+      </div>
+
+      <section class="preview-card">
+        <div class="preview-label">Forhåndsvisning</div>
+        <div class="goal-row preview-goal">
+          <b id="p_title">Selg 200 kopper kaffe</b>
+          <span id="p_count">0 / 100 stk</span>
+          <div class="thin-bar"><div id="p_bar" style="width:0%;background:var(--red)"></div></div>
+        </div>
+      </section>
+
+      <div class="form-actions">
+        <a href="mal.html" class="btn ghost sm">Avbryt</a>
+        <button type="submit" class="btn red sm">Lagre mål</button>
+      </div>
+    </form>
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>
+mountShell('mal.html'); mountTopbar();
+
+// default deadline = Friday of this week
+(function(){
+  const d = new Date();
+  const toFri = (5 - d.getDay() + 7) % 7 || 7;
+  d.setDate(d.getDate() + toFri);
+  document.getElementById('f_deadline').value = d.toISOString().slice(0,10);
+})();
+
+// segment controls
+document.querySelectorAll('.seg').forEach(seg => {
+  seg.querySelectorAll('.seg-opt').forEach(b => {
+    b.onclick = () => {
+      seg.querySelectorAll('.seg-opt').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      if (b.dataset.scope) document.getElementById('f_scope').value = b.dataset.scope;
+      if (b.dataset.unit)  document.getElementById('f_unit').value  = b.dataset.unit;
+      renderPreview();
+    };
+  });
+});
+
+document.querySelectorAll('.color-dot').forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll('.color-dot').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');
+    document.getElementById('f_color').value = b.dataset.color;
+    renderPreview();
+  };
+});
+
+['f_title','f_target','f_progress'].forEach(id => {
+  document.getElementById(id).addEventListener('input', renderPreview);
+});
+
+function renderPreview(){
+  const title = document.getElementById('f_title').value || 'Mitt nye mål';
+  const target = +document.getElementById('f_target').value || 1;
+  const prog = Math.min(+document.getElementById('f_progress').value || 0, target);
+  const unit = document.getElementById('f_unit').value;
+  const color = document.getElementById('f_color').value;
+  document.getElementById('p_title').textContent = title;
+  document.getElementById('p_count').textContent = `${prog} / ${target} ${unit}`;
+  const bar = document.getElementById('p_bar');
+  bar.style.width = Math.round(prog/target*100) + '%';
+  bar.style.background = color;
+}
+renderPreview();
+
+function saveGoal(e){
+  e.preventDefault();
+  const goal = {
+    id: 'g_' + Date.now(),
+    title:    document.getElementById('f_title').value.trim(),
+    scope:    document.getElementById('f_scope').value,
+    deadline: document.getElementById('f_deadline').value,
+    target:   +document.getElementById('f_target').value,
+    progress: +document.getElementById('f_progress').value,
+    unit:     document.getElementById('f_unit').value,
+    color:    document.getElementById('f_color').value,
+    note:     document.getElementById('f_note').value.trim(),
+    created:  Date.now()
+  };
+  const list = JSON.parse(localStorage.getItem('tn.goals') || '[]');
+  list.push(goal);
+  localStorage.setItem('tn.goals', JSON.stringify(list));
+  // tiny toast, then go back
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = '✓ Mål lagret';
+  document.body.appendChild(toast);
+  setTimeout(()=>{ location.href = 'mal.html'; }, 700);
+  return false;
+}
+</script>
+</body>
+</html>

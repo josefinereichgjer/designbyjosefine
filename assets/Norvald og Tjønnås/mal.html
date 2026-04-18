@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Mål — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+    <h1 class="page-title">Mål</h1>
+    <p class="page-sub">Personlige og felles mål for Tjønnås-laget.</p>
+
+    <div class="row-2">
+      <article class="card">
+        <h3>Mine mål denne uken</h3>
+        <div class="goal-row">
+          <b>Fullfør modul 5 — Kaffe</b><span>47 / 100</span>
+          <div class="thin-bar"><div style="width:47%"></div></div>
+        </div>
+        <div class="goal-row">
+          <b>Selg 200 kopper kaffe</b><span>132 / 200</span>
+          <div class="thin-bar"><div style="width:66%;background:var(--gold)"></div></div>
+        </div>
+        <div class="goal-row">
+          <b>Bake 60 boller med Ida</b><span>40 / 60</span>
+          <div class="thin-bar"><div style="width:66%;background:var(--olive)"></div></div>
+        </div>
+        <div class="goal-row">
+          <b>Snakk med en ny kunde</b><span>3 / 5</span>
+          <div class="thin-bar"><div style="width:60%;background:var(--burgundy)"></div></div>
+        </div>
+        <div id="mineExtra"></div>
+        <a href="nytt-mal.html" class="btn sm" style="margin-top:14px; text-decoration:none">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.4" style="margin-right:4px"><path d="M12 5v14M5 12h14"/></svg>
+          Legg til mål
+        </a>
+      </article>
+
+      <article class="card">
+        <h3>Lagets mål</h3>
+        <p class="muted" style="margin:0 0 16px">Hele Tjønnås-laget jobber mot disse i oktober.</p>
+        <div class="goal-row">
+          <b>Omsetning oktober</b><span>418k / 600k</span>
+          <div class="thin-bar"><div style="width:69%;background:var(--burgundy)"></div></div>
+        </div>
+        <div class="goal-row">
+          <b>HMS-sertifisering — alle ansatte</b><span>9 / 12</span>
+          <div class="thin-bar"><div style="width:75%;background:var(--olive)"></div></div>
+        </div>
+        <div class="goal-row">
+          <b>Mat-svinn under 4%</b><span>3,2%</span>
+          <div class="thin-bar"><div style="width:80%;background:var(--gold)"></div></div>
+        </div>
+        <div class="goal-row">
+          <b>Kundetilfredshet</b><span>4,6 / 5</span>
+          <div class="thin-bar"><div style="width:92%;background:var(--red)"></div></div>
+        </div>
+      </article>
+    </div>
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>
+mountShell('mal.html'); mountTopbar();
+
+const goals = JSON.parse(localStorage.getItem('tn.goals') || '[]');
+const mine = goals.filter(g => g.scope === 'mine');
+const lag  = goals.filter(g => g.scope === 'lag');
+
+function goalRow(g){
+  const pct = Math.min(100, Math.round(g.progress/g.target*100));
+  return `<div class="goal-row">
+    <b>${escapeHtml(g.title)}</b><span>${g.progress} / ${g.target} ${g.unit}</span>
+    <div class="thin-bar"><div style="width:${pct}%;background:${g.color}"></div></div>
+  </div>`;
+}
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+if (mine.length) document.getElementById('mineExtra').innerHTML = mine.map(goalRow).join('');
+if (lag.length) {
+  const lagCard = document.querySelectorAll('.card')[1];
+  lagCard.insertAdjacentHTML('beforeend', lag.map(goalRow).join(''));
+}
+</script>
+</body>
+</html>
