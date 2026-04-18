@@ -362,14 +362,14 @@ window.PROJECTS = [
     subtitle: "café identitet",
     year: "2026",
     tags: [],
-    cover: "./assets/3.april-brot.webp",
+    cover: "./assets/3-april-brot.webp",
     noSlideshow: true,
     skipBuild: true,
     personal: true,
     gallery: [
       { src: "./assets/babilogo.webp", wide: true },
-      { src: "./assets/3.april.webp", wide: true },
-      { src: "./assets/3.april-brot.webp", wide: true },
+      { src: "./assets/3-april.webp", wide: true },
+      { src: "./assets/3-april-brot.webp", wide: true },
       { src: "./assets/baby-skilt.webp", wide: true },
       { src: "./assets/baby-tote.webp", wide: true }
     ]
