@@ -147,6 +147,7 @@ window.PROJECTS = [
   },
   {
     id: "ansatts-portal",
+    skipBuild: true,
     title: "Tjønnås og Norvald",
     subtitle: "UX design",
     year: "2026",

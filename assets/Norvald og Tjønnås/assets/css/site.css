@@ -1210,7 +1210,9 @@ body.osk-open .chat { height: calc(100dvh - 290px); }
   .chat-page .page-sub { display: none; }
   #kbToggle, #osk { display: none !important; }
   body.chat-pane-open #topbar { display: none; }
-  body.chat-pane-open .chat { height: calc(100dvh - 120px); }
+  body.chat-pane-open .mobile-nav { display: none !important; }
+  body.chat-pane-open .main { padding: 0; }
+  body.chat-pane-open .chat { height: 100dvh; border-radius: 0; border: none; }
 }
 
 /* ---------- Vaktliste ---------- */

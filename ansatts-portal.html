@@ -86,7 +86,79 @@
       .extra-video, .extra-text { width: 100%; }
       .extra-header { gap: 12px; padding: 28px 0 12px; }
     }
+    .proj-meta-strip {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0;
+      margin-top: 16px; font-size: 12px; color: #999;
+      font-family: 'Inter', sans-serif; letter-spacing: 0.015em;
+      border-top: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8;
+      padding: 10px 0;
+    }
+    .proj-meta-strip__item {
+      padding: 0 14px;
+      border-right: 1px solid #e0e0e0;
+      line-height: 1.3;
+    }
+    .proj-meta-strip__item:first-child { padding-left: 0; }
+    .proj-meta-strip__item:last-child { border-right: none; }
+    .proj-meta-strip__label {
+      display: block; font-size: 9.5px; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #bbb; margin-bottom: 2px; font-weight: 500;
+    }
+    .proj-meta-strip__value { color: #555; font-weight: 400; }
+    .proto-cta-row {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;
+    }
+    .btn-proto {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #111; color: #fff; border: none; cursor: pointer;
+      font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 500;
+      padding: 9px 18px; text-decoration: none; border-radius: 0;
+      transition: background 0.15s;
+    }
+    .btn-proto:hover { background: #333; }
+    .btn-proto--secondary {
+      background: transparent; border: 1.5px solid #ddd; color: #555;
+    }
+    .btn-proto--secondary:hover { background: #f5f5f5; border-color: #bbb; }
+    .proj-contribution {
+      background: #f7f4ef; border-left: 3px solid #6B1E2E;
+      padding: 18px 22px; margin: 0 0 0 0;
+    }
+    .proj-contribution__label {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: #6B1E2E; font-weight: 600; margin-bottom: 6px;
+      font-family: 'Inter', sans-serif;
+    }
+    .proj-contribution__text {
+      font-size: 14px; line-height: 1.65; color: #333; margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
+    .proto-cta-row .panel-toggle {
+      display: inline-flex; margin-top: 0;
+    }
+    .btn-proto--slim {
+      font-size: 12px; padding: 6px 13px; font-weight: 400; letter-spacing: 0.01em;
+    }
+    .proto-under-gallery {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-top: 16px; margin-bottom: 8px;
+    }
+    @media (max-width: 680px) {
+      .proj-meta-strip { gap: 0; }
+      .proj-meta-strip__item { padding: 0 10px; font-size: 11px; }
+      .proto-cta-row { gap: 8px; }
+      .btn-proto { font-size: 13px; padding: 8px 14px; }
+    }
+    @media (max-width: 480px) {
+      .proj-meta-strip { flex-wrap: wrap; border-bottom: none; padding-bottom: 0; }
+      .proj-meta-strip__item {
+        border-right: none; border-bottom: 1px solid #e8e8e8;
+        padding: 8px 0; width: 50%; flex-shrink: 0;
+      }
+    }
   </style>
+  <link rel="preload" as="image" href="./assets/norvald-iphone.webp">
+  <link rel="preload" as="image" href="./assets/norvald-ipad.webp">
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
@@ -127,18 +199,39 @@
               <div class="project-header__text">
                 <h1 class="project-meta__title">Tjønnås og Norvald</h1>
                 <p class="project-intro">Ansattportal for Tjønnås Delikatesser og Norvald Café:<br><span class="intro-space"> </span>ett system som samler vaktlister, kommunikasjon og opplæring på én plass.</p>
+                <div class="proj-meta-strip">
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Type</span>
+                    <span class="proj-meta-strip__value">Akademisk gruppeprosjekt</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Fagfelt</span>
+                    <span class="proj-meta-strip__value">UX/UI case study</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Varighet</span>
+                    <span class="proj-meta-strip__value">4 uker</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Team</span>
+                    <span class="proj-meta-strip__value">4 personer</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Min rolle</span>
+                    <span class="proj-meta-strip__value">UX-designer &amp; brukerinnsikt</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Verktøy</span>
+                    <span class="proj-meta-strip__value">Figma</span>
+                  </span>
+                </div>
+                <div class="proto-cta-row">
+                  <button class="btn-proto btn-proto--secondary panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Ressurser <span class="panel-toggle__icon">+</span></button>
+                </div>
               </div>
-              <div class="header-btns">
-                <button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
-              </div>
+              <div class="header-btns" style="display:none"></div>
             </div>
             
-            <div class="project-meta">
-              
-              
-              
-              <button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
-            </div>
           </div>
           <div class="project-layout__side">
             <div class="project-layout__info" id="projectInfo">
@@ -212,7 +305,7 @@
               <p class="scroll-gallery__label"><strong>iPhone 16 Pro Max</strong> (utvalgte prototyper)</p>
               <div class="scroll-gallery__slider-wrap">
                 <div class="scroll-gallery__track">
-                  <img class="scroll-gallery__img" src="./assets/norvald-iphone.webp" alt="iPhone 16 Pro Max prototype" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald-iphone.webp" alt="iPhone 16 Pro Max prototype" loading="eager" fetchpriority="high" decoding="async">
                   <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-2-mock.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
                   <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-1-mock.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
                 </div>
@@ -225,7 +318,7 @@
               <p class="scroll-gallery__label"><strong>iPad Pro 12.9"</strong> (utvalgte prototyper)</p>
               <div class="scroll-gallery__slider-wrap">
                 <div class="scroll-gallery__track">
-                  <img class="scroll-gallery__img" src="./assets/norvald-ipad.webp" alt="iPad Pro prototype" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald-ipad.webp" alt="iPad Pro prototype" loading="eager" fetchpriority="high" decoding="async">
                   <img class="scroll-gallery__img" src="./assets/norvald/ipad10.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
                   <img class="scroll-gallery__img" src="./assets/norvald/ipad11.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
                   <img class="scroll-gallery__img" src="./assets/norvald/ipad12.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
@@ -241,11 +334,15 @@
               </div>
             </div>
           </div>
-        <div class="proj-sections"><div class="proj-section proj-section--krem"><div><p class="proj-section__label">Innsikt & utfordringer</p><h2 class="proj-section__heading">Jobbhverdagen er spredt på for mange systemer</h2><p class="proj-section__body">Intervju med daglig leder (Mari-Mette) avdekket at driften var spredt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.</p></div><div class="proj-problem proj-problem--below"><div><img class="proj-problem__img" src="./assets/norvald/marimette.webp" alt="Innsikt & utfordringer" loading="lazy" decoding="async"></div><div class="proj-problem-list"><p class="proj-problem-list__label">Hovedproblemer:</p><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Vaktplaner</h4><p>Håndtert i et separat system uten kobling til felles kommunikasjon.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Internkommunikasjon</h4><p>Viktig info forsvant i Messenger-tråder.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Opplæring</h4><p>Kun fysisk og muntlig – tidkrevende og ikke tilgjengelig utenom arbeidstid.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Dokumenter & rutiner</h4><p>Ingen versjonskontroll. Nye ansatte hadde vansker med å finne frem til riktig informasjon.</p></div></div></div></div></div><div class="proj-section proj-section--mandel-light"><p class="proj-section__label">Designprosess</p><h2 class="proj-section__heading">Fra innsikt til løsning</h2><div class="proj-steps-grid"><div class="proj-step"><div class="proj-step-num">01</div><h3>Intervju</h3><p>Kvalitativt intervju med daglig leder. Ga innsikt i drift, kommunikasjon og utfordringer.</p></div><div class="proj-step"><div class="proj-step-num">02</div><h3>Affinity map</h3><p>Observasjoner gruppert i 6 temaer: salgsmål, vaktplan, kommunikasjon, opplæring, dokumenter og markedsføring.</p></div><div class="proj-step"><div class="proj-step-num">03</div><h3>Personas & scenarier</h3><p>5 personas. Primærbrukere: Kari (erfaren ansatt) og Eirik (nyansatt).</p></div><div class="proj-step"><div class="proj-step-num">04</div><h3>Wireframes → Hi-fi</h3><p>Lo-fi skisser iterert til hi-fi prototyper i Figma, med designmanual og WCAG-krav.</p></div></div></div><div class="proj-section proj-section--krem"><p class="proj-section__label">Løsningen</p><h2 class="proj-section__heading">Én samlet ansattportal</h2><p class="proj-section__body">Portalens kjerneområder samler det som tidligere lå spredt på ulike plattformer – tilgjengelig på mobil og iPad.</p><div class="proj-features-grid"><div class="proj-feature"><span class="proj-feature-num">01</span><div><h3>Landing page</h3><p>Daglige mål, ukentlige oppdateringer og viktige beskjeder samlet på én startside.</p></div></div><div class="proj-feature"><span class="proj-feature-num">02</span><div><h3>Vaktliste</h3><p>Månedlig kalender med full oversikt over tid, sted og hvem du jobber med.</p></div></div><div class="proj-feature"><span class="proj-feature-num">03</span><div><h3>Chat & kommunikasjon</h3><p>Felles meldingskanal med historikk. Viktig info drukner ikke lenger i Messenger-tråder.</p></div></div><div class="proj-feature"><span class="proj-feature-num">04</span><div><h3>Digital opplæring</h3><p>Modulbaserte kurs med steg-for-steg instruksjoner. Kan fullføres hjemmefra i eget tempo.</p></div></div><div class="proj-feature"><span class="proj-feature-num">05</span><div><h3>Dokumenter & rutiner</h3><p>Samlet bibliotek med versjonskontroll. Alltid oppdatert og lett å finne.</p></div></div><div class="proj-feature"><span class="proj-feature-num">06</span><div><h3>Min side</h3><p>Personlig profil, innstillinger og notifikasjonslogg, tilpasset etter arbeidssted.</p></div></div></div></div><div class="proj-section proj-section--none"><div class="proj-scenarios"><div class="proj-scenario proj-scenario--iphone"><div class="proj-scenario__media"><div class="proj-scenario__video-wrap"><video class="proj-scenario__video" muted loop playsinline preload="metadata"><source src="./assets/iphone.mp4" type="video/mp4"></video><button class="proj-scenario__play" aria-label="Spill av video"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="rgba(255,255,255,0.92)"/><polygon points="21,16 40,26 21,36" fill="#571721"/></svg></button><div class="proj-scenario__controls"><button class="proj-scenario__pause-btn" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><rect x="0" y="0" width="4.5" height="16" rx="1" fill="white"/><rect x="9.5" y="0" width="4.5" height="16" rx="1" fill="white"/></svg></button><div class="proj-scenario__progress-wrap"><div class="proj-scenario__progress-fill"></div></div><span class="proj-scenario__time">0:00 / 0:00</span></div></div></div><div class="proj-scenario__text"><h3 class="proj-section__label">Mobilprototype (Scenario 1)</h3><p class="proj-scenario__subtitle">«Full kontroll i lomma»</p><p><strong>Utfordringen:</strong> Erfarne ansatte trenger oversikt over vaktene sine for å planlegge fritid og ferie. I dag må de fysisk på jobb for å sjekke vaktplanen.</p><p><strong>Løsningen:</strong> En mobilvennlig plattform designet for tilgjengelighet utenfor arbeidstiden. Appen gir de ansatte rask og enkel tilgang til en personlig vaktplan. Ved å klikke seg inn på spesifikke dager får brukeren umiddelbar oversikt over tidspunkt, lokasjon, rolle og hvem de skal jobbe med – noe som fjerner unødvendig usikkerhet og gjør hverdagen mer forutsigbar.</p></div></div><div class="proj-scenario proj-scenario--ipad"><div class="proj-scenario__media"><div class="proj-scenario__video-wrap"><video class="proj-scenario__video" muted loop playsinline preload="metadata"><source src="./assets/ipad.mp4" type="video/mp4"></video><button class="proj-scenario__play" aria-label="Spill av video"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="rgba(255,255,255,0.92)"/><polygon points="21,16 40,26 21,36" fill="#571721"/></svg></button><div class="proj-scenario__controls"><button class="proj-scenario__pause-btn" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><rect x="0" y="0" width="4.5" height="16" rx="1" fill="white"/><rect x="9.5" y="0" width="4.5" height="16" rx="1" fill="white"/></svg></button><div class="proj-scenario__progress-wrap"><div class="proj-scenario__progress-fill"></div></div><span class="proj-scenario__time">0:00 / 0:00</span></div></div></div><div class="proj-scenario__text"><h3 class="proj-section__label">iPad-prototype (Scenario 2)</h3><p class="proj-scenario__subtitle">«Digital mentor på bakrommet»</p><p><strong>Utfordringen:</strong> Nyansatte skal for eksempel ha sin første selvstendige åpningsvakt, men husker ikke alle detaljer fra den muntlige opplæringen og føler seg usikker.</p><p><strong>Løsningen:</strong> Et opplæringsverktøy tilpasset iPad (som de bruker) som kan stå tilgjengelig på arbeidsplassen. Løsningen tilbyr et intuitivt "Min trening"-bibliotek med steg-for-steg moduler. Bruk av korte, instruktive videoer for rutiner som kassebruk og butikkåpning gir nyansatte en visuell og interaktiv måte å friske opp kunnskapen sin på, i sitt eget tempo.</p></div></div></div></div><div class="proj-section proj-section--none"><div class="proj-team-header"><p class="proj-section__label">Gruppe 01</p><h2 class="proj-section__heading">Teamet bak prosjektet</h2></div><div class="proj-team-grid"><div class="proj-team-card"><div class="proj-team-avatar" style="background:#571721">JR</div><h4>Josefine Reichelt Gjertsen</h4><p>Intervjuguide · Personas · Design</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#ad822e">HB</div><h4>Herman Brenn-Svendsen</h4><p>Sitemap · Prototyper · Wireframes</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#c0523f">TD</div><h4>Tia Linnea Dahl</h4><p>Designmanual · Personas · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#403d26">AJ</div><h4>Axel Bruusgaard Jewett</h4><p>Prototyper · Wireframes · Intervju</p></div></div></div></div>
+          <div class="proto-under-gallery">
+            <a class="btn-proto btn-proto--slim" href="https://www.figma.com/proto/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=370-654&t=gURyvsCsv2Xut1a-1" target="_blank" rel="noopener">↗ Åpne mobil-prototype</a>
+            <a class="btn-proto btn-proto--slim" href="https://www.figma.com/proto/SIwHbrWgze8kbEIWvYqJug/Tj%C3%B8nn%C3%A5smain?node-id=357-92&t=WdrI0DT0DpxmhxMO-1" target="_blank" rel="noopener">↗ Åpne iPad-prototype</a>
+          </div>
+        <div class="proj-sections"><div class="proj-section proj-section--krem"><div><p class="proj-section__label">Innsikt & utfordringer</p><h2 class="proj-section__heading">Jobbhverdagen er spredt på for mange systemer</h2><p class="proj-section__body">Intervju med daglig leder (Mari-Mette) avdekket at driften var spredt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.</p></div><div class="proj-problem proj-problem--below"><div><img class="proj-problem__img" src="./assets/norvald/marimette.webp" alt="Innsikt & utfordringer" loading="lazy" decoding="async"></div><div class="proj-problem-list"><p class="proj-problem-list__label">Hovedproblemer:</p><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Vaktplaner</h4><p>Håndtert i et separat system uten kobling til felles kommunikasjon.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Internkommunikasjon</h4><p>Viktig info forsvant i Messenger-tråder.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Opplæring</h4><p>Kun fysisk og muntlig – tidkrevende og ikke tilgjengelig utenom arbeidstid.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Dokumenter & rutiner</h4><p>Ingen versjonskontroll. Nye ansatte hadde vansker med å finne frem til riktig informasjon.</p></div></div></div></div></div><div class="proj-section proj-section--mandel-light"><p class="proj-section__label">Designprosess</p><h2 class="proj-section__heading">Fra innsikt til løsning</h2><div class="proj-steps-grid"><div class="proj-step"><div class="proj-step-num">01</div><h3>Intervju</h3><p>Kvalitativt intervju med daglig leder ga oss innsikt i reell drift – ikke antagelser. Valget om å snakke med leder fremfor ansatte var bevisst: hun hadde overblikk over tvers av alle smertepunkter.</p></div><div class="proj-step"><div class="proj-step-num">02</div><h3>Affinity map</h3><p>Funn gruppert i 6 temaer. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene – det styrte prioriteringene våre i løsningsdesignet.</p></div><div class="proj-step"><div class="proj-step-num">03</div><h3>Personas & scenarier</h3><p>Vi utviklet 5 personas, men valgte to primærbrukere: Kari (erfaren) og Eirik (nyansatt). Disse to representerte de mest ulike behovene – og ble brukt aktivt gjennom hele designprosessen.</p></div><div class="proj-step"><div class="proj-step-num">04</div><h3>Wireframes → Hi-fi</h3><p>Lo-fi skisser ble iterert til hi-fi-prototype i Figma. Vi beholdt et enkelt navigasjonsmønster fremfor avanserte interaksjoner – basert på brukergruppens lave digitale terskel.</p></div></div></div><div class="proj-section proj-section--krem"><p class="proj-section__label">Løsningen</p><h2 class="proj-section__heading">Én samlet ansattportal</h2><p class="proj-section__body">Portalens kjerneområder samler det som tidligere lå spredt på ulike plattformer – tilgjengelig på mobil og iPad.</p><div class="proj-features-grid"><div class="proj-feature"><span class="proj-feature-num">01</span><div><h3>Landing page</h3><p>Én startside erstatter morgenmøter og oppslagstavler. Daglige mål og beskjeder er der fra første sekund på skiftet.</p></div></div><div class="proj-feature"><span class="proj-feature-num">02</span><div><h3>Vaktliste</h3><p>Ansatte sjekker vaktene sine hjemmefra. Kalendervisning med detaljkort eliminerte behovet for å møte fysisk for å planlegge fri.</p></div></div><div class="proj-feature"><span class="proj-feature-num">03</span><div><h3>Chat & kommunikasjon</h3><p>Viktig info forsvinner ikke lenger i Messenger-tråder. Kanalen har historikk og varsler – og er adskilt fra privat meldingsutveksling.</p></div></div><div class="proj-feature"><span class="proj-feature-num">04</span><div><h3>Digital opplæring</h3><p>Nyansatte kan forberede seg hjemmefra og slå opp rutiner alene på jobb. Reduserer avhengigheten av erfarne kollegaers tid.</p></div></div><div class="proj-feature"><span class="proj-feature-num">05</span><div><h3>Dokumenter & rutiner</h3><p>Én kilde til sannhet med versjonskontroll. Ingen utdaterte utskrifter eller usikkerhet om hvilken versjon som gjelder.</p></div></div><div class="proj-feature"><span class="proj-feature-num">06</span><div><h3>Min side</h3><p>Profil og innstillinger tilpasset arbeidssted. Gir ansatte eierskap til egne data og notifikasjoner.</p></div></div></div></div><div class="proj-section proj-section--none"><div class="proj-scenarios"><div class="proj-scenario proj-scenario--iphone"><div class="proj-scenario__media"><div class="proj-scenario__video-wrap"><video class="proj-scenario__video" muted loop playsinline preload="metadata"><source src="./assets/iphone.mp4" type="video/mp4"></video><button class="proj-scenario__play" aria-label="Spill av video"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="rgba(255,255,255,0.92)"/><polygon points="21,16 40,26 21,36" fill="#571721"/></svg></button><div class="proj-scenario__controls"><button class="proj-scenario__pause-btn" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><rect x="0" y="0" width="4.5" height="16" rx="1" fill="white"/><rect x="9.5" y="0" width="4.5" height="16" rx="1" fill="white"/></svg></button><div class="proj-scenario__progress-wrap"><div class="proj-scenario__progress-fill"></div></div><span class="proj-scenario__time">0:00 / 0:00</span></div></div></div><div class="proj-scenario__text"><h3 class="proj-section__label">Mobilprototype — Scenario 1</h3><p class="proj-scenario__subtitle">Kari sjekker vaktlisten hjemmefra</p><p><strong>Innsikten:</strong> Intervjuet avdekket at erfarne ansatte måtte møte fysisk på jobb bare for å sjekke vaktplanen – en daglig friksjon som skapte usikkerhet rundt fri og ferie.</p><p><strong>Designvurderingen:</strong> Vi valgte kalendervisning med detaljkort per dag. Grepet gir Kari full oversikt over tidspunkt, lokasjon og hvem hun jobber med – tilgjengelig når som helst, uten å måtte kontakte leder.</p></div></div><div class="proj-scenario proj-scenario--ipad"><div class="proj-scenario__media"><div class="proj-scenario__video-wrap"><video class="proj-scenario__video" muted loop playsinline preload="metadata"><source src="./assets/ipad.mp4" type="video/mp4"></video><button class="proj-scenario__play" aria-label="Spill av video"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="rgba(255,255,255,0.92)"/><polygon points="21,16 40,26 21,36" fill="#571721"/></svg></button><div class="proj-scenario__controls"><button class="proj-scenario__pause-btn" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><rect x="0" y="0" width="4.5" height="16" rx="1" fill="white"/><rect x="9.5" y="0" width="4.5" height="16" rx="1" fill="white"/></svg></button><div class="proj-scenario__progress-wrap"><div class="proj-scenario__progress-fill"></div></div><span class="proj-scenario__time">0:00 / 0:00</span></div></div></div><div class="proj-scenario__text"><h3 class="proj-section__label">iPad-prototype — Scenario 2</h3><p class="proj-scenario__subtitle">Eirik fullfører sin første opplæringsmodul</p><p><strong>Innsikten:</strong> Nyansatte hadde kun tilgang til muntlig og fysisk opplæring. Ved første selvstendige vakt var det ingen måte å slå opp rutiner på egenhånd – noe som skapte usikkerhet og belastet erfarne kollegaer.</p><p><strong>Designvurderingen:</strong> iPad er allerede i bruk på arbeidsplassen, så vi designet opplæringsmoduler tilpasset den. "Min trening"-biblioteket med steg-for-steg videoer gir Eirik en visuell og selvstendig måte å lære på, i eget tempo og uten å avbryte andre.</p></div></div></div></div><div class="proj-section proj-section--mandel-light"><div style="max-width:680px"><p class="proj-section__label">Min bidrag</p><h2 class="proj-section__heading">Hva jeg eide i dette prosjektet</h2><p class="proj-section__body">Jeg ledet brukerinnsikten og utarbeidet intervjuguiden som la grunnlaget for hele prosessen. Jeg hadde ansvar for utvikling av personas og scenarier – inkludert de to primærbrukerne Kari og Eirik. I designfasen tok jeg rollen som UI-designer på mobilflaten: fra lo-fi-skisser til ferdig hi-fi-prototype i Figma, med fokus på tilgjengelighet og WCAG-krav.</p></div></div><div class="proj-section proj-section--none"><div class="proj-team-header"><p class="proj-section__label">Gruppe 01</p><h2 class="proj-section__heading">Teamet bak prosjektet</h2></div><div class="proj-team-grid"><div class="proj-team-card"><div class="proj-team-avatar" style="background:#571721">JR</div><h4>Josefine Reichelt Gjertsen</h4><p>Intervjuguide · Personas · UI-design (mobil)</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#ad822e">HB</div><h4>Herman Brenn-Svendsen</h4><p>Sitemap · Prototyper · Wireframes</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#c0523f">TD</div><h4>Tia Linnea Dahl</h4><p>Designmanual · Personas · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#403d26">AJ</div><h4>Axel Bruusgaard Jewett</h4><p>Prototyper · Wireframes · Intervju</p></div></div></div></div>
         
         <div class="extra-header">
           <p class="proj-section__label" style="margin:0">ekstramateriale</p>
-          <a href="./assets/Norvald og Tjønnås/hjem.html" class="btn-pdf" target="_blank" rel="noopener">↗ Se nettsiden</a>
+          <a href="./assets/Norvald og Tjønnås/hjem.html" class="btn-pdf" target="_blank" rel="noopener" style="background:#fff;color:#111;border:1.5px solid #111;">↗ Se nettsiden</a>
         </div>
 
         <div style="width:100%;padding:0 0 24px 0;display:flex;justify-content:center;">
@@ -256,7 +353,7 @@
         </div>
 
         <div style="display:flex;justify-content:center;padding:0 0 64px 0;">
-          <p class="extra-text">Denne delen ligger utenfor oppgavens rammer, men jeg lagde denne nettsiden 17. april – samme dag som Claude Design ble lansert. Jeg lastet opp Figma-filen for prosjektet og ba verktøyet lage en tilsvarende nettside. Etter bare noen få prompts var dette resultatet.</p>
+          <p class="extra-text">Et eksperiment utenfor oppgavens rammer: 17. april brukte jeg Figma-filen fra prosjektet som kilde og testet Claude Design — lansert samme dag. Jeg definerte layout, retning og struktur gjennom noen runder med prompting og redigering. Resultatet er nettsiden du kan se her. Designet, kildemateriellet og redaksjonell kontroll er mitt; AI-en var verktøyet.</p>
         </div>
 
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
