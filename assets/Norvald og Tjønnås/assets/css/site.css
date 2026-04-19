@@ -680,9 +680,9 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   align-self: flex-start;
   margin-bottom: 18px;
 }
-.module-info h1 {
+.module-info h2 {
   font-family: var(--display);
-  font-size: 40px;
+  font-size: clamp(22px, 3vw, 34px);
   letter-spacing: -0.02em;
   font-weight: 800;
   color: var(--burgundy);
@@ -1362,3 +1362,103 @@ body.osk-open .chat { height: calc(100dvh - 290px); }
 
 /* Toast for non-destructive feedback */
 .toast { z-index: 200; }
+
+/* ---------- Today focus hero (homepage) ---------- */
+.today-focus {
+  background: var(--burgundy);
+  border-radius: var(--r-lg);
+  padding: 28px 32px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  color: var(--cream);
+}
+.today-focus-left { min-width: 0; }
+.tag-light {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  margin-bottom: 10px;
+}
+.today-focus h2 {
+  font-family: var(--display);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 800;
+  color: var(--cream);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+}
+.today-focus p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(252,250,235,0.7);
+}
+.btn-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--r-pill);
+  background: var(--cream);
+  color: var(--burgundy);
+  font-weight: 700;
+  font-size: 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: filter .15s ease;
+}
+.btn-light:hover { filter: brightness(0.93); }
+@media (max-width: 600px) {
+  .today-focus { flex-direction: column; align-items: flex-start; padding: 22px; }
+  .btn-light { width: 100%; justify-content: center; }
+}
+
+/* Earnings bar labels */
+.bar-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+/* Shifts card meta line */
+.shifts-meta {
+  font-size: 13px;
+  color: var(--muted);
+  margin: 2px 0 12px;
+}
+
+/* Goal category label — inside .goal-row grid */
+.goal-cat {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+  margin-bottom: -4px;
+}
+
+/* Goal section separator — standalone, outside .goal-row */
+.goal-section {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 16px 0 6px;
+}
+.goal-section:first-of-type { margin-top: 6px; }
+
+/* Dot-step as button */
+.steps-row .dot-step { cursor: pointer; }
