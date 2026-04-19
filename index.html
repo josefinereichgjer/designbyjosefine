@@ -9,17 +9,25 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="./assets/me.webp" as="image">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Raleway:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/hvitlogo.webp">
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 
   <style>
+    @font-face {
+      font-family: "Romie";
+      src: url("./assets/Romie-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
     *, *::before, *::after { box-sizing: border-box; }
 
     html, body {
       margin: 0; padding: 0;
       height: 100%; overflow: hidden;
-      font-family: system-ui, -apple-system, sans-serif;
+      font-family: "Poppins", system-ui, sans-serif;
       background: #000;
     }
 
@@ -32,24 +40,25 @@
       contain: strict;
     }
 
-    /* Edge fades */
+    /* ── 4-directional vignette — text protection on all edges ── */
     .landing::before,
     .landing::after {
       content: '';
       position: absolute;
-      top: 0; bottom: 0;
-      width: 12vw;
-      max-width: 140px;
+      inset: 0;
       z-index: 5;
       pointer-events: none;
     }
+    /* Left strong + top + bottom */
     .landing::before {
-      left: 0;
-      background: linear-gradient(to right, #000, transparent);
+      background:
+        linear-gradient(to right,  rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.6) 14%, transparent 34%),
+        linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, transparent 24%),
+        linear-gradient(to top,    rgba(0,0,0,0.90) 0%, transparent 42%);
     }
+    /* Right edge */
     .landing::after {
-      right: 0;
-      background: linear-gradient(to left, #000, transparent);
+      background: linear-gradient(to left, rgba(0,0,0,0.75) 0%, transparent 22%);
     }
 
     /* ── Collage fills the whole page ── */
@@ -105,9 +114,9 @@
     /* ── "Portfolio" — top-left, big, links to the portfolio ── */
     .landing__portfolio-link {
       z-index: 50;
-      font-family: "Cormorant Garamond", Georgia, serif;
+      font-family: "Romie", Georgia, serif;
       font-size: clamp(46px, 15vw, 80px);
-      font-weight: 300;
+      font-weight: 400;
       letter-spacing: 0.07em;
       line-height: 1;
       color: #fff;
@@ -145,13 +154,12 @@
       background: none;
       border: none;
       color: #fff;
-      font-family: "Raleway", sans-serif;
-      font-size: 11px;
+      font-family: "Poppins", sans-serif;
+      font-size: 13px;
       font-weight: 300;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
-      overflow: hidden;
       transition: opacity .2s ease;
       pointer-events: auto;
       z-index: 50;
@@ -160,159 +168,233 @@
     .landing__cta:active { transform: scale(0.98); }
     .landing__cta { touch-action: manipulation; }
 
-    /* arrow track */
-    .landing__cta-arrow-track {
-      display: inline-flex;
-      align-items: center;
-      overflow: visible;
-      width: 84px;
-      flex-shrink: 0;
-    }
-    .landing__cta-arrow {
-      flex-shrink: 0;
-      transition: transform .38s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .landing__cta:hover .landing__cta-arrow { transform: translateX(6px); }
-    /* click burst state — added by JS */
-    .landing__cta.is-leaving,
-    .landing__cta.is-leaving .landing__cta-arrow-track {
-      overflow: visible;
-    }
-    .landing__cta.is-leaving .landing__cta-arrow {
-      transform: translateX(180px);
-      opacity: 0;
-      transition: transform .38s cubic-bezier(0.4,0,1,1), opacity .28s ease .1s;
-    }
-
     /* ── Bio ── */
     .landing__bio {
-      max-width: none;
-      font-family: "Raleway", sans-serif;
-      font-size: 15px;
+      max-width: min(100%, 460px);
+      font-family: "Poppins", sans-serif;
+      font-size: 14px;
       font-weight: 300;
-      font-style: normal;
-      line-height: 1.8;
+      line-height: 1.65;
       letter-spacing: 0.01em;
       color: rgba(255,255,255,0.75);
       overflow-wrap: break-word;
     }
 
-    /* Mobile collage */
-    .collage-scene { transform: scale(.72); transform-origin: center; }
-
-    @media (max-width: 600px) {
-      .landing__cta-arrow path { filter: none; }
-      /* Disable heavy SVG filter on mobile for butter-smooth performance */
-      .scribble-path { filter: none; } 
+    /* ── Mobile base (< 768px) ── */
+    .collage-scene { transform: scale(0.70); transform-origin: center; }
+    .landing__portfolio-link { font-size: clamp(32px, 9.5vw, 62px); }
+    .landing__brand {
+      gap: 12px;
+      bottom: max(20px, env(safe-area-inset-bottom, 20px));
     }
 
-    /* ── Tablet (768px+) ── */
+    /* ── CTA arrow ── */
+    .landing__cta-arrow {
+      flex-shrink: 0;
+      overflow: visible;
+      transition: transform .32s cubic-bezier(0.25,0.46,0.45,0.94), opacity .28s ease;
+    }
+    .landing__cta:hover .landing__cta-arrow { transform: translateX(6px); }
+    .landing__cta.is-leaving .landing__cta-arrow {
+      transform: translateX(180px);
+      opacity: 0;
+      transition: transform .38s cubic-bezier(0.4,0,1,1), opacity .22s ease;
+    }
+
+    /* ── Tiny phones (< 480px) ── */
+    @media (max-width: 479px) {
+      .collage-scene { transform: scale(0.62); }
+      .landing__portfolio-link { font-size: clamp(28px, 9vw, 48px); }
+    }
+
+    /* ── Landscape phones — short viewport ── */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .landing__topleft { top: 10px; left: 14px; }
+      .landing__portfolio-link { font-size: clamp(20px, 5vh, 34px) !important; }
+      .landing__brand { bottom: 10px; top: auto; transform: none; gap: 8px; }
+      .landing__bio { font-size: 11px; line-height: 1.4; max-width: 48vw; }
+      .landing__cta { font-size: 10px; margin-left: 0; margin-top: 8px; }
+      .collage-scene { transform: scale(0.52) translateX(14%); }
+    }
+
+    /* ── Tablet portrait + landscape (768px+) ── */
     @media (min-width: 768px) {
       .landing__topleft { top: 28px; left: 28px; }
-      .landing__brand { left: 28px; bottom: auto; right: auto; top: 50%; transform: translateY(-50%); }
-      .landing__portfolio-link { font-size: 150px; }
-      .landing__cta-label--full { display: inline; }
+      .landing__brand {
+        left: 28px; right: auto;
+        bottom: auto; top: 50%;
+        transform: translateY(-50%);
+        gap: 20px;
+      }
+      .landing__portfolio-link { font-size: clamp(76px, 12vw, 124px); }
+      .landing__cta-label--full  { display: inline; }
       .landing__cta-label--short { display: none; }
-      .landing__bio--full { display: inline; }
+      .landing__bio--full  { display: inline; }
       .landing__bio--short { display: none; }
-      .landing__bio { font-size: 22px; max-width: 560px; line-height: 1.5; }
-      .landing__cta { font-size: 13px; padding: 0; margin-top: -60px; margin-left: 300px; }
-      .collage-scene { transform: scale(1.4) translateX(-22%); transform-origin: center; }
+      .landing__bio { font-size: clamp(14px, 1.8vw, 20px); max-width: min(400px, 38vw); line-height: 1.55; }
+      /* CTA indented and below bio with natural gap */
+      .landing__cta { font-size: 11px; margin-top: 24px; margin-left: min(240px, 32vw); }
+      .collage-scene { transform: scale(1.25) translateX(16%); transform-origin: center; }
     }
 
-    /* ── Small desktop (1024px+) ── */
+    /* ── Tablet portrait only — pile shifted more to not crowd text ── */
+    @media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+      .collage-scene { transform: scale(1.15) translateX(20%); }
+    }
+
+    /* ── Desktop (1024px+) ── */
     @media (min-width: 1024px) {
       .landing__topleft { top: 36px; left: 44px; }
-      .landing__brand { left: 44px; bottom: auto; top: 50%; transform: translateY(-50%); }
-      .landing__portfolio-link { font-size: clamp(120px, 11vw, 180px); }
-      .landing__bio { font-size: clamp(22px, 2vw, 32px); max-width: 580px; line-height: 1.4; }
-      .landing__cta { font-size: 15px; padding: 0; margin-top: -60px; margin-left: 350px; }
-      .collage-scene { transform: scale(.92); transform-origin: center; }
-    }
-
-    /* Keep tablet collage on portrait (e.g. iPad portrait at 1024px) */
-    @media (min-width: 768px) and (orientation: portrait) {
-      .collage-scene { transform: scale(1.4) translateX(-22%); transform-origin: center; }
+      .landing__brand { left: 44px; top: 50%; transform: translateY(-50%); gap: 24px; }
+      .landing__portfolio-link { font-size: clamp(108px, 10vw, 168px); }
+      .landing__bio { font-size: clamp(17px, 1.7vw, 26px); max-width: min(480px, 36vw); line-height: 1.45; }
+      /* Move CTA lower — positive margin-top, indented to right of bio */
+      .landing__cta { font-size: 18px; margin-top: 32px; margin-left: min(290px, 28vw); }
+      .collage-scene { transform: scale(0.95) translateX(6%); transform-origin: center; }
     }
 
     /* ── Large desktop (1440px+) ── */
     @media (min-width: 1440px) {
-      .landing__bio { font-size: clamp(26px, 2.2vw, 36px); max-width: 620px; }
-      .landing__cta { font-size: 15px; padding: 0; }
-      .collage-scene { transform: scale(1.2); }
+      .landing__portfolio-link { font-size: clamp(136px, 11vw, 196px); }
+      .landing__bio { font-size: clamp(20px, 1.8vw, 30px); max-width: min(540px, 34vw); }
+      .landing__cta { font-size: 18px; margin-top: 36px; margin-left: min(340px, 25vw); }
+      .collage-scene { transform: scale(1.10) translateX(8%); }
     }
 
-    /* ── XL desktop (1920px+) ── */
+    /* ── XL (1920px+) ── */
     @media (min-width: 1920px) {
-      .landing__bio { font-size: clamp(28px, 2.4vw, 40px); max-width: 660px; }
-      .landing__cta { font-size: 15px; padding: 0; }
-      .collage-scene { transform: scale(1.45); }
+      .landing__bio { font-size: clamp(24px, 1.9vw, 36px); max-width: min(600px, 32vw); }
+      .landing__cta { font-size: 18px; margin-top: 40px; margin-left: min(380px, 22vw); }
+      .collage-scene { transform: scale(1.30) translateX(10%); }
     }
 
-    /* ── Scribble decoration ── */
-    .scribble-deco {
-      position: absolute;
-      left: calc(50% - 300px);
-      top: 30%;
-      transform: translateY(-50%);
-      width: 600px;
-      height: 660px;
-      z-index: 0;
+    /* ── Nav menu landscape ── */
+    @media (max-height: 500px) {
+      .nav-menu { align-items: flex-start; padding-top: 56px; }
+      .nav-menu__link { font-size: clamp(28px, 8vh, 80px); }
+      .nav-menu__list { gap: clamp(2px, 1vh, 10px); }
+    }
+
+    /* ── Hamburger button ── */
+    .nav-toggle {
+      position: fixed;
+      top: 18px;
+      right: 20px;
+      z-index: 450;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      align-items: flex-end;
+    }
+    .nav-toggle__bar {
+      display: block;
+      height: 1px;
+      background: #fff;
+      transition: transform 0.32s ease, opacity 0.2s ease, width 0.32s ease;
+    }
+    .nav-toggle__bar:nth-child(1) { width: 22px; }
+    .nav-toggle__bar:nth-child(2) { width: 14px; }
+    .nav-toggle__bar:nth-child(3) { width: 22px; }
+
+    .nav-toggle.is-open .nav-toggle__bar:nth-child(1) {
+      transform: translateY(6px) rotate(45deg);
+      width: 22px;
+    }
+    .nav-toggle.is-open .nav-toggle__bar:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-toggle.is-open .nav-toggle__bar:nth-child(3) {
+      transform: translateY(-6px) rotate(-45deg);
+      width: 22px;
+    }
+
+    /* ── Nav overlay ── */
+    .nav-menu {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: #000;
+      display: flex;
+      align-items: center;
+      padding: 0 clamp(28px, 8vw, 100px);
+      opacity: 0;
       pointer-events: none;
+      transition: opacity 0.38s ease;
     }
-    @media (min-width: 768px) {
-      .scribble-deco {
-        left: calc(50% - 20px);
-        width: 540px;
-        height: 610px;
-      }
+    .nav-menu.is-open {
+      opacity: 1;
+      pointer-events: auto;
     }
-    @media (min-width: 1024px) {
-      .scribble-deco {
-        left: calc(50% - 40px);
-        width: 960px;
-        height: 1060px;
-      }
+
+    .nav-menu__list {
+      list-style: none;
+      margin: 0; padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: clamp(8px, 2.5vh, 20px);
     }
-    @media (min-width: 1440px) {
-      .scribble-deco {
-        left: calc(50% - 20px);
-        width: 1100px;
-        height: 1200px;
-      }
+
+    .nav-menu__link {
+      font-family: "Romie", Georgia, serif;
+      font-size: clamp(42px, 10vw, 130px);
+      font-weight: 400;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      line-height: 1.05;
+      display: block;
+      transition: opacity 0.2s;
     }
-    .scribble-deco svg { width: 100%; height: 100%; }
-    .scribble-path {
-      stroke-dasharray: 8000;
-      stroke-dashoffset: 8000;
-      animation: scribble-draw 1.8s ease-out 0.6s forwards;
+    .nav-menu__link:hover { opacity: 0.38; }
+
+    /* ── Intro overlay ── */
+    #intro {
+      position: absolute;
+      inset: 0;
+      z-index: 200;
+      background: #000;
+      overflow: hidden;
     }
-    @keyframes scribble-draw {
-      to { stroke-dashoffset: 0; }
+    .intro-letter {
+      position: absolute;
+      font-family: "Romie", Georgia, serif;
+      font-weight: 400;
+      color: #fff;
+      line-height: 0.82;
+      user-select: none;
+      pointer-events: none;
+      will-change: transform, opacity;
+      opacity: 0;
     }
+    /* J */ .intro-letter:nth-child(1) { left: -2vw;  top:  5vh; font-size: min(28vw, 400px); }
+    /* O */ .intro-letter:nth-child(2) { left: 15vw;  top: -9vh; font-size: min(26vw, 375px); }
+    /* S */ .intro-letter:nth-child(3) { left: 52vw;  top:  7vh; font-size: min(20vw, 290px); }
+    /* E */ .intro-letter:nth-child(4) { left: 70vw;  top: 20vh; font-size: min(18vw, 260px); }
+    /* F */ .intro-letter:nth-child(5) { left:  5vw;  top: 52vh; font-size: min(26vw, 375px); }
+    /* I */ .intro-letter:nth-child(6) { left: 28vw;  top: 44vh; font-size: min(32vw, 460px); }
+    /* N */ .intro-letter:nth-child(7) { left: 48vw;  top: 55vh; font-size: min(22vw, 320px); }
+    /* E */ .intro-letter:nth-child(8) { left: 70vw;  top: 62vh; font-size: min(26vw, 375px); }
+
   </style>
 </head>
 
 <body>
   <main class="landing">
 
-    <div class="scribble-deco" aria-hidden="true">
-      <svg viewBox="-80 0 660 640" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="handDrawn" x="-8%" y="-8%" width="116%" height="116%">
-            <feTurbulence id="scribble-turb" type="turbulence" baseFrequency="0.035" numOctaves="2" seed="1" result="noise"/>
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
-          </filter>
-        </defs>
-        <path class="scribble-path"
-          filter="url(#handDrawn)"
-          d="M 260,40 C 360,10 500,60 520,160 C 540,260 460,340 360,330 C 260,320 180,260 190,170 C 200,80 310,50 390,90 C 470,130 500,240 470,320 C 440,400 340,440 240,420 C 140,400 80,330 100,250 C 120,170 220,150 300,190 C 380,230 410,330 380,410 C 350,490 250,530 150,510 C 50,490 0,420 20,350 C 40,280 130,260 200,300 C 270,340 290,430 260,500 C 230,570 140,600 60,580 C -20,560 -50,490 -20,440 C 10,390 80,390 120,430 C 160,470 160,550 120,580 C 80,610 20,600 -10,570 M 320,200 C 420,180 520,230 540,320 C 560,410 490,480 400,470 C 310,460 260,390 280,310 C 300,230 390,200 460,240 C 530,280 550,380 520,450 C 490,520 400,550 320,530 C 240,510 200,450 220,380"
-          stroke="rgba(180,141,232,0.6)"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+    <div id="intro" aria-hidden="true">
+      <span class="intro-letter">J</span>
+      <span class="intro-letter">O</span>
+      <span class="intro-letter">S</span>
+      <span class="intro-letter">E</span>
+      <span class="intro-letter">F</span>
+      <span class="intro-letter">I</span>
+      <span class="intro-letter">N</span>
+      <span class="intro-letter">E</span>
     </div>
 
     <div class="collage-scene" id="collage-scene" aria-hidden="true"></div>
@@ -328,25 +410,64 @@
       </p>
       <a class="landing__cta" href="./projects.html">
         <span class="landing__cta-label--full">Se arbeidene mine</span><span class="landing__cta-label--short">Arbeider</span>
-        <span class="landing__cta-arrow-track" aria-hidden="true">
-          <svg class="landing__cta-arrow" width="84" height="48" viewBox="0 -20 84 48" fill="none" style="overflow:visible">
-            <defs>
-              <filter id="arrowWobble" x="-20%" y="-60%" width="140%" height="220%">
-                <feTurbulence id="arrow-turb" type="turbulence" baseFrequency="0.055" numOctaves="2" seed="2" result="noise"/>
-                <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
-              </filter>
-            </defs>
-            <path d="M 30,4 C 32,-18 0,-20 0,4 C 0,26 30,24 30,4 L 76,4 M 70,-1 L 76,4 L 70,9"
-              stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
-              filter="url(#arrowWobble)"/>
-          </svg>
-        </span>
+        <svg class="landing__cta-arrow" width="48" height="10" viewBox="0 0 48 10" fill="none" aria-hidden="true">
+          <line x1="0" y1="5" x2="41" y2="5" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+          <path d="M 37 1.5 L 43 5 L 37 8.5" stroke="currentColor" stroke-width="1" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
       </a>
     </div>
 
   </main>
 
+  <button class="nav-toggle" aria-label="Åpne meny" aria-expanded="false" aria-controls="nav-menu">
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+    <span class="nav-toggle__bar"></span>
+  </button>
+
+  <nav class="nav-menu" id="nav-menu" aria-hidden="true">
+    <ul class="nav-menu__list">
+      <li><a class="nav-menu__link" href="./projects.html">Arbeider</a></li>
+      <li><a class="nav-menu__link" href="./projects.html#about">Om</a></li>
+      <li><a class="nav-menu__link" href="mailto:josefinegjertsen@gmail.com">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <script src="./intro.js" defer></script>
   <script src="./collage.js?v=1" defer></script>
-  
+  <script>
+    (function () {
+      var toggle = document.querySelector('.nav-toggle');
+      var menu   = document.querySelector('.nav-menu');
+      if (!toggle || !menu) return;
+
+      function open() {
+        menu.classList.add('is-open');
+        toggle.classList.add('is-open');
+        toggle.setAttribute('aria-expanded', 'true');
+        menu.setAttribute('aria-hidden', 'false');
+        toggle.setAttribute('aria-label', 'Lukk meny');
+      }
+      function close() {
+        menu.classList.remove('is-open');
+        toggle.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-hidden', 'true');
+        toggle.setAttribute('aria-label', 'Åpne meny');
+      }
+
+      toggle.addEventListener('click', function () {
+        menu.classList.contains('is-open') ? close() : open();
+      });
+
+      menu.querySelectorAll('.nav-menu__link').forEach(function (link) {
+        link.addEventListener('click', close);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+      });
+    })();
+  </script>
 </body>
 </html>

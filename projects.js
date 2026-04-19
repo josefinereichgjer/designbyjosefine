@@ -377,22 +377,3 @@ window.PROJECTS = [
   }
 ];
 
-/* ── Nav arrows — inject into every sidebar nav link ── */
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.nav .nav__link').forEach(function (link) {
-    var track = document.createElement('span');
-    track.className = 'nav__arrow-track';
-    track.setAttribute('aria-hidden', 'true');
-    track.innerHTML = '<svg class="nav__arrow" width="33" height="12" viewBox="0 0 33 12" fill="none" style="overflow:visible"><path class="nav__arrow-path" d="M 8,6 C 8,1 1,1 1,6 C 1,11 8,11 8,6 L 30,6 M 25,2 L 31,6 L 25,10" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" filter="url(#navArrowWobble)"/></svg>';
-    link.appendChild(track);
-
-    var href = link.getAttribute('href');
-    if (href && !href.startsWith('#')) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        link.classList.add('nav__link--leaving');
-        setTimeout(function () { window.location.href = href; }, 400);
-      });
-    }
-  });
-});

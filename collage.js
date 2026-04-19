@@ -21,14 +21,14 @@
 
   /* Small x/y offsets + rotations — tight pile, me.webp top layer */
   const TARGETS = [
-    { x:  270, y:  -20, rot:   2, z: 8 },  // me.webp  — top
-    { x:  198, y:    2, rot:  -9, z: 7 },
-    { x:  348, y:  -22, rot:  13, z: 6 },
-    { x:  212, y:  -52, rot:  -5, z: 5 },
-    { x:  338, y:   14, rot: -12, z: 4 },
-    { x:  172, y:  -16, rot:   8, z: 3 },
-    { x:  314, y:  -50, rot: -15, z: 2 },
-    { x:  248, y:   22, rot:  10, z: 1 },
+    { x:  270, y:   44, rot:   2, z: 8 },  // me.webp  — top
+    { x:  198, y:   66, rot:  -9, z: 7 },
+    { x:  348, y:   42, rot:  13, z: 6 },
+    { x:  212, y:   12, rot:  -5, z: 5 },
+    { x:  338, y:   78, rot: -12, z: 4 },
+    { x:  172, y:   48, rot:   8, z: 3 },
+    { x:  314, y:   14, rot: -15, z: 2 },
+    { x:  248, y:   86, rot:  10, z: 1 },
   ];
 
   let cardEls    = [];
@@ -40,11 +40,14 @@
     if (!scene || typeof gsap === 'undefined') return;
 
     /* On mobile, fewer cards + simpler easing for performance */
-    const isMobile  = window.innerWidth <= 600;
-    const showShort = window.innerWidth < 768;
-    const xShift    = isMobile ? 267 : 0;
-    yShift         = isMobile ? 0 : 15;
-    const cards    = isMobile ? CARDS.slice(0, 5) : CARDS;
+    const isTiny   = window.innerWidth < 480;
+    const isMobile = window.innerWidth < 768;
+    const showShort = isMobile;
+    /* Push pile right of centre on mobile so left-side text stays clear.
+       Pull it up on mobile so it doesn't sit on the brand text at the bottom. */
+    const xShift = isMobile ? 200 : 0;
+    yShift       = isMobile ? -50 : 15;
+    const cards  = isTiny ? CARDS.slice(0, 4) : (isMobile ? CARDS.slice(0, 5) : CARDS);
 
     cards.forEach(function (c, i) {
       const isMe = i === 0;
@@ -198,20 +201,32 @@
   }
 
   function startFloat(el, idx) {
-    if (window.innerWidth <= 600) return;
+    if (window.innerWidth < 768) return;
     const t    = TARGETS[idx];
+    const adjX = t.x;
     const adjY = t.y + yShift;
-    const yAmp = 4 + Math.random() * 5;
-    const rAmp = 0.8 + Math.random() * 1.2;
-    const yDur = 4.5 + Math.random() * 3.0;
-    const rDur = 6.0 + Math.random() * 4.0;
-    const sY   = idx % 2 === 0 ? 1 : -1;
-    const sR   = idx % 3 === 0 ? 1 : -1;
+
+    /* Three independent cycles → organic Lissajous-style drift */
+    const yAmp = 10 + Math.random() * 8;    // 10–18 px vertical
+    const xAmp =  4 + Math.random() * 5;    //  4–9 px horizontal
+    const rAmp =  1.6 + Math.random() * 2;  // 1.6–3.6° rotation
+
+    /* Long, mismatched periods so peaks never line up */
+    const yDur = 6.0 + Math.random() * 4.0;  // 6–10 s
+    const xDur = 8.0 + Math.random() * 5.0;  // 8–13 s
+    const rDur = 7.5 + Math.random() * 5.5;  // 7.5–13 s
+
+    const sY = idx % 2 === 0 ? 1 : -1;
+    const sX = idx % 3 === 0 ? 1 : -1;
+    const sR = idx % 3 === 0 ? 1 : -1;
 
     floatTweens[idx] = {
       y: gsap.fromTo(el,
         { y: adjY },
         { y: adjY + yAmp * sY, ease: 'sine.inOut', yoyo: true, repeat: -1, duration: yDur }),
+      x: gsap.fromTo(el,
+        { x: adjX },
+        { x: adjX + xAmp * sX, ease: 'sine.inOut', yoyo: true, repeat: -1, duration: xDur }),
       r: gsap.fromTo(el,
         { rotation: t.rot },
         { rotation: t.rot + rAmp * sR, ease: 'sine.inOut', yoyo: true, repeat: -1, duration: rDur }),
@@ -219,13 +234,14 @@
   }
 
   function onHover(idx) {
-    if (floatTweens[idx]) {
-      floatTweens[idx].y.kill();
-      floatTweens[idx].r.kill();
+    const ft = floatTweens[idx];
+    if (ft) {
+      ft.y.kill(); ft.x.kill(); ft.r.kill();
       floatTweens[idx] = null;
     }
     const t = TARGETS[idx];
     gsap.to(cardEls[idx], {
+      x:        t.x,
       y:        t.y + yShift - 28,
       scale:    1.1,
       rotation: t.rot * 0.3,
@@ -239,10 +255,11 @@
   function onLeave(idx) {
     const t = TARGETS[idx];
     gsap.to(cardEls[idx], {
+      x:        t.x,
       y:        t.y + yShift,
       scale:    1,
       rotation: t.rot,
-      duration: 0.45,
+      duration: 0.55,
       ease:     'power2.inOut',
       overwrite: 'auto',
       onComplete: function () {
@@ -252,9 +269,17 @@
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
+  /* Start on intro:reveal event; fallback after 4s if intro is absent */
+  var _started = false;
+  function _start() {
+    if (_started) return;
+    _started = true;
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   }
+  document.addEventListener('intro:reveal', _start, { once: true });
+  setTimeout(_start, 4000);
 })();

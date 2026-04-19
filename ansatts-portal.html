@@ -4,13 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
-  <title>Tjønnås og Norvald — DesignbyJosefine</title>
+  <title>Tjønnås & Norvald — DesignbyJosefine</title>
   <meta name="description" content="Ansattportal for Tjønnås Delikatesser og Norvald Café: ett system som samler vaktlister, kommunikasjon og opplæring på én plass." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
   <style>
+    @font-face {
+      font-family: 'Romie';
+      src: url('./assets/Romie-Regular.woff2') format('woff2');
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
     .project-meta__title {
       font-family: 'Poppins', sans-serif;
       font-size: 40px;
@@ -87,24 +92,31 @@
       .extra-header { gap: 12px; padding: 28px 0 12px; }
     }
     .proj-meta-strip {
-      display: flex; flex-wrap: wrap; align-items: center; gap: 0;
-      margin-top: 16px; font-size: 12px; color: #999;
-      font-family: 'Inter', sans-serif; letter-spacing: 0.015em;
-      border-top: 1px solid #e8e8e8; border-bottom: 1px solid #e8e8e8;
-      padding: 10px 0;
+      display: flex; flex-wrap: wrap; align-items: flex-start;
+      gap: 8px 0; margin-top: 20px;
+      font-family: 'Inter', sans-serif;
     }
     .proj-meta-strip__item {
-      padding: 6px 16px 6px 0;
-      margin-right: 16px;
-      border-right: 1px solid #e0e0e0;
-      line-height: 1.3;
+      display: inline-grid;
+      grid-template-columns: 14px 1fr;
+      grid-template-rows: auto auto;
+      align-items: center;
+      padding: 0 32px 0 0;
     }
-    .proj-meta-strip__item:last-child { border-right: none; margin-right: 0; }
+    .proj-meta-strip__item:last-child { padding-right: 0; }
+    .proj-meta-strip__item::before {
+      content: "•"; color: #000; font-size: 13px;
+      grid-column: 1; grid-row: 1 / 3; align-self: center; justify-self: center;
+    }
     .proj-meta-strip__label {
-      display: block; font-size: 9.5px; text-transform: uppercase;
-      letter-spacing: 0.1em; color: #bbb; margin-bottom: 2px; font-weight: 500;
+      grid-column: 2; grid-row: 1;
+      display: block; font-size: 9px; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #bbb; font-weight: 600; margin-bottom: 2px;
     }
-    .proj-meta-strip__value { color: #555; font-weight: 400; }
+    .proj-meta-strip__value {
+      grid-column: 2; grid-row: 2;
+      display: block; color: #333; font-size: 13px; font-weight: 400; line-height: 1.2;
+    }
     .proto-cta-row {
       display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px;
     }
@@ -144,8 +156,9 @@
       margin-top: 16px; margin-bottom: 8px;
     }
     @media (max-width: 680px) {
-      .proj-meta-strip { gap: 0; }
-      .proj-meta-strip__item { padding: 0 10px; font-size: 11px; }
+      .proj-meta-strip { gap: 6px 0; }
+      .proj-meta-strip__item { padding: 0 20px 0 0; }
+      .proj-meta-strip__value { font-size: 12px; }
       .proto-cta-row { gap: 8px; }
       .btn-proto,
       .btn-pdf {
@@ -174,10 +187,8 @@
       .proto-cta-row { gap: 12px; }
     }
     @media (max-width: 560px) {
-      .proj-meta-strip { gap: 0; }
-      .proj-meta-strip__item {
-        padding: 6px 12px 6px 0; margin-right: 12px;
-      }
+      .proj-meta-strip { gap: 10px 0; flex-wrap: wrap; }
+      .proj-meta-strip__item { padding: 0 16px 0 0; }
     }
   </style>
   <link rel="preload" as="image" href="./assets/norvald-iphone.webp">
@@ -220,7 +231,7 @@
           <div class="project-layout__media">
             <div class="project-header">
               <div class="project-header__text">
-                <h1 class="project-meta__title">Tjønnås og Norvald</h1>
+                <h1 class="project-meta__title">Tjønnås & Norvald</h1>
                 <p class="project-intro">Ansattportal for Tjønnås Delikatesser og Norvald Café:<br><span class="intro-space"> </span>ett system som samler vaktlister, kommunikasjon og opplæring på én plass.</p>
                 <div class="proj-meta-strip">
                   <span class="proj-meta-strip__item">
@@ -245,7 +256,7 @@
                   </span>
                 </div>
                 <div class="proto-cta-row">
-                  <button class="btn-proto btn-proto--secondary panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Ressurser <span class="panel-toggle__icon">+</span></button>
+                  <button class="btn-proto btn-proto--secondary panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Ressurser <span class="panel-toggle__icon">→</span></button>
                 </div>
               </div>
               <div class="header-btns" style="display:none"></div>
@@ -325,8 +336,8 @@
               <div class="scroll-gallery__slider-wrap">
                 <div class="scroll-gallery__track">
                   <img class="scroll-gallery__img" src="./assets/norvald-iphone.webp" alt="iPhone 16 Pro Max prototype" loading="eager" fetchpriority="high" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-2-mock.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-1-mock.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-2-mock.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-1-mock.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
                 </div>
                 <button class="scroll-gallery__arrow scroll-gallery__arrow--prev" aria-label="Forrige">&#8592;</button>
                 <button class="scroll-gallery__arrow scroll-gallery__arrow--next" aria-label="Neste">&#8594;</button>
@@ -338,14 +349,14 @@
               <div class="scroll-gallery__slider-wrap">
                 <div class="scroll-gallery__track">
                   <img class="scroll-gallery__img" src="./assets/norvald-ipad.webp" alt="iPad Pro prototype" loading="eager" fetchpriority="high" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/ipad10.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/ipad11.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/ipad12.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/ipad13.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/ipad14.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/ipad15.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/ipad16.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-                  <img class="scroll-gallery__img" src="./assets/norvald/ipad17.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad10.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad11.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad12.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad13.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad14.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad15.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad16.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad17.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
                 </div>
                 <button class="scroll-gallery__arrow scroll-gallery__arrow--prev" aria-label="Forrige">&#8592;</button>
                 <button class="scroll-gallery__arrow scroll-gallery__arrow--next" aria-label="Neste">&#8594;</button>

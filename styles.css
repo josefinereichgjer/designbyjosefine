@@ -1,3 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+
+@font-face {
+  font-family: "Romie";
+  src: url("./assets/Romie-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @font-face {
   font-family: "AboveBeyond";
   src: url("./assets/above-the-beyond-script.otf") format("opentype");
@@ -23,7 +33,7 @@
   --radius: 16px;
   --sidebarW: 180px;
   --gap: 10px;
-  --font: "Raleway", system-ui, -apple-system, sans-serif;
+  --font: "Poppins", system-ui, -apple-system, sans-serif;
 }
 
 *{box-sizing:border-box}
@@ -81,7 +91,7 @@ a:hover{opacity:.75}
 .back-btn,
 .sidebar .back-btn {
   display: inline-block;
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 11px;
   font-weight: 300;
   letter-spacing: 0.22em;
@@ -130,7 +140,7 @@ a:hover{opacity:.75}
   align-items:center;
   justify-content:space-between;
   padding:10px 0;
-  font-family:"Raleway", sans-serif;
+  font-family:"Poppins", sans-serif;
   font-size:13px;
   font-weight:300;
   letter-spacing:0.22em;
@@ -139,36 +149,7 @@ a:hover{opacity:.75}
 }
 .nav__link--personal { margin-top: 20px; color: #b48de8; opacity: 1; }
 
-.nav__arrow-track {
-  display: none;
-}
-@media (min-width: 768px) {
-  .nav__arrow-track {
-    display: inline-flex;
-    align-items: center;
-    overflow: hidden;
-    width: 40px;
-    flex-shrink: 0;
-    opacity: 0;
-    transition: opacity .25s ease;
-  }
-}
-.nav__arrow {
-  flex-shrink: 0;
-  color: #b48de8;
-  transition: transform .38s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-.nav__link:hover .nav__arrow-track { opacity: 1; }
-.nav__link:hover .nav__arrow { transform: translateX(5px); }
 .nav__link:hover { opacity: 0.7; }
-/* shoot-off on click */
-.nav__link--leaving,
-.nav__link--leaving .nav__arrow-track { overflow: visible; }
-.nav__link--leaving .nav__arrow {
-  transform: translateX(120px);
-  opacity: 0;
-  transition: transform .38s cubic-bezier(0.4,0,1,1), opacity .28s ease .1s;
-}
 .chip{
   display:inline-flex;
   gap:8px;
@@ -224,7 +205,7 @@ a:hover{opacity:.75}
 .section--dark .muted { opacity: 0.6; }
 .grid-header{display:flex; align-items:flex-end; justify-content:space-between; gap:16px}
 .title,
-.h2{margin:0; font-size:clamp(42px, 5vw, 72px); font-weight:300; letter-spacing:0.05em; font-family:"Cormorant Garamond", Georgia, serif; text-transform:none;}
+.h2{margin:0; font-size:clamp(42px, 5vw, 72px); font-weight:400; letter-spacing:0.03em; font-family:"Romie", Georgia, serif; text-transform:none;}
 .subtitle{margin:0; color:var(--muted)}
 
 /* Grid */
@@ -687,7 +668,7 @@ a:hover{opacity:.75}
   margin-top: auto;
 }
 .about-bio-col .list .muted {
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 13px;
   font-weight: 300;
   text-transform: uppercase;
@@ -703,7 +684,7 @@ a:hover{opacity:.75}
 
 .about-pullquote,
 .about-bio-col .about-pullquote {
-  font-family: "Raleway", sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   font-size: clamp(22px, 2.4vw, 36px) !important;
   font-weight: 300 !important;
   line-height: 1.5 !important;
@@ -716,7 +697,7 @@ a:hover{opacity:.75}
 .about-bio-col p,
 .about-bio-col li,
 .about-bio-col .list {
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 15px;
   line-height: 1.75;
@@ -1200,8 +1181,9 @@ a:hover{opacity:.75}
   margin-top: 20px;
 }
 .project-meta__title {
+  font-family: "Romie", Georgia, serif;
   font-size: 26px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0 0 3px;
   color: var(--text);
 }
@@ -1282,7 +1264,7 @@ a:hover{opacity:.75}
   gap: 10px;
   font-size: 11px;
   font-weight: 300;
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   cursor: pointer;
   padding: 8px 16px;
@@ -1812,7 +1794,7 @@ a:hover{opacity:.75}
   border: none;
   font-size: 11px;
   font-weight: 300;
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.22em;
   color: var(--text);
@@ -2301,7 +2283,7 @@ a:hover{opacity:.75}
 .contact-email-link {
   display: inline-block;
   margin-top: 12px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 15px;
   font-weight: 300;
   letter-spacing: 0.08em;
@@ -2432,14 +2414,14 @@ a:hover{opacity:.75}
     border-top: none;
   }
   .card__title {
-    font-family: "Raleway", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 12px;
     font-weight: 300;
     letter-spacing: 0.04em;
     color: #111;
   }
   .card__tags {
-    font-family: "Raleway", sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 11px;
     font-weight: 300;
     letter-spacing: 0.04em;
