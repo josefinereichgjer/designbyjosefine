@@ -1278,6 +1278,7 @@ body.osk-open .chat { height: calc(100dvh - 290px); }
   background: var(--red);
 }
 .cal .day-cell.today.has-shift::after { background: var(--gold-2); }
+.cal .day-cell.open.has-shift::after { background: transparent; border: 1.5px solid var(--red); }
 
 /* ---------- Notifications dropdown indicator (decorative) ---------- */
 .tag {

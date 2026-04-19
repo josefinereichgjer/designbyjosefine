@@ -92,7 +92,7 @@ function renderCal(){
     let cls='day-cell';
     if(flag==='today') cls+=' today has-shift';
     else if(flag==='on') cls+=' has-shift';
-    else if(flag==='open') cls+=' has-shift';
+    else if(flag==='open') cls+=' has-shift open';
     cal.insertAdjacentHTML('beforeend',`<div class="${cls}">${d}</div>`);
   }
   document.getElementById('month').textContent =

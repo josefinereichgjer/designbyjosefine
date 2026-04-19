@@ -60,7 +60,7 @@
 
   function mobileNavHTML(active){
     const items = [
-      ['hjem.html','home'],['vaktliste.html','cal'],['mal.html','target'],
+      ['hjem.html','home'],['vaktliste.html','cal'],['min-trening.html','book'],
       ['chat.html','chat'],['profil.html','user']
     ];
     return `<nav class="mobile-nav">${items.map(([h,i])=>

@@ -260,6 +260,7 @@ document.getElementById('threadSearch').addEventListener('input', (e)=> renderTh
 // ---------- Back button (mobile) ----------
 document.getElementById('backBtn').onclick = () => {
   document.querySelector('.chat').classList.remove('show-pane');
+  document.body.classList.remove('chat-pane-open');
 };
 
 // ---------- Emoji ----------
