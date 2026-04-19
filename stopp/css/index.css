@@ -1,70 +1,4 @@
-    html {
-      scroll-behavior: smooth;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --orange: #E84E1B;
-      --black: #0a0a0a;
-      --white: #ffffff;
-    }
-
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background: var(--white);
-      color: var(--black);
-    }
-
-    /* NAV */
-    nav {
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 56px;
-      height: 72px;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-    }
-
-    .logo {
-      height: 48px;
-      width: auto;
-      flex-shrink: 0;
-      margin-top: 5px;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: opacity 0.15s;
-    }
-
-    .nav-links a:hover {
-      opacity: 1;
-      color: #E84E1B;
-    }
-
-    .nav-links a.active {
-      color: var(--orange);
-    }
+    footer { margin-top: 48px; }
 
     /* HERO */
     .hero {
@@ -108,33 +42,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-    }
-
-    .btn {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 17px;
-      font-weight: 500;
-      padding: 16px 32px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-      letter-spacing: 0.01em;
-      transition: opacity 0.15s;
-    }
-
-    .btn:hover {
-      opacity: 0.85;
-    }
-
-    .btn-orange {
-      background: var(--orange);
-      color: var(--white);
-    }
-
-    .btn-black {
-      background: var(--black);
-      color: var(--white);
     }
 
     /* IMAGE */
@@ -324,9 +231,7 @@
       gap: 20px;
     }
 
-    .pricing-card.green {
-      background: #C8E600;
-    }
+    .pricing-card.green { background: #C8E600; }
 
     .pricing-card.outline {
       background: var(--white);
@@ -379,9 +284,7 @@
       gap: 10px;
     }
 
-    .dropin-intro-badge {
-      display: none;
-    }
+    .dropin-intro-badge { display: none; }
 
     .dropin-intro-offer p {
       font-family: 'IBM Plex Sans', sans-serif;
@@ -424,7 +327,7 @@
       top: 0;
     }
 
-    /* MODAL */
+    /* MODAL — Bli Medlem */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -472,7 +375,6 @@
     .modal-left-logo-bar {
       background: #fff;
       padding: 16px 32px;
-      margin-bottom: 0;
       width: 100%;
       box-sizing: border-box;
     }
@@ -529,11 +431,7 @@
       line-height: 1.5;
     }
 
-    .modal-list li::before {
-      content: '–';
-      position: absolute;
-      left: 0;
-    }
+    .modal-list li::before { content: '–'; position: absolute; left: 0; }
 
     .modal-divider {
       border: none;
@@ -592,11 +490,7 @@
       color: #444;
     }
 
-    .modal-vipps {
-      display: block;
-      width: 100%;
-      max-width: 320px;
-    }
+    .modal-vipps { display: block; width: 100%; max-width: 320px; }
 
     .modal-personvern {
       font-family: 'IBM Plex Sans', sans-serif;
@@ -680,10 +574,7 @@
       margin-bottom: 12px;
     }
 
-    .booking-select:focus {
-      outline: none;
-      border-color: #E84E1B;
-    }
+    .booking-select:focus { outline: none; border-color: #E84E1B; }
 
     .booking-rabatt {
       background: #C8E600;
@@ -699,10 +590,7 @@
       margin-bottom: 32px;
     }
 
-    .booking-rabatt-input {
-      display: none;
-      padding: 12px 16px 0;
-    }
+    .booking-rabatt-input { display: none; padding: 12px 16px 0; }
 
     .booking-rabatt-input input {
       width: 100%;
@@ -713,9 +601,7 @@
       outline: none;
     }
 
-    .booking-rabatt-input input:focus {
-      border-color: #E84E1B;
-    }
+    .booking-rabatt-input input:focus { border-color: #E84E1B; }
 
     /* CALENDAR */
     .cal-header {
@@ -741,6 +627,7 @@
       padding: 4px;
       transition: opacity 0.15s;
     }
+
     .cal-nav:hover { opacity: 0.5; }
 
     .cal-grid {
@@ -770,24 +657,10 @@
       transition: background 0.15s;
     }
 
-    .cal-day:hover:not(.inactive):not(.selected) {
-      background: #f0f0f0;
-    }
-
-    .cal-day.inactive {
-      color: #ccc;
-      cursor: default;
-    }
-
-    .cal-day.today {
-      font-weight: 700;
-    }
-
-    .cal-day.selected {
-      background: #E84E1B;
-      color: #fff;
-      font-weight: 600;
-    }
+    .cal-day:hover:not(.inactive):not(.selected) { background: #f0f0f0; }
+    .cal-day.inactive { color: #ccc; cursor: default; }
+    .cal-day.today { font-weight: 700; }
+    .cal-day.selected { background: #E84E1B; color: #fff; font-weight: 600; }
 
     /* TIME SLOTS */
     .timeslots {
@@ -804,11 +677,7 @@
       margin-bottom: 12px;
     }
 
-    .timeslots-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .timeslots-grid { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .timeslot {
       font-family: 'IBM Plex Sans', sans-serif;
@@ -839,273 +708,54 @@
       display: none;
       transition: opacity 0.15s;
     }
+
     .booking-confirm:hover { opacity: 0.8; }
     .booking-confirm.visible { display: block; }
 
-    /* FOOTER */
-    footer {
-      background: #9B8CE8;
-      padding: 64px 56px 40px;
-      margin-top: 48px;
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-    }
-
-    .footer-contact h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 500;
-      font-size: clamp(32px, 3.5vw, 52px);
-      letter-spacing: -0.02em;
-      color: var(--black);
-      margin-bottom: 16px;
-    }
-
-    .footer-contact p {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--black);
-      line-height: 1.7;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
-      justify-self: end;
-      text-align: right;
-    }
-
-    .footer-link-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .footer-link-group a {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--black);
-      text-decoration: none;
-      line-height: 1.6;
-      transition: opacity 0.15s;
-    }
-
-    .footer-link-group a:hover {
-      opacity: 1;
-      color: #C8E600;
-    }
-
-    .footer-bottom {
-      max-width: 1400px;
-      margin: 56px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid rgba(0,0,0,0.15);
-    }
-
-    .footer-bottom p {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 14px;
-      font-weight: 400;
-      color: var(--black);
-      opacity: 0.7;
-    }
-
-    /* HAMBURGER */
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-    .nav-toggle span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: opacity 0.2s;
-    }
-
-    /* TABLET — iPad (≤1024px) */
+    /* TABLET (≤1024px) */
     @media (max-width: 1024px) {
-      nav {
-        padding: 0 32px;
-      }
-
-      .nav-links {
-        gap: 24px;
-      }
-
-      .nav-links a {
-        font-size: 14px;
-      }
-
       .hero,
-      .section-alt {
-        gap: 40px;
-        padding: 64px 32px;
-      }
-
-      .pricing-card {
-        padding: 36px;
-      }
+      .section-alt { gap: 40px; padding: 64px 32px; }
+      .pricing-card { padding: 36px; }
     }
 
-    /* TABLET (≤900px) */
+    /* TABLET/SMALL SCREEN (≤900px) */
     @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .nav-links { gap: 16px; }
-      .nav-links a { font-size: 13px; }
-      .hero, .section-alt { flex-direction: column; padding: 48px 32px; gap: 32px; }
-      .pricing-cards { gap: 16px; }
-    }
-
-    /* MOBILE (≤767px) */
-    @media (max-width: 767px) {
-      nav {
-        padding: 0 20px;
-        height: 64px;
-        position: sticky;
-      }
-
-      .logo {
-        height: 38px;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-        position: absolute;
-        top: 64px;
-        left: 0;
-        right: 0;
-        background: var(--black);
-        padding: 8px 0 16px;
-        z-index: 100;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .nav-links li {
-        width: 100%;
-      }
-
-      .nav-links a {
-        display: block;
-        padding: 12px 20px;
-        font-size: 16px;
-      }
-
       .hero,
       .section-alt {
         grid-template-columns: 1fr;
         gap: 32px;
-        padding: 48px 20px;
+        padding: 48px 24px;
       }
-
-      /* reset explicit grid placement so items stack in DOM order */
       .hero-text, .hero-image-wrap, .hero-buttons,
       .section-image-wrap, .section-text, .section-buttons {
         grid-column: auto;
         grid-row: auto;
       }
-
-      /* section-alt mobile: text → image → button */
       .section-text       { order: 1; }
       .section-image-wrap { order: 2; }
       .section-buttons    { order: 3; }
+      .pricing { padding: 64px 24px 80px; }
+      .pricing-cards { gap: 16px; }
+    }
 
-      .hero-text h1 {
-        font-size: 36px;
-      }
-
+    /* MOBILE (≤767px) */
+    @media (max-width: 767px) {
+      .hero,
+      .section-alt { padding: 48px 20px; }
+      .hero-text h1 { font-size: 36px; }
       .section-text h2,
-      .pricing h2 {
-        font-size: 32px;
-      }
-
-      .pricing {
-        padding: 48px 20px 64px;
-      }
-
-      .pricing-cards,
-      .footer-inner {
-        grid-template-columns: 1fr;
-      }
-
-      footer {
-        padding: 48px 20px 32px;
-        margin-top: 32px;
-      }
-
-      .footer-contact h3 {
-        font-size: 32px;
-      }
-
-      .footer-link-group a {
-        font-size: 18px;
-      }
-
-      .pricing-card {
-        padding: 32px;
-      }
-
-      .pricing-card h3 {
-        font-size: 36px;
-      }
-
-      .pricing-price strong {
-        font-size: 42px;
-      }
-
+      .pricing h2 { font-size: 32px; }
+      .pricing { padding: 48px 20px 64px; }
+      .pricing-cards { grid-template-columns: 1fr; }
+      .pricing-card { padding: 32px; }
+      .pricing-card h3 { font-size: 36px; }
+      .pricing-price strong { font-size: 42px; }
       .hero-text p,
-      .section-text p {
-        font-size: 16px;
-        max-width: 100%;
-      }
-
-      .btn {
-        font-size: 16px;
-        padding: 14px 28px;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .hero-buttons .btn {
-        width: 100%;
-        text-align: center;
-      }
-
-      .footer-links {
-        justify-self: start;
-        text-align: left;
-      }
-
-      .booking-card {
-        padding: 24px 16px;
-      }
+      .section-text p { font-size: 16px; max-width: 100%; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { width: 100%; text-align: center; }
+      .booking-card { padding: 24px 16px; }
     }
 
     /* KURS MODAL */
@@ -1137,10 +787,7 @@
       justify-content: space-between;
     }
 
-    .kurs-card__logo {
-      height: 36px;
-      width: auto;
-    }
+    .kurs-card__logo { height: 36px; width: auto; }
 
     .kurs-card__close {
       background: none;
@@ -1228,89 +875,42 @@
     }
 
     @media (max-width: 400px) {
-      .hero-text h1 {
-        font-size: 28px;
-      }
-
-      .pricing-card h3 {
-        font-size: 28px;
-      }
-
-      .pricing-price strong {
-        font-size: 34px;
-      }
+      .hero-text h1 { font-size: 28px; }
+      .pricing-card h3 { font-size: 28px; }
+      .pricing-price strong { font-size: 34px; }
     }
 
-    /* ── MacBook 16 Pro / large desktop (≥1400px) ─────────── */
+    /* ── Large desktop (≥1400px) ── */
     @media (min-width: 1400px) {
-
-      /* Nav: wider padding so it doesn't feel stretched */
       nav { padding: 0 80px; height: 80px; }
       .logo { height: 52px; }
-
-      /* Hero: image gets 60%, text gets 40% — more visual weight on the photo */
       .hero {
         grid-template-columns: 4fr 6fr;
         gap: 88px;
         max-width: 1680px;
         padding: 120px 80px;
       }
-
-      .hero-text h1 {
-        font-size: 74px;
-        line-height: 1.02;
-      }
-
-      .hero-text p {
-        font-size: 19px;
-        max-width: 100%;
-      }
-
+      .hero-text h1 { font-size: 74px; line-height: 1.02; }
+      .hero-text p { font-size: 19px; max-width: 100%; }
       .hero-text { gap: 36px; }
-
-      /* Section-alt: image gets 60% on the left, text 40% on the right */
       .section-alt {
         grid-template-columns: 6fr 4fr;
         gap: 88px;
         max-width: 1680px;
         padding: 120px 80px;
       }
-
-      .section-text h2 {
-        font-size: 66px;
-        line-height: 1.05;
-      }
-
-      .section-text p {
-        font-size: 19px;
-        max-width: 100%;
-      }
-
-      /* Slideshow: taller image, wider container */
+      .section-text h2 { font-size: 66px; line-height: 1.05; }
+      .section-text p { font-size: 19px; max-width: 100%; }
       .slideshow { padding: 120px 0 132px; }
       .slideshow-track-wrap { max-width: 1680px; padding: 0 80px; }
       .slideshow-main img { height: 520px; }
       .slideshow-thumbs img { width: 140px; height: 90px; }
-
-      /* Pricing: wider container, bigger cards */
-      .pricing {
-        max-width: 1680px;
-        padding: 96px 80px 128px;
-      }
-
+      .pricing { max-width: 1680px; padding: 96px 80px 128px; }
       .pricing h2 { font-size: 66px; }
-
-      .pricing-cards {
-        max-width: 1100px;
-        margin: 0 auto;
-        gap: 40px;
-      }
-
+      .pricing-cards { max-width: 1100px; margin: 0 auto; gap: 40px; }
       .pricing-card { padding: 56px; }
       .pricing-card h3 { font-size: 50px; }
       .pricing-price strong { font-size: 60px; }
-
-      /* Footer: match wider container */
       footer { padding: 80px 80px 48px; }
       .footer-inner { max-width: 1680px; }
       .footer-bottom { max-width: 1680px; }

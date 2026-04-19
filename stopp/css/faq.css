@@ -1,139 +1,4 @@
-    html { scroll-behavior: smooth; }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --orange: #E84E1B;
-      --black: #0a0a0a;
-      --white: #ffffff;
-    }
-
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background: var(--white);
-      color: var(--black);
-    }
-
-    /* NAV */
-    nav {
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 56px;
-      height: 72px;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-    }
-
-    footer {
-      background: #9B8CE8;
-      padding: 64px 56px 40px;
-      margin-top: 48px;
-    }
-    .footer-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-    }
-    .footer-contact h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 500;
-      font-size: clamp(32px, 3.5vw, 52px);
-      letter-spacing: -0.02em;
-      color: #0a0a0a;
-      margin-bottom: 16px;
-    }
-    .footer-contact p {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 20px;
-      color: #0a0a0a;
-      line-height: 1.7;
-    }
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
-      justify-self: end;
-      text-align: right;
-    }
-    .footer-link-group { display: flex; flex-direction: column; gap: 4px; }
-    .footer-link-group a {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 22px;
-      color: #0a0a0a;
-      text-decoration: none;
-      line-height: 1.6;
-      transition: color 0.15s;
-    }
-    .footer-link-group a:hover { color: #C8E600; }
-    .footer-bottom {
-      max-width: 1400px;
-      margin: 56px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid rgba(0,0,0,0.15);
-    }
-    .footer-bottom p {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 14px;
-      color: #0a0a0a;
-      opacity: 0.7;
-    }
-    @media (max-width: 767px) {
-      .footer-inner { grid-template-columns: 1fr; }
-      footer { padding: 48px 20px 32px; margin-top: 32px; }
-      .footer-links { justify-self: start; text-align: left; }
-    }
-
-    .logo { height: 48px; width: auto; flex-shrink: 0;
-      margin-top: 5px; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: var(--orange); }
-    .nav-links a.active { color: var(--orange); }
-    .nav-links a.current { font-weight: 600; }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-    }
+    footer { margin-top: 48px; }
 
     /* PAGE */
     .page {
@@ -158,16 +23,14 @@
       margin-bottom: 48px;
     }
 
-    /* FAQ ITEMS */
+    /* FAQ */
     .faq-list {
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .faq-item {
-      border: 2.5px solid var(--orange);
-    }
+    .faq-item { border: 2.5px solid var(--orange); }
 
     .faq-question {
       width: 100%;
@@ -201,18 +64,11 @@
       user-select: none;
     }
 
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
 
-    .faq-answer {
-      display: none;
-      padding: 0 24px 24px;
-    }
+    .faq-answer { display: none; padding: 0 24px 24px; }
 
-    .faq-item.open .faq-answer {
-      display: block;
-    }
+    .faq-item.open .faq-answer { display: block; }
 
     .faq-answer p {
       font-family: 'IBM Plex Sans', sans-serif;
@@ -221,36 +77,14 @@
       color: #333;
     }
 
-    .faq-answer p + p {
-      margin-top: 12px;
-    }
+    .faq-answer p + p { margin-top: 12px; }
 
     /* RESPONSIVE */
     @media (max-width: 1024px) {
-      nav { padding: 0 32px; }
-      .nav-links { gap: 24px; }
-      .nav-links a { font-size: 14px; }
       .page { padding: 56px 32px 80px; }
     }
 
     @media (max-width: 767px) {
-      nav { padding: 0 20px; height: 64px; }
-      .logo { height: 38px; }
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        top: 64px; left: 0; right: 0;
-        background: var(--black);
-        padding: 8px 0 16px;
-        z-index: 100;
-        gap: 0;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
       .page { padding: 40px 20px 72px; }
       .faq-question { padding: 18px 16px; }
       .faq-answer { padding: 0 16px 20px; }

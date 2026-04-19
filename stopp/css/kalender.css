@@ -1,78 +1,4 @@
-    html { scroll-behavior: smooth; }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --orange: #E84E1B;
-      --black: #0a0a0a;
-      --white: #ffffff;
-      --purple: #9B8CE8;
-      --lime: #C8E600;
-    }
-
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background: var(--white);
-      color: var(--black);
-    }
-
-    /* NAV */
-    nav {
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 56px;
-      height: 72px;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-    }
-
-    .logo { height: 48px; width: auto; flex-shrink: 0; margin-top: 5px; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: var(--orange); }
-    .nav-links a.active { color: var(--orange); }
-    .nav-links a.current { font-weight: 600; }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-    }
+    footer { margin-top: 32px; }
 
     /* PAGE */
     .page {
@@ -81,9 +7,7 @@
       padding: 72px 56px 96px;
     }
 
-    .page-header {
-      margin-bottom: 48px;
-    }
+    .page-header { margin-bottom: 48px; }
 
     .page-header h1 {
       font-family: 'Syne', sans-serif;
@@ -109,14 +33,14 @@
       margin-top: 48px;
     }
 
-    /* GRID */
+    /* EVENT GRID */
     .events-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 36px;
     }
 
-    /* CARD */
+    /* EVENT CARD */
     .event-card {
       border: 2.5px solid var(--lime);
       display: flex;
@@ -126,9 +50,7 @@
       text-decoration: none;
     }
 
-    .event-card:hover {
-      border-color: var(--purple);
-    }
+    .event-card:hover { border-color: var(--purple); }
 
     .event-card img {
       width: 100%;
@@ -180,11 +102,7 @@
       line-height: 1.2;
     }
 
-    .event-instructor {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 13px;
-      color: #777;
-    }
+    .event-instructor { font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; color: #777; }
 
     .event-desc {
       font-family: 'IBM Plex Sans', sans-serif;
@@ -257,15 +175,9 @@
       line-height: 1.8;
     }
 
-    .booking-event-summary .detail strong {
-      font-weight: 600;
-    }
+    .booking-event-summary .detail strong { font-weight: 600; }
 
-    hr.booking-divider {
-      border: none;
-      border-top: 2px solid var(--lime);
-      margin: 20px 0;
-    }
+    hr.booking-divider { border: none; border-top: 2px solid var(--lime); margin: 20px 0; }
 
     .booking-total-row {
       display: flex;
@@ -317,7 +229,7 @@
       .booking-modal { padding: 32px 20px; }
     }
 
-    /* EVENT MODAL */
+    /* EVENT DETAIL MODAL */
     .event-overlay {
       display: none;
       position: fixed;
@@ -354,9 +266,7 @@
       line-height: 1;
     }
 
-    .event-modal-left {
-      padding: 52px 48px 52px 48px;
-    }
+    .event-modal-left { padding: 52px 48px; }
 
     .event-modal-left h2 {
       font-family: 'Syne', sans-serif;
@@ -368,9 +278,7 @@
       margin-bottom: 32px;
     }
 
-    .event-modal-section {
-      margin-bottom: 28px;
-    }
+    .event-modal-section { margin-bottom: 28px; }
 
     .event-modal-section h3 {
       font-family: 'Syne', sans-serif;
@@ -412,19 +320,10 @@
       border-bottom: 2px solid var(--lime);
     }
 
-    .event-detail-row {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 15px;
-      color: var(--black);
-    }
+    .event-detail-row { font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; color: var(--black); }
+    .event-detail-row strong { font-weight: 600; }
 
-    .event-detail-row strong {
-      font-weight: 600;
-    }
-
-    .event-modal-instructor {
-      padding: 24px;
-    }
+    .event-modal-instructor { padding: 24px; }
 
     .event-modal-instructor h4 {
       font-family: 'Syne', sans-serif;
@@ -441,10 +340,7 @@
       color: #444;
     }
 
-    .event-modal-book {
-      padding: 0 24px 28px;
-      margin-top: auto;
-    }
+    .event-modal-book { padding: 0 24px 28px; margin-top: auto; }
 
     .event-modal-book a {
       display: block;
@@ -468,112 +364,17 @@
       .event-modal-left h2 { font-size: 26px; }
     }
 
-    /* FOOTER */
-    footer {
-      background: var(--purple);
-      padding: 64px 56px 40px;
-      margin-top: 32px;
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-    }
-
-    .footer-contact h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 500;
-      font-size: clamp(32px, 3.5vw, 52px);
-      letter-spacing: -0.02em;
-      color: var(--black);
-      margin-bottom: 16px;
-    }
-
-    .footer-contact p {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 20px;
-      color: var(--black);
-      line-height: 1.7;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
-      justify-self: end;
-      text-align: right;
-    }
-
-    .footer-link-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .footer-link-group a {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 22px;
-      color: var(--black);
-      text-decoration: none;
-      line-height: 1.6;
-      transition: color 0.15s;
-    }
-
-    .footer-link-group a:hover { color: var(--lime); }
-
-    .footer-bottom {
-      max-width: 1400px;
-      margin: 56px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid rgba(0,0,0,0.15);
-    }
-
-    .footer-bottom p {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 14px;
-      color: var(--black);
-      opacity: 0.7;
-    }
-
     /* RESPONSIVE */
     @media (max-width: 1024px) {
-      nav { padding: 0 32px; }
-      .nav-links { gap: 24px; }
-      .nav-links a { font-size: 14px; }
       .page { padding: 56px 32px 72px; }
       .events-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
-      footer { padding: 48px 32px 32px; }
     }
 
     @media (max-width: 767px) {
-      nav { padding: 0 20px; height: 64px; }
-      .logo { height: 38px; }
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        top: 64px; left: 0; right: 0;
-        background: var(--black);
-        padding: 8px 0 16px;
-        z-index: 100;
-        gap: 0;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
       .page { padding: 40px 20px 64px; }
       .page-header { margin-bottom: 32px; }
       .events-grid { grid-template-columns: 1fr; gap: 20px; }
       .event-card img { aspect-ratio: 16/9; height: auto; }
-      .footer-inner { grid-template-columns: 1fr; }
-      footer { padding: 48px 20px 32px; }
-      .footer-links { justify-self: start; text-align: left; }
     }
 
     @media (max-width: 400px) {

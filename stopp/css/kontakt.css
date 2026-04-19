@@ -1,74 +1,3 @@
-    html { scroll-behavior: smooth; }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --orange: #E84E1B;
-      --black: #0a0a0a;
-      --white: #ffffff;
-      --purple: #9B8CE8;
-      --lime: #C8E600;
-    }
-
-    body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background: var(--white);
-      color: var(--black);
-    }
-
-    /* NAV */
-    nav {
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 56px;
-      height: 72px;
-      position: sticky;
-      top: 0;
-      z-index: 200;
-    }
-
-    .logo { height: 48px; width: auto; flex-shrink: 0; margin-top: 5px; }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--white);
-      text-decoration: none;
-      letter-spacing: 0.01em;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: var(--orange); }
-    .nav-links a.active { color: var(--orange); }
-    .nav-links a.current { font-weight: 600; }
-
-    .nav-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 4px;
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-    }
-
     /* PAGE */
     .page {
       max-width: 1400px;
@@ -101,17 +30,9 @@
     }
 
     /* FORM */
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
 
     .form-group label {
       font-family: 'IBM Plex Sans', sans-serif;
@@ -138,14 +59,9 @@
 
     .form-group input:focus,
     .form-group textarea:focus,
-    .form-group select:focus {
-      border-color: var(--lime);
-    }
+    .form-group select:focus { border-color: var(--lime); }
 
-    .form-group textarea {
-      resize: vertical;
-      min-height: 140px;
-    }
+    .form-group textarea { resize: vertical; min-height: 140px; }
 
     .form-row {
       display: grid;
@@ -171,11 +87,7 @@
     .btn-submit:hover { opacity: 0.85; }
 
     /* INFO SIDE */
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-    }
+    .contact-info { display: flex; flex-direction: column; gap: 40px; }
 
     .info-block h3 {
       font-family: 'Syne', sans-serif;
@@ -207,26 +119,13 @@
     }
 
     .info-block .highlight p,
-    .info-block .highlight a {
-      font-size: 17px;
-      color: var(--black);
-      font-weight: 400;
-    }
+    .info-block .highlight a { font-size: 17px; color: var(--black); font-weight: 400; }
 
     .info-block .highlight a:hover { color: var(--orange); }
 
-    .map-iframe {
-      width: 100%;
-      height: 280px;
-      border: none;
-      display: block;
-    }
+    .map-iframe { width: 100%; height: 280px; border: none; display: block; }
 
-    .opening-hours {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+    .opening-hours { display: flex; flex-direction: column; gap: 8px; }
 
     .opening-row {
       display: flex;
@@ -240,109 +139,18 @@
 
     .opening-row:last-child { border-bottom: none; }
 
-    /* FOOTER */
-    footer {
-      background: var(--purple);
-      padding: 64px 56px 40px;
-      margin-top: 0;
-    }
-
-    .footer-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-    }
-
-    .footer-contact h3 {
-      font-family: 'Syne', sans-serif;
-      font-weight: 500;
-      font-size: clamp(32px, 3.5vw, 52px);
-      letter-spacing: -0.02em;
-      color: var(--black);
-      margin-bottom: 16px;
-    }
-
-    .footer-contact p {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 20px;
-      color: var(--black);
-      line-height: 1.7;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 48px;
-      justify-self: end;
-      text-align: right;
-    }
-
-    .footer-link-group { display: flex; flex-direction: column; gap: 4px; }
-
-    .footer-link-group a {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 22px;
-      color: var(--black);
-      text-decoration: none;
-      line-height: 1.6;
-      transition: color 0.15s;
-    }
-
-    .footer-link-group a:hover { color: var(--lime); }
-
-    .footer-bottom {
-      max-width: 1400px;
-      margin: 56px auto 0;
-      padding-top: 24px;
-      border-top: 1px solid rgba(0,0,0,0.15);
-    }
-
-    .footer-bottom p {
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-size: 14px;
-      color: var(--black);
-      opacity: 0.7;
-    }
-
     /* RESPONSIVE */
     @media (max-width: 1024px) {
-      nav { padding: 0 32px; }
-      .nav-links { gap: 24px; }
-      .nav-links a { font-size: 14px; }
       .page { padding: 56px 32px 72px; }
       .contact-grid { gap: 32px; }
-      footer { padding: 48px 32px 32px; }
     }
 
     @media (max-width: 767px) {
-      nav { padding: 0 20px; height: 64px; }
-      .logo { height: 38px; }
-      .nav-toggle { display: flex; }
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        top: 64px; left: 0; right: 0;
-        background: var(--black);
-        padding: 8px 0 16px;
-        z-index: 100;
-        gap: 0;
-      }
-      .nav-links.open { display: flex; }
-      .nav-links li { width: 100%; }
-      .nav-links a { display: block; padding: 12px 20px; font-size: 16px; }
       .page { padding: 40px 20px 64px; }
       .page-intro { font-size: 16px; margin-bottom: 40px; }
       .contact-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .btn-submit { width: 100%; text-align: center; }
-      .footer-inner { grid-template-columns: 1fr; }
-      footer { padding: 48px 20px 32px; }
-      .footer-links { justify-self: start; text-align: left; }
     }
 
     @media (max-width: 400px) {
