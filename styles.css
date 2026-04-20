@@ -85,6 +85,7 @@ a:hover{opacity:.75}
 .content{
   margin-left:var(--sidebarW);
   padding:34px clamp(20px, 3vw, 34px) 60px;
+  max-width: 1440px;
 }
 
 /* Back button */
@@ -177,6 +178,7 @@ a:hover{opacity:.75}
 
 .page-footer {
   margin-left: var(--sidebarW);
+  max-width: 1440px;
   padding: 24px 34px;
   border-top: 1px solid var(--hair);
   text-align: center;
@@ -2294,6 +2296,11 @@ a:hover{opacity:.75}
 .contact-email-link:hover { opacity: 0.6; }
 
 /* ── Responsive ── */
+
+/* Large screens: 3-col masonry so cards don't grow too wide */
+@media (min-width: 1380px) {
+  .masonry { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 
 /* Tablet wide: sidebar shrinks, grid 2-col */
 @media (max-width: 1100px) {
