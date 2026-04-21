@@ -2584,20 +2584,15 @@ a:hover{opacity:.75}
   .related__grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── Wide-screen centering (> 1620px) ──────────────────────────────────────
-   sidebar (180px) + max content (1440px) = 1620px.
-   Above that, dead space accumulates on the right. We centre the whole
-   layout (sidebar + content block) symmetrically in the viewport.
-   Formula: outer margin = (viewport - 1620px) / 2
-   ───────────────────────────────────────────────────────────────────────── */
+/* ── Wide-screen layout: sidebar stays left, content fills available space ──
+   Remove the 1440px cap so content grows with the viewport.
+   Add a 4th masonry column at 1800px+ to keep cards at a sensible size.
+   ─────────────────────────────────────────────────────────────────────── */
 @media (min-width: 1621px) {
-  .sidebar {
-    left: calc((100vw - 1620px) / 2);
-  }
   .content {
-    margin-left: calc(var(--sidebarW) + (100vw - 1620px) / 2);
+    max-width: none;
   }
-  .page-footer {
-    margin-left: calc(var(--sidebarW) + (100vw - 1620px) / 2);
-  }
+}
+@media (min-width: 1800px) {
+  .masonry { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
