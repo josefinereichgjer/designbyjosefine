@@ -201,6 +201,18 @@
       transition: transform .38s cubic-bezier(0.4,0,1,1), opacity .22s ease;
     }
 
+    /* ── Mobile intro letters (< 768px) — bigger + less clipped ── */
+    @media (max-width: 767px) {
+      /* J */ .intro-letter:nth-child(1) { font-size: min(44vw, 400px); }
+      /* O */ .intro-letter:nth-child(2) { top: -3vh; font-size: min(42vw, 375px); }
+      /* S */ .intro-letter:nth-child(3) { font-size: min(32vw, 290px); }
+      /* E */ .intro-letter:nth-child(4) { font-size: min(28vw, 260px); }
+      /* F */ .intro-letter:nth-child(5) { font-size: min(42vw, 375px); }
+      /* I */ .intro-letter:nth-child(6) { font-size: min(50vw, 460px); }
+      /* N */ .intro-letter:nth-child(7) { font-size: min(36vw, 320px); }
+      /* E */ .intro-letter:nth-child(8) { font-size: min(42vw, 375px); }
+    }
+
     /* ── Tiny phones (< 480px) ── */
     @media (max-width: 479px) {
       .collage-scene { transform: scale(0.62); }
@@ -266,6 +278,16 @@
       .landing__bio { font-size: clamp(24px, 1.9vw, 36px); max-width: min(600px, 32vw); }
       .landing__cta { font-size: 18px; margin-top: 40px; margin-left: min(380px, 22vw); }
       .collage-scene { transform: scale(1.30) translateX(10%); }
+    }
+
+    /* ── Ultra-wide (2200px+): keep text proportionally spaced from edge ── */
+    @media (min-width: 2200px) {
+      .landing__topleft { left: max(44px, 5vw); }
+      .landing__brand   { left: max(44px, 5vw); }
+      .landing__portfolio-link { font-size: clamp(160px, 9vw, 240px); }
+      .landing__bio { font-size: clamp(26px, 1.8vw, 40px); max-width: min(640px, 28vw); }
+      .landing__cta { font-size: 20px; margin-top: 44px; margin-left: min(400px, 18vw); }
+      .collage-scene { transform: scale(1.45) translateX(12%); }
     }
 
     /* ── Nav menu landscape ── */
