@@ -524,6 +524,12 @@
     .we-print-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
     .we-print-dot.is-active { background: #6868b2; }
 
+    @media (min-width: 1600px) {
+      .we-design-showcase__stories img { height: clamp(540px, 28vw, 800px); }
+      .we-card-row img { height: clamp(560px, 29vw, 820px); }
+      .we-idkort-row img { height: clamp(680px, 36vw, 1000px); }
+    }
+
     /* ── Desktop Manual Scroll Area (Ved siden av laptopen, Slide 2) ── */
     .we-site-scroll::-webkit-scrollbar { width: 6px; }
     .we-site-scroll::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 4px; }
