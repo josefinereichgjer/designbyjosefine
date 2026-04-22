@@ -82,7 +82,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Strategisk design"],
     cover: "./assets/laptop-mockup.webp",
-    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp", "./assets/banner.webp"],
+    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp"],
   },
   {
     id: "stoppestedet",
@@ -294,7 +294,6 @@ window.PROJECTS = [
         heading: "Digitale flater",
         cover: { src: "./assets/srhvideo.mp4", caption: "Tilhørende nettside", captionLink: "./srh-open-day-3/index.html", video: true, autoplay: true },
         items: [
-          { src: "./assets/linkedinsrh.webp",    caption: "LinkedIn-karusell" },
           { src: "./assets/facebook.webp",       caption: "Facebook event cover" },
           { src: "./assets/powerpointmal.webp",  caption: "PowerPoint-mal" },
         ]
@@ -353,7 +352,7 @@ window.PROJECTS = [
     subtitle: "UX + redesign",
     year: "2026",
     tags: ["Redesign/UX"],
-    cover: "./stoppestedet/images/lockin.webp",
+    cover: "./assets/me.webp",
     images: ["./assets/me.webp"],
     noSlideshow: true,
   },
