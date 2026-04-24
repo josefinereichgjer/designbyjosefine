@@ -353,44 +353,49 @@
 
     /* Typography specimen */
     .typo-specimen {
-      margin-top: 3rem;
+      margin-top: 2.5rem;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0;
+      border: 1px solid rgba(0,0,0,0.08);
     }
     .typo-col {
-      padding: 2rem 2.5rem;
+      padding: 2.5rem 3rem;
     }
     .typo-col--left {
-      border-right: 1px solid rgba(0,0,0,0.12);
+      border-right: 1px solid rgba(0,0,0,0.08);
     }
     .typo-row {
-      padding: 1.75rem 0;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
+    .typo-row:last-child { border-bottom: none; }
     .typo-row__meta {
       display: flex;
       gap: 1.5rem;
       align-items: baseline;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
     }
     .typo-row__size {
-      font-size: 11px;
-      opacity: 0.4;
-      line-height: 1.4;
+      font-size: 10px;
+      opacity: 0.3;
+      line-height: 1.5;
       text-align: right;
       min-width: 52px;
+      letter-spacing: 0.03em;
     }
     .typo-row__label {
-      color: #c0392b;
-      font-size: 13px;
-      line-height: 1.5;
-      margin-top: 0.4rem;
+      font-size: 12px;
+      line-height: 1.6;
+      opacity: 0.4;
+      font-style: italic;
     }
     .typo-row__note {
-      font-size: 11px;
-      opacity: 0.45;
-      margin-left: 0.5rem;
+      font-size: 10px;
+      opacity: 0.3;
+      margin-left: 0.4rem;
       align-self: center;
+      letter-spacing: 0.04em;
     }
     .romie-large {
       font-family: "Romie", Georgia, serif;
@@ -404,12 +409,7 @@
       font-weight: 400;
       font-size: 39px;
       line-height: 1;
-      opacity: 0.45;
-    }
-    .romie-frame-label {
-      font-size: 11px;
-      opacity: 0.4;
-      margin-bottom: 0.4rem;
+      opacity: 0.35;
     }
     .romie-small {
       font-family: "Romie", Georgia, serif;
@@ -419,44 +419,56 @@
       -webkit-text-stroke: 0.3px currentColor;
     }
 
-    /* Right col */
+    /* Right col — Avenir */
     .avenir-title {
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 0.75rem;
+      opacity: 0.45;
+      margin-bottom: 1rem;
     }
     .avenir-specs {
-      font-size: 13px;
-      line-height: 1.8;
-      opacity: 0.7;
-      margin-bottom: 2rem;
-      padding-left: 1.2rem;
+      font-size: 12px;
+      line-height: 1.9;
+      opacity: 0.45;
+      margin-bottom: 0;
+      padding-left: 0;
+      list-style: none;
+    }
+    .avenir-specs li::before {
+      content: "—  ";
+      opacity: 0.5;
+    }
+    .avenir-block {
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
     }
     .avenir-label {
-      font-size: 13px;
-      margin-bottom: 0.5rem;
-      margin-top: 2rem;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 0.75rem;
+      display: block;
     }
     .avenir-body {
       font-size: 11.3px;
-      line-height: 1.69;
-      opacity: 0.65;
+      line-height: 1.75;
+      opacity: 0.6;
     }
     .avenir-oblique {
       font-size: 11.3px;
-      line-height: 1.69;
-      opacity: 0.65;
+      line-height: 1.75;
+      opacity: 0.6;
       font-style: italic;
     }
 
     @media (max-width: 700px) {
-      .typo-specimen {
-        grid-template-columns: 1fr;
-      }
-      .typo-col--left { border-right: none; border-bottom: 1px solid currentColor; }
-      .typo-col { padding: 1.5rem 1rem; }
+      .typo-specimen { grid-template-columns: 1fr; }
+      .typo-col--left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
+      .typo-col { padding: 1.5rem 1.25rem; }
     }
   </style>
 </head>
@@ -632,10 +644,14 @@
                     <li>8,5 pt ≈ 11.3 px ≈ 0.71 rem</li>
                     <li>Linjeavstand: 12pt</li>
                   </ul>
-                  <p class="avenir-label">Avenir Book:</p>
-                  <p class="avenir-body">Mikkels sønn forbi, Mikkel 2. Og også han snudde seg og så mot meg. Det var sånn jeg skjønte at Mikkel 2 var Mikkels sønn. Han her var kanskje femti. Og ikke like kjekk.</p>
-                  <p class="avenir-label">Avenir Book Oblique:</p>
-                  <p class="avenir-oblique">«Baseball, football, basketball – these quintessentially American pastimes are recognizably sports because they involve play: they are games.»</p>
+                  <div class="avenir-block">
+                    <span class="avenir-label">Avenir Book</span>
+                    <p class="avenir-body">Mikkels sønn forbi, Mikkel 2. Og også han snudde seg og så mot meg. Det var sånn jeg skjønte at Mikkel 2 var Mikkels sønn. Han her var kanskje femti. Og ikke like kjekk.</p>
+                  </div>
+                  <div class="avenir-block">
+                    <span class="avenir-label">Avenir Book Oblique</span>
+                    <p class="avenir-oblique">«Baseball, football, basketball – these quintessentially American pastimes are recognizably sports because they involve play: they are games.»</p>
+                  </div>
                 </div>
               </div>
             </div>
