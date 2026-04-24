@@ -4,7 +4,8 @@
 (function () {
   'use strict';
 
-  const W = Math.min(330, Math.floor(window.innerWidth * 0.82));
+  const maxW = window.innerWidth >= 1920 ? 460 : window.innerWidth >= 1440 ? 390 : 330;
+  const W = Math.min(maxW, Math.floor(window.innerWidth * 0.82));
   const H = Math.round(W * (435 / 330));
 
   /* me.webp first → highest z-index → on top of pile */
