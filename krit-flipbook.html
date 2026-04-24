@@ -53,44 +53,6 @@
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
 
-  header {
-    flex: 0 0 auto;
-    padding: 20px 32px 12px;
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 20px;
-    z-index: 10;
-  }
-
-  .masthead {
-    display: flex;
-    align-items: baseline;
-    gap: 14px;
-    font-variant: small-caps;
-    letter-spacing: 0.14em;
-  }
-
-  .masthead .logo {
-    font-size: 22px;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    color: var(--ink);
-  }
-
-  .masthead .issue {
-    font-size: 11px;
-    color: var(--ink-dim);
-    letter-spacing: 0.22em;
-  }
-
-  .header-right {
-    font-size: 11px;
-    color: var(--ink-dim);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
-
   /* Stage */
   .stage {
     flex: 1 1 auto;
@@ -479,13 +441,6 @@
   <div class="loader-text">Preparing the issue</div>
 </div>
 
-<header>
-  <div class="masthead">
-    <span class="logo">KRIT</span>
-    <span class="issue">Nr. 1 : 2026 · 110 årgang</span>
-  </div>
-  <div class="header-right">Litteraturskrift</div>
-</header>
 
 <div class="stage" id="stage">
   <div class="book" id="book">
@@ -509,10 +464,10 @@
 <footer>
   <button class="control-btn" id="prevBtn" title="Previous (←)" aria-label="Previous">‹</button>
   <div class="page-indicator" id="indicator">
-    <span class="current">1</span><span class="sep">/</span><span class="total">19</span>
+    <span class="current">1</span><span class="sep">/</span><span class="total">18</span>
   </div>
   <button class="control-btn" id="nextBtn" title="Next (→)" aria-label="Next">›</button>
-  <input type="range" class="scrubber" id="scrubber" min="0" max="18" value="0" step="1" aria-label="Page">
+  <input type="range" class="scrubber" id="scrubber" min="0" max="17" value="0" step="1" aria-label="Page">
 </footer>
 
 <script>
@@ -534,8 +489,7 @@
     "assets/krit-page-15.jpg",
     "assets/krit-page-16.jpg",
     "assets/krit-page-17.jpg",
-    "assets/krit-page-18.jpg",
-    "assets/krit-page-19.jpg"
+    "assets/krit-page-18.jpg"
   ]
   const N = PAGES.length;
 
