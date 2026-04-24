@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KRIT — Nr. 1 : 2026</title>
+<style>
+  :root {
+    --bg-0: #0e0b09;
+    --bg-1: #1a1512;
+    --bg-2: #241c18;
+    --ink: #e8dfd4;
+    --ink-dim: #8a7d70;
+    --ink-faint: #4a413a;
+    --accent: #c2845a;
+    --flip-ms: 850ms;
+    --page-shadow: 0 30px 80px -20px rgba(0,0,0,0.8),
+                   0 10px 30px -10px rgba(0,0,0,0.6);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Optima', 'Palatino', 'Baskerville', 'Iowan Old Style',
+                 'Hoefler Text', Georgia, serif;
+    color: var(--ink);
+    background: var(--bg-0);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background:
+      radial-gradient(ellipse at 50% 40%, var(--bg-2) 0%, var(--bg-1) 40%, var(--bg-0) 85%),
+      var(--bg-0);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: relative;
+  }
+
+  /* Subtle grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+
+  header {
+    flex: 0 0 auto;
+    padding: 20px 32px 12px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: 10;
+  }
+
+  .masthead {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    font-variant: small-caps;
+    letter-spacing: 0.14em;
+  }
+
+  .masthead .logo {
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--ink);
+  }
+
+  .masthead .issue {
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.22em;
+  }
+
+  .header-right {
+    font-size: 11px;
+    color: var(--ink-dim);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* Stage */
+  .stage {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 2600px;
+    perspective-origin: 50% 50%;
+    padding: 8px 48px;
+    position: relative;
+    min-height: 0;
+  }
+
+  .book {
+    position: relative;
+    transform-style: preserve-3d;
+    /* A3 landscape: 1190 × 842 → ratio 1.4133 */
+    aspect-ratio: 1.4133 / 1;
+    max-height: 100%;
+    max-width: 100%;
+    /* sized by JS for exact fit */
+  }
+
+  /* Soft glow under book */
+  .book::after {
+    content: "";
+    position: absolute;
+    left: 5%;
+    right: 5%;
+    bottom: -30px;
+    height: 40px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(8px);
+    z-index: -1;
+  }
+
+  .page, .flipper {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-color: #f5efe6;
+  }
+
+  /* Static under-pages */
+  .page-left {
+    left: 0;
+    background-position: 0% 0%;
+    box-shadow: var(--page-shadow),
+                inset -14px 0 24px -10px rgba(0,0,0,0.35);
+  }
+
+  .page-right {
+    left: 50%;
+    background-position: 100% 0%;
+    box-shadow: var(--page-shadow),
+                inset 14px 0 24px -10px rgba(0,0,0,0.35);
+  }
+
+  /* A "single page" view (first & last, no spread) fades the other side */
+  .book.single-left .page-right,
+  .book.single-right .page-left {
+    background: #0e0b09;
+    box-shadow: none;
+  }
+
+  /* Spine shadow */
+  .book::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.28) 35%,
+      rgba(0,0,0,0.45) 50%,
+      rgba(0,0,0,0.28) 65%,
+      rgba(0,0,0,0) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Flipper — the rotating page */
+  .flipper {
+    transform-style: preserve-3d;
+    transition: transform var(--flip-ms) cubic-bezier(0.55, 0.05, 0.35, 1);
+    will-change: transform;
+    pointer-events: none;
+    display: none;
+    z-index: 5;
+  }
+
+  .flipper.forward {
+    left: 50%;
+    transform-origin: 0% 50%;
+    transform: rotateY(0deg);
+  }
+
+  .flipper.forward.go {
+    transform: rotateY(-180deg);
+  }
+
+  .flipper.backward {
+    left: 0;
+    transform-origin: 100% 50%;
+    transform: rotateY(0deg);
+  }
+
+  .flipper.backward.go {
+    transform: rotateY(180deg);
+  }
+
+  .flipper .face {
+    position: absolute;
+    inset: 0;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-color: #f5efe6;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  /* Forward: front = right half of CURRENT spread (visible first) */
+  .flipper.forward .face.front {
+    background-position: 100% 0%;
+    box-shadow: inset 14px 0 24px -10px rgba(0,0,0,0.35);
+  }
+  .flipper.forward .face.back {
+    transform: rotateY(180deg);
+    background-position: 0% 0%;
+    box-shadow: inset -14px 0 24px -10px rgba(0,0,0,0.35);
+  }
+
+  /* Backward: currently flipped (rotateY(180)), unflipping back to 0 */
+  .flipper.backward .face.front {
+    background-position: 0% 0%;
+    box-shadow: inset -14px 0 24px -10px rgba(0,0,0,0.35);
+  }
+  .flipper.backward .face.back {
+    transform: rotateY(180deg);
+    background-position: 100% 0%;
+    box-shadow: inset 14px 0 24px -10px rgba(0,0,0,0.35);
+  }
+
+  /* Add a dynamic shading gradient on the flipping page for depth */
+  .flipper .face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      rgba(0,0,0,0.25) 0%,
+      rgba(0,0,0,0) 12%,
+      rgba(0,0,0,0) 88%,
+      rgba(0,0,0,0.25) 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity calc(var(--flip-ms) * 0.5) ease-in-out;
+  }
+  .flipper.go .face::after { opacity: 1; }
+
+  /* Click zones */
+  .click-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 15%;
+    z-index: 6;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .click-zone.prev { left: 0; }
+  .click-zone.next { right: 0; }
+  .click-zone:hover { opacity: 1; }
+
+  .click-zone::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 36px;
+    height: 36px;
+    margin-top: -18px;
+    border-top: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+    opacity: 0.85;
+  }
+  .click-zone.prev::before {
+    left: 16px;
+    transform: rotate(-135deg);
+  }
+  .click-zone.next::before {
+    right: 16px;
+    transform: rotate(45deg);
+  }
+
+  .book.flipping .click-zone { pointer-events: none; }
+
+  /* Footer controls */
+  footer {
+    flex: 0 0 auto;
+    padding: 16px 32px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    z-index: 10;
+  }
+
+  .control-btn {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink-faint);
+    border-radius: 999px;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 18px;
+    font-family: inherit;
+  }
+  .control-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: translateY(-1px);
+  }
+  .control-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+
+  .page-indicator {
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    min-width: 180px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .page-indicator .sep {
+    color: var(--ink-faint);
+    margin: 0 10px;
+  }
+  .page-indicator .current {
+    color: var(--ink);
+  }
+
+  /* Progress / scrubber */
+  .scrubber {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 220px;
+    height: 2px;
+    background: var(--ink-faint);
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .scrubber::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  .scrubber::-webkit-slider-thumb:hover { transform: scale(1.3); }
+  .scrubber::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+  }
+
+  /* Fullscreen button */
+  .fs-btn {
+    position: fixed;
+    top: 18px;
+    right: 22px;
+    z-index: 20;
+  }
+
+  /* Keyboard hint */
+  .hint {
+    position: fixed;
+    bottom: 78px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    pointer-events: none;
+    opacity: 0;
+    animation: hintFade 5s ease-in-out 1s forwards;
+  }
+  @keyframes hintFade {
+    0% { opacity: 0; }
+    20% { opacity: 0.8; }
+    80% { opacity: 0.8; }
+    100% { opacity: 0; }
+  }
+
+  /* Loading state */
+  .loader {
+    position: fixed;
+    inset: 0;
+    background: var(--bg-0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    flex-direction: column;
+    gap: 20px;
+    transition: opacity 0.6s ease;
+  }
+  .loader.done { opacity: 0; pointer-events: none; }
+  .loader-mark {
+    font-size: 42px;
+    letter-spacing: 0.2em;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .loader-text {
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+  }
+  .loader-bar {
+    width: 200px;
+    height: 1px;
+    background: var(--ink-faint);
+    overflow: hidden;
+    position: relative;
+  }
+  .loader-bar::before {
+    content: "";
+    position: absolute;
+    left: -40%;
+    top: 0;
+    bottom: 0;
+    width: 40%;
+    background: var(--accent);
+    animation: loaderSlide 1.4s ease-in-out infinite;
+  }
+  @keyframes loaderSlide {
+    0% { left: -40%; }
+    100% { left: 100%; }
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 720px) {
+    header { padding: 14px 18px 8px; }
+    .masthead .logo { font-size: 16px; }
+    .masthead .issue, .header-right { font-size: 9px; }
+    .stage { padding: 4px 6px; }
+    footer { gap: 14px; padding: 10px 12px 16px; }
+    .scrubber { width: 100px; }
+    .page-indicator { min-width: 110px; font-size: 10px; letter-spacing: 0.2em; }
+    .hint { display: none; }
+    .fs-btn { top: 10px; right: 12px; }
+    .click-zone::before { width: 20px; height: 20px; margin-top: -10px; }
+    .click-zone.prev::before { left: 8px; }
+    .click-zone.next::before { right: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader-mark">KRIT</div>
+  <div class="loader-bar"></div>
+  <div class="loader-text">Preparing the issue</div>
+</div>
+
+<header>
+  <div class="masthead">
+    <span class="logo">KRIT</span>
+    <span class="issue">Nr. 1 : 2026 · 110 årgang</span>
+  </div>
+  <div class="header-right">Litteraturskrift</div>
+</header>
+
+<div class="stage" id="stage">
+  <div class="book" id="book">
+    <div class="page page-left" id="pageLeft"></div>
+    <div class="page page-right" id="pageRight"></div>
+
+    <div class="flipper" id="flipper">
+      <div class="face front" id="flipFront"></div>
+      <div class="face back" id="flipBack"></div>
+    </div>
+
+    <div class="click-zone prev" id="prevZone" aria-label="Previous page"></div>
+    <div class="click-zone next" id="nextZone" aria-label="Next page"></div>
+  </div>
+</div>
+
+<button class="control-btn fs-btn" id="fsBtn" title="Fullscreen (F)" aria-label="Fullscreen">⛶</button>
+
+<div class="hint">← → to turn the page</div>
+
+<footer>
+  <button class="control-btn" id="prevBtn" title="Previous (←)" aria-label="Previous">‹</button>
+  <div class="page-indicator" id="indicator">
+    <span class="current">1</span><span class="sep">/</span><span class="total">18</span>
+  </div>
+  <button class="control-btn" id="nextBtn" title="Next (→)" aria-label="Next">›</button>
+  <input type="range" class="scrubber" id="scrubber" min="0" max="17" value="0" step="1" aria-label="Page">
+</footer>
+
+<script>
+  const PAGES = [
+    "assets/pdf-page-001.jpg",
+    "assets/pdf-page-002.jpg",
+    "assets/pdf-page-003.jpg",
+    "assets/pdf-page-004.jpg",
+    "assets/pdf-page-005.jpg",
+    "assets/pdf-page-006.jpg",
+    "assets/pdf-page-007.jpg",
+    "assets/pdf-page-008.jpg",
+    "assets/pdf-page-009.jpg",
+    "assets/pdf-page-010.jpg",
+    "assets/pdf-page-011.jpg",
+    "assets/pdf-page-012.jpg",
+    "assets/pdf-page-013.jpg",
+    "assets/pdf-page-014.jpg",
+    "assets/pdf-page-015.jpg",
+    "assets/pdf-page-016.jpg",
+    "assets/pdf-page-017.jpg",
+    "assets/pdf-page-018.jpg"
+  ]
+  const N = PAGES.length;
+
+  const book       = document.getElementById('book');
+  const pageLeft   = document.getElementById('pageLeft');
+  const pageRight  = document.getElementById('pageRight');
+  const flipper    = document.getElementById('flipper');
+  const flipFront  = document.getElementById('flipFront');
+  const flipBack   = document.getElementById('flipBack');
+  const prevBtn    = document.getElementById('prevBtn');
+  const nextBtn    = document.getElementById('nextBtn');
+  const prevZone   = document.getElementById('prevZone');
+  const nextZone   = document.getElementById('nextZone');
+  const indicator  = document.getElementById('indicator');
+  const scrubber   = document.getElementById('scrubber');
+  const fsBtn      = document.getElementById('fsBtn');
+  const loader     = document.getElementById('loader');
+
+  let idx = 0;          // current spread index
+  let flipping = false;
+
+  function setImage(el, src) {
+    el.style.backgroundImage = `url("${src}")`;
+  }
+
+  function renderStatic() {
+    const src = PAGES[idx];
+    setImage(pageLeft, src);
+    setImage(pageRight, src);
+
+    indicator.querySelector('.current').textContent = (idx + 1).toString().padStart(2, '0');
+    indicator.querySelector('.total').textContent   = N.toString().padStart(2, '0');
+
+    scrubber.value = idx;
+    prevBtn.disabled = (idx === 0);
+    nextBtn.disabled = (idx === N - 1);
+    prevZone.style.display = (idx === 0) ? 'none' : 'block';
+    nextZone.style.display = (idx === N - 1) ? 'none' : 'block';
+  }
+
+  function goForward() {
+    if (flipping || idx >= N - 1) return;
+    flipping = true;
+    book.classList.add('flipping');
+
+    const current = PAGES[idx];
+    const next    = PAGES[idx + 1];
+
+    // During the flip: left stays showing current-left; right shows next-right (revealed).
+    setImage(pageRight, next);  // next's right half becomes visible as flipper rotates away
+
+    // Set up flipper
+    flipper.classList.remove('backward', 'go');
+    flipper.classList.add('forward');
+    setImage(flipFront, current); // front = right half of current spread
+    setImage(flipBack,  next);    // back  = left half of next spread
+    flipper.style.display = 'block';
+
+    // Force reflow so the transition applies from the starting transform
+    void flipper.offsetWidth;
+    flipper.classList.add('go');
+
+    flipper.addEventListener('transitionend', function onEnd(e) {
+      if (e.propertyName !== 'transform') return;
+      flipper.removeEventListener('transitionend', onEnd);
+      flipper.style.display = 'none';
+      flipper.classList.remove('go', 'forward');
+      idx++;
+      renderStatic();
+      flipping = false;
+      book.classList.remove('flipping');
+    });
+  }
+
+  function goBackward() {
+    if (flipping || idx <= 0) return;
+    flipping = true;
+    book.classList.add('flipping');
+
+    const current = PAGES[idx];
+    const prev    = PAGES[idx - 1];
+
+    // The page being flipped is the LEFT page of the current spread.
+    // It rotates L→R around the spine, revealing prev-left underneath and
+    // landing with its back (prev-right) covering the right half.
+    setImage(pageLeft, prev);  // revealed as flipper lifts off from left
+
+    flipper.classList.remove('forward', 'go');
+    flipper.classList.add('backward');
+    // Start: rotateY(0), front visible showing CURRENT's left half
+    // End:   rotateY(180), back visible showing PREV's right half
+    setImage(flipFront, current);
+    setImage(flipBack,  prev);
+    flipper.style.display = 'block';
+
+    void flipper.offsetWidth;
+    flipper.classList.add('go');
+
+    flipper.addEventListener('transitionend', function onEnd(e) {
+      if (e.propertyName !== 'transform') return;
+      flipper.removeEventListener('transitionend', onEnd);
+      flipper.style.display = 'none';
+      flipper.classList.remove('go', 'backward');
+      idx--;
+      renderStatic();
+      flipping = false;
+      book.classList.remove('flipping');
+    });
+  }
+
+  function jumpTo(target) {
+    if (flipping) return;
+    target = Math.max(0, Math.min(N - 1, target));
+    if (target === idx) return;
+    idx = target;
+    renderStatic();
+  }
+
+  // Event wiring
+  nextBtn.addEventListener('click', goForward);
+  prevBtn.addEventListener('click', goBackward);
+  nextZone.addEventListener('click', goForward);
+  prevZone.addEventListener('click', goBackward);
+
+  scrubber.addEventListener('input', (e) => jumpTo(parseInt(e.target.value, 10)));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault(); goForward();
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault(); goBackward();
+    } else if (e.key === 'Home') {
+      jumpTo(0);
+    } else if (e.key === 'End') {
+      jumpTo(N - 1);
+    } else if (e.key === 'f' || e.key === 'F') {
+      toggleFS();
+    }
+  });
+
+  // Touch swipe
+  let touchStart = null;
+  document.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+    }
+  }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (!touchStart) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.x;
+    const dy = t.clientY - touchStart.y;
+    const dt = Date.now() - touchStart.t;
+    if (dt < 600 && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) goForward(); else goBackward();
+    }
+    touchStart = null;
+  }, { passive: true });
+
+  // Sizing: ensure book fits the stage while preserving aspect ratio
+  const stage = document.getElementById('stage');
+  function sizeBook() {
+    const rect = stage.getBoundingClientRect();
+    const availW = rect.width  - 16;
+    const availH = rect.height - 16;
+    const ratio = 1.4133;   // A3 landscape
+    let w = availW, h = availW / ratio;
+    if (h > availH) { h = availH; w = h * ratio; }
+    book.style.width  = w + 'px';
+    book.style.height = h + 'px';
+  }
+  window.addEventListener('resize', sizeBook);
+
+  // Fullscreen
+  function toggleFS() {
+    if (!document.fullscreenElement) {
+      (document.documentElement.requestFullscreen || (()=>{})).call(document.documentElement);
+    } else {
+      document.exitFullscreen && document.exitFullscreen();
+    }
+  }
+  fsBtn.addEventListener('click', toggleFS);
+
+  // Pre-warm: preload first few pages as <img> then hide loader
+  function preloadAll() {
+    return new Promise((resolve) => {
+      let loaded = 0;
+      const toLoad = Math.min(3, N); // only need first few to start reading
+      PAGES.slice(0, toLoad).forEach(src => {
+        const img = new Image();
+        img.onload = img.onerror = () => {
+          loaded++;
+          if (loaded >= toLoad) resolve();
+        };
+        img.src = src;
+      });
+      // Fallback timeout
+      setTimeout(resolve, 2500);
+    });
+  }
+
+  // Init
+  sizeBook();
+  renderStatic();
+  preloadAll().then(() => {
+    loader.classList.add('done');
+    setTimeout(() => loader.remove(), 700);
+    // Lazy-load the rest in the background
+    PAGES.forEach(src => { const i = new Image(); i.src = src; });
+  });
+</script>
+</body>
+</html>
