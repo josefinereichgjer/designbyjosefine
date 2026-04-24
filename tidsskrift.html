@@ -57,9 +57,9 @@
       margin-bottom: 3rem;
     }
     .krit-intro__lead {
-      font-size: 20px;
-      line-height: 1.65;
-      max-width: 820px;
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 780px;
       margin-bottom: 2rem;
     }
     .krit-intro__meta {
@@ -92,10 +92,9 @@
     .prosess-heading {
       font-family: "Poppins", sans-serif;
       font-weight: 500;
-      font-size: clamp(28px, 3.5vw, 52px);
-      letter-spacing: -0.01em;
+      font-size: clamp(24px, 3vw, 40px);
+      letter-spacing: 0;
       margin-bottom: 1.25rem;
-      line-height: 1.1;
     }
     .prosess-row {
       display: grid;
@@ -150,77 +149,6 @@
     .case-section {
       margin-top: 4rem;
     }
-
-    /* Intro bullets */
-    .intro-bullets {
-      list-style: none;
-      padding: 0;
-      margin: 2rem 0 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-    .intro-bullets li {
-      font-size: 14px;
-      opacity: 0.55;
-      display: flex;
-      gap: 0.75rem;
-      align-items: baseline;
-    }
-    .intro-bullets li::before {
-      content: "—";
-      opacity: 0.5;
-      flex-shrink: 0;
-    }
-
-    /* Spread break — full-width magazine page between sections */
-    .spread-break {
-      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-top: 5rem;
-      margin-bottom: 0;
-    }
-    .spread-break img {
-      width: 100%;
-      display: block;
-    }
-    .spread-break__caption {
-      font-size: 11px;
-      opacity: 0.38;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.75rem clamp(20px, 3vw, 34px) 0;
-    }
-
-    /* Oppslag grid with captions */
-    .oppslag-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem 2.5rem;
-      margin-top: 2.5rem;
-    }
-    .oppslag-item img {
-      width: 100%;
-      display: block;
-      margin-bottom: 0.85rem;
-    }
-    .oppslag-item__label {
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.35;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-    .oppslag-item__caption {
-      font-size: 13px;
-      line-height: 1.6;
-      opacity: 0.55;
-    }
-    @media (max-width: 600px) {
-      .oppslag-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .spread-break { margin-top: 3.5rem; }
-    }
     .case-insight {
       border-left: 2px solid rgba(0,0,0,0.18);
       padding: 0.85rem 1.4rem;
@@ -270,7 +198,7 @@
       }
       .prosess-section { margin-top: 0; }
       .krit-intro      { margin-bottom: 6rem; }
-      .case-section    { margin-top: 12rem; }
+      .case-section    { margin-top: 10rem; }
       .typo-specimen   { margin-top: 1rem; }
       .masonry-grid    { margin-bottom: 0; }
       .flipbook-wrap   { margin-top: 0; }
@@ -583,10 +511,10 @@
           <!-- Section nav -->
           <nav class="krit-nav">
             <a class="krit-nav__link" href="#konsept">Konsept</a>
-            <a class="krit-nav__link" href="#tema">Tema</a>
-            <a class="krit-nav__link" href="#visuelt">Visuelt uttrykk</a>
-            <a class="krit-nav__link" href="#oppslag">Oppslag</a>
             <a class="krit-nav__link" href="#prosess">Prosess</a>
+            <a class="krit-nav__link" href="#designvalg">Designvalg</a>
+            <a class="krit-nav__link" href="#resultat">Resultat</a>
+            <a class="krit-nav__link" href="#flipbook">Digital utgave</a>
             <a class="krit-nav__link" href="#refleksjon">Refleksjon</a>
           </nav>
 
@@ -613,15 +541,15 @@
           <!-- Introduksjon -->
           <div class="krit-intro">
             <span class="case-label">Introduksjon</span>
-            <p class="krit-intro__lead">KRIT er et litteraturtidsskrift designet fra bunnen av – med en gjennomgående visuell identitet som løfter innholdet. Prosjektet utforsker hvordan redaksjonell design kan forsterke stemningen i en tekst, ikke bare ramme den inn.</p>
-            <div class="krit-intro__meta" style="margin-top:2rem;">
+            <p class="krit-intro__lead">KRIT er et litteraturtidsskrift designet for å gi litterære tekster en tydelig og helhetlig visuell identitet. Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn.</p>
+            <div class="krit-intro__meta">
               <div>
                 <span class="krit-intro__label">Brief</span>
-                <p class="krit-intro__body">Design et litteraturmagasin basert på gitte tekster. Resultatet skulle fremstå som et ferdig, profesjonelt magasin med konsekvent typografi, fargesystem og bildebruk.</p>
+                <p class="krit-intro__body">Design et litteraturmagasin i US Letter-format, basert på gitte tekster i faget IDG3013 Redaksjonell design 2. Resultatet skulle fremstå som et ferdig, profesjonelt magasin med konsekvent typografi, fargesystem og bildebruk.</p>
               </div>
               <div>
                 <span class="krit-intro__label">Hva ble levert</span>
-                <p class="krit-intro__body">Et komplett magasindesign på 18 sider – inkludert logo, typografisystem, fargesystem og bildebehandlingssystem, tilpasset tre ulike utgaver av KRIT.</p>
+                <p class="krit-intro__body">Et komplett magasindesign på 18 sider – inkludert logo, typografisystem, fargesystem og bildebehandlingssystem. Designet er bygget rundt et gjennomgående visuelt system som gjør det mulig å produsere nye utgaver med konsistent identitet.</p>
               </div>
             </div>
           </div>
@@ -637,25 +565,44 @@
             <blockquote class="case-insight">Designet skal forsterke stemningen i tekstene – ikke konkurrere med dem.</blockquote>
           </div>
 
-          <!-- 02 Tema -->
-          <div class="case-section" id="tema">
-            <span class="case-label">02 — Tema</span>
-            <h2 class="prosess-heading">Kropp, kultur og erfaring</h2>
+          <!-- 02 Målgruppe -->
+          <div class="case-section" id="malgruppe">
+            <span class="case-label">02 — Målgruppe</span>
+            <h2 class="prosess-heading">Hvem er KRIT for?</h2>
             <div class="jambore-text">
-              <p class="prosess-text">KRIT nr. 1 samler essay, litterær tekst og kritikk med ett felles blikk: kroppen som kulturelt og litterært objekt. Tekstene beveger seg mellom det personlige og det analytiske – mellom det som kjennes på kroppen og det som tenkes i hodet.</p>
-              <p class="prosess-text">Designet måtte bære dette dobbeltsporet. Halvtone-bildene og de sterke primærfargene gir magasinet en fysisk, nesten taktil kvalitet. De store typografiske grepene skaper analytisk distanse. Sammen gir de KRIT et uttrykk som er energisk og ambisiøst – og som speiler innholdet.</p>
+              <p class="prosess-text">KRIT er rettet mot lesere med interesse for norsk og internasjonal litteratur – studenter, akademikere og kulturinteresserte. Magasinet kombinerer essay, litterær tekst og kritikk, og henvender seg til en leser som setter pris på både innholdets dybde og formens bevissthet.</p>
+              <p class="prosess-text">Leserens forventning er et magasin som oppleves gjennomtenkt og ambisiøst. Designet skal underbygge magasinets redaksjonelle tyngde – uten å bli tungt å lese.</p>
             </div>
           </div>
 
-          <!-- Spread break — cover -->
-          <div class="spread-break">
-            <img src="assets/krit-page-01.jpg" alt="KRIT nr.1 – forsideoppslag" loading="lazy">
-            <p class="spread-break__caption">Forsideoppslag — KRIT nr. 1, 2026</p>
+          <!-- 03 Prosess -->
+          <div class="prosess-section case-section" id="prosess">
+            <span class="case-label">03 — Prosess</span>
+            <h2 class="prosess-heading">Fra kaos til system</h2>
+            <div class="prosess-row">
+              <img src="assets/prosess-gul-krit.webp" alt="Tidlige skisser – Krit" loading="lazy">
+              <div class="prosess-row__text">
+                <p class="prosess-text">Uttrykket manglet en tydelig struktur og fremstod fragmentert. Flere ulike visuelle grep ble brukt om hverandre – varierende fontvekter, fotografier i svart-hvitt og med fargefiltre, samt innslag av illustrasjon – uten at de var forankret i et helhetlig system.</p>
+              </div>
+            </div>
+
+            <span class="case-label" style="display:block; margin-top:1rem; margin-bottom:1rem;">Fontvalg i prosess — Jambore</span>
+            <div class="prosess-images" style="margin-bottom:2rem;">
+              <img src="assets/kritprosblaarosa.webp" alt="Tidlig versjon – blå og rosa" loading="lazy">
+              <img src="assets/kritprosgul.webp" alt="Tidlig versjon – gul" loading="lazy">
+              <img src="assets/kritprosrosa.webp" alt="Tidlig versjon – rosa" loading="lazy">
+            </div>
+            <div class="jambore-text">
+              <p class="prosess-text">Det tok tid før jeg valgte å gå bort fra Jambore-fonten. Jeg ble tiltrukket av dens organiske og menneskelige uttrykk, som i utgangspunktet resonnerte godt med det personlige og kroppslige innholdet i magasinets tekster.</p>
+              <p class="prosess-text">I tillegg oppsto det en interessant, nesten tilfeldig kobling mellom fonten og prosjektet: navnet KRIT speiler etymologisk opphavet til fontens designer, Tom Chalky – en referanse som forsterket konseptets identitet på et mer subtilt nivå. <a href="https://creativemarket.com/TomChalky/280183326-Jamboree-Display-Font-Family" target="_blank" rel="noopener">Jamboree Display Font Family</a></p>
+              <p class="prosess-text">Til tross for disse kvalitetene viste fonten seg å ha begrenset lesbarhet i større tekstgrader, særlig i overskrifter. Samtidig ga den logoen et uttrykk som opplevdes for lekent og uformelt i møte med det redaksjonelle innholdet.</p>
+              <p class="prosess-text">Valget om å gå bort fra Jambore handlet om å prioritere tydelighet og typografisk presisjon, og stramme opp det overordnede uttrykket.</p>
+            </div>
           </div>
 
-          <!-- 03 Visuelt uttrykk -->
-          <div class="case-section" id="visuelt">
-            <span class="case-label">03 — Visuelt uttrykk</span>
+          <!-- 04 Designvalg -->
+          <div class="case-section" id="designvalg">
+            <span class="case-label">04 — Designvalg</span>
             <h2 class="prosess-heading" style="margin-bottom:2.5rem;">Typografi, farge og bilde</h2>
 
             <!-- Fontvalg -->
@@ -709,7 +656,8 @@
             <div id="fargevalg" style="margin-top:5rem;">
               <span class="case-label">Fargevalg — Komplementære kontraster</span>
               <div class="fargevalg-intro" style="margin-top:1rem;">
-                <p>Fargepaletten i nr. 1 er bygget på komplementærkontrasten mellom turkis og rød-oransje. Samme system gjenbrukes i alle utgaver, men med nye fargepar – slik at hvert nummer har en tydelig individuell identitet innenfor et gjenkjennelig system.</p>
+                <p>Fargepaletten i hver utgave av KRIT er basert på komplementære eller nærliggende kontraster, med varierende grad av metning og renhet for å justere ønsket intensitet.</p>
+                <p>Dette gir hver utgave et tydelig og selvstendig visuelt uttrykk, samtidig som det overordnede systemet opprettholder en konsistent og gjenkjennelig identitet.</p>
               </div>
               <div class="fargevalg-body">
                 <div class="farge-swatches">
@@ -771,68 +719,26 @@
             </div>
           </div>
 
-          <!-- 04 Oppslag -->
-          <div class="case-section" id="oppslag">
-            <span class="case-label">04 — Oppslag</span>
-            <h2 class="prosess-heading" style="margin-bottom:0.75rem;">Tre utgaver, ett system</h2>
-            <p class="prosess-text" style="max-width:620px; margin-bottom:0; opacity:0.65;">Samme visuelle system – ulike fargeidentiteter. Hvert nummer er umiddelbart gjenkjennelig som KRIT, og likevel tydelig forskjellig fra de andre.</p>
-            <div class="oppslag-grid">
-              <div class="oppslag-item">
-                <img src="assets/01mag.webp" alt="Krit nr.1 – Identitet, kropp og makt" loading="lazy">
-                <span class="oppslag-item__label">Nr. 1 — Kropp og makt</span>
-                <p class="oppslag-item__caption">Turkis og rød-oransje som komplementærpar. Halvtone-forsidebilde i blått mot rødoransje bakgrunn – umiddelbart visuelt.</p>
-              </div>
-              <div class="oppslag-item" style="margin-top:3rem;">
-                <img src="assets/02mag.webp" alt="Krit nr.2 – Ubalanse, angst og sorg" loading="lazy">
-                <span class="oppslag-item__label">Nr. 2 — Ubalanse og sorg</span>
-                <p class="oppslag-item__caption">Rød og mørk bakgrunn gir nummeret en tyngre, mer dempet stemning enn nr. 1 – men innenfor det samme systemet.</p>
-              </div>
-              <div class="oppslag-item">
-                <img src="assets/03mag.webp" alt="Krit nr.3" loading="lazy">
-                <span class="oppslag-item__label">Nr. 3</span>
-                <p class="oppslag-item__caption">Systemet holder ved bytte av fargepar. Strukturen er gjenkjennelig – identiteten er ny.</p>
-              </div>
-              <div class="oppslag-item" style="margin-top:3rem;">
-                <img src="assets/04mag.webp" alt="Krit nr.4" loading="lazy">
-                <span class="oppslag-item__label">Nr. 4</span>
-                <p class="oppslag-item__caption">Fjerde utgave viser systemets skalerbarhet – ingen designbeslutninger måtte tas på nytt fra grunnen.</p>
-              </div>
-            </div>
-          </div>
+          <!-- 05 Resultat -->
+          <div class="case-section" id="resultat">
+            <span class="case-label">05 — Resultat</span>
+            <h2 class="prosess-heading" style="margin-bottom:0.75rem;">Ferdig magasin</h2>
 
-          <!-- 05 Prosess -->
-          <div class="prosess-section case-section" id="prosess">
-            <span class="case-label">05 — Prosess</span>
-            <h2 class="prosess-heading">Fra kaos til system</h2>
-            <div class="prosess-row">
-              <img src="assets/prosess-gul-krit.webp" alt="Tidlige skisser – Krit" loading="lazy">
-              <div class="prosess-row__text">
-                <p class="prosess-text">De tidlige utkastene manglet en tydelig struktur og fremstod fragmenterte. Ulike visuelle grep ble brukt om hverandre – varierende fontvekter, fotografier i svart-hvitt og med fargefiltre, og innslag av illustrasjon – uten at de var forankret i et helhetlig system.</p>
-                <p class="prosess-text">Problemet var ikke enkeltgrepene. Det var at de ikke snakket sammen.</p>
+            <div class="masonry-grid">
+              <div class="masonry-col">
+                <div class="masonry-item"><img src="assets/01mag.webp" alt="Krit nr.1 – Identitet, kropp og makt" loading="lazy"></div>
+                <div class="masonry-item"><img src="assets/03mag.webp" alt="Krit nr.3" loading="lazy"></div>
+              </div>
+              <div class="masonry-col masonry-col--offset">
+                <div class="masonry-item"><img src="assets/02mag.webp" alt="Krit nr.2 – Ubalanse, angst og sorg" loading="lazy"></div>
+                <div class="masonry-item"><img src="assets/04mag.webp" alt="Krit nr.4" loading="lazy"></div>
               </div>
             </div>
-
-            <span class="case-label" style="display:block; margin-top:2rem; margin-bottom:1rem;">Fontvalg i prosess — Jambore</span>
-            <div class="prosess-images" style="margin-bottom:2rem;">
-              <img src="assets/kritprosblaarosa.webp" alt="Tidlig versjon – blå og rosa" loading="lazy">
-              <img src="assets/kritprosgul.webp" alt="Tidlig versjon – gul" loading="lazy">
-              <img src="assets/kritprosrosa.webp" alt="Tidlig versjon – rosa" loading="lazy">
-            </div>
-            <div class="jambore-text">
-              <p class="prosess-text">Jambore-fonten var et langt steg i prosessen – og et bevisst valg jeg til slutt gikk bort fra. Fonten har et organisk, menneskelig uttrykk som resonnerte godt med det kroppslige innholdet. Det er til og med en etymologisk kobling mellom "krit" og fontens designer, Tom Chalky. <a href="https://creativemarket.com/TomChalky/280183326-Jamboree-Display-Font-Family" target="_blank" rel="noopener">Jamboree Display Font Family</a></p>
-              <p class="prosess-text">Likevel var Jambore for leken og uformell som logofonten for et redaksjonelt magasin. Den fungerte dårlig i store grader og ga logoen feil tyngde. Valget om å gå til Romie handlet om å prioritere tydelighet og redaksjonell presisjon.</p>
-            </div>
-          </div>
-
-          <!-- Spread break — inner spread -->
-          <div class="spread-break">
-            <img src="assets/krit-page-04.jpg" alt="Innside oppslag fra KRIT nr.1" loading="lazy">
-            <p class="spread-break__caption">Innside oppslag — essay med halftone og fargebakgrunn</p>
           </div>
 
           <!-- 06 Digital utgave -->
           <div class="case-section" id="flipbook">
-            <span class="case-label">06 — Bla i magasinet</span>
+            <span class="case-label">06 — Digital utgave</span>
             <h2 class="prosess-heading" style="margin-bottom:0.5rem;">Bla i magasinet</h2>
             <p class="prosess-text" style="max-width:480px; margin-bottom:2.5rem; opacity:0.65;">Den digitale utgaven lar deg bla gjennom alle 18 sidene i fullversjon. Bruk piltastene, knappene eller sveip for å navigere. <a href="krit-flipbook.html" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Åpne i fullskjerm →</a></p>
             <div class="flipbook-wrap">
@@ -847,8 +753,8 @@
             <h2 class="prosess-heading" style="margin-bottom:1.25rem;">Hva lærte jeg?</h2>
             <div class="refleksjon-body">
               <p>Gjennom arbeidet med tidsskriftet lærte jeg hvor viktig det er å balansere et <strong>sterkt visuelt uttrykk</strong> med god <strong>lesbarhet</strong>. Jeg ønsket å skape et tidsskrift med tydelig karakter, inspirert av kritikk, kropp, kultur og fysisk erfaring. Bruken av kontraster, halvtonebilder og store typografiske grep bidro til et uttrykk som føles energisk og særegent.</p>
-              <p>Samtidig ser jeg i etterkant at enkelte oppslag kunne hatt en roligere struktur. Særlig tekstsidene med mye brødtekst – som essayene og kritikksidene – ble i overkant visuelt aktive: fargebakgrunnen og halvtonebildene tok for mye plass og konkurrerte med selve teksten. Jeg kunne jobbet mer med <strong>luft, marger og tydeligere hierarki</strong> på disse sidene, og spart de sterkeste visuelle grepene til åpningsoppslagene. Det ville gjort leseropplevelsen mer <strong>balansert</strong> og gitt de eksperimentelle sidene enda større effekt.</p>
-              <p>Jeg lærte også at et godt tidsskrift ikke bare handler om enkeltoppslag, men om <strong>rytmen gjennom hele publikasjonen</strong>. Variasjonen mellom rolige tekstsider og mer uttrykksfulle bildesider er det som gjør at magasinet oppleves <strong>helhetlig</strong> – og at de visuelle høydepunktene faktisk treffer.</p>
+              <p>Samtidig ser jeg i etterkant at enkelte oppslag kunne hatt en roligere struktur. Noen steder blir uttrykket så visuelt aktivt at det kan konkurrere med teksten. Jeg kunne derfor jobbet mer med <strong>luft, marger og tydeligere hierarki</strong>, spesielt på sider med mye brødtekst. Dette ville gjort leseropplevelsen mer <strong>balansert</strong> og gitt de eksperimentelle sidene enda større effekt.</p>
+              <p>Jeg lærte også at et godt tidsskrift ikke bare handler om enkeltoppslag, men om <strong>rytmen gjennom hele publikasjonen</strong>. Variasjonen mellom rolige tekstsider og mer uttrykksfulle bildesider er viktig for at magasinet skal oppleves <strong>helhetlig</strong>. Videre ville jeg vært mer konsekvent med typografiske detaljer, bildetekster og plassering av enkelte elementer for å styrke den redaksjonelle profesjonaliteten.</p>
               <p>Alt i alt har prosjektet lært meg å være modigere visuelt, men også mer kritisk til når et designgrep faktisk <strong>støtter innholdet</strong>, og når det først og fremst blir <strong>dekorativt</strong>.</p>
             </div>
           </div>
