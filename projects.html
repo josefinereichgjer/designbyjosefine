@@ -205,7 +205,7 @@
       }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
       document.querySelectorAll('.masonry .card').forEach(function (c) { obs.observe(c); });
 
-      document.querySelectorAll('.card__img').forEach(function (img) {
+      document.querySelectorAll('img.card__img').forEach(function (img) {
         if (img.complete) return;
         img.classList.add('img--loading');
         img.addEventListener('load', function () { img.classList.add('img--loaded'); });
