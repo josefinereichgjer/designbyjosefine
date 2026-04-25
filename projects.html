@@ -69,6 +69,31 @@
       .content { padding-top: 96px; }
       #work { padding-bottom: 80px; }
     }
+    @media (max-width: 640px) {
+      .nav {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0; right: 0;
+        background: #000;
+        border-bottom: 1px solid #222;
+        flex-direction: column;
+        gap: 0;
+        padding: 8px 0 16px;
+        align-items: stretch;
+        z-index: 200;
+        margin-top: 0;
+      }
+      .sidebar--open .nav { display: flex; }
+      .nav .nav__link {
+        padding: 14px 20px;
+        font-size: 12px;
+        letter-spacing: 0.2em;
+        border-bottom: 1px solid #1a1a1a;
+      }
+      .sidebar__toggle { display: flex !important; }
+      .content { padding-top: 72px; }
+    }
   </style>
 </head>
 
