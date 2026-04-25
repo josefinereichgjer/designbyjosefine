@@ -343,7 +343,7 @@ window.PROJECTS = [
     subtitle: "Redaksjonell design",
     year: "2026",
     tags: ["Redaksjonell"],
-    cover: "./assets/krit.webp",
+    cover: "./assets/krit1.webp",
     skipBuild: true,
   },
   {
