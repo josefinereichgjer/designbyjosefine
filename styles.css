@@ -185,35 +185,77 @@ a:hover{opacity:.75}
 }
 
 .masonry{
-  margin-top:32px;
-  columns: 3;
-  column-gap: 32px;
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 56px;
+  row-gap: 96px;
 }
+
+/* Featured: first card spans full width */
+.masonry .card:first-child { grid-column: 1 / -1; }
+.masonry .card:first-child .card__img-wrap { aspect-ratio: 16/7; }
+.masonry .card:first-child .card__title { font-size: clamp(32px, 3.8vw, 64px); }
+
+/* Right-column cards (odd positions after featured) stagger down */
+.masonry .card:nth-child(odd):not(:first-child) { padding-top: 80px; }
+
+/* Consistent aspect ratio for non-featured cards */
+.masonry .card:not(:first-child) .card__img-wrap { aspect-ratio: 3/2; }
+
 .card{
   display:block;
   width:100%;
   break-inside:avoid;
-  margin-bottom:32px;
   overflow:hidden;
-  background:#fff;
+  background:transparent;
   box-shadow:none;
   border: none;
-  transition: box-shadow 0.3s ease;
 }
-/* Scroll-reveal + varying heights for masonry */
+/* Scroll-reveal */
 .masonry .card {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .masonry .card.card--visible { opacity: 1; transform: translateY(0); }
-.masonry .card:nth-child(3n+2) { transition-delay: 0.08s; }
-.masonry .card:nth-child(3n)   { transition-delay: 0.16s; }
-/* Varied portrait / landscape heights for masonry feel */
-.masonry .card:nth-child(4n+1) .card__img-wrap { aspect-ratio: 2/3; }
-.masonry .card:nth-child(4n+2) .card__img-wrap { aspect-ratio: 4/5; }
-.masonry .card:nth-child(4n+3) .card__img-wrap { aspect-ratio: 3/4; }
-.masonry .card:nth-child(4n)   .card__img-wrap { aspect-ratio: 4/3; }
+.masonry .card:nth-child(even) { transition-delay: 0.1s; }
+
+/* Caption: always visible */
+.masonry .card__caption {
+  display: block !important;
+  padding: 20px 0 0;
+  background: transparent;
+}
+.masonry .card__title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(20px, 1.8vw, 36px);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: #1a1a1a;
+  margin: 0 0 8px;
+  transition: transform 0.35s ease;
+}
+.masonry .card__tags {
+  font-size: 10px;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #aaa;
+  margin: 0;
+}
+/* Hide slide-up overlay — title is visible below */
+.masonry .card__overlay { display: none; }
+/* Image zoom + title drift on hover */
+.masonry .card__img-wrap { overflow: hidden; }
+.masonry .card__img {
+  transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+@media (hover: hover) {
+  .masonry .card:hover .card__img { transform: scale(1.04); }
+  .masonry .card:hover .card__title { transform: translateX(8px); }
+}
 .card__img-wrap{
   overflow:hidden;
   aspect-ratio:4/3;
@@ -2167,9 +2209,9 @@ a:hover{opacity:.75}
 
 /* ── Responsive ── */
 
-/* Tablet wide: sidebar shrinks, grid 2-col */
+/* Tablet wide */
 @media (max-width: 1100px) {
-  .masonry { columns: 2; }
+  .masonry { column-gap: 36px; row-gap: 72px; }
 }
 
 /* Tablet narrow / large mobile: sidebar collapses to top bar */
@@ -2209,7 +2251,8 @@ a:hover{opacity:.75}
   .back-btn { white-space: nowrap; order: 1; }
   .sidebar__toggle { display: none; }
   .meta { display: none; }
-  .masonry { columns: 2; }
+  .masonry { column-gap: 24px; row-gap: 56px; }
+  .masonry .card:nth-child(odd):not(:first-child) { padding-top: 48px; }
   .slideshow { aspect-ratio: 16 / 9; border-radius: 0; }
   .bg { margin-top: 36px; }
   .bg__sections { grid-template-columns: 1fr; }
@@ -2400,7 +2443,9 @@ a:hover{opacity:.75}
 
 /* Mobile: single column */
 @media (max-width: 560px) {
-  .masonry { columns: 1; }
+  .masonry { grid-template-columns: 1fr; row-gap: 48px; }
+  .masonry .card:first-child .card__img-wrap { aspect-ratio: 4/3; }
+  .masonry .card:nth-child(odd):not(:first-child) { padding-top: 0; }
   .slideshow { aspect-ratio: 4 / 3; border-radius: 0; }
   .about-photo { width: 70%; max-width: 220px; }
   .bg__heading { font-size: 14px; }
@@ -2422,5 +2467,5 @@ a:hover{opacity:.75}
 @media (min-width: 1920px) {
   :root { --sidebarW: 180px; }
   .content { max-width: 1600px; }
-  .masonry { columns: 4; }
+  .masonry { column-gap: 80px; row-gap: 120px; }
 }
