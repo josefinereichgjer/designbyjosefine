@@ -81,7 +81,7 @@
         </div>
 
         <div class="boks-video" style="margin-bottom:clamp(32px,5vw,64px);">
-          <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline style="width:100%;height:auto;display:block;" id="bokserieVideo"></video>
+          <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;display:block;" id="bokserieVideo"></video>
           <script>document.getElementById("bokserieVideo").playbackRate = 0.5;</script>
         </div>
       </div>
@@ -209,7 +209,7 @@
     </article>
   </main>
 
-  <script src="./projects.js?v=6"></script>
+  <script src="./projects.js?v=6" defer></script>
   <script>
     const $ = (s) => document.querySelector(s);
     const id = "bokomslag";

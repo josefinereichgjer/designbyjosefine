@@ -8,7 +8,7 @@
   <meta name="description" content="Arbeidsdetaljer" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Caveat:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500&family=Caveat:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=21" />
   <link rel="icon" href="assets/hvitlogo.webp">
 </head>
@@ -51,7 +51,7 @@
     <article class="project" id="project"></article>
   </main>
 
-  <script src="./projects.js?v=6"></script>
+  <script src="./projects.js?v=6" defer></script>
   <script>
     const $ = (s) => document.querySelector(s);
     const params = new URLSearchParams(location.search);
@@ -181,7 +181,7 @@
         const classes = ["project__figure", wide && "project__figure--wide", crop && "project__figure--crop", cropX && "project__figure--cropx"].filter(Boolean).join(" ");
         const media = isVideo
           ? autoplay
-            ? `<video class="project__video" src="${src}" autoplay muted loop playsinline></video>`
+            ? `<video class="project__video" src="${src}" autoplay muted loop playsinline preload="none"></video>`
             : `<video class="project__video" src="${src}" controls playsinline preload="metadata"></video>`
           : `<img loading="${eager ? "eager" : "lazy"}" decoding="async" src="${src}" alt="${project.title} — galleri ${i + 1}">`;
         const figStyle = [
@@ -249,7 +249,7 @@
             </div>
             ${project.heroVideo ? `
             <div class="${project.heroCollage ? "hero-media-row" : ""}">
-              <div class="hero-video">${project.videoLink ? `<a href="${project.videoLink}" target="_blank" rel="noopener" style="display:block"><video src="${project.heroVideo}" autoplay muted loop playsinline></video></a>` : `<video src="${project.heroVideo}" autoplay muted loop playsinline></video>`}</div>
+              <div class="hero-video">${project.videoLink ? `<a href="${project.videoLink}" target="_blank" rel="noopener" style="display:block"><video src="${project.heroVideo}" autoplay muted loop playsinline preload="none"></video></a>` : `<video src="${project.heroVideo}" autoplay muted loop playsinline preload="none"></video>`}</div>
               ${project.heroCollage ? `
               <div class="hero-collage-wrap">
                 <a class="hero-collage" href="${project.heroCollage.src}" target="_blank" rel="noopener">
