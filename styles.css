@@ -2584,15 +2584,15 @@ a:hover{opacity:.75}
   .related__grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── Wide-screen layout: sidebar stays left, content fills available space ──
-   Remove the 1440px cap so content grows with the viewport.
-   Add a 4th masonry column at 1800px+ to keep cards at a sensible size.
-   ─────────────────────────────────────────────────────────────────────── */
-@media (min-width: 1621px) {
-  .content {
-    max-width: none;
-  }
+/* ── Large desktop (1440px+): wider sidebar keeps proportions similar to smaller screens ── */
+@media (min-width: 1440px) {
+  :root { --sidebarW: 220px; }
 }
-@media (min-width: 1800px) {
+
+/* ── XL (1920px+): expand sidebar + cap content so layout stays proportional ── */
+@media (min-width: 1920px) {
+  :root { --sidebarW: 260px; }
+  .content { max-width: 1600px; }
+  .page-footer { max-width: 1600px; }
   .masonry { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
