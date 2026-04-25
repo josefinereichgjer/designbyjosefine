@@ -192,16 +192,8 @@ a:hover{opacity:.75}
   row-gap: 96px;
 }
 
-/* Featured: first card spans full width */
-.masonry .card:first-child { grid-column: 1 / -1; }
-.masonry .card:first-child .card__img-wrap { aspect-ratio: 16/7; }
-.masonry .card:first-child .card__title { font-size: clamp(32px, 3.8vw, 64px); }
-
-/* Right-column cards (odd positions after featured) stagger down */
-.masonry .card:nth-child(odd):not(:first-child) { padding-top: 80px; }
-
-/* Consistent aspect ratio for non-featured cards */
-.masonry .card:not(:first-child) .card__img-wrap { aspect-ratio: 3/2; }
+/* Consistent aspect ratio for all cards */
+.masonry .card__img-wrap { aspect-ratio: 3/2; }
 
 .card{
   display:block;
@@ -221,10 +213,10 @@ a:hover{opacity:.75}
 .masonry .card.card--visible { opacity: 1; transform: translateY(0); }
 .masonry .card:nth-child(even) { transition-delay: 0.1s; }
 
-/* Caption: always visible */
+/* Caption: always visible, equal padding on all cards */
 .masonry .card__caption {
   display: block !important;
-  padding: 20px 0 0;
+  padding: 24px 4px 0;
   background: transparent;
 }
 .masonry .card__title {
@@ -2252,7 +2244,6 @@ a:hover{opacity:.75}
   .sidebar__toggle { display: none; }
   .meta { display: none; }
   .masonry { column-gap: 24px; row-gap: 56px; }
-  .masonry .card:nth-child(odd):not(:first-child) { padding-top: 48px; }
   .slideshow { aspect-ratio: 16 / 9; border-radius: 0; }
   .bg { margin-top: 36px; }
   .bg__sections { grid-template-columns: 1fr; }
@@ -2444,8 +2435,6 @@ a:hover{opacity:.75}
 /* Mobile: single column */
 @media (max-width: 560px) {
   .masonry { grid-template-columns: 1fr; row-gap: 48px; }
-  .masonry .card:first-child .card__img-wrap { aspect-ratio: 4/3; }
-  .masonry .card:nth-child(odd):not(:first-child) { padding-top: 0; }
   .slideshow { aspect-ratio: 4 / 3; border-radius: 0; }
   .about-photo { width: 70%; max-width: 220px; }
   .bg__heading { font-size: 14px; }
