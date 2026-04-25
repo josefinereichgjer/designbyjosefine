@@ -10,26 +10,26 @@
 
   /* me.webp first → highest z-index → on top of pile */
   const CARDS = [
-    { src: './assets/me.webp',                                      alt: 'Me'            },
-    { src: './assets/tilforside.webp',                              alt: 'Til forside'   },
-    { src: './assets/norvald/norvald.webp',                         alt: 'Norval iPhone' },
-    { src: './assets/reinategning.webp',                            alt: 'Reina tegning' },
-    { src: './assets/scenebok.webp',                                alt: 'Scene bok'     },
-    { src: './assets/srhbrosk.webp',      alt: 'SRH brosjyre'  },
-    { src: './assets/plakat_mockup.webp', alt: 'Plakat mockup' },
-    { src: './assets/closebook.webp',     alt: 'Bokomslag'     },
+    { src: './assets/me.webp',                             alt: 'Josefine',             href: './projects.html',             opacity: 1    },
+    { src: './assets/reinalys.webp',                       alt: 'Reina Fruktgård',       href: './reina-fruktgard.html',       opacity: 0.62 },
+    { src: './assets/lillawenettside.webp',                alt: 'Stiftelsen WE',         href: './we-visuell-profil.html',     opacity: 0.62 },
+    { src: './assets/scenebok.webp',                       alt: 'Bokomslag',             href: './bokomslag.html',             opacity: 0.62 },
+    { src: './assets/poster-srh.webp',                     alt: 'Flerkanalspublisering', href: './flerkanalspublisering.html', opacity: 0.62 },
+    { src: './assets/tjonnipadiphone.webp',                alt: 'Tjønnås og Norvald',    href: './ansatts-portal.html',        opacity: 0.62 },
+    { src: './stoppestedet/images/storefrontstoppis.webp', alt: 'Stoppestedet',          href: './stoppestedet.html',          opacity: 0.62 },
+    { src: './assets/krit.webp',                           alt: 'Tidsskrift',            href: './tidsskrift.html',            opacity: 0.62 },
   ];
 
-  /* Small x/y offsets + rotations — tight pile, me.webp top layer */
+  /* Wider spread — cards float out to both sides of me.webp */
   const TARGETS = [
-    { x:  270, y:   44, rot:   2, z: 8 },  // me.webp  — top
-    { x:  198, y:   66, rot:  -9, z: 7 },
-    { x:  348, y:   42, rot:  13, z: 6 },
-    { x:  212, y:   12, rot:  -5, z: 5 },
-    { x:  338, y:   78, rot: -12, z: 4 },
-    { x:  172, y:   48, rot:   8, z: 3 },
-    { x:  314, y:   14, rot: -15, z: 2 },
-    { x:  248, y:   86, rot:  10, z: 1 },
+    { x:   40, y:   20, rot:   2, z: 8 },  // me.webp — near-center
+    { x: -300, y:  -50, rot:  -9, z: 7 },  // far left, up
+    { x:  400, y:  -35, rot:  13, z: 6 },  // far right, up
+    { x: -200, y:   90, rot:  -5, z: 5 },  // left, lower
+    { x:  350, y:  100, rot: -11, z: 4 },  // right, lower
+    { x: -370, y:   40, rot:   8, z: 3 },  // far left, middle
+    { x:  470, y:   10, rot: -14, z: 2 },  // far right, middle
+    { x:   90, y: -100, rot:   6, z: 1 },  // slightly right, top
   ];
 
   let cardEls    = [];
@@ -57,7 +57,7 @@
 
       const t  = { x: TARGETS[i].x - xShift, y: TARGETS[i].y + yShift, rot: TARGETS[i].rot, z: TARGETS[i].z };
       const el = document.createElement('a');
-      el.href        = './projects.html';
+      el.href        = c.href || './projects.html';
       el.className   = 'collage-card';
       el.style.width  = cW + 'px';
       el.style.height = cH + 'px';
@@ -91,7 +91,7 @@
         y:        t.y,
         rotation: t.rot,
         scale:    1,
-        opacity:  1,
+        opacity:  c.opacity,
         duration: isMe
           ? (isMobile ? 0.9 : 1.3)
           : (isMobile ? 0.55 + Math.random() * 0.1 : 0.8 + Math.random() * 0.15),
