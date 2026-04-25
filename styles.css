@@ -1291,6 +1291,7 @@ a:hover{opacity:.75}
   letter-spacing: 0.22em;
   color: #fff;
   background: #111;
+  border-radius: 999px;
   transition: opacity 0.15s;
 }
 .project-header .panel-toggle {
