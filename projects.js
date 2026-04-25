@@ -352,10 +352,10 @@ window.PROJECTS = [
     subtitle: "UX + redesign",
     year: "2026",
     tags: ["Redesign/UX"],
-    cover: "./assets/me.webp",
-    images: ["./assets/me.webp"],
+    cover: "./assets/viegeland.png",
+    images: ["./assets/viegeland.png"],
     noSlideshow: true,
-    comingSoon: true,
+    comingSoon: false,
   },
   {
     id: "lovechild",
