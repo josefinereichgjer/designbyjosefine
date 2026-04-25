@@ -20,16 +20,16 @@
     { src: './assets/krit.webp',                           alt: 'Tidsskrift',            href: './tidsskrift.html',            opacity: 0.62 },
   ];
 
-  /* Wider spread — cards float out to both sides of me.webp */
+  /* Moderate spread — cards fan out to both sides of me.webp */
   const TARGETS = [
-    { x:   40, y:   20, rot:   2, z: 8 },  // me.webp — near-center
-    { x: -300, y:  -50, rot:  -9, z: 7 },  // far left, up
-    { x:  400, y:  -35, rot:  13, z: 6 },  // far right, up
-    { x: -200, y:   90, rot:  -5, z: 5 },  // left, lower
-    { x:  350, y:  100, rot: -11, z: 4 },  // right, lower
-    { x: -370, y:   40, rot:   8, z: 3 },  // far left, middle
-    { x:  470, y:   10, rot: -14, z: 2 },  // far right, middle
-    { x:   90, y: -100, rot:   6, z: 1 },  // slightly right, top
+    { x:  120, y:   20, rot:   2, z: 8 },  // me.webp — center
+    { x: -100, y:  -40, rot:  -9, z: 7 },  // left, up
+    { x:  280, y:  -25, rot:  13, z: 6 },  // right, up
+    { x:  -50, y:   85, rot:  -5, z: 5 },  // left, lower
+    { x:  250, y:   95, rot: -11, z: 4 },  // right, lower
+    { x: -150, y:   30, rot:   8, z: 3 },  // left, middle
+    { x:  320, y:    5, rot: -14, z: 2 },  // right, middle
+    { x:  160, y:  -80, rot:   6, z: 1 },  // up-right
   ];
 
   let cardEls    = [];
