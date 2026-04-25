@@ -149,7 +149,7 @@
       height: 100%;
       object-fit: cover;
       display: block;
-      filter: brightness(0.82);
+      filter: brightness(1);
       transition: filter 0.45s ease;
     }
 
@@ -163,7 +163,7 @@
     @keyframes float6  { 0%,100% { transform: rotate(7deg)   translateY(0);     } 50% { transform: rotate(7deg)   translateY(-14px); } }
     @keyframes float7  { 0%,100% { transform: rotate(-6deg)  translateY(0);     } 50% { transform: rotate(-6deg)  translateY(-12px); } }
     /* me.webp: front, to the left side */
-    .float-card--me { width: 54%; left: -36%; top:  4%; z-index: 10; animation: floatMe 5.2s ease-in-out infinite; }
+    .float-card--me { width: 72%; left: -24%; top:  4%; z-index: 10; animation: floatMe 5.2s ease-in-out infinite; }
     /* project cards: two loose columns */
     .float-card--1  { width: 46%; left:  2%; top: -20%; z-index: 5;  animation: float1  4.7s ease-in-out infinite -1.3s; }
     .float-card--2  { width: 40%; left: 50%; top:  -8%; z-index: 4;  animation: float2  6.0s ease-in-out infinite -2.6s; }
@@ -181,7 +181,7 @@
           0 32px 80px rgba(0,0,0,0.6) !important;
         z-index: 20;
       }
-      .float-card:hover img { filter: brightness(1); }
+      .float-card:hover img { filter: brightness(0.75); }
     }
 
     /* ── Bottom bar ── */
