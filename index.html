@@ -141,9 +141,6 @@
       box-shadow:
         0 6px 20px rgba(0,0,0,0.5),
         0 18px 52px rgba(0,0,0,0.45);
-      transition:
-        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-        box-shadow 0.7s ease;
       will-change: transform;
     }
 
@@ -178,17 +175,7 @@
     .float-card--6  { width: 42%; left: 52%; top:  58%; z-index: 2;  animation: float6  5.1s ease-in-out infinite -4.4s; }
     .float-card--7  { width: 44%; left: 64%; top:  18%; z-index: 3;  animation: float7  4.9s ease-in-out infinite -2.2s; }
 
-    @media (hover: hover) {
-      .float-card:hover {
-        transform: rotate(0deg) translateY(-14px) scale(1.04) !important;
-        animation-play-state: paused !important;
-        box-shadow:
-          0 14px 40px rgba(0,0,0,0.55),
-          0 32px 80px rgba(0,0,0,0.6) !important;
-        z-index: 20;
-      }
-      .float-card:hover img { filter: brightness(0.75); }
-    }
+    .float-card { cursor: pointer; }
 
     /* ── Bottom bar ── */
     .bottom-bar {
@@ -359,6 +346,42 @@
     var done = function() { img.classList.add('img--loaded'); };
     if (img.complete) done(); else img.addEventListener('load', done);
   });
+
+  if (window.matchMedia('(hover: hover)').matches) {
+    var TRANS = 'transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.65s ease, filter 0.45s ease';
+    var SHADOW_HOVER = '0 14px 40px rgba(0,0,0,0.55), 0 32px 80px rgba(0,0,0,0.6)';
+    var SHADOW_BASE  = '0 6px 20px rgba(0,0,0,0.5), 0 18px 52px rgba(0,0,0,0.45)';
+
+    document.querySelectorAll('.float-card').forEach(function(card) {
+      var img = card.querySelector('img');
+
+      card.addEventListener('mouseenter', function() {
+        // Grab the live animated position and freeze the card there
+        var live = getComputedStyle(card).transform;
+        card.style.animation = 'none';
+        card.style.transition = 'none';
+        card.style.transform = live;
+        card.style.zIndex = '20';
+        // One frame later, slide to the hover position
+        requestAnimationFrame(function() {
+          card.style.transition = TRANS;
+          card.style.transform = 'rotate(0deg) translateY(-18px) scale(1.05)';
+          card.style.boxShadow = SHADOW_HOVER;
+          if (img) img.style.filter = 'brightness(0.75)';
+        });
+      });
+
+      card.addEventListener('mouseleave', function() {
+        // Let the floating animation take back over immediately
+        card.style.transition = '';
+        card.style.transform = '';
+        card.style.animation = '';
+        card.style.boxShadow = '';
+        card.style.zIndex = '';
+        if (img) img.style.filter = '';
+      });
+    });
+  }
 </script>
 </body>
 </html>
