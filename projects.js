@@ -85,39 +85,6 @@ window.PROJECTS = [
     images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp"],
   },
   {
-    id: "stoppestedet",
-    skipBuild: true,
-    title: "Stoppestedet",
-    subtitle: "Visuell identitet & nettside",
-    year: "2026",
-    tags: ["Nettside og visuell identitet"],
-    cover: "./stopp/assets/utenforforside.webp",
-    coverPosition: "center 50%",
-    noSlideshow: true,
-    heroVideo: "./stoppestedet/images/nystoppvid.mp4",
-    videoLink: "./stoppestedet/index.html",
-    heroCollage: {
-      src: "./stoppestedet/design.html",
-      label: "Se tilhørende visuell identitet →",
-      images: [
-        "./stoppestedet/images/skiltdesign.webp",
-        "./stoppestedet/images/storefrontstoppis.webp",
-        "./stoppestedet/images/skiltutestopp.webp",
-        "./stoppestedet/images/idcard.webp",
-      ]
-    },
-    projectMeta: [
-      { label: "År", value: "2026" },
-      { label: "Plattform", value: "HTML / CSS, JavaScript" },
-      { label: "Verktøy", value: "Adobe Illustrator, Adobe Photoshop, Figma" },
-      { label: "Fag", value: "IDG3015 — Emneoverbyggende prosjekt" },
-      { label: "Fag ansvarlig", value: "Jesper Egemar" }
-    ],
-    intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.\n\nJeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.",
-    link: { label: "Åpne nettsiden", src: "./stoppestedet/index.html" },
-    processText: "<strong>Primærmålgruppe</strong>\nUngdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet.\n\n<strong>Sekundærmålgruppe</strong>\nForeldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen."
-  },
-  {
     id: "ansatts-portal",
     skipBuild: true,
     title: "Tjønnås og Norvald",
@@ -345,6 +312,39 @@ window.PROJECTS = [
     tags: ["Redaksjonell"],
     cover: "./assets/krit1.webp",
     skipBuild: true,
+  },
+  {
+    id: "stoppestedet",
+    skipBuild: true,
+    title: "Stoppestedet",
+    subtitle: "Visuell identitet & nettside",
+    year: "2026",
+    tags: ["Nettside og visuell identitet"],
+    cover: "./stopp/assets/utenforforside.webp",
+    coverPosition: "center 50%",
+    noSlideshow: true,
+    heroVideo: "./stoppestedet/images/nystoppvid.mp4",
+    videoLink: "./stoppestedet/index.html",
+    heroCollage: {
+      src: "./stoppestedet/design.html",
+      label: "Se tilhørende visuell identitet →",
+      images: [
+        "./stoppestedet/images/skiltdesign.webp",
+        "./stoppestedet/images/storefrontstoppis.webp",
+        "./stoppestedet/images/skiltutestopp.webp",
+        "./stoppestedet/images/idcard.webp",
+      ]
+    },
+    projectMeta: [
+      { label: "År", value: "2026" },
+      { label: "Plattform", value: "HTML / CSS, JavaScript" },
+      { label: "Verktøy", value: "Adobe Illustrator, Adobe Photoshop, Figma" },
+      { label: "Fag", value: "IDG3015 — Emneoverbyggende prosjekt" },
+      { label: "Fag ansvarlig", value: "Jesper Egemar" }
+    ],
+    intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.\n\nJeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.",
+    link: { label: "Åpne nettsiden", src: "./stoppestedet/index.html" },
+    processText: "<strong>Primærmålgruppe</strong>\nUngdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet.\n\n<strong>Sekundærmålgruppe</strong>\nForeldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen."
   },
   {
     id: "emanuel-viegeland",

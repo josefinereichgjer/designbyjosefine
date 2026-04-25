@@ -187,13 +187,13 @@ a:hover{opacity:.75}
 .masonry{
   margin-top:32px;
   columns: 3;
-  column-gap: 20px;
+  column-gap: 32px;
 }
 .card{
   display:block;
   width:100%;
   break-inside:avoid;
-  margin-bottom:20px;
+  margin-bottom:32px;
   overflow:hidden;
   background:#fff;
   box-shadow:none;
