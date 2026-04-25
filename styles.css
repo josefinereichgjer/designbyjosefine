@@ -211,7 +211,7 @@ a:hover{opacity:.75}
 .masonry .card:nth-child(3n)   { transition-delay: 0.16s; }
 /* Varied portrait / landscape heights for masonry feel */
 .masonry .card:nth-child(4n+1) .card__img-wrap { aspect-ratio: 2/3; }
-.masonry .card:nth-child(4n+2) .card__img-wrap { aspect-ratio: 16/9; }
+.masonry .card:nth-child(4n+2) .card__img-wrap { aspect-ratio: 4/5; }
 .masonry .card:nth-child(4n+3) .card__img-wrap { aspect-ratio: 3/4; }
 .masonry .card:nth-child(4n)   .card__img-wrap { aspect-ratio: 4/3; }
 .card__img-wrap{
@@ -225,6 +225,20 @@ a:hover{opacity:.75}
   height:100%;
   object-fit:cover;
   display:block;
+}
+.card__coming-soon{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f0ede8;
+  color:#999;
+  font-family:"Raleway",sans-serif;
+  font-size:13px;
+  font-weight:300;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
 }
 .card__overlay{
   position:absolute;

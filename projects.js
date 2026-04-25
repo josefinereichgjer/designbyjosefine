@@ -355,6 +355,7 @@ window.PROJECTS = [
     cover: "./assets/me.webp",
     images: ["./assets/me.webp"],
     noSlideshow: true,
+    comingSoon: true,
   },
   {
     id: "lovechild",

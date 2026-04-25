@@ -25,9 +25,11 @@ function cardHTML(p){
   const mediaStyle = (p.coverPosition || p.coverFilter || p.coverScale)
     ? ` style="${p.coverPosition ? `object-position:${p.coverPosition};` : ""}${p.coverFilter ? `filter:${p.coverFilter};` : ""}${p.coverScale ? `transform:scale(${p.coverScale});` : ""}"`
     : "";
-  const media = p.coverVideo
-    ? `<video class="card__img" src="${p.coverVideo}" autoplay muted loop playsinline${mediaStyle}></video>`
-    : `<img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${mediaStyle}>`;
+  const media = p.comingSoon
+    ? `<div class="card__coming-soon">Coming soon</div>`
+    : (p.coverVideo
+      ? `<video class="card__img" src="${p.coverVideo}" autoplay muted loop playsinline${mediaStyle}></video>`
+      : `<img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${mediaStyle}>`);
   return `
     <a class="card" href="./${p.id}.html">
       <div class="card__img-wrap">
