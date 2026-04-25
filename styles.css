@@ -209,9 +209,11 @@ a:hover{opacity:.75}
 .masonry .card.card--visible { opacity: 1; transform: translateY(0); }
 .masonry .card:nth-child(3n+2) { transition-delay: 0.08s; }
 .masonry .card:nth-child(3n)   { transition-delay: 0.16s; }
-/* Alternate tall portrait / square for masonry height variation */
-.masonry .card:nth-child(odd)  .card__img-wrap { aspect-ratio: 3/4; }
-.masonry .card:nth-child(even) .card__img-wrap { aspect-ratio: 4/5; }
+/* Varied portrait / landscape heights for masonry feel */
+.masonry .card:nth-child(4n+1) .card__img-wrap { aspect-ratio: 2/3; }
+.masonry .card:nth-child(4n+2) .card__img-wrap { aspect-ratio: 16/9; }
+.masonry .card:nth-child(4n+3) .card__img-wrap { aspect-ratio: 3/4; }
+.masonry .card:nth-child(4n)   .card__img-wrap { aspect-ratio: 4/3; }
 .card__img-wrap{
   overflow:hidden;
   aspect-ratio:4/3;
