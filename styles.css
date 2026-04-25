@@ -2297,11 +2297,6 @@ a:hover{opacity:.75}
 
 /* ── Responsive ── */
 
-/* Large screens: 3-col masonry so cards don't grow too wide */
-@media (min-width: 1380px) {
-  .masonry { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-}
-
 /* Tablet wide: sidebar shrinks, grid 2-col */
 @media (max-width: 1100px) {
   :root { --sidebarW: 180px }
