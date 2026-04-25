@@ -66,10 +66,8 @@
     }
     #work { padding-top: 40px; padding-bottom: 120px; }
     @media (max-width: 820px) {
-      .content { padding-top: 96px; }
+      .content { padding-top: 72px; }
       #work { padding-bottom: 80px; }
-    }
-    @media (max-width: 820px) {
       .nav {
         display: none;
         position: absolute;
@@ -198,35 +196,26 @@
   <script src="./projects.js?v=6" defer></script>
   <script src="./app.js" defer></script>
   <script defer>
-    document.addEventListener('DOMContentLoaded', function () {
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) {
-            e.target.classList.add('card--visible');
-            obs.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
-      document.querySelectorAll('.masonry .card').forEach(function (c) { obs.observe(c); });
-      document.querySelectorAll('.card__img').forEach(function (img) {
-        if (img.complete) return; // already loaded — show immediately, no fade
-        img.classList.add('img--loading');
-        img.addEventListener('load', function () { img.classList.add('img--loaded'); });
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('card--visible'); obs.unobserve(e.target); }
       });
+    }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.masonry .card').forEach(function (c) { obs.observe(c); });
 
-      var toggle = document.getElementById('sidebarToggle');
-      var sidebar = document.getElementById('sidebar');
-      if (toggle && sidebar) {
-        toggle.addEventListener('click', function () {
-          var open = sidebar.classList.toggle('sidebar--open');
-          toggle.setAttribute('aria-expanded', open);
-        });
-        document.addEventListener('click', function (e) {
-          if (!sidebar.contains(e.target)) {
-            sidebar.classList.remove('sidebar--open');
-            toggle.setAttribute('aria-expanded', 'false');
-          }
-        });
+    document.querySelectorAll('.card__img').forEach(function (img) {
+      if (img.complete) return;
+      img.classList.add('img--loading');
+      img.addEventListener('load', function () { img.classList.add('img--loaded'); });
+    });
+
+    // Close nav when clicking outside (app.js handles the toggle itself)
+    var sidebar = document.getElementById('sidebar');
+    var toggle  = document.getElementById('sidebarToggle');
+    document.addEventListener('click', function (e) {
+      if (sidebar && !sidebar.contains(e.target)) {
+        sidebar.classList.remove('sidebar--open');
+        if (toggle) toggle.setAttribute('aria-expanded', 'false');
       }
     });
   </script>
