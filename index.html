@@ -317,7 +317,7 @@
           <img src="./assets/we-banner.webp" alt="WE Visuell profil" loading="eager" decoding="async">
         </a>
         <a class="float-card float-card--6" href="./emanuel-viegeland.html">
-          <img src="./assets/viegeland.png" alt="Emanuel Viegeland nettside" loading="eager" decoding="async">
+          <img src="./assets/viegeland.webp" alt="Emanuel Viegeland nettside" loading="eager" decoding="async">
         </a>
         <a class="float-card float-card--7" href="./reina-fruktgard.html">
           <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="eager" decoding="async">
@@ -356,19 +356,18 @@
       var img = card.querySelector('img');
 
       card.addEventListener('mouseenter', function() {
-        // Grab the live animated position and freeze the card there
+        // Freeze card at its current animated position
         var live = getComputedStyle(card).transform;
         card.style.animation = 'none';
         card.style.transition = 'none';
         card.style.transform = live;
+        card.offsetHeight; // force reflow so browser commits the frozen frame
+        // Now transition to hover position
+        card.style.transition = TRANS;
+        card.style.transform = 'rotate(0deg) translateY(-18px) scale(1.05)';
+        card.style.boxShadow = SHADOW_HOVER;
         card.style.zIndex = '20';
-        // One frame later, slide to the hover position
-        requestAnimationFrame(function() {
-          card.style.transition = TRANS;
-          card.style.transform = 'rotate(0deg) translateY(-18px) scale(1.05)';
-          card.style.boxShadow = SHADOW_HOVER;
-          if (img) img.style.filter = 'brightness(0.75)';
-        });
+        if (img) img.style.filter = 'brightness(0.75)';
       });
 
       card.addEventListener('mouseleave', function() {
