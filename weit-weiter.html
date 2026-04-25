@@ -343,19 +343,6 @@
       wwToggle.querySelector(".ww-icon").textContent = isOpen ? "−" : "+";
     });
 
-    // AI video reveal
-    const aiVideoToggle = document.getElementById("aiVideoToggle");
-    const aiVideoPanel = document.getElementById("aiVideoPanel");
-    const aiVideo = document.getElementById("aiVideo");
-    aiVideoToggle?.addEventListener("click", () => {
-      const isOpen = aiVideoPanel.classList.toggle("is-open");
-      aiVideoPanel.setAttribute("aria-hidden", String(!isOpen));
-      aiVideoToggle.setAttribute("aria-expanded", String(isOpen));
-      aiVideoToggle.querySelector(".ai-reveal__icon").textContent = isOpen ? "↑" : "↓";
-      if (isOpen) aiVideo.play();
-      else aiVideo.pause();
-    });
-
     // Sidebar toggle
     const toggle = $("#sidebarToggle");
     toggle?.addEventListener("click", () => {
@@ -364,6 +351,5 @@
       toggle.setAttribute("aria-expanded", String(isOpen));
     });
     </script>
-  <script src="./transition.js"></script>
 </body>
 </html>
