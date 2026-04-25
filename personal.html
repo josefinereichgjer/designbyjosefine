@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@300;400;500&family=Caveat:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=21" />
+  <link rel="stylesheet" href="./styles.css?v=26" />
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
@@ -48,21 +48,23 @@
       document.getElementById("sidebarToggle").setAttribute("aria-expanded", String(isOpen));
     });
 
-    const personalProjects = (window.PROJECTS || []).filter(p => p.personal);
-    const grid = document.getElementById("grid");
-    if (grid) {
-      grid.innerHTML = personalProjects.map(p => `
-        <a class="card" href="./${p.id}.html">
-          <div class="card__img-wrap">
-            <img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${p.coverPosition ? ` style="object-position:${p.coverPosition}"` : ""}>
-          </div>
-          <div class="card__caption">
-            <p class="card__title">${p.title}</p>
-            <p class="card__tags">${p.subtitle || ""}</p>
-          </div>
-        </a>
-      `).join("");
-    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const personalProjects = (window.PROJECTS || []).filter(p => p.personal);
+      const grid = document.getElementById("grid");
+      if (grid) {
+        grid.innerHTML = personalProjects.map(p => `
+          <a class="card card--visible" href="./${p.id}.html">
+            <div class="card__img-wrap">
+              <img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${p.coverPosition ? ` style="object-position:${p.coverPosition}"` : ""}>
+            </div>
+            <div class="card__caption">
+              <p class="card__title">${p.title}</p>
+              <p class="card__tags">${p.subtitle || ""}</p>
+            </div>
+          </a>
+        `).join("");
+      }
+    });
   </script>
 </body>
 </html>
