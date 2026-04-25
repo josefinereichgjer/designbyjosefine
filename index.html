@@ -153,8 +153,10 @@
       object-fit: cover;
       display: block;
       filter: brightness(1);
-      transition: filter 0.45s ease;
+      opacity: 0;
+      transition: opacity 0.6s ease, filter 0.45s ease;
     }
+    .float-card img.img--loaded { opacity: 1; }
 
     /* Floating keyframes — rotation baked in per card */
     @keyframes floatMe { 0%,100% { transform: rotate(-4deg)  translateY(0);     } 50% { transform: rotate(-4deg)  translateY(-13px); } }
@@ -351,5 +353,11 @@
 
   </div>
 
+<script>
+  document.querySelectorAll('.float-card img').forEach(function(img) {
+    var done = function() { img.classList.add('img--loaded'); };
+    if (img.complete) done(); else img.addEventListener('load', done);
+  });
+</script>
 </body>
 </html>

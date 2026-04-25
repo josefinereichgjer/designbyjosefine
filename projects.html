@@ -208,6 +208,10 @@
         });
       }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
       document.querySelectorAll('.masonry .card').forEach(function (c) { obs.observe(c); });
+      document.querySelectorAll('.card__img').forEach(function (img) {
+        var done = function () { img.classList.add('img--loaded'); };
+        if (img.complete) done(); else img.addEventListener('load', done);
+      });
 
       var toggle = document.getElementById('sidebarToggle');
       var sidebar = document.getElementById('sidebar');
