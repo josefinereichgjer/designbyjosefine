@@ -1,78 +1,36 @@
 window.PROJECTS = [
   {
-    id: "reina-fruktgard",
-    title: "Reina Fruktgård",
-    year: "2025",
-    tags: ["Emballasje design"],
-    cover: "./assets/reinalys.webp",
-    images: [
-      "./assets/grain2.webp",
-      "./assets/reinalys.webp",
-      "./assets/reinaside.webp",
-      "./assets/reinastor.webp"
-    ],
-    intro: "I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Utgangspunktet var bedriftens eksisterende uttrykk, som ble videreutviklet for å tydeligere formidle opprinnelse, kvalitet og håndverksmessig produksjon. Målet var å skape et helhetlig uttrykk som kunne fungere som en visuell mal på tvers av produktene, samtidig som emballasjen fremhever det lokale og autentiske preget ved produsenten.",
-    background: [
-      {
-        heading: "Innsikt i oppdragsgiver",
-        body: "Reina er en tradisjonsrik gård med røtter langs Fannefjorden. Den har tidligere drevet med melk og kjøtt, men ble i 2021 omstilt til økologisk frukt-dyrking. Den sørvendte beliggenheten gir ideelle klimaforhold for epleproduksjon. Navnet Reina betyr «helling» eller «skråning», og refererer til gårdens plassering og lysforhold: «en skråning som vender mot sola». Dette har også inspirert bedriftens opprinnelige logo og visuelle uttrykk. Bedriften drives i dag av familien Fredriksen, og inngår i det lokale nettverket av småskalaprodusenter på Nordvestlandet."
-      },
-      {
-        heading: "Oppgaven",
-        body: "<strong>Verdier og identitet:</strong>\nReina Fruktgård er en familieeid produsent med sterk tradisjonsforankring. De legger vekt på økologi, kvalitet og nærhet. Hele produksjonen er økologisk, og råvarene utnyttes fullt ut, blant annet gjennom produktet Reinarampen laget av bunnfallet fra eplepressing. Produksjon, pressing og tapping skjer på gården, noe som gir en tydelig lokal forankring og et ærlig, håndverkspreget uttrykk.\n\n<strong>Marked og kontekst:</strong>\nReina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. Med økt interesse for økologiske og autentiske produkter retter de seg mot et nisjemarked mellom landbruk, håndverksdrikke og reiseliv."
-      },
-      {
-        heading: "Typografi",
-        body: "Typografisystemet kombinerer skrifttypene Above the Beyond Script og Questa. Above the Beyond Script har et håndtegnet og kalligrafisk preg som gir identiteten et personlig og håndverksnært uttrykk. Den mer dekorative formen gjør at skriften ikke egner seg til lengre tekst, men fungerer godt som et karakterbærende element i identiteten.\n\nFor å balansere dette er serifskriften Questa brukt til mer informativ tekst. Questa har et tydelig og rolig uttrykk som gir god lesbarhet og struktur. Sammen skaper de to skrifttypene en balanse mellom det uttrykksfulle og det funksjonelle, samtidig som de understreker koblingen til håndverk og kvalitet.",
-        image: "./assets/reinatypografi.webp"
-      },
-      {
-        heading: "Illustrasjon",
-        body: "<strong>Illustrasjonen</strong> er inspirert av gårdens navn og beliggenhet – «reina» betyr skråning eller helling mot sola. Den fungerer som et gjenkjennbart signaturelement på tvers av all emballasje.",
-        image: "./assets/reinategning.webp"
-      },
-      {
-        heading: "Fargepalett",
-        body: "Paletten er redusert til to farger for å skape et tydelig og enkelt uttrykk. Den dype rødfargen refererer til epler og knytter emballasjen direkte til frukten og råvarene fra gården.",
-        palette: [
-          {
-            hex: "#960C0C",
-            name: "Reinarød",
-            rgb: "150 / 12 / 12",
-            cmyk: "0 / 92 / 92 / 41",
-            pantone: "Pantone 7621 C"
-          },
-          {
-            hex: "#000000",
-            name: "Svart",
-            rgb: "0 / 0 / 0",
-            cmyk: "0 / 0 / 0 / 100",
-            pantone: "Process Black C"
-          }
-        ]
-      },
-      {
-        heading: "Første utkast",
-        body: "Hvorfor endret jeg uttrykket i 2026? I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer som en del av hoveduttrykket. Selv om dette formidlet historien om familiebruket og fellesskapet, ble systemet ganske komplekst og litt visuelt rotete når det skulle brukes på ulike produkter. Derfor utviklet jeg i 2026 en ny løsning som er mer minimalistisk og renere. Ved å forenkle uttrykket og redusere antall elementer blir designet mer oversiktlig, lettere å tilpasse til flere produkter og mer konsistent som visuell identitet.",
-        link: { label: "Se første utkast", src: "./assets/forsteutkastemballasje.pdf" }
-      }
-    ],
+    id: "stoppestedet",
+    skipBuild: true,
+    title: "Stoppestedet",
+    subtitle: "Visuell identitet & nettside",
+    year: "2026",
+    tags: ["Nettside og visuell identitet"],
+    cover: "./stopp/assets/utenforforside.webp",
+    coverPosition: "center 50%",
+    noSlideshow: true,
+    heroVideo: "./stoppestedet/images/nystoppvid.mp4",
+    videoLink: "./stoppestedet/index.html",
+    heroCollage: {
+      src: "./stoppestedet/design.html",
+      label: "Se tilhørende visuell identitet →",
+      images: [
+        "./stoppestedet/images/skiltdesign.webp",
+        "./stoppestedet/images/storefrontstoppis.webp",
+        "./stoppestedet/images/skiltutestopp.webp",
+        "./stoppestedet/images/idcard.webp",
+      ]
+    },
     projectMeta: [
       { label: "År", value: "2026" },
-      { label: "Fag", value: "IDG3010 – Emballasjedesign" },
-      { label: "Fag ansvarlig", value: "Thomas Tengsedal Nordby" },
-      { label: "Verktøy", value: "Illustrator, Pacdora, Photoshop, Procreate" }
+      { label: "Plattform", value: "HTML / CSS, JavaScript" },
+      { label: "Verktøy", value: "Adobe Illustrator, Adobe Photoshop, Figma" },
+      { label: "Fag", value: "IDG3015 — Emneoverbyggende prosjekt" },
+      { label: "Fag ansvarlig", value: "Jesper Egemar" }
     ],
-    pdf: {
-      label: "Første utkast",
-      src: "./assets/forsteutkastemballasje.pdf",
-      note: {
-        heading: "Hvorfor endret jeg uttrykket fra 2025?",
-        body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet."
-      }
-    },
-    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" },
-    skipBuild: true
+    intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.\n\nJeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.",
+    link: { label: "Åpne nettsiden", src: "./stoppestedet/index.html" },
+    processText: "<strong>Primærmålgruppe</strong>\nUngdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet.\n\n<strong>Sekundærmålgruppe</strong>\nForeldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen."
   },
   {
     id: "we-visuell-profil",
@@ -314,37 +272,79 @@ window.PROJECTS = [
     skipBuild: true,
   },
   {
-    id: "stoppestedet",
-    skipBuild: true,
-    title: "Stoppestedet",
-    subtitle: "Visuell identitet & nettside",
-    year: "2026",
-    tags: ["Nettside og visuell identitet"],
-    cover: "./stopp/assets/utenforforside.webp",
-    coverPosition: "center 50%",
-    noSlideshow: true,
-    heroVideo: "./stoppestedet/images/nystoppvid.mp4",
-    videoLink: "./stoppestedet/index.html",
-    heroCollage: {
-      src: "./stoppestedet/design.html",
-      label: "Se tilhørende visuell identitet →",
-      images: [
-        "./stoppestedet/images/skiltdesign.webp",
-        "./stoppestedet/images/storefrontstoppis.webp",
-        "./stoppestedet/images/skiltutestopp.webp",
-        "./stoppestedet/images/idcard.webp",
-      ]
-    },
+    id: "reina-fruktgard",
+    title: "Reina Fruktgård",
+    year: "2025",
+    tags: ["Emballasje design"],
+    cover: "./assets/reinalys.webp",
+    images: [
+      "./assets/grain2.webp",
+      "./assets/reinalys.webp",
+      "./assets/reinaside.webp",
+      "./assets/reinastor.webp"
+    ],
+    intro: "I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Utgangspunktet var bedriftens eksisterende uttrykk, som ble videreutviklet for å tydeligere formidle opprinnelse, kvalitet og håndverksmessig produksjon. Målet var å skape et helhetlig uttrykk som kunne fungere som en visuell mal på tvers av produktene, samtidig som emballasjen fremhever det lokale og autentiske preget ved produsenten.",
+    background: [
+      {
+        heading: "Innsikt i oppdragsgiver",
+        body: "Reina er en tradisjonsrik gård med røtter langs Fannefjorden. Den har tidligere drevet med melk og kjøtt, men ble i 2021 omstilt til økologisk frukt-dyrking. Den sørvendte beliggenheten gir ideelle klimaforhold for epleproduksjon. Navnet Reina betyr «helling» eller «skråning», og refererer til gårdens plassering og lysforhold: «en skråning som vender mot sola». Dette har også inspirert bedriftens opprinnelige logo og visuelle uttrykk. Bedriften drives i dag av familien Fredriksen, og inngår i det lokale nettverket av småskalaprodusenter på Nordvestlandet."
+      },
+      {
+        heading: "Oppgaven",
+        body: "<strong>Verdier og identitet:</strong>\nReina Fruktgård er en familieeid produsent med sterk tradisjonsforankring. De legger vekt på økologi, kvalitet og nærhet. Hele produksjonen er økologisk, og råvarene utnyttes fullt ut, blant annet gjennom produktet Reinarampen laget av bunnfallet fra eplepressing. Produksjon, pressing og tapping skjer på gården, noe som gir en tydelig lokal forankring og et ærlig, håndverkspreget uttrykk.\n\n<strong>Marked og kontekst:</strong>\nReina opererer i det norske lokalmatmarkedet, særlig innen sider og eplemost. Med økt interesse for økologiske og autentiske produkter retter de seg mot et nisjemarked mellom landbruk, håndverksdrikke og reiseliv."
+      },
+      {
+        heading: "Typografi",
+        body: "Typografisystemet kombinerer skrifttypene Above the Beyond Script og Questa. Above the Beyond Script har et håndtegnet og kalligrafisk preg som gir identiteten et personlig og håndverksnært uttrykk. Den mer dekorative formen gjør at skriften ikke egner seg til lengre tekst, men fungerer godt som et karakterbærende element i identiteten.\n\nFor å balansere dette er serifskriften Questa brukt til mer informativ tekst. Questa har et tydelig og rolig uttrykk som gir god lesbarhet og struktur. Sammen skaper de to skrifttypene en balanse mellom det uttrykksfulle og det funksjonelle, samtidig som de understreker koblingen til håndverk og kvalitet.",
+        image: "./assets/reinatypografi.webp"
+      },
+      {
+        heading: "Illustrasjon",
+        body: "<strong>Illustrasjonen</strong> er inspirert av gårdens navn og beliggenhet – «reina» betyr skråning eller helling mot sola. Den fungerer som et gjenkjennbart signaturelement på tvers av all emballasje.",
+        image: "./assets/reinategning.webp"
+      },
+      {
+        heading: "Fargepalett",
+        body: "Paletten er redusert til to farger for å skape et tydelig og enkelt uttrykk. Den dype rødfargen refererer til epler og knytter emballasjen direkte til frukten og råvarene fra gården.",
+        palette: [
+          {
+            hex: "#960C0C",
+            name: "Reinarød",
+            rgb: "150 / 12 / 12",
+            cmyk: "0 / 92 / 92 / 41",
+            pantone: "Pantone 7621 C"
+          },
+          {
+            hex: "#000000",
+            name: "Svart",
+            rgb: "0 / 0 / 0",
+            cmyk: "0 / 0 / 0 / 100",
+            pantone: "Process Black C"
+          }
+        ]
+      },
+      {
+        heading: "Første utkast",
+        body: "Hvorfor endret jeg uttrykket i 2026? I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer som en del av hoveduttrykket. Selv om dette formidlet historien om familiebruket og fellesskapet, ble systemet ganske komplekst og litt visuelt rotete når det skulle brukes på ulike produkter. Derfor utviklet jeg i 2026 en ny løsning som er mer minimalistisk og renere. Ved å forenkle uttrykket og redusere antall elementer blir designet mer oversiktlig, lettere å tilpasse til flere produkter og mer konsistent som visuell identitet.",
+        link: { label: "Se første utkast", src: "./assets/forsteutkastemballasje.pdf" }
+      }
+    ],
     projectMeta: [
       { label: "År", value: "2026" },
-      { label: "Plattform", value: "HTML / CSS, JavaScript" },
-      { label: "Verktøy", value: "Adobe Illustrator, Adobe Photoshop, Figma" },
-      { label: "Fag", value: "IDG3015 — Emneoverbyggende prosjekt" },
-      { label: "Fag ansvarlig", value: "Jesper Egemar" }
+      { label: "Fag", value: "IDG3010 – Emballasjedesign" },
+      { label: "Fag ansvarlig", value: "Thomas Tengsedal Nordby" },
+      { label: "Verktøy", value: "Illustrator, Pacdora, Photoshop, Procreate" }
     ],
-    intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.\n\nJeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.",
-    link: { label: "Åpne nettsiden", src: "./stoppestedet/index.html" },
-    processText: "<strong>Primærmålgruppe</strong>\nUngdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet.\n\n<strong>Sekundærmålgruppe</strong>\nForeldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen."
+    pdf: {
+      label: "Første utkast",
+      src: "./assets/forsteutkastemballasje.pdf",
+      note: {
+        heading: "Hvorfor endret jeg uttrykket fra 2025?",
+        body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet."
+      }
+    },
+    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" },
+    skipBuild: true
   },
   {
     id: "emanuel-viegeland",
