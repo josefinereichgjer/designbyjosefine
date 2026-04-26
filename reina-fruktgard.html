@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="./styles.css?v=30" />
   <style>
   @media(max-width:600px){.info-cards{grid-template-columns:1fr!important}}
+  .project__figure img { transition: transform 0.45s cubic-bezier(0.22,1,0.36,1); }
+  .project__figure:hover img { transform: scale(1.03); }
   @media(min-width:821px){.strip-ss{margin-left:0;width:100%;}}
   @media(max-width:600px){
     #reinaHero { height: 55vh !important; margin-bottom: 24px !important; }
@@ -116,8 +118,16 @@
               </div>
             </div>
 
+            <p style="font-family:'Poppins',sans-serif;
+                       font-size:clamp(12px,1.2vw,15px);
+                       font-weight:400;
+                       letter-spacing:0.08em;
+                       color:#3b1f0e;
+                       margin:0 0 0 clamp(20px,3vw,44px);
+                       text-transform:uppercase;">Emballasjedesign inspirert av landskap og tradisjon</p>
+
             <div class="project-header" style="max-width:1100px;margin-top:100px;">
-              <p class="project-intro" style="font-size:18px;margin-bottom:36px;font-family:'Poppins',sans-serif;font-weight:400;">I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Målet var å utvikle et helhetlig uttrykk som formidler opprinnelse, kvalitet og det lokale, autentiske preget.</p>
+              <p class="project-intro" style="font-size:18px;margin-bottom:36px;font-family:'Poppins',sans-serif;font-weight:400;">Emballasjen til Reina Fruktgård forteller om jorda, stedet og menneskene bak.<br>Et helhetlig visuelt uttrykk der opprinnelse og håndverk er i sentrum — ikke bare et etikettkonsept.</p>
               
             </div>
 
@@ -159,7 +169,8 @@
           </div>
         </div>
 
-        <div style="max-width:80%;margin-left:auto;margin-right:auto;margin-top:80px;display:flex;flex-direction:column;gap:40px">
+        <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:100px 0 20px;font-family:'Poppins',sans-serif">01 — Produkt</p>
+        <div style="max-width:100%;margin-left:auto;margin-right:auto;margin-top:0;display:flex;flex-direction:column;gap:56px">
           <div>
             <div class="gallery-expandable" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
               <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/foranreina.webp" alt="Reina Fruktgård foran" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
@@ -184,8 +195,8 @@
         </div>
 
         <!-- Skriftvalg -->
-        <div style="max-width:80%;margin:64px auto 0;padding-top:40px;border-top:1.5px solid rgba(150,12,12,0.18)">
-          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 36px;font-family:'Poppins',sans-serif">Skriftvalg</p>
+        <div style="max-width:100%;margin:120px auto 0;padding-top:48px;border-top:1.5px solid rgba(150,12,12,0.18)">
+          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 36px;font-family:'Poppins',sans-serif">02 — Skriftvalg</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px">
 
             <div style="overflow:hidden">
@@ -206,19 +217,19 @@
         </div>
 
         <!-- Illustrasjon -->
-        <div style="max-width:80%;margin:72px auto 0;padding-top:40px;border-top:1.5px solid rgba(150,12,12,0.18)">
-          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 36px;font-family:'Poppins',sans-serif">Illustrasjon</p>
-          <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;margin-left:-5%">
+        <div style="max-width:100%;margin:120px auto 0;padding-top:48px;border-top:1.5px solid rgba(150,12,12,0.18)">
+          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 36px;font-family:'Poppins',sans-serif">03 — Illustrasjon</p>
+          <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:center">
             <figure style="margin:0">
               <img src="./assets/reinategning.webp" alt="Illustrasjon — Reina Fruktgård" loading="lazy" decoding="async" style="width:100%;display:block">
             </figure>
-            <p style="font-size:15px;line-height:1.85;color:#3b1f0e;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Illustrasjonen er et stilisert landskapsmotiv inspirert av Reina Fruktgårds omgivelser. De skrånende linjene i terrenget fremhever dyrkingsmåten og gir komposisjonen retning og bevegelse, mens gårdsbygningen fungerer som et visuelt ankerpunkt som tydelig plasserer avsenderen i landskapet. Jeg valgte å fremheve den karakteristiske skråningen i selve illustrasjonen, fremfor å integrere den i logoen slik det opprinnelige emballasjedesignet gjør. På denne måten får logoen stå renere og mer fleksibel, mens landskapsmotivet kan bære fortellingen om stedet og dyrkingsforholdene. Den håndtegnede streken gir et personlig og ærlig preg, og understreker småskalaproduksjon og nærhet til råvarene.</p>
+            <p style="font-size:15px;line-height:1.85;color:#3b1f0e;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Et stilisert landskapsmotiv hentet fra gårdens egne omgivelser. Skråningen i terrenget gir komposisjonen retning — gårdsbygningen forankrer den i stedet. Logoens skrift får stå ren og fleksibel; illustrasjonen bærer historien. Den håndtegnede linjen understreker det ekte: småskala, nært og uten filter.</p>
           </div>
         </div>
 
         <!-- Fargepalett -->
-        <div style="max-width:80%;margin:72px auto 0;padding-top:40px;border-top:1.5px solid rgba(150,12,12,0.18)">
-          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 20px;font-family:'Poppins',sans-serif">Fargepalett</p>
+        <div style="max-width:100%;margin:120px auto 0;padding-top:48px;border-top:1.5px solid rgba(150,12,12,0.18)">
+          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 20px;font-family:'Poppins',sans-serif">04 — Fargepalett</p>
           <p style="font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:#aaa;margin:0 0 14px;font-family:'Poppins',sans-serif;font-weight:400">Simulering — skjerm vs. trykk på naturpapir</p>
 
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3px">
@@ -259,8 +270,8 @@
         </div>
 
         <!-- Materiale -->
-        <div style="max-width:80%;margin:64px auto 80px">
-          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 28px;font-family:'Poppins',sans-serif">Materiale</p>
+        <div style="max-width:100%;margin:120px auto 100px;padding-top:48px;border-top:1.5px solid rgba(150,12,12,0.18)">
+          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 28px;font-family:'Poppins',sans-serif">05 — Materiale</p>
           <table style="width:100%;border-collapse:collapse;font-family:'Poppins',sans-serif">
             <thead>
               <tr style="border-bottom:1.5px solid #1a1a1a">
