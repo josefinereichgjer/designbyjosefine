@@ -1847,7 +1847,7 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.bg-section, .proj-section, .project-layout__intro, .project-layout__media > *').forEach((el, i) => {
     el.classList.add('reveal');
-    el.style.transitionDelay = `${i * 0.04}s`;
+    el.style.transitionDelay = `${Math.min(i, 3) * 0.06}s`;
     revealObserver.observe(el);
   });
   </script>
