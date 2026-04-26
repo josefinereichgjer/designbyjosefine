@@ -48,7 +48,8 @@
     }
     .krit-nav__link:hover {
       opacity: 1;
-      border-bottom-color: currentColor;
+      color: #f04c38;
+      border-bottom-color: #f04c38;
     }
 
     /* Intro */
@@ -92,9 +93,10 @@
     .prosess-heading {
       font-family: "Poppins", sans-serif;
       font-weight: 500;
-      font-size: clamp(24px, 3vw, 40px);
-      letter-spacing: 0;
-      margin-bottom: 1.25rem;
+      font-size: clamp(26px, 3.5vw, 46px);
+      letter-spacing: 0.015em;
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
     }
     .prosess-row {
       display: grid;
@@ -114,13 +116,15 @@
     }
     .prosess-text {
       font-size: 15px;
-      line-height: 1.65;
+      line-height: 1.78;
     }
     .prosess-text a {
-      color: inherit;
+      color: #f04c38;
       text-decoration: underline;
       text-underline-offset: 3px;
+      transition: opacity 0.2s;
     }
+    .prosess-text a:hover { opacity: 0.7; }
     .prosess-images {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -160,14 +164,14 @@
       margin-top: 4rem;
     }
     .case-insight {
-      border-left: 2px solid rgba(0,0,0,0.18);
+      border-left: 2px solid #f04c38;
       padding: 0.85rem 1.4rem;
-      margin: 2rem 0 0;
-      max-width: 540px;
-      font-size: 15px;
-      line-height: 1.65;
+      margin: 2.5rem 0 0;
+      max-width: 600px;
+      font-size: 16px;
+      line-height: 1.7;
       font-style: italic;
-      opacity: 0.6;
+      opacity: 0.75;
     }
     .project-info-row {
       display: flex;
@@ -198,7 +202,30 @@
     .refleksjon-body p:last-child { margin-bottom: 0; }
     @media (max-width: 700px) {
       .project-info-row { grid-template-columns: 1fr 1fr; }
-      .case-section { margin-top: 3rem; }
+      .case-section { margin-top: 5rem; }
+    }
+
+    /* Masonry image hover zoom */
+    .masonry-item img {
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .masonry-item:hover img { transform: scale(1.03); }
+
+    /* Prosess row image hover */
+    .prosess-row img {
+      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .prosess-row:hover img { transform: scale(1.02); }
+
+    /* Section reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     @media (min-width: 701px) {
@@ -799,6 +826,20 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.masonry-item').forEach(el => observer.observe(el));
+
+    // Section scroll reveal
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('is-visible'), 60);
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.case-section, .prosess-row, .krit-intro, .refleksjon-body').forEach(el => {
+      el.classList.add('reveal');
+      revealObs.observe(el);
+    });
 
     // Lightbox
     const lb = document.createElement('div');
