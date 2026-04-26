@@ -52,6 +52,15 @@
       border-bottom-color: #f04c38;
     }
 
+    /* Intro cards */
+    .krit-card {
+      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1);
+    }
+    .krit-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.15) !important;
+    }
+
     /* Intro */
     .krit-intro {
       margin-bottom: 3rem;
@@ -68,14 +77,23 @@
       gap: 0 4rem;
     }
     .krit-intro__label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
+      font-size: 13px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: #1a1a1a;
       font-weight: 700;
       opacity: 1;
       display: block;
-      margin-bottom: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+    .krit-intro__label::after {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: #f04c38;
+      margin-top: 10px;
+      margin-bottom: 1.2rem;
     }
     .krit-intro__body {
       font-size: 15px;
@@ -553,28 +571,31 @@
 
           <!-- Section nav -->
           <nav class="krit-nav">
-            <a class="krit-nav__link" href="#konsept">Konsept</a>
-            <a class="krit-nav__link" href="#prosess">Prosess</a>
-            <a class="krit-nav__link" href="#designvalg">Designvalg</a>
-            <a class="krit-nav__link" href="#resultat">Resultat</a>
             <a class="krit-nav__link" href="#flipbook-player">Digital utgave</a>
+            <a class="krit-nav__link" href="#resultat">Ferdig magasin</a>
+            <a class="krit-nav__link" href="#prosess">Prosess</a>
+            <a class="krit-nav__link" href="#konsept">Konsept</a>
+            <a class="krit-nav__link" href="#designvalg">Designvalg</a>
             <a class="krit-nav__link" href="#refleksjon">Refleksjon</a>
           </nav>
 
           <!-- Introduksjon -->
           <div class="krit-intro" style="width:100vw; margin-left:calc(50% - 50vw); background:rgba(240,76,56,0.75); padding: 6rem clamp(20px, 3vw, 34px);">
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:var(--content-max, 1200px); margin:0 auto;">
-              <div style="background:#fff; padding:1.75rem 1.75rem;">
+            <div style="display:grid; grid-template-columns:1fr 1.35fr 1fr; gap:2rem; max-width:var(--content-max, 1200px); margin:0 auto; align-items:end;">
+              <div class="krit-card" style="background:rgba(255,244,240,0.92); padding:2.25rem 2rem; box-shadow:0 6px 28px rgba(0,0,0,0.10);">
                 <span class="krit-intro__label">Introduksjon</span>
-                <p class="krit-intro__body" style="font-size:14px;">KRIT er et litteraturtidsskrift designet for å gi litterære tekster en tydelig og helhetlig visuell identitet. Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn.</p>
+                <p class="krit-intro__body" style="font-size:14px; line-height:1.75; margin-bottom:1rem;">KRIT er et litteraturtidsskrift designet for å gi tekster en tydelig og helhetlig visuell identitet.</p>
+                <p class="krit-intro__body" style="font-size:14px; line-height:1.75;">Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn.</p>
               </div>
-              <div style="background:#fff; padding:2.75rem 2.25rem;">
+              <div class="krit-card" style="background:rgba(255,244,240,0.92); padding:2.5rem 2.5rem 5rem; box-shadow:0 6px 28px rgba(0,0,0,0.10);">
                 <span class="krit-intro__label">Brief</span>
-                <p class="krit-intro__body">Design et litteraturmagasin i US Letter-format, basert på gitte tekster i faget IDG3013 Redaksjonell design 2. Resultatet skulle fremstå som et ferdig, profesjonelt magasin med konsekvent typografi, fargesystem og bildebruk.</p>
+                <p class="krit-intro__body" style="font-size:16px; line-height:1.75; margin-bottom:1.25rem;">Design et litteraturmagasin i US Letter-format basert på gitte tekster i faget IDG3013 Redaksjonell design 2.</p>
+                <p class="krit-intro__body" style="font-size:16px; line-height:1.75;">Målet var et ferdig magasin med konsekvent typografi, farge og bildebruk.</p>
               </div>
-              <div style="background:#fff; padding:1.75rem 1.75rem;">
+              <div class="krit-card" style="background:rgba(255,244,240,0.92); padding:2.25rem 2rem; box-shadow:0 6px 28px rgba(0,0,0,0.10);">
                 <span class="krit-intro__label">Levert</span>
-                <p class="krit-intro__body" style="font-size:14px;">Et komplett magasindesign på 18 oppslag – inkludert logo, typografisystem, fargesystem og bildebehandlingssystem. Designet er bygget rundt et gjennomgående visuelt system som gjør det mulig å produsere nye utgaver med konsistent identitet.</p>
+                <p class="krit-intro__body" style="font-size:14px; line-height:1.75; margin-bottom:1rem;">Et komplett magasin på 18 oppslag – inkludert logo, typografi, fargesystem og bildebehandling.</p>
+                <p class="krit-intro__body" style="font-size:14px; line-height:1.75;">Designet er bygget rundt et gjennomgående visuelt system for nye utgaver med konsistent identitet.</p>
               </div>
             </div>
           </div>
