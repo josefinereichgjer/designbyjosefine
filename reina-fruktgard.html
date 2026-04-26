@@ -98,33 +98,36 @@
                         margin-right:calc(-1 * clamp(20px,3vw,34px));
                         margin-top:-34px;
                         height:88vh;
-                        overflow:hidden;
+                        overflow:visible;
                         margin-bottom:110px;">
-              <img src="./assets/reinajuice.webp" alt="Reina Fruktgård"
-                   style="width:100%;height:100%;object-fit:cover;object-position:center 65%;display:block;">
-              <div style="position:absolute;inset:0;
-                          background:
-                            linear-gradient(to bottom, rgba(35,15,5,0.52) 0%, rgba(35,15,5,0.18) 55%, transparent 78%),
-                            linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.18) 36%, transparent 62%);"></div>
+              <!-- image + gradient clipped separately -->
+              <div style="position:absolute;inset:0;overflow:hidden;">
+                <img src="./assets/reinajuice.webp" alt="Reina Fruktgård"
+                     style="width:100%;height:100%;object-fit:cover;object-position:center 65%;display:block;">
+                <div style="position:absolute;inset:0;
+                            background:
+                              linear-gradient(to bottom, rgba(35,15,5,0.52) 0%, rgba(35,15,5,0.18) 55%, transparent 78%),
+                              linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.18) 36%, transparent 62%);"></div>
+              </div>
+              <!-- text sits freely, not clipped -->
               <div style="position:absolute;bottom:-8px;left:clamp(20px,3vw,44px);">
                 <h1 style="font-family:questa, serif;
                            font-size:clamp(28px,4vw,58px);
                            font-weight:400;
                            letter-spacing:0.12em;
                            color:#1a1a1a;
-                           margin:0;
+                           margin:0 0 0.4rem;
                            line-height:1;
                            text-transform:uppercase;">REINA FRUKTGÅRD</h1>
+                <p style="font-family:'Poppins',sans-serif;
+                           font-size:clamp(12px,1.2vw,15px);
+                           font-weight:400;
+                           letter-spacing:0.08em;
+                           color:#3b1f0e;
+                           margin:0;
+                           text-transform:uppercase;">Emballasjedesign inspirert av landskap og tradisjon</p>
               </div>
             </div>
-
-            <p style="font-family:'Poppins',sans-serif;
-                       font-size:clamp(12px,1.2vw,15px);
-                       font-weight:400;
-                       letter-spacing:0.08em;
-                       color:#3b1f0e;
-                       margin:0 0 0 clamp(20px,3vw,44px);
-                       text-transform:uppercase;">Emballasjedesign inspirert av landskap og tradisjon</p>
 
             <div class="project-header" style="max-width:1100px;margin-top:100px;">
               <p class="project-intro" style="font-size:18px;margin-bottom:36px;font-family:'Poppins',sans-serif;font-weight:400;">Emballasjen til Reina Fruktgård forteller om jorda, stedet og menneskene bak.<br>Et helhetlig visuelt uttrykk der opprinnelse og håndverk er i sentrum — ikke bare et etikettkonsept.</p>
