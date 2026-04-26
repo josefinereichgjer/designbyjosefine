@@ -31,9 +31,8 @@
       margin-left: calc(-1 * clamp(20px, 3vw, 34px));
       margin-right: calc(-1 * clamp(20px, 3vw, 34px));
       padding: 0 clamp(20px, 3vw, 34px);
-      margin-bottom: 2.5rem;
+      margin-bottom: 0;
       border-top: 1px solid rgba(0,0,0,0.1);
-      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
     .krit-nav__link {
       font-size: 12px;
@@ -125,13 +124,22 @@
     .prosess-images {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      width: 85%;
+      gap: 1.5rem;
+      width: 78%;
       margin: 0 auto;
+      align-items: center;
     }
     .prosess-images img {
       width: 100%;
       display: block;
+      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
+    .prosess-images img:nth-child(1) { transform: rotate(-4deg); }
+    .prosess-images img:nth-child(2) { transform: rotate(2.5deg); }
+    .prosess-images img:nth-child(3) { transform: rotate(-2deg); }
+    .prosess-images img:nth-child(1):hover { transform: rotate(-4deg) translateY(-10px) scale(1.03); }
+    .prosess-images img:nth-child(2):hover { transform: rotate(2.5deg) translateY(-10px) scale(1.03); }
+    .prosess-images img:nth-child(3):hover { transform: rotate(-2deg) translateY(-10px) scale(1.03); }
     .jambore-text {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -522,7 +530,7 @@
           </nav>
 
           <!-- Introduksjon -->
-          <div class="krit-intro" style="width:100vw; margin-left:calc(50% - 50vw); background:rgba(240,76,56,0.56); padding: 3rem clamp(20px, 3vw, 34px);">
+          <div class="krit-intro" style="width:100vw; margin-left:calc(50% - 50vw); background:rgba(240,76,56,0.75); padding: 6rem clamp(20px, 3vw, 34px);">
             <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:var(--content-max, 1200px); margin:0 auto;">
               <div style="background:#fff; padding:1.75rem 1.5rem;">
                 <span class="krit-intro__label">Introduksjon</span>
@@ -585,11 +593,10 @@
               <img src="assets/kritprosgul.webp" alt="Tidlig versjon – gul" loading="lazy">
               <img src="assets/kritprosrosa.webp" alt="Tidlig versjon – rosa" loading="lazy">
             </div>
-            <div class="jambore-text">
-              <p class="prosess-text">Det tok tid før jeg valgte å gå bort fra Jambore-fonten. Jeg ble tiltrukket av dens organiske og menneskelige uttrykk, som i utgangspunktet resonnerte godt med det personlige og kroppslige innholdet i magasinets tekster.</p>
-              <p class="prosess-text">I tillegg oppsto det en interessant, nesten tilfeldig kobling mellom fonten og prosjektet: navnet KRIT speiler etymologisk opphavet til fontens designer, Tom Chalky – en referanse som forsterket konseptets identitet på et mer subtilt nivå. <a href="https://creativemarket.com/TomChalky/280183326-Jamboree-Display-Font-Family" target="_blank" rel="noopener">Jamboree Display Font Family</a></p>
-              <p class="prosess-text">Til tross for disse kvalitetene viste fonten seg å ha begrenset lesbarhet i større tekstgrader, særlig i overskrifter. Samtidig ga den logoen et uttrykk som opplevdes for lekent og uformelt i møte med det redaksjonelle innholdet.</p>
-              <p class="prosess-text">Valget om å gå bort fra Jambore handlet om å prioritere tydelighet og typografisk presisjon, og stramme opp det overordnede uttrykket.</p>
+            <div style="max-width:680px;">
+              <p class="prosess-text">Jeg brukte tid før jeg valgte å gå bort fra Jambore-fonten. Det organiske og menneskelige uttrykket traff godt det personlige og kroppslige innholdet i magasinets tekster. I tillegg oppsto det en interessant kobling mellom prosjektet og fontens designer, Tom Chalky, som ga konseptet en ekstra, subtil dimensjon.</p>
+              <p class="prosess-text">Samtidig viste det seg at fonten hadde begrenset lesbarhet i større tekstgrader, spesielt i overskrifter. Den ga også logoen et uttrykk som ble for lekent og uformelt i møte med det redaksjonelle innholdet.</p>
+              <p class="prosess-text">Valget om å gå bort fra Jambore handlet derfor om å prioritere bedre lesbarhet og et mer presist, helhetlig visuelt uttrykk.</p>
             </div>
           </div>
 
