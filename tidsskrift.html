@@ -83,7 +83,7 @@
     @media (max-width: 700px) {
       .krit-intro__meta { grid-template-columns: 1fr; gap: 1.5rem; }
       .krit-intro__lead { font-size: 15px; }
-      .krit-intro [style*="repeat(3"] { grid-template-columns: 1fr !important; }
+      .krit-intro [style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 1rem !important; }
     }
 
     /* Prosess */
@@ -542,19 +542,19 @@
           </div>
 
           <!-- Introduksjon -->
-          <div class="krit-intro">
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:4rem;">
-              <div class="krit-intro__body">
+          <div class="krit-intro" style="width:100vw; margin-left:calc(50% - 50vw); background:rgba(240,76,56,0.56); padding: 3rem clamp(20px, 3vw, 34px);">
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:var(--content-max, 1200px); margin:0 auto;">
+              <div style="background:#fff; padding:1.75rem 1.5rem;">
                 <span class="krit-intro__label">Introduksjon</span>
-                <p>KRIT er et litteraturtidsskrift designet for å gi litterære tekster en tydelig og helhetlig visuell identitet. Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn.</p>
+                <p class="krit-intro__body">KRIT er et litteraturtidsskrift designet for å gi litterære tekster en tydelig og helhetlig visuell identitet. Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn.</p>
               </div>
-              <div class="krit-intro__body">
+              <div style="background:#fff; padding:1.75rem 1.5rem;">
                 <span class="krit-intro__label">Brief</span>
-                <p>Design et litteraturmagasin i US Letter-format, basert på gitte tekster i faget IDG3013 Redaksjonell design 2. Resultatet skulle fremstå som et ferdig, profesjonelt magasin med konsekvent typografi, fargesystem og bildebruk.</p>
+                <p class="krit-intro__body">Design et litteraturmagasin i US Letter-format, basert på gitte tekster i faget IDG3013 Redaksjonell design 2. Resultatet skulle fremstå som et ferdig, profesjonelt magasin med konsekvent typografi, fargesystem og bildebruk.</p>
               </div>
-              <div class="krit-intro__body">
+              <div style="background:#fff; padding:1.75rem 1.5rem;">
                 <span class="krit-intro__label">Levert</span>
-                <p>Et komplett magasindesign på 18 sider – inkludert logo, typografisystem, fargesystem og bildebehandlingssystem. Designet er bygget rundt et gjennomgående visuelt system som gjør det mulig å produsere nye utgaver med konsistent identitet.</p>
+                <p class="krit-intro__body">Et komplett magasindesign på 18 sider – inkludert logo, typografisystem, fargesystem og bildebehandlingssystem. Designet er bygget rundt et gjennomgående visuelt system som gjør det mulig å produsere nye utgaver med konsistent identitet.</p>
               </div>
             </div>
           </div>
@@ -788,6 +788,31 @@
     }, { threshold: 0.12 });
 
     document.querySelectorAll('.masonry-item').forEach(el => observer.observe(el));
+
+    // Lightbox
+    const lb = document.createElement('div');
+    lb.id = 'krit-lb';
+    lb.style.cssText = 'display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);cursor:zoom-out;align-items:center;justify-content:center;';
+    lb.innerHTML = '<img id="krit-lb-img" style="max-width:92vw;max-height:92vh;object-fit:contain;pointer-events:none;">';
+    document.body.appendChild(lb);
+
+    document.querySelectorAll('.masonry-item img').forEach(img => {
+      img.style.cursor = 'zoom-in';
+      img.addEventListener('click', () => {
+        document.getElementById('krit-lb-img').src = img.src;
+        lb.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    lb.addEventListener('click', () => {
+      lb.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') { lb.style.display = 'none'; document.body.style.overflow = ''; }
+    });
   </script>
 </body>
 </html>
