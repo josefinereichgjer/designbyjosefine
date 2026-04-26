@@ -71,7 +71,9 @@
       font-size: 11px;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      opacity: 0.4;
+      color: #1a1a1a;
+      font-weight: 700;
+      opacity: 1;
       display: block;
       margin-bottom: 1.1rem;
     }
@@ -562,22 +564,33 @@
           <!-- Introduksjon -->
           <div class="krit-intro" style="width:100vw; margin-left:calc(50% - 50vw); background:rgba(240,76,56,0.75); padding: 6rem clamp(20px, 3vw, 34px);">
             <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; max-width:var(--content-max, 1200px); margin:0 auto;">
-              <div style="background:#fff; padding:2.5rem 2rem;">
+              <div style="background:#fff; padding:1.75rem 1.75rem;">
                 <span class="krit-intro__label">Introduksjon</span>
-                <p class="krit-intro__body">KRIT er et litteraturtidsskrift designet for å gi litterære tekster en tydelig og helhetlig visuell identitet. Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn.</p>
+                <p class="krit-intro__body" style="font-size:14px;">KRIT er et litteraturtidsskrift designet for å gi litterære tekster en tydelig og helhetlig visuell identitet. Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn.</p>
               </div>
-              <div style="background:#fff; padding:2.5rem 2rem;">
+              <div style="background:#fff; padding:2.75rem 2.25rem;">
                 <span class="krit-intro__label">Brief</span>
                 <p class="krit-intro__body">Design et litteraturmagasin i US Letter-format, basert på gitte tekster i faget IDG3013 Redaksjonell design 2. Resultatet skulle fremstå som et ferdig, profesjonelt magasin med konsekvent typografi, fargesystem og bildebruk.</p>
               </div>
-              <div style="background:#fff; padding:2.5rem 2rem;">
+              <div style="background:#fff; padding:1.75rem 1.75rem;">
                 <span class="krit-intro__label">Levert</span>
-                <p class="krit-intro__body">Et komplett magasindesign på 18 sider – inkludert logo, typografisystem, fargesystem og bildebehandlingssystem. Designet er bygget rundt et gjennomgående visuelt system som gjør det mulig å produsere nye utgaver med konsistent identitet.</p>
+                <p class="krit-intro__body" style="font-size:14px;">Et komplett magasindesign på 18 oppslag – inkludert logo, typografisystem, fargesystem og bildebehandlingssystem. Designet er bygget rundt et gjennomgående visuelt system som gjør det mulig å produsere nye utgaver med konsistent identitet.</p>
               </div>
             </div>
           </div>
 
-          <!-- 02 Resultat -->
+          <!-- 06 Digital utgave -->
+          <div class="case-section" id="flipbook">
+            <span class="case-label">06 — Digital utgave</span>
+            <h2 class="prosess-heading" style="margin-bottom:0.5rem;">Bla i magasinet</h2>
+            <p class="prosess-text" style="max-width:480px; margin-bottom:2.5rem; opacity:0.65;">Den digitale utgaven lar deg bla gjennom alle 18 oppslagene i fullversjon. Bruk piltastene, knappene eller sveip for å navigere. <a href="krit-flipbook.html" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Åpne i fullskjerm →</a></p>
+            <div class="flipbook-wrap" id="flipbook-player">
+              <iframe src="krit-flipbook.html" title="KRIT digital utgave" allowfullscreen
+                style="width:100%; aspect-ratio:1.4133/1; max-height:80vh; border:none; display:block;"></iframe>
+            </div>
+          </div>
+
+          <!-- 01 Resultat -->
           <div class="case-section" id="resultat">
             <span class="case-label">01 — Resultat</span>
             <h2 class="prosess-heading" style="margin-bottom:0.75rem;">Ferdig magasin</h2>
@@ -746,17 +759,6 @@
             </div>
           </div>
 
-
-          <!-- 06 Digital utgave -->
-          <div class="case-section" id="flipbook">
-            <span class="case-label">06 — Digital utgave</span>
-            <h2 class="prosess-heading" style="margin-bottom:0.5rem;">Bla i magasinet</h2>
-            <p class="prosess-text" style="max-width:480px; margin-bottom:2.5rem; opacity:0.65;">Den digitale utgaven lar deg bla gjennom alle 18 sidene i fullversjon. Bruk piltastene, knappene eller sveip for å navigere. <a href="krit-flipbook.html" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Åpne i fullskjerm →</a></p>
-            <div class="flipbook-wrap" id="flipbook-player">
-              <iframe src="krit-flipbook.html" title="KRIT digital utgave" allowfullscreen
-                style="width:100%; aspect-ratio:1.4133/1; max-height:80vh; border:none; display:block;"></iframe>
-            </div>
-          </div>
 
           <!-- 07 Refleksjon -->
           <div class="case-section" id="refleksjon" style="margin-top:1.5rem;">
