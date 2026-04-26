@@ -689,6 +689,21 @@
       const isOpen = sidebar.classList.toggle("sidebar--open");
       toggle.setAttribute("aria-expanded", String(isOpen));
     });
+
+    // Scroll reveal
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.bg-section, .proj-section, .project-layout__intro, .project-layout__media > *').forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${i * 0.04}s`;
+      revealObserver.observe(el);
+    });
     </script>
 </body>
 </html>
