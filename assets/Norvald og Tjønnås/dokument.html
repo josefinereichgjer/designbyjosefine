@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<title>Dokumenter — Tjønnås & Norvald</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+<style>
+  .doc-list { display:flex; flex-direction:column; gap:2px; margin-top:12px; }
+  .doc-item {
+    display:flex; align-items:center; gap:14px;
+    padding:14px 16px; border-radius:10px;
+    background:var(--surface,#fff); border:1px solid rgba(0,0,0,0.07);
+    cursor:pointer; transition:background .15s;
+  }
+  .doc-item:hover { background:var(--hover,#f5f0ec); }
+  .doc-icon { flex:0 0 36px; width:36px; height:36px; border-radius:8px;
+    display:flex; align-items:center; justify-content:center; }
+  .doc-icon.red { background:#fdecea; color:var(--burgundy,#7b2b2b); }
+  .doc-icon.gold { background:#fdf5e0; color:#b88a00; }
+  .doc-icon.olive { background:#eef3e8; color:#4a6930; }
+  .doc-icon.blue { background:#e8edf8; color:#2a4a8a; }
+  .doc-meta { flex:1; min-width:0; }
+  .doc-meta b { display:block; font-size:14px; font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .doc-meta span { font-size:12px; color:var(--muted); }
+  .doc-arrow { color:var(--muted); flex:0 0 20px; }
+  .filter-row { display:flex; gap:8px; margin:16px 0; flex-wrap:wrap; }
+  .filter-btn { padding:6px 14px; border-radius:999px; border:1px solid rgba(0,0,0,0.12);
+    background:transparent; font-size:13px; cursor:pointer; color:var(--text); font-family:inherit; }
+  .filter-btn.active { background:var(--burgundy,#7b2b2b); color:#fff; border-color:var(--burgundy,#7b2b2b); }
+</style>
+</head>
+<body>
+<div class="app">
+  <div id="shell"></div>
+  <main class="main">
+    <div id="topbar"></div>
+
+    <h1 class="page-title">Dokumenter</h1>
+    <p class="page-sub">Rutiner, skjemaer og håndbøker for alle ansatte.</p>
+
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterDocs(this,'alle')">Alle</button>
+      <button class="filter-btn" onclick="filterDocs(this,'hms')">HMS</button>
+      <button class="filter-btn" onclick="filterDocs(this,'rutiner')">Rutiner</button>
+      <button class="filter-btn" onclick="filterDocs(this,'skjema')">Skjemaer</button>
+      <button class="filter-btn" onclick="filterDocs(this,'info')">Info</button>
+    </div>
+
+    <article class="card" style="padding:0 16px">
+      <div class="doc-list" id="doc-list">
+
+        <div class="doc-item" data-cat="hms" onclick="openDoc('HMS-håndbok 2024.pdf')">
+          <div class="doc-icon red"><span id="ico-file"></span></div>
+          <div class="doc-meta">
+            <b>HMS-håndbok 2024</b>
+            <span>Oppdatert 12. sep 2024 · PDF</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-0"></span>
+        </div>
+
+        <div class="doc-item" data-cat="hms" onclick="openDoc('Brannvernrutiner.pdf')">
+          <div class="doc-icon red"><span id="ico-file-1"></span></div>
+          <div class="doc-meta">
+            <b>Brannvernrutiner</b>
+            <span>Oppdatert 3. jan 2024 · PDF</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-1"></span>
+        </div>
+
+        <div class="doc-item" data-cat="rutiner" onclick="openDoc('Åpningsrutiner.pdf')">
+          <div class="doc-icon gold"><span id="ico-file-2"></span></div>
+          <div class="doc-meta">
+            <b>Åpningsrutiner</b>
+            <span>Oppdatert 28. aug 2024 · PDF</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-2"></span>
+        </div>
+
+        <div class="doc-item" data-cat="rutiner" onclick="openDoc('Stengerutiner.pdf')">
+          <div class="doc-icon gold"><span id="ico-file-3"></span></div>
+          <div class="doc-meta">
+            <b>Stengerutiner</b>
+            <span>Oppdatert 28. aug 2024 · PDF</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-3"></span>
+        </div>
+
+        <div class="doc-item" data-cat="rutiner" onclick="openDoc('Renholdsplan.pdf')">
+          <div class="doc-icon gold"><span id="ico-file-4"></span></div>
+          <div class="doc-meta">
+            <b>Renholdsplan</b>
+            <span>Oppdatert 1. okt 2024 · PDF</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-4"></span>
+        </div>
+
+        <div class="doc-item" data-cat="skjema" onclick="openDoc('Timeliste-skjema.xlsx')">
+          <div class="doc-icon olive"><span id="ico-file-5"></span></div>
+          <div class="doc-meta">
+            <b>Timeliste-skjema</b>
+            <span>Versjon 3 · Excel</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-5"></span>
+        </div>
+
+        <div class="doc-item" data-cat="skjema" onclick="openDoc('Avviksmelding.pdf')">
+          <div class="doc-icon olive"><span id="ico-file-6"></span></div>
+          <div class="doc-meta">
+            <b>Avviksmelding</b>
+            <span>Versjon 2 · PDF</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-6"></span>
+        </div>
+
+        <div class="doc-item" data-cat="info" onclick="openDoc('Personalhandbok.pdf')">
+          <div class="doc-icon blue"><span id="ico-file-7"></span></div>
+          <div class="doc-meta">
+            <b>Personalhandbok</b>
+            <span>Oppdatert jan 2024 · PDF</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-7"></span>
+        </div>
+
+        <div class="doc-item" data-cat="info" onclick="openDoc('Produktkatalog høst 2024.pdf')">
+          <div class="doc-icon blue"><span id="ico-file-8"></span></div>
+          <div class="doc-meta">
+            <b>Produktkatalog høst 2024</b>
+            <span>Oppdatert sep 2024 · PDF</span>
+          </div>
+          <span class="doc-arrow" id="ico-chev-r-8"></span>
+        </div>
+
+      </div>
+    </article>
+
+  </main>
+</div>
+<script src="assets/js/site.js"></script>
+<script>
+mountShell('dokument.html'); mountTopbar();
+
+// Inject icons after site.js loads
+document.querySelectorAll('[id^="ico-file"]').forEach(el => el.innerHTML = icon('file'));
+document.querySelectorAll('[id^="ico-chev-r"]').forEach(el => el.innerHTML = icon('chevR'));
+
+function filterDocs(btn, cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.doc-item').forEach(item => {
+    item.style.display = (cat === 'alle' || item.dataset.cat === cat) ? 'flex' : 'none';
+  });
+}
+
+function openDoc(name) {
+  window._showToast && window._showToast('"' + name + '" er ikke tilgjengelig i demoversjon.');
+}
+</script>
+</body>
+</html>
