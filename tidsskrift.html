@@ -27,6 +27,7 @@
     /* Section nav */
     .krit-nav {
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
       margin-left: calc(-1 * clamp(20px, 3vw, 34px));
       margin-right: calc(-1 * clamp(20px, 3vw, 34px));
@@ -50,6 +51,15 @@
       opacity: 1;
       color: #f04c38;
       border-bottom-color: #f04c38;
+    }
+    @media (max-width: 700px) {
+      .krit-nav {
+        justify-content: flex-start;
+        gap: 0 1.5rem;
+      }
+      .krit-nav__link {
+        width: calc(33.33% - 1rem);
+      }
     }
 
     /* Intro cards */
@@ -100,10 +110,37 @@
       line-height: 1.8;
       opacity: 0.75;
     }
+    /* Hero full-bleed */
+    .krit-hero {
+      position: relative;
+      margin-top: calc(-1 * 34px);
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      width: 100vw;
+      margin-bottom: 2rem;
+      height: 90vh;
+      overflow: hidden;
+    }
+    @media (max-width: 700px) {
+      .krit-hero { margin-top: calc(-1 * 110px); }
+    }
+
+    /* Intro cards grid */
+    .krit-intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 2rem;
+      max-width: var(--content-max, 1200px);
+      margin: 0 auto;
+      align-items: end;
+    }
+    @media (max-width: 700px) {
+      .krit-intro-grid { grid-template-columns: 1fr; align-items: start; }
+    }
+
     @media (max-width: 700px) {
       .krit-intro__meta { grid-template-columns: 1fr; gap: 1.5rem; }
       .krit-intro__lead { font-size: 15px; }
-      .krit-intro [style*="repeat(3"] { grid-template-columns: 1fr !important; gap: 1rem !important; }
     }
 
     /* Prosess */
@@ -221,7 +258,7 @@
     .refleksjon-body p { margin-bottom: 1.1rem; }
     .refleksjon-body p:last-child { margin-bottom: 0; }
     @media (max-width: 700px) {
-      .project-info-row { grid-template-columns: 1fr 1fr; }
+      .project-info-row { flex-wrap: wrap; gap: 1.5rem 2rem; }
       .case-section { margin-top: 5rem; }
     }
 
@@ -555,14 +592,7 @@
         <div class="project-layout__media">
 
           <!-- Single hero image full-bleed -->
-          <div style="position:relative;
-            margin-top: calc(-1 * 34px);
-            margin-left: calc(50% - 50vw);
-            margin-right: calc(50% - 50vw);
-            width: 100vw;
-            margin-bottom: 2rem;
-            height: 90vh;
-            overflow: hidden;">
+          <div class="krit-hero">
             <img src="assets/03-mockkrit.webp" alt="Krit" fetchpriority="high" style="width:100%; height:100%; object-fit:cover; object-position:center 70%; display:block;">
             <div style="position:absolute; inset:0;
               background:
@@ -586,7 +616,7 @@
 
           <!-- Introduksjon -->
           <div class="krit-intro" style="width:100vw; margin-left:calc(50% - 50vw); background:rgba(240,76,56,0.75); padding: 6rem clamp(20px, 3vw, 34px);">
-            <div style="display:grid; grid-template-columns:1fr 1.35fr 1fr; gap:2rem; max-width:var(--content-max, 1200px); margin:0 auto; align-items:end;">
+            <div class="krit-intro-grid">
               <div class="krit-card" style="background:rgba(255,244,240,0.92); padding:2.25rem 2rem; box-shadow:0 6px 28px rgba(0,0,0,0.10);">
                 <span class="krit-intro__label">Introduksjon</span>
                 <p class="krit-intro__body" style="font-size:14px; line-height:1.75; margin-bottom:1rem;">KRIT er et litteraturtidsskrift designet for å gi tekster en tydelig og helhetlig visuell identitet.</p>
