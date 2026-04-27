@@ -339,13 +339,17 @@
       display: block;
     }
     @media (max-width: 600px) {
-      .masonry-grid { grid-template-columns: 1fr; }
+      .masonry-grid { grid-template-columns: 1fr; gap: 0; }
+      .masonry-col { gap: 0; }
       .masonry-col--offset { margin-top: 0; }
     }
 
     .flipbook-wrap {
       width: 100vw;
       margin-left: calc(50% - 50vw);
+    }
+    @media (max-width: 700px) {
+      .flipbook-wrap { margin-top: 2.5rem; }
     }
 
     /* Fargevalg */
@@ -418,7 +422,7 @@
     .farge-val strong { display: block; }
     .farge-val span { display: block; opacity: 0.5; font-size: 11px; }
     @media (max-width: 700px) {
-      .fargevalg-body { grid-template-columns: 1fr; gap: 1.5rem; }
+      .fargevalg-body { grid-template-columns: 1fr; gap: 2rem; }
       .farge-table { font-size: 12px; }
     }
 
@@ -568,6 +572,32 @@
       .typo-col--left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
       .typo-col { padding: 1.5rem 1.25rem; }
     }
+
+    /* Fontvalg grid */
+    .fontvalg-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      margin-top: 2rem;
+      align-items: start;
+    }
+    .fontvalg-avenir {
+      border-left: 1.5px solid rgba(0,0,0,0.08);
+      padding-left: 3.5rem;
+    }
+    @media (max-width: 700px) {
+      .fontvalg-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .fontvalg-avenir {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1.5px solid rgba(0,0,0,0.08);
+        padding-top: 2rem;
+        margin-top: 1.5rem;
+      }
+    }
   </style>
 </head>
 
@@ -705,7 +735,7 @@
             <div id="fontvalg">
               <span class="case-label" style="color:inherit; opacity:0.5;">Fontvalg — Romie &amp; Avenir</span>
 
-              <div style="display:grid; grid-template-columns:1fr 1fr; gap:5rem; margin-top:2rem; align-items:start;">
+              <div class="fontvalg-grid">
 
                 <!-- LEFT: Romie -->
                 <div>
@@ -724,7 +754,7 @@
                 </div>
 
                 <!-- RIGHT: Avenir -->
-                <div style="border-left:1.5px solid rgba(0,0,0,0.08); padding-left:3.5rem;">
+                <div class="fontvalg-avenir">
                   <div style="padding:2.5rem 0 2rem;">
                     <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#1a1a1a; margin:0 0 1rem;">Brødtekst</p>
                     <p style="font-size:13.5px; line-height:1.85; color:#1a1a1a; margin:0;">Mikkels sønn forbi, Mikkel 2. Og også han snudde seg og så mot meg. Det var sånn jeg skjønte at Mikkel 2 var Mikkels sønn. Han her var kanskje femti. Og ikke like kjekk.</p>
