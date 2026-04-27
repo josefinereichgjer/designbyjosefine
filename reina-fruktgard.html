@@ -31,6 +31,8 @@
     .project-header { margin-top: 32px !important; }
     #stripDots { margin-bottom: 56px !important; }
   }
+  .mobile-only { display: none; }
+  @media(max-width:700px){ .mobile-only { display: block; } }
   .strip-dots { display: flex; gap: 8px; justify-content: center; margin-top: 14px; }
   .strip-dot {
     width: 10px; height: 10px; border-radius: 50%;
@@ -133,7 +135,7 @@
                            letter-spacing:0.08em;
                            color:#3b1f0e;
                            margin:0;
-                           text-transform:uppercase;">Emballasjedesign inspirert av landskap og tradisjon</p>
+                           text-transform:uppercase;">Emballasjedesign inspirert av landskap<br class="mobile-only">og tradisjon</p>
               </div>
             </div>
 

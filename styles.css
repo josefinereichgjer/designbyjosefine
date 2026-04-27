@@ -2190,9 +2190,7 @@ a:hover{opacity:.75}
 }
 @media (max-width: 820px) {
   .strip-ss {
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-left: calc(50% - 50vw);
     width: 100vw;
     margin-top: 20px;
   }
