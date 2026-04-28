@@ -113,26 +113,11 @@
         
         
         <div class="project-meta" style="margin-top:clamp(40px,6vw,80px)">
-          <button id="typografiToggle" type="button" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:clamp(12px,1.1vw,15px);font-weight:700;margin-top:clamp(12px,1.5vw,20px);">
-            Skriftvalg <span id="typografiIcon" style="font-size:18px;font-weight:300;line-height:1;">+</span>
-          </button>
-          <div id="typografiPanel" style="display:none;margin-top:clamp(10px,1.5vw,16px);">
+          <div style="margin-top:clamp(12px,1.5vw,20px);">
             <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);"><strong>Tittel og forfatter:</strong> Her er det tatt utgangspunkt i Baskerville, men bokstavformene er manuelt bearbeidet. Ved å øke vekten og justere detaljene, sikres både bedre lesbarhet og et mer robust resultat under pregeprosessen i tekstilet. Dette gir titlene et mer fysisk og "røft" nærvær på omslaget.</p>
             <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);margin-top:clamp(8px,1vw,14px);"><strong>Brødtekst:</strong> For å sikre optimal lesbarhet og en klassisk litterær følelse, er brødteksten satt i Garamond Premier Pro. Fonten komplimenterer Baskerville-overskriftene uten å konkurrere om oppmerksomheten, noe som skaper en harmonisk balanse mellom det dekorative og det funksjonelle.</p>
           </div>
-          <script>
-            document.getElementById("typografiToggle").addEventListener("click", function() {
-              const panel = document.getElementById("typografiPanel");
-              const icon = document.getElementById("typografiIcon");
-              const isOpen = panel.style.display !== "none";
-              panel.style.display = isOpen ? "none" : "block";
-              icon.textContent = isOpen ? "+" : "−";
-            });
-          </script>
-          <button id="fargeToggle" type="button" style="display:flex;align-items:center;gap:10px;background:none;border:none;padding:0;cursor:pointer;font-family:inherit;font-size:clamp(12px,1.1vw,15px);font-weight:700;margin-top:clamp(12px,1.5vw,20px);">
-            Fargepalettet <span id="fargeIcon" style="font-size:18px;font-weight:300;line-height:1;">+</span>
-          </button>
-          <div id="fargePanel" style="display:none;margin-top:clamp(10px,1.5vw,16px);">
+          <div style="margin-top:clamp(24px,3vw,40px);">
             <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);">Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
             <style>
               .boks-pal { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
@@ -179,16 +164,6 @@
             </div>
             <p style="font-size:clamp(11px,1vw,13px);margin-top:clamp(16px,2vw,24px);color:#777;line-height:1.7;">Fargene er definert i <strong style="color:#aaa;">RGB</strong> for skjermvisning, men siden dette er bokomslag som skal trykkes, er de også konvertert til <strong style="color:#aaa;">CMYK</strong>. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget. Det betyr at den faktiske fargeopplevelsen vil variere noe avhengig av fargerom og trykkmetode.</p>
           </div>
-          <script>
-            document.getElementById("fargeToggle").addEventListener("click", function() {
-              const panel = document.getElementById("fargePanel");
-              const icon = document.getElementById("fargeIcon");
-              const isOpen = panel.style.display !== "none";
-              panel.style.display = isOpen ? "none" : "block";
-              icon.textContent = isOpen ? "+" : "−";
-            });
-          </script>
-
           <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:clamp(24px,3vw,40px);background:#000;border:1.5px solid #fff;color:#fff;">Prosess</button>
           <div id="processPanel" style="display:none;margin-top:clamp(20px,3vw,36px);background:#fff;padding:clamp(16px,2vw,28px);">
             <div class="prosess-row">
