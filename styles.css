@@ -2495,18 +2495,23 @@ a:hover{opacity:.75}
   .related__grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── XL (1920px+): 3-column masonry, full-width content ── */
+/* ── XL (1920px+): 3-column masonry, centered content column ── */
 @media (min-width: 1920px) {
   :root { --sidebarW: 180px; }
-  .content { max-width: none; }
+  /* Center a ~1600px content column within the available area to the right of the sidebar.
+     Formula: (viewport - sidebar - 1600px) / 2, minimum 40px so it never crunches on mid-sizes. */
+  .content {
+    padding-left: max(40px, calc((100vw - var(--sidebarW) - 1600px) / 2));
+    padding-right: max(40px, calc((100vw - var(--sidebarW) - 1600px) / 2));
+  }
   .masonry { columns: 3; column-gap: 52px; }
 }
 
-/* ── XXL (2400px+): 4-column masonry, wider content for very large displays ── */
+/* ── XXL (2400px+): 4-column masonry, wider sidebar, re-centers via the 1920px formula ── */
 @media (min-width: 2400px) {
   :root { --sidebarW: 260px; }
   .sidebar { width: 260px; }
-  .content { max-width: none; margin-left: 260px; }
+  /* --sidebarW is now 260px so the 1920px formula gives (2560-260-1600)/2 = 350px at 2560px */
   .nav__link { font-size: 22px; }
   .bg { max-width: 2000px; }
   .masonry { columns: 4; column-gap: 60px; }

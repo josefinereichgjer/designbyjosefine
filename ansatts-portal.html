@@ -195,12 +195,49 @@
       .proj-meta-strip__item { padding: 0 16px 0 0; }
     }
     @media (min-width: 2400px) {
-      .proj-scenario__text p { max-width: 900px; font-size: 20px; }
-      .proj-scenario__subtitle { font-size: 20px; }
+      /* Section structure: sections are ~1668px wide (1600px column + 34px bleed each side).
+         Internal section padding goes from 74px to 100px so the text spine shifts inward. */
+      .proj-section { padding: 80px 100px; }
+
+      /* Typography */
+      .project-meta__title { font-size: 56px; }
+      .project-intro { font-size: 22px; line-height: 1.65; }
       .proj-section__label   { font-size: 28px; }
       .proj-section__heading { font-size: 44px; line-height: 1.1; margin-bottom: 24px; }
       .proj-section__body    { font-size: 20px; max-width: 900px; }
-      .proj-section--mandel-light > div[style*="max-width"] { max-width: 1100px !important; }
+      .proj-section--mandel-light > div[style*="max-width"] { max-width: 1200px !important; }
+
+      /* Scroll-gallery labels */
+      .scroll-gallery__label { font-size: 17px; }
+      .scroll-gallery__label strong { font-size: 20px; }
+
+      /* Scenario videos: taller so the 2-col layout fills the wider section */
+      .proj-scenario__media { height: 560px; }
+      .proj-scenario__text p { max-width: 720px; font-size: 20px; }
+      .proj-scenario__subtitle { font-size: 20px; }
+
+      /* Steps grid */
+      .proj-step-num { font-size: 56px; }
+      .proj-step h3 { font-size: 18px; }
+      .proj-step p { font-size: 17px; line-height: 1.7; }
+
+      /* Features grid */
+      .proj-feature h3 { font-size: 16px; }
+      .proj-feature p { font-size: 16px; line-height: 1.6; }
+
+      /* Problem list */
+      .proj-problem-item h4 { font-size: 17px; }
+      .proj-problem-item p { font-size: 17px; line-height: 1.6; }
+      .proj-problem-list__label { font-size: 14px; }
+
+      /* Team cards */
+      .proj-team-avatar { width: 52px; height: 52px; font-size: 16px; }
+      .proj-team-card h4 { font-size: 15px; }
+      .proj-team-card p { font-size: 14px; }
+
+      /* Meta strip */
+      .proj-meta-strip__label { font-size: 11px; }
+      .proj-meta-strip__value { font-size: 16px; }
     }
   </style>
   <link rel="preload" as="image" href="./assets/norvald-iphone.webp">
