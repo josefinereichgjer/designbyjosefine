@@ -10,6 +10,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
   <style>:root { --font: "Poppins", system-ui, sans-serif; }
+  body { background: #000; color: #fff; }
+  .bokomslag-palette.palette--cards .palette__desc { color: #bbb !important; }
+
   @media (min-width: 769px) {
     .boks-video {
       margin-left: calc(-1 * clamp(20px, 3vw, 34px));
@@ -97,9 +100,9 @@
           <p style="column-span:all;font-size:clamp(12px,1.1vw,15px);line-height:1.7;margin-top:clamp(10px,1.5vw,16px);margin-bottom:0;">Baksiden er holdt ren og uten tekst. Informasjon som normalt plasseres på et smussomslag – som omtale, forfatterbiografi og strekkode – er i stedet samlet på en egen side bakerst i boka. <span class="boks-venstre-ref"> Den siden ser du til venstre her: ↓</span></p>
           <style>@media(max-width:1024px){.boks-venstre-ref{display:none;}}</style>
           <div style="column-span:all;display:flex;flex-direction:column;gap:0;margin-top:clamp(16px,2vw,24px);align-items:center;">
-            <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Prototyper — Forrådt" style="width:80%;display:block;border:1px solid rgba(0,0,0,0.1);">
-            <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Prototyper — Amtmandens Døtre" style="width:80%;display:block;border:1px solid rgba(0,0,0,0.1);">
-            <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Prototyper — Jenny" style="width:80%;display:block;border:1px solid rgba(0,0,0,0.1);">
+            <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Prototyper — Forrådt" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
+            <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Prototyper — Amtmandens Døtre" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
+            <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Prototyper — Jenny" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
           </div>
         </div>
         
@@ -143,7 +146,7 @@
                 <div class="palette__info">
                   <span class="palette__name">Amtmandens Døtre</span>
                   <span class="palette__hex">#4ab3e1 — Opasitet: 25%</span>
-                  <span class="palette__hex" style="color:#888;">CMYK: 67, 20, 0, 12</span>
+                  <span class="palette__hex" style="color:#999;">CMYK: 67, 20, 0, 12</span>
                   <span class="palette__desc">Gir en følelse av ro, litt tristhet og noe kjølig og dannet</span>
                 </div>
               </div>
@@ -152,7 +155,7 @@
                 <div class="palette__info">
                   <span class="palette__name">Forrådt</span>
                   <span class="palette__hex">#ce2e27 — Opasitet: 63%</span>
-                  <span class="palette__hex" style="color:#888;">CMYK: 0, 78, 81, 19</span>
+                  <span class="palette__hex" style="color:#999;">CMYK: 0, 78, 81, 19</span>
                   <span class="palette__desc">Står for sterke følelser, konflikt og svik</span>
                 </div>
               </div>
@@ -161,12 +164,12 @@
                 <div class="palette__info">
                   <span class="palette__name">Jenny</span>
                   <span class="palette__hex">#ffeea8 — Opasitet: 63%</span>
-                  <span class="palette__hex" style="color:#888;">CMYK: 0, 7, 34, 0</span>
+                  <span class="palette__hex" style="color:#999;">CMYK: 0, 7, 34, 0</span>
                   <span class="palette__desc">Gir inntrykk av varme, liv og en lengsel etter frihet</span>
                 </div>
               </div>
             </div>
-            <p class="project-intro" style="font-size:clamp(11px,1vw,13px);margin-top:clamp(16px,2vw,24px);color:#444;">Fargene er definert i <strong>RGB</strong> for skjermvisning, men siden dette er bokomslag som skal trykkes, er de også konvertert til <strong>CMYK</strong>. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget. Det betyr at den faktiske fargeopplevelsen vil variere noe avhengig av fargerom og trykkmetode.</p>
+            <p class="project-intro" style="font-size:clamp(11px,1vw,13px);margin-top:clamp(16px,2vw,24px);color:#aaa;">Fargene er definert i <strong>RGB</strong> for skjermvisning, men siden dette er bokomslag som skal trykkes, er de også konvertert til <strong>CMYK</strong>. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget. Det betyr at den faktiske fargeopplevelsen vil variere noe avhengig av fargerom og trykkmetode.</p>
           </div>
           <script>
             document.getElementById("fargeToggle").addEventListener("click", function() {
@@ -178,7 +181,7 @@
             });
           </script>
 
-          <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:clamp(24px,3vw,40px);background:#fff;border:1.5px solid #111;color:#111;">Prosess</button>
+          <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:clamp(24px,3vw,40px);background:#000;border:1.5px solid #fff;color:#fff;">Prosess</button>
           <div id="processPanel" style="display:none;margin-top:clamp(20px,3vw,36px);">
             <div class="prosess-row">
               <img src="./assets/prosess1.webp" alt="Prosess" style="height:auto;display:block;">
