@@ -8,7 +8,7 @@
   <meta name="description" content="Bokomslag — DesignbyJosefine" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
   <style>:root { --font: "Poppins", system-ui, sans-serif; }
   @media (min-width: 769px) {
     .boks-video {
@@ -44,6 +44,8 @@
     :root { --bg: #000; --text: #fff; --muted: #aaa; }
     .project-intro { color: #fff; }
     .project__gallery-heading { color: #fff; }
+    h2, div.project__gallery-heading { text-transform: uppercase; }
+    @media (max-width: 768px) { .boks-main-heading { line-height: 1.1; } }
   </style>
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
@@ -81,7 +83,7 @@
     <article class="project" id="project">
       <div class="boks-top">
         <div class="boks-intro" style="margin-bottom:clamp(24px,3vw,40px);">
-          <h2 style="font-size:clamp(16px,1.5vw,22px);font-weight:700;letter-spacing:-.01em;margin-bottom:10px;">En redesign av norske klassikere</h2>
+          <h2 class="boks-main-heading" style="font-size:clamp(48px,4.5vw,66px);font-weight:500;letter-spacing:0;margin-bottom:10px;font-family:'EB Garamond',Georgia,serif;">En redesign av norske klassikere</h2>
           <p class="project-intro" style="font-size:clamp(14px,1.3vw,17px);">Dette prosjektet omfatter en ny utgave av tre grunnpilarer i norsk litteraturhistorie: <em>Amtmandens Døtre</em> av Camilla Collett, <em>Forrådt</em> av Amalie Skram og <em>Jenny</em> av Sigrid Undset. Ved&nbsp;å fjerne kommersiell støy, får materialiteten og&nbsp;de symbolske fargeflatene rom til&nbsp;å kommunisere. For&nbsp;å understreke bøkenes status som tidløse klassikere, er utgavene utformet som&nbsp;tekstiltrukne hardcover-bind.</p>
         </div>
 
@@ -139,7 +141,7 @@
               .boks-pal__swatch-inner { width:100%; height:100%; }
               .boks-pal__info { background:#111; padding:clamp(12px,1.5vw,20px); display:flex; flex-direction:column; gap:3px; }
               .boks-pal__name { font-size:clamp(14px,1.3vw,19px); font-weight:700; color:#fff; margin-bottom:6px; }
-              .boks-pal__row { font-size:clamp(11px,0.95vw,14px); color:#bbb; font-family:"SF Mono","Fira Mono",monospace; letter-spacing:.02em; }
+              .boks-pal__row { font-size:clamp(11px,0.95vw,14px); color:#bbb; font-family:inherit; letter-spacing:.02em; }
               .boks-pal__desc { font-size:clamp(11px,0.9vw,13px); color:#777; margin-top:8px; line-height:1.5; font-family:inherit; }
               @media(max-width:600px) { .boks-pal { grid-template-columns:1fr; } .boks-pal__swatch { height:140px; } }
             </style>
