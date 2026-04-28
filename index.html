@@ -272,16 +272,19 @@
     @media (min-width: 1440px) {
       .display-text { font-size: clamp(86px, 5.4vw, 160px); }
       .main-content {
-        grid-template-columns: 1fr clamp(420px, 32vw, 900px);
+        grid-template-columns: 1fr clamp(340px, 27vw, 720px);
         gap: clamp(64px, 5vw, 160px);
         padding: 0 clamp(52px, 4vw, 100px);
       }
       .col-right { height: clamp(480px, 54vh, 900px); }
 
-      /* Shift photo cluster down so it centres with the text block */
-      .float-card--me { width: 56%; left: -34%; top: 14%; }
+      /* Tighten photo cluster: pull me card right of text, compress outer card spread */
+      .float-card--me { width: 50%; left: -10%; top: 14%; }
       .float-card--1  { top: -8%; }
       .float-card--2  { top: 4%; }
+      .float-card--5  { top: 55%; }
+      .float-card--6  { left: 44%; top: 46%; }
+      .float-card--7  { left: 52%; }
 
       /* Scale chrome elements that feel tiny at this viewport */
       .logo { font-size: 14px; }
@@ -295,8 +298,9 @@
     }
 
     @media (min-width: 2400px) {
-      .main-content { max-width: 2400px; margin-left: auto; margin-right: auto; }
+      .main-content { max-width: 2400px; margin-left: auto; margin-right: auto; padding-left: 40px; }
       .top-bar, .bottom-bar { max-width: 2400px; margin-left: auto; margin-right: auto; }
+      .col-right { margin-left: 60px; }
     }
   </style>
 </head>
