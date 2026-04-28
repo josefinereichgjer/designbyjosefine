@@ -601,13 +601,13 @@
     }
 
     @media (min-width: 2400px) {
-      /* ── Vertical rhythm: consistent section spacing ── */
-      .case-section   { margin-top: 140px; }
+      /* ── Section rhythm ── */
+      .case-section    { margin-top: 140px; }
       .prosess-section { margin-top: 140px; }
       .prosess-jambore-body { margin-top: 5rem !important; }
-      #bildebruk      { margin-top: 140px !important; }
+      #bildebruk       { margin-top: 140px !important; }
 
-      /* ── Single centered column: all headings + text share 1100px left edge ── */
+      /* ── UNIFIED 1400px COLUMN: every element shares one left edge ── */
       .case-label,
       .prosess-heading,
       .krit-intro__lead,
@@ -618,43 +618,38 @@
       .case-insight,
       .fargevalg-intro,
       .system-intro,
-      .project-info-row {
-        max-width: 1100px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .case-label     { font-size: 15px; letter-spacing: 0.15em; margin-bottom: 1rem; display: block; }
-      .prosess-heading { font-size: 52px; margin-bottom: 2rem; }
-      .krit-intro__lead, .krit-intro__body, .prosess-text { font-size: 20px; }
-      .refleksjon-body { font-size: 20px; }
-      .refleksjon-body p { margin-bottom: 1.4rem; }
-      .case-insight   { font-size: 20px; }
-      .fargevalg-intro p { font-size: 20px; }
-      .system-intro   { font-size: 20px; }
-
-      /* ── Wider layouts: image grids and 2-col text ── */
-      .prosess-row {
-        grid-template-columns: 1fr 1fr;
-        gap: 5rem;
+      .project-info-row,
+      .prosess-row,
+      .prosess-images,
+      .jambore-text,
+      .fontvalg-grid,
+      .fargevalg-body,
+      .system-img,
+      .system-caption {
         max-width: 1400px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 5rem;
       }
-      .prosess-images { max-width: 860px; }
-      .jambore-text {
-        max-width: 1100px;
-        gap: 1.5rem 5rem;
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 3rem;
-      }
-      .fontvalg-grid  { max-width: 1400px; gap: 6rem; margin-left: auto; margin-right: auto; }
-      .fargevalg-body { max-width: 1200px; margin-left: auto; margin-right: auto; }
 
-      /* ── Bildebruk system image ── */
-      .system-img     { max-width: 1600px; }
-      .system-caption { max-width: 1100px; font-size: 18px; }
+      /* ── Typography ── */
+      .case-label      { font-size: 15px; letter-spacing: 0.15em; margin-bottom: 1rem; display: block; }
+      .prosess-heading { font-size: 60px; line-height: 1.1; margin-bottom: 2.5rem; }
+      .krit-intro__lead { font-size: 24px; line-height: 1.5; }
+      .krit-intro__body { font-size: 20px; line-height: 1.8; }
+      .prosess-text    { font-size: 20px; line-height: 1.8; }
+      .refleksjon-body { font-size: 20px; line-height: 1.8; }
+      .refleksjon-body p { margin-bottom: 1.4rem; }
+      .case-insight    { font-size: 20px; line-height: 1.7; }
+      .fargevalg-intro p { font-size: 20px; }
+      .system-intro    { font-size: 20px; }
+      .system-caption  { font-size: 18px; }
+
+      /* ── Grid layouts ── */
+      .prosess-row     { grid-template-columns: 1fr 1fr; gap: 5rem; margin-bottom: 5rem; }
+      .prosess-images  { width: 100%; }
+      .jambore-text    { gap: 1.5rem 5rem; margin-bottom: 3rem; }
+      .fontvalg-grid   { gap: 6rem; }
+      .fargevalg-body  { grid-template-columns: 280px 1fr; }
     }
   </style>
 </head>
