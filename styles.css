@@ -2513,4 +2513,5 @@ a:hover{opacity:.75}
   /* Body text 20px Poppins Regular across all pages */
   body, p, li, .bg__body, .bg__list, .bg__list li { font-size: 20px; font-weight: 400; font-family: "Poppins", sans-serif; }
   .bg__heading { font-size: 20px; }
+  .bg__body, .bg__list { max-width: 900px; }
 }
