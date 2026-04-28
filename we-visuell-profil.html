@@ -689,9 +689,23 @@
       .we-step__body { font-size: 18px; line-height: 1.7; }
 
       /* Shorter text lines */
-      .we-monster-text { max-width: 1000px; }
+      .we-monster-text { max-width: 1000px; margin-left: 0; }
+      .we-monster-layout { gap: 24px; }
       .we-client-block__text { max-width: 1100px; }
       .we-snapshot__challenge .we-snapshot__text { max-width: 900px; }
+
+      /* Founders photo: smaller */
+      .we-client-v2__figure img { max-width: 72%; margin-left: auto; display: block; }
+
+      /* Reflection section: shorter lines */
+      .we-reflection__body { max-width: 900px; }
+      .we-reflection__learnings li { max-width: 900px; }
+
+      /* Navbar: ~5% broader + nav link text 2× bigger */
+      :root { --sidebarW: 210px; }
+      .sidebar { width: 210px; }
+      .content { margin-left: 210px; }
+      .nav__link { font-size: 22px; }
     }
   </style>
 </head>
