@@ -2504,11 +2504,13 @@ a:hover{opacity:.75}
 
 /* ── XXL (2400px+): 4-column masonry, wider content for very large displays ── */
 @media (min-width: 2400px) {
-  :root { --sidebarW: 200px; }
-  .content { max-width: none; }
+  :root { --sidebarW: 260px; }
+  .sidebar { width: 260px; }
+  .content { max-width: none; margin-left: 260px; }
+  .nav__link { font-size: 22px; }
   .bg { max-width: 2000px; }
   .masonry { columns: 4; column-gap: 60px; }
-  /* Body text 18px Poppins Regular across all pages */
+  /* Body text 20px Poppins Regular across all pages */
   body, p, li, .bg__body, .bg__list, .bg__list li { font-size: 20px; font-weight: 400; font-family: "Poppins", sans-serif; }
   .bg__heading { font-size: 20px; }
 }
