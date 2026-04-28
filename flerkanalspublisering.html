@@ -137,6 +137,20 @@
       transition: opacity 0.25s, transform 0.25s;
     }
     .img-zoom:hover .img-zoom__icon { opacity: 1; transform: scale(1); }
+
+    @media (min-width: 2400px) {
+      .srh-label      { font-size: 20px; letter-spacing: 0.14em; }
+      .srh-desc       { font-size: 20px; line-height: 1.8; }
+      .srh-desc--solo { max-width: none; }
+      /* Left meta column: bigger logo area + tools */
+      .srh-hero-meta > div:first-child { width: 520px !important; }
+      .tools-row img  { width: 56px !important; height: 56px !important; }
+      /* Right intro text column: full width, 20px */
+      .srh-hero-meta > div:last-child { max-width: none !important; }
+      .srh-hero-meta p { font-size: 20px !important; line-height: 1.8 !important; }
+      /* Poster / rollup description block */
+      [style*="max-width:680px"] { max-width: none !important; }
+    }
   </style>
 </head>
 
