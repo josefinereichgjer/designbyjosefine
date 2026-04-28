@@ -1541,13 +1541,13 @@ a:hover{opacity:.75}
   margin-top: 5px;
 }
 .proj-problem-item h4 {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--vinrod);
   margin-bottom: 1px;
 }
 .proj-problem-item p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--oliven);
   line-height: 1.5;
   margin: 0;
@@ -1582,7 +1582,7 @@ a:hover{opacity:.75}
   margin-bottom: 4px;
 }
 .proj-step p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--oliven);
   line-height: 1.6;
   margin: 0;
@@ -1616,13 +1616,13 @@ a:hover{opacity:.75}
   flex-shrink: 0;
 }
 .proj-feature h3 {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--vinrod);
   margin-bottom: 2px;
 }
 .proj-feature p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--oliven);
   line-height: 1.5;
 }
