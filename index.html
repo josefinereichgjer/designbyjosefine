@@ -266,18 +266,24 @@
       .col-right { height: clamp(260px, 38vh, 380px); }
     }
 
-    /* Large screens (iMac 27", wide laptops) — raise clamp ceilings so layout fills the viewport */
+    /* Large screens (iMac 27", wide laptops)
+       Let vw-based values scale freely — same proportions as the 1280px design,
+       just without the artificial 86px / 480px caps that kill the layout on wide viewports. */
     @media (min-width: 1440px) {
-      .display-text { font-size: clamp(86px, 5.8vw, 140px); }
-      .main-content { grid-template-columns: 1fr clamp(460px, 30vw, 700px); }
-      .col-right { height: clamp(520px, 54vh, 760px); }
+      .display-text { font-size: clamp(86px, 5.4vw, 160px); }
+      .main-content {
+        grid-template-columns: 1fr clamp(420px, 32vw, 900px);
+        gap: clamp(64px, 5vw, 160px);
+        padding: 0 clamp(52px, 4vw, 100px);
+      }
+      .col-right { height: clamp(480px, 54vh, 900px); }
 
-      /* Shift photo cluster down so it aligns with the text center */
+      /* Shift photo cluster down so it centres with the text block */
       .float-card--me { top: 14%; }
       .float-card--1  { top: -8%; }
       .float-card--2  { top: 4%; }
 
-      /* Scale up chrome elements that feel tiny at this viewport */
+      /* Scale chrome elements that feel tiny at this viewport */
       .logo { font-size: 14px; }
       .btn-primary { font-size: 15px; padding: 17px 48px; }
       .btn-text { font-size: 15px; }
@@ -286,12 +292,6 @@
       .email-form input { font-size: 15px; width: 260px; }
       .email-submit { width: 38px; height: 38px; font-size: 18px; }
       .bottom-bar { padding: clamp(20px, 3vh, 36px) clamp(24px, 4vw, 52px); }
-    }
-
-    @media (min-width: 1920px) {
-      .display-text { font-size: clamp(120px, 5.8vw, 180px); }
-      .main-content { grid-template-columns: 1fr clamp(580px, 30vw, 860px); }
-      .col-right { height: clamp(640px, 56vh, 920px); }
     }
 
     @media (min-width: 2400px) {
