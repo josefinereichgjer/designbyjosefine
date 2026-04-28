@@ -418,6 +418,85 @@
       .ps-dm__type-row { grid-template-columns: 110px 1fr; gap: 12px; }
     }
 
+    /* ── 2560×1440 iMac ─────────────────────────────────── */
+    @media (min-width: 2400px) {
+      /* Widen content containers */
+      .ps-concept, .ps-process, footer { max-width: 1800px; }
+
+      /* Body text */
+      .ps-p { font-size: 20px; max-width: 1100px; }
+
+      /* Main section labels (Konsept…) */
+      .ps-label { font-size: 44px; }
+      /* Inner design-manual labels override their inline font-size */
+      .ps-dm .ps-label { font-size: 28px !important; }
+      /* Big h2 headings that have inline font-size:30px */
+      #designmanual { font-size: 44px !important; }
+      #merkevare    { font-size: 44px !important; }
+      #prosess > .ps-label { font-size: 44px !important; }
+
+      /* Subheadings */
+      .ps-h { font-size: 32px; }
+
+      /* Pull quote */
+      .ps-pull p { font-size: 20px; }
+
+      /* Anchor nav */
+      .ps-anker-nav { gap: 12px 64px; padding: 28px 0; margin-top: 24px; }
+      .ps-anker-nav__link { font-size: 16px; letter-spacing: 3px; }
+
+      /* Comparison table */
+      .ps-compare { font-size: 18px; }
+      .ps-compare th { font-size: 14px; padding: 14px 16px 14px 0; }
+      .ps-compare td { font-size: 18px; padding: 14px 16px 14px 0; }
+      .ps-compare td:first-child { font-size: 14px; }
+
+      /* Tech footer */
+      .ps-tech { gap: 40px 52px; margin-top: 64px; }
+      .ps-tech__label { font-size: 13px; letter-spacing: 4px; }
+      .ps-tech__val { font-size: 18px; }
+
+      /* PDF link */
+      .ps-pdflink { font-size: 15px; padding: 14px 28px; }
+
+      /* Design manual: colour swatches */
+      .ps-dm__swatches { height: 120px; }
+      .ps-dm__swatch-name { font-size: 11px; }
+      .ps-dm__swatch-hex  { font-size: 13px; }
+      .ps-dm__swatch-use  { font-size: 13px; }
+
+      /* Design manual: type spec */
+      .ps-dm__type-label { font-size: 14px; }
+      .ps-dm__type-where { font-size: 14px; }
+      .ps-dm__type-row   { grid-template-columns: 220px 1fr; padding: 24px 0; }
+
+      /* Design manual: buttons & badges */
+      .ps-dm__btn   { font-size: 18px; padding: 14px 32px; }
+      .ps-dm__badge { font-size: 16px; padding: 6px 18px; }
+      .ps-dm__btns  { gap: 14px; margin-top: 20px; }
+      .ps-dm__badges { gap: 14px; margin-top: 20px; }
+
+      /* Logo do/don't */
+      .ps-logo-dd { gap: 40px; }
+      .ps-logo-dd__col-label { font-size: 18px; margin-bottom: 14px; }
+
+      /* Captions */
+      .ps-figcap { font-size: 13px; letter-spacing: 2.5px; margin-top: 12px; }
+
+      /* Expand button */
+      .ps-expand__btn { font-size: 14px; margin-top: 16px; }
+
+      /* Process trigger */
+      .ps-process-trigger { font-size: 20px; }
+
+      /* Site analysis: competitor names & summaries */
+      .ps-siteana__name    { font-size: 22px; }
+      .ps-siteana__summary { font-size: 18px; }
+
+      /* Collage: taller so shirt isn't cropped at wide viewport */
+      .stopp-collage { padding-bottom: 195%; }
+    }
+
     /* Mobile */
     @media (max-width: 480px) {
       #designmanual { margin-top: 48px !important; }
