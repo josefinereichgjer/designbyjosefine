@@ -607,47 +607,59 @@
       .prosess-jambore-body { margin-top: 5rem !important; }
       #bildebruk      { margin-top: 140px !important; }
 
-      /* ── Section labels & headings ── */
-      .case-label     { font-size: 15px; letter-spacing: 0.15em; margin-bottom: 1rem; }
-      .prosess-heading { font-size: 52px; margin-bottom: 2rem; }
+      /* ── Section labels & headings: centered same as content ── */
+      .case-label {
+        font-size: 15px; letter-spacing: 0.15em; margin-bottom: 1rem;
+        max-width: 1400px; margin-left: auto; margin-right: auto; display: block;
+      }
+      .prosess-heading {
+        font-size: 52px; margin-bottom: 2rem;
+        max-width: 1400px; margin-left: auto; margin-right: auto;
+      }
+      .krit-intro__meta  { max-width: 1400px; margin-left: auto; margin-right: auto; }
+      .project-info-row  { max-width: 1400px; margin-left: auto; margin-right: auto; }
 
-      /* ── Lead / body text: 20px, capped at 900px ── */
-      .krit-intro__lead  { font-size: 20px; max-width: 900px; }
-      .krit-intro__body  { font-size: 20px; max-width: 900px; }
-      .prosess-text      { font-size: 20px; max-width: 900px; }
-      .refleksjon-body   { font-size: 20px; max-width: 900px; }
+      /* ── Lead / body text: 20px, capped + centered ── */
+      .krit-intro__lead  { font-size: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
+      .krit-intro__body  { font-size: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
+      .prosess-text      { font-size: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
+      .refleksjon-body   { font-size: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
       .refleksjon-body p { margin-bottom: 1.4rem; }
-      .case-insight      { font-size: 20px; max-width: 900px; }
+      .case-insight      { font-size: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
       .fargevalg-intro p { font-size: 20px; }
 
-      /* ── Prosess row: balanced 1:1 split, capped total width ── */
+      /* ── Prosess row: balanced 1:1 split, capped + centered ── */
       .prosess-row {
         grid-template-columns: 1fr 1fr;
         gap: 5rem;
         max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 5rem;
       }
 
       /* ── Jambore covers: centered, modest size ── */
       .prosess-images { max-width: 860px; }
 
-      /* ── Konsept 2-col text: capped so neither col is too wide ── */
+      /* ── Konsept 2-col text: capped + centered ── */
       .jambore-text {
         max-width: 1200px;
         gap: 1.5rem 5rem;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 3rem;
       }
 
-      /* ── Fontvalg 2-col: capped ── */
-      .fontvalg-grid  { max-width: 1400px; gap: 6rem; }
+      /* ── Fontvalg 2-col: capped + centered ── */
+      .fontvalg-grid  { max-width: 1400px; gap: 6rem; margin-left: auto; margin-right: auto; }
 
-      /* ── Fargevalg: cap intro + table area ── */
-      .fargevalg-intro  { max-width: 900px; margin-bottom: 3rem; }
-      .fargevalg-body   { max-width: 1200px; }
+      /* ── Fargevalg: cap intro + table area, centered ── */
+      .fargevalg-intro  { max-width: 900px; margin-left: auto; margin-right: auto; margin-bottom: 3rem; }
+      .fargevalg-body   { max-width: 1200px; margin-left: auto; margin-right: auto; }
 
       /* ── Bildebruk system image ── */
       .system-img     { max-width: 1600px; }
-      .system-intro   { max-width: 900px; font-size: 20px; }
+      .system-intro   { max-width: 900px; font-size: 20px; margin-left: auto; margin-right: auto; }
       .system-caption { max-width: 900px; font-size: 18px; }
     }
   </style>
