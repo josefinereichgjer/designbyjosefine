@@ -2495,16 +2495,20 @@ a:hover{opacity:.75}
   .related__grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── XL (1920px+): cap content so layout stays proportional ── */
+/* ── XL (1920px+): 3-column masonry, full-width content ── */
 @media (min-width: 1920px) {
   :root { --sidebarW: 180px; }
-  .content { max-width: 1600px; }
+  .content { max-width: none; }
   .masonry { columns: 3; column-gap: 52px; }
 }
 
 /* ── XXL (2400px+): 4-column masonry, wider content for very large displays ── */
 @media (min-width: 2400px) {
   :root { --sidebarW: 200px; }
-  .content { max-width: 2100px; }
+  .content { max-width: none; }
+  .bg { max-width: 2000px; }
   .masonry { columns: 4; column-gap: 60px; }
+  /* Body text 18px Poppins Regular across all pages */
+  body, p, li, .bg__body, .bg__list, .bg__list li { font-size: 20px; font-weight: 400; font-family: "Poppins", sans-serif; }
+  .bg__heading { font-size: 20px; }
 }
