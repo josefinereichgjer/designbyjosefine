@@ -27,17 +27,18 @@
     }
     .ed-crumb {
       font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
-      color: #555; margin: 0 0 clamp(16px, 2.5vw, 32px); font-weight: 500;
+      color: #fff; margin: 0 0 clamp(16px, 2.5vw, 32px); font-weight: 500;
     }
     .ed-title {
+      font-family: 'EB Garamond', Georgia, serif;
       font-size: clamp(52px, 8vw, 108px);
-      font-weight: 700; line-height: 0.92;
-      letter-spacing: -0.025em; margin: 0 0 clamp(12px, 1.5vw, 20px);
+      font-weight: 500; line-height: 0.92;
+      letter-spacing: -0.01em; margin: 0 0 clamp(12px, 1.5vw, 20px);
       color: #fff; text-transform: uppercase;
     }
     .ed-subtitle {
       font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.12em;
-      text-transform: uppercase; color: #555; margin: 0; font-weight: 500;
+      text-transform: uppercase; color: #fff; margin: 0; font-weight: 500;
     }
     .ed-hero__media img { width: 100%; height: auto; display: block; }
 
@@ -54,19 +55,19 @@
     }
     .ed-label {
       display: block; font-size: 10px; text-transform: uppercase;
-      letter-spacing: 0.14em; color: #555; margin-bottom: 5px; font-weight: 500;
+      letter-spacing: 0.14em; color: #fff; margin-bottom: 5px; font-weight: 500;
     }
-    .ed-val { font-size: clamp(13px, 1.1vw, 15px); color: #bbb; line-height: 1.6; }
+    .ed-val { font-size: clamp(13px, 1.1vw, 15px); color: #fff; line-height: 1.6; }
     .ed-desc p {
       font-size: clamp(15px, 1.35vw, 18px); line-height: 1.8;
-      color: #c0c0c0; margin: 0 0 1.2em;
+      color: #fff; margin: 0 0 1.2em;
     }
     .ed-desc p:last-child { margin-bottom: 0; }
 
     .ed-section { margin-bottom: clamp(48px, 7vw, 88px); }
     .ed-section-label {
       font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
-      color: #555; display: block; margin-bottom: clamp(14px, 2vw, 24px); font-weight: 500;
+      color: #fff; display: block; margin-bottom: clamp(14px, 2vw, 24px); font-weight: 500;
     }
 
     .ed-video { width: 100%; height: auto; display: block; }
@@ -78,10 +79,10 @@
     }
     .ed-two-col__text p {
       font-size: clamp(14px, 1.2vw, 16px); line-height: 1.8;
-      color: #b8b8b8; margin: 0 0 1em;
+      color: #fff; margin: 0 0 1em;
     }
     .ed-two-col__text p:last-child { margin-bottom: 0; }
-    .ed-two-col__text p strong { color: #ddd; }
+    .ed-two-col__text p strong { color: #fff; }
 
     .ed-img-wide { width: 100%; height: auto; display: block; }
     .ed-img-stack { display: flex; flex-direction: column; align-items: center; gap: 0; }
@@ -95,11 +96,12 @@
       margin-bottom: clamp(16px, 2vw, 28px);
     }
     .ed-pal-card { overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-    .ed-pal-swatch { height: 160px; }
+    .ed-pal-swatch { height: 160px; background: #fff; }
+    .ed-pal-swatch-inner { width: 100%; height: 100%; }
     .ed-pal-info { background: #0d0d0d; padding: clamp(12px, 1.5vw, 20px); display: flex; flex-direction: column; gap: 3px; }
     .ed-pal-name { font-size: clamp(13px, 1.1vw, 16px); font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .ed-pal-row { font-size: clamp(10px, 0.85vw, 12px); color: #777; letter-spacing: .02em; }
-    .ed-pal-desc { font-size: clamp(10px, 0.8vw, 12px); color: #4a4a4a; margin-top: 8px; line-height: 1.5; }
+    .ed-pal-row { font-size: clamp(10px, 0.85vw, 12px); color: #fff; letter-spacing: .02em; }
+    .ed-pal-desc { font-size: clamp(10px, 0.8vw, 12px); color: #fff; margin-top: 8px; line-height: 1.5; }
 
     .ed-prosess { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(8px, 1.5vw, 20px); }
     .ed-prosess img { width: 100%; height: auto; display: block; }
@@ -121,7 +123,7 @@
     }
     .ed-nav__dir {
       display: block; font-size: 10px; text-transform: uppercase;
-      letter-spacing: 0.14em; color: #555; margin-bottom: 6px;
+      letter-spacing: 0.14em; color: #fff; margin-bottom: 6px;
     }
     .ed-nav__name { font-size: clamp(14px, 1.3vw, 17px); font-style: italic; }
 
@@ -175,7 +177,7 @@
       <div class="ed-hero">
         <div>
           <p class="ed-crumb">Prosjekter</p>
-          <h1 class="ed-title">Bom-<br>slag</h1>
+          <h1 class="ed-title">Bokomslag</h1>
           <p class="ed-subtitle">Redaksjonell design</p>
         </div>
         <div class="ed-hero__media">
@@ -245,7 +247,7 @@
         </div>
         <div>
           <p style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(80px,10vw,130px);line-height:0.88;color:#fff;margin:0 0 clamp(16px,2vw,28px);">Aa</p>
-          <p style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#666;margin:0;letter-spacing:0.01em;">
+          <p style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#fff;margin:0;letter-spacing:0.01em;">
             ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ<br>
             abcdefghijklmnopqrstuvwxyzæøå<br>
             1234567890 , . ? ! &
@@ -256,10 +258,10 @@
       <!-- FARGEPALETT -->
       <div class="ed-section">
         <span class="ed-section-label">Fargepalett</span>
-        <p style="font-size:clamp(14px,1.2vw,16px);line-height:1.8;color:#888;margin:0 0 clamp(20px,3vw,32px);max-width:560px;">Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
+        <p style="font-size:clamp(14px,1.2vw,16px);line-height:1.8;color:#fff;margin:0 0 clamp(20px,3vw,32px);max-width:560px;">Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
         <div class="ed-palette">
           <div class="ed-pal-card">
-            <div class="ed-pal-swatch" style="background:rgba(74,179,225,0.25);"></div>
+            <div class="ed-pal-swatch"><div class="ed-pal-swatch-inner" style="background:rgba(74,179,225,0.25);"></div></div>
             <div class="ed-pal-info">
               <span class="ed-pal-name">Amtmandens Døtre</span>
               <span class="ed-pal-row">CMYK: 67, 20, 0, 12</span>
@@ -269,7 +271,7 @@
             </div>
           </div>
           <div class="ed-pal-card">
-            <div class="ed-pal-swatch" style="background:rgba(206,46,39,0.62);"></div>
+            <div class="ed-pal-swatch"><div class="ed-pal-swatch-inner" style="background:rgba(206,46,39,0.62);"></div></div>
             <div class="ed-pal-info">
               <span class="ed-pal-name">Forrådt</span>
               <span class="ed-pal-row">CMYK: 0, 78, 81, 19</span>
@@ -279,7 +281,7 @@
             </div>
           </div>
           <div class="ed-pal-card">
-            <div class="ed-pal-swatch" style="background:rgba(255,238,168,0.62);"></div>
+            <div class="ed-pal-swatch"><div class="ed-pal-swatch-inner" style="background:rgba(255,238,168,0.62);"></div></div>
             <div class="ed-pal-info">
               <span class="ed-pal-name">Jenny</span>
               <span class="ed-pal-row">CMYK: 0, 7, 34, 0</span>
@@ -289,13 +291,13 @@
             </div>
           </div>
         </div>
-        <p style="font-size:clamp(11px,1vw,13px);color:#4a4a4a;line-height:1.7;max-width:580px;">Fargene er definert i <strong style="color:#666;">RGB</strong> for skjermvisning og konvertert til <strong style="color:#666;">CMYK</strong> for trykk. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget.</p>
+        <p style="font-size:clamp(11px,1vw,13px);color:#fff;line-height:1.7;max-width:580px;">Fargene er definert i <strong>RGB</strong> for skjermvisning og konvertert til <strong>CMYK</strong> for trykk. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget.</p>
       </div>
 
       <!-- PROTOTYPER -->
       <div class="ed-section">
         <span class="ed-section-label">Prototyper</span>
-        <p style="font-size:clamp(14px,1.2vw,16px);line-height:1.8;color:#888;margin:0 0 clamp(20px,3vw,32px);max-width:560px;">Baksiden er holdt ren og uten tekst. Informasjon som normalt plasseres på et smussomslag er i stedet samlet på en egen side bakerst i boka.</p>
+        <p style="font-size:clamp(14px,1.2vw,16px);line-height:1.8;color:#fff;margin:0 0 clamp(20px,3vw,32px);max-width:560px;">Baksiden er holdt ren og uten tekst. Informasjon som normalt plasseres på et smussomslag er i stedet samlet på en egen side bakerst i boka.</p>
         <div class="ed-img-stack">
           <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Prototype — Forrådt">
           <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Prototype — Amtmandens Døtre">
@@ -306,9 +308,11 @@
       <!-- PROSESS -->
       <div class="ed-section">
         <span class="ed-section-label">Prosess</span>
-        <div class="ed-prosess">
-          <img src="./assets/prosess1.webp" alt="Prosess 1" loading="lazy" decoding="async">
-          <img src="./assets/prosess2.webp" alt="Prosess 2" loading="lazy" decoding="async">
+        <div style="background:#fff;padding:clamp(16px,2.5vw,32px);">
+          <div class="ed-prosess">
+            <img src="./assets/prosess1.webp" alt="Prosess 1" loading="lazy" decoding="async">
+            <img src="./assets/prosess2.webp" alt="Prosess 2" loading="lazy" decoding="async">
+          </div>
         </div>
       </div>
 
