@@ -119,11 +119,12 @@
     .proj-scenario__text .proj-section__label { margin-top: 0; }
     .gallery-pair { margin-bottom: 0; margin-top: 0; }
     .scroll-gallery__arrow {
-      background: rgba(0,0,0,0.12);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.10);
-      width: 34px; height: 34px; opacity: 0.75;
+      background: rgba(255,255,255,0.92);
+      color: #1a1a1a;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+      width: 34px; height: 34px; opacity: 0.85;
     }
-    .scroll-gallery__arrow:hover { background: rgba(0,0,0,0.28); opacity: 1; }
+    .scroll-gallery__arrow:hover { background: #fff; opacity: 1; }
 
     .proto-under-gallery {
       display: flex; gap: 8px; flex-wrap: wrap;
@@ -185,10 +186,6 @@
     .proj-sections .proj-section:nth-child(3) {
       background: #160e08 !important;
       color: #fff9ee !important;
-      margin-left: calc(-1 * clamp(20px, 3vw, 34px)) !important;
-      margin-right: calc(-1 * clamp(20px, 3vw, 34px)) !important;
-      padding-left: clamp(20px, 3vw, 34px) !important;
-      padding-right: clamp(20px, 3vw, 34px) !important;
     }
     .proj-sections .proj-section:nth-child(3) .proj-section__label,
     .proj-sections .proj-section:nth-child(3) .proj-section__heading,
@@ -225,6 +222,26 @@
       color: rgba(255,249,238,0.7) !important;
       font-size: clamp(13px, 1.05vw, 14.5px) !important;
       line-height: 1.65 !important;
+    }
+
+    /* ── Section 4: Scenarios — dark continuation ──────────── */
+    .proj-sections .proj-section:nth-child(4) {
+      background: #0d0a08 !important;
+    }
+    .proj-sections .proj-section:nth-child(4) .proj-section__label,
+    .proj-sections .proj-section:nth-child(4) .proj-scenario__subtitle,
+    .proj-sections .proj-section:nth-child(4) .proj-scenario__text p,
+    .proj-sections .proj-section:nth-child(4) .proj-scenario__text p strong {
+      color: #fff9ee !important;
+    }
+    .proj-sections .proj-section:nth-child(4) .proj-scenario__text p {
+      color: rgba(255,249,238,0.8) !important;
+    }
+    .proj-sections .proj-section:nth-child(4) .proj-scenario__text p strong {
+      color: #fff9ee !important;
+    }
+    .proj-sections .proj-section:nth-child(4) .proj-scenario__subtitle {
+      color: rgba(255,249,238,0.55) !important;
     }
 
     @media (max-width: 768px) {
