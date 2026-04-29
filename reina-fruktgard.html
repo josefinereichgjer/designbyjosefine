@@ -5,87 +5,19 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
   <title>Reina Fruktgård — DesignbyJosefine</title>
-  <meta name="description" content="I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Utgangspunktet var deres eksisterende uttrykk, som ble videreutviklet for å tydeligere formidle opprinnelse, kvalitet og håndverk." />
+  <meta name="description" content="I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Utgangspunktet var bedriftens eksisterende uttrykk, " />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@300;400;500&family=Caveat:wght@400&family=Cormorant+Garamond:wght@300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.typekit.net/bfd6wfh.css">
-  <link rel="stylesheet" href="./styles.css?v=30" />
-  <style>
-  @media(max-width:600px){.info-cards{grid-template-columns:1fr!important}}
-  @media(max-width:700px){.skrift-grid{grid-template-columns:1fr!important}}
-  @media(max-width:700px){
-    .reina-info-wrap { max-width: 95% !important; }
-    .reina-info-wrap p[style*="font-size:12px"] { font-size: 14px !important; line-height: 1.75 !important; }
-    .reina-illus-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
-    .reina-farge-grid { grid-template-columns: 1fr 1fr !important; }
-    .reina-farge-labels { grid-template-columns: 1fr 1fr !important; }
-  }
-  .project__figure img { transition: transform 0.45s cubic-bezier(0.22,1,0.36,1); }
-  .project__figure:hover img { transform: scale(1.03); }
-  @media(min-width:821px){.strip-ss{margin-left:0;width:100%;}}
-  @media(max-width:600px){
-    #reinaHero { height: 55vh !important; margin-bottom: 24px !important; }
-    #reinaHero > div:last-child { bottom: 20px !important; }
-    #reinaHero h1 { font-size: 38px !important; }
-    .project-header { margin-top: 32px !important; }
-    #stripDots { margin-bottom: 56px !important; }
-  }
-  .mobile-only { display: none; }
-  @media(max-width:700px){ .mobile-only { display: block; } }
-  .strip-dots { display: flex; gap: 8px; justify-content: center; margin-top: 14px; }
-  .strip-dot {
-    width: 10px; height: 10px; border-radius: 50%;
-    background: #e0dde8; border: none; padding: 0; cursor: pointer;
-    transition: background .2s; flex-shrink: 0;
-  }
-  .strip-dot.is-active { background: #960C0C; }
-  .project__figure img { border: none; }
-  .original-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:200;align-items:center;justify-content:center}
-  .original-modal--open{display:flex}
-  .original-modal__box{background:#fff;max-width:480px;width:92%;padding:36px 36px 32px;position:relative;max-height:90vh;overflow-y:auto}
-  .original-modal__close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:20px;cursor:pointer;line-height:1;color:#333}
-  .original-modal__box img{width:100%;display:block;max-width:360px;margin:0 auto}
-  .original-modal__box p{margin:22px 0 0;font-size:15px;line-height:1.75;color:#3b1f0e}
-  @media (min-width: 2400px) {
-    .reina-info-wrap { max-width: min(90%, 1200px) !important; }
-    .reina-info-wrap p { font-size: 20px !important; line-height: 1.75 !important; }
-    #originalBtn, #rampBtn { font-size: 20px !important; }
-    p[style*="color:#960C0C"][style*="font-size:12px"] { font-size: 20px !important; line-height: 1.75 !important; }
-    .reina-illus-grid p { font-size: 20px !important; line-height: 1.85 !important; }
-  }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=31" />
   <link rel="icon" href="assets/hvitlogo.webp">
 </head>
 
 <body>
-  <a class="skip-link" href="#content">Hopp til innhold</a>
-  <div class="process-drawer" id="processDrawer" aria-hidden="true">
-    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
-    <div class="process-drawer__inner" id="processDrawerContent"></div>
-  </div>
-  <div class="process-drawer__backdrop" id="processBackdrop"></div>
-  <div class="original-modal" id="rampModal" role="dialog" aria-modal="true" aria-label="Original Reinarampen">
-    <div class="original-modal__box">
-      <button class="original-modal__close" id="rampModalClose" aria-label="Lukk">✕</button>
-      <img src="./assets/originalreina.webp" alt="Original etikett — Reinarampen Fyldig fra Reina Fruktgård" style="max-width:180px;width:100%;display:block;margin:0 auto">
-      <p>Reinarampen Fyldig inneholder konsentrert eplemost, lilla mais fra Peru, habanero og ingefær som gir en rundere smak.</p>
-    </div>
-  </div>
-
-  <div class="original-modal" id="originalModal" role="dialog" aria-modal="true" aria-label="Original Reina Rosette">
-    <div class="original-modal__box">
-      <button class="original-modal__close" id="originalModalClose" aria-label="Lukk">✕</button>
-      <img src="./assets/original-reina-rosette.webp" alt="Original etikett — Eplemost Rosette fra Reina Fruktgård">
-      <p>Rosette er en premium eplemost med frisk, balansert smak og en fin kombinasjon av syrlighet og naturlig sødme. Den er klar og elegant, passer godt til mat, og har en mer raffinert og aromatisk karakter enn vanlig eplejuice.</p>
-    </div>
-  </div>
-
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
     <img id="lbImg" src="" alt="">
-    <p id="lbCaption" style="display:none;position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:#fff;font-size:20px;padding:6px 14px;border-radius:4px;white-space:nowrap;pointer-events:none;"></p>
     <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
   </div>
 
@@ -100,434 +32,97 @@
       <footer class="meta">
         <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
       </footer>
-      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
+      <button class="sidebar__toggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
     </div>
   </header>
 
   <main id="content" class="content">
-    <article class="project" id="project">
-        <div class="project-layout">
-          <div class="project-layout__media">
-
-            <!-- Hero image -->
-            <div id="reinaHero" style="position:relative;
-                        margin-left:calc(-1 * clamp(20px,3vw,34px));
-                        margin-right:calc(-1 * clamp(20px,3vw,34px));
-                        margin-top:-34px;
-                        height:88vh;
-                        overflow:visible;
-                        margin-bottom:110px;">
-              <!-- image + gradient clipped separately -->
-              <div style="position:absolute;inset:0;overflow:hidden;">
-                <img src="./assets/reinajuice.webp" alt="Reina Fruktgård"
-                     style="width:100%;height:100%;object-fit:cover;object-position:center 65%;display:block;">
-                <div style="position:absolute;inset:0;
-                            background:
-                              linear-gradient(to bottom, rgba(35,15,5,0.52) 0%, rgba(35,15,5,0.18) 55%, transparent 78%),
-                              linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.18) 36%, transparent 62%);"></div>
-              </div>
-              <!-- text sits freely, not clipped -->
-              <div style="position:absolute;bottom:-8px;left:clamp(20px,3vw,44px);">
-                <h1 style="font-family:questa, serif;
-                           font-size:clamp(28px,4vw,58px);
-                           font-weight:400;
-                           letter-spacing:0.12em;
-                           color:#1a1a1a;
-                           margin:0 0 0.4rem;
-                           line-height:1;
-                           text-transform:uppercase;">REINA FRUKTGÅRD</h1>
-                <p style="font-family:'Poppins',sans-serif;
-                           font-size:clamp(12px,1.2vw,15px);
-                           font-weight:400;
-                           letter-spacing:0.08em;
-                           color:#3b1f0e;
-                           margin:0;
-                           text-transform:uppercase;">Emballasjedesign inspirert av landskap<br class="mobile-only">og tradisjon</p>
-              </div>
-            </div>
-
-            <div class="project-header" style="max-width:1100px;margin-top:100px;">
-              <p class="project-intro" style="font-size:18px;margin-bottom:36px;font-family:'Poppins',sans-serif;font-weight:400;">Emballasjen til Reina Fruktgård forteller om jorda, stedet og menneskene bak.<br>Et helhetlig visuelt uttrykk der opprinnelse og håndverk er i sentrum — ikke bare et etikettkonsept.</p>
-              
-            </div>
-
-        <div class="strip-ss gallery-expandable" style="position:relative;">
-          <div class="strip-ss__nav" style="display:none">
-            <button class="strip-ss__btn" id="stripPrev" aria-label="Forrige bilde">←</button>
-            <button class="strip-ss__btn" id="stripNext" aria-label="Neste bilde">→</button>
-          </div>
-          <button aria-label="Forrige bilde" onclick="document.getElementById('stripPrev').click()"
-            style="position:absolute;left:14px;top:50%;transform:translateY(-50%);z-index:10;
-                   width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.88);
-                   border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;
-                   justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.15);">‹</button>
-          <button aria-label="Neste bilde" onclick="document.getElementById('stripNext').click()"
-            style="position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:10;
-                   width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.88);
-                   border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;
-                   justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.15);">›</button>
-          <div class="strip-ss__viewport">
-            <div class="strip-ss__track" id="stripTrack">
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" fetchpriority="high" decoding="async" draggable="false" src="./assets/reinanyeple.webp" alt="Reina Fruktgård — bilde 1"></figure>
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reina.webp" alt="Reina Fruktgård — bilde 2"></figure>
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/grain2.webp" alt="Reina Fruktgård — bilde 3" data-caption="Bildekvaliteten er komprimert for å redusere filstørrelsen"></figure>
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 6"></figure>
-              <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinajuice.webp" alt="Reina Fruktgård — bilde 5"></figure>
-            </div>
-          </div>
-        </div>
-        <div class="strip-dots" id="stripDots" style="margin-bottom:48px;"></div>
-
-        <div style="margin-top:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:70%;margin-left:auto;margin-right:auto;" class="info-cards reina-info-wrap">
-          <div style="background:#fff;padding:20px 22px">
-            <p style="margin:0 0 8px;font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#960C0C;padding-bottom:7px;border-bottom:1.5px solid rgba(150,12,12,0.3);display:block">Verdier og identitet</p>
-            <p style="margin:0;line-height:1.7;font-size:12px;color:#3b1f0e">Reina Fruktgård er en familieeid produsent med fokus på økologi, kvalitet og lokal produksjon. Alt lages på gården, med full utnyttelse av råvarer, blant annet gjennom Reinarampen laget av restmateriale fra eplepressing.</p>
-          </div>
-          <div style="background:#fff;padding:20px 22px">
-            <p style="margin:0 0 8px;font-size:11px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#960C0C;padding-bottom:7px;border-bottom:1.5px solid rgba(150,12,12,0.3);display:block">Marked og kontekst</p>
-            <p style="margin:0;line-height:1.7;font-size:12px;color:#3b1f0e">Reina opererer i det norske lokalmatmarkedet. De retter seg mot et nisjemarked med økende etterspørsel etter økologiske og autentiske produkter, i skjæringspunktet mellom landbruk, håndverksdrikke og reiseliv.</p>
-          </div>
-        </div>
-
-        <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:100px auto 20px;max-width:90%;font-family:'Poppins',sans-serif">01 — Produkt</p>
-        <div style="max-width:90%;margin-left:auto;margin-right:auto;margin-top:0;display:flex;flex-direction:column;gap:56px">
-          <div>
-            <div class="gallery-expandable" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-              <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/foranreina.webp" alt="Reina Fruktgård foran" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
-              <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/bakreina.webp" alt="Reina Fruktgård bak" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
-            </div>
-            <button id="originalBtn" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:12px;color:#960C0C;padding:8px 0 0;letter-spacing:0.02em;text-decoration:underline;display:block">Se originalen →</button>
-          </div>
-          <div>
-            <div class="gallery-expandable" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-              <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/reinaramp-foran.webp" alt="Reinarampen foran" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
-              <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/reinaramp-bak.webp" alt="Reinarampen bak" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
-            </div>
-            <button id="rampBtn" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:12px;color:#960C0C;padding:8px 0 0;letter-spacing:0.02em;text-decoration:underline;display:block">Se originalen →</button>
-          </div>
-          <div>
-            <div class="gallery-expandable" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-              <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/syltforan.webp" alt="Sylteøl foran" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
-              <figure class="project__figure" style="margin:0;cursor:zoom-in"><img src="./assets/syltreina.webp" alt="Sylteøl bak" loading="lazy" decoding="async" style="width:100%;display:block"></figure>
-            </div>
-            <p style="margin:8px 0 0;font-family:inherit;font-size:12px;color:#960C0C;line-height:1.7">De tilbyr foreløpig ikke eplegelé, men planlegger å utvikle og lansere dette i fremtiden.</p>
-          </div>
-        </div>
-
-        <!-- Skriftvalg -->
-        <div style="max-width:90%;margin:120px auto 0;padding-top:48px;border-top:1.5px solid rgba(150,12,12,0.18)">
-          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 36px;font-family:'Poppins',sans-serif">02 — Skriftvalg</p>
-          <div class="skrift-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px">
-
-            <div style="overflow:hidden">
-              <p style="font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:#aaa;margin:0 0 40px;font-family:'Poppins',sans-serif;font-weight:400">Above the Beyond Script</p>
-              <p style="font-family:'AboveBeyond',cursive;font-size:clamp(18px,2.5vw,30px);line-height:1.6;color:#1a1a1a;margin:0 0 24px;overflow-wrap:break-word;max-width:100%">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
-              <p style="font-size:12px;color:#888;line-height:1.65;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Karakterbærende script — brukes til produktnavn og merkenavn på emballasjen.</p>
-            </div>
-
-            <div style="overflow:hidden">
-              <p style="font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:#aaa;margin:0 0 40px;font-family:'Poppins',sans-serif;font-weight:400">Questa Regular</p>
-              <p style="font-family:questa, serif;font-size:clamp(18px,2.5vw,30px);line-height:1.6;color:#1a1a1a;margin:0 0 24px;font-weight:400;font-style:normal;overflow-wrap:break-word;max-width:100%">Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
-              <p style="font-size:12px;color:#888;line-height:1.65;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Informativ serifskrift — brukes til brødtekst og produktbeskrivelser på emballasjen.</p>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- Illustrasjon -->
-        <div style="max-width:90%;margin:120px auto 0;padding-top:48px;border-top:1.5px solid rgba(150,12,12,0.18)">
-          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 36px;font-family:'Poppins',sans-serif">03 — Illustrasjon</p>
-          <div class="reina-illus-grid" style="display:grid;grid-template-columns:1.4fr 1fr;gap:64px;align-items:center">
-            <figure style="margin:0">
-              <img src="./assets/reinategning.webp" alt="Illustrasjon — Reina Fruktgård" loading="lazy" decoding="async" style="width:100%;display:block">
-            </figure>
-            <p style="font-size:15px;line-height:1.85;color:#3b1f0e;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Et stilisert landskapsmotiv hentet fra gårdens egne omgivelser. Skråningen i terrenget gir komposisjonen retning — gårdsbygningen forankrer den i stedet. Logoens skrift får stå ren og fleksibel; illustrasjonen bærer historien. Den håndtegnede linjen understreker det ekte: småskala, nært og uten filter.</p>
-          </div>
-        </div>
-
-        <!-- Fargepalett -->
-        <div style="max-width:90%;margin:120px auto 0;padding-top:48px;border-top:1.5px solid rgba(150,12,12,0.18)">
-          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 20px;font-family:'Poppins',sans-serif">04 — Fargepalett</p>
-          <p style="font-size:10px;letter-spacing:0.13em;text-transform:uppercase;color:#aaa;margin:0 0 14px;font-family:'Poppins',sans-serif;font-weight:400">Simulering — skjerm vs. trykk på naturpapir</p>
-
-          <div class="reina-farge-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3px">
-
-            <!-- Rød / skjerm -->
-            <div style="background:#960C0C;height:110px;padding:16px 18px;display:flex;flex-direction:column;justify-content:flex-end;position:relative">
-              <span style="color:rgba(255,255,255,0.55);font-size:9px;font-family:'Poppins',sans-serif;letter-spacing:0.13em;text-transform:uppercase;display:block;margin-bottom:5px">Reinarød</span>
-              <span style="color:#fff;font-size:13px;font-family:'Poppins',sans-serif;font-weight:300;letter-spacing:0.05em">#960c0c</span>
-            </div>
-
-            <!-- Rød / trykk -->
-            <div style="background:#ede7d9;height:110px;padding:16px 18px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
-              <div style="position:absolute;inset:0;background:#960C0C;mix-blend-mode:multiply"></div>
-              <span style="position:relative;color:rgba(255,255,255,0.55);font-size:9px;font-family:'Poppins',sans-serif;letter-spacing:0.13em;text-transform:uppercase;display:block;margin-bottom:5px">Reinarød</span>
-              <span style="position:relative;color:#fff;font-size:13px;font-family:'Poppins',sans-serif;font-weight:300;letter-spacing:0.05em">#960c0c</span>
-            </div>
-
-            <!-- Svart / skjerm -->
-            <div style="background:#000;height:110px;padding:16px 18px;display:flex;flex-direction:column;justify-content:flex-end;position:relative">
-              <span style="color:rgba(255,255,255,0.45);font-size:9px;font-family:'Poppins',sans-serif;letter-spacing:0.13em;text-transform:uppercase;display:block;margin-bottom:5px">Svart</span>
-              <span style="color:#fff;font-size:13px;font-family:'Poppins',sans-serif;font-weight:300;letter-spacing:0.05em">#000000</span>
-            </div>
-
-            <!-- Svart / trykk -->
-            <div style="background:#ede7d9;height:110px;padding:16px 18px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden">
-              <div style="position:absolute;inset:0;background:#000;mix-blend-mode:multiply"></div>
-              <span style="position:relative;color:rgba(255,255,255,0.45);font-size:9px;font-family:'Poppins',sans-serif;letter-spacing:0.13em;text-transform:uppercase;display:block;margin-bottom:5px">Svart</span>
-              <span style="position:relative;color:#fff;font-size:13px;font-family:'Poppins',sans-serif;font-weight:300;letter-spacing:0.05em">#000000</span>
-            </div>
-
-          </div>
-          <div class="reina-farge-labels" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:3px;margin-top:8px">
-            <p style="font-size:10px;color:#aaa;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Skjerm</p>
-            <p style="font-size:10px;color:#aaa;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Trykk (naturpapir)</p>
-            <p style="font-size:10px;color:#aaa;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Skjerm</p>
-            <p style="font-size:10px;color:#aaa;margin:0;font-family:'Poppins',sans-serif;font-weight:300">Trykk (naturpapir)</p>
-          </div>
-        </div>
-
-        <!-- Materiale -->
-        <div style="max-width:90%;margin:120px auto 100px;padding-top:48px;border-top:1.5px solid rgba(150,12,12,0.18)">
-          <p style="font-size:11px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:#960C0C;margin:0 0 28px;font-family:'Poppins',sans-serif">05 — Materiale</p>
-          <table style="width:100%;border-collapse:collapse;font-family:'Poppins',sans-serif">
-            <thead>
-              <tr style="border-bottom:1.5px solid #1a1a1a">
-                <th style="text-align:left;font-size:14px;font-weight:500;padding:0 0 14px;color:#1a1a1a;width:50%">Del</th>
-                <th style="text-align:left;font-size:14px;font-weight:500;padding:0 0 14px;color:#1a1a1a">Materiale</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr style="border-bottom:1px solid #e8e8e8">
-                <td style="padding:20px 0;font-size:14px;color:#555;font-weight:300">Flaske</td>
-                <td style="padding:20px 0;font-size:14px;color:#555;font-weight:300">Glass</td>
-              </tr>
-              <tr style="border-bottom:1px solid #e8e8e8">
-                <td style="padding:20px 0;font-size:14px;color:#555;font-weight:300">Etikett</td>
-                <td style="padding:20px 0;font-size:14px;color:#1a1a1a;font-weight:500">Papir (ubestrøket / naturpapir)</td>
-              </tr>
-              <tr>
-                <td style="padding:20px 0;font-size:14px;color:#555;font-weight:300">Finish</td>
-                <td style="padding:20px 0;font-size:14px;color:#555;font-weight:300">Matt (ikke plastfilm)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-
-            <div class="project-meta" style="margin-top:80px">
-              <div class="pmeta">
-        <div class="pmeta__row">
-          <strong class="pmeta__label">År</strong>
-          <span class="pmeta__value">2026</span>
-        </div>
-        <div class="pmeta__row">
-          <strong class="pmeta__label">Fag</strong>
-          <span class="pmeta__value">IDG3010 – Emballasjedesign</span>
-        </div>
-        <div class="pmeta__row">
-          <strong class="pmeta__label">Fag ansvarlig</strong>
-          <span class="pmeta__value">Thomas Tengsedal Nordby</span>
-        </div>
-        <div class="pmeta__row">
-          <strong class="pmeta__label">Verktøy</strong>
-          <span class="pmeta__value">Illustrator, Pacdora, Photoshop, Procreate</span>
-        </div></div>
-              
-              <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px"><a class="btn-pdf btn-pdf--green" href="./assets/ferdigreina.pdf" target="_blank" rel="noopener">↗&#xFE0E; Nyskjerrig på mer om dette?</a><a class="btn-pdf btn-pdf--green" href="./assets/forsteutkastemballasje.pdf" target="_blank" rel="noopener">↗&#xFE0E; Se første utkast (prosess)</a></div>
-            </div>
-          </div>
-          <div class="project-layout__side">
-            <div class="project-layout__info" id="projectInfo">
-              <div class="project-layout__info-inner">
-                <div class="accordion" id="accordion">
-          <div class="accordion__item">
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              <span class="accordion__title">Typografi</span>
-              <span class="accordion__icon"></span>
-            </button>
-            <div class="accordion__panel">
-              <div class="accordion__panel-inner"><p class="bg__body">Typografisystemet kombinerer Above the Beyond Script og Questa. Script-skriften har et håndtegnet, kalligrafisk preg som gir identiteten et personlig og håndverksnært uttrykk, og fungerer som et karakterbærende element.</p><p class="bg__body">For å balansere dette brukes serifskriften Questa til informativ tekst, med et rolig uttrykk og god lesbarhet. Sammen skaper de en balanse mellom det uttrykksfulle og det funksjonelle, og understreker koblingen til håndverk og kvalitet.</p><img class="bg__img" src="./assets/reinatypografi.webp" alt="Typografi" loading="lazy" decoding="async"></div>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              <span class="accordion__title">Illustrasjon</span>
-              <span class="accordion__icon"></span>
-            </button>
-            <div class="accordion__panel">
-              <div class="accordion__panel-inner"><p class="bg__body"><strong>Illustrasjonen</strong> er inspirert av gårdens navn og beliggenhet – «reina» betyr skråning eller helling mot sola. Den fungerer som et gjenkjennbart signaturelement på tvers av all emballasje.</p><img class="bg__img" src="./assets/reinategning.webp" alt="Illustrasjon" loading="lazy" decoding="async"></div>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              <span class="accordion__title">Fargepalett</span>
-              <span class="accordion__icon"></span>
-            </button>
-            <div class="accordion__panel">
-              <div class="accordion__panel-inner"><p class="bg__body">Paletten er redusert til to farger for å skape et tydelig og enkelt uttrykk. Den dype rødfargen refererer til epler og knytter emballasjen direkte til frukten og råvarene fra gården.</p><div class="palette">
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:#960C0C"></div>
-                <div class="palette__info">
-                  <span class="palette__hex">#960C0C</span>
-                  <span class="palette__name">Reinarød</span>
-                  <span class="palette__val">RGB  150 / 12 / 12</span>
-                  <span class="palette__val">CMYK 0 / 92 / 92 / 41</span>
-                  <span class="palette__val">Pantone 7621 C</span>
-                </div>
-              </div>
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:#000000"></div>
-                <div class="palette__info">
-                  <span class="palette__hex">#000000</span>
-                  <span class="palette__name">Svart</span>
-                  <span class="palette__val">RGB  0 / 0 / 0</span>
-                  <span class="palette__val">CMYK 0 / 0 / 0 / 100</span>
-                  <span class="palette__val">Process Black C</span>
-                </div>
-              </div></div></div>
-            </div>
-          </div>
-          <div class="accordion__item">
-            <button class="accordion__trigger" type="button" aria-expanded="false">
-              <span class="accordion__title">Første utkast</span>
-              <span class="accordion__icon"></span>
-            </button>
-            <div class="accordion__panel">
-              <div class="accordion__panel-inner"><p class="bg__body">Hvorfor endret jeg uttrykket i 2026? I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer som en del av hoveduttrykket. Selv om dette formidlet historien om familiebruket og fellesskapet, ble systemet ganske komplekst og litt visuelt rotete når det skulle brukes på ulike produkter. Derfor utviklet jeg i 2026 en ny løsning som er mer minimalistisk og renere. Ved å forenkle uttrykket og redusere antall elementer blir designet mer oversiktlig, lettere å tilpasse til flere produkter og mer konsistent som visuell identitet.</p><a class="btn-pdf btn-pdf--green" href="./assets/forsteutkastemballasje.pdf" target="_blank" rel="noopener" style="margin-top:18px;display:inline-block">↗&#xFE0E; Se første utkast</a></div>
-            </div>
-          </div></div>
-                <a class="btn-pdf btn-pdf--green btn-pdf--mobile-only" href="./assets/ferdigreina.pdf" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗&#xFE0E; Nyskjerrig på mer om dette?</a>
-                
-                <div class="pdf-note" style="margin-top:16px">
-                  <strong class="pdf-note__heading">Hvorfor endret jeg uttrykket fra 2025?</strong>
-                  <p class="pdf-note__body">I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet.</p>
-                  <a class="btn-pdf btn-pdf--text" href="./assets/forsteutkastemballasje.pdf" target="_blank" rel="noopener">↗&#xFE0E; Første utkast</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    <article class="project">
         
+        <section class="proj-new-hero">
+          <div class="proj-new-hero__left">
+            <h1 class="proj-new-hero__title">REINA FRUKTGÅRD</h1>
+          </div>
+          <div class="proj-new-hero__right">
+            <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="eager" decoding="async">
+          </div>
+        </section>
         
+        <section class="proj-new-about">
+          <div class="proj-new-about__left">
+            <div class="proj-new-pmeta">
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">År</strong>
+                <span class="proj-new-pmeta__value">2026</span>
+              </div>
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">Fag</strong>
+                <span class="proj-new-pmeta__value">IDG3010 – Emballasjedesign</span>
+              </div>
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">Fag ansvarlig</strong>
+                <span class="proj-new-pmeta__value">Thomas Tengsedal Nordby</span>
+              </div>
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">Verktøy</strong>
+                <span class="proj-new-pmeta__value">Illustrator, Pacdora, Photoshop, Procreate</span>
+              </div></div>
+            <a class="btn-pdf btn-pdf--black" href="./project.html?id=reina-fruktgard&view=process">Se prosess</a>
+            
+              <a class="btn-pdf btn-pdf--green" href="./assets/ferdigreina.pdf" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">↗ Nyskjerrig på mer om dette?</a>
+          </div>
+          <div class="proj-new-about__right">
+            <p class="proj-new-desc">I dette prosjektet redesignet jeg emballasjen for Reina Fruktgård, en småskala økologisk produsent i Molde. Utgangspunktet var bedriftens eksisterende uttrykk, som ble videreutviklet for å tydeligere formidle opprinnelse, kvalitet og håndverksmessig produksjon. Målet var å skape et helhetlig uttrykk som kunne fungere som en visuell mal på tvers av produktene, samtidig som emballasjen fremhever det lokale og autentiske preget ved produsenten.</p>
+          </div>
+        </section>
         
-        
+        <div class="project__gallery">
+          <figure class="project__figure">
+          <img loading="lazy" decoding="async" src="./assets/grain2.webp" alt="Reina Fruktgård — galleri 1">
+          
+        </figure><figure class="project__figure">
+          <img loading="lazy" decoding="async" src="./assets/reinalys.webp" alt="Reina Fruktgård — galleri 2">
+          
+        </figure><figure class="project__figure">
+          <img loading="lazy" decoding="async" src="./assets/reinaside.webp" alt="Reina Fruktgård — galleri 3">
+          
+        </figure><figure class="project__figure">
+          <img loading="lazy" decoding="async" src="./assets/reinastor.webp" alt="Reina Fruktgård — galleri 4">
+          
+        </figure>
+        </div>
         
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
-                <a class="related__card" href="./stoppestedet.html">
-                  <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="lazy" decoding="async">
-                  <p class="related__title">Stoppestedet</p>
+                <a class="related__card" href="./tidsskrift.html">
+                  <img src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy">
+                  <p class="related__title">Tidsskrift</p>
+                </a>
+                <a class="related__card" href="./we-visuell-profil.html">
+                  <img src="./assets/laptop-mockup.webp" alt="Stiftelsen WE" loading="lazy">
+                  <p class="related__title">Stiftelsen WE</p>
                 </a>
                 <a class="related__card" href="./ansatts-portal.html">
-                  <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
+                  <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy">
                   <p class="related__title">Tjønnås og Norvald</p>
-                </a>
-                <a class="related__card" href="./flerkanalspublisering.html">
-                  <img src="./assets/poster-srh.webp" alt="Flerkanalspublisering" loading="lazy" decoding="async">
-                  <p class="related__title">Flerkanalspublisering</p>
                 </a></div></div>
       
     </article>
   </main>
 
-  <script src="./projects.js?v=6" defer></script>
   <script>
-    const $ = (s) => document.querySelector(s);
-    const id = "reina-fruktgard";
-
-    const project = (window.PROJECTS || []).find(p => p.id === id);
+    // Year
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Strip slideshow
-    (function() {
-      const track = document.getElementById("stripTrack");
-      if (!track) return;
-      const viewport = track.parentElement; // .strip-ss__viewport — this is the scroll container
-      const slides = [...track.querySelectorAll(".strip-ss__slide")];
-      const N = slides.length;
-      let current = 0;
-
-      // Dots
-      const dotsEl = document.getElementById("stripDots");
-      const dots = slides.map((_, i) => {
-        const btn = document.createElement("button");
-        btn.className = "strip-dot" + (i === 0 ? " is-active" : "");
-        btn.setAttribute("aria-label", "Bilde " + (i + 1));
-        btn.addEventListener("click", () => scrollTo(i));
-        dotsEl?.appendChild(btn);
-        return btn;
-      });
-      function updateDots() {
-        dots.forEach((d, i) => d.classList.toggle("is-active", i === current));
-      }
-
-      function scrollTo(n) {
-        current = (n + N) % N;
-        viewport.scrollTo({ left: slides[current].offsetLeft, behavior: "smooth" });
-        updateDots();
-      }
-      document.getElementById("stripNext")?.addEventListener("click", () => scrollTo(current + 1));
-      document.getElementById("stripPrev")?.addEventListener("click", () => scrollTo(current - 1));
-      let dragging = false, didDrag = false, startX = 0, scrollLeft = 0;
-      viewport.addEventListener("mousedown", e => { dragging = true; didDrag = false; startX = e.pageX - viewport.offsetLeft; scrollLeft = viewport.scrollLeft; viewport.style.cursor = "grabbing"; });
-      viewport.addEventListener("mouseleave", () => { dragging = false; viewport.style.cursor = ""; });
-      viewport.addEventListener("mouseup", () => { dragging = false; viewport.style.cursor = ""; });
-      viewport.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); if (Math.abs(e.pageX - viewport.offsetLeft - startX) > 4) didDrag = true; viewport.scrollLeft = scrollLeft - (e.pageX - viewport.offsetLeft - startX); });
-      viewport.addEventListener("click", e => { if (didDrag) { e.stopPropagation(); didDrag = false; } });
-      viewport.addEventListener("scroll", () => {
-        const w = slides[0]?.offsetWidth || 1;
-        current = Math.round(viewport.scrollLeft / w);
-        updateDots();
-      }, { passive: true });
-    })();
-
-    // Accordion
-    const accordion = document.getElementById("accordion");
-    const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
-    if (accordion) {
-      accordion.querySelectorAll(".accordion__item").forEach(item => {
-        item.querySelector(".accordion__trigger").addEventListener("click", () => {
-          if (project && project.noDrawer) {
-            const isOpen = item.classList.contains("accordion__item--open");
-            accordion.querySelectorAll(".accordion__item").forEach(i => {
-              i.classList.remove("accordion__item--open");
-              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
-            });
-            if (!isOpen) {
-              item.classList.add("accordion__item--open");
-              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
-            }
-          } else {
-            const idx = accordionItems.indexOf(item);
-            openDrawer();
-            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
-            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
-            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-          }
-        });
-      });
-    }
-
-    // Panel toggle
-    const projectLayout = document.querySelector(".project-layout");
-    const inlineAccordion = document.getElementById("inlineAccordion");
-    function syncToggles(isOpen) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => {
-        btn.setAttribute("aria-expanded", String(isOpen));
-        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
-      });
-    }
-    document.querySelectorAll(".panel-toggle").forEach(btn => {
+    // Expandable gallery
+    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
+      cover.addEventListener("click", () => cover.closest(".gallery-expandable").classList.toggle("is-open"));
+    });
+    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        let isOpen;
-        if (inlineAccordion) {
-          isOpen = inlineAccordion.hidden;
-          inlineAccordion.hidden = !isOpen;
-        } else {
-          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
-        }
-        syncToggles(isOpen);
+        const s = btn.closest(".gallery-expandable");
+        s.classList.remove("is-open");
+        s.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
@@ -536,36 +131,27 @@
     const lbImg = document.getElementById("lbImg");
     const lbPrev = document.getElementById("lbPrev");
     const lbNext = document.getElementById("lbNext");
-    const lbCaption = document.getElementById("lbCaption");
     let lbImages = [], lbIndex = 0;
-    function setCaption(caption) {
-      if (caption) { lbCaption.textContent = caption; lbCaption.style.display = ""; }
-      else { lbCaption.style.display = "none"; }
-    }
-    function openLightbox(src, alt, images, index) {
-      lbImg.src = src; lbImg.alt = alt || "";
-      lbImages = images || []; lbIndex = index ?? 0;
-      lbPrev.style.display = lbImages.length > 1 ? "" : "none";
-      lbNext.style.display = lbImages.length > 1 ? "" : "none";
-      setCaption(lbImages[lbIndex]?.caption || "");
-      lbOverlay.classList.add("lb-open");
-    }
     function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
     function showLbImage(idx) {
       lbIndex = (idx + lbImages.length) % lbImages.length;
       lbImg.src = lbImages[lbIndex].src; lbImg.alt = lbImages[lbIndex].alt || "";
-      setCaption(lbImages[lbIndex].caption || "");
     }
     lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
     lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
     document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
+      const imgEl = e.target.tagName === "IMG" && e.target.closest(".project__figure") ? e.target : null;
       if (imgEl) {
-        const section = imgEl.closest(".gallery-expandable");
-        if (section) {
-          const imgs = [...section.querySelectorAll(".project__figure img")];
-          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt, caption: i.dataset.caption || "" })), imgs.indexOf(imgEl));
-        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
+        const sec = imgEl.closest(".gallery-expandable");
+        if (sec) {
+          const imgs = [...sec.querySelectorAll(".project__figure img")];
+          lbImages = imgs.map(i => ({ src: i.src, alt: i.alt }));
+          lbIndex = imgs.indexOf(imgEl);
+        } else { lbImages = [{ src: imgEl.src, alt: imgEl.alt }]; lbIndex = 0; }
+        lbImg.src = imgEl.src; lbImg.alt = imgEl.alt || "";
+        lbPrev.style.display = lbImages.length > 1 ? "" : "none";
+        lbNext.style.display = lbImages.length > 1 ? "" : "none";
+        lbOverlay.classList.add("lb-open");
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
@@ -575,102 +161,21 @@
       if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
     });
 
-    // Process drawer
-    const processToggle = document.getElementById("processToggle");
-    const processDrawer = document.getElementById("processDrawer");
-    const processBackdrop = document.getElementById("processBackdrop");
-    const processDrawerClose = document.getElementById("processDrawerClose");
-    const processDrawerContent = document.getElementById("processDrawerContent");
-
-    const allSections = accordionItems.map(item => ({
-      title: item.querySelector(".accordion__title").textContent,
-      content: item.querySelector(".accordion__panel-inner").innerHTML
-    }));
-    if (project && project.processText) {
-      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
-    }
-    function showDrawerIndex() {
-      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
-      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const i = btn.dataset.index;
-          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
-          const isOpen = !panel.hidden;
-          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
-          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
-          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-        });
-      });
-    }
-    function openDrawer() {
-      if (allSections.length === 1) {
-        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
-      } else { showDrawerIndex(); }
-      processDrawer.classList.add("process-drawer--open");
-      processBackdrop.classList.add("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "false");
-    }
-    function closeDrawer() {
-      processDrawer.classList.remove("process-drawer--open");
-      processBackdrop.classList.remove("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "true");
-    }
-    processToggle?.addEventListener("click", openDrawer);
-    if (project && !project.noDrawer) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
-    }
-    processDrawerClose?.addEventListener("click", closeDrawer);
-    processBackdrop?.addEventListener("click", closeDrawer);
-    document.addEventListener("keydown", e => { if (e.key === "Escape") { closeDrawer(); originalModal?.classList.remove("original-modal--open"); rampModal?.classList.remove("original-modal--open"); } });
-
-    // Original modals
-    const originalBtn = document.getElementById("originalBtn");
-    const originalModal = document.getElementById("originalModal");
-    const originalModalClose = document.getElementById("originalModalClose");
-    originalBtn?.addEventListener("click", () => originalModal.classList.add("original-modal--open"));
-    originalModalClose?.addEventListener("click", () => originalModal.classList.remove("original-modal--open"));
-    originalModal?.addEventListener("click", e => { if (e.target === originalModal) originalModal.classList.remove("original-modal--open"); });
-
-    const rampBtn = document.getElementById("rampBtn");
-    const rampModal = document.getElementById("rampModal");
-    const rampModalClose = document.getElementById("rampModalClose");
-    rampBtn?.addEventListener("click", () => rampModal.classList.add("original-modal--open"));
-    rampModalClose?.addEventListener("click", () => rampModal.classList.remove("original-modal--open"));
-    rampModal?.addEventListener("click", e => { if (e.target === rampModal) rampModal.classList.remove("original-modal--open"); });
-
-    // Hero scroll-shrink
-    (function() {
-      const hero = document.getElementById('reinaHero');
-      if (!hero) return;
-      const startH = Math.min(window.innerHeight * 0.88, 900);
-      hero.style.height = startH + 'px';
-      window.addEventListener('scroll', function() {
-        const h = Math.max(0, startH - window.scrollY * 0.65);
-        hero.style.height = h + 'px';
-      }, { passive: true });
-    })();
-
     // Sidebar toggle
-    const toggle = $("#sidebarToggle");
-    toggle?.addEventListener("click", () => {
-      const sidebar = $("#sidebar");
+    document.querySelector(".sidebar__toggle")?.addEventListener("click", function() {
+      const sidebar = document.getElementById("sidebar");
       const isOpen = sidebar.classList.toggle("sidebar--open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
+      this.setAttribute("aria-expanded", String(isOpen));
     });
 
     // Scroll reveal
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.bg-section, .proj-section, .project-layout__intro, .project-layout__media > *').forEach((el, i) => {
-      el.classList.add('reveal');
-      el.style.transitionDelay = `${Math.min(i, 3) * 0.06}s`;
-      revealObserver.observe(el);
+    const rev = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-visible"); rev.unobserve(e.target); } });
+    }, { threshold: 0.06 });
+    document.querySelectorAll(".proj-new-about, .project__gallery, .related").forEach((el, i) => {
+      el.classList.add("reveal");
+      el.style.transitionDelay = `${Math.min(i, 2) * 0.07}s`;
+      rev.observe(el);
     });
     </script>
 </body>

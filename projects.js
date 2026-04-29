@@ -144,15 +144,18 @@ window.PROJECTS = [
   },
   {
     id: "bokomslag",
-    skipBuild: true,
     title: "Bokomslag",
     subtitle: "Redaksjonell design",
     year: "2026",
     tags: ["Redaksjonell"],
     cover: "./assets/blaa.webp",
-    coverVideo: "./assets/bokserie-film.mp4",
-    coverFilter: "brightness(1.2)",
     noSlideshow: true,
+    intro: "En redesign av tre grunnpilarer i norsk litteraturhistorie: Amtmandens Døtre av Camilla Collett, Forrådt av Amalie Skram og Jenny av Sigrid Undset. Ved å fjerne kommersiell støy får materialiteten og de symbolske fargeflatene rom til å kommunisere. Utgavene er utformet som tekstiltrukne hardcover-bind for å understreke bøkenes status som tidløse klassikere.",
+    projectMeta: [
+      { label: "År", value: "2026" },
+      { label: "Type", value: "Redaksjonell design" },
+      { label: "Teknikk", value: "Preging (deboss) og trykk på tekstil" }
+    ],
     gallery: [
       { src: "./assets/red-1.webp", wide: true },
       { src: "./assets/red-2.webp", wide: true },
@@ -168,7 +171,9 @@ window.PROJECTS = [
         { name: "Amtmandens Døtre",  hex: "#4ab3e1", color: "rgba(74, 179, 225, 0.25)",  description: "Opasitet 25%" }
       ]}
     ],
-    processImages: ["./assets/prosess1.webp", "./assets/prosess2.webp"]
+    background: [
+      { heading: "Prosess", images: ["./assets/prosess1.webp", "./assets/prosess2.webp"] }
+    ]
   },
   {
     id: "flerkanalspublisering",
@@ -240,7 +245,6 @@ window.PROJECTS = [
   },
   {
     id: "stoppestedet",
-    skipBuild: true,
     title: "Stoppestedet",
     subtitle: "Visuell identitet & nettside",
     year: "2026",
@@ -344,7 +348,6 @@ window.PROJECTS = [
       }
     },
     finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" },
-    skipBuild: true
   },
   {
     id: "emanuel-viegeland",
@@ -365,10 +368,15 @@ window.PROJECTS = [
     tags: [],
     cover: "./assets/3-april-brot.webp",
     noSlideshow: true,
-    skipBuild: true,
     personal: true,
+    intro: "Hele prosjektet startet med at jeg forelsket meg i fonten Lovechild – første gang jeg la merke til den på emballasjen til det svenske bakeriet Fria. Barndomssommere på hytten i Sverige og inspirasjonen fra SIA Glass ble startskuddet for et nytt kafékonsept.\n\nWeit & Weiter er tysk for «vidt og videre» – en metafor for reisen fra råvare til ferdig bakst. Logoen er en babymaskot som strekker seg etter hveteaks: en hyllest til håndverk, opprinnelse og generasjoners tradisjoner.",
+    projectMeta: [
+      { label: "År", value: "2026" },
+      { label: "Type", value: "Visuell identitet" }
+    ],
     gallery: [
       { src: "./assets/babilogo.webp", wide: true },
+      { src: "./assets/twomock.webp", wide: true },
       { src: "./assets/3-april.webp", wide: true },
       { src: "./assets/3-april-brot.webp", wide: true },
       { src: "./assets/baby-skilt.webp", wide: true },

@@ -5,40 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
   <title>Weit & Weiter — DesignbyJosefine</title>
-  <meta name="description" content="Weit & Weiter — DesignbyJosefine" />
+  <meta name="description" content="Hele prosjektet startet med at jeg forelsket meg i fonten Lovechild – første gang jeg la merke til den på emballasjen til det svenske bakeriet Fria. Barndomssom" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Inter:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=30" />
-  <style>
-    @media (max-width: 640px) {
-      .babilogo-img { width: 100% !important; max-width: none !important; filter: none !important; }
-      #babyAnim { filter: none !important; }
-      .ww-frames-row { margin-top: 3rem !important; }
-      .ww-panel__intro { display: none; }
-      .ww-panel__mobile-intro { display: block; }
-      .ww-title { margin-top: 2rem; }
-      .project__gallery,
-      .project__figure,
-      .project__figure--wide { margin-left: -20px; margin-right: -20px; }
-      .project__figure img, .project__figure video { width: 100%; display: block; }
-      .ww-video-fig { margin-bottom: -160px !important; }
-      .ww-video-fig img { margin-bottom: 0; }
-      .project__figure:has(.no-bleed) { margin-left: 0; margin-right: 0; }
-      .ww-typesample__display { font-size: clamp(100px, 28vw, 160px); }
-      .ww-typesample__alphabet { font-size: clamp(18px, 5vw, 28px); }
-    }
-  </style>
-  <link rel="icon" href="assets/hvitlogo.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=31" />
+  <link rel="icon" href="assets/hvitlogo.webp">
 </head>
 
 <body>
-  <a class="skip-link" href="#content">Hopp til innhold</a>
-  <div class="process-drawer" id="processDrawer" aria-hidden="true">
-    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
-    <div class="process-drawer__inner" id="processDrawerContent"></div>
-  </div>
-  <div class="process-drawer__backdrop" id="processBackdrop"></div>
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
@@ -57,144 +32,71 @@
       <footer class="meta">
         <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
       </footer>
-      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
+      <button class="sidebar__toggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
     </div>
   </header>
 
   <main id="content" class="content">
-    <article class="project" id="project">
-        <div class="project-layout">
-          <div class="project-layout__media">
-            <div class="ww-header">
-              <button class="ww-title" id="wwToggle" aria-expanded="false" aria-controls="wwPanel">Weit &amp; Weiter <span class="ww-icon">+</span></button>
-              <div class="ww-panel__intro">
-                <h3>Inspirasjonen og historien bak</h3>
-                <p>Hele prosjektet startet egentlig med at jeg forelsket meg pladask i fonten Lovechild da jeg først la merke til den på emballasjen til det svenske bakeriet Fria. Jeg tilbrakte mange av mine barndomssommere på familiens hytte i Sverige, og dette utløste en sterk nostalgi. Det var også på disse turene jeg først ble betatt av SIA Glass og deres ikoniske figur, "Den svenska gräddglassens skyddsängel". Jeg ønsket å fange akkurat den nostalgien – den varmen, omsorgen og den trygge følelsen fra barndommens somre – og oversette det til et moderne kafékonsept.</p>
+    <article class="project">
+        
+        <section class="proj-new-hero">
+          <div class="proj-new-hero__left">
+            <h1 class="proj-new-hero__title">WEIT & WEITER</h1>
+          </div>
+          <div class="proj-new-hero__right">
+            <img src="./assets/3-april-brot.webp" alt="Weit & Weiter" loading="eager" decoding="async">
+          </div>
+        </section>
+        
+        <section class="proj-new-about">
+          <div class="proj-new-about__left">
+            <div class="proj-new-pmeta">
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">År</strong>
+                <span class="proj-new-pmeta__value">2026</span>
               </div>
-              <div class="ww-panel" id="wwPanel" aria-hidden="true">
-                <div class="ww-panel__inner">
-                  <div class="ww-panel__mobile-intro">
-                    <h3>Inspirasjonen og historien bak</h3>
-                    <p>Hele prosjektet startet egentlig med at jeg forelsket meg pladask i fonten Lovechild da jeg først la merke til den på emballasjen til det svenske bakeriet Fria. Jeg tilbrakte mange av mine barndomssommere på familiens hytte i Sverige, og dette utløste en sterk nostalgi. Det var også på disse turene jeg først ble betatt av SIA Glass og deres ikoniske figur, "Den svenska gräddglassens skyddsängel". Jeg ønsket å fange akkurat den nostalgien – den varmen, omsorgen og den trygge følelsen fra barndommens somre – og oversette det til et moderne kafékonsept.</p>
-                  </div>
-                  <h3>Konsept og identitet</h3>
-                  <p>Ut av disse minnene oppstod kafékonseptet Weit &amp; Weiter. Det tyske navnet tilfører en følelse av europeisk tradisjon, og betyr "vidt og videre" – en metafor for reisen fra råvare til ferdig bakst, og dedikasjonen til å finne de virkelig gode råvarene, uansett om de er hentet lokalt eller langveis fra.</p>
-                  <h3>Det visuelle uttrykket</h3>
-                  <p>Som en hyllest til SIA-engelen skapte jeg en babymaskot. At babyen strekker seg etter hveteaks, er et visuelt nikk til "vidt og videre". Babyen er livets start, og hveten bakstens opprinnelse. Sammen symboliserer de reisen fra et lite frø til ferdig produkt, og et tradisjonsrikt håndverk som strekker seg over generasjoner.</p>
-                  <p>(For å gi logoen et unikt særpreg, har jeg spesialtegnet &amp;-tegnet i stedet for å bruke fontens eget.)</p>
-                </div>
-              </div>
-            </div>
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">Type</strong>
+                <span class="proj-new-pmeta__value">Visuell identitet</span>
+              </div></div>
             
             
           </div>
-        </div>
+          <div class="proj-new-about__right">
+            <p class="proj-new-desc">Hele prosjektet startet med at jeg forelsket meg i fonten Lovechild – første gang jeg la merke til den på emballasjen til det svenske bakeriet Fria. Barndomssommere på hytten i Sverige og inspirasjonen fra SIA Glass ble startskuddet for et nytt kafékonsept.</p><p class="proj-new-desc">Weit & Weiter er tysk for «vidt og videre» – en metafor for reisen fra råvare til ferdig bakst. Logoen er en babymaskot som strekker seg etter hveteaks: en hyllest til håndverk, opprinnelse og generasjoners tradisjoner.</p>
+          </div>
+        </section>
         
         <div class="project__gallery">
           <figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/babilogo.webp" alt="Weit & Weiter — galleri 1" class="babilogo-img" style="filter:url(#babyWobble);">
-
+          <img loading="lazy" decoding="async" src="./assets/babilogo.webp" alt="Weit & Weiter — galleri 1">
+          
         </figure><figure class="project__figure project__figure--wide">
           <img loading="lazy" decoding="async" src="./assets/twomock.webp" alt="Weit & Weiter — galleri 2">
-
+          
         </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/3-april.webp" alt="Weit & Weiter — galleri 3" class="no-bleed">
-
+          <img loading="lazy" decoding="async" src="./assets/3-april.webp" alt="Weit & Weiter — galleri 3">
+          
         </figure><figure class="project__figure project__figure--wide">
           <img loading="lazy" decoding="async" src="./assets/3-april-brot.webp" alt="Weit & Weiter — galleri 4">
-
+          
         </figure><figure class="project__figure project__figure--wide">
           <img loading="lazy" decoding="async" src="./assets/baby-skilt.webp" alt="Weit & Weiter — galleri 5">
-
+          
+        </figure><figure class="project__figure project__figure--wide">
+          <img loading="lazy" decoding="async" src="./assets/baby-tote.webp" alt="Weit & Weiter — galleri 6">
+          
         </figure>
         </div>
-
-        <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden;">
-          <defs>
-            <filter id="babyWobble" x="-5%" y="-5%" width="110%" height="110%">
-              <feTurbulence id="baby-turb" type="turbulence" baseFrequency="0.079" numOctaves="2" seed="1" result="noise"/>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
-            </filter>
-          </defs>
-        </svg>
-        <p style="text-align:center;font-family:'Libre Baskerville',serif;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.75rem;">Ekstra illustrasjoner</p>
-        <p style="text-align:left;font-family:'Libre Baskerville',serif;font-size:clamp(13px,1.3vw,15px);line-height:1.75;max-width:600px;margin:0 auto 5rem;">Hovedillustrasjonen med hveten bærer selve historien til merkevaren. At jeg i tillegg har valgt å bruke babyhodet som et eget, frittstående ikon, gir den visuelle profilen større fleksibilitet. Det fungerer som en forenklet signatur for merkevaren der hele illustrasjonen ville tatt for mye plass eller mistet lesbarhet, for eksempel som et stempel eller et klistremerke.</p>
-        <figure class="project__figure project__figure--wide ww-frames-row" style="display:flex;gap:0;justify-content:center;align-items:flex-end;margin-bottom:0;">
-          <img src="./assets/01-3x.webp" alt="Baby frame 1" style="width:25%;object-fit:contain;">
-          <img src="./assets/02-3x.webp" alt="Baby frame 2" style="width:25%;object-fit:contain;">
-          <img src="./assets/04-3x.webp" alt="Baby frame 3" style="width:25%;object-fit:contain;">
-          <img src="./assets/03-3x.webp" alt="Baby frame 4" style="width:25%;object-fit:contain;">
-        </figure>
-        <figure class="project__figure project__figure--wide ww-video-fig">
-          <img id="babyAnim" src="./assets/01-3x.webp" alt="Weit & Weiter baby animasjon" style="width:42%;display:block;margin:0 auto;filter:url(#babyWobble);">
-        </figure>
-
-        <div class="ww-identity">
-          <div class="ww-typesample">
-            <p class="ww-typesample__label">Lovechild Regular</p>
-            <div class="ww-typesample__display">Aa</div>
-            <div class="ww-typesample__alphabet">ABCDEFHIJKLMN<br>OPQRSTUVWXYZÆØÅ</div>
-            <div class="ww-typesample__alphabet ww-typesample__alphabet--lower">abcdefghijklnop<br>qrstuvwxyzæøå</div>
-          </div>
-          <div class="ww-palette">
-            <div class="ww-palette__col">
-              <p class="ww-palette__label">Primær farger</p>
-              <div class="ww-palette__swatch" style="background:#451122">
-                <span class="ww-palette__hex" style="color:#d8ceb7">#451122</span>
-              </div>
-              <div class="ww-palette__swatch" style="background:#d8ceb7">
-                <span class="ww-palette__hex" style="color:#451122">#d8ceb7</span>
-              </div>
-            </div>
-            <div class="ww-palette__col">
-              <p class="ww-palette__label">Sekundær farger</p>
-              <div class="ww-palette__swatch" style="background:#19181c">
-                <span class="ww-palette__hex" style="color:#d8ceb7">#19181c</span>
-              </div>
-              <div class="ww-palette__swatch ww-palette__swatch--border" style="background:#ebe6da">
-                <span class="ww-palette__hex" style="color:#451122">#ebe6da</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <script>
-          (function () {
-            var frames = [
-              { src: './assets/01-3x.webp', hold: 750 },
-              { src: './assets/02-3x.webp', hold: 420 },
-              { src: './assets/04-3x.webp', hold: 480 },
-              { src: './assets/03-3x.webp', hold: 620 },
-            ];
-            var img = document.getElementById('babyAnim');
-            var offsets = ['0px', '-8px', '-14px', '-5px'];
-            var i = 0;
-            function next() {
-              i = (i + 1) % frames.length;
-              img.src = frames[i].src;
-              img.style.transform = 'translateY(' + offsets[i] + ')';
-              setTimeout(next, frames[i].hold);
-            }
-            setTimeout(next, frames[0].hold);
-
-            var turb = document.getElementById('baby-turb');
-            var seed = 1;
-            setInterval(function () {
-              seed = (seed % 30) + 1;
-              turb.setAttribute('seed', seed);
-            }, 320);
-          })();
-        </script>
-
-
-<div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
-                <a class="related__card" href="./reina-fruktgard.html">
-                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
-                  <p class="related__title">Reina Fruktgård</p>
+        
+        <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
+                <a class="related__card" href="./tidsskrift.html">
+                  <img src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy">
+                  <p class="related__title">Tidsskrift</p>
                 </a>
-                <a class="related__card" href="./stoppestedet.html">
-                  <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="lazy">
-                  <p class="related__title">Stoppestedet</p>
+                <a class="related__card" href="./we-visuell-profil.html">
+                  <img src="./assets/laptop-mockup.webp" alt="Stiftelsen WE" loading="lazy">
+                  <p class="related__title">Stiftelsen WE</p>
                 </a>
                 <a class="related__card" href="./ansatts-portal.html">
                   <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy">
@@ -204,121 +106,20 @@
     </article>
   </main>
 
-  <script src="./projects.js?v=6" defer></script>
   <script>
-    const $ = (s) => document.querySelector(s);
-    const id = "lovechild";
-
-    const project = (window.PROJECTS || []).find(p => p.id === id);
+    // Year
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Slideshow
-    const track = $("#slideshowTrack");
-    if (track) {
-      const slides = [...track.querySelectorAll(".slideshow__slide")];
-      const counter = $("#slideIndex");
-      let current = 0;
-      let timer;
-      const slideshow = $("#slideshow");
-      const captionBar = $("#slideshowCaption");
-      let paused = false;
-      function goTo(n) {
-        current = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = current + 1;
-        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
-      }
-      function startAuto() {
-        clearInterval(timer);
-        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
-      }
-      track.addEventListener("click", () => {
-        paused = !paused;
-        slideshow.classList.toggle("slideshow--paused", paused);
-        if (paused) clearInterval(timer);
-        else startAuto();
-      });
-      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
-      let touchStartX = 0;
-      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-      }, { passive: true });
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
-        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
-      });
-      startAuto();
-    }
-
-    // Accordion
-    const accordion = document.getElementById("accordion");
-    const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
-    if (accordion) {
-      accordion.querySelectorAll(".accordion__item").forEach(item => {
-        item.querySelector(".accordion__trigger").addEventListener("click", () => {
-          if (project && project.noDrawer) {
-            const isOpen = item.classList.contains("accordion__item--open");
-            accordion.querySelectorAll(".accordion__item").forEach(i => {
-              i.classList.remove("accordion__item--open");
-              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
-            });
-            if (!isOpen) {
-              item.classList.add("accordion__item--open");
-              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
-            }
-          } else {
-            const idx = accordionItems.indexOf(item);
-            openDrawer();
-            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
-            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
-            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-          }
-        });
-      });
-    }
-
-    // Panel toggle
-    const projectLayout = document.querySelector(".project-layout");
-    const inlineAccordion = document.getElementById("inlineAccordion");
-    function syncToggles(isOpen) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => {
-        btn.setAttribute("aria-expanded", String(isOpen));
-        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
-      });
-    }
-    document.querySelectorAll(".panel-toggle").forEach(btn => {
-      btn.addEventListener("click", () => {
-        let isOpen;
-        if (inlineAccordion) {
-          isOpen = inlineAccordion.hidden;
-          inlineAccordion.hidden = !isOpen;
-        } else {
-          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
-        }
-        syncToggles(isOpen);
-      });
-    });
-
     // Expandable gallery
     document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
-      cover.addEventListener("click", () => {
-        const section = cover.closest(".gallery-expandable");
-        const wasOpen = section.classList.contains("is-open");
-        section.classList.toggle("is-open");
-        if (!wasOpen && window.innerWidth <= 780) {
-          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-        }
-      });
+      cover.addEventListener("click", () => cover.closest(".gallery-expandable").classList.toggle("is-open"));
     });
     document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        const section = btn.closest(".gallery-expandable");
-        section.classList.remove("is-open");
-        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+        const s = btn.closest(".gallery-expandable");
+        s.classList.remove("is-open");
+        s.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
@@ -328,13 +129,6 @@
     const lbPrev = document.getElementById("lbPrev");
     const lbNext = document.getElementById("lbNext");
     let lbImages = [], lbIndex = 0;
-    function openLightbox(src, alt, images, index) {
-      lbImg.src = src; lbImg.alt = alt || "";
-      lbImages = images || []; lbIndex = index ?? 0;
-      lbPrev.style.display = lbImages.length > 1 ? "" : "none";
-      lbNext.style.display = lbImages.length > 1 ? "" : "none";
-      lbOverlay.classList.add("lb-open");
-    }
     function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
     function showLbImage(idx) {
       lbIndex = (idx + lbImages.length) % lbImages.length;
@@ -343,13 +137,18 @@
     lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
     lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
     document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
+      const imgEl = e.target.tagName === "IMG" && e.target.closest(".project__figure") ? e.target : null;
       if (imgEl) {
-        const section = imgEl.closest(".gallery-expandable");
-        if (section) {
-          const imgs = [...section.querySelectorAll(".project__figure img")];
-          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
-        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
+        const sec = imgEl.closest(".gallery-expandable");
+        if (sec) {
+          const imgs = [...sec.querySelectorAll(".project__figure img")];
+          lbImages = imgs.map(i => ({ src: i.src, alt: i.alt }));
+          lbIndex = imgs.indexOf(imgEl);
+        } else { lbImages = [{ src: imgEl.src, alt: imgEl.alt }]; lbIndex = 0; }
+        lbImg.src = imgEl.src; lbImg.alt = imgEl.alt || "";
+        lbPrev.style.display = lbImages.length > 1 ? "" : "none";
+        lbNext.style.display = lbImages.length > 1 ? "" : "none";
+        lbOverlay.classList.add("lb-open");
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
@@ -359,70 +158,21 @@
       if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
     });
 
-    // Process drawer
-    const processToggle = document.getElementById("processToggle");
-    const processDrawer = document.getElementById("processDrawer");
-    const processBackdrop = document.getElementById("processBackdrop");
-    const processDrawerClose = document.getElementById("processDrawerClose");
-    const processDrawerContent = document.getElementById("processDrawerContent");
-
-    const allSections = accordionItems.map(item => ({
-      title: item.querySelector(".accordion__title").textContent,
-      content: item.querySelector(".accordion__panel-inner").innerHTML
-    }));
-    if (project && project.processText) {
-      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
-    }
-    function showDrawerIndex() {
-      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
-      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const i = btn.dataset.index;
-          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
-          const isOpen = !panel.hidden;
-          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
-          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
-          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-        });
-      });
-    }
-    function openDrawer() {
-      if (allSections.length === 1) {
-        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
-      } else { showDrawerIndex(); }
-      processDrawer.classList.add("process-drawer--open");
-      processBackdrop.classList.add("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "false");
-    }
-    function closeDrawer() {
-      processDrawer.classList.remove("process-drawer--open");
-      processBackdrop.classList.remove("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "true");
-    }
-    processToggle?.addEventListener("click", openDrawer);
-    if (project && !project.noDrawer) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
-    }
-    processDrawerClose?.addEventListener("click", closeDrawer);
-    processBackdrop?.addEventListener("click", closeDrawer);
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
-
-    // Weit & Weiter slide-out panel
-    const wwToggle = document.getElementById("wwToggle");
-    const wwPanel = document.getElementById("wwPanel");
-    wwToggle?.addEventListener("click", () => {
-      const isOpen = wwPanel.classList.toggle("is-open");
-      wwPanel.setAttribute("aria-hidden", String(!isOpen));
-      wwToggle.setAttribute("aria-expanded", String(isOpen));
-      wwToggle.querySelector(".ww-icon").textContent = isOpen ? "−" : "+";
+    // Sidebar toggle
+    document.querySelector(".sidebar__toggle")?.addEventListener("click", function() {
+      const sidebar = document.getElementById("sidebar");
+      const isOpen = sidebar.classList.toggle("sidebar--open");
+      this.setAttribute("aria-expanded", String(isOpen));
     });
 
-    // Sidebar toggle
-    const toggle = $("#sidebarToggle");
-    toggle?.addEventListener("click", () => {
-      const sidebar = $("#sidebar");
-      const isOpen = sidebar.classList.toggle("sidebar--open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
+    // Scroll reveal
+    const rev = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-visible"); rev.unobserve(e.target); } });
+    }, { threshold: 0.06 });
+    document.querySelectorAll(".proj-new-about, .project__gallery, .related").forEach((el, i) => {
+      el.classList.add("reveal");
+      el.style.transitionDelay = `${Math.min(i, 2) * 0.07}s`;
+      rev.observe(el);
     });
     </script>
 </body>

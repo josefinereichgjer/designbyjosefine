@@ -5,540 +5,25 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
   <title>Stoppestedet — DesignbyJosefine</title>
+  <meta name="description" content="Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Poppins:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=30" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=31" />
   <link rel="icon" href="assets/hvitlogo.webp">
-  <style>
-
-    html, body { overflow-x: hidden; scroll-behavior: smooth; }
-
-    /* ─── Page shell ──────────────────────────────────────────── */
-    .ps, .ps * { font-family: 'Poppins', sans-serif; }
-    .ps .ps-label,
-    .ps .ps-figcap,
-    .ps .ps-intro__kicker,
-    .ps .ps-expand__btn,
-    .ps .ps-pdflink,
-    .ps .ps-compare th,
-    .ps .ps-compare td:first-child,
-    .ps .ps-tech__label,
-    .ps .ps-color__n,
-    .ps .ps-color__h,
-    .ps .ps-v1palette + p,
-    .ps .ps-typespec__fl { font-family: 'Poppins', sans-serif; }
-    .ps { max-width: 100%; padding-bottom: 100px; }
-    .ps-concept, .ps-process, footer { max-width: 1100px; margin-left: auto; margin-right: auto; }
-
-    /* ─── 1. RESULT ───────────────────────────────────────────── */
-    .ps-result {
-      margin-top: 0;
-      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
-      position: relative;
-    }
-    .ps-result__grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      grid-template-rows: auto auto;
-      gap: 2px;
-    }
-    .ps-result__grid img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
-    }
-    .ps-result__main {
-      grid-row: 1 / 3;
-      aspect-ratio: 3/4;
-    }
-    .ps-result__side {
-      aspect-ratio: 3/2;
-    }
-    .ps-result__cta {
-      position: absolute;
-      bottom: 20px; right: 20px;
-      display: inline-flex; align-items: center; gap: 8px;
-      background: #E84E1B; color: #fff;
-      font-family: 'Poppins', sans-serif;
-      font-size: 10px; font-weight: 700;
-      letter-spacing: 2px; text-transform: uppercase;
-      padding: 12px 20px; text-decoration: none;
-      transition: opacity .15s;
-    }
-    .ps-result__cta:hover { opacity: .85; }
-    @media(max-width:560px) {
-      .ps-result__grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-      .ps-result__main { grid-row: auto; aspect-ratio: 4/3; }
-    }
-
-    /* ─── 2. TITLE + INTRO ────────────────────────────────────── */
-    .ps-intro {
-      margin-top: 48px;
-      padding-bottom: 40px;
-      border-bottom: 1px solid #e0e0e0;
-      display: grid;
-      grid-template-columns: minmax(0, 380px) 1fr;
-      gap: 48px;
-      align-items: center;
-      /* Bleed to right edge of viewport */
-      width: calc(100vw - var(--sidebarW) - clamp(20px, 3vw, 34px));
-      max-width: none;
-      /* Push text more towards center */
-      padding-left: clamp(0px, 4vw, 60px);
-    }
-    .ps-intro__img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    @media(max-width:560px) {
-      .ps-intro { grid-template-columns: 1fr; width: 100%; padding-left: 0; }
-    }
-    .ps-intro__left { min-width: 0; }
-    .ps-intro__kicker {
-      font-family: 'Poppins', sans-serif;
-      font-size: 9px; letter-spacing: 4px;
-      text-transform: uppercase; color: #aaa;
-      display: block; margin-bottom: 10px;
-    }
-    .ps-intro__title {
-      font-size: clamp(30px, 5vw, 52px);
-      font-weight: 500; letter-spacing: -.025em;
-      line-height: 1.0; margin: 0 0 16px;
-    }
-    .ps-intro__desc {
-      font-size: 16px; line-height: 1.8; color: #444;
-      max-width: 520px; margin: 0;
-    }
-    /* ─── 3. CONCEPT ──────────────────────────────────────────── */
-    .ps-concept {
-      margin-top: 120px;
-      padding-bottom: 120px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .ps-label {
-      font-family: 'Poppins', sans-serif;
-      font-size: 30px; letter-spacing: 0;
-      text-transform: none; color: #111;
-      display: block; margin-bottom: 16px;
-      font-weight: 400;
-    }
-    .ps-h {
-      font-size: clamp(20px, 2.5vw, 26px); font-weight: 500;
-      letter-spacing: -.01em; margin: 0 0 14px; line-height: 1.2;
-    }
-    .ps-p {
-      font-size: 17px; line-height: 1.85; color: #444;
-      max-width: 900px; margin: 0 0 12px;
-    }
-    .ps-p:last-child { margin-bottom: 0; }
-    .ps-pull {
-      margin: 56px 0; padding: 0 0 0 16px;
-      border-left: 2px solid #111;
-    }
-    .ps-pull p {
-      font-size: 15px; line-height: 1.65;
-      color: #111; font-style: italic; margin: 0;
-    }
-
-    /* Concept identity grid */
-    .ps-identity {
-      margin-top: 32px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-    }
-    @media(max-width:480px) { .ps-identity { grid-template-columns: 1fr; } }
-
-    /* Color strip */
-    .ps-colors {
-      display: flex; height: 64px; gap: 0;
-    }
-    .ps-color {
-      flex: 1; display: flex; flex-direction: column;
-      justify-content: flex-end; padding: 6px 8px;
-    }
-    .ps-color__n { font-family: 'Poppins', sans-serif; font-size: 7px; letter-spacing: 1px; text-transform: uppercase; opacity: .65; }
-    .ps-color__h { font-family: 'Poppins', sans-serif; font-size: 8px; margin-top: 1px; }
-
-    /* Logo box */
-    .ps-logobox {
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px 20px; background: #0a0a0a;
-    }
-    .ps-logobox img { max-width: 160px; width: 100%; height: auto; display: block; }
-
-    /* Type specimen — compact */
-    .ps-typespec {
-      padding: 20px; border: 1px solid #e8e8e8;
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .ps-typespec__row { display: block; }
-    .ps-typespec__fl {
-      font-family: 'Poppins', sans-serif; font-size: 8px;
-      letter-spacing: 2px; text-transform: uppercase; color: #aaa; margin-bottom: 4px;
-    }
-
-    /* ─── 4. PROCESS ──────────────────────────────────────────── */
-    .ps-process {
-      margin-top: 52px;
-      padding-bottom: 52px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .ps-process__imgs {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2px; margin-top: 20px;
-    }
-    .ps-process__imgs img {
-      width: 100%; height: auto; display: block;
-    }
-    @media(max-width:480px) { .ps-process__imgs { grid-template-columns: 1fr 1fr; } }
-    .ps-figcap {
-      font-family: 'Poppins', sans-serif;
-      font-size: 9px; letter-spacing: 2px;
-      text-transform: uppercase; color: #aaa;
-      margin-top: 8px;
-    }
-
-    /* Expand toggle */
-    .ps-expand__body { display: none; }
-    .ps-expand__body.is-open { display: block; }
-    .ps-expand__btn {
-      background: none; border: none; padding: 0;
-      font-family: 'Poppins', sans-serif;
-      font-size: 9px; letter-spacing: 2px;
-      text-transform: uppercase; color: #aaa;
-      cursor: pointer; margin-top: 12px;
-      transition: color .12s; display: block;
-    }
-    .ps-expand__btn:hover { color: #111; }
-
-    /* Comparison table */
-    .ps-compare {
-      width: 100%; border-collapse: collapse;
-      font-size: 13px; margin-top: 20px;
-    }
-    .ps-compare th {
-      text-align: left; font-family: 'Poppins', sans-serif;
-      font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #888;
-      padding: 10px 12px 10px 0; border-bottom: 1px solid #e0e0e0;
-    }
-    .ps-compare th:not(:first-child) { padding-left: 14px; }
-    .ps-compare td {
-      padding: 10px 12px 10px 0; border-bottom: 1px solid #f0f0f0;
-      vertical-align: top; line-height: 1.55; color: #333; font-size: 13px;
-    }
-    .ps-compare td:not(:first-child) { padding-left: 14px; }
-    .ps-compare td:first-child {
-      font-family: 'Poppins', sans-serif; font-size: 9px;
-      letter-spacing: 1px; color: #888; white-space: nowrap;
-    }
-    .ps-compare tr:last-child td { border-bottom: none; }
-    .ps-dot { display: inline-block; width: 8px; height: 8px; vertical-align: middle; margin-right: 3px; }
-
-    /* V1 small palette strip */
-    .ps-v1palette { display: flex; height: 20px; gap: 0; margin-top: 16px; }
-    .ps-v1palette div { flex: 1; }
-
-    /* ─── 5. TECH INFO ────────────────────────────────────────── */
-    .ps-tech {
-      margin-top: 52px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px 28px;
-    }
-    @media(max-width:480px) { .ps-tech { grid-template-columns: 1fr 1fr; } }
-    .ps-tech__item { display: block; }
-    .ps-tech__label {
-      font-family: 'Poppins', sans-serif;
-      font-size: 8px; letter-spacing: 3px;
-      text-transform: uppercase; color: #bbb;
-      display: block; margin-bottom: 5px;
-    }
-    .ps-tech__val {
-      font-size: 12px; color: #333; line-height: 1.6;
-    }
-
-    /* PDF link */
-    .ps-pdflink {
-      display: inline-flex; align-items: center; gap: 7px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 9px; letter-spacing: 2px;
-      text-transform: uppercase; color: #111;
-      border: 1px solid #111; padding: 9px 16px;
-      text-decoration: none; margin-top: 40px;
-      transition: background .12s, color .12s;
-    }
-    .ps-pdflink:hover { background: #111; color: #fff; opacity: 1; }
-
-    /* ─── LOGO DO'S & DON'TS ────────────────────────────── */
-    .ps-logo-dd { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
-    @media(max-width:560px) { .ps-logo-dd { grid-template-columns: 1fr; } }
-    .ps-logo-dd__col-label {
-      font-family: 'Poppins', sans-serif; font-size: 13px; font-weight: 600;
-      margin-bottom: 10px; display: block;
-    }
-    .ps-logo-dd__col-label--do { color: #2a7a2a; }
-    .ps-logo-dd__col-label--dont { color: #c0392b; }
-    .ps-logo-dd__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-    .ps-logo-dd__grid--two { grid-template-columns: 1fr 1fr; }
-    .ps-logo-dd__img { width: 100%; height: auto; display: block; border: 1px solid #ddd; }
-
-    /* ─── DESIGN MANUAL ─────────────────────────────────── */
-    .ps-dm { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
-    .ps-dm__row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    @media(max-width:560px) { .ps-dm__row { grid-template-columns: 1fr; } }
-    .ps-dm__block { padding: 22px 24px; background: #f8f8f8; }
-    .ps-dm__block--dark { background: #0a0a0a; }
-
-    /* Colour swatches */
-    .ps-dm__swatches { display: flex; height: 88px; gap: 0; margin-top: 14px; }
-    .ps-dm__swatch { flex: 1; padding: 7px 9px; display: flex; flex-direction: column; justify-content: flex-end; gap: 1px; }
-    .ps-dm__swatch span { font-family: 'Poppins', sans-serif; }
-    .ps-dm__swatch-name { font-size: 7px; letter-spacing: 1.5px; text-transform: uppercase; opacity: .65; }
-    .ps-dm__swatch-hex { font-size: 8px; }
-    .ps-dm__swatch-use { font-family: 'Poppins', sans-serif !important; font-size: 9px; opacity: .6; margin-top: 3px; line-height: 1.3; }
-    .ps-dm .ps-label { font-size: 20px; }
-
-    /* Type scale */
-    .ps-dm__type { margin-top: 14px; display: flex; flex-direction: column; }
-    .ps-dm__type-row {
-      display: grid; grid-template-columns: 150px 1fr;
-      gap: 16px; align-items: center;
-      padding: 18px 0; border-bottom: 1px solid #efefef;
-    }
-    .ps-dm__type-row:last-child { border-bottom: none; }
-    .ps-dm__type-label { font-family: 'Poppins', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #999; display: block; margin-bottom: 4px; }
-    .ps-dm__type-where { font-family: 'Poppins', sans-serif; font-size: 10px; letter-spacing: 0.5px; color: #555; display: block; }
-
-    /* Buttons */
-    .ps-dm__btns { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-top: 14px; }
-    .ps-dm__btn { border: none; cursor: default; font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 11px 24px; letter-spacing: .01em; }
-    .ps-dm__btn--orange { background: #E84E1B; color: #fff; }
-    .ps-dm__btn--black  { background: #0a0a0a; color: #fff; }
-    .ps-dm__btn--filter { background: none; color: #0a0a0a; border: 2.5px solid #9B8CE8; font-size: 13px; }
-
-    /* Badges */
-    .ps-dm__badges { display: flex; gap: 10px; align-items: center; margin-top: 14px; flex-wrap: wrap; }
-    .ps-dm__badge { font-family: 'IBM Plex Sans', sans-serif; font-size: 12px; font-weight: 600; padding: 4px 12px; display: inline-block; }
-    .ps-dm__badge--orange { background: #E84E1B; color: #fff; }
-    .ps-dm__badge--lime   { background: #C8E600; color: #0a0a0a; }
-    .ps-dm__badge--purple { background: #9B8CE8; color: #fff; }
-    .ps-dm__badge--muted  { background: none; color: #aaa; font-size: 13px; }
-
-    /* ─── NETTSIDEANALYSE ────────────────────────────────── */
-    .ps-siteana {
-      margin-top: 52px;
-      padding-bottom: 52px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-    .ps-siteana__img {
-      width: 100%; height: auto; display: block;
-      margin-bottom: 48px;
-    }
-    .ps-siteana__entries {
-      display: flex; flex-direction: column; gap: 44px;
-    }
-    .ps-siteana__name {
-      font-family: 'Poppins', sans-serif;
-      font-size: 15px; font-weight: 600; letter-spacing: -.01em;
-      color: #111; margin: 0 0 10px;
-    }
-    .ps-siteana__summary {
-      font-size: 15px; font-style: italic; color: #444;
-      margin-top: 12px; padding-left: 14px;
-      border-left: 2px solid #111;
-      line-height: 1.65;
-    }
-
-    /* ─── PROCESS MODAL ──────────────────────────────────── */
-    .ps-process-trigger {
-      background: none; border: none; padding: 0; cursor: pointer;
-      font-family: 'Poppins', sans-serif;
-      font-size: 13px; letter-spacing: 0;
-      text-transform: uppercase; color: #111;
-      font-weight: 700; display: inline-flex; align-items: center; gap: 6px;
-      transition: opacity .12s;
-    }
-    .ps-process-trigger:hover { opacity: .5; }
-
-    .ps-overlay {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.55);
-      z-index: 900;
-      overflow-y: auto;
-      padding: clamp(20px, 5vw, 60px) clamp(16px, 4vw, 40px);
-    }
-    .ps-overlay.is-open { display: block; }
-
-    .ps-modal {
-      background: #fff;
-      max-width: 680px;
-      margin: 0 auto;
-      position: relative;
-      padding: 40px clamp(24px, 5vw, 52px) 52px;
-    }
-    .ps-modal__close {
-      position: absolute; top: 16px; right: 20px;
-      font-family: 'Poppins', sans-serif;
-      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
-      color: #aaa; background: none; border: none;
-      cursor: pointer; transition: color .12s;
-    }
-    .ps-modal__close:hover { color: #111; }
-    .ps-modal .ps-process__imgs { margin-top: 0; }
-
-    /* Poppins throughout modal, varied weights */
-    .ps-modal, .ps-modal * { font-family: 'Poppins', sans-serif; }
-    .ps-modal .ps-h         { font-weight: 600; font-size: 15px; }
-    .ps-modal .ps-label     { font-weight: 700; letter-spacing: .02em; font-size: 13px; }
-    .ps-modal .ps-p         { font-weight: 300; font-size: 13px; line-height: 1.75; max-width: 100%; }
-    .ps-modal .ps-pull p    { font-weight: 500; font-style: italic; font-size: 13px; }
-    .ps-modal .ps-figcap    { font-weight: 400; letter-spacing: .04em; }
-    .ps-modal .ps-compare th { font-family: 'Poppins', sans-serif; font-weight: 600; letter-spacing: .02em; }
-    .ps-modal .ps-compare td { font-family: 'Poppins', sans-serif; font-weight: 300; }
-    .ps-modal .ps-compare td:first-child { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 11px; }
-    .ps-modal .ps-pdflink   { font-family: 'Poppins', sans-serif; font-weight: 600; letter-spacing: .04em; }
-
-    /* ─── Responsive ──────────────────────────────────────── */
-
-    /* Tablet: sidebar flips to topbar — intro width calc breaks, reset it */
-    @media (max-width: 820px) {
-      .ps-intro { width: 100%; padding-left: 0; }
-      .ps-concept { margin-top: 64px; padding-bottom: 64px; }
-      #designmanual { margin-top: 80px !important; }
-      #merkevare    { padding-top: 60px !important; }
-    }
-
-    /* Narrow tablet: tighten type specimen label column */
-    @media (max-width: 680px) {
-      .ps-dm__type-row { grid-template-columns: 110px 1fr; gap: 12px; }
-    }
-
-    /* ── 2560×1440 iMac ─────────────────────────────────── */
-    @media (min-width: 2400px) {
-      /* Widen content containers */
-      .ps-concept, .ps-process, footer { max-width: 1800px; }
-
-      /* Intro: cap image column so utenfor.webp doesn't stretch full viewport width */
-      .ps-intro { grid-template-columns: minmax(0, 380px) minmax(0, 720px); }
-
-      /* Body text */
-      .ps-p { font-size: 20px; max-width: 1100px; }
-
-      /* Main section labels (Konsept…) */
-      .ps-label { font-size: 44px; }
-      /* Inner design-manual labels override their inline font-size */
-      .ps-dm .ps-label { font-size: 28px !important; }
-      /* Big h2 headings that have inline font-size:30px */
-      #designmanual { font-size: 44px !important; }
-      #merkevare    { font-size: 44px !important; }
-      #prosess > .ps-label { font-size: 44px !important; }
-
-      /* Subheadings */
-      .ps-h { font-size: 32px; }
-
-      /* Pull quote */
-      .ps-pull p { font-size: 20px; }
-
-      /* Anchor nav */
-      .ps-anker-nav { gap: 12px 64px; padding: 28px 0; margin-top: 24px; }
-      .ps-anker-nav__link { font-size: 16px; letter-spacing: 3px; }
-
-      /* Comparison table */
-      .ps-compare { font-size: 18px; }
-      .ps-compare th { font-size: 14px; padding: 14px 16px 14px 0; }
-      .ps-compare td { font-size: 18px; padding: 14px 16px 14px 0; }
-      .ps-compare td:first-child { font-size: 14px; }
-
-      /* Tech footer */
-      .ps-tech { gap: 40px 52px; margin-top: 64px; }
-      .ps-tech__label { font-size: 13px; letter-spacing: 4px; }
-      .ps-tech__val { font-size: 18px; }
-
-      /* PDF link */
-      .ps-pdflink { font-size: 15px; padding: 14px 28px; }
-
-      /* Design manual: colour swatches */
-      .ps-dm__swatches { height: 120px; }
-      .ps-dm__swatch-name { font-size: 11px; }
-      .ps-dm__swatch-hex  { font-size: 13px; }
-      .ps-dm__swatch-use  { font-size: 13px; }
-
-      /* Design manual: type spec */
-      .ps-dm__type-label { font-size: 14px; }
-      .ps-dm__type-where { font-size: 14px; }
-      .ps-dm__type-row   { grid-template-columns: 220px 1fr; padding: 24px 0; }
-
-      /* Design manual: buttons & badges */
-      .ps-dm__btn   { font-size: 18px; padding: 14px 32px; }
-      .ps-dm__badge { font-size: 16px; padding: 6px 18px; }
-      .ps-dm__btns  { gap: 14px; margin-top: 20px; }
-      .ps-dm__badges { gap: 14px; margin-top: 20px; }
-
-      /* Logo do/don't */
-      .ps-logo-dd { gap: 40px; }
-      .ps-logo-dd__col-label { font-size: 18px; margin-bottom: 14px; }
-
-      /* Captions */
-      .ps-figcap { font-size: 13px; letter-spacing: 2.5px; margin-top: 12px; }
-
-      /* Expand button */
-      .ps-expand__btn { font-size: 14px; margin-top: 16px; }
-
-      /* Process trigger */
-      .ps-process-trigger { font-size: 20px; }
-
-      /* Site analysis: competitor names & summaries */
-      .ps-siteana__name    { font-size: 22px; }
-      .ps-siteana__summary { font-size: 18px; }
-
-      /* Collage: taller so shirt isn't cropped at wide viewport */
-      .stopp-collage { padding-bottom: 195%; }
-    }
-
-    /* Mobile */
-    @media (max-width: 480px) {
-      #designmanual { margin-top: 48px !important; }
-      #merkevare    { padding-top: 36px !important; }
-      .ps-concept   { margin-top: 40px; padding-bottom: 40px; }
-      .ps-process   { margin-top: 32px; padding-bottom: 32px; }
-      .ps-siteana   { margin-top: 32px; padding-bottom: 32px; }
-      .ps-pull      { margin: 24px 0; }
-      .ps-tech      { margin-top: 32px; }
-
-      /* Type specimen: stack label above sample text */
-      .ps-dm__type-row {
-        grid-template-columns: 1fr;
-        gap: 6px;
-        padding: 14px 0;
-      }
-
-      /* Swatches: wrap into 2-3 per row so text stays legible */
-      .ps-dm__swatches { flex-wrap: wrap; height: auto; gap: 2px; }
-      .ps-dm__swatch   { flex: 1 1 calc(33.33% - 2px); min-width: 80px; height: 68px; }
-
-      /* Reduce intro desc font */
-      .ps-intro__desc { font-size: 15px; }
-
-      /* Section heading sizes */
-      .ps-label { font-size: 22px; }
-    }
-
-  </style>
 </head>
 
 <body>
+  <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
+    <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
+    <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
+  </div>
+
   <header class="sidebar sidebar--detail" id="sidebar">
     <div class="sidebar__inner">
-      <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider">
-        <svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true">
-          <path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
+      <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <nav class="nav" aria-label="Main navigation">
         <a class="nav__link" href="./projects.html"><span>Arbeider</span></a>
         <a class="nav__link" href="./projects.html#about"><span>Om</span></a>
@@ -547,470 +32,140 @@
       <footer class="meta">
         <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
       </footer>
-      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
+      <button class="sidebar__toggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
     </div>
   </header>
 
   <main id="content" class="content">
-    <article class="ps">
-
-      <!-- ── 2. TITLE + INTRO ──────────────────────────────── -->
-      <div class="ps-intro">
-        <div class="ps-intro__left">
-<h1 class="ps-intro__title">Stoppestedet</h1>
-          <p class="ps-intro__desc">Stoppestedet er et (fiktivt) åpent, kreativt verksted i Oslo som gjør det enklere å skape. Her får du tilgang til verktøy, plass og faglig veiledning gjennom prøvetimer, kurs og medlemskap.</p>
-          <a class="btn-pdf btn-pdf--black" href="./stopp/index.html" target="_blank" rel="noopener" style="margin-top:20px;padding:14px 32px;font-size:12px">↗&#xFE0E; Åpne nettsiden</a>
-        </div>
-        <img class="ps-intro__img" src="./stopp/assets/utenfor.webp" alt="Stoppestedet eksteriør" loading="eager">
-      </div>
-
-
-      <nav class="ps-anker-nav">
-        <a href="#designmanual" class="ps-anker-nav__link">Designmanual</a>
-        <a href="#merkevare" class="ps-anker-nav__link">Merkevareapplikasjoner</a>
-        <a href="#prosess" class="ps-anker-nav__link">Prosessen</a>
-      </nav>
-      <style>
-        .ps-anker-nav { display:flex; flex-wrap:wrap; justify-content:center; gap:16px 48px; padding:20px 0; margin-top:16px; }
-        .ps-anker-nav__link { font-family:'Poppins',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:#111; text-decoration:none; opacity:.6; transition:opacity .15s; }
-        .ps-anker-nav__link:hover { opacity:1; }
-        @media (max-width:600px) {
-          .ps-anker-nav { flex-direction:column; align-items:flex-start; gap:12px; padding:16px 0; margin-top:8px; }
-          .ps-anker-nav__link { font-size:14px; }
-          .ps-concept { margin-top: 40px !important; }
-          .ps-label { font-size: 22px; }
-          .ps-p { font-size: 15px; }
-          .ps-intro__title { font-size: 36px; }
-        }
-      </style>
-
-      <!-- ── 3. KONSEPT ────────────────────────────────────── -->
-      <section class="ps-concept">
-        <span class="ps-label">Konsept — å gjøre skapende arbeid tilgjengelig</span>
-        <p class="ps-p">Oppgaven var å utvikle nettside og visuell identitet for et makerspace med verksted, kurs, arrangementer og medlemskap. Målet var å presentere tilbudet på en klar og inviterende måte.</p>
-
-        <p class="ps-p">Makerspaces kan ofte oppleves som tekniske og lukkede. Her var ambisjonen å åpne opp, både visuelt og språklig. Designet vektlegger tydelig struktur, enkel navigasjon og en tone som oppmuntrer til deltakelse.</p>
-
-        <div class="ps-pull" style="margin-top:16px">
-          <p>Tilgjengelighet fungerer som et overordnet prinsipp i hele løsningen.</p>
-        </div>
-
-        <!-- Design manual -->
-        <h2 id="designmanual" class="ps-label" style="font-size:30px;margin-top:160px;margin-bottom:24px;font-weight:400;text-transform:none;letter-spacing:0">Designmanual</h2>
-        <div class="ps-dm">
-
-          <!-- Logo Do's & Don'ts -->
-          <div class="ps-dm__block" style="background:#f8f8f8">
-            <span class="ps-label" style="margin-bottom:20px;display:block">Logo — bruk og misbruk</span>
-            <div class="ps-logo-dd">
-
-              <div>
-                <span class="ps-logo-dd__col-label ps-logo-dd__col-label--do">✓ Gjør dette</span>
-                <div class="ps-logo-dd__grid">
-                  <img class="ps-logo-dd__img" src="./stopp/assets/do1@3x.webp" alt="Do 1">
-                  <img class="ps-logo-dd__img" src="./stopp/assets/do2@3x.webp" alt="Do 2">
-                  <img class="ps-logo-dd__img" src="./stopp/assets/do3@3x.webp" alt="Do 3">
-                  <img class="ps-logo-dd__img" src="./stopp/assets/do4@3x.webp" alt="Do 4">
-                </div>
+    <article class="project">
+        
+        <section class="proj-new-hero">
+          <div class="proj-new-hero__left">
+            <h1 class="proj-new-hero__title">STOPPESTEDET</h1>
+          </div>
+          <div class="proj-new-hero__right">
+            <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="eager" decoding="async">
+          </div>
+        </section>
+        
+        <section class="proj-new-about">
+          <div class="proj-new-about__left">
+            <div class="proj-new-pmeta">
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">År</strong>
+                <span class="proj-new-pmeta__value">2026</span>
               </div>
-
-              <div>
-                <span class="ps-logo-dd__col-label ps-logo-dd__col-label--dont">✕ Ikke gjør dette</span>
-                <div class="ps-logo-dd__grid ps-logo-dd__grid--two">
-                  <img class="ps-logo-dd__img" src="./stopp/assets/dont1@3x.webp" alt="Don't 1">
-                  <img class="ps-logo-dd__img" src="./stopp/assets/dont2@3x.webp" alt="Don't 2">
-                  <img class="ps-logo-dd__img" src="./stopp/assets/dont3@3x.webp" alt="Don't 3">
-                </div>
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">Plattform</strong>
+                <span class="proj-new-pmeta__value">HTML / CSS, JavaScript</span>
               </div>
-
-            </div>
-            <button class="ps-process-trigger" id="logoutviklingBtn" style="margin-top:24px">Logoutvikling ↗&#xFE0E;</button>
-          </div>
-
-          <!-- Row 1: Colours -->
-          <div class="ps-dm__block">
-              <span class="ps-label" style="margin-bottom:0">Farger</span>
-              <div class="ps-dm__swatches">
-                <div class="ps-dm__swatch" style="background:#0a0a0a;color:#fff">
-                  <span class="ps-dm__swatch-name">Svart</span>
-                  <span class="ps-dm__swatch-hex">#0A0A0A</span>
-                  <span class="ps-dm__swatch-use">Nav, tekst, bakgrunn</span>
-                </div>
-                <div class="ps-dm__swatch" style="background:#E84E1B;color:#fff">
-                  <span class="ps-dm__swatch-name">Orange</span>
-                  <span class="ps-dm__swatch-hex">#E84E1B</span>
-                  <span class="ps-dm__swatch-use">CTA, aktiv nav, badges</span>
-                </div>
-                <div class="ps-dm__swatch" style="background:#C8E600;color:#0a0a0a">
-                  <span class="ps-dm__swatch-name">Lime</span>
-                  <span class="ps-dm__swatch-hex">#C8E600</span>
-                  <span class="ps-dm__swatch-use">Modal, booking, prislister</span>
-                </div>
-                <div class="ps-dm__swatch" style="background:#9B8CE8;color:#fff">
-                  <span class="ps-dm__swatch-name">Lilla</span>
-                  <span class="ps-dm__swatch-hex">#9B8CE8</span>
-                  <span class="ps-dm__swatch-use">Footer, filtre, tabeller</span>
-                </div>
-                <div class="ps-dm__swatch" style="background:#ffffff;color:#111;border:1px solid #e0e0e0">
-                  <span class="ps-dm__swatch-name">Hvit</span>
-                  <span class="ps-dm__swatch-hex">#FFFFFF</span>
-                  <span class="ps-dm__swatch-use">Bakgrunn, kort, modal</span>
-                </div>
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">Verktøy</strong>
+                <span class="proj-new-pmeta__value">Adobe Illustrator, Adobe Photoshop, Figma</span>
               </div>
-          </div>
-
-          <!-- Row 2: Typography -->
-          <div class="ps-dm__block">
-            <span class="ps-label">Skriftvalg</span>
-            <div class="ps-dm__type">
-
-              <div class="ps-dm__type-row">
-                <div>
-                  <span class="ps-dm__type-label">Syne 500</span>
-                  <span class="ps-dm__type-where">H1 — Herooverskrift</span>
-                </div>
-                <p style="font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,48px);font-weight:500;letter-spacing:-.02em;line-height:1;margin:0;color:#111">Har du en idé?</p>
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">Fag</strong>
+                <span class="proj-new-pmeta__value">IDG3015 — Emneoverbyggende prosjekt</span>
               </div>
-
-              <div class="ps-dm__type-row">
-                <div>
-                  <span class="ps-dm__type-label">Syne 500</span>
-                  <span class="ps-dm__type-where">H2 — Seksjonstittler</span>
-                </div>
-                <p style="font-family:'Syne',sans-serif;font-size:clamp(20px,3vw,34px);font-weight:500;letter-spacing:-.02em;line-height:1.1;margin:0;color:#111">Kurs, arrangementer og konkurranser</p>
-              </div>
-
-              <div class="ps-dm__type-row">
-                <div>
-                  <span class="ps-dm__type-label">Syne 700</span>
-                  <span class="ps-dm__type-where">Priser — Beløp</span>
-                </div>
-                <p style="font-family:'Syne',sans-serif;font-size:clamp(28px,3.5vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1;margin:0;color:#111">120<span style="font-size:.45em;font-weight:400;opacity:.6"> kr/mnd</span></p>
-              </div>
-
-              <div class="ps-dm__type-row">
-                <div>
-                  <span class="ps-dm__type-label">IBM Plex Sans 600</span>
-                  <span class="ps-dm__type-where">Nav, knapper</span>
-                </div>
-                <p style="font-family:'IBM Plex Sans',sans-serif;font-size:16px;font-weight:600;letter-spacing:.01em;margin:0;color:#111">Bli medlem · Verkstedet · Kalender</p>
-              </div>
-
-              <div class="ps-dm__type-row">
-                <div>
-                  <span class="ps-dm__type-label">IBM Plex Sans 400</span>
-                  <span class="ps-dm__type-where">Ingress, avsnitt, lister</span>
-                </div>
-                <p style="font-family:'IBM Plex Sans',sans-serif;font-size:17px;font-weight:400;line-height:1.65;margin:0;color:#1a1a1a">Du trenger ikke melde deg på eller ha en grunn til å komme.</p>
-              </div>
-
-
-            </div>
+              <div class="proj-new-pmeta__item">
+                <strong class="proj-new-pmeta__label">Fag ansvarlig</strong>
+                <span class="proj-new-pmeta__value">Jesper Egemar</span>
+              </div></div>
+            <a class="btn-pdf btn-pdf--black" href="./project.html?id=stoppestedet&view=process">Se prosess</a>
+            
+              <a class="btn-pdf btn-pdf--green" href="./stoppestedet/index.html" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">↗ Åpne nettsiden</a>
           </div>
-
-          <!-- Row 3: Buttons + Badges -->
-          <div class="ps-dm__row">
-            <div class="ps-dm__block">
-              <span class="ps-label">Knapper</span>
-              <div class="ps-dm__btns">
-                <span class="ps-dm__btn ps-dm__btn--orange">Bli medlem</span>
-                <span class="ps-dm__btn ps-dm__btn--black">Les mer</span>
-                <span class="ps-dm__btn ps-dm__btn--filter">Alle</span>
-              </div>
-              <p style="font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#ccc;margin-top:10px">Orange = primær CTA · Svart = sekundær · Filter = lilla kant</p>
-            </div>
-            <div class="ps-dm__block">
-              <span class="ps-label">Merkelapper og statuser</span>
-              <div class="ps-dm__badges">
-                <span class="ps-dm__badge ps-dm__badge--orange">Kurs</span>
-                <span class="ps-dm__badge ps-dm__badge--lime">Arrangementer</span>
-                <span class="ps-dm__badge ps-dm__badge--purple">Konkurranser</span>
-                <span class="ps-dm__badge ps-dm__badge--muted">—</span>
-              </div>
-              <p style="font-family:'Poppins',sans-serif;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#ccc;margin-top:10px">IBM Plex Sans 600 · brukt i kalender og verktøyliste</p>
-            </div>
+          <div class="proj-new-about__right">
+            <p class="proj-new-desc">Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.</p><p class="proj-new-desc">Jeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.</p>
           </div>
-
-          <!-- Instagram mock -->
-          <h2 id="merkevare" class="ps-label" style="font-size:30px;margin-top:0;padding-top:130px;margin-bottom:12px;font-weight:400;text-transform:none;letter-spacing:0">Merkevareapplikasjoner</h2>
-          <div style="display:flex;flex-direction:column;gap:6px">
-            <span class="ps-label" style="font-size:20px;display:block;margin:0">— Tilhørende Instagram-profil</span>
-            <p class="ps-p" style="margin:0;line-height:1.5">En Instagram-profil er laget for å gjøre stedet mer levende og lettere å se for seg. Den viser hvordan merkevaren kan fungere i en ekte setting og bidrar til en tydelig visuell stil.</p>
-            <span class="ps-label" style="font-size:20px;display:block;margin:0;margin-top:8px">— Banner (messe/stand)</span>
-            <p class="ps-p" style="margin:0;line-height:1.5">Banneret er utviklet for bruk på messe, slik at standen blir enkel å oppdage. Det samler de viktigste nøkkelpunktene om stedet og gir et raskt inntrykk av merkevaren.</p>
-            <span class="ps-label" style="font-size:20px;display:block;margin:0;margin-top:8px">— T-skjorte for ansatte</span>
-            <p class="ps-p" style="margin:0;line-height:1.5">Det er også laget en t-skjorte for ansatte, slik at det er lett å se hvem som jobber der. Samtidig viderefører den merkevarens uttrykk på en enkel måte.</p>
-          </div>
-          <div class="stopp-collage">
-            <img class="sc-phone"  src="./stopp/assets/iphone.webp"        alt="Instagram mock">
-            <img class="sc-banner" src="./stopp/assets/stoppi-banner.webp"  alt="Stoppestedet roll-up banner">
-            <img class="sc-shirt"  src="./stopp/assets/stoppis-shirt.webp" alt="Stoppestedet t-skjorte">
-          </div>
-          <style>
-            .stopp-collage {
-              position: relative;
-              overflow: hidden;
-              width: 68vw; margin-left: calc(-34vw + 50%);
-              padding-bottom: 135%;
-              margin-top: -40px;
-            }
-            .stopp-collage img { position: absolute; display: block; opacity: 0; transform: translateX(-60px); transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-            .stopp-collage img.sc-in { opacity: 1; transform: translateX(0); }
-            .sc-phone  { width: 55%; right: 0%; top: calc(10% - 20px); z-index: 5; transition-delay: 0ms; }
-            .sc-banner { width: 52%; left: 0%; top: 18%; z-index: 1; transition-delay: 150ms; filter: brightness(1.05); }
-            .sc-shirt  { width: 87%; left: calc(35% - 60px); top: 60%; z-index: 4; transition-delay: 300ms; }
-            @media (max-width: 600px) {
-              .stopp-collage { width: 92vw; margin-left: calc(-46vw + 50%); padding-bottom: 0; position: static; overflow: hidden; margin-top: 32px; }
-              .stopp-collage img { position: static !important; width: 100% !important; left: auto !important; right: auto !important; top: auto !important; transform: none !important; opacity: 1 !important; margin-bottom: 12px; filter: none !important; }
-              .sc-banner { filter: saturate(1.1) !important; }
-            }
-          </style>
-          <script>
-            (function() {
-              var imgs = document.querySelectorAll('.stopp-collage img');
-              var obs = new IntersectionObserver(function(entries) {
-                entries.forEach(function(e) {
-                  if (e.isIntersecting) { e.target.classList.add('sc-in'); obs.unobserve(e.target); }
-                });
-              }, { threshold: 0.1 });
-              imgs.forEach(function(el) { obs.observe(el); });
-            })();
-          </script>
-
-        </div>
-      </section>
-
-      <!-- ── 4. PROSESS ────────────────────────────────────── -->
-      <section id="prosess" class="ps-process">
-        <h2 class="ps-label" style="font-size:30px;font-weight:400;text-transform:none;letter-spacing:0;margin-bottom:12px">Prosessen — Ærlig talt: det var rotete</h2>
-        <p class="ps-p" style="margin-top:12px">Jeg hoppet mellom ideer og mistet ofte målet av syne, noe som var frustrerende, men også lærerikt. Etter hvert som feilene ble tydeligere, forsto jeg hva som ikke fungerte. Det ga meg både retning og en mer strukturert måte å jobbe på. Etter hvert jobbet jeg raskere og mer effektivt enn før, og det ble tydelig hva jeg faktisk ønsket å oppnå til slutt.</p>
-        <div style="display:flex;flex-direction:column;gap:40px;margin-top:20px">
-          <button class="ps-process-trigger" id="processBtn">Les mer om det her ↗&#xFE0E;</button>
-          <button class="ps-process-trigger" id="siteanaBtn">Digital konkurrentanalyse og posisjonering ↗&#xFE0E;</button>
-        </div>
-      </section>
-
-      <!-- ── 5. TECH ────────────────────────────────────────── -->
-      <footer>
-        <div class="ps-tech">
-          <div class="ps-tech__item">
-            <span class="ps-tech__label">Plattform</span>
-            <span class="ps-tech__val">HTML / CSS<br>JavaScript</span>
-          </div>
-          <div class="ps-tech__item">
-            <span class="ps-tech__label">Verktøy</span>
-            <span class="ps-tech__val">Adobe Illustrator<br>Adobe Photoshop<br>Figma</span>
-          </div>
-          <div class="ps-tech__item">
-            <span class="ps-tech__label">Fag</span>
-            <span class="ps-tech__val">IDG3015 — Emneoverbyggende prosjekt</span>
-          </div>
-          <div class="ps-tech__item">
-            <span class="ps-tech__label">Fagansvarlig</span>
-            <span class="ps-tech__val">Jesper Egemar</span>
-          </div>
-          <div class="ps-tech__item">
-            <span class="ps-tech__label">Bilder</span>
-            <span class="ps-tech__val">Fotografier — Adobe Stock og Envato<br>Mockups — Envato.com</span>
-          </div>
-          <div class="ps-tech__item">
-            <span class="ps-tech__label">År</span>
-            <span class="ps-tech__val">2026</span>
-          </div>
-        </div>
-
-      </footer>
-
+        </section>
+        
+        
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
-                <a class="related__card" href="./reina-fruktgard.html">
-                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
-                  <p class="related__title">Reina Fruktgård</p>
+                <a class="related__card" href="./tidsskrift.html">
+                  <img src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy">
+                  <p class="related__title">Tidsskrift</p>
+                </a>
+                <a class="related__card" href="./we-visuell-profil.html">
+                  <img src="./assets/laptop-mockup.webp" alt="Stiftelsen WE" loading="lazy">
+                  <p class="related__title">Stiftelsen WE</p>
                 </a>
                 <a class="related__card" href="./ansatts-portal.html">
-                  <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
+                  <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy">
                   <p class="related__title">Tjønnås og Norvald</p>
-                </a>
-                <a class="related__card" href="./flerkanalspublisering.html">
-                  <img src="./assets/poster-srh.webp" alt="Flerkanalspublisering" loading="lazy" decoding="async">
-                  <p class="related__title">Flerkanalspublisering</p>
                 </a></div></div>
-
+      
     </article>
   </main>
 
-  <!-- ── PROCESS MODAL ──────────────────────────────────── -->
-  <div class="ps-overlay" id="processOverlay">
-    <div class="ps-modal">
-      <button class="ps-modal__close" id="processClose">Lukk ×</button>
-
-      <h2 class="ps-h" style="margin-bottom:20px">Fra én ferdig idé til å begynne på nytt</h2>
-
-      <p class="ps-p">Prosjektet startet med en helt annen identitet: mørk bakgrunn, olivengrønn palett og Space Mono. Designet var gjennomarbeidet og nesten ferdig, med et visuelt system som hang godt sammen på tvers av flater som logo, typografi og trykksaker.</p>
-
-      <p class="ps-label" style="margin-top:28px;margin-bottom:6px">Hvem er dette for?</p>
-      <p class="ps-p">Jeg tok et steg tilbake og stilte spørsmålet jeg burde ha stilt tidligere. Et mørkt og monospaced uttrykk signaliserer noe smalt og eksklusivt. Det kan passe for et plateselskap eller en tech-startup, men ikke for et sted som skal være åpent og tilgjengelig for unge mennesker som kanskje aldri har prøvd å skape noe før.</p>
-
-      <div class="ps-pull" style="margin:24px 0">
-        <p>V1 var et godt svar på feil spørsmål. V2 ble et enklere svar på det riktige.</p>
-      </div>
-
-      <p class="ps-label" style="margin-bottom:6px">Blindveien hadde verdi</p>
-      <p class="ps-p">Jeg valgte å starte på nytt. Ikke fordi arbeidet var bortkastet, men fordi prosessen viste hva stedet ikke skulle føles som. Den innsikten var avgjørende.</p>
-
-      <p class="ps-label" style="margin-top:28px;margin-bottom:6px">Målgruppen endret alt</p>
-      <p class="ps-p">Jeg utvidet målgruppen til folk fra 16 år og oppover. Det endret hele tilnærmingen. Designet skulle ikke forutsette at brukeren allerede er kreativ. Jeg lot meg inspirere av strukturen til spon.no, særlig hvordan informasjon organiseres tydelig og uten friksjon. Det visuelle utviklet jeg fra bunnen av med Stoppestedet som utgangspunkt. Oransje erstattet olivengrønt som en mer aktiv og inkluderende farge, og Syne erstattet Space Mono med et varmere og mer åpent uttrykk. Resultatet skulle føles enkelt og inviterende: kom hit.</p>
-
-      <!-- V2 design images -->
-      <span class="ps-label" style="margin-top:40px;display:block">Ferdig design fra Versjon 1:</span>
-
-      <video src="./stoppestedet/images/nystoppvid.mp4" autoplay muted loop playsinline preload="none" style="width:100%;display:block;margin-top:12px"></video>
-
-      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr;margin-top:2px">
-        <figure style="margin:0">
-          <img src="./stoppestedet/icons/logo_hvit_skrift.png" alt="Primærlogo" loading="lazy" style="background:#0a0a0a;padding:24px;max-width:200px">
-        </figure>
-        <figure style="margin:0">
-          <img src="./stoppestedet/images/seklogo.png" alt="Sekundærlogo" loading="lazy" style="background:#0a0a0a;padding:24px">
-        </figure>
-      </div>
-
-      <div class="ps-process__imgs" style="grid-template-columns:1fr;margin-top:2px">
-        <figure style="margin:0;aspect-ratio:16/7;overflow:hidden"><img src="./stoppestedet/images/businesscard.webp" alt="Visittkort" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
-      </div>
-
-      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr;margin-top:2px">
-        <figure style="margin:0;aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/idcard.webp" alt="ID-kort" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
-        <figure style="margin:0;aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/stoppstick.webp" alt="Stickere" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
-      </div>
-
-      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr;margin-top:2px">
-        <figure style="margin:0;aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/skiltdesign.webp" alt="Skiltdesign" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
-        <figure style="margin:0;aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/skiltutestopp.webp" alt="Skilt ute" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
-      </div>
-
-      <div class="ps-process__imgs" style="grid-template-columns:1fr 1fr;margin-top:2px">
-        <figure style="margin:0;aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/storefrontstoppis.webp" alt="Utsiden" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
-        <figure style="margin:0;aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/stairstopp.webp" alt="Veggdesign" loading="lazy" style="width:100%;height:100%;object-fit:cover"></figure>
-      </div>
-
-      <div class="ps-process__imgs" style="grid-template-columns:1fr;margin-top:2px">
-        <figure style="margin:0"><img src="./stoppestedet/images/ikonsett.jpg" alt="Ikonsett" loading="lazy" style="max-width:300px"></figure>
-      </div>
-
-      <table class="ps-compare" style="margin-top:40px">
-        <thead><tr><th></th><th>Versjon 1</th><th>Versjon 2</th></tr></thead>
-        <tbody>
-          <tr><td>Målgruppe</td><td>18–28, kreativ praksis</td><td>16+, alle aldre</td></tr>
-          <tr><td>Bakgrunn</td><td><span class="ps-dot" style="background:#0f0f0f;border:1px solid #555"></span>Nær-svart</td><td><span class="ps-dot" style="background:#fff;border:1px solid #ccc"></span>Hvit</td></tr>
-          <tr><td>Primærfarge</td><td><span class="ps-dot" style="background:#A3AF0E"></span>Olivengrønn</td><td><span class="ps-dot" style="background:#E84E1B"></span>Orange</td></tr>
-          <tr><td>Overskrift</td><td>Space Mono</td><td>Syne</td></tr>
-        </tbody>
-      </table>
-
-      <a class="ps-pdflink" href="./stoppestedet/images/stoppestedetprosess_original.pdf" target="_blank" rel="noopener" style="margin-top:40px">
-        Prosessrapport (PDF) ↗&#xFE0E;
-      </a>
-
-    </div>
-  </div>
-
-  <!-- ── LOGOUTVIKLING MODAL ──────────────────────────────── -->
-  <div class="ps-overlay" id="logoutviklingOverlay">
-    <div class="ps-modal">
-      <button class="ps-modal__close" id="logoutviklingClose">Lukk ×</button>
-      <h2 class="ps-h" style="margin-bottom:20px">Logoutvikling</h2>
-      <img src="./stopp/assets/logoutviklingstoppi.webp" alt="Logoutvikling" style="width:100%;display:block;margin-bottom:28px">
-      <p class="ps-p">Logoen er inspirert av makerspace-idéen, der enkle former fungerer som byggeklosser som kan settes sammen til noe større. De ulike elementene symboliserer materialer, verktøy og idéer som kombineres i kreative prosesser. Fargene gir et lekent og inkluderende uttrykk, mens det stramme rutenettet skaper struktur og balanse. Dette reflekterer hvordan et makerspace kombinerer kreativ utfoldelse med teknisk presisjon. Utviklingen fra fragmenterte former til en samlet logo visualiserer også selve prosessen i et makerspace: fra idé til ferdig resultat.</p>
-    </div>
-  </div>
-
-  <!-- ── NETTSIDEANALYSE MODAL ─────────────────────────────── -->
-  <div class="ps-overlay" id="siteanaOverlay">
-    <div class="ps-modal">
-      <button class="ps-modal__close" id="siteanaClose">Lukk ×</button>
-
-      <img src="./stopp/assets/nettside-analyse.webp" alt="Nettsideanalyse" style="width:100%;display:block;margin-bottom:40px">
-
-      <div style="display:flex;flex-direction:column;gap:36px">
-
-        <div>
-          <p class="ps-siteana__name">FabCafe — Tokyo</p>
-          <p class="ps-p">Nettsiden til FabCafe er visuelt tung og inspirasjonsdrevet, med fokus på prosjekter, events og kreativ utforskning. Den fungerer mer som en plattform for idéutveksling enn en tradisjonell informasjonsnettside. Brukeren møtes av bilder, artikler og prosjekter fremfor en tydelig inngang til hva stedet faktisk er.</p>
-          <p class="ps-siteana__summary">— Oppleves kreativ og inspirerende, men lite strukturert og ikke umiddelbart lavterskel.</p>
-        </div>
-
-        <div>
-          <p class="ps-siteana__name">Shibuya QWS</p>
-          <p class="ps-p">Nettsiden er moderne og konseptuell, med fokus på samarbeid, innovasjon og community. Den bruker grafikk og visuelle elementer for å formidle stemning og aktivitet, men gir mindre konkret informasjon om hvordan stedet tas i bruk.</p>
-          <p class="ps-siteana__summary">— Oppleves inspirerende, men abstrakt og mindre tilgjengelig for nye brukere.</p>
-        </div>
-
-        <div>
-          <p class="ps-siteana__name">Folkehuset Absalon — Danmark</p>
-          <p class="ps-p">Nettsiden er enkel, varm og direkte. Den kommuniserer tydelig hva man kan gjøre der, med fokus på aktiviteter, mat og fellesskap. Informasjonen er lett å forstå, og det er lav terskel for å delta.</p>
-          <p class="ps-siteana__summary">— Veldig tilgjengelig og nærmest Stoppestedet i kommunikasjon.</p>
-        </div>
-
-        <div>
-          <p class="ps-siteana__name">Makerversity — London</p>
-          <p class="ps-p">Nettsiden er profesjonell og tydelig strukturert, med fokus på medlemskap, fasiliteter og samarbeid. Den kommuniserer et sterkt verdiforslag, men retter seg mot en etablert og kreativt aktiv målgruppe.</p>
-          <p class="ps-siteana__summary">— Oppleves eksklusiv og mer «proff» enn lavterskel.</p>
-        </div>
-
-        <div>
-          <p class="ps-siteana__name">Deichman Bjørvika (Folkeverkstedet) — Oslo</p>
-          <p class="ps-p">Nettsiden er informativ og funksjonell, med tydelig navigasjon og praktisk informasjon. Den forklarer tilbudet godt, men har mindre fokus på stemning og visuell identitet.</p>
-          <p class="ps-siteana__summary">— Veldig tilgjengelig, men mindre inspirerende visuelt.</p>
-        </div>
-
-        <div>
-          <p class="ps-siteana__name">Mesh — Oslo</p>
-          <p class="ps-p">Nettsiden er stilren og kommersiell, med fokus på nettverk, arrangementer og arbeidsplasser. Den er oversiktlig og tydelig, men retter seg mot gründere og profesjonelle brukere.</p>
-          <p class="ps-siteana__summary">— Oppleves som et mer lukket og målrettet miljø.</p>
-        </div>
-
-        <div style="margin-top:12px;padding-top:36px;border-top:1px solid #e0e0e0">
-          <p class="ps-siteana__name">Stoppestedets posisjon:</p>
-          <p class="ps-p">Felles for nettsidene er at de enten legger vekt på visuell inspirasjon eller tydelig struktur og funksjon. Dette skaper ofte en ubalanse, der noen oppleves kreative men lite tilgjengelige, mens andre er enkle å forstå, men mer lukkede eller målrettede.</p>
-          <p class="ps-p">Stoppestedet plasserer seg i skjæringspunktet mellom disse. Konseptet tar en tydelig posisjon som et åpent og lavterskel alternativ, hvor både kommunikasjon og opplevelse er utformet for å være lett å forstå og lett å ta i bruk.</p>
-          <p class="ps-p">Målet er ikke å fremstå som eksklusivt eller spesialisert, men som et sted man kan komme til uten forkunnskaper, og likevel føle at man hører til.</p>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Year
+    const yearEl = document.querySelector("#year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    sidebarToggle.addEventListener('click', () => {
-      const open = sidebar.classList.toggle('sidebar--open');
-      sidebarToggle.setAttribute('aria-expanded', String(open));
+    // Expandable gallery
+    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
+      cover.addEventListener("click", () => cover.closest(".gallery-expandable").classList.toggle("is-open"));
+    });
+    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const s = btn.closest(".gallery-expandable");
+        s.classList.remove("is-open");
+        s.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     });
 
-    const overlay = document.getElementById('processOverlay');
-    function openModal() { overlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
-    function closeModal() { overlay.classList.remove('is-open'); document.body.style.overflow = ''; }
-    document.getElementById('processBtn').addEventListener('click', openModal);
-    document.getElementById('processClose').addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+    // Lightbox
+    const lbOverlay = document.getElementById("lbOverlay");
+    const lbImg = document.getElementById("lbImg");
+    const lbPrev = document.getElementById("lbPrev");
+    const lbNext = document.getElementById("lbNext");
+    let lbImages = [], lbIndex = 0;
+    function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
+    function showLbImage(idx) {
+      lbIndex = (idx + lbImages.length) % lbImages.length;
+      lbImg.src = lbImages[lbIndex].src; lbImg.alt = lbImages[lbIndex].alt || "";
+    }
+    lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
+    lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
+    document.addEventListener("click", e => {
+      const imgEl = e.target.tagName === "IMG" && e.target.closest(".project__figure") ? e.target : null;
+      if (imgEl) {
+        const sec = imgEl.closest(".gallery-expandable");
+        if (sec) {
+          const imgs = [...sec.querySelectorAll(".project__figure img")];
+          lbImages = imgs.map(i => ({ src: i.src, alt: i.alt }));
+          lbIndex = imgs.indexOf(imgEl);
+        } else { lbImages = [{ src: imgEl.src, alt: imgEl.alt }]; lbIndex = 0; }
+        lbImg.src = imgEl.src; lbImg.alt = imgEl.alt || "";
+        lbPrev.style.display = lbImages.length > 1 ? "" : "none";
+        lbNext.style.display = lbImages.length > 1 ? "" : "none";
+        lbOverlay.classList.add("lb-open");
+      } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
+    });
+    document.addEventListener("keydown", e => {
+      if (!lbOverlay.classList.contains("lb-open")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") showLbImage(lbIndex - 1);
+      if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
+    });
 
-    const logoutviklingOverlay = document.getElementById('logoutviklingOverlay');
-    function openLogoutvikling() { logoutviklingOverlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
-    function closeLogoutvikling() { logoutviklingOverlay.classList.remove('is-open'); document.body.style.overflow = ''; }
-    document.getElementById('logoutviklingBtn').addEventListener('click', openLogoutvikling);
-    document.getElementById('logoutviklingClose').addEventListener('click', closeLogoutvikling);
-    logoutviklingOverlay.addEventListener('click', e => { if (e.target === logoutviklingOverlay) closeLogoutvikling(); });
+    // Sidebar toggle
+    document.querySelector(".sidebar__toggle")?.addEventListener("click", function() {
+      const sidebar = document.getElementById("sidebar");
+      const isOpen = sidebar.classList.toggle("sidebar--open");
+      this.setAttribute("aria-expanded", String(isOpen));
+    });
 
-    const siteanaOverlay = document.getElementById('siteanaOverlay');
-    function openSiteana() { siteanaOverlay.classList.add('is-open'); document.body.style.overflow = 'hidden'; }
-    function closeSiteana() { siteanaOverlay.classList.remove('is-open'); document.body.style.overflow = ''; }
-    document.getElementById('siteanaBtn').addEventListener('click', openSiteana);
-    document.getElementById('siteanaClose').addEventListener('click', closeSiteana);
-    siteanaOverlay.addEventListener('click', e => { if (e.target === siteanaOverlay) closeSiteana(); });
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeSiteana(); closeLogoutvikling(); } });
-  </script>
+    // Scroll reveal
+    const rev = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-visible"); rev.unobserve(e.target); } });
+    }, { threshold: 0.06 });
+    document.querySelectorAll(".proj-new-about, .project__gallery, .related").forEach((el, i) => {
+      el.classList.add("reveal");
+      el.style.transitionDelay = `${Math.min(i, 2) * 0.07}s`;
+      rev.observe(el);
+    });
+    </script>
 </body>
 </html>
