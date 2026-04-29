@@ -5,162 +5,199 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
   <title>Flerkanalspublisering — DesignbyJosefine</title>
-  <meta name="description" content="Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus " />
+  <meta name="description" content="Visuell kommunikasjonsløsning for SRH Open Day på tvers av trykte og digitale flater." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@300;400;500&family=Caveat:wght@400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=30" />
   <link rel="icon" href="assets/hvitlogo.webp">
   <link rel="preload" as="image" href="./assets/poster-srh.webp">
   <style>
-    /* Remove default template padding to keep the hero flush to the top */
-    #content { padding-top: 0 !important; }
-    #project { padding-top: 0 !important; margin-top: 0 !important; }
+    :root { --font: "Poppins", system-ui, sans-serif; }
+    body { background: #000; color: #fff; }
 
-    #linkedinPostsScroll { scrollbar-width: none; overflow-y: hidden; }
-    #linkedinPostsScroll::-webkit-scrollbar { display: none; }
-    #linkedinPostsScroll:active { cursor: grabbing; }
-    .srh-label { font-family: inherit; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: #111; margin: 0 0 12px 0; }
-    .srh-desc  { font-family: 'Poppins', sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.8; color: #222; margin: 0; }
-    .srh-desc--solo { max-width: 560px; }
-
-    /* Hero Section (Full-bleed edge-to-edge on desktop and mobile) */
-    .hero-section {
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      transform: translateX(-50%);
-      height: clamp(400px, 72vh, 900px);
-      margin-bottom: 48px;
-      overflow: hidden;
+    /* ── Editorial layout ─────────────────────────────────── */
+    .ed-hero {
+      display: grid;
+      grid-template-columns: 5fr 6fr;
+      gap: clamp(32px, 5vw, 64px);
+      align-items: end;
+      padding: clamp(40px, 6vw, 80px) 0 clamp(40px, 6vw, 72px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: clamp(40px, 6vw, 72px);
     }
-    .hero-section img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      /* Changed from top center to center to crop the top and show more of the poster */
-      object-position: center; 
+    .ed-crumb {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
+      color: #555; margin: 0 0 clamp(16px, 2.5vw, 32px); font-weight: 500;
     }
-
-    /* Slider styling: 100% width of the content column, perfectly centered */
-    .brosyre-slider { 
-      position: relative; 
-      margin-bottom: 24px; 
-      width: 100%; 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .ed-title {
+      font-size: clamp(40px, 6.5vw, 88px);
+      font-weight: 700; line-height: 0.92;
+      letter-spacing: -0.025em; margin: 0 0 clamp(12px, 1.5vw, 20px);
+      color: #fff; text-transform: uppercase;
     }
-    .brosyre-slider img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: contain;
+    .ed-subtitle {
+      font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.12em;
+      text-transform: uppercase; color: #555; margin: 0; font-weight: 500;
+    }
+    .ed-hero__media {
+      position: relative; overflow: hidden; align-self: end;
+      max-height: clamp(320px, 52vh, 680px);
+    }
+    .ed-hero__media img {
+      width: 100%; height: 100%; display: block;
+      object-fit: cover; object-position: center top;
     }
 
-    .brosyre-arrow {
+    .ed-intro {
+      display: grid; grid-template-columns: 220px 1fr;
+      gap: clamp(32px, 5vw, 80px);
+      padding-bottom: clamp(40px, 6vw, 72px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: clamp(48px, 7vw, 88px);
+    }
+    .ed-meta__item {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: clamp(10px, 1.2vw, 16px) 0 clamp(12px, 1.6vw, 20px);
+    }
+    .ed-label {
+      display: block; font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.14em; color: #555; margin-bottom: 5px; font-weight: 500;
+    }
+    .ed-val { font-size: clamp(13px, 1.1vw, 15px); color: #bbb; line-height: 1.6; }
+    .ed-desc p {
+      font-size: clamp(15px, 1.35vw, 18px); line-height: 1.8;
+      color: #c0c0c0; margin: 0 0 1.2em;
+    }
+    .ed-desc p:last-child { margin-bottom: 0; }
+
+    /* Tools row in meta */
+    .ed-tools { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 6px; }
+    .ed-tool { display: flex; flex-direction: column; align-items: center; gap: 5px; }
+    .ed-tool img { width: 26px; height: 26px; object-fit: contain; filter: brightness(0.7); }
+    .ed-tool span { font-size: 10px; color: #555; letter-spacing: 0.04em; }
+
+    .ed-section { margin-bottom: clamp(48px, 7vw, 88px); }
+    .ed-section-label {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
+      color: #555; display: block; margin-bottom: clamp(14px, 2vw, 24px); font-weight: 500;
+    }
+    .ed-body {
+      font-size: clamp(14px, 1.2vw, 16px); line-height: 1.8;
+      color: #b0b0b0; margin: 0 0 clamp(20px,3vw,36px); max-width: 600px;
+    }
+    .ed-body a { color: #b0b0b0; text-decoration: underline; text-underline-offset: 3px; }
+    .ed-body a:hover { color: #fff; opacity: 1; }
+
+    .ed-img-wide { width: 100%; height: auto; display: block; }
+
+    /* Slider */
+    .ed-slider { position: relative; margin-bottom: clamp(16px, 2vw, 24px); }
+    .ed-slider img { width: 100%; height: auto; display: block; }
+    .ed-arrow {
       position: absolute; top: 50%; transform: translateY(-50%);
-      background: white; border: none; width: 34px; height: 34px;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; font-size: 1.1rem; box-shadow: 0 1px 6px rgba(0,0,0,0.12);
-      border-radius: 50%; transition: background 0.15s;
-      z-index: 10;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      width: 36px; height: 36px; display: flex; align-items: center;
+      justify-content: center; cursor: pointer; color: #fff; z-index: 10;
+      transition: background 0.15s;
     }
-    .brosyre-arrow:hover { background: #f5f5f5; }
-    .brosyre-arrow--prev { left: 16px; }
-    .brosyre-arrow--next { right: 16px; }
-    
-    .srh-intro-cols { display: flex; gap: var(--gap, 32px); }
-    .srh-hero-meta { display: flex; gap: 40px; margin-bottom: 96px; padding-top: 24px; }
-    .srh-strip-img { height: clamp(320px, 55vh, 640px); width: auto; flex-shrink: 0; scroll-snap-align: start; display: block; }
-    .srh-linkedin-section { display: flex; gap: var(--gap, 32px); margin-bottom: 12px; align-items: flex-start; }
-    .srh-reklame-section { display: flex; gap: var(--gap, 32px); margin-bottom: 88px; align-items: flex-start; }
-    
-    /* Responsive overrides for Mobile and Tablet */
+    .ed-arrow:hover { background: rgba(255,255,255,0.2); }
+    .ed-arrow--prev { left: 12px; }
+    .ed-arrow--next { right: 12px; }
+
+    /* Two-col */
+    .ed-two-col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 4vw, 56px); align-items: start;
+      margin-bottom: clamp(48px, 7vw, 88px);
+    }
+    .ed-two-col__text p {
+      font-size: clamp(14px, 1.2vw, 16px); line-height: 1.8;
+      color: #b0b0b0; margin: 0 0 1em;
+    }
+    .ed-two-col__text p:last-child { margin-bottom: 0; }
+    .ed-img-border { border: 1px solid rgba(255,255,255,0.1); }
+
+    /* LinkedIn section */
+    .ed-linkedin { display: grid; grid-template-columns: auto 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; }
+    .ed-linkedin__single { width: clamp(120px, 22%, 200px); }
+    .ed-linkedin__single img { width: 100%; height: auto; display: block; }
+    .ed-linkedin__scroll { position: relative; overflow: hidden; }
+    .ed-linkedin__track { overflow-x: auto; scrollbar-width: none; cursor: grab; }
+    .ed-linkedin__track::-webkit-scrollbar { display: none; }
+    .ed-linkedin__track img { height: 280px; width: auto; max-width: none; display: block; }
+    .ed-linkedin__fade {
+      position: absolute; top: 0; right: 0; bottom: 0; width: 64px;
+      background: linear-gradient(to right, transparent, #000);
+      pointer-events: none;
+    }
+
+    /* Typography specimen */
+    .ed-typo-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding: clamp(20px, 3vw, 36px) 0;
+    }
+    .ed-typo-row:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+    .ed-typo-big { font-size: clamp(64px, 8vw, 100px); font-weight: 500; line-height: 1; color: #fff; }
+    .ed-typo-chars { font-size: clamp(11px, 1vw, 14px); line-height: 1.7; color: #666; margin-top: 12px; letter-spacing: 0.02em; }
+    .ed-typo-info { display: flex; flex-direction: column; justify-content: center; gap: 6px; padding-left: clamp(24px, 4vw, 56px); }
+    .ed-typo-role { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: #555; }
+    .ed-typo-name { font-size: clamp(16px, 1.6vw, 22px); color: #ddd; font-weight: 500; }
+
+    /* Color palette */
+    .ed-palette {
+      display: flex; gap: clamp(16px, 2.5vw, 32px); flex-wrap: wrap;
+    }
+    .ed-pal-item { display: flex; flex-direction: column; gap: 10px; }
+    .ed-pal-swatch-sq { width: clamp(64px, 8vw, 100px); height: clamp(64px, 8vw, 100px); }
+    .ed-pal-text { font-size: clamp(11px, 0.9vw, 13px); color: #777; line-height: 1.6; }
+    .ed-pal-text strong { color: #ccc; display: block; font-size: clamp(12px, 1vw, 14px); margin-bottom: 2px; }
+
+    /* Navigation */
+    .ed-nav {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: grid; grid-template-columns: 1fr 1fr;
+      margin-top: clamp(56px, 8vw, 112px);
+    }
+    .ed-nav__link {
+      display: block; padding: clamp(24px, 3.5vw, 44px) 0;
+      text-decoration: none; color: #fff; opacity: 0.5;
+      transition: opacity 0.2s;
+    }
+    .ed-nav__link:hover { opacity: 1; }
+    .ed-nav__next {
+      text-align: right; border-left: 1px solid rgba(255,255,255,0.1);
+      padding-left: clamp(20px, 3vw, 40px);
+    }
+    .ed-nav__dir {
+      display: block; font-size: 10px; text-transform: uppercase;
+      letter-spacing: 0.14em; color: #555; margin-bottom: 6px;
+    }
+    .ed-nav__name { font-size: clamp(14px, 1.3vw, 17px); font-style: italic; }
+
     @media (max-width: 768px) {
-      .srh-hero-meta { flex-direction: column !important; gap: 32px !important; margin-bottom: 64px !important; padding: 0 16px; }
-      .srh-hero-meta > div { width: 100% !important; margin-left: 0 !important; max-width: 100% !important; }
-      /* Fix OPPGAVE left-alignment — remove double padding inside the meta block */
-      .srh-hero-meta .srh-label { padding: 0 !important; }
-
-      /* Sliders: full-bleed */
-      .brosyre-slider { position: relative; left: 50%; transform: translateX(-50%); width: 100vw; }
-      /* Verktøy icons: one row, no text labels on mobile */
-      .tools-row { flex-wrap: nowrap !important; gap: 14px !important; align-items: center !important; }
-      .tools-row img { width: 26px !important; height: 26px !important; }
-      .tools-row span { display: none !important; }
-      .tools-row > div { gap: 0 !important; }
-
-      /* Video: full-bleed */
-      video { position: relative; left: 50%; transform: translateX(-50%); width: 100vw !important; }
-
-      /* LinkedIn carousel: fix scroll */
-      .srh-linkedin-section { flex-direction: column !important; padding: 0 !important; }
-      .srh-linkedin-section > img { width: 60% !important; max-width: 240px; margin: 0 auto 24px auto !important; }
-      #linkedinPostsScroll { margin-top: 0 !important; overflow-x: auto !important; width: 100% !important; }
-      #linkedinPostsScroll img { min-width: 700px; }
-      .color-swatches { display: flex !important; flex-wrap: wrap !important; justify-content: center !important; gap: 16px 20px !important; }
-      .color-swatches > div > div:first-child { width: 60px !important; height: 60px !important; }
-      .color-swatches > div > div:last-child { font-size: 0.65rem !important; }
-      .color-swatches > div > div:last-child strong { font-size: 0.75rem !important; }
-      .linkedin-scroll-hint { top: 0 !important; height: 100% !important; z-index: 2; }
-
-      /* Facebook / Reklame: remove zoom overlay, show full image */
-      .img-zoom__overlay { display: none !important; }
-      .srh-reklame-section { flex-direction: column !important; padding: 0 !important; }
-      .srh-reklame-section > div { flex: unset !important; width: 100% !important; }
-      .srh-reklame-section .img-zoom img { height: auto !important; object-fit: unset !important; }
-      .srh-reklame-section .img-zoom { border: none !important; }
-
-      .typo-row { flex-direction: column !important; padding: 20px 0 !important; }
-      .typo-row > div:last-child { padding-left: 0 !important; margin-top: 16px; }
-
-      .srh-desc--solo, .srh-label { padding: 0 16px; }
-      .color-swatches { grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important; gap: 12px !important; padding: 0 16px; }
+      .ed-hero { grid-template-columns: 1fr; }
+      .ed-hero__media { max-height: 52vw; }
+      .ed-intro { grid-template-columns: 1fr; }
+      .ed-two-col { grid-template-columns: 1fr; }
+      .ed-linkedin { grid-template-columns: 1fr; }
+      .ed-linkedin__single { width: 50%; }
+      .ed-linkedin__track img { height: 200px; }
+      .ed-typo-row { grid-template-columns: 1fr; }
+      .ed-typo-info { padding-left: 0; padding-top: 16px; border-top: none; }
+      .ed-palette { gap: 20px; }
+    }
+    @media (max-width: 480px) {
+      .ed-hero__media { display: none; }
     }
 
-    .srh-section { margin-bottom: var(--gap, 32px); }
-    .srh-section-head { margin-bottom: 20px; }
-    .img-zoom { position: relative; overflow: hidden; cursor: zoom-in; }
-    .img-zoom__overlay {
-      position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(160deg, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.28) 100%);
-      display: flex; align-items: center; justify-content: center;
-      transition: background 0.25s;
-    }
-    .img-zoom:hover .img-zoom__overlay {
-      background: linear-gradient(160deg, rgba(0,0,0,0.12) 0%, rgba(0,0,0,0.48) 100%);
-    }
-    .img-zoom__icon {
-      opacity: 0; transform: scale(0.8);
-      transition: opacity 0.25s, transform 0.25s;
-    }
-    .img-zoom:hover .img-zoom__icon { opacity: 1; transform: scale(1); }
-
-    @media (min-width: 2400px) {
-      .srh-label      { font-size: 20px; letter-spacing: 0.14em; }
-      .srh-desc       { font-size: 20px; line-height: 1.8; }
-      .srh-desc--solo { max-width: 1100px; }
-      /* Left meta column: bigger logo area + tools */
-      .srh-hero-meta > div:first-child { width: 520px !important; }
-      .tools-row img  { width: 56px !important; height: 56px !important; }
-      /* Right intro text column: capped so lines aren't too long */
-      .srh-hero-meta > div:last-child { max-width: 1100px !important; }
-      .srh-hero-meta p { font-size: 20px !important; line-height: 1.8 !important; }
-      /* Font description block */
-      [style*="max-width:680px"] { max-width: 1100px !important; }
-    }
+    #linkedinTrack:active { cursor: grabbing; }
   </style>
 </head>
 
 <body>
   <a class="skip-link" href="#content">Hopp til innhold</a>
-  <div class="process-drawer" id="processDrawer" aria-hidden="true">
-    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
-    <div class="process-drawer__inner" id="processDrawerContent"></div>
-  </div>
-  <div class="process-drawer__backdrop" id="processBackdrop"></div>
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
@@ -185,523 +222,214 @@
 
   <main id="content" class="content">
     <article class="project" id="project">
-        
-        <div class="hero-section">
-          <img src="./assets/poster-srh.webp" alt="SRH Open Day poster" fetchpriority="high" decoding="async">
-          <div style="position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(to bottom,transparent,#fff);pointer-events:none;"></div>
-        </div>
 
-        <div class="srh-hero-meta">
-          <div style="width:280px;flex-shrink:0;">
-            <img src="./srh-open-day-3/assets/img/srh-logo-oransj@3x.webp" alt="SRH Berlin University of Applied Sciences" decoding="async" style="display:block;width:100%;height:auto;margin-bottom:32px;">
-            <p class="srh-label">Oppgave</p>
-            <p class="srh-desc" style="margin-bottom:24px;">IDG1009 Flerkanalpublisering<br>Høst 2024</p>
-            <p class="srh-label">Verktøy</p>
-            <div class="tools-row" style="display:flex;gap:12px;flex-wrap:wrap;">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-                <img src="./srh-open-day-3/assets/img/figma.png" alt="Figma" loading="lazy" decoding="async" style="width:32px;height:32px;object-fit:contain;">
-                <span class="srh-desc">Figma</span>
+      <!-- HERO -->
+      <div class="ed-hero">
+        <div>
+          <p class="ed-crumb">Prosjekter</p>
+          <h1 class="ed-title">Fler-<br>kanals-<br>publisering</h1>
+          <p class="ed-subtitle">Redesign · SRH Open Day</p>
+        </div>
+        <div class="ed-hero__media">
+          <img src="./assets/poster-srh.webp" alt="SRH Open Day — plakat" fetchpriority="high" decoding="async">
+        </div>
+      </div>
+
+      <!-- META + BESKRIVELSE -->
+      <div class="ed-intro">
+        <div class="ed-meta">
+          <div class="ed-meta__item">
+            <span class="ed-label">Fag</span>
+            <span class="ed-val">IDG1009 Flerkanalpublisering</span>
+          </div>
+          <div class="ed-meta__item">
+            <span class="ed-label">År</span>
+            <span class="ed-val">Høst 2024</span>
+          </div>
+          <div class="ed-meta__item">
+            <span class="ed-label">Oppdragsgiver</span>
+            <span class="ed-val">SRH University of Applied Sciences, Berlin</span>
+          </div>
+          <div class="ed-meta__item">
+            <span class="ed-label">Verktøy</span>
+            <div class="ed-tools">
+              <div class="ed-tool">
+                <img src="./srh-open-day-3/assets/img/figma.png" alt="Figma" loading="lazy" decoding="async">
+                <span>Figma</span>
               </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-                <img src="./assets/illustrator.webp" alt="Adobe Illustrator" loading="lazy" decoding="async" style="width:32px;height:32px;object-fit:contain;">
-                <span class="srh-desc">Illustrator</span>
+              <div class="ed-tool">
+                <img src="./assets/illustrator.webp" alt="Illustrator" loading="lazy" decoding="async">
+                <span>Illustrator</span>
               </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-                <img src="./assets/photoshop.webp" alt="Adobe Photoshop" loading="lazy" decoding="async" style="width:32px;height:32px;object-fit:contain;">
-                <span class="srh-desc">Photoshop</span>
+              <div class="ed-tool">
+                <img src="./assets/photoshop.webp" alt="Photoshop" loading="lazy" decoding="async">
+                <span>Photoshop</span>
               </div>
-              <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-                <img src="./assets/indesign.webp" alt="Adobe Indesign" loading="lazy" decoding="async" style="width:32px;height:32px;object-fit:contain;">
-                <span class="srh-desc">Indesign</span>
+              <div class="ed-tool">
+                <img src="./assets/indesign.webp" alt="Indesign" loading="lazy" decoding="async">
+                <span>Indesign</span>
               </div>
             </div>
           </div>
-          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:1.8rem;justify-content:center;max-width:640px; margin-left:48px;">
-            <p style="font-family:'Poppins',sans-serif;font-size:1rem;font-weight:300;line-height:1.8;color:#222;margin:0;">I faget flerkanalspublisering fikk vi i oppgave å designe for en valgfri bedrift. Jeg valgte SRH University of Applied Sciences fordi det er en skole jeg har vært interessert i å dra på utveksling til, og som jeg synes har et spennende og visuelt tiltalende miljø.</p>
-            <p style="font-family:'Poppins',sans-serif;font-size:1rem;font-weight:300;line-height:1.8;color:#222;margin:0;">Oppgaven har vært å utvikle una visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin, og bruker arrangementet som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.</p>
-          </div>
         </div>
+        <div class="ed-desc">
+          <p>I faget flerkanalspublisering fikk vi i oppgave å designe for en valgfri bedrift. Jeg valgte SRH University of Applied Sciences fordi det er en skole jeg har vært interessert i å dra på utveksling til, og som jeg synes har et spennende og visuelt tiltalende miljø.</p>
+          <p>Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin — et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.</p>
+        </div>
+      </div>
 
-        <p class="srh-label">Brosjyre</p>
-        <div class="brosyre-slider">
+      <!-- BROSJYRE -->
+      <div class="ed-section">
+        <span class="ed-section-label">Brosjyre</span>
+        <div class="ed-slider">
           <img id="brosyreImg" src="./assets/brosyre-inn-srh.webp" alt="Brosjyre – innside" loading="lazy" decoding="async">
-          <button class="brosyre-arrow brosyre-arrow--prev" onclick="brosyreNav(-1)" aria-label="Forrige"><svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M8 1L2 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="brosyre-arrow brosyre-arrow--next" onclick="brosyreNav(1)" aria-label="Neste"><svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M2 1L8 8L2 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="ed-arrow ed-arrow--prev" onclick="brosyreNav(-1)" aria-label="Forrige">
+            <svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M8 1L2 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="ed-arrow ed-arrow--next" onclick="brosyreNav(1)" aria-label="Neste">
+            <svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M2 1L8 8L2 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
-        <p class="srh-desc srh-desc--solo" style="margin-bottom:88px;">Brosjyren skiller seg litt ut ved at den fokuserer på skolens bærekraftstiltak. Jeg valgte et minimalistisk uttrykk, der målet er å gi una kort introduksjon og heller lede videre til mer detaljert informasjon på deres egen nettside.</p>
+        <p class="ed-body">Brosjyren skiller seg litt ut ved at den fokuserer på skolens bærekraftstiltak. Jeg valgte et minimalistisk uttrykk, der målet er å gi en kort introduksjon og heller lede videre til mer detaljert informasjon på deres nettside.</p>
+      </div>
 
-        <p class="srh-label">Nettside (event)</p>
-        <video src="./assets/srh-video.mp4" autoplay muted loop playsinline controls preload="none" style="display:block;width:100%;height:auto;margin-bottom:12px;"></video>
-        <p class="srh-desc srh-desc--solo" style="margin-bottom:88px;">Nettsiden er holdt veldig enkel, med fokus på å formidle informasjon om arrangementet på en rask og oversiktlig måte. Den er laget for at brukeren raskt skal forstå hva, hvor og når. <a href="./srh-open-day-3/index.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Åpne nettsiden ↗&#xFE0E;</a></p>
+      <!-- NETTSIDE -->
+      <div class="ed-section">
+        <span class="ed-section-label">Nettside (event)</span>
+        <video src="./assets/srh-video.mp4" autoplay muted loop playsinline controls preload="none" style="display:block;width:100%;height:auto;margin-bottom:clamp(12px,1.5vw,20px);"></video>
+        <p class="ed-body">Nettsiden er holdt veldig enkel, med fokus på å formidle informasjon om arrangementet på en rask og oversiktlig måte. Den er laget for at brukeren raskt skal forstå hva, hvor og når. <a href="./srh-open-day-3/index.html" target="_blank" rel="noopener">Åpne nettsiden ↗&#xFE0E;</a></p>
+      </div>
 
-        <div style="margin-bottom:12px;">
-          <p class="srh-label" style="margin:0;">Buss-reklame, rollupbanner og plakat</p>
-        </div>
-
-        <div class="brosyre-slider">
+      <!-- PLAKAT, ROLLUP, BUSS -->
+      <div class="ed-section">
+        <span class="ed-section-label">Plakat · Rollup-banner · Buss-reklame</span>
+        <div class="ed-slider">
           <img id="bannerPosterImg" src="./assets/poster-srh.webp" alt="Poster SRH" loading="lazy" decoding="async">
-          <button class="brosyre-arrow brosyre-arrow--prev" onclick="bannerPosterNav(-1)" aria-label="Forrige"><svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M8 1L2 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="brosyre-arrow brosyre-arrow--next" onclick="bannerPosterNav(1)" aria-label="Neste"><svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M2 1L8 8L2 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="ed-arrow ed-arrow--prev" onclick="bannerPosterNav(-1)" aria-label="Forrige">
+            <svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M8 1L2 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="ed-arrow ed-arrow--next" onclick="bannerPosterNav(1)" aria-label="Neste">
+            <svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M2 1L8 8L2 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
+        <p class="ed-body">Plakaten er designet for å fange oppmerksomhet raskt og formidle Open Day på en tydelig måte — inspirert av skolens visuelle uttrykk og min egen interesse for designfagene de tilbyr. Rollup-banneret og buss-reklamen følger samme visuelle retning og er laget for å fungere i fysiske omgivelser.</p>
+      </div>
 
-        <div style="margin-bottom:88px;display:flex;flex-direction:column;gap:8px;max-width:680px;">
-          <p class="srh-desc srh-desc--solo" style="margin:0;">Plakaten er designet for å fange oppmerksomhet raskt og formidle Open Day på en tydelig måte. Jeg har tatt inspirasjon fra skolens visuelle uttrykk og min egen interesse for designfagene de tilbyr.</p>
-          <p class="srh-desc srh-desc--solo" style="margin:0;">Rollup-banneret er laget for å fungere i fysiske omgivelser, med et enkelt og tydelig budskap som er lett å få med seg på avstand. Designet følger samme visuelle retning som resten av konseptet.</p>
-        </div>
-
-        <p class="srh-label">LinkedIn-karusell</p>
-        <div class="srh-linkedin-section">
-          <img src="./assets/linkedin-post-3x.webp" alt="LinkedIn-karusell – enkeltpost" loading="lazy" decoding="async" style="display:block;width:26%;height:auto;flex-shrink:0;">
-          <div style="flex:1;min-width:0;position:relative;max-width:100%;">
-            <div id="linkedinPostsScroll" style="overflow-x:auto;-webkit-overflow-scrolling:touch;cursor:grab;margin-top:120px;width:100%;">
-              <img id="linkedinPostsImg" src="./assets/linkedin-posts.webp" alt="LinkedIn-karusell – oversikt" loading="lazy" decoding="async" style="display:block;height:320px;width:auto;max-width:none;cursor:zoom-in;">
-            </div>
-            <div class="linkedin-scroll-hint" style="position:absolute;top:120px;right:0;width:80px;height:320px;background:linear-gradient(to right,transparent,rgba(255,255,255,0.97));pointer-events:none;display:flex;align-items:center;justify-content:flex-end;padding-right:10px;">
-              <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" fill="white" stroke="#ddd"/><path d="M11.5 9l5 5-5 5" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#888;font-family:inherit;">scroll</span>
-              </div>
-            </div>
+      <!-- LINKEDIN -->
+      <div class="ed-section">
+        <span class="ed-section-label">LinkedIn-karusell</span>
+        <div class="ed-linkedin" style="margin-bottom:clamp(14px,2vw,24px);">
+          <div class="ed-linkedin__single">
+            <img src="./assets/linkedin-post-3x.webp" alt="LinkedIn-karusell – enkeltpost" loading="lazy" decoding="async">
           </div>
-        </div>
-        <p class="srh-desc srh-desc--solo" style="margin-bottom:88px;">Carousel-designet er mer informasjonsbasert, med mindre bruk av bilder og tydelig hvit tekst på SRHs oransje farge. Her er det viktig at budskapet kommer klart frem i una profesjonell kontekst.</p>
-
-        <div class="srh-reklame-section">
-          <div style="flex:1;min-width:0;">
-            <p class="srh-label">Reklamebanner</p>
-            <div class="img-zoom" style="margin-bottom:10px;border:1px solid #ddd;">
-              <img id="reklamebannerImg" src="./assets/reklamebanner.webp" alt="Reklamebanner – Finn.no" style="display:block;width:100%;height:220px;object-fit:cover;">
-              <div class="img-zoom__overlay" aria-hidden="true">
-                <div class="img-zoom__icon">
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M14 4H4v10M32 14V4H22M22 32h10V22M4 22v10h10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-              </div>
+          <div class="ed-linkedin__scroll">
+            <div class="ed-linkedin__track" id="linkedinTrack">
+              <img src="./assets/linkedin-posts.webp" alt="LinkedIn-karusell – oversikt" loading="lazy" decoding="async">
             </div>
-            <p class="srh-desc">Reklamebanneret er ganske enkelt og direkte, med fokus på å kommunisere arrangementet raskt uten for mye distraksjon.</p>
-          </div>
-          <div style="flex:1;min-width:0;">
-            <p class="srh-label">Facebook event</p>
-            <div class="img-zoom" style="margin-bottom:10px;border:1px solid #ddd;">
-              <img id="facebookCover" src="./assets/facebookcover.webp" alt="Facebook cover" style="display:block;width:100%;height:220px;object-fit:cover;">
-              <div class="img-zoom__overlay" aria-hidden="true">
-                <div class="img-zoom__icon">
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M14 4H4v10M32 14V4H22M22 32h10V22M4 22v10h10" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </div>
-              </div>
-            </div>
-            <p class="srh-desc">Facebook-eventet er også holdt enkelt, med tydelig informasjon om arrangementet.</p>
+            <div class="ed-linkedin__fade"></div>
           </div>
         </div>
+        <p class="ed-body">Carousel-designet er mer informasjonsbasert, med tydelig hvit tekst på SRHs oransje farge. Her er det viktig at budskapet kommer klart frem i en profesjonell kontekst.</p>
+      </div>
 
-        <div style="margin-bottom:56px; max-width:100%;">
-          <p class="srh-label">Fontvalg</p>
+      <!-- REKLAMEBANNER + FACEBOOK -->
+      <div class="ed-two-col">
+        <div>
+          <span class="ed-section-label">Reklamebanner</span>
+          <img src="./assets/reklamebanner.webp" alt="Reklamebanner" loading="lazy" decoding="async" class="ed-img-wide ed-img-border" style="margin-bottom:clamp(10px,1.5vw,16px);">
+          <p class="ed-body" style="margin-bottom:0;">Ganske enkelt og direkte, med fokus på å kommunisere arrangementet raskt uten for mye distraksjon.</p>
+        </div>
+        <div>
+          <span class="ed-section-label">Facebook event</span>
+          <img src="./assets/facebookcover.webp" alt="Facebook event cover" loading="lazy" decoding="async" class="ed-img-wide ed-img-border" style="margin-bottom:clamp(10px,1.5vw,16px);">
+          <p class="ed-body" style="margin-bottom:0;">Holdt enkelt, med tydelig informasjon om arrangementet og gjenkjennelig visuell identitet.</p>
+        </div>
+      </div>
 
-          <div style="max-width:820px; margin:0 auto; margin-bottom:48px;">
-
-            <div class="typo-row" style="display:flex; align-items:center; gap:0; padding:28px 0;">
-              <div style="flex:1; min-width:0; font-family:'All Round Gothic', sans-serif;">
-                <div style="font-size:clamp(64px,7vw,96px); font-weight:600; line-height:1; color:#111; letter-spacing:-0.02em;">Aa</div>
-                <div style="margin-top:14px; font-size:clamp(12px,1.1vw,14px); font-weight:600; line-height:1.5; color:#111; letter-spacing:0.01em;">
-                  ABCDEFGHIJKLMN<br>OPQRSTUVWXYZÆØÅ
-                </div>
-                <div style="margin-top:6px; font-size:clamp(12px,1.1vw,14px); font-weight:600; line-height:1.5; color:#111;">
-                  abcdefghijklmn<br>opqrstuvwxyzæøå
-                </div>
-              </div>
-              <div style="flex:1; min-width:0; padding-left:clamp(24px,5vw,64px);">
-                <div style="font-size:12px; color:#888; font-family:'Poppins',sans-serif; margin-bottom:6px; letter-spacing:0.02em;">Logo:</div>
-                <div style="font-size:clamp(18px,2vw,28px); font-weight:600; color:#111; font-family:'All Round Gothic',sans-serif; line-height:1.2;">All Round Gothic Demi</div>
-              </div>
-            </div>
-
-            <div class="typo-row" style="display:flex; align-items:center; gap:0; padding:28px 0; border-top:1px solid #ebebeb;">
-              <div style="flex:1; min-width:0; font-family:'Neulis Sans','Poppins',sans-serif;">
-                <div style="font-size:clamp(64px,7vw,96px); font-weight:500; line-height:1; color:#111; letter-spacing:-0.02em;">Aa</div>
-                <div style="margin-top:14px; font-size:clamp(12px,1.1vw,14px); font-weight:500; line-height:1.5; color:#111; letter-spacing:0.01em;">
-                  ABCDEFGHIJKLMN<br>OPQRSTUVWXYZÆØÅ
-                </div>
-                <div style="margin-top:6px; font-size:clamp(12px,1.1vw,14px); font-weight:400; line-height:1.5; color:#111;">
-                  abcdefghijklmn<br>opqrstuvwxyzæøå
-                </div>
-              </div>
-              <div style="flex:1; min-width:0; padding-left:clamp(24px,5vw,64px); display:flex; flex-direction:column; gap:14px;">
-                <div>
-                  <div style="font-size:12px; color:#888; font-family:'Poppins',sans-serif; margin-bottom:6px; letter-spacing:0.02em;">Overskrifter / Brødtekst:</div>
-                  <div style="font-size:clamp(18px,2vw,28px); font-weight:500; color:#111; font-family:'Neulis Sans','Poppins',sans-serif; line-height:1.2;">Neulis Sans Medium</div>
-                </div>
-                <div>
-                  <div style="font-size:12px; color:#888; font-family:'Poppins',sans-serif; margin-bottom:6px; letter-spacing:0.02em;">Brødtekst:</div>
-                  <div style="font-size:clamp(18px,2vw,28px); font-weight:400; color:#111; font-family:'Neulis Sans','Poppins',sans-serif; line-height:1.2;">Neulis Sans Regular</div>
-                </div>
+      <!-- TYPOGRAFI -->
+      <div class="ed-section">
+        <span class="ed-section-label">Skrifttype</span>
+        <div style="max-width:820px;margin-bottom:clamp(20px,3vw,40px);">
+          <div class="ed-typo-row">
+            <div>
+              <div class="ed-typo-big" style="font-weight:600;letter-spacing:-0.02em;">Aa</div>
+              <div class="ed-typo-chars" style="font-weight:600;">
+                ABCDEFGHIJKLMN OPQRSTUVWXYZÆØÅ<br>
+                abcdefghijklmn opqrstuvwxyzæøå
               </div>
             </div>
-
+            <div class="ed-typo-info">
+              <span class="ed-typo-role">Logo</span>
+              <span class="ed-typo-name" style="font-weight:600;">All Round Gothic Demi</span>
+            </div>
           </div>
-
-          <div style="display:flex; flex-direction:column; gap:16px; max-width:680px; margin-left:auto; margin-right:auto; margin-bottom:72px;">
-            <p class="srh-desc" style="margin:0;">Logoen benytter All Round Gothic – Demi, da denne ligger nærmest typografien brukt på den originale nettsiden og tilhørende flater. For resten av den visuelle identiteten er Neulis Sans valgt i vektene Medium og Regular, for å skape una mer lesbar og moderne typografisk helhet.</p>
-            <p class="srh-desc" style="margin:0;">I førsteutkastet, se <a href="./assets/srh_pdf.pdf" target="_blank" rel="noopener" style="text-decoration:underline;text-underline-offset:3px;color:inherit;font-weight:500;">srh_pdf.pdf</a> ble All Round Gothic brukt gjennomgående i hele designet. Dette viste seg imidlertid å fungere mindre godt, da fonten blir for dominerende i lengre tekstmengder og svekker lesbarheten. I tillegg opplevdes den beige fargepaletten som lite treffsikker, da den ikke i tilstrekkelig grad støttet opp under det visuelle uttrykket og identiteten som ønskes formidlet.</p>
-          </div>
-
-          <p class="srh-label" style="text-align:center; margin-bottom:28px;">Fargepalett</p>
-          <div class="color-swatches" style="display:flex; justify-content:center; flex-wrap:nowrap; gap:24px 32px; margin-top:0;">
-            <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="width:90px; height:90px; border-radius:50%; background-color:#971b14; box-shadow:0 2px 6px rgba(0,0,0,0.08);"></div>
-              <div style="font-family:'Poppins', sans-serif; font-size:0.75rem; color:#444; line-height:1.6;">
-                <strong style="color:#111; font-size:0.85rem;">Mørkerød</strong><br>
-                HEX: #971b14<br>
-                RGB: 151, 27, 20<br>
-                CMYK: 21, 98, 100, 26
+          <div class="ed-typo-row">
+            <div>
+              <div class="ed-typo-big" style="font-weight:500;letter-spacing:-0.02em;">Aa</div>
+              <div class="ed-typo-chars">
+                ABCDEFGHIJKLMN OPQRSTUVWXYZÆØÅ<br>
+                abcdefghijklmn opqrstuvwxyzæøå
               </div>
             </div>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="width:90px; height:90px; border-radius:50%; background-color:#cb5b26; box-shadow:0 2px 6px rgba(0,0,0,0.08);"></div>
-              <div style="font-family:'Poppins', sans-serif; font-size:0.75rem; color:#444; line-height:1.6;">
-                <strong style="color:#111; font-size:0.85rem;">Oransje</strong><br>
-                HEX: #cb5b26<br>
-                RGB: 203, 91, 38<br>
-                CMYK: 12, 74, 96, 2
-              </div>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="width:90px; height:90px; border-radius:50%; background-color:#1a1a1a; box-shadow:0 2px 6px rgba(0,0,0,0.08);"></div>
-              <div style="font-family:'Poppins', sans-serif; font-size:0.75rem; color:#444; line-height:1.6;">
-                <strong style="color:#111; font-size:0.85rem;">Svart</strong><br>
-                HEX: #1a1a1a<br>
-                RGB: 26, 26, 26<br>
-                CMYK: 73, 67, 66, 80
-              </div>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="width:90px; height:90px; border-radius:50%; background-color:#707070; box-shadow:0 2px 6px rgba(0,0,0,0.08);"></div>
-              <div style="font-family:'Poppins', sans-serif; font-size:0.75rem; color:#444; line-height:1.6;">
-                <strong style="color:#111; font-size:0.85rem;">Grå</strong><br>
-                HEX: #707070<br>
-                RGB: 112, 112, 112<br>
-                CMYK: 0, 0, 0, 56
-              </div>
-            </div>
-            <div style="display:flex; flex-direction:column; gap:12px;">
-              <div style="width:90px; height:90px; border-radius:50%; background-color:#ffffff; border:1px solid #e0e0e0; box-shadow:0 2px 6px rgba(0,0,0,0.08);"></div>
-              <div style="font-family:'Poppins', sans-serif; font-size:0.75rem; color:#444; line-height:1.6;">
-                <strong style="color:#111; font-size:0.85rem;">Hvit</strong><br>
-                HEX: #ffffff<br>
-                RGB: 255, 255, 255<br>
-                CMYK: 0, 0, 0, 0
-              </div>
+            <div class="ed-typo-info">
+              <span class="ed-typo-role">Overskrifter / Brødtekst</span>
+              <span class="ed-typo-name" style="font-weight:500;">Neulis Sans Medium</span>
+              <span class="ed-typo-name" style="font-weight:400;margin-top:4px;">Neulis Sans Regular</span>
             </div>
           </div>
         </div>
+        <p class="ed-body" style="max-width:680px;">Logoen benytter All Round Gothic — Demi, da denne ligger nærmest typografien brukt på SRHs originale nettside. For resten av den visuelle identiteten er Neulis Sans valgt i vektene Medium og Regular, for å skape en mer lesbar og moderne typografisk helhet.</p>
+        <p class="ed-body" style="max-width:680px;">I <a href="./assets/srh_pdf.pdf" target="_blank" rel="noopener">førsteutkastet (srh_pdf.pdf)</a> ble All Round Gothic brukt gjennomgående. Dette viste seg imidlertid å fungere mindre godt, da fonten blir for dominerende i lengre tekstmengder og svekker lesbarheten.</p>
+      </div>
 
-        <div class="related">
-          <h2 class="related__heading">Mer å se på</h2>
-          <div class="related__grid">
-            <a class="related__card" href="./stoppestedet.html">
-              <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="lazy" decoding="async">
-              <p class="related__title">Stoppestedet</p>
-            </a>
-            <a class="related__card" href="./ansatts-portal.html">
-              <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-              <p class="related__title">Tjønnås og Norvald</p>
-            </a>
-            <a class="related__card" href="./reina-fruktgard.html">
-              <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
-              <p class="related__title">Reina Fruktgård</p>
-            </a>
+      <!-- FARGEPALETT -->
+      <div class="ed-section">
+        <span class="ed-section-label">Fargepalett</span>
+        <div class="ed-palette" style="margin-bottom:clamp(20px,3vw,36px);">
+          <div class="ed-pal-item">
+            <div class="ed-pal-swatch-sq" style="background:#971b14;"></div>
+            <div class="ed-pal-text"><strong>Mørkerød</strong>HEX: #971b14<br>RGB: 151, 27, 20<br>CMYK: 21, 98, 100, 26</div>
+          </div>
+          <div class="ed-pal-item">
+            <div class="ed-pal-swatch-sq" style="background:#cb5b26;"></div>
+            <div class="ed-pal-text"><strong>Oransje</strong>HEX: #cb5b26<br>RGB: 203, 91, 38<br>CMYK: 12, 74, 96, 2</div>
+          </div>
+          <div class="ed-pal-item">
+            <div class="ed-pal-swatch-sq" style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.15);"></div>
+            <div class="ed-pal-text"><strong>Svart</strong>HEX: #1a1a1a<br>RGB: 26, 26, 26<br>CMYK: 73, 67, 66, 80</div>
+          </div>
+          <div class="ed-pal-item">
+            <div class="ed-pal-swatch-sq" style="background:#707070;"></div>
+            <div class="ed-pal-text"><strong>Grå</strong>HEX: #707070<br>RGB: 112, 112, 112<br>CMYK: 0, 0, 0, 56</div>
+          </div>
+          <div class="ed-pal-item">
+            <div class="ed-pal-swatch-sq" style="background:#ffffff;border:1px solid rgba(255,255,255,0.2);"></div>
+            <div class="ed-pal-text"><strong>Hvit</strong>HEX: #ffffff<br>RGB: 255, 255, 255<br>CMYK: 0, 0, 0, 0</div>
           </div>
         </div>
+      </div>
+
+      <!-- NAVIGASJON -->
+      <div class="ed-nav">
+        <a href="./bokomslag.html" class="ed-nav__link">
+          <span class="ed-nav__dir">← Forrige</span>
+          <span class="ed-nav__name">Bokomslag</span>
+        </a>
+        <a href="./stoppestedet.html" class="ed-nav__link ed-nav__next">
+          <span class="ed-nav__dir">Neste →</span>
+          <span class="ed-nav__name">Stoppestedet</span>
+        </a>
+      </div>
 
     </article>
   </main>
 
-  <script src="./projects.js?v=6" defer></script>
+  <script src="./projects.js?v=6"></script>
   <script>
     const $ = (s) => document.querySelector(s);
-    const id = "flerkanalspublisering";
 
-    const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Accordion
-    const accordion = document.getElementById("accordion");
-    const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
-    if (accordion) {
-      accordion.querySelectorAll(".accordion__item").forEach(item => {
-        item.querySelector(".accordion__trigger").addEventListener("click", () => {
-          if (project && project.noDrawer) {
-            const isOpen = item.classList.contains("accordion__item--open");
-            accordion.querySelectorAll(".accordion__item").forEach(i => {
-              i.classList.remove("accordion__item--open");
-              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
-            });
-            if (!isOpen) {
-              item.classList.add("accordion__item--open");
-              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
-            }
-          } else {
-            const idx = accordionItems.indexOf(item);
-            openDrawer();
-            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
-            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
-            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-          }
-        });
-      });
-    }
-
-    // Panel toggle
-    const projectLayout = document.querySelector(".project-layout");
-    const inlineAccordion = document.getElementById("inlineAccordion");
-    function syncToggles(isOpen) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => {
-        btn.setAttribute("aria-expanded", String(isOpen));
-        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
-      });
-    }
-    document.querySelectorAll(".panel-toggle").forEach(btn => {
-      btn.addEventListener("click", () => {
-        let isOpen;
-        if (inlineAccordion) {
-          isOpen = inlineAccordion.hidden;
-          inlineAccordion.hidden = !isOpen;
-        } else {
-          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
-        }
-        syncToggles(isOpen);
-      });
-    });
-
-    // Expandable gallery
-    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
-      cover.addEventListener("click", () => {
-        const section = cover.closest(".gallery-expandable");
-        const wasOpen = section.classList.contains("is-open");
-        section.classList.toggle("is-open");
-        if (!wasOpen && window.innerWidth <= 780) {
-          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-        }
-      });
-    });
-    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const section = btn.closest(".gallery-expandable");
-        section.classList.remove("is-open");
-        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-
-    // Lightbox
-    const lbOverlay = document.getElementById("lbOverlay");
-    const lbImg = document.getElementById("lbImg");
-    const lbPrev = document.getElementById("lbPrev");
-    const lbNext = document.getElementById("lbNext");
-    let lbImages = [], lbIndex = 0;
-    function openLightbox(src, alt, images, index) {
-      lbImg.src = src; lbImg.alt = alt || "";
-      lbImages = images || []; lbIndex = index ?? 0;
-      lbPrev.style.display = lbImages.length > 1 ? "" : "none";
-      lbNext.style.display = lbImages.length > 1 ? "" : "none";
-      lbOverlay.classList.add("lb-open");
-    }
-    function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
-    function showLbImage(idx) {
-      lbIndex = (idx + lbImages.length) % lbImages.length;
-      lbImg.src = lbImages[lbIndex].src; lbImg.alt = lbImages[lbIndex].alt || "";
-    }
-    lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
-    lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
-    document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
-      if (imgEl) {
-        const section = imgEl.closest(".gallery-expandable");
-        if (section) {
-          const imgs = [...section.querySelectorAll(".project__figure img")];
-          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
-        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
-      } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
-    });
-    document.addEventListener("keydown", e => {
-      if (!lbOverlay.classList.contains("lb-open")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") showLbImage(lbIndex - 1);
-      if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
-    });
-
-    // Reklamebanner → zoom in lightbox
-    document.getElementById("reklamebannerImg")?.addEventListener("click", () => {
-      openLightbox("./assets/reklamebanner.webp", "Reklamebanner – Finn.no", [], 0);
-    });
-
-    // Facebook cover → open facebookevent.webp in lightbox
-    document.getElementById("facebookCover")?.addEventListener("click", () => {
-      openLightbox("./assets/facebookcover.webp", "Facebook event cover", [], 0);
-    });
-      
-    // LinkedIn posts -> zoom in lightbox
-    document.getElementById("linkedinPostsImg")?.addEventListener("click", () => {
-      openLightbox("./assets/linkedin-posts.webp", "LinkedIn-karusell – oversikt", [], 0);
-    });
-
-    // Process drawer
-    const processToggle = document.getElementById("processToggle");
-    const processDrawer = document.getElementById("processDrawer");
-    const processBackdrop = document.getElementById("processBackdrop");
-    const processDrawerClose = document.getElementById("processDrawerClose");
-    const processDrawerContent = document.getElementById("processDrawerContent");
-
-    const allSections = accordionItems.map(item => ({
-      title: item.querySelector(".accordion__title").textContent,
-      content: item.querySelector(".accordion__panel-inner").innerHTML
-    }));
-    if (project && project.processText) {
-      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
-    }
-    function showDrawerIndex() {
-      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
-      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const i = btn.dataset.index;
-          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
-          const isOpen = !panel.hidden;
-          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
-          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
-          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-        });
-      });
-    }
-    function openDrawer() {
-      if (allSections.length === 1) {
-        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
-      } else { showDrawerIndex(); }
-      processDrawer.classList.add("process-drawer--open");
-      processBackdrop.classList.add("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "false");
-    }
-    function closeDrawer() {
-      processDrawer.classList.remove("process-drawer--open");
-      processBackdrop.classList.remove("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "true");
-    }
-    processToggle?.addEventListener("click", openDrawer);
-    if (project && !project.noDrawer) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
-    }
-    processDrawerClose?.addEventListener("click", closeDrawer);
-    processBackdrop?.addEventListener("click", closeDrawer);
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
-
-    // Cross-fade helper: ghost image fades in on top, no background flash
-    function setupCrossfade(baseId) {
-      const base = document.getElementById(baseId);
-      const slider = base.closest('.brosyre-slider');
-      slider.style.position = 'relative';
-      base.style.position = 'relative';
-      base.style.zIndex = '1';
-      const ghost = document.createElement('img');
-      ghost.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity 0.55s ease;pointer-events:none;z-index:2;';
-      slider.insertBefore(ghost, base);
-      return ghost;
-    }
-
-    function crossfadeShow(base, ghost, images, idx) {
-      ghost.src = images[idx].src;
-      ghost.alt = images[idx].alt;
-      ghost.style.opacity = '1';
-      return setTimeout(() => {
-        base.src = images[idx].src;
-        base.alt = images[idx].alt;
-        ghost.style.transition = 'none';
-        ghost.style.opacity = '0';
-        requestAnimationFrame(() => { ghost.style.transition = 'opacity 0.55s ease'; });
-      }, 600);
-    }
-
-    // Banner & Poster slider
-    const bannerPosterImgs = [
-      { src: './assets/poster-srh.webp', alt: 'Poster SRH' },
-      { src: './assets/banner-srh.webp', alt: 'Banner SRH' }
-    ];
-    let bannerPosterIdx = 0;
-    let bannerPosterPaused = false;
-    let bannerPosterTimer, bannerPosterFadeTimer;
-    const bannerBase = document.getElementById('bannerPosterImg');
-    const bannerGhost = setupCrossfade('bannerPosterImg');
-
-    function bannerPosterShow(idx) {
-      bannerPosterIdx = (idx + bannerPosterImgs.length) % bannerPosterImgs.length;
-      clearTimeout(bannerPosterFadeTimer);
-      bannerPosterFadeTimer = crossfadeShow(bannerBase, bannerGhost, bannerPosterImgs, bannerPosterIdx);
-    }
-    function bannerPosterNav(dir) {
-      bannerPosterPaused = true;
-      clearInterval(bannerPosterTimer);
-      bannerPosterShow(bannerPosterIdx + dir);
-    }
-    function bannerPosterTick() {
-      if (!bannerPosterPaused) bannerPosterShow(bannerPosterIdx + 1);
-    }
-    bannerPosterTimer = setInterval(bannerPosterTick, 4000);
-    bannerBase.addEventListener('click', () => { bannerPosterPaused = true; clearInterval(bannerPosterTimer); });
-
-    // Brosjyre slider
-    const brosyreImgs = [
-      { src: './assets/brosyre-inn-srh.webp', alt: 'Brosjyre – innside' },
-      { src: './assets/brosyre-ute-srh.webp', alt: 'Brosjyre – utside' }
-    ];
-    let brosyreIdx = 0;
-    let brosyrePaused = false;
-    let brosyreTimer, brosyreFadeTimer;
-    const brosyreBase = document.getElementById('brosyreImg');
-    const brosyreGhost = setupCrossfade('brosyreImg');
-
-    function brosyreShow(idx) {
-      brosyreIdx = (idx + brosyreImgs.length) % brosyreImgs.length;
-      clearTimeout(brosyreFadeTimer);
-      brosyreFadeTimer = crossfadeShow(brosyreBase, brosyreGhost, brosyreImgs, brosyreIdx);
-    }
-    function brosyreNav(dir) {
-      brosyrePaused = true;
-      clearInterval(brosyreTimer);
-      brosyreShow(brosyreIdx + dir);
-    }
-    brosyreTimer = setInterval(() => { if (!brosyrePaused) brosyreShow(brosyreIdx + 1); }, 4000);
-    brosyreBase.addEventListener('click', () => { brosyrePaused = true; clearInterval(brosyreTimer); });
-
-    // Touch swipe for sliders on mobile
-    function addSwipe(el, navFn) {
-      let startX = null;
-      el.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-      el.addEventListener('touchend', e => {
-        if (startX === null) return;
-        const dx = e.changedTouches[0].clientX - startX;
-        if (Math.abs(dx) > 40) navFn(dx < 0 ? 1 : -1);
-        startX = null;
-      }, { passive: true });
-    }
-    const bannerSliderEl = document.getElementById('bannerPosterImg')?.closest('.brosyre-slider');
-    const brosyreSliderEl = document.getElementById('brosyreImg')?.closest('.brosyre-slider');
-    if (bannerSliderEl) addSwipe(bannerSliderEl, bannerPosterNav);
-    if (brosyreSliderEl) addSwipe(brosyreSliderEl, brosyreNav);
-
-    // Mouse drag-to-scroll for LinkedIn strip (makes it work in devtools + desktop)
-    const scrollEl = document.getElementById('linkedinPostsScroll');
-    if (scrollEl) {
-      let isDown = false, startX, scrollLeft;
-      scrollEl.addEventListener('mousedown', e => {
-        isDown = true;
-        scrollEl.style.cursor = 'grabbing';
-        startX = e.pageX - scrollEl.offsetLeft;
-        scrollLeft = scrollEl.scrollLeft;
-      });
-      scrollEl.addEventListener('mouseleave', () => { isDown = false; scrollEl.style.cursor = 'grab'; });
-      scrollEl.addEventListener('mouseup', () => { isDown = false; scrollEl.style.cursor = 'grab'; });
-      scrollEl.addEventListener('mousemove', e => {
-        if (!isDown) return;
-        e.preventDefault();
-        scrollEl.scrollLeft = scrollLeft - (e.pageX - scrollEl.offsetLeft - startX);
-      });
-    }
 
     // Sidebar toggle
     const toggle = $("#sidebarToggle");
@@ -709,6 +437,60 @@
       const sidebar = $("#sidebar");
       const isOpen = sidebar.classList.toggle("sidebar--open");
       toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Brosjyre slider
+    const brosyreImages = ["./assets/brosyre-inn-srh.webp", "./assets/brosyre-ute-srh.webp"];
+    let brosyreCurrent = 0;
+    function brosyreNav(dir) {
+      brosyreCurrent = (brosyreCurrent + dir + brosyreImages.length) % brosyreImages.length;
+      document.getElementById("brosyreImg").src = brosyreImages[brosyreCurrent];
+    }
+
+    // Banner/poster slider
+    const bannerPosterImages = ["./assets/poster-srh.webp", "./assets/banner-srh.webp"];
+    let bannerPosterCurrent = 0;
+    function bannerPosterNav(dir) {
+      bannerPosterCurrent = (bannerPosterCurrent + dir + bannerPosterImages.length) % bannerPosterImages.length;
+      document.getElementById("bannerPosterImg").src = bannerPosterImages[bannerPosterCurrent];
+    }
+
+    // LinkedIn scroll drag
+    const track = document.getElementById("linkedinTrack");
+    if (track) {
+      let isDown = false, startX, scrollLeft;
+      track.addEventListener("mousedown", e => {
+        isDown = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft;
+      });
+      track.addEventListener("mouseleave", () => isDown = false);
+      track.addEventListener("mouseup", () => isDown = false);
+      track.addEventListener("mousemove", e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - track.offsetLeft;
+        track.scrollLeft = scrollLeft - (x - startX);
+      });
+    }
+
+    // Lightbox
+    const lbOverlay = document.getElementById("lbOverlay");
+    const lbImg = document.getElementById("lbImg");
+    const lbPrev = document.getElementById("lbPrev");
+    const lbNext = document.getElementById("lbNext");
+    lbPrev.style.display = "none";
+    lbNext.style.display = "none";
+    function openLightbox(src, alt) {
+      lbImg.src = src; lbImg.alt = alt || "";
+      lbOverlay.classList.add("lb-open");
+    }
+    function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
+    document.addEventListener("click", e => {
+      if (e.target.tagName === "IMG" && e.target.closest(".project__figure")) {
+        openLightbox(e.target.src, e.target.alt);
+      } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
+    });
+    document.addEventListener("keydown", e => {
+      if (lbOverlay.classList.contains("lb-open") && e.key === "Escape") closeLightbox();
     });
   </script>
 </body>
