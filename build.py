@@ -344,100 +344,134 @@ def render_related(project):
 
 
 def render_project_content(project):
-    pid = project["id"]
-    title = project["title"]
-    cover = project.get("cover", "")
+    accordion_html = render_accordion(project)
+    meta_rows = "".join(f'''
+        <div class="pmeta__row">
+          <strong class="pmeta__label">{row["label"]}</strong>
+          <span class="pmeta__value">{row["value"]}</span>
+        </div>''' for row in project.get("projectMeta", []))
 
-    # ── Hero ──────────────────────────────────────────────────────────────
-    hero = f'''
-        <section class="proj-new-hero">
-          <div class="proj-new-hero__left">
-            <h1 class="proj-new-hero__title">{title.upper()}</h1>
-          </div>
-          <div class="proj-new-hero__right">
-            <img src="{esc_q(cover)}" alt="{esc_q(title)}" loading="eager" decoding="async">
-          </div>
-        </section>'''
+    has_gallery = bool(project.get("gallery"))
+    has_sections = bool(project.get("sections"))
+    show_accordion = project.get("showAccordion", False)
 
-    # ── Meta + description ────────────────────────────────────────────────
-    pmeta_items = "".join(f'''
-              <div class="proj-new-pmeta__item">
-                <strong class="proj-new-pmeta__label">{row["label"]}</strong>
-                <span class="proj-new-pmeta__value">{row["value"]}</span>
-              </div>''' for row in project.get("projectMeta", []))
-    pmeta_html = f'<div class="proj-new-pmeta">{pmeta_items}</div>' if pmeta_items else ""
+    # Media area
+    if project.get("heroVideo"):
+        collage = project.get("heroCollage")
+        vid_content = f'<a href="{project["videoLink"]}" target="_blank" rel="noopener" style="display:block"><video src="{project["heroVideo"]}" autoplay muted loop playsinline></video></a>' if project.get("videoLink") else f'<video src="{project["heroVideo"]}" autoplay muted loop playsinline></video>'
+        if collage:
+            collage_imgs = "".join(f'<img src="{src}" alt="Designsystem" loading="lazy">' for src in collage["images"])
+            collage_html = f'''
+              <div class="hero-collage-wrap">
+                <a class="hero-collage" href="{collage["src"]}" target="_blank" rel="noopener">{collage_imgs}</a>
+                <a class="hero-collage__label" href="{collage["src"]}" target="_blank" rel="noopener">{collage["label"]}</a>
+              </div>'''
+            media_html = f'<div class="hero-media-row"><div class="hero-video">{vid_content}</div>{collage_html}</div>'
+        else:
+            media_html = f'<div class="hero-video">{vid_content}</div>'
+    elif not project.get("noSlideshow"):
+        media_html = render_slideshow(project)
+    else:
+        media_html = ""
 
-    has_process = bool(project.get("processText") or project.get("background"))
-    process_btn = f'<a class="btn-pdf btn-pdf--black" href="./project.html?id={pid}&view=process">Se prosess</a>' if has_process else ""
+    # Intro
+    intro_html = ""
+    if project.get("intro"):
+        border_class = " project-intro--border" if project.get("introBorder") else ""
+        intro_html = "".join(
+            f'<p class="project-intro{border_class}">{p.replace(chr(10), "<br><span class=\"intro-space\"> </span>")}</p>'
+            for p in project["intro"].split("\n\n")
+        )
 
-    ext_btns = ""
-    if project.get("link"):
-        ext_btns += f'\n              <a class="btn-pdf btn-pdf--green" href="{project["link"]["src"]}" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">↗ {project["link"]["label"]}</a>'
-    if project.get("finalPdf"):
-        ext_btns += f'\n              <a class="btn-pdf btn-pdf--green" href="{project["finalPdf"]["src"]}" target="_blank" rel="noopener" style="margin-top:10px;display:inline-flex">↗ {project["finalPdf"]["label"]}</a>'
+    intro_cols_html = ""
+    if project.get("introColumns"):
+        cols = "".join(f'<div class="intro-col"><strong class="intro-col__label">{c["label"]}</strong><p class="intro-col__body">{c["body"]}</p></div>' for c in project["introColumns"])
+        intro_cols_html = f'<div class="intro-cols">{cols}</div>'
 
-    desc_html = "".join(
-        f'<p class="proj-new-desc">{p.replace(chr(10), "<br>")}</p>'
-        for p in project["intro"].split("\n\n")
-    ) if project.get("intro") else ""
+    # Header buttons
+    link_btn = f'<a class="btn-pdf btn-pdf--black" href="{project["link"]["src"]}" target="_blank" rel="noopener">↗ {project["link"]["label"]}</a>' if project.get("link") else ""
+    panel_btn_header = '<button class="panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>' if (accordion_html and (not has_sections or show_accordion)) else ""
 
-    about = f'''
-        <section class="proj-new-about">
-          <div class="proj-new-about__left">
-            {pmeta_html}
-            {process_btn}
-            {ext_btns}
-          </div>
-          <div class="proj-new-about__right">
-            {desc_html}
-          </div>
-        </section>'''
+    # Meta area (shown when no gallery)
+    process_btn = '<button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:16px;">Mer om prosessen</button>' if project.get("processText") else ""
+    final_pdf_btn = f'<a class="btn-pdf btn-pdf--green" href="{project["finalPdf"]["src"]}" target="_blank" rel="noopener" style="margin-top:28px;display:inline-block">↗ {project["finalPdf"]["label"]}</a>' if project.get("finalPdf") else ""
+    panel_btn_below = '<button class="panel-toggle panel-toggle--below" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>' if (accordion_html and (not has_sections or show_accordion)) else ""
 
-    # ── Gallery (falls back to images if no gallery) ──────────────────────
-    gallery_source = project.get("gallery", [])
-    if not gallery_source and project.get("images"):
-        gallery_source = [{"src": img} if isinstance(img, str) else img for img in project["images"]]
+    meta_area = ""
+    if not has_gallery:
+        meta_area = f'''<div class="project-meta">
+              {f'<div class="pmeta">{meta_rows}</div>' if meta_rows else ""}
+              {process_btn}
+              {final_pdf_btn}
+              {panel_btn_below}
+            </div>'''
 
-    gallery_html = ""
-    if gallery_source:
-        parts = []
-        for i, item in enumerate(gallery_source):
-            if isinstance(item, dict) and item.get("type") == "heading":
-                parts.append(f'<div class="project__gallery-heading">{item["text"]}</div>')
-            elif isinstance(item, dict) and item.get("type") == "expandable":
-                cover_fig = render_figure(item["cover"], i, title)
-                rest_figs = "".join(render_figure(sub, i + j + 1, title) for j, sub in enumerate(item["items"]))
-                parts.append(f'''<div class="gallery-expandable">
-                <div class="gallery-expandable__heading">{item["heading"]}</div>
-                <div class="gallery-expandable__strip">
-                  <div class="gallery-expandable__cover">{cover_fig}</div>
-                  <div class="gallery-expandable__rest">{rest_figs}</div>
-                </div>
-                <button class="gallery-expandable__close-btn" aria-label="Lukk">↑ Lukk</button>
-              </div>''')
-            elif isinstance(item, dict) and item.get("type") == "row":
-                row_figs = "".join(render_figure(sub, i + j, title) for j, sub in enumerate(item["items"]))
-                parts.append(f'<div class="project__gallery-row">{row_figs}</div>')
-            elif isinstance(item, dict) and item.get("type") == "palette":
-                color_items = "".join(f'''
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:{c["color"]}"></div>
-                <div class="palette__info">
-                  <span class="palette__name">{c["name"]}</span>
-                  <span class="palette__hex">{c["hex"]}</span>
-                  {f'<span class="palette__desc">{c["description"]}</span>' if c.get("description") else ""}
-                </div>
-              </div>''' for c in item["colors"])
-                parts.append(f'<div class="palette palette--cards" style="column-span:all;margin-bottom:clamp(20px,3vw,36px)">{color_items}</div>')
-            else:
-                parts.append(render_figure(item, i, title))
-        gallery_html = f'\n        <div class="project__gallery">\n          {"".join(parts)}\n        </div>'
+    # Side panel
+    side_panel = ""
+    if accordion_html and (not has_sections or show_accordion):
+        final_pdf_mobile = f'<a class="btn-pdf btn-pdf--green btn-pdf--mobile-only" href="{project["finalPdf"]["src"]}" target="_blank" rel="noopener" style="margin-top:24px;display:inline-block">↗ {project["finalPdf"]["label"]}</a>' if project.get("finalPdf") else ""
+        pdf = project.get("pdf")
+        if pdf and pdf.get("note"):
+            pdf_section = f'''
+                <div class="pdf-note" style="margin-top:16px">
+                  <strong class="pdf-note__heading">{pdf["note"]["heading"]}</strong>
+                  <p class="pdf-note__body">{pdf["note"]["body"]}</p>
+                  <a class="btn-pdf btn-pdf--text" href="{pdf["src"]}" target="_blank" rel="noopener">↗ {pdf["label"]}</a>
+                </div>'''
+        elif pdf:
+            pdf_section = f'<a class="btn-pdf btn-pdf--text" href="{pdf["src"]}" target="_blank" rel="noopener">↗ {pdf["label"]}</a>'
+        else:
+            pdf_section = ""
+        side_panel = f'''
+          <div class="project-layout__side">
+            <div class="project-layout__info" id="projectInfo">
+              <div class="project-layout__info-inner">
+                <div class="accordion" id="accordion">{accordion_html}</div>
+                {final_pdf_mobile}
+                {pdf_section}
+              </div>
+            </div>
+          </div>'''
+
+    # Gallery meta
+    gallery_meta = ""
+    if has_gallery:
+        gallery_meta = f'''<div class="project-meta" style="margin-top:var(--gap)">
+          {f'<div class="pmeta">{meta_rows}</div>' if meta_rows else ""}
+          {process_btn}
+          {final_pdf_btn}
+        </div>'''
+
+    # Inline accordion (for projects with sections but no showAccordion)
+    inline_accordion = ""
+    if accordion_html and has_sections and not show_accordion:
+        inline_accordion = f'''
+        <button class="panel-toggle panel-toggle--bottom" aria-expanded="false">Nøkkelpunkter <span class="panel-toggle__icon">+</span></button>
+        <div class="inline-accordion" id="inlineAccordion" hidden>
+          <div class="accordion" id="accordion">{accordion_html}</div>
+        </div>'''
 
     return f"""
-        {hero}
-        {about}
-        {gallery_html}
+        <div class="project-layout">
+          <div class="project-layout__media">
+            <div class="project-header">
+              <h1 class="project-meta__title">{project["title"]}</h1>
+              {intro_html}
+              {intro_cols_html}
+              <div class="header-btns">
+                {link_btn}
+                {panel_btn_header}
+              </div>
+            </div>
+            {media_html}
+            {meta_area}
+          </div>{side_panel}
+        </div>
+        {render_gallery(project)}
+        {gallery_meta}
         {render_scroll_galleries(project)}
+        {render_sections(project)}
+        {inline_accordion}
         {render_related(project)}
       """
 
@@ -458,19 +492,119 @@ def render_page(project):
     # We include projects.js + the same interaction code from project.html,
     # but skip the initial innerHTML render since the static HTML is already there.
     js = r"""
-    // Year
+    const $ = (s) => document.querySelector(s);
+    const id = """ + json.dumps(pid) + r""";
+
+    const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    // Slideshow
+    const track = $("#slideshowTrack");
+    if (track) {
+      const slides = [...track.querySelectorAll(".slideshow__slide")];
+      const counter = $("#slideIndex");
+      let current = 0;
+      let timer;
+      const slideshow = $("#slideshow");
+      const captionBar = $("#slideshowCaption");
+      let paused = false;
+      function goTo(n) {
+        current = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = current + 1;
+        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
+      }
+      function startAuto() {
+        clearInterval(timer);
+        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
+      }
+      track.addEventListener("click", () => {
+        paused = !paused;
+        slideshow.classList.toggle("slideshow--paused", paused);
+        if (paused) clearInterval(timer);
+        else startAuto();
+      });
+      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+      let touchStartX = 0;
+      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      }, { passive: true });
+      document.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
+        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
+      });
+      startAuto();
+    }
+
+    // Accordion
+    const accordion = document.getElementById("accordion");
+    const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
+    if (accordion) {
+      accordion.querySelectorAll(".accordion__item").forEach(item => {
+        item.querySelector(".accordion__trigger").addEventListener("click", () => {
+          if (project && project.noDrawer) {
+            const isOpen = item.classList.contains("accordion__item--open");
+            accordion.querySelectorAll(".accordion__item").forEach(i => {
+              i.classList.remove("accordion__item--open");
+              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("accordion__item--open");
+              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
+            }
+          } else {
+            const idx = accordionItems.indexOf(item);
+            openDrawer();
+            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
+            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
+            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+          }
+        });
+      });
+    }
+
+    // Panel toggle
+    const projectLayout = document.querySelector(".project-layout");
+    const inlineAccordion = document.getElementById("inlineAccordion");
+    function syncToggles(isOpen) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => {
+        btn.setAttribute("aria-expanded", String(isOpen));
+        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
+      });
+    }
+    document.querySelectorAll(".panel-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        let isOpen;
+        if (inlineAccordion) {
+          isOpen = inlineAccordion.hidden;
+          inlineAccordion.hidden = !isOpen;
+        } else {
+          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+        }
+        syncToggles(isOpen);
+      });
+    });
+
     // Expandable gallery
     document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
-      cover.addEventListener("click", () => cover.closest(".gallery-expandable").classList.toggle("is-open"));
+      cover.addEventListener("click", () => {
+        const section = cover.closest(".gallery-expandable");
+        const wasOpen = section.classList.contains("is-open");
+        section.classList.toggle("is-open");
+        if (!wasOpen && window.innerWidth <= 780) {
+          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+        }
+      });
     });
     document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        const s = btn.closest(".gallery-expandable");
-        s.classList.remove("is-open");
-        s.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+        const section = btn.closest(".gallery-expandable");
+        section.classList.remove("is-open");
+        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
@@ -480,6 +614,13 @@ def render_page(project):
     const lbPrev = document.getElementById("lbPrev");
     const lbNext = document.getElementById("lbNext");
     let lbImages = [], lbIndex = 0;
+    function openLightbox(src, alt, images, index) {
+      lbImg.src = src; lbImg.alt = alt || "";
+      lbImages = images || []; lbIndex = index ?? 0;
+      lbPrev.style.display = lbImages.length > 1 ? "" : "none";
+      lbNext.style.display = lbImages.length > 1 ? "" : "none";
+      lbOverlay.classList.add("lb-open");
+    }
     function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
     function showLbImage(idx) {
       lbIndex = (idx + lbImages.length) % lbImages.length;
@@ -488,18 +629,13 @@ def render_page(project):
     lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
     lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
     document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && e.target.closest(".project__figure") ? e.target : null;
+      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
       if (imgEl) {
-        const sec = imgEl.closest(".gallery-expandable");
-        if (sec) {
-          const imgs = [...sec.querySelectorAll(".project__figure img")];
-          lbImages = imgs.map(i => ({ src: i.src, alt: i.alt }));
-          lbIndex = imgs.indexOf(imgEl);
-        } else { lbImages = [{ src: imgEl.src, alt: imgEl.alt }]; lbIndex = 0; }
-        lbImg.src = imgEl.src; lbImg.alt = imgEl.alt || "";
-        lbPrev.style.display = lbImages.length > 1 ? "" : "none";
-        lbNext.style.display = lbImages.length > 1 ? "" : "none";
-        lbOverlay.classList.add("lb-open");
+        const section = imgEl.closest(".gallery-expandable");
+        if (section) {
+          const imgs = [...section.querySelectorAll(".project__figure img")];
+          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
+        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
@@ -509,21 +645,60 @@ def render_page(project):
       if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
     });
 
-    // Sidebar toggle
-    document.querySelector(".sidebar__toggle")?.addEventListener("click", function() {
-      const sidebar = document.getElementById("sidebar");
-      const isOpen = sidebar.classList.toggle("sidebar--open");
-      this.setAttribute("aria-expanded", String(isOpen));
-    });
+    // Process drawer
+    const processToggle = document.getElementById("processToggle");
+    const processDrawer = document.getElementById("processDrawer");
+    const processBackdrop = document.getElementById("processBackdrop");
+    const processDrawerClose = document.getElementById("processDrawerClose");
+    const processDrawerContent = document.getElementById("processDrawerContent");
 
-    // Scroll reveal
-    const rev = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-visible"); rev.unobserve(e.target); } });
-    }, { threshold: 0.06 });
-    document.querySelectorAll(".proj-new-about, .project__gallery, .related").forEach((el, i) => {
-      el.classList.add("reveal");
-      el.style.transitionDelay = `${Math.min(i, 2) * 0.07}s`;
-      rev.observe(el);
+    const allSections = accordionItems.map(item => ({
+      title: item.querySelector(".accordion__title").textContent,
+      content: item.querySelector(".accordion__panel-inner").innerHTML
+    }));
+    if (project && project.processText) {
+      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
+    }
+    function showDrawerIndex() {
+      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
+      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const i = btn.dataset.index;
+          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
+          const isOpen = !panel.hidden;
+          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
+          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
+          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+        });
+      });
+    }
+    function openDrawer() {
+      if (allSections.length === 1) {
+        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
+      } else { showDrawerIndex(); }
+      processDrawer.classList.add("process-drawer--open");
+      processBackdrop.classList.add("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "false");
+    }
+    function closeDrawer() {
+      processDrawer.classList.remove("process-drawer--open");
+      processBackdrop.classList.remove("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "true");
+    }
+    processToggle?.addEventListener("click", openDrawer);
+    if (project && !project.noDrawer) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
+    }
+    processDrawerClose?.addEventListener("click", closeDrawer);
+    processBackdrop?.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+    // Sidebar toggle
+    const toggle = $("#sidebarToggle");
+    toggle?.addEventListener("click", () => {
+      const sidebar = $("#sidebar");
+      const isOpen = sidebar.classList.toggle("sidebar--open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
     });
     """
 
@@ -537,12 +712,18 @@ def render_page(project):
   <meta name="description" content="{esc_q(description)}" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=31" />
-  <link rel="icon" href="assets/hvitlogo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=20" />
+  <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
 <body>
+  <a class="skip-link" href="#content">Hopp til innhold</a>
+  <div class="process-drawer" id="processDrawer" aria-hidden="true">
+    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
+    <div class="process-drawer__inner" id="processDrawerContent"></div>
+  </div>
+  <div class="process-drawer__backdrop" id="processBackdrop"></div>
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
@@ -552,6 +733,11 @@ def render_page(project):
 
   <header class="sidebar sidebar--detail" id="sidebar">
     <div class="sidebar__inner">
+      <div class="brand">
+        <a class="brand__mark" href="./projects.html" aria-label="Back to work">
+          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
+        </a>
+      </div>
       <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       <nav class="nav" aria-label="Main navigation">
         <a class="nav__link" href="./projects.html"><span>Arbeider</span></a>
@@ -561,15 +747,16 @@ def render_page(project):
       <footer class="meta">
         <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
       </footer>
-      <button class="sidebar__toggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
+      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
     </div>
   </header>
 
   <main id="content" class="content">
-    <article class="project">{project_html}
+    <article class="project" id="project">{project_html}
     </article>
   </main>
 
+  <script src="./projects.js?v=6"></script>
   <script>{js}</script>
 </body>
 </html>"""

@@ -5,15 +5,58 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
   <title>Bokomslag — DesignbyJosefine</title>
-  <meta name="description" content="En redesign av tre grunnpilarer i norsk litteraturhistorie: Amtmandens Døtre av Camilla Collett, Forrådt av Amalie Skram og Jenny av Sigrid Undset. Ved å fjerne" />
+  <meta name="description" content="Bokomslag — DesignbyJosefine" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=31" />
-  <link rel="icon" href="assets/hvitlogo.webp">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>:root { --font: "Poppins", system-ui, sans-serif; }
+  @media (min-width: 769px) {
+    .boks-video {
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
+    }
+  }
+  @media (max-width: 768px) {
+    .boks-top { display: flex; flex-direction: column; }
+    .boks-intro { order: 2; }
+    .boks-preging { display: flex; flex-direction: column; }
+    .boks-preging-tekst { order: 2; margin-top: 48px !important; margin-bottom: 0; }
+    .boks-preging-bilde { order: 1; }
+    .boks-video {
+      order: 1;
+      margin-top: -34px;
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px) - 2px);
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-bottom: clamp(20px, 3vw, 32px);
+      height: 99vw;
+      overflow: hidden;
+    }
+    .boks-video video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      object-position: left center;
+    }
+  }
+  </style>
+  <link rel="stylesheet" href="./styles.css?v=30" />
+  <style>
+    :root { --bg: #000; --text: #fff; --muted: #aaa; }
+    .project-intro { color: #fff; }
+    .project__gallery-heading { color: #fff; }
+    h2, div.project__gallery-heading { text-transform: uppercase; }
+    @media (max-width: 768px) { .boks-main-heading { line-height: 1.1; } }
+  </style>
+  <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
 <body>
+  <a class="skip-link" href="#content">Hopp til innhold</a>
+  <div class="process-drawer" id="processDrawer" aria-hidden="true">
+    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
+    <div class="process-drawer__inner" id="processDrawerContent"></div>
+  </div>
+  <div class="process-drawer__backdrop" id="processBackdrop"></div>
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
@@ -32,102 +75,117 @@
       <footer class="meta">
         <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
       </footer>
-      <button class="sidebar__toggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
+      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
     </div>
   </header>
 
   <main id="content" class="content">
-    <article class="project">
-        
-        <section class="proj-new-hero">
-          <div class="proj-new-hero__left">
-            <h1 class="proj-new-hero__title">BOKOMSLAG</h1>
-          </div>
-          <div class="proj-new-hero__right">
-            <img src="./assets/blaa.webp" alt="Bokomslag" loading="eager" decoding="async">
-          </div>
-        </section>
-        
-        <section class="proj-new-about">
-          <div class="proj-new-about__left">
-            <div class="proj-new-pmeta">
-              <div class="proj-new-pmeta__item">
-                <strong class="proj-new-pmeta__label">År</strong>
-                <span class="proj-new-pmeta__value">2026</span>
-              </div>
-              <div class="proj-new-pmeta__item">
-                <strong class="proj-new-pmeta__label">Type</strong>
-                <span class="proj-new-pmeta__value">Redaksjonell design</span>
-              </div>
-              <div class="proj-new-pmeta__item">
-                <strong class="proj-new-pmeta__label">Teknikk</strong>
-                <span class="proj-new-pmeta__value">Preging (deboss) og trykk på tekstil</span>
-              </div></div>
-            <a class="btn-pdf btn-pdf--black" href="./project.html?id=bokomslag&view=process">Se prosess</a>
-            
-          </div>
-          <div class="proj-new-about__right">
-            <p class="proj-new-desc">En redesign av tre grunnpilarer i norsk litteraturhistorie: Amtmandens Døtre av Camilla Collett, Forrådt av Amalie Skram og Jenny av Sigrid Undset. Ved å fjerne kommersiell støy får materialiteten og de symbolske fargeflatene rom til å kommunisere. Utgavene er utformet som tekstiltrukne hardcover-bind for å understreke bøkenes status som tidløse klassikere.</p>
-          </div>
-        </section>
+    <article class="project" id="project">
+      <div class="boks-top">
+        <div class="boks-intro" style="margin-bottom:clamp(24px,3vw,40px);">
+          <h2 class="boks-main-heading" style="font-size:clamp(48px,4.5vw,66px);font-weight:500;letter-spacing:0;margin-bottom:10px;font-family:'EB Garamond',Georgia,serif;">En redesign av norske klassikere</h2>
+          <p class="project-intro" style="font-size:clamp(14px,1.3vw,17px);">Dette prosjektet omfatter en ny utgave av tre grunnpilarer i norsk litteraturhistorie: <em>Amtmandens Døtre</em> av Camilla Collett, <em>Forrådt</em> av Amalie Skram og <em>Jenny</em> av Sigrid Undset. Ved&nbsp;å fjerne kommersiell støy, får materialiteten og&nbsp;de symbolske fargeflatene rom til&nbsp;å kommunisere. For&nbsp;å understreke bøkenes status som tidløse klassikere, er utgavene utformet som&nbsp;tekstiltrukne hardcover-bind.</p>
+        </div>
+
+        <div class="boks-video" style="margin-bottom:clamp(32px,5vw,64px);">
+          <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;display:block;" id="bokserieVideo"></video>
+          <script>document.getElementById("bokserieVideo").playbackRate = 0.5;</script>
+        </div>
+      </div>
         
         <div class="project__gallery">
-          <figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/red-1.webp" alt="Bokomslag — galleri 1">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/red-2.webp" alt="Bokomslag — galleri 2">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/red-3.webp" alt="Bokomslag — galleri 3">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4">
-          
-        </figure><div class="project__gallery-heading">Prototyper</div><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Bokomslag — galleri 6">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Bokomslag — galleri 7">
-          
-        </figure><figure class="project__figure project__figure--wide">
-          <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Bokomslag — galleri 8">
-          
-        </figure><div class="palette palette--cards" style="column-span:all;margin-bottom:clamp(20px,3vw,36px)">
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:rgba(206, 46, 39, 0.62)"></div>
-                <div class="palette__info">
-                  <span class="palette__name">Forrådt</span>
-                  <span class="palette__hex">#ce2e27</span>
-                  <span class="palette__desc">Opasitet 62%</span>
-                </div>
-              </div>
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:rgba(255, 238, 168, 0.62)"></div>
-                <div class="palette__info">
-                  <span class="palette__name">Jenny</span>
-                  <span class="palette__hex">#ffeea8</span>
-                  <span class="palette__desc">Opasitet 62%</span>
-                </div>
-              </div>
-              <div class="palette__item">
-                <div class="palette__swatch" style="background:rgba(74, 179, 225, 0.25)"></div>
-                <div class="palette__info">
-                  <span class="palette__name">Amtmandens Døtre</span>
-                  <span class="palette__hex">#4ab3e1</span>
-                  <span class="palette__desc">Opasitet 25%</span>
-                </div>
-              </div></div>
+          <div class="boks-preging" style="column-span:all;">
+            <p class="boks-preging-tekst project__gallery-heading" style="font-size:clamp(14px,1.3vw,17px);font-weight:400;letter-spacing:0;line-height:1.7;margin-top:0;margin-bottom:clamp(16px,2vw,28px);"><strong>Produksjon og materialitet:</strong> Omslaget kombinerer to produksjonsteknikker: preging og trykk. Tittelen er preget (deboss), der motivet presses ned i materialet med en metallform, noe som gir en taktil og innfelt effekt. Den svarte teksten og fargefeltet er trykket direkte på tekstilet og ligger som pigment oppå overflaten, slik at stoffets struktur fortsatt er synlig gjennom fargen.<br><br>Deboss-effekten gjør at tittelen trer frem i møte med lys, og fungerer som en subtil visuell parallell til det underliggende i fortellingene. I både Forrådt, Amtmandens døtre og Jenny tematiseres spenningen mellom ytre rammer og indre erfaringer, der følelser, begjær og konflikter ikke alltid er synlige på overflaten. Den nedpregede tittelen speiler dette ved å ligge delvis skjult i materialet, og først bli tydelig når lyset treffer riktig.</p>
+            <figure class="boks-preging-bilde project__figure project__figure--wide" style="margin-bottom:0;">
+              <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4" style="border:none;">
+            </figure>
+          </div>
+          <div class="project__gallery-heading" style="column-span:all;margin-top:clamp(24px,3vw,40px);">Prototyper</div>
+          <p style="column-span:all;font-size:clamp(12px,1.1vw,15px);line-height:1.7;margin-top:clamp(10px,1.5vw,16px);margin-bottom:0;">Baksiden er holdt ren og uten tekst. Informasjon som normalt plasseres på et smussomslag – som omtale, forfatterbiografi og strekkode – er i stedet samlet på en egen side bakerst i boka. <span class="boks-venstre-ref"> Den siden ser du til venstre her: ↓</span></p>
+          <style>@media(max-width:1024px){.boks-venstre-ref{display:none;}}</style>
+          <div style="column-span:all;display:flex;flex-direction:column;gap:0;margin-top:clamp(16px,2vw,24px);align-items:center;">
+            <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Prototyper — Forrådt" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
+            <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Prototyper — Amtmandens Døtre" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
+            <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Prototyper — Jenny" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
+          </div>
         </div>
         
+        
+        
+        <div class="project-meta" style="margin-top:clamp(40px,6vw,80px)">
+          <div style="margin-top:clamp(12px,1.5vw,20px);">
+            <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);"><strong>Tittel og forfatter:</strong> Her er det tatt utgangspunkt i Baskerville, men bokstavformene er manuelt bearbeidet. Ved å øke vekten og justere detaljene, sikres både bedre lesbarhet og et mer robust resultat under pregeprosessen i tekstilet. Dette gir titlene et mer fysisk og "røft" nærvær på omslaget.</p>
+            <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);margin-top:clamp(8px,1vw,14px);"><strong>Brødtekst:</strong> For å sikre optimal lesbarhet og en klassisk litterær følelse, er brødteksten satt i Garamond Premier Pro. Fonten komplimenterer Baskerville-overskriftene uten å konkurrere om oppmerksomheten, noe som skaper en harmonisk balanse mellom det dekorative og det funksjonelle.</p>
+          </div>
+          <div style="margin-top:clamp(24px,3vw,40px);">
+            <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);">Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
+            <style>
+              .boks-pal { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+              .boks-pal__card { overflow:hidden; border:1px solid rgba(255,255,255,0.13); }
+              .boks-pal__swatch { height:200px; background:#fff; }
+              .boks-pal__swatch-inner { width:100%; height:100%; }
+              .boks-pal__info { background:#111; padding:clamp(12px,1.5vw,20px); display:flex; flex-direction:column; gap:3px; }
+              .boks-pal__name { font-size:clamp(14px,1.3vw,19px); font-weight:700; color:#fff; margin-bottom:6px; }
+              .boks-pal__row { font-size:clamp(11px,0.95vw,14px); color:#bbb; font-family:inherit; letter-spacing:.02em; }
+              .boks-pal__desc { font-size:clamp(11px,0.9vw,13px); color:#777; margin-top:8px; line-height:1.5; font-family:inherit; }
+              @media(max-width:600px) { .boks-pal { grid-template-columns:1fr; } .boks-pal__swatch { height:140px; } }
+            </style>
+            <div class="boks-pal" style="margin-top:clamp(16px,2vw,28px);">
+              <div class="boks-pal__card">
+                <div class="boks-pal__swatch"><div class="boks-pal__swatch-inner" style="background:rgba(74,179,225,0.25);"></div></div>
+                <div class="boks-pal__info">
+                  <span class="boks-pal__name">Amtmandens Døtre</span>
+                  <span class="boks-pal__row">CMYK: 67, 20, 0, 12</span>
+                  <span class="boks-pal__row">RGB: 74, 179, 225</span>
+                  <span class="boks-pal__row">HEX: #4AB3E1 — 25%</span>
+                  <span class="boks-pal__desc">Gir en følelse av ro, litt tristhet og noe kjølig og dannet</span>
+                </div>
+              </div>
+              <div class="boks-pal__card">
+                <div class="boks-pal__swatch"><div class="boks-pal__swatch-inner" style="background:rgba(206,46,39,0.62);"></div></div>
+                <div class="boks-pal__info">
+                  <span class="boks-pal__name">Forrådt</span>
+                  <span class="boks-pal__row">CMYK: 0, 78, 81, 19</span>
+                  <span class="boks-pal__row">RGB: 206, 46, 39</span>
+                  <span class="boks-pal__row">HEX: #CE2E27 — 63%</span>
+                  <span class="boks-pal__desc">Står for sterke følelser, konflikt og svik</span>
+                </div>
+              </div>
+              <div class="boks-pal__card">
+                <div class="boks-pal__swatch"><div class="boks-pal__swatch-inner" style="background:rgba(255,238,168,0.62);"></div></div>
+                <div class="boks-pal__info">
+                  <span class="boks-pal__name">Jenny</span>
+                  <span class="boks-pal__row">CMYK: 0, 7, 34, 0</span>
+                  <span class="boks-pal__row">RGB: 255, 238, 168</span>
+                  <span class="boks-pal__row">HEX: #FFEEA8 — 63%</span>
+                  <span class="boks-pal__desc">Gir inntrykk av varme, liv og en lengsel etter frihet</span>
+                </div>
+              </div>
+            </div>
+            <p style="font-size:clamp(11px,1vw,13px);margin-top:clamp(16px,2vw,24px);color:#777;line-height:1.7;">Fargene er definert i <strong style="color:#aaa;">RGB</strong> for skjermvisning, men siden dette er bokomslag som skal trykkes, er de også konvertert til <strong style="color:#aaa;">CMYK</strong>. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget. Det betyr at den faktiske fargeopplevelsen vil variere noe avhengig av fargerom og trykkmetode.</p>
+          </div>
+          <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:clamp(24px,3vw,40px);background:#000;border:1.5px solid #fff;color:#fff;">Prosess</button>
+          <div id="processPanel" style="display:none;margin-top:clamp(20px,3vw,36px);background:#fff;padding:clamp(16px,2vw,28px);">
+            <div class="prosess-row">
+              <img src="./assets/prosess1.webp" alt="Prosess" style="height:auto;display:block;">
+              <img src="./assets/prosess2.webp" alt="Prosess" style="height:auto;display:block;">
+            </div>
+            <style>
+              .prosess-row { display:flex; gap:clamp(12px,2vw,24px); }
+              .prosess-row img { width:50%; }
+              @media(max-width:600px){ .prosess-row { flex-direction:column; } .prosess-row img { width:100%; } }
+            </style>
+          </div>
+        </div>
+
         <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
-                <a class="related__card" href="./tidsskrift.html">
-                  <img src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy">
-                  <p class="related__title">Tidsskrift</p>
+                <a class="related__card" href="./reina-fruktgard.html">
+                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+                  <p class="related__title">Reina Fruktgård</p>
                 </a>
-                <a class="related__card" href="./we-visuell-profil.html">
-                  <img src="./assets/laptop-mockup.webp" alt="Stiftelsen WE" loading="lazy">
-                  <p class="related__title">Stiftelsen WE</p>
+                <a class="related__card" href="./stoppestedet.html">
+                  <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="lazy">
+                  <p class="related__title">Stoppestedet</p>
                 </a>
                 <a class="related__card" href="./ansatts-portal.html">
                   <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy">
@@ -137,20 +195,121 @@
     </article>
   </main>
 
+  <script src="./projects.js?v=6" defer></script>
   <script>
-    // Year
+    const $ = (s) => document.querySelector(s);
+    const id = "bokomslag";
+
+    const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    // Slideshow
+    const track = $("#slideshowTrack");
+    if (track) {
+      const slides = [...track.querySelectorAll(".slideshow__slide")];
+      const counter = $("#slideIndex");
+      let current = 0;
+      let timer;
+      const slideshow = $("#slideshow");
+      const captionBar = $("#slideshowCaption");
+      let paused = false;
+      function goTo(n) {
+        current = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = current + 1;
+        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
+      }
+      function startAuto() {
+        clearInterval(timer);
+        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
+      }
+      track.addEventListener("click", () => {
+        paused = !paused;
+        slideshow.classList.toggle("slideshow--paused", paused);
+        if (paused) clearInterval(timer);
+        else startAuto();
+      });
+      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+      let touchStartX = 0;
+      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      }, { passive: true });
+      document.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
+        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
+      });
+      startAuto();
+    }
+
+    // Accordion
+    const accordion = document.getElementById("accordion");
+    const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
+    if (accordion) {
+      accordion.querySelectorAll(".accordion__item").forEach(item => {
+        item.querySelector(".accordion__trigger").addEventListener("click", () => {
+          if (project && project.noDrawer) {
+            const isOpen = item.classList.contains("accordion__item--open");
+            accordion.querySelectorAll(".accordion__item").forEach(i => {
+              i.classList.remove("accordion__item--open");
+              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("accordion__item--open");
+              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
+            }
+          } else {
+            const idx = accordionItems.indexOf(item);
+            openDrawer();
+            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
+            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
+            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+          }
+        });
+      });
+    }
+
+    // Panel toggle
+    const projectLayout = document.querySelector(".project-layout");
+    const inlineAccordion = document.getElementById("inlineAccordion");
+    function syncToggles(isOpen) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => {
+        btn.setAttribute("aria-expanded", String(isOpen));
+        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
+      });
+    }
+    document.querySelectorAll(".panel-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        let isOpen;
+        if (inlineAccordion) {
+          isOpen = inlineAccordion.hidden;
+          inlineAccordion.hidden = !isOpen;
+        } else {
+          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+        }
+        syncToggles(isOpen);
+      });
+    });
+
     // Expandable gallery
     document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
-      cover.addEventListener("click", () => cover.closest(".gallery-expandable").classList.toggle("is-open"));
+      cover.addEventListener("click", () => {
+        const section = cover.closest(".gallery-expandable");
+        const wasOpen = section.classList.contains("is-open");
+        section.classList.toggle("is-open");
+        if (!wasOpen && window.innerWidth <= 780) {
+          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+        }
+      });
     });
     document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
       btn.addEventListener("click", () => {
-        const s = btn.closest(".gallery-expandable");
-        s.classList.remove("is-open");
-        s.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+        const section = btn.closest(".gallery-expandable");
+        section.classList.remove("is-open");
+        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
 
@@ -160,6 +319,13 @@
     const lbPrev = document.getElementById("lbPrev");
     const lbNext = document.getElementById("lbNext");
     let lbImages = [], lbIndex = 0;
+    function openLightbox(src, alt, images, index) {
+      lbImg.src = src; lbImg.alt = alt || "";
+      lbImages = images || []; lbIndex = index ?? 0;
+      lbPrev.style.display = lbImages.length > 1 ? "" : "none";
+      lbNext.style.display = lbImages.length > 1 ? "" : "none";
+      lbOverlay.classList.add("lb-open");
+    }
     function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
     function showLbImage(idx) {
       lbIndex = (idx + lbImages.length) % lbImages.length;
@@ -168,18 +334,13 @@
     lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
     lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
     document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && e.target.closest(".project__figure") ? e.target : null;
+      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
       if (imgEl) {
-        const sec = imgEl.closest(".gallery-expandable");
-        if (sec) {
-          const imgs = [...sec.querySelectorAll(".project__figure img")];
-          lbImages = imgs.map(i => ({ src: i.src, alt: i.alt }));
-          lbIndex = imgs.indexOf(imgEl);
-        } else { lbImages = [{ src: imgEl.src, alt: imgEl.alt }]; lbIndex = 0; }
-        lbImg.src = imgEl.src; lbImg.alt = imgEl.alt || "";
-        lbPrev.style.display = lbImages.length > 1 ? "" : "none";
-        lbNext.style.display = lbImages.length > 1 ? "" : "none";
-        lbOverlay.classList.add("lb-open");
+        const section = imgEl.closest(".gallery-expandable");
+        if (section) {
+          const imgs = [...section.querySelectorAll(".project__figure img")];
+          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
+        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
@@ -189,21 +350,64 @@
       if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
     });
 
-    // Sidebar toggle
-    document.querySelector(".sidebar__toggle")?.addEventListener("click", function() {
-      const sidebar = document.getElementById("sidebar");
-      const isOpen = sidebar.classList.toggle("sidebar--open");
-      this.setAttribute("aria-expanded", String(isOpen));
-    });
+    // Process drawer
+    const processToggle = document.getElementById("processToggle");
+    const processDrawer = document.getElementById("processDrawer");
+    const processBackdrop = document.getElementById("processBackdrop");
+    const processDrawerClose = document.getElementById("processDrawerClose");
+    const processDrawerContent = document.getElementById("processDrawerContent");
 
-    // Scroll reveal
-    const rev = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("is-visible"); rev.unobserve(e.target); } });
-    }, { threshold: 0.06 });
-    document.querySelectorAll(".proj-new-about, .project__gallery, .related").forEach((el, i) => {
-      el.classList.add("reveal");
-      el.style.transitionDelay = `${Math.min(i, 2) * 0.07}s`;
-      rev.observe(el);
+    const allSections = accordionItems.map(item => ({
+      title: item.querySelector(".accordion__title").textContent,
+      content: item.querySelector(".accordion__panel-inner").innerHTML
+    }));
+    if (project && project.processText) {
+      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
+    }
+    function showDrawerIndex() {
+      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
+      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const i = btn.dataset.index;
+          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
+          const isOpen = !panel.hidden;
+          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
+          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
+          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+        });
+      });
+    }
+    function openDrawer() {
+      if (allSections.length === 1) {
+        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
+      } else { showDrawerIndex(); }
+      processDrawer.classList.add("process-drawer--open");
+      processBackdrop.classList.add("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "false");
+    }
+    function closeDrawer() {
+      processDrawer.classList.remove("process-drawer--open");
+      processBackdrop.classList.remove("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "true");
+    }
+    processToggle?.addEventListener("click", () => {
+      const panel = document.getElementById("processPanel");
+      const isOpen = panel.style.display !== "none";
+      panel.style.display = isOpen ? "none" : "block";
+    });
+    if (project && !project.noDrawer) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
+    }
+    processDrawerClose?.addEventListener("click", closeDrawer);
+    processBackdrop?.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+    // Sidebar toggle
+    const toggle = $("#sidebarToggle");
+    toggle?.addEventListener("click", () => {
+      const sidebar = $("#sidebar");
+      const isOpen = sidebar.classList.toggle("sidebar--open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
     });
     </script>
 </body>
