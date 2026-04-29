@@ -172,8 +172,71 @@
     .ed-nav__name { font-size: clamp(14px, 1.3vw, 17px); font-style: italic; }
 
 
-    /* Remove borders from Løsningen (3rd) feature grid */
-    .proj-sections .proj-section:nth-child(3) .proj-feature { border: none !important; border-top: none !important; }
+    /* ── Section 2: Designprosess — gold step accents ─────── */
+    .proj-sections .proj-section:nth-child(2) .proj-step {
+      border-top: 1.5px solid rgba(196,149,48,0.32);
+      padding-top: clamp(18px, 2.5vw, 28px);
+    }
+    .proj-sections .proj-section:nth-child(2) .proj-step-num {
+      color: #c49530;
+    }
+
+    /* ── Section 3: Løsningen — dark stopp-punkt ───────────── */
+    .proj-sections .proj-section:nth-child(3) {
+      background: #160e08 !important;
+      color: #fff9ee !important;
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px)) !important;
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px)) !important;
+      padding-left: clamp(20px, 3vw, 34px) !important;
+      padding-right: clamp(20px, 3vw, 34px) !important;
+    }
+    .proj-sections .proj-section:nth-child(3) .proj-section__label,
+    .proj-sections .proj-section:nth-child(3) .proj-section__heading,
+    .proj-sections .proj-section:nth-child(3) .proj-section__body {
+      color: #fff9ee !important;
+    }
+    /* Bento grid: gap + matching bg = hairline dividers */
+    .proj-sections .proj-section:nth-child(3) .proj-features-grid {
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 1px !important;
+      background: rgba(255,249,238,0.12) !important;
+      margin-top: clamp(24px, 3vw, 40px) !important;
+    }
+    .proj-sections .proj-section:nth-child(3) .proj-feature {
+      background: #160e08 !important;
+      border: none !important;
+      padding: clamp(20px, 2.5vw, 30px) clamp(16px, 2vw, 24px) !important;
+    }
+    .proj-sections .proj-section:nth-child(3) .proj-feature-num {
+      color: rgba(255,249,238,0.25) !important;
+      font-size: clamp(22px, 2.5vw, 34px) !important;
+      display: block !important;
+      margin-bottom: 10px !important;
+    }
+    .proj-sections .proj-section:nth-child(3) .proj-feature h3 {
+      color: #fff9ee !important;
+      font-size: clamp(12px, 1.05vw, 14px) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.08em !important;
+      margin-bottom: 8px !important;
+      font-weight: 600 !important;
+    }
+    .proj-sections .proj-section:nth-child(3) .proj-feature p {
+      color: rgba(255,249,238,0.7) !important;
+      font-size: clamp(13px, 1.05vw, 14.5px) !important;
+      line-height: 1.65 !important;
+    }
+
+    @media (max-width: 768px) {
+      .proj-sections .proj-section:nth-child(3) .proj-features-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+      }
+    }
+    @media (max-width: 480px) {
+      .proj-sections .proj-section:nth-child(3) .proj-features-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
 
     @media (max-width: 768px) {
       .ed-hero { grid-template-columns: 1fr; }
