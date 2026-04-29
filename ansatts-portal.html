@@ -10,125 +10,118 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=30" />
-  <link rel="preload" as="image" href="./assets/norvald-iphone.webp">
-  <link rel="preload" as="image" href="./assets/norvald-ipad.webp">
-  <link rel="icon" href="assets/hvitlogo.png">
   <style>
     @font-face {
       font-family: 'Romie';
       src: url('./assets/Romie-Regular.woff2') format('woff2');
       font-weight: 400; font-style: normal; font-display: swap;
     }
-
-    /* ── Editorial dark header ─────────────────────────────── */
-    .ed-header {
-      background: #fff9ee; color: #1a1a1a;
-      margin: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-bottom: 0;
-      padding: clamp(40px, 6vw, 80px) clamp(20px, 3vw, 34px) 0;
+    .project-meta__title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 28px;
     }
-    .ed-gallery-zone {
-      background: #fff9ee; color: #1a1a1a;
-      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
-      padding: clamp(32px, 5vw, 56px) clamp(20px, 3vw, 34px) 0;
-      margin-bottom: 0;
+    .project-intro {
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px;
+      line-height: 1.6;
+      margin-top: 0;
+      margin-bottom: 40px;
     }
-    .ed-gallery-zone .scroll-gallery__label,
-    .ed-gallery-zone .scroll-gallery__label strong { color: #1a1a1a; }
-    .ed-gallery-zone .scroll-gallery__counter { color: #1a1a1a; background: rgba(0,0,0,0.08); }
-    .ed-gallery-zone .btn-proto { background: #1a1a1a; color: #fff9ee; }
-    .ed-gallery-zone .btn-proto:hover { background: #333; }
-    .ed-hero {
-      display: grid;
-      grid-template-columns: 4fr 6fr;
-      gap: clamp(32px, 5vw, 64px);
-      align-items: end;
-      padding-bottom: clamp(40px, 6vw, 64px);
-      margin-bottom: clamp(40px, 6vw, 64px);
-    }
-    .ed-crumb {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
-      color: #1a1a1a; margin: 0 0 clamp(16px, 2.5vw, 32px); font-weight: 500;
-    }
-    .ed-title {
-      font-size: clamp(44px, 6.5vw, 92px);
-      font-weight: 700; line-height: 0.92;
-      letter-spacing: -0.025em; margin: 0 0 clamp(12px, 1.5vw, 20px);
-      color: #1a1a1a; text-transform: uppercase;
-    }
-    .ed-subtitle {
-      font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.12em;
-      text-transform: uppercase; color: #1a1a1a; margin: 0; font-weight: 500;
-    }
-    .ed-hero__media {
-      align-self: end;
-      max-height: clamp(500px, 88vh, 1000px); overflow: hidden;
-      display: flex; align-items: flex-end; justify-content: center;
-    }
-    .ed-hero__media img {
-      width: 100%; height: 100%; object-fit: cover;
-      object-position: center top; display: block;
-    }
-
-    .ed-intro {
-      display: grid; grid-template-columns: 300px 1fr;
-      gap: clamp(32px, 5vw, 80px);
-      padding-bottom: 0;
-    }
-    .ed-meta__item {
-      padding: clamp(10px, 1.2vw, 16px) 0 clamp(12px, 1.6vw, 20px);
-    }
-    .ed-label {
-      display: block; font-size: 10px; text-transform: uppercase;
-      letter-spacing: 0.14em; color: #1a1a1a; margin-bottom: 5px; font-weight: 500;
-    }
-    .ed-val { font-size: clamp(13px, 1.1vw, 15px); color: #1a1a1a; line-height: 1.6; }
-    .ed-desc { max-width: 720px; }
-    .ed-desc p {
-      font-size: clamp(15px, 1.35vw, 18px); line-height: 1.8;
-      color: #1a1a1a; margin: 0 0 1.2em;
-    }
-    .ed-desc p:last-child { margin-bottom: 0; }
-
-    /* Primary CTAs in header */
-    .ed-links {
-      display: flex; flex-wrap: wrap; gap: 10px; margin-top: clamp(24px, 3vw, 40px);
-    }
-    .ed-link {
-      font-size: 13px; font-family: 'Poppins', sans-serif;
-      color: #fff9ee; text-decoration: none;
-      background: #7A4A28; border: 1.5px solid #7A4A28;
-      padding: 11px 26px; border-radius: 999px;
-      transition: background 0.15s, border-color 0.15s;
-      letter-spacing: 0.01em; font-weight: 500;
-    }
-    .ed-link:hover { background: #5e3820; border-color: #5e3820; }
-    .ed-link--outline {
-      background: transparent; color: #7A4A28; border-color: #7A4A28;
-    }
-    .ed-link--outline:hover { background: rgba(122,74,40,0.08); }
-
-    /* ── Existing project styles (preserved) ─────────────────── */
+    .project-header { display: flex; align-items: flex-start; gap: 32px; max-width: none; }
+    .project-header__text { flex: 1; min-width: 0; }
+    .project-header .header-btns { flex-shrink: 0; padding-top: 8px; margin-right: 48px; }
     .scroll-gallery__label { color: #6B1E2E; }
-    .scroll-gallery--slider .scroll-gallery__img { object-fit: contain; object-position: center; height: clamp(520px, 32vw, 780px); background: #fff9ee; }
+    .project-intro--border { border-bottom: none; padding-bottom: 0; }
+    .project-header { margin-bottom: 56px; }
+    .project-meta { margin-top: 0; }
+    .gallery-pair { margin-top: 0; }
+    .scroll-gallery--slider .scroll-gallery__img { object-fit: contain; object-position: center; height: clamp(520px, 32vw, 780px); background: white; }
     .proj-scenario__text p { color: #111; }
     .proj-scenario__text p strong { text-decoration: underline; }
     .proj-scenario__subtitle { color: #516F52; }
     .proj-scenario { gap: 52px; }
     .proj-scenario__text .proj-section__label { margin-top: 0; }
-    .gallery-pair { margin-bottom: 0; margin-top: 0; }
+    .gallery-pair { margin-bottom: 72px; }
     .scroll-gallery__arrow {
-      background: rgba(255,255,255,0.92);
-      color: #1a1a1a;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.12);
-      width: 34px; height: 34px; opacity: 0.85;
+      background: rgba(255,255,255,0.45);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.10);
+      width: 34px;
+      height: 34px;
+      opacity: 0.75;
     }
-    .scroll-gallery__arrow:hover { background: #fff; opacity: 1; }
-
-    .proto-under-gallery {
-      display: flex; gap: 8px; flex-wrap: wrap;
-      margin-top: 16px; margin-bottom: 8px;
+    .scroll-gallery__arrow:hover {
+      background: rgba(255,255,255,0.88);
+      opacity: 1;
+    }
+    @media (max-width: 860px) {
+      .project-meta__title { font-size: 32px; }
+      .project-intro { font-size: 15px; }
+      .project-header { gap: 24px; margin-bottom: 36px; }
+      .project-header .header-btns { margin-right: 0; }
+      .scroll-gallery--slider .scroll-gallery__img { height: 440px; }
+      .gallery-pair { margin-bottom: 40px; }
+      .proj-scenario { gap: 32px; }
+    }
+    @media (max-width: 680px) {
+      .project-meta__title { font-size: 26px; }
+      .project-intro { font-size: 14px; }
+      .project-header { flex-direction: column; gap: 16px; margin-bottom: 24px; }
+      .project-header .header-btns { width: 100%; }
+      .project-header .header-btns .panel-toggle { width: 100%; justify-content: space-between; }
+      .scroll-gallery--slider .scroll-gallery__img { height: 360px; }
+      .gallery-pair { margin-bottom: 24px; gap: 12px; }
+      .proj-scenario { gap: 20px; }
+    }
+    @media (max-width: 400px) {
+      .project-meta__title { font-size: 22px; }
+      .scroll-gallery--slider .scroll-gallery__img { height: 260px; }
+      .gallery-pair { margin-bottom: 16px; }
+    }
+    .extra-header {
+      display: flex; align-items: center; justify-content: center;
+      gap: 24px; padding: 48px 0 16px; flex-wrap: wrap;
+    }
+    .extra-video {
+      width: 70%; display: block;
+      border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .extra-text {
+      width: 70%; font-size: 0.95rem; line-height: 1.6; color: #555;
+    }
+    @media (max-width: 680px) {
+      .extra-video, .extra-text { width: 100%; }
+      .extra-header { gap: 12px; padding: 28px 0 12px; }
+    }
+    .proj-meta-strip {
+      display: flex; flex-wrap: wrap; align-items: flex-start;
+      gap: 8px 0; margin-top: 0; margin-bottom: 8px;
+      font-family: 'Inter', sans-serif;
+    }
+    .proj-meta-strip__item {
+      display: inline-grid;
+      grid-template-columns: 14px 1fr;
+      grid-template-rows: auto auto;
+      align-items: center;
+      padding: 0 32px 0 0;
+    }
+    .proj-meta-strip__item:last-child { padding-right: 0; }
+    .proj-meta-strip__item::before {
+      content: "•"; color: #000; font-size: 13px;
+      grid-column: 1; grid-row: 1 / 3; align-self: center; justify-self: center;
+    }
+    .proj-meta-strip__label {
+      grid-column: 2; grid-row: 1;
+      display: block; font-size: 9px; text-transform: uppercase;
+      letter-spacing: 0.1em; color: #bbb; font-weight: 600; margin-bottom: 2px;
+    }
+    .proj-meta-strip__value {
+      grid-column: 2; grid-row: 2;
+      display: block; color: #333; font-size: 14px; font-weight: 400; line-height: 1.2;
+    }
+    .proto-cta-row {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px;
     }
     .btn-proto {
       display: inline-flex; align-items: center; gap: 6px;
@@ -138,184 +131,118 @@
       transition: background 0.15s;
     }
     .btn-proto:hover { background: #333; }
-    .btn-proto--slim { font-size: 12px; padding: 6px 13px; font-weight: 400; letter-spacing: 0.01em; }
-
+    .btn-proto--secondary {
+      background: transparent; border: 1.5px solid #ddd; color: #555;
+    }
+    .btn-proto--secondary:hover { background: #f5f5f5; border-color: #bbb; }
+    .proj-contribution {
+      background: #f7f4ef; border-left: 3px solid #6B1E2E;
+      padding: 18px 22px; margin: 0 0 0 0;
+    }
+    .proj-contribution__label {
+      font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em;
+      color: #6B1E2E; font-weight: 600; margin-bottom: 6px;
+      font-family: 'Inter', sans-serif;
+    }
+    .proj-contribution__text {
+      font-size: 14px; line-height: 1.65; color: #333; margin: 0;
+      font-family: 'Inter', sans-serif;
+    }
     .proj-section--mandel-light .proj-section__body { max-width: none; }
-
-    .extra-header {
-      display: flex; align-items: center; justify-content: center;
-      gap: 24px; padding: 48px 0 16px; flex-wrap: wrap;
+    .proto-cta-row .panel-toggle {
+      display: inline-flex; margin-top: 0;
     }
-    .extra-video { width: 70%; display: block; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-    .extra-text { width: 70%; font-size: 0.95rem; line-height: 1.6; color: #555; }
-
-    /* ── Editorial nav (at bottom) ───────────────────────────── */
-    .ed-nav-wrap {
-      background: #fff9ee; color: #1a1a1a;
-      margin: clamp(56px, 8vw, 112px) calc(-1 * clamp(20px, 3vw, 34px)) 0;
-      padding: 0 clamp(20px, 3vw, 34px);
+    .btn-proto--slim {
+      font-size: 12px; padding: 6px 13px; font-weight: 400; letter-spacing: 0.01em;
     }
-    .ed-nav {
-      border-top: 1px solid rgba(0,0,0,0.12);
-      display: grid; grid-template-columns: 1fr 1fr;
-    }
-    .ed-nav__link {
-      display: block; padding: clamp(24px, 3.5vw, 44px) 0;
-      text-decoration: none; color: #1a1a1a; opacity: 0.5;
-      transition: opacity 0.2s;
-    }
-    .ed-nav__link:hover { opacity: 1; }
-    .ed-nav__next {
-      text-align: right; border-left: 1px solid rgba(0,0,0,0.12);
-      padding-left: clamp(20px, 3vw, 40px);
-    }
-    .ed-nav__dir { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: #1a1a1a; margin-bottom: 6px; }
-    .ed-nav__name { font-size: clamp(14px, 1.3vw, 17px); font-style: italic; }
-
-
-    /* ── Kill whitespace gaps ───────────────────────────────── */
-    .project { background: #fff9ee; }
-    .proj-sections { margin-top: 0 !important; }
-    .ed-nav-wrap { margin-top: 0 !important; }
-
-    /* ── Section 2: Designprosess ──────────────────────────── */
-    .proj-sections .proj-section:nth-child(2) { background: #ebe1c4 !important; }
-    .proj-sections .proj-section:nth-child(2) .proj-step {
-      border-top: 1.5px solid rgba(196,149,48,0.32);
-      padding-top: clamp(18px, 2.5vw, 28px);
-    }
-    .proj-sections .proj-section:nth-child(2) .proj-step-num {
-      color: #c49530;
-    }
-
-    /* ── Section 3: Løsningen — dark stopp-punkt ───────────── */
-    .proj-sections .proj-section:nth-child(3) {
-      background: #403d26 !important;
-      color: #fff9ee !important;
-    }
-    .proj-sections .proj-section:nth-child(3) .proj-section__label,
-    .proj-sections .proj-section:nth-child(3) .proj-section__heading,
-    .proj-sections .proj-section:nth-child(3) .proj-section__body {
-      color: #fff9ee !important;
-    }
-    /* Bento grid: gap + matching bg = hairline dividers */
-    .proj-sections .proj-section:nth-child(3) .proj-features-grid {
-      grid-template-columns: repeat(3, 1fr) !important;
-      gap: 1px !important;
-      background: rgba(255,249,238,0.12) !important;
-      margin-top: clamp(24px, 3vw, 40px) !important;
-    }
-    .proj-sections .proj-section:nth-child(3) .proj-feature {
-      background: #403d26 !important;
-      border: none !important;
-      padding: clamp(20px, 2.5vw, 30px) clamp(16px, 2vw, 24px) !important;
-    }
-    .proj-sections .proj-section:nth-child(3) .proj-feature-num {
-      color: rgba(255,249,238,0.25) !important;
-      font-size: clamp(22px, 2.5vw, 34px) !important;
-      display: block !important;
-      margin-bottom: 10px !important;
-    }
-    .proj-sections .proj-section:nth-child(3) .proj-feature h3 {
-      color: #fff9ee !important;
-      font-size: clamp(12px, 1.05vw, 14px) !important;
-      text-transform: uppercase !important;
-      letter-spacing: 0.08em !important;
-      margin-bottom: 8px !important;
-      font-weight: 600 !important;
-    }
-    .proj-sections .proj-section:nth-child(3) .proj-feature p {
-      color: rgba(255,249,238,0.7) !important;
-      font-size: clamp(13px, 1.05vw, 14.5px) !important;
-      line-height: 1.65 !important;
-    }
-
-    /* ── Section 5: Mitt bidrag ─────────────────────────────── */
-    .proj-sections .proj-section:nth-child(5) { background: #ebe1c4 !important; }
-
-    /* ── Section 6: Team ────────────────────────────────────── */
-    .proj-sections .proj-section:nth-child(6) { background: #ffffff !important; }
-
-    /* ── Extramateriale zone — cream bleed ──────────────────── */
-    .extra-zone {
-      background: #fff9ee;
-      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
-      padding: 0 clamp(20px, 3vw, 34px) clamp(40px, 5vw, 64px);
-    }
-
-    /* ── Section 4: Scenarios — dark continuation ──────────── */
-    .proj-sections .proj-section:nth-child(4) {
-      background: #571721 !important;
-    }
-    .proj-sections .proj-section:nth-child(4) .proj-section__label,
-    .proj-sections .proj-section:nth-child(4) .proj-scenario__subtitle,
-    .proj-sections .proj-section:nth-child(4) .proj-scenario__text p,
-    .proj-sections .proj-section:nth-child(4) .proj-scenario__text p strong {
-      color: #fff9ee !important;
-    }
-    .proj-sections .proj-section:nth-child(4) .proj-scenario__text p {
-      color: rgba(255,249,238,0.8) !important;
-    }
-    .proj-sections .proj-section:nth-child(4) .proj-scenario__text p strong {
-      color: #fff9ee !important;
-    }
-    .proj-sections .proj-section:nth-child(4) .proj-scenario__subtitle {
-      color: rgba(255,249,238,0.55) !important;
-    }
-
-    @media (max-width: 768px) {
-      .proj-sections .proj-section:nth-child(3) .proj-features-grid {
-        grid-template-columns: repeat(2, 1fr) !important;
-      }
-    }
-    @media (max-width: 480px) {
-      .proj-sections .proj-section:nth-child(3) .proj-features-grid {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .ed-hero { grid-template-columns: 1fr; }
-      .ed-hero__media { display: none; }
-      .ed-intro { grid-template-columns: 1fr; }
-      .proj-scenario { gap: 32px; }
-      .gallery-pair { margin-bottom: 40px; }
-      .scroll-gallery--slider .scroll-gallery__img { height: 440px; }
-      .extra-video, .extra-text { width: 100%; }
-      .extra-header { gap: 12px; padding: 28px 0 12px; }
+    .proto-under-gallery {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-top: 16px; margin-bottom: 8px;
     }
     @media (max-width: 680px) {
-      .scroll-gallery--slider .scroll-gallery__img { height: 360px; }
-      .gallery-pair { margin-bottom: 24px; }
-      .proj-scenario { gap: 20px; }
+      .proj-meta-strip { gap: 6px 0; }
+      .proj-meta-strip__item { padding: 0 20px 0 0; }
+      .proj-meta-strip__value { font-size: 12px; }
+      .proto-cta-row { gap: 8px; }
+      .btn-proto,
+      .btn-pdf {
+        background: none !important;
+        border: none !important;
+        color: #111 !important;
+        padding: 0 !important;
+        font-size: 16px !important;
+        font-weight: 400 !important;
+        letter-spacing: normal !important;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        cursor: pointer;
+      }
+      .btn-proto:hover, .btn-pdf:hover {
+        background: none !important;
+        color: #111 !important;
+      }
+      .proto-under-gallery .btn-proto::after,
+      .btn-pdf::after {
+        content: ' →';
+      }
+      .proto-under-gallery { gap: 18px; flex-direction: column; margin-top: 12px; }
+      .proto-cta-row { gap: 12px; }
     }
-    @media (max-width: 480px) {
-      .scroll-gallery--slider .scroll-gallery__img { height: 260px; }
-      .gallery-pair { margin-bottom: 16px; }
+    @media (max-width: 560px) {
+      .proj-meta-strip { gap: 10px 0; flex-wrap: wrap; }
+      .proj-meta-strip__item { padding: 0 16px 0 0; }
     }
     @media (min-width: 2400px) {
+      /* Section structure: sections are ~1668px wide (1600px column + 34px bleed each side).
+         Internal section padding goes from 74px to 100px so the text spine shifts inward. */
       .proj-section { padding: 80px 100px; }
+
+      /* Typography */
+      .project-meta__title { font-size: 56px; }
+      .project-intro { font-size: 22px; line-height: 1.65; }
       .proj-section__label   { font-size: 28px; }
       .proj-section__heading { font-size: 44px; line-height: 1.1; margin-bottom: 24px; }
       .proj-section__body    { font-size: 20px; max-width: 900px; }
+      .proj-section--mandel-light > div[style*="max-width"] { max-width: 1200px !important; }
+
+      /* Scroll-gallery labels */
       .scroll-gallery__label { font-size: 17px; }
       .scroll-gallery__label strong { font-size: 20px; }
+
+      /* Scenario videos: taller so the 2-col layout fills the wider section */
       .proj-scenario__media { height: 560px; }
       .proj-scenario__text p { max-width: 720px; font-size: 20px; }
       .proj-scenario__subtitle { font-size: 20px; }
+
+      /* Steps grid */
       .proj-step-num { font-size: 56px; }
       .proj-step h3 { font-size: 20px; }
       .proj-step p { font-size: 20px; line-height: 1.7; }
+
+      /* Features grid */
       .proj-feature h3 { font-size: 20px; }
       .proj-feature p { font-size: 20px; line-height: 1.6; }
+
+      /* Problem list */
       .proj-problem-item h4 { font-size: 20px; }
       .proj-problem-item p { font-size: 20px; line-height: 1.6; }
+      .proj-problem-list__label { font-size: 14px; }
+
+      /* Team cards */
       .proj-team-avatar { width: 52px; height: 52px; font-size: 16px; }
       .proj-team-card h4 { font-size: 15px; }
       .proj-team-card p { font-size: 14px; }
+
+      /* Meta strip */
+      .proj-meta-strip__label { font-size: 11px; }
+      .proj-meta-strip__value { font-size: 20px; }
     }
   </style>
+  <link rel="preload" as="image" href="./assets/norvald-iphone.webp">
+  <link rel="preload" as="image" href="./assets/norvald-ipad.webp">
+  <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
 <body>
@@ -349,136 +276,188 @@
 
   <main id="content" class="content">
     <article class="project" id="project">
+        <div class="project-layout">
+          <div class="project-layout__media">
+            <div class="project-header">
+              <div class="project-header__text">
+                <h1 class="project-meta__title">Tjønnås & Norvald</h1>
+                <p class="project-intro">Ansattportal for Tjønnås Delikatesser og Norvald Café:<br><span class="intro-space"> </span>ett system som samler vaktlister, kommunikasjon og opplæring på én plass.</p>
+                <div class="proj-meta-strip">
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Fagfelt</span>
+                    <span class="proj-meta-strip__value">UX/UI case study</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Varighet</span>
+                    <span class="proj-meta-strip__value">4 uker</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Team</span>
+                    <span class="proj-meta-strip__value">4 personer</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Min rolle</span>
+                    <span class="proj-meta-strip__value">Grafisk og UX-designer</span>
+                  </span>
+                  <span class="proj-meta-strip__item">
+                    <span class="proj-meta-strip__label">Verktøy</span>
+                    <span class="proj-meta-strip__value">Figma</span>
+                  </span>
+                </div>
+                <div class="proto-cta-row">
+                  <button class="btn-proto btn-proto--secondary panel-toggle panel-toggle--header" id="panelToggle" aria-expanded="false">Ressurser <span class="panel-toggle__icon">→</span></button>
+                </div>
+              </div>
 
-      <!-- ── DARK EDITORIAL HEADER ────────────────────────── -->
-      <div class="ed-header">
-
-        <!-- HERO -->
-        <div class="ed-hero">
-          <div>
-            <p class="ed-crumb">Prosjekter</p>
-            <h1 class="ed-title"><span style="color:#ad822e; white-space:nowrap">Tjønnås &</span><br><span style="color:#e84030">Norvald</span></h1>
-            <p class="ed-subtitle">UX/UI Design · Ansattportal</p>
+            </div>
+            
           </div>
-          <div class="ed-hero__media">
-            <img src="./assets/herotjonn.webp" alt="Tjønnås & Norvald — mobilprototype" fetchpriority="high" decoding="async">
+          <div class="project-layout__side">
+            <div class="project-layout__info" id="projectInfo">
+              <div class="project-layout__info-inner">
+                <div class="accordion" id="accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Prototype</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><p class="bg__body">Utforsk den interaktive Figma-prototypen – mobil eller iPad.</p><a class="accordion__link" href="https://www.figma.com/proto/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=370-654&t=gURyvsCsv2Xut1a-1" target="_blank" rel="noopener">Mobil-prototype (Figma)</a><a class="accordion__link" href="https://www.figma.com/proto/SIwHbrWgze8kbEIWvYqJug/Tj%C3%B8nn%C3%A5smain?node-id=357-92&t=WdrI0DT0DpxmhxMO-1" target="_blank" rel="noopener">iPad-prototype (Figma)</a></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Rapport</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><a class="accordion__link" href="./assets/norvald/Endelig-rapport- informasjonsarkitektur.pdf" target="_blank" rel="noopener">Åpne rapport</a></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Intervju</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><a class="accordion__link" href="./assets/norvald/Intervju.pdf" target="_blank" rel="noopener">Åpne intervjuguide</a></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Sitemap</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><a class="accordion__link" href="./assets/norvald/sitemap.pdf" target="_blank" rel="noopener">Åpne sitemap</a></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Designmanual</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><a class="accordion__link" href="./assets/norvald/Designmanual.pdf" target="_blank" rel="noopener">Åpne designmanual</a></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Presentasjon</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><a class="accordion__link" href="https://www.canva.com/design/DAG5D6PV-Tc/0pcCKonM91HyyvCOiMM8ZA/view?utm_content=DAG5D6PV-Tc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf8713a3968" target="_blank" rel="noopener">Åpne presentasjon</a></div>
+            </div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__trigger" type="button" aria-expanded="false">
+              <span class="accordion__title">Nettside</span>
+              <span class="accordion__icon"></span>
+            </button>
+            <div class="accordion__panel">
+              <div class="accordion__panel-inner"><a class="accordion__link" href="./assets/Norvald og Tjønnås/hjem.html" target="_blank" rel="noopener">Åpne nettside</a></div>
+            </div>
+          </div></div>
+                
+                
+              </div>
+            </div>
           </div>
         </div>
-
-        <!-- META + BESKRIVELSE -->
-        <div class="ed-intro">
-          <div class="ed-meta">
-            <div class="ed-meta__item">
-              <span class="ed-label">Fagfelt</span>
-              <span class="ed-val">UX/UI case study</span>
+        
+        
+        
+          <div class="gallery-pair">
+            <div class="scroll-gallery scroll-gallery--slider">
+              <p class="scroll-gallery__label"><strong>iPhone 16 Pro Max</strong> (utvalgte prototyper)</p>
+              <div class="scroll-gallery__slider-wrap">
+                <div class="scroll-gallery__track">
+                  <img class="scroll-gallery__img" src="./assets/norvald-iphone.webp" alt="iPhone 16 Pro Max prototype" loading="eager" fetchpriority="high" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-2-mock.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-1-mock.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                </div>
+                <button class="scroll-gallery__arrow scroll-gallery__arrow--prev" aria-label="Forrige">&#8592;</button>
+                <button class="scroll-gallery__arrow scroll-gallery__arrow--next" aria-label="Neste">&#8594;</button>
+                <span class="scroll-gallery__counter">1 / 3</span>
+              </div>
             </div>
-            <div class="ed-meta__item">
-              <span class="ed-label">Varighet</span>
-              <span class="ed-val">4 uker</span>
-            </div>
-            <div class="ed-meta__item">
-              <span class="ed-label">Team</span>
-              <span class="ed-val">4 personer</span>
-            </div>
-            <div class="ed-meta__item">
-              <span class="ed-label">Min rolle</span>
-              <span class="ed-val">Grafisk og UX-designer</span>
-            </div>
-            <div class="ed-meta__item">
-              <span class="ed-label">Verktøy</span>
-              <span class="ed-val">Figma</span>
+            <div class="scroll-gallery scroll-gallery--slider">
+              <p class="scroll-gallery__label"><strong>iPad Pro 12.9"</strong> (utvalgte prototyper)</p>
+              <div class="scroll-gallery__slider-wrap">
+                <div class="scroll-gallery__track">
+                  <img class="scroll-gallery__img" src="./assets/norvald-ipad.webp" alt="iPad Pro prototype" loading="eager" fetchpriority="high" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad10.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad11.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad12.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad13.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad14.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad15.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad16.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                  <img class="scroll-gallery__img" src="./assets/norvald/ipad17.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
+                </div>
+                <button class="scroll-gallery__arrow scroll-gallery__arrow--prev" aria-label="Forrige">&#8592;</button>
+                <button class="scroll-gallery__arrow scroll-gallery__arrow--next" aria-label="Neste">&#8594;</button>
+                <span class="scroll-gallery__counter">1 / 9</span>
+              </div>
             </div>
           </div>
-          <div class="ed-desc">
-            <p>Ansattportal for Tjønnås & Norvald — vaktlister, kommunikasjon og opplæring samlet på én plass.</p>
-            <p>Innsikt fra intervju med daglig leder avdekket at driften var spredt over Messenger og muntlig opplæring. Løsningen er én samlet portal for mobil og iPad.</p>
-            <div class="ed-links">
-              <a class="ed-link" href="https://www.figma.com/proto/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=370-654&t=gURyvsCsv2Xut1a-1" target="_blank" rel="noopener">Mobil-prototype</a>
-              <a class="ed-link" href="https://www.figma.com/proto/SIwHbrWgze8kbEIWvYqJug/Tj%C3%B8nn%C3%A5smain?node-id=357-92&t=WdrI0DT0DpxmhxMO-1" target="_blank" rel="noopener">iPad-prototype</a>
-              <a class="ed-link ed-link--outline" href="#case-study">Les case study</a>
-              <a class="ed-link ed-link--outline" href="./assets/norvald/Endelig-rapport- informasjonsarkitektur.pdf" target="_blank" rel="noopener">Se rapport</a>
-            </div>
+          <div class="proto-under-gallery">
+            <a class="btn-proto btn-proto--slim" href="https://www.figma.com/proto/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=370-654&t=gURyvsCsv2Xut1a-1" target="_blank" rel="noopener">Åpne mobil-prototype</a>
+            <a class="btn-proto btn-proto--slim" href="https://www.figma.com/proto/SIwHbrWgze8kbEIWvYqJug/Tj%C3%B8nn%C3%A5smain?node-id=357-92&t=WdrI0DT0DpxmhxMO-1" target="_blank" rel="noopener">Åpne iPad-prototype</a>
           </div>
+        <div class="proj-sections"><div class="proj-section proj-section--krem"><div><p class="proj-section__label">Innsikt & utfordringer</p><h2 class="proj-section__heading">Jobbhverdagen er spredt på for mange systemer</h2><p class="proj-section__body">Intervju med daglig leder (Mari-Mette) avdekket at driften var spredt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.</p></div><div class="proj-problem proj-problem--below"><div><img class="proj-problem__img" src="./assets/norvald/marimette.webp" alt="Innsikt & utfordringer" loading="lazy" decoding="async"></div><div class="proj-problem-list"><p class="proj-problem-list__label">Hovedproblemer:</p><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Vaktplaner</h4><p>Håndtert i et separat system uten kobling til felles kommunikasjon.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Internkommunikasjon</h4><p>Viktig info forsvant i Messenger-tråder.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Opplæring</h4><p>Kun fysisk og muntlig – tidkrevende og ikke tilgjengelig utenom arbeidstid.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Dokumenter & rutiner</h4><p>Ingen versjonskontroll. Nye ansatte hadde vansker med å finne frem til riktig informasjon.</p></div></div></div></div></div><div class="proj-section proj-section--mandel-light"><p class="proj-section__label">Designprosess</p><h2 class="proj-section__heading">Fra innsikt til løsning</h2><div class="proj-steps-grid"><div class="proj-step"><div class="proj-step-num">01</div><h3>Intervju</h3><p>Kvalitativt intervju med daglig leder ga oss innsikt i reell drift – ikke antagelser. Valget om å snakke med leder fremfor ansatte var bevisst: hun hadde overblikk over tvers av alle smertepunkter.</p></div><div class="proj-step"><div class="proj-step-num">02</div><h3>Affinity map</h3><p>Funn gruppert i 6 temaer. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene – det styrte prioriteringene våre i løsningsdesignet.</p></div><div class="proj-step"><div class="proj-step-num">03</div><h3>Personas & scenarier</h3><p>Vi utviklet 5 personas, men valgte to primærbrukere: Kari (erfaren) og Eirik (nyansatt). Disse to representerte de mest ulike behovene – og ble brukt aktivt gjennom hele designprosessen.</p></div><div class="proj-step"><div class="proj-step-num">04</div><h3>Wireframes → Hi-fi</h3><p>Lo-fi skisser ble iterert til hi-fi-prototype i Figma. Vi beholdt et enkelt navigasjonsmønster fremfor avanserte interaksjoner – basert på brukergruppens lave digitale terskel.</p></div></div></div><div class="proj-section proj-section--krem"><p class="proj-section__label">Løsningen</p><h2 class="proj-section__heading">Én samlet ansattportal</h2><p class="proj-section__body">Portalens kjerneområder samler det som tidligere lå spredt på ulike plattformer – tilgjengelig på mobil og iPad.</p><div class="proj-features-grid"><div class="proj-feature"><span class="proj-feature-num">01</span><div><h3>Landing page</h3><p>Én startside erstatter morgenmøter og oppslagstavler. Daglige mål og beskjeder er der fra første sekund på skiftet.</p></div></div><div class="proj-feature"><span class="proj-feature-num">02</span><div><h3>Vaktliste</h3><p>Ansatte sjekker vaktene sine hjemmefra. Kalendervisning med detaljkort eliminerte behovet for å møte fysisk for å planlegge fri.</p></div></div><div class="proj-feature"><span class="proj-feature-num">03</span><div><h3>Chat & kommunikasjon</h3><p>Viktig info forsvinner ikke lenger i Messenger-tråder. Kanalen har historikk og varsler – og er adskilt fra privat meldingsutveksling.</p></div></div><div class="proj-feature"><span class="proj-feature-num">04</span><div><h3>Digital opplæring</h3><p>Nyansatte kan forberede seg hjemmefra og slå opp rutiner alene på jobb. Reduserer avhengigheten av erfarne kollegaers tid.</p></div></div><div class="proj-feature"><span class="proj-feature-num">05</span><div><h3>Dokumenter & rutiner</h3><p>Én kilde til sannhet med versjonskontroll. Ingen utdaterte utskrifter eller usikkerhet om hvilken versjon som gjelder.</p></div></div><div class="proj-feature"><span class="proj-feature-num">06</span><div><h3>Min side</h3><p>Profil og innstillinger tilpasset arbeidssted. Gir ansatte eierskap til egne data og notifikasjoner.</p></div></div></div></div><div class="proj-section proj-section--none"><div class="proj-scenarios"><div class="proj-scenario proj-scenario--iphone"><div class="proj-scenario__media"><div class="proj-scenario__video-wrap"><video class="proj-scenario__video" muted loop playsinline preload="metadata"><source src="./assets/iphone.mp4" type="video/mp4"></video><button class="proj-scenario__play" aria-label="Spill av video"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="rgba(255,255,255,0.92)"/><polygon points="21,16 40,26 21,36" fill="#571721"/></svg></button><div class="proj-scenario__controls"><button class="proj-scenario__pause-btn" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><rect x="0" y="0" width="4.5" height="16" rx="1" fill="white"/><rect x="9.5" y="0" width="4.5" height="16" rx="1" fill="white"/></svg></button><div class="proj-scenario__progress-wrap"><div class="proj-scenario__progress-fill"></div></div><span class="proj-scenario__time">0:00 / 0:00</span></div></div></div><div class="proj-scenario__text"><h3 class="proj-section__label">Mobilprototype — Scenario 1</h3><p class="proj-scenario__subtitle">Kari sjekker vaktlisten hjemmefra</p><p><strong>Innsikten:</strong> Intervjuet avdekket at erfarne ansatte måtte møte fysisk på jobb bare for å sjekke vaktplanen – en daglig friksjon som skapte usikkerhet rundt fri og ferie.</p><p><strong>Designvurderingen:</strong> Vi valgte kalendervisning med detaljkort per dag. Grepet gir Kari full oversikt over tidspunkt, lokasjon og hvem hun jobber med – tilgjengelig når som helst, uten å måtte kontakte leder.</p></div></div><div class="proj-scenario proj-scenario--ipad"><div class="proj-scenario__media"><div class="proj-scenario__video-wrap"><video class="proj-scenario__video" muted loop playsinline preload="metadata"><source src="./assets/ipad.mp4" type="video/mp4"></video><button class="proj-scenario__play" aria-label="Spill av video"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="rgba(255,255,255,0.92)"/><polygon points="21,16 40,26 21,36" fill="#571721"/></svg></button><div class="proj-scenario__controls"><button class="proj-scenario__pause-btn" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><rect x="0" y="0" width="4.5" height="16" rx="1" fill="white"/><rect x="9.5" y="0" width="4.5" height="16" rx="1" fill="white"/></svg></button><div class="proj-scenario__progress-wrap"><div class="proj-scenario__progress-fill"></div></div><span class="proj-scenario__time">0:00 / 0:00</span></div></div></div><div class="proj-scenario__text"><h3 class="proj-section__label">iPad-prototype — Scenario 2</h3><p class="proj-scenario__subtitle">Eirik fullfører sin første opplæringsmodul</p><p><strong>Innsikten:</strong> Nyansatte hadde kun tilgang til muntlig og fysisk opplæring. Ved første selvstendige vakt var det ingen måte å slå opp rutiner på egenhånd – noe som skapte usikkerhet og belastet erfarne kollegaer.</p><p><strong>Designvurderingen:</strong> iPad er allerede i bruk på arbeidsplassen, så vi designet opplæringsmoduler tilpasset den. "Min trening"-biblioteket med steg-for-steg videoer gir Eirik en visuell og selvstendig måte å lære på, i eget tempo og uten å avbryte andre.</p></div></div></div></div><div class="proj-section proj-section--mandel-light"><div style="max-width:920px"><p class="proj-section__label">Mitt bidrag</p><h2 class="proj-section__heading">Hva jeg eide i dette prosjektet</h2><p class="proj-section__body">Jeg ledet brukerinnsikten og utarbeidet intervjuguiden som la grunnlaget for hele prosessen. Jeg hadde ansvar for utvikling av personas og scenarier – inkludert de to primærbrukerne Kari og Eirik. I designfasen tok jeg rollen som UI-designer på mobilflaten: fra lo-fi-skisser til ferdig hi-fi-prototype i Figma, med fokus på tilgjengelighet og WCAG-krav.</p></div></div><div class="proj-section proj-section--none"><div class="proj-team-header"><p class="proj-section__label">Gruppe 01</p><h2 class="proj-section__heading">Teamet bak prosjektet</h2></div><div class="proj-team-grid"><div class="proj-team-card"><div class="proj-team-avatar" style="background:#571721">JR</div><h4>Josefine Reichelt Gjertsen</h4><p>Intervjuguide · Personas · UI-design (mobil)</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#ad822e">HB</div><h4>Herman Brenn-Svendsen</h4><p>Sitemap · Prototyper · Wireframes</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#c0523f">TD</div><h4>Tia Linnea Dahl</h4><p>Designmanual · Personas · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#403d26">AJ</div><h4>Axel Bruusgaard Jewett</h4><p>Prototyper · Wireframes · Intervju</p></div></div></div></div>
+        
+        <div class="extra-header">
+          <p class="proj-section__label" style="margin:0">ekstramateriale</p>
+          <a href="./assets/Norvald og Tjønnås/hjem.html" class="btn-pdf" target="_blank" rel="noopener" style="background:#fff;color:#111;border:1.5px solid #111;">Se nettsiden</a>
         </div>
-      </div>
-      <!-- ── END DARK HEADER ───────────────────────────────── -->
 
-      <!-- PROTOTYPE GALLERIES -->
-      <div class="ed-gallery-zone">
-      <div class="gallery-pair">
-        <div class="scroll-gallery scroll-gallery--slider">
-          <p class="scroll-gallery__label"><strong>iPhone 16 Pro Max</strong> (utvalgte prototyper)</p>
-          <div class="scroll-gallery__slider-wrap">
-            <div class="scroll-gallery__track">
-              <img class="scroll-gallery__img" src="./assets/norvald-iphone.webp" alt="iPhone 16 Pro Max prototype" loading="eager" fetchpriority="high" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-2-mock.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/tjonnas-1-mock.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-            </div>
-            <button class="scroll-gallery__arrow scroll-gallery__arrow--prev" aria-label="Forrige">&#8592;</button>
-            <button class="scroll-gallery__arrow scroll-gallery__arrow--next" aria-label="Neste">&#8594;</button>
-            <span class="scroll-gallery__counter">1 / 3</span>
-          </div>
+        <div style="width:100%;padding:0 0 24px 0;display:flex;justify-content:center;">
+          <video class="extra-video" controls playsinline>
+            <source src="./assets/norvald/vide-nord.mp4">
+            Nettleseren din støtter ikke videofilen.
+          </video>
         </div>
-        <div class="scroll-gallery scroll-gallery--slider">
-          <p class="scroll-gallery__label"><strong>iPad Pro 12.9"</strong> (utvalgte prototyper)</p>
-          <div class="scroll-gallery__slider-wrap">
-            <div class="scroll-gallery__track">
-              <img class="scroll-gallery__img" src="./assets/norvald-ipad.webp" alt="iPad Pro prototype" loading="eager" fetchpriority="high" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/ipad10.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/ipad11.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/ipad12.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/ipad13.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/ipad14.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/ipad15.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/ipad16.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-              <img class="scroll-gallery__img" src="./assets/norvald/ipad17.webp" alt="Tjønnås & Norvald" loading="lazy" decoding="async">
-            </div>
-            <button class="scroll-gallery__arrow scroll-gallery__arrow--prev" aria-label="Forrige">&#8592;</button>
-            <button class="scroll-gallery__arrow scroll-gallery__arrow--next" aria-label="Neste">&#8594;</button>
-            <span class="scroll-gallery__counter">1 / 9</span>
-          </div>
+
+        <div style="display:flex;justify-content:center;padding:0 0 64px 0;">
+          <p class="extra-text">Et eksperiment utenfor oppgavens rammer: 17. april brukte jeg Figma-filen fra prosjektet som kilde og testet Claude Design — lansert samme dag. Jeg definerte layout, retning og struktur gjennom noen runder med prompting og redigering. Resultatet er nettsiden du kan se her. Designet, kildemateriellet og redaksjonell kontroll er mitt; AI-en var verktøyet.</p>
         </div>
-      </div>
-      </div><!-- end .ed-gallery-zone -->
 
-      <!-- PROJ SECTIONS (existing, preserved) -->
-      <div class="proj-sections" id="case-study"><div class="proj-section proj-section--krem"><div><p class="proj-section__label">Innsikt & utfordringer</p><h2 class="proj-section__heading">Jobbhverdagen er spredt på for mange systemer</h2><p class="proj-section__body">Intervju med daglig leder (Mari-Mette) avdekket at driften var spredt over Messenger, Apple Notater, separate kassesystemer og muntlig opplæring – uten noen felles struktur.</p></div><div class="proj-problem proj-problem--below"><div><img class="proj-problem__img" src="./assets/norvald/marimette.webp" alt="Innsikt & utfordringer" loading="lazy" decoding="async"></div><div class="proj-problem-list"><p class="proj-problem-list__label">Hovedproblemer:</p><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Vaktplaner</h4><p>Håndtert i et separat system uten kobling til felles kommunikasjon.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Internkommunikasjon</h4><p>Viktig info forsvant i Messenger-tråder.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Opplæring</h4><p>Kun fysisk og muntlig – tidkrevende og ikke tilgjengelig utenom arbeidstid.</p></div></div><div class="proj-problem-item"><div class="proj-problem-dot"></div><div><h4>Dokumenter & rutiner</h4><p>Ingen versjonskontroll. Nye ansatte hadde vansker med å finne frem til riktig informasjon.</p></div></div></div></div></div><div class="proj-section proj-section--mandel-light"><p class="proj-section__label">Designprosess</p><h2 class="proj-section__heading">Fra innsikt til løsning</h2><div class="proj-steps-grid"><div class="proj-step"><div class="proj-step-num">01</div><h3>Intervju</h3><p>Kvalitativt intervju med daglig leder ga oss innsikt i reell drift – ikke antagelser. Valget om å snakke med leder fremfor ansatte var bevisst: hun hadde overblikk over tvers av alle smertepunkter.</p></div><div class="proj-step"><div class="proj-step-num">02</div><h3>Affinity map</h3><p>Funn gruppert i 6 temaer. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene – det styrte prioriteringene våre i løsningsdesignet.</p></div><div class="proj-step"><div class="proj-step-num">03</div><h3>Personas & scenarier</h3><p>Vi utviklet 5 personas, men valgte to primærbrukere: Kari (erfaren) og Eirik (nyansatt). Disse to representerte de mest ulike behovene – og ble brukt aktivt gjennom hele designprosessen.</p></div><div class="proj-step"><div class="proj-step-num">04</div><h3>Wireframes → Hi-fi</h3><p>Lo-fi skisser ble iterert til hi-fi-prototype i Figma. Vi beholdt et enkelt navigasjonsmønster fremfor avanserte interaksjoner – basert på brukergruppens lave digitale terskel.</p></div></div></div><div class="proj-section proj-section--krem"><p class="proj-section__label">Løsningen</p><h2 class="proj-section__heading">Én samlet ansattportal</h2><p class="proj-section__body">Portalens kjerneområder samler det som tidligere lå spredt på ulike plattformer – tilgjengelig på mobil og iPad.</p><div class="proj-features-grid"><div class="proj-feature"><span class="proj-feature-num">01</span><div><h3>Landing page</h3><p>Én startside erstatter morgenmøter og oppslagstavler. Daglige mål og beskjeder er der fra første sekund på skiftet.</p></div></div><div class="proj-feature"><span class="proj-feature-num">02</span><div><h3>Vaktliste</h3><p>Ansatte sjekker vaktene sine hjemmefra. Kalendervisning med detaljkort eliminerte behovet for å møte fysisk for å planlegge fri.</p></div></div><div class="proj-feature"><span class="proj-feature-num">03</span><div><h3>Chat & kommunikasjon</h3><p>Viktig info forsvinner ikke lenger i Messenger-tråder. Kanalen har historikk og varsler – og er adskilt fra privat meldingsutveksling.</p></div></div><div class="proj-feature"><span class="proj-feature-num">04</span><div><h3>Digital opplæring</h3><p>Nyansatte kan forberede seg hjemmefra og slå opp rutiner alene på jobb. Reduserer avhengigheten av erfarne kollegaers tid.</p></div></div><div class="proj-feature"><span class="proj-feature-num">05</span><div><h3>Dokumenter & rutiner</h3><p>Én kilde til sannhet med versjonskontroll. Ingen utdaterte utskrifter eller usikkerhet om hvilken versjon som gjelder.</p></div></div><div class="proj-feature"><span class="proj-feature-num">06</span><div><h3>Min side</h3><p>Profil og innstillinger tilpasset arbeidssted. Gir ansatte eierskap til egne data og notifikasjoner.</p></div></div></div></div><div class="proj-section proj-section--none"><div class="proj-scenarios"><div class="proj-scenario proj-scenario--iphone"><div class="proj-scenario__media"><div class="proj-scenario__video-wrap"><video class="proj-scenario__video" muted loop playsinline preload="metadata"><source src="./assets/iphone.mp4" type="video/mp4"></video><button class="proj-scenario__play" aria-label="Spill av video"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="rgba(255,255,255,0.92)"/><polygon points="21,16 40,26 21,36" fill="#571721"/></svg></button><div class="proj-scenario__controls"><button class="proj-scenario__pause-btn" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><rect x="0" y="0" width="4.5" height="16" rx="1" fill="white"/><rect x="9.5" y="0" width="4.5" height="16" rx="1" fill="white"/></svg></button><div class="proj-scenario__progress-wrap"><div class="proj-scenario__progress-fill"></div></div><span class="proj-scenario__time">0:00 / 0:00</span></div></div></div><div class="proj-scenario__text"><h3 class="proj-section__label">Mobilprototype — Scenario 1</h3><p class="proj-scenario__subtitle">Kari sjekker vaktlisten hjemmefra</p><p><strong>Innsikten:</strong> Intervjuet avdekket at erfarne ansatte måtte møte fysisk på jobb bare for å sjekke vaktplanen – en daglig friksjon som skapte usikkerhet rundt fri og ferie.</p><p><strong>Designvurderingen:</strong> Vi valgte kalendervisning med detaljkort per dag. Grepet gir Kari full oversikt over tidspunkt, lokasjon og hvem hun jobber med – tilgjengelig når som helst, uten å måtte kontakte leder.</p></div></div><div class="proj-scenario proj-scenario--ipad"><div class="proj-scenario__media"><div class="proj-scenario__video-wrap"><video class="proj-scenario__video" muted loop playsinline preload="metadata"><source src="./assets/ipad.mp4" type="video/mp4"></video><button class="proj-scenario__play" aria-label="Spill av video"><svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="26" fill="rgba(255,255,255,0.92)"/><polygon points="21,16 40,26 21,36" fill="#571721"/></svg></button><div class="proj-scenario__controls"><button class="proj-scenario__pause-btn" aria-label="Pause"><svg width="14" height="16" viewBox="0 0 14 16" fill="none"><rect x="0" y="0" width="4.5" height="16" rx="1" fill="white"/><rect x="9.5" y="0" width="4.5" height="16" rx="1" fill="white"/></svg></button><div class="proj-scenario__progress-wrap"><div class="proj-scenario__progress-fill"></div></div><span class="proj-scenario__time">0:00 / 0:00</span></div></div></div><div class="proj-scenario__text"><h3 class="proj-section__label">iPad-prototype — Scenario 2</h3><p class="proj-scenario__subtitle">Eirik fullfører sin første opplæringsmodul</p><p><strong>Innsikten:</strong> Nyansatte hadde kun tilgang til muntlig og fysisk opplæring. Ved første selvstendige vakt var det ingen måte å slå opp rutiner på egenhånd – noe som skapte usikkerhet og belastet erfarne kollegaer.</p><p><strong>Designvurderingen:</strong> iPad er allerede i bruk på arbeidsplassen, så vi designet opplæringsmoduler tilpasset den. "Min trening"-biblioteket med steg-for-steg videoer gir Eirik en visuell og selvstendig måte å lære på, i eget tempo og uten å avbryte andre.</p></div></div></div></div><div class="proj-section proj-section--mandel-light"><div style="max-width:920px"><p class="proj-section__label">Mitt bidrag</p><h2 class="proj-section__heading">Hva jeg eide i dette prosjektet</h2><p class="proj-section__body">Jeg ledet brukerinnsikten og utarbeidet intervjuguiden som la grunnlaget for hele prosessen. Jeg hadde ansvar for utvikling av personas og scenarier – inkludert de to primærbrukerne Kari og Eirik. I designfasen tok jeg rollen som UI-designer på mobilflaten: fra lo-fi-skisser til ferdig hi-fi-prototype i Figma, med fokus på tilgjengelighet og WCAG-krav.</p></div></div><div class="proj-section proj-section--none"><div class="proj-team-header"><p class="proj-section__label">Gruppe 01</p><h2 class="proj-section__heading">Teamet bak prosjektet</h2></div><div class="proj-team-grid"><div class="proj-team-card"><div class="proj-team-avatar" style="background:#571721">JR</div><h4>Josefine Reichelt Gjertsen</h4><p>Intervjuguide · Personas · UI-design (mobil)</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#ad822e">HB</div><h4>Herman Brenn-Svendsen</h4><p>Sitemap · Prototyper · Wireframes</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#c0523f">TD</div><h4>Tia Linnea Dahl</h4><p>Designmanual · Personas · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#403d26">AJ</div><h4>Axel Bruusgaard Jewett</h4><p>Prototyper · Wireframes · Intervju</p></div></div></div></div>
-
-      <div class="extra-zone">
-      <div class="extra-header">
-        <p class="proj-section__label" style="margin:0">ekstramateriale</p>
-        <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;">
-          <a href="https://www.canva.com/design/DAG5D6PV-Tc/0pcCKonM91HyyvCOiMM8ZA/view?utm_content=DAG5D6PV-Tc&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf8713a3968" class="ed-link ed-link--outline" target="_blank" rel="noopener">Presentasjon</a>
-          <a href="./assets/Norvald og Tjønnås/hjem.html" class="ed-link ed-link--outline" target="_blank" rel="noopener">Se nettsiden</a>
-        </div>
-      </div>
-      <div style="width:70%;margin:32px auto 8px;"><p class="proj-section__label" style="margin:0 0 10px">Designmanual</p><iframe src="./assets/norvald/Designmanual.pdf" style="width:100%;height:560px;border:none;display:block;" title="Designmanual PDF" loading="lazy"></iframe></div>
-      <div style="width:100%;padding:56px 0 24px 0;display:flex;justify-content:center;">
-        <video class="extra-video" controls playsinline>
-          <source src="./assets/norvald/vide-nord.mp4">
-          Nettleseren din støtter ikke videofilen.
-        </video>
-      </div>
-      <div style="display:flex;justify-content:center;padding:0 0 64px 0;">
-        <p class="extra-text">Et eksperiment utenfor oppgavens rammer: 17. april brukte jeg Figma-filen fra prosjektet som kilde og testet Claude Design — lansert samme dag. Jeg definerte layout, retning og struktur gjennom noen runder med prompting og redigering. Resultatet er nettsiden du kan se her. Designet, kildemateriellet og redaksjonell kontroll er mitt; AI-en var verktøyet.</p>
-      </div>
-
-      </div><!-- end .extra-zone -->
-
-      <!-- NAVIGASJON -->
-      <div class="ed-nav-wrap">
-        <div class="ed-nav">
-          <a href="./we-visuell-profil.html" class="ed-nav__link">
-            <span class="ed-nav__dir">← Forrige</span>
-            <span class="ed-nav__name">Stiftelsen WE</span>
-          </a>
-          <a href="./bokomslag.html" class="ed-nav__link ed-nav__next">
-            <span class="ed-nav__dir">Neste →</span>
-            <span class="ed-nav__name">Bokomslag</span>
-          </a>
-        </div>
-      </div>
-
+        <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
+                <a class="related__card" href="./reina-fruktgard.html">
+                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+                  <p class="related__title">Reina Fruktgård</p>
+                </a>
+                <a class="related__card" href="./bokomslag.html">
+                  <img src="./assets/blaa.webp" alt="Bokomslag" loading="lazy">
+                  <p class="related__title">Bokomslag</p>
+                </a>
+                <a class="related__card" href="./stoppestedet.html">
+                  <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="lazy">
+                  <p class="related__title">Stoppestedet</p>
+                </a></div></div>
+      
     </article>
   </main>
 
@@ -491,19 +470,114 @@
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Accordion (kept for process drawer compatibility)
+    // Slideshow
+    const track = $("#slideshowTrack");
+    if (track) {
+      const slides = [...track.querySelectorAll(".slideshow__slide")];
+      const counter = $("#slideIndex");
+      let current = 0;
+      let timer;
+      const slideshow = $("#slideshow");
+      const captionBar = $("#slideshowCaption");
+      let paused = false;
+      function goTo(n) {
+        current = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = current + 1;
+        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
+      }
+      function startAuto() {
+        clearInterval(timer);
+        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
+      }
+      track.addEventListener("click", () => {
+        paused = !paused;
+        slideshow.classList.toggle("slideshow--paused", paused);
+        if (paused) clearInterval(timer);
+        else startAuto();
+      });
+      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+      let touchStartX = 0;
+      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      }, { passive: true });
+      document.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
+        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
+      });
+      startAuto();
+    }
+
+    // Accordion
     const accordion = document.getElementById("accordion");
     const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
+    if (accordion) {
+      accordion.querySelectorAll(".accordion__item").forEach(item => {
+        item.querySelector(".accordion__trigger").addEventListener("click", () => {
+          if (project && project.noDrawer) {
+            const isOpen = item.classList.contains("accordion__item--open");
+            accordion.querySelectorAll(".accordion__item").forEach(i => {
+              i.classList.remove("accordion__item--open");
+              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("accordion__item--open");
+              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
+            }
+          } else {
+            const idx = accordionItems.indexOf(item);
+            openDrawer();
+            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
+            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
+            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+          }
+        });
+      });
+    }
 
-    // Panel toggle (kept for compatibility)
+    // Panel toggle
     const projectLayout = document.querySelector(".project-layout");
     const inlineAccordion = document.getElementById("inlineAccordion");
     function syncToggles(isOpen) {
       document.querySelectorAll(".panel-toggle").forEach(btn => {
         btn.setAttribute("aria-expanded", String(isOpen));
-        btn.querySelector(".panel-toggle__icon")?.textContent && (btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+");
+        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
       });
     }
+    document.querySelectorAll(".panel-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        let isOpen;
+        if (inlineAccordion) {
+          isOpen = inlineAccordion.hidden;
+          inlineAccordion.hidden = !isOpen;
+        } else {
+          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+        }
+        syncToggles(isOpen);
+      });
+    });
+
+    // Expandable gallery
+    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
+      cover.addEventListener("click", () => {
+        const section = cover.closest(".gallery-expandable");
+        const wasOpen = section.classList.contains("is-open");
+        section.classList.toggle("is-open");
+        if (!wasOpen && window.innerWidth <= 780) {
+          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+        }
+      });
+    });
+    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const section = btn.closest(".gallery-expandable");
+        section.classList.remove("is-open");
+        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
 
     // Lightbox
     const lbOverlay = document.getElementById("lbOverlay");
@@ -528,7 +602,11 @@
     document.addEventListener("click", e => {
       const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
       if (imgEl) {
-        openLightbox(imgEl.src, imgEl.alt, [], 0);
+        const section = imgEl.closest(".gallery-expandable");
+        if (section) {
+          const imgs = [...section.querySelectorAll(".project__figure img")];
+          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
+        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
@@ -537,6 +615,54 @@
       if (e.key === "ArrowLeft") showLbImage(lbIndex - 1);
       if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
     });
+
+    // Process drawer
+    const processToggle = document.getElementById("processToggle");
+    const processDrawer = document.getElementById("processDrawer");
+    const processBackdrop = document.getElementById("processBackdrop");
+    const processDrawerClose = document.getElementById("processDrawerClose");
+    const processDrawerContent = document.getElementById("processDrawerContent");
+
+    const allSections = accordionItems.map(item => ({
+      title: item.querySelector(".accordion__title").textContent,
+      content: item.querySelector(".accordion__panel-inner").innerHTML
+    }));
+    if (project && project.processText) {
+      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
+    }
+    function showDrawerIndex() {
+      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
+      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const i = btn.dataset.index;
+          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
+          const isOpen = !panel.hidden;
+          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
+          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
+          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+        });
+      });
+    }
+    function openDrawer() {
+      if (allSections.length === 1) {
+        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
+      } else { showDrawerIndex(); }
+      processDrawer.classList.add("process-drawer--open");
+      processBackdrop.classList.add("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "false");
+    }
+    function closeDrawer() {
+      processDrawer.classList.remove("process-drawer--open");
+      processBackdrop.classList.remove("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "true");
+    }
+    processToggle?.addEventListener("click", openDrawer);
+    if (project && !project.noDrawer) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
+    }
+    processDrawerClose?.addEventListener("click", closeDrawer);
+    processBackdrop?.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
     // Gallery pair sliders
     document.querySelectorAll('.scroll-gallery--slider').forEach(gallery => {
@@ -569,15 +695,24 @@
       const progressWrap = wrap.querySelector('.proj-scenario__progress-wrap');
       const progressFill = wrap.querySelector('.proj-scenario__progress-fill');
       const timeEl = wrap.querySelector('.proj-scenario__time');
+
       function fmt(s) {
         const m = Math.floor(s / 60);
         return m + ':' + String(Math.floor(s % 60)).padStart(2, '0');
       }
-      function startPlay() { video.play(); wrap.classList.add('is-playing'); }
-      function doPause() { video.pause(); wrap.classList.remove('is-playing'); }
+      function startPlay() {
+        video.play();
+        wrap.classList.add('is-playing');
+      }
+      function doPause() {
+        video.pause();
+        wrap.classList.remove('is-playing');
+      }
+
       playBtn.addEventListener('click', startPlay);
       pauseBtn.addEventListener('click', doPause);
       video.addEventListener('click', () => { video.paused ? startPlay() : doPause(); });
+
       video.addEventListener('loadedmetadata', () => {
         timeEl.textContent = '0:00 / ' + fmt(video.duration);
       });
@@ -609,11 +744,11 @@
         }
       });
     }, { threshold: 0.08 });
-    document.querySelectorAll('.proj-section').forEach((el, i) => {
+    document.querySelectorAll('.bg-section, .proj-section, .project-layout__intro, .project-layout__media > *').forEach((el, i) => {
       el.classList.add('reveal');
       el.style.transitionDelay = `${Math.min(i, 3) * 0.06}s`;
       revealObserver.observe(el);
     });
-  </script>
+    </script>
 </body>
 </html>

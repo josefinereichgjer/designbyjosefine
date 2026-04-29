@@ -9,136 +9,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=30" />
-  <link rel="icon" href="assets/hvitlogo.png">
-  <style>
-    :root { --font: "Poppins", system-ui, sans-serif; }
-    body { background: #000; color: #fff; }
-
-    /* ── Editorial layout ─────────────────────────────────── */
-    .ed-hero {
-      display: grid;
-      grid-template-columns: 5fr 6fr;
-      gap: clamp(32px, 5vw, 64px);
-      align-items: end;
-      padding: clamp(40px, 6vw, 80px) 0 clamp(40px, 6vw, 72px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: clamp(40px, 6vw, 72px);
+  <style>:root { --font: "Poppins", system-ui, sans-serif; }
+  @media (min-width: 769px) {
+    .boks-video {
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
     }
-    .ed-crumb {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em;
-      color: #fff; margin: 0 0 clamp(16px, 2.5vw, 32px); font-weight: 500;
+  }
+  @media (max-width: 768px) {
+    .boks-top { display: flex; flex-direction: column; }
+    .boks-intro { order: 2; }
+    .boks-preging { display: flex; flex-direction: column; }
+    .boks-preging-tekst { order: 2; margin-top: 48px !important; margin-bottom: 0; }
+    .boks-preging-bilde { order: 1; }
+    .boks-video {
+      order: 1;
+      margin-top: -34px;
+      margin-left: calc(-1 * clamp(20px, 3vw, 34px) - 2px);
+      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-bottom: clamp(20px, 3vw, 32px);
+      height: 99vw;
+      overflow: hidden;
     }
-    .ed-title {
-      font-family: 'EB Garamond', Georgia, serif;
-      font-size: clamp(52px, 8vw, 108px);
-      font-weight: 500; line-height: 0.92;
-      letter-spacing: -0.01em; margin: 0 0 clamp(12px, 1.5vw, 20px);
-      color: #fff; text-transform: uppercase;
+    .boks-video video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      object-position: left center;
     }
-    .ed-subtitle {
-      font-size: clamp(11px, 1vw, 14px); letter-spacing: 0.12em;
-      text-transform: uppercase; color: #fff; margin: 0; font-weight: 500;
-    }
-    .ed-hero__media img { width: 100%; height: auto; display: block; }
-
-    .ed-intro {
-      display: grid; grid-template-columns: 200px 1fr;
-      gap: clamp(32px, 5vw, 80px);
-      padding-bottom: clamp(40px, 6vw, 72px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      margin-bottom: clamp(48px, 7vw, 88px);
-    }
-    .ed-meta__item {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: clamp(10px, 1.2vw, 16px) 0 clamp(12px, 1.6vw, 20px);
-    }
-    .ed-label {
-      display: block; font-size: 10px; text-transform: uppercase;
-      letter-spacing: 0.14em; color: #fff; margin-bottom: 5px; font-weight: 500;
-    }
-    .ed-val { font-size: clamp(13px, 1.1vw, 15px); color: #fff; line-height: 1.6; }
-    .ed-desc p {
-      font-size: clamp(15px, 1.35vw, 18px); line-height: 1.8;
-      color: #fff; margin: 0 0 1.2em;
-    }
-    .ed-desc p:last-child { margin-bottom: 0; }
-
-    .ed-section { margin-bottom: clamp(48px, 7vw, 88px); }
-    .ed-section-label {
-      font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em;
-      color: #fff; display: block; margin-bottom: clamp(14px, 2vw, 24px); font-weight: 500;
-    }
-
-    .ed-video { width: 100%; height: auto; display: block; }
-
-    .ed-two-col {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(32px, 5vw, 64px); align-items: start;
-      margin-bottom: clamp(48px, 7vw, 88px);
-    }
-    .ed-two-col__text p {
-      font-size: clamp(14px, 1.2vw, 16px); line-height: 1.8;
-      color: #fff; margin: 0 0 1em;
-    }
-    .ed-two-col__text p:last-child { margin-bottom: 0; }
-    .ed-two-col__text p strong { color: #fff; }
-
-    .ed-img-wide { width: 100%; height: auto; display: block; }
-    .ed-img-stack { display: flex; flex-direction: column; align-items: center; gap: 0; }
-    .ed-img-stack img {
-      width: 82%; display: block;
-      border: 1px solid rgba(255,255,255,0.09);
-    }
-
-    .ed-palette {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-      margin-bottom: clamp(16px, 2vw, 28px);
-    }
-    .ed-pal-card { overflow: hidden; border: 1px solid rgba(255,255,255,0.1); }
-    .ed-pal-swatch { height: 160px; background: #fff; }
-    .ed-pal-swatch-inner { width: 100%; height: 100%; }
-    .ed-pal-info { background: #0d0d0d; padding: clamp(12px, 1.5vw, 20px); display: flex; flex-direction: column; gap: 3px; }
-    .ed-pal-name { font-size: clamp(13px, 1.1vw, 16px); font-weight: 700; color: #fff; margin-bottom: 6px; }
-    .ed-pal-row { font-size: clamp(10px, 0.85vw, 12px); color: #fff; letter-spacing: .02em; }
-    .ed-pal-desc { font-size: clamp(10px, 0.8vw, 12px); color: #fff; margin-top: 8px; line-height: 1.5; }
-
-    .ed-prosess { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(8px, 1.5vw, 20px); }
-    .ed-prosess img { width: 100%; height: auto; display: block; }
-
-    .ed-nav {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      display: grid; grid-template-columns: 1fr 1fr;
-      margin-top: clamp(56px, 8vw, 112px);
-    }
-    .ed-nav__link {
-      display: block; padding: clamp(24px, 3.5vw, 44px) 0;
-      text-decoration: none; color: #fff; opacity: 0.5;
-      transition: opacity 0.2s;
-    }
-    .ed-nav__link:hover { opacity: 1; }
-    .ed-nav__next {
-      text-align: right; border-left: 1px solid rgba(255,255,255,0.1);
-      padding-left: clamp(20px, 3vw, 40px);
-    }
-    .ed-nav__dir {
-      display: block; font-size: 10px; text-transform: uppercase;
-      letter-spacing: 0.14em; color: #fff; margin-bottom: 6px;
-    }
-    .ed-nav__name { font-size: clamp(14px, 1.3vw, 17px); font-style: italic; }
-
-    @media (max-width: 768px) {
-      .ed-hero { grid-template-columns: 1fr; }
-      .ed-hero__media { display: none; }
-      .ed-intro { grid-template-columns: 1fr; }
-      .ed-two-col { grid-template-columns: 1fr; }
-      .ed-palette { grid-template-columns: 1fr; }
-      .ed-img-stack img { width: 100%; }
-    }
-    @media (max-width: 520px) {
-      .ed-prosess { grid-template-columns: 1fr; }
-    }
+  }
   </style>
+  <link rel="stylesheet" href="./styles.css?v=30" />
+  <style>
+    :root { --bg: #000; --text: #fff; --muted: #aaa; }
+    .project-intro { color: #fff; }
+    .project__gallery-heading { color: #fff; }
+    h2, div.project__gallery-heading { text-transform: uppercase; }
+    @media (max-width: 768px) { .boks-main-heading { line-height: 1.1; } }
+  </style>
+  <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
 <body>
@@ -172,180 +81,236 @@
 
   <main id="content" class="content">
     <article class="project" id="project">
-
-      <!-- HERO -->
-      <div class="ed-hero">
-        <div>
-          <p class="ed-crumb">Prosjekter</p>
-          <h1 class="ed-title">Bokomslag</h1>
-          <p class="ed-subtitle">Redaksjonell design</p>
+      <div class="boks-top">
+        <div class="boks-intro" style="margin-bottom:clamp(24px,3vw,40px);">
+          <h2 class="boks-main-heading" style="font-size:clamp(48px,4.5vw,66px);font-weight:500;letter-spacing:0;margin-bottom:10px;font-family:'EB Garamond',Georgia,serif;">En redesign av norske klassikere</h2>
+          <p class="project-intro" style="font-size:clamp(14px,1.3vw,17px);">Dette prosjektet omfatter en ny utgave av tre grunnpilarer i norsk litteraturhistorie: <em>Amtmandens Døtre</em> av Camilla Collett, <em>Forrådt</em> av Amalie Skram og <em>Jenny</em> av Sigrid Undset. Ved&nbsp;å fjerne kommersiell støy, får materialiteten og&nbsp;de symbolske fargeflatene rom til&nbsp;å kommunisere. For&nbsp;å understreke bøkenes status som tidløse klassikere, er utgavene utformet som&nbsp;tekstiltrukne hardcover-bind.</p>
         </div>
-        <div class="ed-hero__media">
-          <img src="./assets/red-1.webp" alt="Bokomslag — tre norske klassikere" fetchpriority="high" decoding="async">
+
+        <div class="boks-video" style="margin-bottom:clamp(32px,5vw,64px);">
+          <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline preload="metadata" style="width:100%;height:auto;display:block;" id="bokserieVideo"></video>
+          <script>document.getElementById("bokserieVideo").playbackRate = 0.5;</script>
         </div>
       </div>
-
-      <!-- META + BESKRIVELSE -->
-      <div class="ed-intro">
-        <div class="ed-meta">
-          <div class="ed-meta__item">
-            <span class="ed-label">Emne</span>
-            <span class="ed-val">Redaksjonell design 2</span>
+        
+        <div class="project__gallery">
+          <div class="boks-preging" style="column-span:all;">
+            <p class="boks-preging-tekst project__gallery-heading" style="font-size:clamp(14px,1.3vw,17px);font-weight:400;letter-spacing:0;line-height:1.7;margin-top:0;margin-bottom:clamp(16px,2vw,28px);"><strong>Produksjon og materialitet:</strong> Omslaget kombinerer to produksjonsteknikker: preging og trykk. Tittelen er preget (deboss), der motivet presses ned i materialet med en metallform, noe som gir en taktil og innfelt effekt. Den svarte teksten og fargefeltet er trykket direkte på tekstilet og ligger som pigment oppå overflaten, slik at stoffets struktur fortsatt er synlig gjennom fargen.<br><br>Deboss-effekten gjør at tittelen trer frem i møte med lys, og fungerer som en subtil visuell parallell til det underliggende i fortellingene. I både Forrådt, Amtmandens døtre og Jenny tematiseres spenningen mellom ytre rammer og indre erfaringer, der følelser, begjær og konflikter ikke alltid er synlige på overflaten. Den nedpregede tittelen speiler dette ved å ligge delvis skjult i materialet, og først bli tydelig når lyset treffer riktig.</p>
+            <figure class="boks-preging-bilde project__figure project__figure--wide" style="margin-bottom:0;">
+              <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — galleri 4" style="border:none;">
+            </figure>
           </div>
-          <div class="ed-meta__item">
-            <span class="ed-label">År</span>
-            <span class="ed-val">Høst 2024</span>
-          </div>
-          <div class="ed-meta__item">
-            <span class="ed-label">Verk</span>
-            <span class="ed-val"><em>Amtmandens Døtre</em><br><em>Forrådt</em><br><em>Jenny</em></span>
-          </div>
-          <div class="ed-meta__item">
-            <span class="ed-label">Teknikk</span>
-            <span class="ed-val">Preging (deboss)<br>Tekstiltrykk</span>
+          <div class="project__gallery-heading" style="column-span:all;margin-top:clamp(24px,3vw,40px);">Prototyper</div>
+          <p style="column-span:all;font-size:clamp(12px,1.1vw,15px);line-height:1.7;margin-top:clamp(10px,1.5vw,16px);margin-bottom:0;">Baksiden er holdt ren og uten tekst. Informasjon som normalt plasseres på et smussomslag – som omtale, forfatterbiografi og strekkode – er i stedet samlet på en egen side bakerst i boka. <span class="boks-venstre-ref"> Den siden ser du til venstre her: ↓</span></p>
+          <style>@media(max-width:1024px){.boks-venstre-ref{display:none;}}</style>
+          <div style="column-span:all;display:flex;flex-direction:column;gap:0;margin-top:clamp(16px,2vw,24px);align-items:center;">
+            <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Prototyper — Forrådt" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
+            <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Prototyper — Amtmandens Døtre" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
+            <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Prototyper — Jenny" style="width:80%;display:block;border:1px solid rgba(255,255,255,0.12);">
           </div>
         </div>
-        <div class="ed-desc">
-          <p>Dette prosjektet omfatter en ny utgave av tre grunnpilarer i norsk litteraturhistorie: <em>Amtmandens Døtre</em> av Camilla Collett, <em>Forrådt</em> av Amalie Skram og <em>Jenny</em> av Sigrid Undset.</p>
-          <p>Ved å fjerne kommersiell støy, får materialiteten og de symbolske fargeflatene rom til å kommunisere. For å understreke bøkenes status som tidløse klassikere, er utgavene utformet som tekstiltrukne hardcover-bind.</p>
-        </div>
-      </div>
-
-      <!-- PRESENTASJON / VIDEO -->
-      <div class="ed-section">
-        <span class="ed-section-label">Presentasjon</span>
-        <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline preload="metadata" class="ed-video" id="bokserieVideo"></video>
-      </div>
-
-      <!-- PRODUKSJON OG MATERIALITET -->
-      <div class="ed-two-col">
-        <div class="ed-two-col__text">
-          <span class="ed-section-label">Produksjon og materialitet</span>
-          <p>Omslaget kombinerer to produksjonsteknikker: preging og trykk. Tittelen er preget (deboss), der motivet presses ned i materialet med en metallform — noe som gir en taktil og innfelt effekt.</p>
-          <p>Den svarte teksten og fargefeltet er trykket direkte på tekstilet og ligger som pigment oppå overflaten, slik at stoffets struktur fortsatt er synlig gjennom fargen.</p>
-          <p>Deboss-effekten gjør at tittelen trer frem i møte med lys, og fungerer som en subtil visuell parallell til det underliggende i fortellingene — der følelser og konflikter ikke alltid er synlige på overflaten.</p>
-        </div>
-        <figure class="project__figure">
-          <img loading="lazy" decoding="async" src="./assets/nede.webp" alt="Bokomslag — materialet og preging" class="ed-img-wide">
-        </figure>
-      </div>
-
-      <!-- GALLERI -->
-      <div class="ed-section">
-        <span class="ed-section-label">Ferdig resultat</span>
-        <img loading="lazy" decoding="async" src="./assets/red-1.webp" alt="Bokomslag — galleri 1" class="ed-img-wide" style="margin-bottom:2px;">
-        <img loading="lazy" decoding="async" src="./assets/red-2.webp" alt="Bokomslag — galleri 2" class="ed-img-wide" style="margin-bottom:2px;">
-        <img loading="lazy" decoding="async" src="./assets/red-3.webp" alt="Bokomslag — galleri 3" class="ed-img-wide">
-      </div>
-
-      <!-- SKRIFTTYPE -->
-      <div class="ed-two-col">
-        <div class="ed-two-col__text">
-          <span class="ed-section-label">Skrifttype</span>
-          <p><strong>Tittel og forfatter:</strong> Basert på Baskerville, men bokstavformene er manuelt bearbeidet. Økt vekt og justerte detaljer gir bedre lesbarhet og et mer robust resultat under pregeprosessen i tekstilet.</p>
-          <p><strong>Brødtekst:</strong> Satt i Garamond Premier Pro — en font som komplimenterer Baskerville uten å konkurrere om oppmerksomheten, og som gir en klassisk litterær følelse.</p>
-        </div>
-        <div>
-          <p style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(80px,10vw,130px);line-height:0.88;color:#fff;margin:0 0 clamp(16px,2vw,28px);">Aa</p>
-          <p style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(13px,1.1vw,15px);line-height:1.9;color:#fff;margin:0;letter-spacing:0.01em;">
-            ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ<br>
-            abcdefghijklmnopqrstuvwxyzæøå<br>
-            1234567890 , . ? ! &
-          </p>
-        </div>
-      </div>
-
-      <!-- FARGEPALETT -->
-      <div class="ed-section">
-        <span class="ed-section-label">Fargepalett</span>
-        <p style="font-size:clamp(14px,1.2vw,16px);line-height:1.8;color:#fff;margin:0 0 clamp(20px,3vw,32px);max-width:560px;">Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
-        <div class="ed-palette">
-          <div class="ed-pal-card">
-            <div class="ed-pal-swatch"><div class="ed-pal-swatch-inner" style="background:rgba(74,179,225,0.25);"></div></div>
-            <div class="ed-pal-info">
-              <span class="ed-pal-name">Amtmandens Døtre</span>
-              <span class="ed-pal-row">CMYK: 67, 20, 0, 12</span>
-              <span class="ed-pal-row">RGB: 74, 179, 225</span>
-              <span class="ed-pal-row">HEX: #4AB3E1 — 25%</span>
-              <span class="ed-pal-desc">Ro, litt tristhet og noe kjølig og dannet</span>
+        
+        
+        
+        <div class="project-meta" style="margin-top:clamp(40px,6vw,80px)">
+          <div style="margin-top:clamp(12px,1.5vw,20px);">
+            <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);"><strong>Tittel og forfatter:</strong> Her er det tatt utgangspunkt i Baskerville, men bokstavformene er manuelt bearbeidet. Ved å øke vekten og justere detaljene, sikres både bedre lesbarhet og et mer robust resultat under pregeprosessen i tekstilet. Dette gir titlene et mer fysisk og "røft" nærvær på omslaget.</p>
+            <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);margin-top:clamp(8px,1vw,14px);"><strong>Brødtekst:</strong> For å sikre optimal lesbarhet og en klassisk litterær følelse, er brødteksten satt i Garamond Premier Pro. Fonten komplimenterer Baskerville-overskriftene uten å konkurrere om oppmerksomheten, noe som skaper en harmonisk balanse mellom det dekorative og det funksjonelle.</p>
+          </div>
+          <div style="margin-top:clamp(24px,3vw,40px);">
+            <p class="project-intro" style="font-size:clamp(12px,1.1vw,15px);">Et horisontalt fargefelt fungerer som seriens visuelle anker, og gir hver utgivelse en distinkt identitet i en ellers koherent serie.</p>
+            <style>
+              .boks-pal { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+              .boks-pal__card { overflow:hidden; border:1px solid rgba(255,255,255,0.13); }
+              .boks-pal__swatch { height:200px; background:#fff; }
+              .boks-pal__swatch-inner { width:100%; height:100%; }
+              .boks-pal__info { background:#111; padding:clamp(12px,1.5vw,20px); display:flex; flex-direction:column; gap:3px; }
+              .boks-pal__name { font-size:clamp(14px,1.3vw,19px); font-weight:700; color:#fff; margin-bottom:6px; }
+              .boks-pal__row { font-size:clamp(11px,0.95vw,14px); color:#bbb; font-family:inherit; letter-spacing:.02em; }
+              .boks-pal__desc { font-size:clamp(11px,0.9vw,13px); color:#777; margin-top:8px; line-height:1.5; font-family:inherit; }
+              @media(max-width:600px) { .boks-pal { grid-template-columns:1fr; } .boks-pal__swatch { height:140px; } }
+            </style>
+            <div class="boks-pal" style="margin-top:clamp(16px,2vw,28px);">
+              <div class="boks-pal__card">
+                <div class="boks-pal__swatch"><div class="boks-pal__swatch-inner" style="background:rgba(74,179,225,0.25);"></div></div>
+                <div class="boks-pal__info">
+                  <span class="boks-pal__name">Amtmandens Døtre</span>
+                  <span class="boks-pal__row">CMYK: 67, 20, 0, 12</span>
+                  <span class="boks-pal__row">RGB: 74, 179, 225</span>
+                  <span class="boks-pal__row">HEX: #4AB3E1 — 25%</span>
+                  <span class="boks-pal__desc">Gir en følelse av ro, litt tristhet og noe kjølig og dannet</span>
+                </div>
+              </div>
+              <div class="boks-pal__card">
+                <div class="boks-pal__swatch"><div class="boks-pal__swatch-inner" style="background:rgba(206,46,39,0.62);"></div></div>
+                <div class="boks-pal__info">
+                  <span class="boks-pal__name">Forrådt</span>
+                  <span class="boks-pal__row">CMYK: 0, 78, 81, 19</span>
+                  <span class="boks-pal__row">RGB: 206, 46, 39</span>
+                  <span class="boks-pal__row">HEX: #CE2E27 — 63%</span>
+                  <span class="boks-pal__desc">Står for sterke følelser, konflikt og svik</span>
+                </div>
+              </div>
+              <div class="boks-pal__card">
+                <div class="boks-pal__swatch"><div class="boks-pal__swatch-inner" style="background:rgba(255,238,168,0.62);"></div></div>
+                <div class="boks-pal__info">
+                  <span class="boks-pal__name">Jenny</span>
+                  <span class="boks-pal__row">CMYK: 0, 7, 34, 0</span>
+                  <span class="boks-pal__row">RGB: 255, 238, 168</span>
+                  <span class="boks-pal__row">HEX: #FFEEA8 — 63%</span>
+                  <span class="boks-pal__desc">Gir inntrykk av varme, liv og en lengsel etter frihet</span>
+                </div>
+              </div>
             </div>
+            <p style="font-size:clamp(11px,1vw,13px);margin-top:clamp(16px,2vw,24px);color:#777;line-height:1.7;">Fargene er definert i <strong style="color:#aaa;">RGB</strong> for skjermvisning, men siden dette er bokomslag som skal trykkes, er de også konvertert til <strong style="color:#aaa;">CMYK</strong>. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget. Det betyr at den faktiske fargeopplevelsen vil variere noe avhengig av fargerom og trykkmetode.</p>
           </div>
-          <div class="ed-pal-card">
-            <div class="ed-pal-swatch"><div class="ed-pal-swatch-inner" style="background:rgba(206,46,39,0.62);"></div></div>
-            <div class="ed-pal-info">
-              <span class="ed-pal-name">Forrådt</span>
-              <span class="ed-pal-row">CMYK: 0, 78, 81, 19</span>
-              <span class="ed-pal-row">RGB: 206, 46, 39</span>
-              <span class="ed-pal-row">HEX: #CE2E27 — 63%</span>
-              <span class="ed-pal-desc">Sterke følelser, konflikt og svik</span>
+          <button class="btn-pdf btn-pdf--grey" id="processToggle" type="button" style="margin-top:clamp(24px,3vw,40px);background:#000;border:1.5px solid #fff;color:#fff;">Prosess</button>
+          <div id="processPanel" style="display:none;margin-top:clamp(20px,3vw,36px);background:#fff;padding:clamp(16px,2vw,28px);">
+            <div class="prosess-row">
+              <img src="./assets/prosess1.webp" alt="Prosess" style="height:auto;display:block;">
+              <img src="./assets/prosess2.webp" alt="Prosess" style="height:auto;display:block;">
             </div>
-          </div>
-          <div class="ed-pal-card">
-            <div class="ed-pal-swatch"><div class="ed-pal-swatch-inner" style="background:rgba(255,238,168,0.62);"></div></div>
-            <div class="ed-pal-info">
-              <span class="ed-pal-name">Jenny</span>
-              <span class="ed-pal-row">CMYK: 0, 7, 34, 0</span>
-              <span class="ed-pal-row">RGB: 255, 238, 168</span>
-              <span class="ed-pal-row">HEX: #FFEEA8 — 63%</span>
-              <span class="ed-pal-desc">Varme, liv og en lengsel etter frihet</span>
-            </div>
+            <style>
+              .prosess-row { display:flex; gap:clamp(12px,2vw,24px); }
+              .prosess-row img { width:50%; }
+              @media(max-width:600px){ .prosess-row { flex-direction:column; } .prosess-row img { width:100%; } }
+            </style>
           </div>
         </div>
-        <p style="font-size:clamp(11px,1vw,13px);color:#fff;line-height:1.7;max-width:580px;">Fargene er definert i <strong>RGB</strong> for skjermvisning og konvertert til <strong>CMYK</strong> for trykk. Opasiteten skaper en gjennomsiktig effekt på skjerm — i trykk simuleres dette ved hjelp av rasterisering eller overprinting mot tekstilunderlaget.</p>
-      </div>
 
-      <!-- PROTOTYPER -->
-      <div class="ed-section">
-        <span class="ed-section-label">Prototyper</span>
-        <p style="font-size:clamp(14px,1.2vw,16px);line-height:1.8;color:#fff;margin:0 0 clamp(20px,3vw,32px);max-width:560px;">Baksiden er holdt ren og uten tekst. Informasjon som normalt plasseres på et smussomslag er i stedet samlet på en egen side bakerst i boka.</p>
-        <div class="ed-img-stack">
-          <img loading="lazy" decoding="async" src="./assets/rot.webp" alt="Prototype — Forrådt">
-          <img loading="lazy" decoding="async" src="./assets/bla.webp" alt="Prototype — Amtmandens Døtre">
-          <img loading="lazy" decoding="async" src="./assets/gul.webp" alt="Prototype — Jenny">
-        </div>
-      </div>
-
-      <!-- PROSESS -->
-      <div class="ed-section">
-        <span class="ed-section-label">Prosess</span>
-        <div style="background:#fff;padding:clamp(16px,2.5vw,32px);">
-          <div class="ed-prosess">
-            <img src="./assets/prosess1.webp" alt="Prosess 1" loading="lazy" decoding="async">
-            <img src="./assets/prosess2.webp" alt="Prosess 2" loading="lazy" decoding="async">
-          </div>
-        </div>
-      </div>
-
-      <!-- NAVIGASJON -->
-      <div class="ed-nav">
-        <a href="./ansatts-portal.html" class="ed-nav__link">
-          <span class="ed-nav__dir">← Forrige</span>
-          <span class="ed-nav__name">Tjønnås & Norvald</span>
-        </a>
-        <a href="./flerkanalspublisering.html" class="ed-nav__link ed-nav__next">
-          <span class="ed-nav__dir">Neste →</span>
-          <span class="ed-nav__name">Flerkanalspublisering</span>
-        </a>
-      </div>
-
+        <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
+                <a class="related__card" href="./reina-fruktgard.html">
+                  <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+                  <p class="related__title">Reina Fruktgård</p>
+                </a>
+                <a class="related__card" href="./stoppestedet.html">
+                  <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="lazy">
+                  <p class="related__title">Stoppestedet</p>
+                </a>
+                <a class="related__card" href="./ansatts-portal.html">
+                  <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy">
+                  <p class="related__title">Tjønnås og Norvald</p>
+                </a></div></div>
+      
     </article>
   </main>
 
-  <script src="./projects.js?v=6"></script>
+  <script src="./projects.js?v=6" defer></script>
   <script>
     const $ = (s) => document.querySelector(s);
+    const id = "bokomslag";
 
-    document.getElementById("bokserieVideo").playbackRate = 0.5;
-
+    const project = (window.PROJECTS || []).find(p => p.id === id);
     const yearEl = document.querySelector("#year");
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Sidebar toggle
-    const toggle = $("#sidebarToggle");
-    toggle?.addEventListener("click", () => {
-      const sidebar = $("#sidebar");
-      const isOpen = sidebar.classList.toggle("sidebar--open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
+    // Slideshow
+    const track = $("#slideshowTrack");
+    if (track) {
+      const slides = [...track.querySelectorAll(".slideshow__slide")];
+      const counter = $("#slideIndex");
+      let current = 0;
+      let timer;
+      const slideshow = $("#slideshow");
+      const captionBar = $("#slideshowCaption");
+      let paused = false;
+      function goTo(n) {
+        current = (n + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        counter.textContent = current + 1;
+        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
+      }
+      function startAuto() {
+        clearInterval(timer);
+        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
+      }
+      track.addEventListener("click", () => {
+        paused = !paused;
+        slideshow.classList.toggle("slideshow--paused", paused);
+        if (paused) clearInterval(timer);
+        else startAuto();
+      });
+      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
+      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
+      let touchStartX = 0;
+      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      track.addEventListener("touchend", e => {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
+      }, { passive: true });
+      document.addEventListener("keydown", e => {
+        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
+        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
+      });
+      startAuto();
+    }
+
+    // Accordion
+    const accordion = document.getElementById("accordion");
+    const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
+    if (accordion) {
+      accordion.querySelectorAll(".accordion__item").forEach(item => {
+        item.querySelector(".accordion__trigger").addEventListener("click", () => {
+          if (project && project.noDrawer) {
+            const isOpen = item.classList.contains("accordion__item--open");
+            accordion.querySelectorAll(".accordion__item").forEach(i => {
+              i.classList.remove("accordion__item--open");
+              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
+            });
+            if (!isOpen) {
+              item.classList.add("accordion__item--open");
+              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
+            }
+          } else {
+            const idx = accordionItems.indexOf(item);
+            openDrawer();
+            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
+            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
+            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+          }
+        });
+      });
+    }
+
+    // Panel toggle
+    const projectLayout = document.querySelector(".project-layout");
+    const inlineAccordion = document.getElementById("inlineAccordion");
+    function syncToggles(isOpen) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => {
+        btn.setAttribute("aria-expanded", String(isOpen));
+        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
+      });
+    }
+    document.querySelectorAll(".panel-toggle").forEach(btn => {
+      btn.addEventListener("click", () => {
+        let isOpen;
+        if (inlineAccordion) {
+          isOpen = inlineAccordion.hidden;
+          inlineAccordion.hidden = !isOpen;
+        } else {
+          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
+        }
+        syncToggles(isOpen);
+      });
+    });
+
+    // Expandable gallery
+    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
+      cover.addEventListener("click", () => {
+        const section = cover.closest(".gallery-expandable");
+        const wasOpen = section.classList.contains("is-open");
+        section.classList.toggle("is-open");
+        if (!wasOpen && window.innerWidth <= 780) {
+          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
+        }
+      });
+    });
+    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const section = btn.closest(".gallery-expandable");
+        section.classList.remove("is-open");
+        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     });
 
     // Lightbox
@@ -369,9 +334,13 @@
     lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
     lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
     document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && e.target.closest(".project__figure") ? e.target : null;
+      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
       if (imgEl) {
-        openLightbox(imgEl.src, imgEl.alt, [], 0);
+        const section = imgEl.closest(".gallery-expandable");
+        if (section) {
+          const imgs = [...section.querySelectorAll(".project__figure img")];
+          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
+        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
       } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
     });
     document.addEventListener("keydown", e => {
@@ -380,6 +349,66 @@
       if (e.key === "ArrowLeft") showLbImage(lbIndex - 1);
       if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
     });
-  </script>
+
+    // Process drawer
+    const processToggle = document.getElementById("processToggle");
+    const processDrawer = document.getElementById("processDrawer");
+    const processBackdrop = document.getElementById("processBackdrop");
+    const processDrawerClose = document.getElementById("processDrawerClose");
+    const processDrawerContent = document.getElementById("processDrawerContent");
+
+    const allSections = accordionItems.map(item => ({
+      title: item.querySelector(".accordion__title").textContent,
+      content: item.querySelector(".accordion__panel-inner").innerHTML
+    }));
+    if (project && project.processText) {
+      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
+    }
+    function showDrawerIndex() {
+      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
+      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const i = btn.dataset.index;
+          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
+          const isOpen = !panel.hidden;
+          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
+          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
+          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
+        });
+      });
+    }
+    function openDrawer() {
+      if (allSections.length === 1) {
+        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
+      } else { showDrawerIndex(); }
+      processDrawer.classList.add("process-drawer--open");
+      processBackdrop.classList.add("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "false");
+    }
+    function closeDrawer() {
+      processDrawer.classList.remove("process-drawer--open");
+      processBackdrop.classList.remove("process-drawer__backdrop--visible");
+      processDrawer.setAttribute("aria-hidden", "true");
+    }
+    processToggle?.addEventListener("click", () => {
+      const panel = document.getElementById("processPanel");
+      const isOpen = panel.style.display !== "none";
+      panel.style.display = isOpen ? "none" : "block";
+    });
+    if (project && !project.noDrawer) {
+      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
+    }
+    processDrawerClose?.addEventListener("click", closeDrawer);
+    processBackdrop?.addEventListener("click", closeDrawer);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
+
+    // Sidebar toggle
+    const toggle = $("#sidebarToggle");
+    toggle?.addEventListener("click", () => {
+      const sidebar = $("#sidebar");
+      const isOpen = sidebar.classList.toggle("sidebar--open");
+      toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+    </script>
 </body>
 </html>
