@@ -2535,7 +2535,7 @@ a:hover{opacity:.75}
 .proj-header {
   position: fixed;
   top: 0; left: 0; right: 0;
-  height: 60px;
+  height: 80px;
   background: #0d0d0d;
   display: flex;
   align-items: center;
@@ -2550,7 +2550,7 @@ a:hover{opacity:.75}
 }
 .proj-header__logo {
   font-family: "Romie", "Playfair Display", Georgia, serif;
-  font-size: 14px;
+  font-size: 17px;
   letter-spacing: 0.06em;
   color: #fff;
   text-decoration: none;
@@ -2563,7 +2563,7 @@ a:hover{opacity:.75}
   gap: clamp(12px, 2vw, 36px);
 }
 .proj-header__link {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.55);
@@ -2574,7 +2574,7 @@ a:hover{opacity:.75}
 .proj-header__link--active {
   color: #fff;
   border: 1px solid rgba(255,255,255,0.45);
-  padding: 5px 13px;
+  padding: 7px 16px;
 }
 .proj-header__toggle {
   display: none;
@@ -2593,7 +2593,7 @@ a:hover{opacity:.75}
   background: #fff;
 }
 .proj-main {
-  padding-top: 60px;
+  padding-top: 80px;
   background: #faf8f5;
   color: #1a1a1a;
   min-height: 100vh;
@@ -2731,7 +2731,6 @@ a:hover{opacity:.75}
 .proj-gallery__item:hover img { transform: scale(1.04); }
 .proj-section {
   padding: 4.5rem clamp(20px, 4vw, 60px);
-  border-top: 1px solid rgba(0,0,0,0.08);
 }
 .proj-section__label {
   font-size: 10px;
