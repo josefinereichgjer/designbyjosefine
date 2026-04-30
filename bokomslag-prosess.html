@@ -15,6 +15,29 @@
     @media (max-width: 600px) { .prosess-imgs { flex-direction: column; } .prosess-imgs img { width: 100%; } }
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* Micro animations on mockup images */
+    .mock-img {
+      overflow: hidden;
+      display: block;
+    }
+    .mock-img img {
+      display: block;
+      width: 100%;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+      filter: brightness(1);
+    }
+    .mock-img:hover img {
+      transform: scale(1.04) translateY(-4px);
+      filter: brightness(1.03);
+    }
+
+    /* Staggered fade-in for each image pair */
+    .mock-row { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .mock-row.in-view { opacity: 1; transform: translateY(0); }
+    .mock-row:nth-child(2) { transition-delay: 0.15s; }
+    .mock-row:nth-child(3) { transition-delay: 0.3s; }
+
   </style>
 </head>
 
@@ -35,8 +58,8 @@
 
   <main class="proj-main">
 
-    <div class="proj-breadcrumb">
-      <a href="./projects.html">Prosjekter</a><span class="proj-breadcrumb__sep">›</span><a href="./bokomslag.html">Bokomslag</a><span class="proj-breadcrumb__sep">›</span>Prosess
+    <div class="proj-breadcrumb" style="font-size:13px;">
+      <a href="./projects.html">Prosjekter</a><span class="proj-breadcrumb__sep">›</span><a href="./bokomslag.html">Bokomslag</a><span class="proj-breadcrumb__sep">›</span><strong style="color:#0d0d0d; font-weight:700; letter-spacing:0.12em;">Prosess</strong>
     </div>
 
     <section class="proj-hero">
@@ -44,46 +67,72 @@
         <h1 class="proj-hero__title">En redesign<br>av norske<br>klassikere</h1>
         <p class="proj-hero__sub" style="color:#1a1a1a; letter-spacing:0.18em; font-weight:500; margin-top:0.5rem;">PROSESS</p>
       </div>
-      <div class="proj-hero__right" style="flex-direction:column; align-items:flex-start; justify-content:center; gap:0;">
-        <p style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.35); margin:0 0 1rem;">Prosessfaser</p>
-        <p style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(20px,2.4vw,30px); line-height:1.65; color:#1a1a1a; margin:0;">
-          01. Problem<br>
-          02. Innsikt &amp; idé<br>
-          03. Iterasjon<br>
-          04. Løsning
-        </p>
-      </div>
-    </section>
-
-    <section class="proj-section reveal" id="problem">
-      <span class="proj-section__label">01</span>
-      <h2 class="proj-section__heading">Problem</h2>
-      <p class="prosess-placeholder">Innhold kommer snart.</p>
-    </section>
-
-    <section class="proj-section reveal" id="innsikt">
-      <span class="proj-section__label">02</span>
-      <h2 class="proj-section__heading">Innsikt &amp; idé</h2>
-      <p class="prosess-placeholder">Innhold kommer snart.</p>
+      <div class="proj-hero__right"></div>
     </section>
 
     <section class="proj-section reveal" id="iterasjon">
       <span class="proj-section__label">03</span>
       <h2 class="proj-section__heading">Iterasjon</h2>
-      <div class="prosess-imgs" style="margin-bottom:1.5rem;">
-        <img src="./assets/prosess1.webp" alt="Prosess — skisser" loading="lazy">
-        <img src="./assets/prosess2.webp" alt="Prosess — utvikling" loading="lazy">
+
+      <!-- Første utkast -->
+      <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.25rem;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; flex-shrink:0; background:#000; border-radius:50%; font-family:'Romie','Playfair Display',Georgia,serif; font-size:22px; color:#fff;">1</span>
+        <h3 style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(18px,2vw,26px); font-weight:400; color:#1a1a1a; margin:0;">Første utkast</h3>
       </div>
+      <div style="display:grid; grid-template-columns:1.8fr 1fr; gap:3rem; align-items:stretch; margin-bottom:2.5rem;">
+        <div style="overflow:hidden;">
+          <img src="./assets/prosess/softcover-yellow.png" alt="Første softcover-utkast" loading="lazy" style="width:100%; height:100%; object-fit:cover; object-position:center top; display:block;">
+        </div>
+        <div>
+          <p style="font-size:15px; line-height:1.78; font-weight:700; color:#1a1a1a; margin:0 0 1rem;">Fra grafisk smussomslag til taktil bokserie</p>
+          <p style="font-size:15px; line-height:1.78; margin:0 0 1.25rem;">I den første versjonen hadde bokserien et tydelig seriepreg, men <em>Amtmandens Døtre</em> ble en utfordring fordi tittelen var lengre enn de andre. Den måtte settes mindre og deles opp, noe som ga den en annen visuell tyngde enn <em>Forrådt</em> og <em>Jenny</em>.</p>
+          <p style="font-size:15px; line-height:1.78; font-weight:700; color:#1a1a1a; margin:0 0 0.75rem;">Forenkling av serieuttrykket</p>
+          <p style="font-size:15px; line-height:1.78; margin:0 0 1.25rem;">Etter veiledning så jeg at jeg forsøkte å gi hver bok for mye eget særpreg gjennom farger og typografiske grep. Jeg ønsket derfor å forenkle uttrykket, slik at serien som helhet stod sterkere, mens forskjellene mellom bøkene ble mer subtile.</p>
+          <p style="font-size:15px; line-height:1.78; font-weight:700; color:#1a1a1a; margin:0 0 0.75rem;">Typografisk videreutvikling</p>
+          <p style="font-size:15px; line-height:1.78; margin:0 0 1.25rem;">I den første versjonen brukte jeg Roboto, DIN og Alternate Gothic. Etter veiledning så jeg at disse skriftvalgene ikke passet godt nok til klassiske skjønnlitterære bøker. Roboto ga et for digitalt og funksjonelt preg, mens DIN og Alternate Gothic ga assosiasjoner til skilt og informasjonsdesign.</p>
+          <p style="font-size:15px; line-height:1.78; margin:0;">Siden DIN og Alternate Gothic også lignet mye på hverandre, ble typografisystemet mer komplisert enn nødvendig. I videreutviklingen gikk jeg derfor over til en mer klassisk serif, som ga serien et roligere, mer litterært og tidløst uttrykk.</p>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-bottom:2.5rem;">
+        <div class="mock-img"><img src="./assets/prosess/first-yellow.webp" alt="Første utkast — gul" loading="lazy" style="width:100%; display:block;"></div>
+        <div class="mock-img"><img src="./assets/prosess/first-red.webp" alt="Første utkast — rød" loading="lazy" style="width:100%; display:block;"></div>
+        <div class="mock-img"><img src="./assets/prosess/first-blue.webp" alt="Første utkast — blå" loading="lazy" style="width:100%; display:block;"></div>
+      </div>
+
+      <!-- Andre utkast -->
+      <div style="display:flex; align-items:center; gap:1rem; margin-top:7rem; margin-bottom:1.5rem;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; flex-shrink:0; background:#000; border-radius:50%; font-family:'Romie','Playfair Display',Georgia,serif; font-size:22px; color:#fff;">2</span>
+        <h3 style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(18px,2vw,26px); font-weight:400; color:#1a1a1a; margin:0;">Andre utkast</h3>
+      </div>
+
+      <div style="max-width:680px; margin-bottom:2.5rem;">
+        <p style="font-size:15px; line-height:1.78; font-weight:700; color:#1a1a1a; margin:0 0 0.75rem;">Symboler og forenkling</p>
+        <p style="font-size:15px; line-height:1.78; margin:0 0 1.25rem;">I den første løsningen arbeidet jeg med små symboler knyttet til hver bok: en saks for <em>Forrådt</em>, en fjærpenn for <em>Amtmandens Døtre</em> og en palett for <em>Jenny</em>. Symbolene skulle i utgangspunktet tydeliggjøre tematikken i bøkene, men etter hvert opplevde jeg at de gjorde uttrykket for illustrativt og mindre modent. De ble litt for direkte i formen, og tok bort noe av roen og tyngden jeg ønsket at bokserien skulle ha.</p>
+        <p style="font-size:15px; line-height:1.78; margin:0 0 2rem;">Jeg valgte derfor å gå bort fra symbolene og heller la farge, tekstil, preging og typografi bære identiteten. Dette ga serien et mer nedtonet og profesjonelt uttrykk, samtidig som det åpnet for en mer subtil tolkning av bøkene.</p>
+        <p style="font-size:15px; line-height:1.78; font-weight:700; color:#1a1a1a; margin:0 0 0.75rem;">Typografiske brudd</p>
+        <p style="font-size:15px; line-height:1.78; margin:0;">I den første versjonen eksperimenterte jeg også med avbrudd og «hakk» i typografien. Tanken var å speile brudd, press og spenning i romanenes tematikk. I videreutviklingen så jeg likevel at dette grepet ble for uklart: Det fremstod verken tydelig nok som et konseptuelt valg, eller rent nok som typografi. Dersom avbruddet skulle fungert, måtte det enten vært gjort mer konsekvent og markant, eller fjernet helt.</p>
+      </div>
+
+      <!-- Grønn: Jenny -->
+      <!-- 3D mockups -->
+      <div class="mock-row" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; align-items:end; margin-bottom:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
+        <div class="mock-img"><img src="./assets/prosess/greenie.webp" alt="Jenny — 3D mockup" loading="lazy" style="width:100%; display:block;"></div>
+        <div class="mock-img"><img src="./assets/prosess/bluie.webp" alt="Amtmandens Døtre — 3D mockup" loading="lazy" style="width:100%; display:block;"></div>
+        <div class="mock-img"><img src="./assets/prosess/reddie.webp" alt="Forrådt — 3D mockup" loading="lazy" style="width:100%; display:block;"></div>
+      </div>
+
+      <!-- Flat spreads -->
+      <div class="mock-row" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; align-items:start;">
+        <div class="mock-img"><img src="./assets/prosess/greenwhole.webp" alt="Jenny — flat spread" loading="lazy" style="width:100%; display:block;"></div>
+        <div class="mock-img"><img src="./assets/prosess/bluewhole.webp" alt="Amtmandens Døtre — flat spread" loading="lazy" style="width:100%; display:block;"></div>
+        <div class="mock-img"><img src="./assets/prosess/redwhole.webp" alt="Forrådt — flat spread" loading="lazy" style="width:100%; display:block;"></div>
+      </div>
+
     </section>
 
-    <section class="proj-section reveal" id="losning">
-      <span class="proj-section__label">04</span>
-      <h2 class="proj-section__heading">Løsning</h2>
-      <p class="prosess-placeholder">Innhold kommer snart.</p>
-    </section>
-
-    <div class="proj-adjacent" style="justify-content:flex-start;">
-      <a class="proj-adjacent__link" href="./bokomslag.html">← Gå tilbake til Bokomslag</a>
+    <div style="padding: 3rem clamp(20px, 4vw, 60px);">
+      <a href="./bokomslag.html" style="display:inline-block; background:#0d0d0d; color:#fff; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; padding:14px 28px;">← Gå tilbake til Bokomslag</a>
     </div>
 
   </main>
@@ -111,6 +160,16 @@
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+    var mockObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          mockObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.mock-row').forEach(function(el) { mockObs.observe(el); });
   </script>
 </body>
 </html>
