@@ -9,26 +9,34 @@
   <link rel="icon" href="assets/hvitlogo.webp">
   <style>
     html { scroll-behavior: smooth; }
-    .prosess-phase {
-      padding-bottom: 4rem;
-      margin-bottom: 4rem;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+
+    /* Process content */
+    .prosess-text { font-size: 15px; line-height: 1.78; max-width: 820px; }
+    .prosess-row { display: grid; grid-template-columns: 2.6fr 2fr; gap: 3rem; align-items: center; margin-bottom: 3rem; }
+    .prosess-row img { width: 100%; display: block; }
+    .prosess-row__text { display: flex; flex-direction: column; gap: 1.25rem; }
+    .prosess-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; width: 78%; margin: 0 auto; align-items: center; }
+    .prosess-images img { width: 100%; display: block; transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .prosess-images img:nth-child(1) { transform: rotate(-4deg); }
+    .prosess-images img:nth-child(2) { transform: rotate(2.5deg); }
+    .prosess-images img:nth-child(3) { transform: rotate(-2deg); }
+    .prosess-images img:nth-child(1):hover { transform: rotate(-4deg) translateY(-10px) scale(1.03); }
+    .prosess-images img:nth-child(2):hover { transform: rotate(2.5deg) translateY(-10px) scale(1.03); }
+    .prosess-images img:nth-child(3):hover { transform: rotate(-2deg) translateY(-10px) scale(1.03); }
+    .jambore-text { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2.5rem; margin-bottom: 2.5rem; }
+    .case-insight { border-left: 2px solid #f04c38; padding: 0.85rem 1.4rem; margin: 2.5rem 0 0; max-width: 600px; font-size: 16px; line-height: 1.7; font-style: italic; opacity: 0.75; }
+    .refleksjon-body { max-width: 900px; font-size: 15px; line-height: 1.8; }
+    .refleksjon-body p { margin-bottom: 1.1rem; }
+    .refleksjon-body p:last-child { margin-bottom: 0; }
+    @media (max-width: 700px) {
+      .prosess-row { grid-template-columns: 1fr; gap: 1.5rem; }
+      .jambore-text { grid-template-columns: 1fr; }
+      .prosess-images { width: 100%; }
     }
-    .prosess-phase:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-      margin-bottom: 0;
-    }
-    .prosess-placeholder {
-      font-size: 15px;
-      line-height: 1.78;
-      color: rgba(0,0,0,0.35);
-      font-style: italic;
-      max-width: 680px;
-    }
-    .prosess-phase .proj-section__heading {
-      margin-bottom: 1.5rem;
-    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 
@@ -56,11 +64,11 @@
     <section class="proj-hero">
       <div class="proj-hero__left">
         <h1 class="proj-hero__title">Litteratur<br>tidsskrift</h1>
-        <p class="proj-hero__sub" style="color:#1a1a1a; opacity:0.85; letter-spacing:0.18em; font-weight:500; margin-top:0.4rem;">PROSESS</p>
+        <p class="proj-hero__sub" style="color:#1a1a1a; letter-spacing:0.18em; font-weight:500; margin-top:0.5rem;">PROSESS</p>
       </div>
       <div class="proj-hero__right" style="flex-direction:column; align-items:flex-start; justify-content:center; gap:0;">
         <p style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.35); margin:0 0 1rem;">Prosessfaser</p>
-        <p style="font-family:'SelfModern',Georgia,serif; font-size:clamp(20px,2.4vw,30px); line-height:1.65; color:#1a1a1a; margin:0;">
+        <p style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(20px,2.4vw,30px); line-height:1.65; color:#1a1a1a; margin:0;">
           01. Problem<br>
           02. Innsikt &amp; idé<br>
           03. Iterasjon<br>
@@ -69,26 +77,62 @@
       </div>
     </section>
 
-    <section class="proj-section" id="prosess-faser">
-      <div class="prosess-phase" id="problem">
-        <span class="proj-section__label">01</span>
-        <h2 class="proj-section__heading">Problem</h2>
-        <p class="prosess-placeholder">Innhold kommer snart.</p>
+    <!-- 01 Problem -->
+    <section class="proj-section reveal" id="problem">
+      <span class="proj-section__label">01</span>
+      <h2 class="proj-section__heading">Problem</h2>
+      <p class="prosess-text" style="color:rgba(0,0,0,0.4); font-style:italic;">Innhold kommer snart.</p>
+    </section>
+
+    <!-- 02 Innsikt & idé -->
+    <section class="proj-section reveal" id="innsikt">
+      <span class="proj-section__label">02</span>
+      <h2 class="proj-section__heading">Innsikt &amp; idé</h2>
+      <p class="prosess-text" style="color:rgba(0,0,0,0.4); font-style:italic;">Innhold kommer snart.</p>
+    </section>
+
+    <!-- 03 Iterasjon — Fra kaos til system -->
+    <section class="proj-section reveal" id="iterasjon">
+      <span class="proj-section__label">03</span>
+      <h2 class="proj-section__heading">Fra kaos til system</h2>
+      <div class="prosess-row">
+        <img src="assets/prosess-gul-krit.webp" alt="Tidlige skisser – Krit" loading="lazy">
+        <div class="prosess-row__text">
+          <p class="prosess-text">Uttrykket manglet en tydelig struktur og fremstod fragmentert. Flere ulike visuelle grep ble brukt om hverandre – varierende fontvekter, fotografier i svart-hvitt og med fargefiltre, samt innslag av illustrasjon – uten at de var forankret i et helhetlig system.</p>
+        </div>
       </div>
-      <div class="prosess-phase" id="innsikt">
-        <span class="proj-section__label">02</span>
-        <h2 class="proj-section__heading">Innsikt &amp; idé</h2>
-        <p class="prosess-placeholder">Innhold kommer snart.</p>
+      <p style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(0,0,0,0.38); display:block; margin:1rem 0 1.5rem;">Fontvalg i prosess — Jambore</p>
+      <div class="prosess-images" style="margin-bottom:4rem;">
+        <img src="assets/kritprosblaarosa.webp" alt="Tidlig versjon – blå og rosa" loading="lazy">
+        <img src="assets/kritprosgul.webp" alt="Tidlig versjon – gul" loading="lazy">
+        <img src="assets/kritprosrosa.webp" alt="Tidlig versjon – rosa" loading="lazy">
       </div>
-      <div class="prosess-phase" id="iterasjon">
-        <span class="proj-section__label">03</span>
-        <h2 class="proj-section__heading">Iterasjon</h2>
-        <p class="prosess-placeholder">Innhold kommer snart.</p>
+      <p class="prosess-text">Jeg brukte tid før jeg valgte å gå bort fra Jambore-fonten. Det organiske og menneskelige uttrykket traff godt det personlige og kroppslige innholdet i magasinets tekster. I tillegg oppsto det en interessant kobling mellom prosjektet og fontens designer, Tom Chalky, som ga konseptet en ekstra, subtil dimensjon. Samtidig viste det seg at fonten hadde begrenset lesbarhet i større tekstgrader, spesielt i overskrifter. Den ga også logoen et uttrykk som ble for lekent og uformelt i møte med det redaksjonelle innholdet. Valget om å gå bort fra Jambore handlet derfor om å prioritere bedre lesbarhet og et mer presist, helhetlig visuelt uttrykk.</p>
+      <div style="margin-top:4rem;">
+        <div class="jambore-text" style="margin-bottom:1.5rem;">
+          <p class="prosess-text">Designkonseptet tar utgangspunkt i kontrasten mellom det strukturerte og det ekspressive. Et strengt gridbasert oppsett brytes bevisst av visuelle grep som halftone-raster, sterke primærfarger og store typografiske kontraster.</p>
+          <p class="prosess-text">Målet var ikke bare å lage et magasin som ser bra ut – men et visuelt system som holder over tid. Hvert designvalg ble begrunnet ut fra innholdet det skulle formidle.</p>
+        </div>
+        <blockquote class="case-insight">Designet skal forsterke stemningen i tekstene – ikke konkurrere med dem.</blockquote>
       </div>
-      <div class="prosess-phase" id="losning">
-        <span class="proj-section__label">04</span>
-        <h2 class="proj-section__heading">Løsning</h2>
-        <p class="prosess-placeholder">Innhold kommer snart.</p>
+    </section>
+
+    <!-- 04 Løsning -->
+    <section class="proj-section reveal" id="losning">
+      <span class="proj-section__label">04</span>
+      <h2 class="proj-section__heading">Løsning</h2>
+      <p class="prosess-text" style="color:rgba(0,0,0,0.4); font-style:italic;">Innhold kommer snart.</p>
+    </section>
+
+    <!-- Refleksjon -->
+    <section class="proj-section reveal" id="refleksjon">
+      <span class="proj-section__label">Refleksjon</span>
+      <h2 class="proj-section__heading">Hva lærte jeg?</h2>
+      <div class="refleksjon-body">
+        <p>Gjennom arbeidet med tidsskriftet lærte jeg hvor viktig det er å balansere et <strong>sterkt visuelt uttrykk</strong> med god <strong>lesbarhet</strong>. Jeg ønsket å skape et tidsskrift med tydelig karakter, inspirert av kritikk, kropp, kultur og fysisk erfaring. Bruken av kontraster, halvtonebilder og store typografiske grep bidro til et uttrykk som føles energisk og særegent.</p>
+        <p>Samtidig ser jeg i etterkant at enkelte oppslag kunne hatt en roligere struktur. Noen steder blir uttrykket så visuelt aktivt at det kan konkurrere med teksten. Jeg kunne derfor jobbet mer med <strong>luft, marger og tydeligere hierarki</strong>, spesielt på sider med mye brødtekst. Dette ville gjort leseropplevelsen mer <strong>balansert</strong> og gitt de eksperimentelle sidene enda større effekt.</p>
+        <p>Jeg lærte også at et godt tidsskrift ikke bare handler om enkeltoppslag, men om <strong>rytmen gjennom hele publikasjonen</strong>. Variasjonen mellom rolige tekstsider og mer uttrykksfulle bildesider er viktig for at magasinet skal oppleves <strong>helhetlig</strong>. Videre ville jeg vært mer konsekvent med typografiske detaljer, bildetekster og plassering av enkelte elementer for å styrke den redaksjonelle profesjonaliteten.</p>
+        <p>Alt i alt har prosjektet lært meg å være modigere visuelt, men også mer kritisk til når et designgrep faktisk <strong>støtter innholdet</strong>, og når det først og fremst blir <strong>dekorativt</strong>.</p>
       </div>
     </section>
 
@@ -111,6 +155,16 @@
         toggle.setAttribute('aria-expanded', 'false');
       }
     });
+
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
   </script>
 </body>
 </html>

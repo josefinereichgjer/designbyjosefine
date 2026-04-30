@@ -44,31 +44,14 @@
     .system-caption { font-size: 13px; line-height: 1.65; opacity: 0.65; max-width: 600px; margin: 0.85rem 0 2.5rem; }
     .system-caption strong { opacity: 1; font-weight: 500; }
 
-    /* Process */
-    .prosess-text { font-size: 15px; line-height: 1.78; }
-    .prosess-row { display: grid; grid-template-columns: 2.6fr 2fr; gap: 3rem; align-items: center; margin-bottom: 3rem; }
-    .prosess-row img { width: 100%; display: block; }
-    .prosess-row__text { display: flex; flex-direction: column; gap: 1.25rem; }
-    .prosess-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; width: 78%; margin: 0 auto; align-items: center; }
-    .prosess-images img { width: 100%; display: block; transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
-    .prosess-images img:nth-child(1) { transform: rotate(-4deg); }
-    .prosess-images img:nth-child(2) { transform: rotate(2.5deg); }
-    .prosess-images img:nth-child(3) { transform: rotate(-2deg); }
-    .prosess-images img:nth-child(1):hover { transform: rotate(-4deg) translateY(-10px) scale(1.03); }
-    .prosess-images img:nth-child(2):hover { transform: rotate(2.5deg) translateY(-10px) scale(1.03); }
-    .prosess-images img:nth-child(3):hover { transform: rotate(-2deg) translateY(-10px) scale(1.03); }
-    .jambore-text { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2.5rem; margin-bottom: 2.5rem; }
-    .case-insight { border-left: 2px solid #f04c38; padding: 0.85rem 1.4rem; margin: 2.5rem 0 0; max-width: 600px; font-size: 16px; line-height: 1.7; font-style: italic; opacity: 0.75; }
-    @media (max-width: 700px) {
-      .prosess-row { grid-template-columns: 1fr; gap: 1.5rem; }
-      .jambore-text { grid-template-columns: 1fr; }
-      .prosess-images { width: 100%; }
-    }
-
-    /* Refleksjon */
-    .refleksjon-body { max-width: 900px; font-size: 15px; line-height: 1.8; }
-    .refleksjon-body p { margin-bottom: 1.1rem; }
-    .refleksjon-body p:last-child { margin-bottom: 0; }
+    /* Masonry mockup gallery */
+    .krit-masonry { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; align-items: start; }
+    .krit-masonry-col { display: flex; flex-direction: column; gap: 0.75rem; }
+    .krit-masonry-col--offset { margin-top: 4rem; }
+    .krit-masonry-item { overflow: hidden; }
+    .krit-masonry-item img { width: 100%; display: block; transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .krit-masonry-item:hover img { transform: scale(1.03); }
+    @media (max-width: 600px) { .krit-masonry { grid-template-columns: 1fr; } .krit-masonry-col--offset { margin-top: 0; } }
 
     /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -131,42 +114,41 @@
 
     <p class="proj-description">KRIT er et litteraturtidsskrift designet for å gi tekster en tydelig og helhetlig visuell identitet. Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn. Designkonseptet tar utgangspunkt i kontrasten mellom det strukturerte og det ekspressive.</p>
 
+    <!-- Flipbook i dark section -->
     <div class="proj-dark">
-      <img class="proj-dark__img" src="assets/krit1.webp" alt="KRIT magasin showcase" loading="lazy">
-      <a class="proj-dark__link" href="krit-flipbook.html" target="_blank" rel="noopener">Bla i digital utgave →</a>
+      <iframe src="krit-flipbook.html" title="KRIT digital utgave" allowfullscreen
+        style="width:100%; max-width:1100px; aspect-ratio:1.4133/1; max-height:80vh; border:none; display:block;"></iframe>
+      <a class="proj-dark__link" href="krit-flipbook.html" target="_blank" rel="noopener">Åpne i fullskjerm →</a>
     </div>
 
-    <div class="proj-gallery">
-      <div class="proj-gallery__item"><img src="assets/01-mockkrit.webp" alt="KRIT mockup 1" loading="lazy"></div>
-      <div class="proj-gallery__item"><img src="assets/02-mockkrit.webp" alt="KRIT mockup 2" loading="lazy"></div>
-      <div class="proj-gallery__item"><img src="assets/03-mockkrit.webp" alt="KRIT mockup 3" loading="lazy" style="object-position:center 70%;"></div>
-      <div class="proj-gallery__item"><img src="assets/04mag.webp" alt="KRIT nr.4" loading="lazy"></div>
+    <!-- Masonry mockup gallery -->
+    <div class="krit-masonry" style="padding: 0 clamp(20px, 4vw, 60px); padding-top: 3rem; padding-bottom: 3rem;">
+      <div class="krit-masonry-col">
+        <div class="krit-masonry-item reveal"><img src="assets/01-mockkrit.webp" alt="KRIT mockup 1" loading="lazy"></div>
+        <div class="krit-masonry-item reveal"><img src="assets/02-mockkrit.webp" alt="KRIT mockup 2" loading="lazy"></div>
+      </div>
+      <div class="krit-masonry-col krit-masonry-col--offset">
+        <div class="krit-masonry-item reveal"><img src="assets/03-mockkrit.webp" alt="KRIT mockup 3" loading="lazy" style="object-position:center 70%;"></div>
+        <div class="krit-masonry-item reveal"><img src="assets/04mag.webp" alt="KRIT nr.4" loading="lazy"></div>
+      </div>
     </div>
-
-    <!-- Digital utgave -->
-    <section class="proj-section reveal" id="digital-utgave">
-      <span class="proj-section__label">Digital utgave</span>
-      <h2 class="proj-section__heading">Bla i magasinet</h2>
-      <p style="max-width:520px; font-size:15px; line-height:1.7; margin-bottom:2rem; color:rgba(0,0,0,0.65);">Den digitale utgaven lar deg bla gjennom alle 18 oppslagene i fullversjon. Bruk piltastene, knappene eller sveip for å navigere. <a href="krit-flipbook.html" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Åpne i fullskjerm →</a></p>
-      <iframe src="krit-flipbook.html" title="KRIT digital utgave" allowfullscreen style="width:100%; aspect-ratio:1.4133/1; max-height:80vh; border:none; display:block;"></iframe>
-    </section>
 
     <!-- Typografi -->
     <section class="proj-section reveal" id="typografi">
       <span class="proj-section__label">Typografi</span>
-      <h2 class="proj-section__heading">Self Modern &amp; Avenir</h2>
+      <h2 class="proj-section__heading">Romie &amp; Avenir</h2>
       <div class="fontvalg-grid">
         <div>
           <div style="padding:2.5rem 0 1.5rem;">
-            <span style="font-family:'SelfModern',Georgia,serif; font-size:clamp(72px,11vw,120px); line-height:0.88; color:#1a1a1a; -webkit-text-stroke:0.6px #1a1a1a; display:block;">KRIT</span>
-            <p style="font-size:12px; color:#1a1a1a; opacity:0.45; margin:1.25rem 0 0; letter-spacing:0.04em;">Self Modern Regular — brukes til titler og logotype</p>
+            <span style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(72px,11vw,120px); line-height:0.88; color:#1a1a1a; -webkit-text-stroke:0.6px #1a1a1a; display:block;">KRIT</span>
+            <p style="font-size:12px; color:#1a1a1a; opacity:0.45; margin:1.25rem 0 0; letter-spacing:0.04em;">Romie Regular — brukes til titler og logotype</p>
           </div>
           <div style="padding:1.5rem 0; display:flex; align-items:baseline; gap:1.5rem;">
-            <span style="font-family:'SelfModern',Georgia,serif; font-size:36px; color:#1a1a1a; opacity:0.28; font-weight:400; white-space:nowrap;">KRIT</span>
+            <span style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:36px; color:#1a1a1a; opacity:0.28; font-weight:400; white-space:nowrap;">KRIT</span>
             <span style="font-size:11px; color:#1a1a1a; opacity:0.4; letter-spacing:0.04em;">Sjanger / sekundær info</span>
           </div>
           <div style="padding:1.5rem 0; display:flex; align-items:center; gap:1.5rem;">
-            <span style="font-family:'SelfModern',Georgia,serif; font-size:13px; font-weight:700; -webkit-text-stroke:0.3px currentColor; color:#1a1a1a; letter-spacing:0.06em; white-space:nowrap;">KRIT</span>
+            <span style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:13px; font-weight:700; -webkit-text-stroke:0.3px currentColor; color:#1a1a1a; letter-spacing:0.06em; white-space:nowrap;">KRIT</span>
             <span style="font-size:11px; color:#1a1a1a; opacity:0.4; letter-spacing:0.04em;">Innholdsfortegnelse</span>
           </div>
         </div>
@@ -249,44 +231,6 @@
       <p class="system-caption"><strong>Oppslag:</strong> Oransje brukes som bakgrunn for litterær tekst og essay, mens blå benyttes bak kritikk. Dette bidrar til å differensiere innholdstypene visuelt.</p>
       <img src="assets/system2.webp" alt="Bildesystem brødtekst" class="system-img" loading="lazy">
       <p class="system-caption"><strong>I brødtekst:</strong> Primærfargene legges over bildene med redusert opasitet for å skape variasjon, dybde og et mer dynamisk uttrykk.</p>
-    </section>
-
-    <!-- Prosess -->
-    <section class="proj-section reveal" id="prosess">
-      <span class="proj-section__label">Prosess</span>
-      <h2 class="proj-section__heading">Fra kaos til system</h2>
-      <div class="prosess-row">
-        <img src="assets/prosess-gul-krit.webp" alt="Tidlige skisser – Krit" loading="lazy">
-        <div class="prosess-row__text">
-          <p class="prosess-text">Uttrykket manglet en tydelig struktur og fremstod fragmentert. Flere ulike visuelle grep ble brukt om hverandre – varierende fontvekter, fotografier i svart-hvitt og med fargefiltre, samt innslag av illustrasjon – uten at de var forankret i et helhetlig system.</p>
-        </div>
-      </div>
-      <p style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(0,0,0,0.38); display:block; margin:1rem 0 1.5rem;">Fontvalg i prosess — Jambore</p>
-      <div class="prosess-images" style="margin-bottom:4rem;">
-        <img src="assets/kritprosblaarosa.webp" alt="Tidlig versjon – blå og rosa" loading="lazy">
-        <img src="assets/kritprosgul.webp" alt="Tidlig versjon – gul" loading="lazy">
-        <img src="assets/kritprosrosa.webp" alt="Tidlig versjon – rosa" loading="lazy">
-      </div>
-      <p class="prosess-text">Jeg brukte tid før jeg valgte å gå bort fra Jambore-fonten. Det organiske og menneskelige uttrykket traff godt det personlige og kroppslige innholdet i magasinets tekster. I tillegg oppsto det en interessant kobling mellom prosjektet og fontens designer, Tom Chalky, som ga konseptet en ekstra, subtil dimensjon. Samtidig viste det seg at fonten hadde begrenset lesbarhet i større tekstgrader, spesielt i overskrifter. Den ga også logoen et uttrykk som ble for lekent og uformelt i møte med det redaksjonelle innholdet. Valget om å gå bort fra Jambore handlet derfor om å prioritere bedre lesbarhet og et mer presist, helhetlig visuelt uttrykk.</p>
-      <div style="margin-top:4rem;">
-        <div class="jambore-text" style="margin-bottom:1.5rem;">
-          <p class="prosess-text">Designkonseptet tar utgangspunkt i kontrasten mellom det strukturerte og det ekspressive. Et strengt gridbasert oppsett brytes bevisst av visuelle grep som halftone-raster, sterke primærfarger og store typografiske kontraster.</p>
-          <p class="prosess-text">Målet var ikke bare å lage et magasin som ser bra ut – men et visuelt system som holder over tid. Hvert designvalg ble begrunnet ut fra innholdet det skulle formidle.</p>
-        </div>
-        <blockquote class="case-insight">Designet skal forsterke stemningen i tekstene – ikke konkurrere med dem.</blockquote>
-      </div>
-    </section>
-
-    <!-- Refleksjon -->
-    <section class="proj-section reveal" id="refleksjon">
-      <span class="proj-section__label">Refleksjon</span>
-      <h2 class="proj-section__heading">Hva lærte jeg?</h2>
-      <div class="refleksjon-body">
-        <p>Gjennom arbeidet med tidsskriftet lærte jeg hvor viktig det er å balansere et <strong>sterkt visuelt uttrykk</strong> med god <strong>lesbarhet</strong>. Jeg ønsket å skape et tidsskrift med tydelig karakter, inspirert av kritikk, kropp, kultur og fysisk erfaring. Bruken av kontraster, halvtonebilder og store typografiske grep bidro til et uttrykk som føles energisk og særegent.</p>
-        <p>Samtidig ser jeg i etterkant at enkelte oppslag kunne hatt en roligere struktur. Noen steder blir uttrykket så visuelt aktivt at det kan konkurrere med teksten. Jeg kunne derfor jobbet mer med <strong>luft, marger og tydeligere hierarki</strong>, spesielt på sider med mye brødtekst. Dette ville gjort leseropplevelsen mer <strong>balansert</strong> og gitt de eksperimentelle sidene enda større effekt.</p>
-        <p>Jeg lærte også at et godt tidsskrift ikke bare handler om enkeltoppslag, men om <strong>rytmen gjennom hele publikasjonen</strong>. Variasjonen mellom rolige tekstsider og mer uttrykksfulle bildesider er viktig for at magasinet skal oppleves <strong>helhetlig</strong>. Videre ville jeg vært mer konsekvent med typografiske detaljer, bildetekster og plassering av enkelte elementer for å styrke den redaksjonelle profesjonaliteten.</p>
-        <p>Alt i alt har prosjektet lært meg å være modigere visuelt, men også mer kritisk til når et designgrep faktisk <strong>støtter innholdet</strong>, og når det først og fremst blir <strong>dekorativt</strong>.</p>
-      </div>
     </section>
 
     <div class="proj-adjacent">
