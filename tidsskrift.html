@@ -4,999 +4,321 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
-  <title>Tidsskrift — DesignbyJosefine</title>
+  <title>KRIT Litteraturtidsskrift — Josefine RG</title>
   <link rel="stylesheet" href="./styles.css?v=31" />
-  <link rel="icon" href="assets/hvitlogo.png">
-
+  <link rel="icon" href="assets/hvitlogo.webp">
   <style>
-    /* Gallery */
-    .mockup-gallery {
-      display: flex;
-      flex-direction: column;
-    }
-    .mockup-gallery img {
-      width: 100%;
-      display: block;
-    }
-
     html { scroll-behavior: smooth; }
 
-    /* Section nav */
-    .krit-nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
-      padding: 0 clamp(20px, 3vw, 34px);
-      margin-bottom: 0;
-      border-top: 1px solid rgba(0,0,0,0.1);
-    }
-    .krit-nav__link {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      color: inherit;
-      opacity: 0.65;
-      padding: 0.75rem 0;
-      border-bottom: 2px solid transparent;
-      transition: opacity 0.15s, border-color 0.15s;
-      margin-bottom: -1px;
-    }
-    .krit-nav__link:hover {
-      opacity: 1;
-      color: #f04c38;
-      border-bottom-color: #f04c38;
-    }
+    /* Typography specimen */
+    .fontvalg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+    .fontvalg-avenir { border-left: 1.5px solid rgba(0,0,0,0.08); padding-left: 3.5rem; }
     @media (max-width: 700px) {
-      .krit-nav {
-        justify-content: flex-start;
-        gap: 0 1.5rem;
-      }
-      .krit-nav__link {
-        width: calc(33.33% - 1rem);
-      }
+      .fontvalg-grid { grid-template-columns: 1fr; gap: 0; }
+      .fontvalg-avenir { border-left: none; padding-left: 0; border-top: 1.5px solid rgba(0,0,0,0.08); padding-top: 2rem; margin-top: 1.5rem; }
     }
 
-    /* Intro cards */
-    .krit-card {
-      transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), box-shadow 0.3s cubic-bezier(0.22,1,0.36,1);
-    }
-    .krit-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 44px rgba(0,0,0,0.15) !important;
-    }
+    /* Colors */
+    .fargevalg-intro { max-width: 520px; margin-bottom: 2rem; }
+    .fargevalg-intro p { font-size: 15px; line-height: 1.7; margin-bottom: 0.9rem; }
+    .fargevalg-body { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start; }
+    .farge-swatches { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .farge-col { display: flex; flex-direction: column; gap: 0.6rem; }
+    .farge-label { font-size: 11px; letter-spacing: 0.04em; opacity: 0.45; }
+    .farge-swatch { width: 100%; height: 64px; }
+    .farge-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .farge-table thead th { text-align: left; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.45; padding: 0 0.75rem 0.6rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.1); }
+    .farge-table thead th:first-child { padding-left: 0; }
+    .farge-table tbody td { padding: 0.85rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.07); line-height: 1.5; }
+    .farge-table tbody td:first-child { padding-left: 0; }
+    .farge-table .td-chip { width: 24px; padding-right: 0; }
+    .farge-chip { width: 24px; height: 24px; display: block; }
+    .farge-val { font-variant-numeric: tabular-nums; }
+    .farge-val strong { display: block; }
+    .farge-val span { display: block; opacity: 0.5; font-size: 11px; }
+    @media (max-width: 700px) { .fargevalg-body { grid-template-columns: 1fr; gap: 2rem; } .farge-swatches { width: 75%; max-width: 420px; } }
 
-    /* Intro */
-    .krit-intro {
-      margin-bottom: 3rem;
-    }
-    .krit-intro__lead {
-      font-size: 17px;
-      line-height: 1.7;
-      max-width: 780px;
-      margin-bottom: 2rem;
-    }
-    .krit-intro__meta {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 0 4rem;
-    }
-    .krit-intro__label {
-      font-size: 13px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #1a1a1a;
-      font-weight: 700;
-      opacity: 1;
-      display: block;
-      margin-bottom: 0.6rem;
-    }
-    .krit-intro__label::after {
-      content: '';
-      display: block;
-      width: 28px;
-      height: 2px;
-      background: #f04c38;
-      margin-top: 10px;
-      margin-bottom: 1.2rem;
-    }
-    .krit-intro__body {
-      font-size: 15px;
-      line-height: 1.8;
-      opacity: 0.75;
-    }
-    /* Hero full-bleed */
-    .krit-hero {
-      position: relative;
-      margin-top: calc(-1 * 34px);
-      margin-left: calc(50% - 50vw);
-      margin-right: calc(50% - 50vw);
-      width: 100vw;
-      margin-bottom: 2rem;
-      height: 90vh;
-      overflow: hidden;
-    }
-    @media (max-width: 700px) {
-      .krit-hero { margin-top: calc(-1 * 110px); }
-    }
+    /* Image system */
+    .system-intro { max-width: 480px; margin-bottom: 2rem; font-size: 15px; line-height: 1.7; }
+    .system-img { display: block; width: 100%; max-width: 910px; }
+    .system-caption { font-size: 13px; line-height: 1.65; opacity: 0.65; max-width: 600px; margin: 0.85rem 0 2.5rem; }
+    .system-caption strong { opacity: 1; font-weight: 500; }
 
-    /* Intro cards grid */
-    .krit-intro-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.35fr 1fr;
-      gap: 2rem;
-      max-width: var(--content-max, 1200px);
-      margin: 0 auto;
-      align-items: end;
-    }
-    @media (max-width: 700px) {
-      .krit-intro-grid { grid-template-columns: 1fr; align-items: start; }
-    }
-
-    @media (max-width: 700px) {
-      .krit-intro__meta { grid-template-columns: 1fr; gap: 1.5rem; }
-      .krit-intro__lead { font-size: 15px; }
-    }
-
-    /* Prosess */
-    .prosess-section {
-      margin-top: 1.5rem;
-    }
-    .prosess-heading {
-      font-family: "Avenir Next", "Avenir", sans-serif;
-      font-weight: 500;
-      font-size: clamp(26px, 3.5vw, 46px);
-      letter-spacing: 0.015em;
-      margin-bottom: 1.5rem;
-      line-height: 1.15;
-    }
-    .prosess-row {
-      display: grid;
-      grid-template-columns: 2.6fr 2fr;
-      gap: 3rem;
-      align-items: center;
-      margin-bottom: 3rem;
-    }
-    .prosess-row img {
-      width: 100%;
-      display: block;
-    }
-    .prosess-row__text {
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-    }
-    .prosess-text {
-      font-size: 15px;
-      line-height: 1.78;
-    }
-    .prosess-text a {
-      color: #f04c38;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      transition: opacity 0.2s;
-    }
-    .prosess-text a:hover { opacity: 0.7; }
-    .prosess-images {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      width: 78%;
-      margin: 0 auto;
-      align-items: center;
-    }
-    .prosess-images img {
-      width: 100%;
-      display: block;
-      transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
+    /* Process */
+    .prosess-text { font-size: 15px; line-height: 1.78; }
+    .prosess-row { display: grid; grid-template-columns: 2.6fr 2fr; gap: 3rem; align-items: center; margin-bottom: 3rem; }
+    .prosess-row img { width: 100%; display: block; }
+    .prosess-row__text { display: flex; flex-direction: column; gap: 1.25rem; }
+    .prosess-images { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; width: 78%; margin: 0 auto; align-items: center; }
+    .prosess-images img { width: 100%; display: block; transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     .prosess-images img:nth-child(1) { transform: rotate(-4deg); }
     .prosess-images img:nth-child(2) { transform: rotate(2.5deg); }
     .prosess-images img:nth-child(3) { transform: rotate(-2deg); }
     .prosess-images img:nth-child(1):hover { transform: rotate(-4deg) translateY(-10px) scale(1.03); }
     .prosess-images img:nth-child(2):hover { transform: rotate(2.5deg) translateY(-10px) scale(1.03); }
     .prosess-images img:nth-child(3):hover { transform: rotate(-2deg) translateY(-10px) scale(1.03); }
-    .jambore-text {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem 2.5rem;
-      margin-bottom: 2.5rem;
+    .jambore-text { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 2.5rem; margin-bottom: 2.5rem; }
+    .case-insight { border-left: 2px solid #f04c38; padding: 0.85rem 1.4rem; margin: 2.5rem 0 0; max-width: 600px; font-size: 16px; line-height: 1.7; font-style: italic; opacity: 0.75; }
+    @media (max-width: 700px) {
+      .prosess-row { grid-template-columns: 1fr; gap: 1.5rem; }
+      .jambore-text { grid-template-columns: 1fr; }
+      .prosess-images { width: 100%; }
     }
-    /* Case study elements */
-    .case-label {
-      font-size: 13px;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: #f04c38;
-      opacity: 1;
-      display: block;
-      margin-bottom: 0.75rem;
-    }
-    .case-section {
-      margin-top: 4rem;
-    }
-    .case-insight {
-      border-left: 2px solid #f04c38;
-      padding: 0.85rem 1.4rem;
-      margin: 2.5rem 0 0;
-      max-width: 600px;
-      font-size: 16px;
-      line-height: 1.7;
-      font-style: italic;
-      opacity: 0.75;
-    }
-    .project-info-row {
-      display: flex;
-      gap: 2.5rem;
-      margin-bottom: 3rem;
-    }
-    .project-info-item {
-      padding: 0;
-    }
-    .project-info__key {
-      font-size: 10px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 0.38;
-      display: block;
-      margin-bottom: 0.35rem;
-    }
-    .project-info__val {
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .refleksjon-body {
-      max-width: 900px;
-      font-size: 15px;
-      line-height: 1.8;
-    }
+
+    /* Refleksjon */
+    .refleksjon-body { max-width: 900px; font-size: 15px; line-height: 1.8; }
     .refleksjon-body p { margin-bottom: 1.1rem; }
     .refleksjon-body p:last-child { margin-bottom: 0; }
-    @media (max-width: 700px) {
-      .project-info-row { flex-wrap: wrap; gap: 1.5rem 2rem; }
-      .case-section { margin-top: 5rem; }
-    }
 
-    /* Masonry image hover zoom */
-    .masonry-item img {
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .masonry-item:hover img { transform: scale(1.03); }
-
-    /* Prosess row image hover */
-    .prosess-row img {
-      transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-    .prosess-row:hover img { transform: scale(1.02); }
-
-    /* Section reveal */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (min-width: 701px) {
-      .content {
-        padding-left: clamp(34px, 5vw, 72px);
-        padding-right: clamp(34px, 5vw, 72px);
-      }
-      .prosess-section { margin-top: 0; }
-      .krit-intro      { margin-bottom: 6rem; }
-      .case-section    { margin-top: 10rem; }
-      .typo-specimen   { margin-top: 1rem; }
-      .masonry-grid    { margin-bottom: 0; }
-      .flipbook-wrap   { margin-top: 0; }
-    }
-    @media (max-width: 700px) {
-      .prosess-row {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-      .jambore-text {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* Masonry grid */
-    .masonry-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      align-items: start;
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-    }
-    .masonry-col {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .masonry-col--offset {
-      margin-top: 3rem;
-    }
-    .masonry-item {
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .masonry-item.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .masonry-item img {
-      width: 100%;
-      display: block;
-    }
-    @media (max-width: 600px) {
-      .masonry-grid { grid-template-columns: 1fr; gap: 0; }
-      .masonry-col { gap: 0; }
-      .masonry-col--offset { margin-top: 0; }
-    }
-
-    .flipbook-wrap {
-      width: 100vw;
-      margin-left: calc(50% - 50vw);
-    }
-    @media (max-width: 700px) {
-      .flipbook-wrap { margin-top: 2.5rem; }
-    }
-
-    /* Fargevalg */
-    .fargevalg-section { margin-top: 4rem; }
-    .fargevalg-intro {
-      max-width: 520px;
-      margin-bottom: 2rem;
-    }
-    .fargevalg-intro p {
-      font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 0.9rem;
-    }
-    .fargevalg-intro p:last-child { margin-bottom: 0; }
-
-    .fargevalg-body {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
-    .farge-swatches {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    .farge-col { display: flex; flex-direction: column; gap: 0.6rem; }
-    .farge-label {
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      opacity: 0.45;
-    }
-    .farge-swatch {
-      width: 100%;
-      height: 64px;
-    }
-
-    .farge-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 13px;
-    }
-    .farge-table thead th {
-      text-align: left;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 0.45;
-      padding: 0 0.75rem 0.6rem 0.75rem;
-      border-bottom: 1px solid rgba(0,0,0,0.1);
-    }
-    .farge-table thead th:first-child { padding-left: 0; }
-    .farge-table tbody tr { vertical-align: middle; }
-    .farge-table tbody td {
-      padding: 0.85rem 0.75rem;
-      border-bottom: 1px solid rgba(0,0,0,0.07);
-      line-height: 1.5;
-    }
-    .farge-table tbody td:first-child { padding-left: 0; }
-    .farge-table .td-chip {
-      width: 24px;
-      padding-right: 0;
-    }
-    .farge-chip {
-      width: 24px;
-      height: 24px;
-      display: block;
-    }
-    .farge-val { font-variant-numeric: tabular-nums; }
-    .farge-val strong { display: block; }
-    .farge-val span { display: block; opacity: 0.5; font-size: 11px; }
-    @media (max-width: 700px) {
-      .fargevalg-body { grid-template-columns: 1fr; gap: 2rem; }
-      .farge-table { font-size: 12px; }
-      .farge-swatches { width: 75%; max-width: 420px; }
-    }
-
-    /* System på bildebruk */
-    .system-section { margin-top: 4rem; }
-    .system-intro {
-      max-width: 480px;
-      margin-bottom: 2rem;
-      font-size: 15px;
-      line-height: 1.7;
-    }
-    .system-img {
-      display: block;
-      width: 100%;
-      max-width: 910px;
-      margin: 0 auto;
-    }
-    .system-caption {
-      font-size: 13px;
-      line-height: 1.65;
-      opacity: 0.65;
-      max-width: 600px;
-      margin: 0.85rem auto 2.5rem;
-    }
-    .system-caption strong {
-      opacity: 1;
-      font-weight: 500;
-    }
-
-    /* Typography specimen */
-    .typo-specimen {
-      margin-top: 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border: 1px solid rgba(0,0,0,0.08);
-    }
-    .typo-col {
-      padding: 2.5rem 3rem;
-    }
-    .typo-col--left {
-      border-right: 1px solid rgba(0,0,0,0.08);
-    }
-    .typo-row {
-      padding: 2rem 0;
-    }
-    .typo-row__meta {
-      display: flex;
-      gap: 1.5rem;
-      align-items: baseline;
-      margin-bottom: 0.75rem;
-    }
-    .typo-row__size {
-      font-size: 10px;
-      opacity: 0.3;
-      line-height: 1.5;
-      text-align: right;
-      min-width: 52px;
-      letter-spacing: 0.03em;
-    }
-    .typo-row__label {
-      font-size: 12px;
-      line-height: 1.6;
-      opacity: 0.4;
-      font-style: italic;
-    }
-    .typo-row__note {
-      font-size: 10px;
-      opacity: 0.3;
-      margin-left: 0.4rem;
-      align-self: center;
-      letter-spacing: 0.04em;
-    }
-    .romie-large {
-      font-family: "SelfModern", Georgia, serif;
-      font-weight: 400;
-      font-size: 46px;
-      line-height: 1;
-      -webkit-text-stroke: 0.7px currentColor;
-    }
-    .romie-medium {
-      font-family: "SelfModern", Georgia, serif;
-      font-weight: 400;
-      font-size: 39px;
-      line-height: 1;
-      opacity: 0.35;
-    }
-    .romie-small {
-      font-family: "SelfModern", Georgia, serif;
-      font-weight: 700;
-      font-size: 12px;
-      letter-spacing: 0.04em;
-      -webkit-text-stroke: 0.3px currentColor;
-    }
-
-    /* Right col — Avenir */
-    .avenir-title {
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      opacity: 1;
-      color: #1a1a1a;
-      margin-bottom: 1rem;
-    }
-    .avenir-specs {
-      font-size: 12px;
-      line-height: 1.9;
-      opacity: 1;
-      color: #1a1a1a;
-      margin-bottom: 0;
-      padding-left: 0;
-      list-style: none;
-    }
-    .avenir-specs li::before {
-      content: "—  ";
-      opacity: 0.5;
-    }
-    .avenir-block {
-      margin-top: 2rem;
-    }
-    .avenir-label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      opacity: 1;
-      color: #1a1a1a;
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-    .avenir-body {
-      font-size: 12.7px;
-      line-height: 1.75;
-      opacity: 1;
-      color: #1a1a1a;
-    }
-    .avenir-oblique {
-      font-size: 12.7px;
-      line-height: 1.75;
-      opacity: 1;
-      color: #1a1a1a;
-      font-style: italic;
-    }
-
-    @media (max-width: 700px) {
-      .typo-specimen { grid-template-columns: 1fr; }
-      .typo-col--left { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.08); }
-      .typo-col { padding: 1.5rem 1.25rem; }
-    }
-
-    /* Fontvalg grid */
-    .fontvalg-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      margin-top: 2rem;
-      align-items: start;
-    }
-    .fontvalg-avenir {
-      border-left: 1.5px solid rgba(0,0,0,0.08);
-      padding-left: 3.5rem;
-    }
-    @media (max-width: 700px) {
-      .fontvalg-grid {
-        grid-template-columns: 1fr;
-        gap: 0;
-      }
-      .fontvalg-avenir {
-        border-left: none;
-        padding-left: 0;
-        border-top: 1.5px solid rgba(0,0,0,0.08);
-        padding-top: 2rem;
-        margin-top: 1.5rem;
-      }
-    }
-
-    @media (min-width: 2400px) {
-      /* ── Section rhythm ── */
-      .case-section    { margin-top: 140px; }
-      .prosess-section { margin-top: 140px; }
-      .prosess-jambore-body { margin-top: 5rem !important; }
-      #bildebruk       { margin-top: 140px !important; }
-
-      /* ── UNIFIED 1400px COLUMN: every element shares one left edge ── */
-      .case-label,
-      .prosess-heading,
-      .krit-intro__lead,
-      .krit-intro__body,
-      .krit-intro__meta,
-      .prosess-text,
-      .refleksjon-body,
-      .case-insight,
-      .fargevalg-intro,
-      .system-intro,
-      .project-info-row,
-      .prosess-row,
-      .prosess-images,
-      .jambore-text,
-      .fontvalg-grid,
-      .fargevalg-body,
-      .system-img,
-      .system-caption {
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      /* ── Typography ── */
-      .case-label      { font-size: 15px; letter-spacing: 0.15em; margin-bottom: 1rem; display: block; }
-      .prosess-heading { font-size: 60px; line-height: 1.1; margin-bottom: 2.5rem; }
-      .krit-intro__lead { font-size: 24px; line-height: 1.5; }
-      .krit-intro__body { font-size: 20px; line-height: 1.8; }
-      .prosess-text    { font-size: 20px; line-height: 1.8; }
-      .refleksjon-body { font-size: 20px; line-height: 1.8; }
-      .refleksjon-body p { margin-bottom: 1.4rem; }
-      .case-insight    { font-size: 20px; line-height: 1.7; }
-      .fargevalg-intro p { font-size: 20px; }
-      .system-intro    { font-size: 20px; }
-      .system-caption  { font-size: 18px; }
-
-      /* ── Grid layouts ── */
-      .prosess-row     { grid-template-columns: 1fr 1fr; gap: 5rem; margin-bottom: 5rem; }
-      .prosess-images  { width: 100%; }
-      .jambore-text    { gap: 1.5rem 5rem; margin-bottom: 3rem; }
-      .fontvalg-grid   { gap: 6rem; }
-      .fargevalg-body  { grid-template-columns: 280px 1fr; }
-    }
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 
 <body>
-  <header class="sidebar sidebar--detail" id="sidebar">
-    <div class="sidebar__inner">
-      <a class="back-btn" href="./projects.html"><svg width="9" height="16" viewBox="0 0 9 16" fill="none"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <nav class="nav">
-        <a class="nav__link" href="./projects.html"><span>Arbeider</span></a>
-        <a class="nav__link" href="./projects.html#about"><span>Om</span></a>
-        <a class="nav__link" href="./projects.html#contact"><span>Kontakt</span></a>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINÉ RG</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link proj-header__link--active" href="./projects.html">Prosjekter</a>
+        <a class="proj-header__link" href="./projects.html#about">Om meg</a>
+        <a class="proj-header__link" href="./projects.html#contact">Kontakt</a>
       </nav>
-      <footer class="meta">
-        <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
-      </footer>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main id="content" class="content">
-    <article class="project">
-      <div class="project-layout">
-        <div class="project-layout__media">
+  <main class="proj-main">
 
-          <!-- Single hero image full-bleed -->
-          <div class="krit-hero">
-            <img src="assets/03-mockkrit.webp" alt="Krit" fetchpriority="high" style="width:100%; height:100%; object-fit:cover; object-position:center 70%; display:block;">
-            <div style="position:absolute; inset:0;
-              background:
-                linear-gradient(to top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.15) 28%, transparent 52%);
-              pointer-events:none;">
-            </div>
-          </div>
+    <div class="proj-breadcrumb">
+      <a href="./projects.html">Prosjekter</a><span class="proj-breadcrumb__sep">›</span>KRIT
+    </div>
 
-          <!-- Title -->
-          <h1 style="font-family:'SelfModern',Georgia,serif; font-weight:400; font-size:clamp(28px,4vw,52px); text-transform:uppercase; letter-spacing:0.03em; margin-bottom:2.5rem; margin-top:-1.5rem; line-height:1;">Krit litteraturtidsskrift</h1>
+    <section class="proj-hero">
+      <div class="proj-hero__left">
+        <h1 class="proj-hero__title">Litteratur<br>tidsskrift</h1>
+        <p class="proj-hero__sub">Redaksjonell design — KRIT</p>
+      </div>
+      <div class="proj-hero__right">
+        <img class="proj-hero__img" src="assets/03-mockkrit.webp" alt="KRIT magasin" fetchpriority="high" style="object-position:center 70%;">
+      </div>
+    </section>
 
-          <!-- Section nav -->
-          <nav class="krit-nav">
-            <a class="krit-nav__link" href="#flipbook-player">Digital utgave</a>
-            <a class="krit-nav__link" href="#resultat">Ferdig magasin</a>
-            <a class="krit-nav__link" href="#typografi">Typografi</a>
-            <a class="krit-nav__link" href="#fargevalg">Farger</a>
-            <a class="krit-nav__link" href="#bildebruk">Bildebruk</a>
-            <a class="krit-nav__link" href="#prosess">Prosess</a>
-            <a class="krit-nav__link" href="#refleksjon">Refleksjon</a>
-          </nav>
-
-          <!-- Introduksjon -->
-          <div class="krit-intro" style="width:100vw; margin-left:calc(50% - 50vw); background:rgba(240,76,56,0.75); padding: 6rem clamp(20px, 3vw, 34px);">
-            <div class="krit-intro-grid">
-              <div class="krit-card" style="background:rgba(255,244,240,0.92); padding:2.25rem 2rem; box-shadow:0 6px 28px rgba(0,0,0,0.10);">
-                <span class="krit-intro__label">Introduksjon</span>
-                <p class="krit-intro__body" style="font-size:14px; line-height:1.75; margin-bottom:1rem;">KRIT er et litteraturtidsskrift designet for å gi tekster en tydelig og helhetlig visuell identitet.</p>
-                <p class="krit-intro__body" style="font-size:14px; line-height:1.75;">Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn.</p>
-              </div>
-              <div class="krit-card" style="background:rgba(255,244,240,0.92); padding:2.5rem 2.5rem 5rem; box-shadow:0 6px 28px rgba(0,0,0,0.10);">
-                <span class="krit-intro__label">Brief</span>
-                <p class="krit-intro__body" style="font-size:16px; line-height:1.75; margin-bottom:1.25rem;">Design et litteraturmagasin i US Letter-format basert på gitte tekster i faget IDG3013 Redaksjonell design 2.</p>
-                <p class="krit-intro__body" style="font-size:16px; line-height:1.75;">Målet var et ferdig magasin med konsekvent typografi, farge og bildebruk.</p>
-              </div>
-              <div class="krit-card" style="background:rgba(255,244,240,0.92); padding:2.25rem 2rem; box-shadow:0 6px 28px rgba(0,0,0,0.10);">
-                <span class="krit-intro__label">Levert</span>
-                <p class="krit-intro__body" style="font-size:14px; line-height:1.75; margin-bottom:1rem;">Et komplett magasin på 18 oppslag – inkludert logo, typografi, fargesystem og bildebehandling.</p>
-                <p class="krit-intro__body" style="font-size:14px; line-height:1.75;">Designet er bygget rundt et gjennomgående visuelt system for nye utgaver med konsistent identitet.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- 06 Digital utgave -->
-          <div class="case-section" id="flipbook">
-            <span class="case-label">06 — Digital utgave</span>
-            <h2 class="prosess-heading" style="margin-bottom:0.5rem;">Bla i magasinet</h2>
-            <p class="prosess-text" style="max-width:480px; margin-bottom:2.5rem; opacity:0.65;">Den digitale utgaven lar deg bla gjennom alle 18 oppslagene i fullversjon. Bruk piltastene, knappene eller sveip for å navigere. <a href="krit-flipbook.html" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Åpne i fullskjerm →</a></p>
-            <div class="flipbook-wrap" id="flipbook-player">
-              <iframe src="krit-flipbook.html" title="KRIT digital utgave" allowfullscreen
-                style="width:100%; aspect-ratio:1.4133/1; max-height:80vh; border:none; display:block;"></iframe>
-            </div>
-          </div>
-
-          <!-- 01 Resultat -->
-          <div class="case-section" id="resultat">
-            <span class="case-label">01 — Resultat</span>
-            <h2 class="prosess-heading" style="margin-bottom:0.75rem;">Ferdig magasin</h2>
-
-            <div class="masonry-grid">
-              <div class="masonry-col">
-                <div class="masonry-item"><img src="assets/01-mockkrit.webp" alt="Krit mockup 1" loading="lazy"></div>
-                <div class="masonry-item"><img src="assets/02-mockkrit.webp" alt="Krit mockup 2" loading="lazy"></div>
-              </div>
-              <div class="masonry-col masonry-col--offset">
-                <div class="masonry-item"><img src="assets/03-mockkrit.webp" alt="Krit mockup 3" loading="lazy"></div>
-                <div class="masonry-item"><img src="assets/04mag.webp" alt="Krit nr.4" loading="lazy"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- 04a Typografi -->
-          <div class="case-section" id="typografi">
-            <span class="case-label">04 — Typografi</span>
-            <h2 class="prosess-heading" style="margin-bottom:2.5rem;">Self Modern &amp; Avenir</h2>
-
-            <div id="fontvalg">
-              <span class="case-label" style="color:inherit; opacity:0.5;">Fontvalg — Self Modern &amp; Avenir</span>
-
-              <div class="fontvalg-grid">
-
-                <!-- LEFT: Self Modern -->
-                <div>
-                  <div style="padding:2.5rem 0 1.5rem;">
-                    <span style="font-family:'SelfModern',Georgia,serif; font-size:clamp(72px,11vw,120px); line-height:0.88; color:#1a1a1a; -webkit-text-stroke:0.6px #1a1a1a; display:block;">KRIT</span>
-                    <p style="font-size:12px; color:#1a1a1a; opacity:0.45; margin:1.25rem 0 0; letter-spacing:0.04em;">Self Modern Regular — brukes til titler og logotype</p>
-                  </div>
-                  <div style="padding:1.5rem 0; display:flex; align-items:baseline; gap:1.5rem;">
-                    <span style="font-family:'SelfModern',Georgia,serif; font-size:36px; color:#1a1a1a; opacity:0.28; font-weight:400; white-space:nowrap;">KRIT</span>
-                    <span style="font-size:11px; color:#1a1a1a; opacity:0.4; letter-spacing:0.04em;">Sjanger / sekundær info</span>
-                  </div>
-                  <div style="padding:1.5rem 0; display:flex; align-items:center; gap:1.5rem;">
-                    <span style="font-family:'SelfModern',Georgia,serif; font-size:13px; font-weight:700; -webkit-text-stroke:0.3px currentColor; color:#1a1a1a; letter-spacing:0.06em; white-space:nowrap;">KRIT</span>
-                    <span style="font-size:11px; color:#1a1a1a; opacity:0.4; letter-spacing:0.04em;">Innholdsfortegnelse</span>
-                  </div>
-                </div>
-
-                <!-- RIGHT: Avenir -->
-                <div class="fontvalg-avenir">
-                  <div style="padding:2.5rem 0 2rem;">
-                    <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#1a1a1a; margin:0 0 1rem;">Brødtekst</p>
-                    <p style="font-size:13.5px; line-height:1.85; color:#1a1a1a; margin:0;">Mikkels sønn forbi, Mikkel 2. Og også han snudde seg og så mot meg. Det var sånn jeg skjønte at Mikkel 2 var Mikkels sønn. Han her var kanskje femti. Og ikke like kjekk.</p>
-                    <p style="font-size:10px; opacity:0.35; margin:0.85rem 0 0; letter-spacing:0.03em;">Avenir Book — 9,5 pt / 12 pt linjeavstand</p>
-                  </div>
-                  <div style="padding:2rem 0;">
-                    <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#1a1a1a; margin:0 0 1rem;">Sitat (italic)</p>
-                    <p style="font-size:13.5px; line-height:1.85; color:#1a1a1a; font-style:italic; margin:0;">«Baseball, football, basketball – these quintessentially American pastimes are recognizably sports because they involve play: they are games.»</p>
-                    <p style="font-size:10px; opacity:0.35; margin:0.85rem 0 0; letter-spacing:0.03em;">Avenir Book Oblique</p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </div>
-
-          <!-- 04b Farger -->
-          <div class="case-section" id="fargevalg" style="margin-top:5rem;">
-            <span class="case-label">05 — Farger</span>
-            <h2 class="prosess-heading" style="margin-bottom:1.5rem;">Komplementære kontraster</h2>
-            <span class="case-label" style="color:inherit; opacity:0.5;">Fargevalg — Komplementære kontraster</span>
-            <div class="fargevalg-intro" style="margin-top:1rem;">
-              <p>Fargepaletten i hver utgave av KRIT er basert på komplementære eller nærliggende kontraster, med varierende grad av metning og renhet for å justere ønsket intensitet.</p>
-              <p>Dette gir hver utgave et tydelig og selvstendig visuelt uttrykk, samtidig som det overordnede systemet opprettholder en konsistent og gjenkjennelig identitet.</p>
-            </div>
-            <div class="fargevalg-body">
-              <div class="farge-swatches">
-                <div class="farge-col">
-                  <span class="farge-label">Coated</span>
-                  <div class="farge-swatch" style="background:#00BCD0;"></div>
-                  <span class="farge-label">Uncoated</span>
-                  <div class="farge-swatch" style="background:#5BBAC8;"></div>
-                </div>
-                <div class="farge-col">
-                  <span class="farge-label">Coated</span>
-                  <div class="farge-swatch" style="background:#F04C38;"></div>
-                  <span class="farge-label">Uncoated</span>
-                  <div class="farge-swatch" style="background:#D0786A;"></div>
-                </div>
-              </div>
-              <table class="farge-table">
-                <thead>
-                  <tr>
-                    <th></th><th colspan="2">HEX</th><th colspan="3">RGB</th><th colspan="4">CMYK</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="td-chip"><span class="farge-chip" style="background:#00BCD0;"></span></td>
-                    <td colspan="2"><div class="farge-val"><strong>#00BCD0</strong></div></td>
-                    <td><div class="farge-val"><span>R</span><strong>0</strong></div></td>
-                    <td><div class="farge-val"><span>G</span><strong>188</strong></div></td>
-                    <td><div class="farge-val"><span>B</span><strong>208</strong></div></td>
-                    <td><div class="farge-val"><span>C</span><strong>100</strong></div></td>
-                    <td><div class="farge-val"><span>M</span><strong>10</strong></div></td>
-                    <td><div class="farge-val"><span>Y</span><strong>0</strong></div></td>
-                    <td><div class="farge-val"><span>K</span><strong>18</strong></div></td>
-                  </tr>
-                  <tr>
-                    <td class="td-chip"><span class="farge-chip" style="background:#F04C38;"></span></td>
-                    <td colspan="2"><div class="farge-val"><strong>#F04C38</strong></div></td>
-                    <td><div class="farge-val"><span>R</span><strong>240</strong></div></td>
-                    <td><div class="farge-val"><span>G</span><strong>76</strong></div></td>
-                    <td><div class="farge-val"><span>B</span><strong>56</strong></div></td>
-                    <td><div class="farge-val"><span>C</span><strong>0</strong></div></td>
-                    <td><div class="farge-val"><span>M</span><strong>68</strong></div></td>
-                    <td><div class="farge-val"><span>Y</span><strong>77</strong></div></td>
-                    <td><div class="farge-val"><span>K</span><strong>6</strong></div></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <!-- 04c Bildebruk -->
-          <div class="case-section" id="bildebruk" style="margin-top:5rem;">
-            <span class="case-label">06 — System på bildebruk</span>
-            <h2 class="prosess-heading" style="margin-bottom:1.5rem;">Halftone som system</h2>
-            <p class="system-intro" style="margin-top:1rem;">Halftone-effekten er gjennomgående og benyttes på alle bilder for å skape et helhetlig visuelt uttrykk. Fargesystemet og bildesystemet er tett koblet: fargebakgrunnen signaliserer sjanger, mens fargeoverlays i brødtekst skaper variasjon og dybde.</p>
-            <img src="assets/system1.webp" alt="Bildesystem oppslag" class="system-img" loading="lazy">
-            <p class="system-caption"><strong>Oppslag:</strong> Oransje brukes som bakgrunn for litterær tekst og essay, mens blå benyttes bak kritikk. Dette bidrar til å differensiere innholdstypene visuelt.</p>
-            <img src="assets/system2.webp" alt="Bildesystem brødtekst" class="system-img" loading="lazy">
-            <p class="system-caption"><strong>I brødtekst:</strong> Primærfargene legges over bildene med redusert opasitet for å skape variasjon, dybde og et mer dynamisk uttrykk.</p>
-          </div>
-
-          <!-- 03 Prosess -->
-          <div class="prosess-section case-section" id="prosess">
-            <span class="case-label">02 — Prosess</span>
-            <h2 class="prosess-heading">Fra kaos til system</h2>
-            <div class="prosess-row">
-              <img src="assets/prosess-gul-krit.webp" alt="Tidlige skisser – Krit" loading="lazy">
-              <div class="prosess-row__text">
-                <p class="prosess-text">Uttrykket manglet en tydelig struktur og fremstod fragmentert. Flere ulike visuelle grep ble brukt om hverandre – varierende fontvekter, fotografier i svart-hvitt og med fargefiltre, samt innslag av illustrasjon – uten at de var forankret i et helhetlig system.</p>
-              </div>
-            </div>
-
-            <span class="case-label" style="display:block; margin-top:3rem; margin-bottom:1.5rem; color:inherit; opacity:0.5;">Fontvalg i prosess — Jambore</span>
-            <div class="prosess-images" style="margin-bottom:4rem;">
-              <img src="assets/kritprosblaarosa.webp" alt="Tidlig versjon – blå og rosa" loading="lazy">
-              <img src="assets/kritprosgul.webp" alt="Tidlig versjon – gul" loading="lazy">
-              <img src="assets/kritprosrosa.webp" alt="Tidlig versjon – rosa" loading="lazy">
-            </div>
-            <div class="prosess-jambore-body" style="margin-top:2.5rem;">
-              <p class="prosess-text">Jeg brukte tid før jeg valgte å gå bort fra Jambore-fonten. Det organiske og menneskelige uttrykket traff godt det personlige og kroppslige innholdet i magasinets tekster. I tillegg oppsto det en interessant kobling mellom prosjektet og fontens designer, Tom Chalky, som ga konseptet en ekstra, subtil dimensjon. Samtidig viste det seg at fonten hadde begrenset lesbarhet i større tekstgrader, spesielt i overskrifter. Den ga også logoen et uttrykk som ble for lekent og uformelt i møte med det redaksjonelle innholdet. Valget om å gå bort fra Jambore handlet derfor om å prioritere bedre lesbarhet og et mer presist, helhetlig visuelt uttrykk.</p>
-            </div>
-          </div>
-
-          <!-- 01 Konsept -->
-          <div class="case-section" id="konsept">
-            <span class="case-label">03 — Konsept</span>
-            <h2 class="prosess-heading">Kontrasten som system</h2>
-            <div class="jambore-text" style="margin-bottom:1.5rem;">
-              <p class="prosess-text">Designkonseptet tar utgangspunkt i kontrasten mellom det strukturerte og det ekspressive. Et strengt gridbasert oppsett brytes bevisst av visuelle grep som halftone-raster, sterke primærfarger og store typografiske kontraster.</p>
-              <p class="prosess-text">Målet var ikke bare å lage et magasin som ser bra ut – men et visuelt system som holder over tid. Hvert designvalg ble begrunnet ut fra innholdet det skulle formidle.</p>
-            </div>
-            <blockquote class="case-insight">Designet skal forsterke stemningen i tekstene – ikke konkurrere med dem.</blockquote>
-          </div>
-
-          <!-- 07 Refleksjon -->
-          <div class="case-section" id="refleksjon" style="margin-top:1.5rem;">
-            <span class="case-label">07 — Refleksjon</span>
-            <h2 class="prosess-heading" style="margin-bottom:1.25rem;">Hva lærte jeg?</h2>
-            <div class="refleksjon-body">
-              <p>Gjennom arbeidet med tidsskriftet lærte jeg hvor viktig det er å balansere et <strong>sterkt visuelt uttrykk</strong> med god <strong>lesbarhet</strong>. Jeg ønsket å skape et tidsskrift med tydelig karakter, inspirert av kritikk, kropp, kultur og fysisk erfaring. Bruken av kontraster, halvtonebilder og store typografiske grep bidro til et uttrykk som føles energisk og særegent.</p>
-              <p>Samtidig ser jeg i etterkant at enkelte oppslag kunne hatt en roligere struktur. Noen steder blir uttrykket så visuelt aktivt at det kan konkurrere med teksten. Jeg kunne derfor jobbet mer med <strong>luft, marger og tydeligere hierarki</strong>, spesielt på sider med mye brødtekst. Dette ville gjort leseropplevelsen mer <strong>balansert</strong> og gitt de eksperimentelle sidene enda større effekt.</p>
-              <p>Jeg lærte også at et godt tidsskrift ikke bare handler om enkeltoppslag, men om <strong>rytmen gjennom hele publikasjonen</strong>. Variasjonen mellom rolige tekstsider og mer uttrykksfulle bildesider er viktig for at magasinet skal oppleves <strong>helhetlig</strong>. Videre ville jeg vært mer konsekvent med typografiske detaljer, bildetekster og plassering av enkelte elementer for å styrke den redaksjonelle profesjonaliteten.</p>
-              <p>Alt i alt har prosjektet lært meg å være modigere visuelt, men også mer kritisk til når et designgrep faktisk <strong>støtter innholdet</strong>, og når det først og fremst blir <strong>dekorativt</strong>.</p>
-            </div>
-          </div>
-
-          <!-- Project info row -->
-          <div class="project-info-row" style="margin-top:5rem; padding-top:2rem; border-top:1px solid rgba(0,0,0,0.1);">
-            <div class="project-info-item">
-              <span class="project-info__key">Fag</span>
-              <span class="project-info__val">IDG3013</span>
-            </div>
-            <div class="project-info-item">
-              <span class="project-info__key">År</span>
-              <span class="project-info__val">2026</span>
-            </div>
-            <div class="project-info-item">
-              <span class="project-info__key">Format</span>
-              <span class="project-info__val">US Letter</span>
-            </div>
-            <div class="project-info-item">
-              <span class="project-info__key">Rolle</span>
-              <span class="project-info__val">Designer</span>
-            </div>
-            <div class="project-info-item">
-              <span class="project-info__key">Faglærer</span>
-              <span class="project-info__val">Martin Asbjørnsen</span>
-            </div>
-          </div>
-
+    <div class="proj-meta-row">
+      <div class="proj-meta-fields">
+        <div>
+          <span class="proj-meta-label">Emne</span>
+          <span class="proj-meta-value">Redaksjonell design</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">Type prosjekt</span>
+          <span class="proj-meta-value">Tidsskrift</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">Veileder</span>
+          <span class="proj-meta-value">Martin Asbjørnsen</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">Dato</span>
+          <span class="proj-meta-value">Høst 2025</span>
         </div>
       </div>
-    </article>
+      <a class="proj-prosess-btn" href="./tidsskrift-prosess.html">Se prosess →</a>
+    </div>
+
+    <p class="proj-description">KRIT er et litteraturtidsskrift designet for å gi tekster en tydelig og helhetlig visuell identitet. Prosjektet utforsker hvordan redaksjonell design kan løfte innholdet – og ikke bare ramme det inn. Designkonseptet tar utgangspunkt i kontrasten mellom det strukturerte og det ekspressive.</p>
+
+    <div class="proj-dark">
+      <img class="proj-dark__img" src="assets/krit1.webp" alt="KRIT magasin showcase" loading="lazy">
+      <a class="proj-dark__link" href="krit-flipbook.html" target="_blank" rel="noopener">Bla i digital utgave →</a>
+    </div>
+
+    <div class="proj-gallery">
+      <div class="proj-gallery__item"><img src="assets/01-mockkrit.webp" alt="KRIT mockup 1" loading="lazy"></div>
+      <div class="proj-gallery__item"><img src="assets/02-mockkrit.webp" alt="KRIT mockup 2" loading="lazy"></div>
+      <div class="proj-gallery__item"><img src="assets/03-mockkrit.webp" alt="KRIT mockup 3" loading="lazy" style="object-position:center 70%;"></div>
+      <div class="proj-gallery__item"><img src="assets/04mag.webp" alt="KRIT nr.4" loading="lazy"></div>
+    </div>
+
+    <!-- Digital utgave -->
+    <section class="proj-section reveal" id="digital-utgave">
+      <span class="proj-section__label">Digital utgave</span>
+      <h2 class="proj-section__heading">Bla i magasinet</h2>
+      <p style="max-width:520px; font-size:15px; line-height:1.7; margin-bottom:2rem; color:rgba(0,0,0,0.65);">Den digitale utgaven lar deg bla gjennom alle 18 oppslagene i fullversjon. Bruk piltastene, knappene eller sveip for å navigere. <a href="krit-flipbook.html" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Åpne i fullskjerm →</a></p>
+      <iframe src="krit-flipbook.html" title="KRIT digital utgave" allowfullscreen style="width:100%; aspect-ratio:1.4133/1; max-height:80vh; border:none; display:block;"></iframe>
+    </section>
+
+    <!-- Typografi -->
+    <section class="proj-section reveal" id="typografi">
+      <span class="proj-section__label">Typografi</span>
+      <h2 class="proj-section__heading">Self Modern &amp; Avenir</h2>
+      <div class="fontvalg-grid">
+        <div>
+          <div style="padding:2.5rem 0 1.5rem;">
+            <span style="font-family:'SelfModern',Georgia,serif; font-size:clamp(72px,11vw,120px); line-height:0.88; color:#1a1a1a; -webkit-text-stroke:0.6px #1a1a1a; display:block;">KRIT</span>
+            <p style="font-size:12px; color:#1a1a1a; opacity:0.45; margin:1.25rem 0 0; letter-spacing:0.04em;">Self Modern Regular — brukes til titler og logotype</p>
+          </div>
+          <div style="padding:1.5rem 0; display:flex; align-items:baseline; gap:1.5rem;">
+            <span style="font-family:'SelfModern',Georgia,serif; font-size:36px; color:#1a1a1a; opacity:0.28; font-weight:400; white-space:nowrap;">KRIT</span>
+            <span style="font-size:11px; color:#1a1a1a; opacity:0.4; letter-spacing:0.04em;">Sjanger / sekundær info</span>
+          </div>
+          <div style="padding:1.5rem 0; display:flex; align-items:center; gap:1.5rem;">
+            <span style="font-family:'SelfModern',Georgia,serif; font-size:13px; font-weight:700; -webkit-text-stroke:0.3px currentColor; color:#1a1a1a; letter-spacing:0.06em; white-space:nowrap;">KRIT</span>
+            <span style="font-size:11px; color:#1a1a1a; opacity:0.4; letter-spacing:0.04em;">Innholdsfortegnelse</span>
+          </div>
+        </div>
+        <div class="fontvalg-avenir">
+          <div style="padding:2.5rem 0 2rem;">
+            <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#1a1a1a; margin:0 0 1rem;">Brødtekst</p>
+            <p style="font-size:13.5px; line-height:1.85; color:#1a1a1a; margin:0;">Mikkels sønn forbi, Mikkel 2. Og også han snudde seg og så mot meg. Det var sånn jeg skjønte at Mikkel 2 var Mikkels sønn. Han her var kanskje femti. Og ikke like kjekk.</p>
+            <p style="font-size:10px; opacity:0.35; margin:0.85rem 0 0; letter-spacing:0.03em;">Avenir Book — 9,5 pt / 12 pt linjeavstand</p>
+          </div>
+          <div style="padding:2rem 0;">
+            <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#1a1a1a; margin:0 0 1rem;">Sitat (italic)</p>
+            <p style="font-size:13.5px; line-height:1.85; color:#1a1a1a; font-style:italic; margin:0;">«Baseball, football, basketball – these quintessentially American pastimes are recognizably sports because they involve play: they are games.»</p>
+            <p style="font-size:10px; opacity:0.35; margin:0.85rem 0 0; letter-spacing:0.03em;">Avenir Book Oblique</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Farger -->
+    <section class="proj-section reveal" id="fargevalg">
+      <span class="proj-section__label">Farger</span>
+      <h2 class="proj-section__heading">Komplementære kontraster</h2>
+      <div class="fargevalg-intro">
+        <p>Fargepaletten i hver utgave av KRIT er basert på komplementære eller nærliggende kontraster, med varierende grad av metning og renhet for å justere ønsket intensitet.</p>
+        <p>Dette gir hver utgave et tydelig og selvstendig visuelt uttrykk, samtidig som det overordnede systemet opprettholder en konsistent og gjenkjennelig identitet.</p>
+      </div>
+      <div class="fargevalg-body">
+        <div class="farge-swatches">
+          <div class="farge-col">
+            <span class="farge-label">Coated</span>
+            <div class="farge-swatch" style="background:#00BCD0;"></div>
+            <span class="farge-label">Uncoated</span>
+            <div class="farge-swatch" style="background:#5BBAC8;"></div>
+          </div>
+          <div class="farge-col">
+            <span class="farge-label">Coated</span>
+            <div class="farge-swatch" style="background:#F04C38;"></div>
+            <span class="farge-label">Uncoated</span>
+            <div class="farge-swatch" style="background:#D0786A;"></div>
+          </div>
+        </div>
+        <table class="farge-table">
+          <thead>
+            <tr><th></th><th colspan="2">HEX</th><th colspan="3">RGB</th><th colspan="4">CMYK</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="td-chip"><span class="farge-chip" style="background:#00BCD0;"></span></td>
+              <td colspan="2"><div class="farge-val"><strong>#00BCD0</strong></div></td>
+              <td><div class="farge-val"><span>R</span><strong>0</strong></div></td>
+              <td><div class="farge-val"><span>G</span><strong>188</strong></div></td>
+              <td><div class="farge-val"><span>B</span><strong>208</strong></div></td>
+              <td><div class="farge-val"><span>C</span><strong>100</strong></div></td>
+              <td><div class="farge-val"><span>M</span><strong>10</strong></div></td>
+              <td><div class="farge-val"><span>Y</span><strong>0</strong></div></td>
+              <td><div class="farge-val"><span>K</span><strong>18</strong></div></td>
+            </tr>
+            <tr>
+              <td class="td-chip"><span class="farge-chip" style="background:#F04C38;"></span></td>
+              <td colspan="2"><div class="farge-val"><strong>#F04C38</strong></div></td>
+              <td><div class="farge-val"><span>R</span><strong>240</strong></div></td>
+              <td><div class="farge-val"><span>G</span><strong>76</strong></div></td>
+              <td><div class="farge-val"><span>B</span><strong>56</strong></div></td>
+              <td><div class="farge-val"><span>C</span><strong>0</strong></div></td>
+              <td><div class="farge-val"><span>M</span><strong>68</strong></div></td>
+              <td><div class="farge-val"><span>Y</span><strong>77</strong></div></td>
+              <td><div class="farge-val"><span>K</span><strong>6</strong></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Bildebruk -->
+    <section class="proj-section reveal" id="bildebruk">
+      <span class="proj-section__label">System på bildebruk</span>
+      <h2 class="proj-section__heading">Halftone som system</h2>
+      <p class="system-intro">Halftone-effekten er gjennomgående og benyttes på alle bilder for å skape et helhetlig visuelt uttrykk. Fargesystemet og bildesystemet er tett koblet: fargebakgrunnen signaliserer sjanger, mens fargeoverlays i brødtekst skaper variasjon og dybde.</p>
+      <img src="assets/system1.webp" alt="Bildesystem oppslag" class="system-img" loading="lazy">
+      <p class="system-caption"><strong>Oppslag:</strong> Oransje brukes som bakgrunn for litterær tekst og essay, mens blå benyttes bak kritikk. Dette bidrar til å differensiere innholdstypene visuelt.</p>
+      <img src="assets/system2.webp" alt="Bildesystem brødtekst" class="system-img" loading="lazy">
+      <p class="system-caption"><strong>I brødtekst:</strong> Primærfargene legges over bildene med redusert opasitet for å skape variasjon, dybde og et mer dynamisk uttrykk.</p>
+    </section>
+
+    <!-- Prosess -->
+    <section class="proj-section reveal" id="prosess">
+      <span class="proj-section__label">Prosess</span>
+      <h2 class="proj-section__heading">Fra kaos til system</h2>
+      <div class="prosess-row">
+        <img src="assets/prosess-gul-krit.webp" alt="Tidlige skisser – Krit" loading="lazy">
+        <div class="prosess-row__text">
+          <p class="prosess-text">Uttrykket manglet en tydelig struktur og fremstod fragmentert. Flere ulike visuelle grep ble brukt om hverandre – varierende fontvekter, fotografier i svart-hvitt og med fargefiltre, samt innslag av illustrasjon – uten at de var forankret i et helhetlig system.</p>
+        </div>
+      </div>
+      <p style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:rgba(0,0,0,0.38); display:block; margin:1rem 0 1.5rem;">Fontvalg i prosess — Jambore</p>
+      <div class="prosess-images" style="margin-bottom:4rem;">
+        <img src="assets/kritprosblaarosa.webp" alt="Tidlig versjon – blå og rosa" loading="lazy">
+        <img src="assets/kritprosgul.webp" alt="Tidlig versjon – gul" loading="lazy">
+        <img src="assets/kritprosrosa.webp" alt="Tidlig versjon – rosa" loading="lazy">
+      </div>
+      <p class="prosess-text">Jeg brukte tid før jeg valgte å gå bort fra Jambore-fonten. Det organiske og menneskelige uttrykket traff godt det personlige og kroppslige innholdet i magasinets tekster. I tillegg oppsto det en interessant kobling mellom prosjektet og fontens designer, Tom Chalky, som ga konseptet en ekstra, subtil dimensjon. Samtidig viste det seg at fonten hadde begrenset lesbarhet i større tekstgrader, spesielt i overskrifter. Den ga også logoen et uttrykk som ble for lekent og uformelt i møte med det redaksjonelle innholdet. Valget om å gå bort fra Jambore handlet derfor om å prioritere bedre lesbarhet og et mer presist, helhetlig visuelt uttrykk.</p>
+      <div style="margin-top:4rem;">
+        <div class="jambore-text" style="margin-bottom:1.5rem;">
+          <p class="prosess-text">Designkonseptet tar utgangspunkt i kontrasten mellom det strukturerte og det ekspressive. Et strengt gridbasert oppsett brytes bevisst av visuelle grep som halftone-raster, sterke primærfarger og store typografiske kontraster.</p>
+          <p class="prosess-text">Målet var ikke bare å lage et magasin som ser bra ut – men et visuelt system som holder over tid. Hvert designvalg ble begrunnet ut fra innholdet det skulle formidle.</p>
+        </div>
+        <blockquote class="case-insight">Designet skal forsterke stemningen i tekstene – ikke konkurrere med dem.</blockquote>
+      </div>
+    </section>
+
+    <!-- Refleksjon -->
+    <section class="proj-section reveal" id="refleksjon">
+      <span class="proj-section__label">Refleksjon</span>
+      <h2 class="proj-section__heading">Hva lærte jeg?</h2>
+      <div class="refleksjon-body">
+        <p>Gjennom arbeidet med tidsskriftet lærte jeg hvor viktig det er å balansere et <strong>sterkt visuelt uttrykk</strong> med god <strong>lesbarhet</strong>. Jeg ønsket å skape et tidsskrift med tydelig karakter, inspirert av kritikk, kropp, kultur og fysisk erfaring. Bruken av kontraster, halvtonebilder og store typografiske grep bidro til et uttrykk som føles energisk og særegent.</p>
+        <p>Samtidig ser jeg i etterkant at enkelte oppslag kunne hatt en roligere struktur. Noen steder blir uttrykket så visuelt aktivt at det kan konkurrere med teksten. Jeg kunne derfor jobbet mer med <strong>luft, marger og tydeligere hierarki</strong>, spesielt på sider med mye brødtekst. Dette ville gjort leseropplevelsen mer <strong>balansert</strong> og gitt de eksperimentelle sidene enda større effekt.</p>
+        <p>Jeg lærte også at et godt tidsskrift ikke bare handler om enkeltoppslag, men om <strong>rytmen gjennom hele publikasjonen</strong>. Variasjonen mellom rolige tekstsider og mer uttrykksfulle bildesider er viktig for at magasinet skal oppleves <strong>helhetlig</strong>. Videre ville jeg vært mer konsekvent med typografiske detaljer, bildetekster og plassering av enkelte elementer for å styrke den redaksjonelle profesjonaliteten.</p>
+        <p>Alt i alt har prosjektet lært meg å være modigere visuelt, men også mer kritisk til når et designgrep faktisk <strong>støtter innholdet</strong>, og når det først og fremst blir <strong>dekorativt</strong>.</p>
+      </div>
+    </section>
+
+    <div class="proj-adjacent">
+      <a class="proj-adjacent__link" href="./reina-fruktgard.html">← Gå til Reina Fruktgård</a>
+      <a class="proj-adjacent__link" href="./flerkanalspublisering.html">Gå til Flerkanalspublisering →</a>
+    </div>
+
   </main>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Smooth scroll for nav links
-    document.querySelectorAll('.krit-nav__link').forEach(link => {
-      link.addEventListener('click', e => {
-        const target = document.querySelector(link.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        const top = target.getBoundingClientRect().top + window.scrollY - 32;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
+    var header = document.getElementById('projHeader');
+    var toggle = document.getElementById('projToggle');
+    toggle.addEventListener('click', function() {
+      var open = header.classList.toggle('proj-header--open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target)) {
+        header.classList.remove('proj-header--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
     });
 
-    // Masonry scroll reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          const items = entry.target.closest('.masonry-col').querySelectorAll('.masonry-item');
-          const idx = Array.from(items).indexOf(entry.target);
-          setTimeout(() => entry.target.classList.add('is-visible'), idx * 120);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.masonry-item').forEach(el => observer.observe(el));
-
-    // Section scroll reveal
-    const revealObs = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('is-visible'), 60);
+          entry.target.classList.add('is-visible');
           revealObs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.case-section, .prosess-row, .krit-intro, .refleksjon-body').forEach(el => {
-      el.classList.add('reveal');
-      revealObs.observe(el);
-    });
-
-    // Lightbox
-    const lb = document.createElement('div');
-    lb.id = 'krit-lb';
-    lb.style.cssText = 'display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);cursor:zoom-out;align-items:center;justify-content:center;';
-    lb.innerHTML = '<img id="krit-lb-img" style="max-width:92vw;max-height:92vh;object-fit:contain;pointer-events:none;">';
-    document.body.appendChild(lb);
-
-    document.querySelectorAll('.masonry-item img').forEach(img => {
-      img.style.cursor = 'zoom-in';
-      img.addEventListener('click', () => {
-        document.getElementById('krit-lb-img').src = img.src;
-        lb.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      });
-    });
-
-    lb.addEventListener('click', () => {
-      lb.style.display = 'none';
-      document.body.style.overflow = '';
-    });
-
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') { lb.style.display = 'none'; document.body.style.overflow = ''; }
-    });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
   </script>
 </body>
 </html>

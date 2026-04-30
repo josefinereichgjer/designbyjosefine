@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="format-detection" content="telephone=no">
+  <title>KRIT Prosess — Josefine RG</title>
+  <link rel="stylesheet" href="./styles.css?v=31" />
+  <link rel="icon" href="assets/hvitlogo.webp">
+  <style>
+    html { scroll-behavior: smooth; }
+    .prosess-phase {
+      padding-bottom: 4rem;
+      margin-bottom: 4rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .prosess-phase:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
+    .prosess-placeholder {
+      font-size: 15px;
+      line-height: 1.78;
+      color: rgba(0,0,0,0.35);
+      font-style: italic;
+      max-width: 680px;
+    }
+    .prosess-phase .proj-section__heading {
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINÉ RG</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link proj-header__link--active" href="./projects.html">Prosjekter</a>
+        <a class="proj-header__link" href="./projects.html#about">Om meg</a>
+        <a class="proj-header__link" href="./projects.html#contact">Kontakt</a>
+      </nav>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="proj-main">
+
+    <div class="proj-breadcrumb">
+      <a href="./projects.html">Prosjekter</a><span class="proj-breadcrumb__sep">›</span><a href="./tidsskrift.html">KRIT</a><span class="proj-breadcrumb__sep">›</span>Prosess
+    </div>
+
+    <section class="proj-hero">
+      <div class="proj-hero__left">
+        <h1 class="proj-hero__title">Litteratur<br>tidsskrift</h1>
+        <p class="proj-hero__sub" style="color:#1a1a1a; opacity:0.85; letter-spacing:0.18em; font-weight:500; margin-top:0.4rem;">PROSESS</p>
+      </div>
+      <div class="proj-hero__right" style="flex-direction:column; align-items:flex-start; justify-content:center; gap:0;">
+        <p style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.35); margin:0 0 1rem;">Prosessfaser</p>
+        <p style="font-family:'SelfModern',Georgia,serif; font-size:clamp(20px,2.4vw,30px); line-height:1.65; color:#1a1a1a; margin:0;">
+          01. Problem<br>
+          02. Innsikt &amp; idé<br>
+          03. Iterasjon<br>
+          04. Løsning
+        </p>
+      </div>
+    </section>
+
+    <section class="proj-section" id="prosess-faser">
+      <div class="prosess-phase" id="problem">
+        <span class="proj-section__label">01</span>
+        <h2 class="proj-section__heading">Problem</h2>
+        <p class="prosess-placeholder">Innhold kommer snart.</p>
+      </div>
+      <div class="prosess-phase" id="innsikt">
+        <span class="proj-section__label">02</span>
+        <h2 class="proj-section__heading">Innsikt &amp; idé</h2>
+        <p class="prosess-placeholder">Innhold kommer snart.</p>
+      </div>
+      <div class="prosess-phase" id="iterasjon">
+        <span class="proj-section__label">03</span>
+        <h2 class="proj-section__heading">Iterasjon</h2>
+        <p class="prosess-placeholder">Innhold kommer snart.</p>
+      </div>
+      <div class="prosess-phase" id="losning">
+        <span class="proj-section__label">04</span>
+        <h2 class="proj-section__heading">Løsning</h2>
+        <p class="prosess-placeholder">Innhold kommer snart.</p>
+      </div>
+    </section>
+
+    <div class="proj-adjacent" style="justify-content:flex-start;">
+      <a class="proj-adjacent__link" href="./tidsskrift.html">← Gå tilbake til KRIT</a>
+    </div>
+
+  </main>
+
+  <script>
+    var header = document.getElementById('projHeader');
+    var toggle = document.getElementById('projToggle');
+    toggle.addEventListener('click', function() {
+      var open = header.classList.toggle('proj-header--open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target)) {
+        header.classList.remove('proj-header--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+</body>
+</html>
