@@ -2659,16 +2659,16 @@ a:hover{opacity:.75}
   flex-wrap: wrap;
 }
 .proj-meta-label {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(0,0,0,0.38);
   display: block;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 .proj-meta-value {
   font-family: "Romie", "Playfair Display", Georgia, serif;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 400;
   color: #1a1a1a;
 }
