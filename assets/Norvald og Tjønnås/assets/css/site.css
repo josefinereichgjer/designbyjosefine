@@ -35,9 +35,10 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; overflow-x: hidden; }
+html { background: #c8c8c8; }
 body {
   font-family: var(--ui);
-  background: var(--cream);
+  background: transparent;
   color: var(--ink-2);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -56,6 +57,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   max-width: 1520px;
   width: 100%;
   margin: 0 auto;
+  background: var(--cream);
 }
 
 /* ---------- Sidebar ---------- */
