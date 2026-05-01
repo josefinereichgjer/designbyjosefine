@@ -49,9 +49,11 @@
 *{box-sizing:border-box}
 button{color:inherit; font-family:inherit; background:none; border:none; padding:0; cursor:pointer; border-radius:0; -webkit-appearance:none; appearance:none; -webkit-tap-highlight-color:transparent}
 html{scrollbar-gutter:stable; overflow-x:clip; overflow-y:scroll}
+html { background: #c8c8c8; }
 body{min-height:100vh; overflow-x:hidden}
 body{
-  margin:0;
+  margin:0 auto;
+  max-width:1440px;
   font-family:var(--font);
   background:var(--bg);
   color:var(--text);
