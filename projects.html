@@ -123,26 +123,21 @@
 <body>
   <a class="skip-link" href="#content">Hopp til innhold</a>
 
-  <header class="sidebar" id="sidebar">
-    <div class="sidebar__inner">
-      <a class="back-btn" href="./index.html" aria-label="Tilbake til forsiden"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-
-      <nav class="nav" aria-label="Primary">
-        <a class="nav__link" href="./index.html"><span>Hjem</span></a>
-        <a class="nav__link" href="#work"><span>Arbeider</span></a>
-        <a class="nav__link" href="#about"><span>Om meg</span></a>
-        <a class="nav__link nav__link--personal" href="./personal.html"><span>Personlige prosjekter</span></a>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link" href="#work">Arbeider</a>
+        <a class="proj-header__link" href="#about">Om meg</a>
+        <a class="proj-header__link" href="#contact">Kontakt</a>
       </nav>
-
-      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar" aria-label="Meny">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
-  <main id="content" class="content">
+  <main id="content" class="content" style="margin-left:0; padding-top:80px;">
 
     <section id="work" class="section">
       <div class="grid-header">
@@ -236,13 +231,16 @@
         }
       }
 
-      // Close nav when clicking outside (app.js handles the toggle itself)
-      var sidebar = document.getElementById('sidebar');
-      var toggle  = document.getElementById('sidebarToggle');
-      document.addEventListener('click', function (e) {
-        if (sidebar && !sidebar.contains(e.target)) {
-          sidebar.classList.remove('sidebar--open');
-          if (toggle) toggle.setAttribute('aria-expanded', 'false');
+      var header = document.getElementById('projHeader');
+      var toggle = document.getElementById('projToggle');
+      toggle.addEventListener('click', function() {
+        var open = header.classList.toggle('proj-header--open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      document.addEventListener('click', function(e) {
+        if (!header.contains(e.target)) {
+          header.classList.remove('proj-header--open');
+          toggle.setAttribute('aria-expanded', 'false');
         }
       });
     });
