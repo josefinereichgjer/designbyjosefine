@@ -228,7 +228,16 @@
 
         <!-- SITEMAP -->
         <div class="proj-section proj-section--none" style="padding-top:0">
-          <img src="./assets/prosess/sitemap.png" alt="Sitemap — Emanuel Viegeland Museum" style="width:100%; display:block;" loading="lazy">
+          <div style="position:relative; max-width:680px; margin:0 auto;">
+            <div id="sitemapScroll" style="overflow-x:hidden; scroll-behavior:smooth; cursor:grab;">
+              <img src="./assets/prosess/sitemap.png" alt="Sitemap — Emanuel Viegeland Museum" style="display:block; width:100%; height:auto;" loading="lazy">
+            </div>
+            <div style="display:flex; justify-content:center; align-items:center; gap:16px; margin-top:14px;">
+              <button id="sitemapPrev" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #ccc;background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0.3;">←</button>
+              <span id="sitemapCounter" style="font-size:12px;color:#999;letter-spacing:.05em;min-width:36px;text-align:center;">1 / 2</span>
+              <button id="sitemapNext" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #ccc;background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">→</button>
+            </div>
+          </div>
         </div>
 
         <!-- PERSONAS -->
@@ -297,6 +306,36 @@
 
   <script src="./projects.js?v=6"></script>
   <script>
+    // Sitemap pan — reveals top then bottom half of the image
+    (function() {
+      var scroll = document.getElementById('sitemapScroll');
+      var prev = document.getElementById('sitemapPrev');
+      var next = document.getElementById('sitemapNext');
+      var counter = document.getElementById('sitemapCounter');
+      var pos = 0;
+      var total = 2;
+
+      function update() {
+        var img = scroll.querySelector('img');
+        var halfH = img.offsetHeight / 2;
+        scroll.style.maxHeight = halfH + 'px';
+        scroll.style.transition = 'max-height 0s';
+        scroll.style.overflow = 'hidden';
+        img.style.marginTop = pos === 0 ? '0' : '-' + halfH + 'px';
+        img.style.transition = 'margin-top .4s cubic-bezier(.4,0,.2,1)';
+        counter.textContent = (pos + 1) + ' / ' + total;
+        prev.style.opacity = pos === 0 ? '0.3' : '1';
+        next.style.opacity = pos === total - 1 ? '0.3' : '1';
+      }
+
+      prev.addEventListener('click', function() { if (pos > 0) { pos--; update(); } });
+      next.addEventListener('click', function() { if (pos < total - 1) { pos++; update(); } });
+
+      var img = scroll.querySelector('img');
+      if (img.complete) { update(); }
+      else { img.addEventListener('load', update); }
+    })();
+
     var header = document.getElementById('projHeader');
     var toggle = document.getElementById('projToggle');
     toggle.addEventListener('click', function() {
