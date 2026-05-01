@@ -2613,7 +2613,7 @@ a:hover{opacity:.75}
   font-family: "Romie", "Playfair Display", Georgia, serif;
   font-weight: 400;
   font-size: clamp(36px, 6.5vw, 96px);
-  line-height: 0.94;
+  line-height: 1.15;
   letter-spacing: -0.01em;
   color: #1a1a1a;
   margin: 0 0 1.25rem;
