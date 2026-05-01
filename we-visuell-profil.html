@@ -43,7 +43,7 @@
     /* ── mønster two-column layout ── */
     .we-monster-layout{ display:flex; gap:clamp(32px,5vw,72px); align-items:flex-start; margin-top:8px; }
     .we-monster-imgs{ display:flex; gap:clamp(24px,4vw,48px); flex-shrink:0; }
-    .we-monster-img{ width:min(180px,22vw); height:auto; display:block; animation: we-spin 18s linear infinite; }
+    .we-monster-img{ width:min(240px,28vw); height:auto; display:block; animation: we-spin 18s linear infinite; }
     .we-monster-img:nth-child(2){ animation-direction: reverse; animation-duration: 24s; }
     @keyframes we-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
     .we-monster-text{ flex:1 1 0; font-size:var(--type-body-lg); line-height:var(--lh-body); color:#444; margin:0; min-width:0; }
@@ -363,11 +363,37 @@
     .we-swatch:hover { 
       transform: translateY(-5px); 
     }
-    .we-swatch__color { height: 80px; border-radius: 4px; cursor: pointer; }
+    .we-swatch__color { height: 140px; border-radius: 4px; cursor: pointer; }
     .we-swatch__info { padding: 12px 0 0; }
     .we-swatch__hex { font-size: 13px; font-weight: 600; display: block; }
     .we-swatch__name { font-size: 11px; color: #767676; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; display: block; }
     .we-swatch__use { font-size: 12px; color: #555; display: block; margin-top: 6px; line-height: 1.45; }
+
+    /* Oppdragsgiver split */
+    .we-oppdrag-split { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: center; margin-bottom: 48px; }
+    .we-oppdrag-split img { width: 100%; height: auto; display: block; }
+    .we-oppdrag-text h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 16px; }
+    .we-oppdrag-text p { font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 20px; }
+    .we-oppdrag-text blockquote { font-style: italic; font-size: 19px; line-height: 1.6; color: #444; border-left: 3px solid #5b3fa6; padding-left: 16px; margin: 0 0 16px; }
+    .we-oppdrag-names { display: flex; justify-content: space-between; font-size: 13px; color: #888; font-family: 'IBM Plex Sans', sans-serif; padding-left: 19px; }
+    @media (max-width: 700px) { .we-oppdrag-split { grid-template-columns: 1fr; } }
+
+    /* Designretning grid */
+    .we-retning-grid { display: flex; flex-direction: column; gap: 24px; margin-top: 16px; }
+    .we-rg-full { width: 100%; height: auto; display: block; }
+    .we-rg-banner { width: 100%; height: auto; display: block; align-self: flex-start; }
+    .we-rg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .we-rg-row--3 { grid-template-columns: repeat(3, 1fr); }
+    .we-rg-row img { width: 100%; height: auto; display: block; object-fit: cover; }
+    .we-rg-row--cards img { height: 440px; object-fit: cover; }
+    .we-rg-row--insta img { height: 360px; object-fit: cover; }
+    .we-rg-captioned { display: flex; flex-direction: column; gap: 6px; }
+    .we-rg-captioned img { width: 100%; height: auto; display: block; object-fit: cover; }
+    .we-rg-caption { font-size: 12px; color: #888; font-family: 'IBM Plex Sans', sans-serif; }
+    @media (max-width: 600px) {
+      .we-rg-row { grid-template-columns: 1fr; }
+      .we-rg-row--3 { grid-template-columns: 1fr 1fr; }
+    }
 
     /* Stagger entrance */
     @keyframes we-stagger-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
@@ -499,15 +525,15 @@
     .we-site-hscroll:active { cursor: grabbing; }
     
     .we-design-showcase { display: contents; }
-    .we-design-showcase__laptop { margin: 0; padding: 0; }
+    .we-design-showcase__laptop { margin: 0 auto; padding: 0; max-width: 70%; }
     .we-design-showcase__laptop img { width: 100%; display: block; border-radius: 8px; }
     
     /* Instagram Stories */
     .we-design-showcase__stories { display: flex; gap: 2px; padding-top: 2px; overflow-x: auto; -webkit-overflow-scrolling: touch; scroll-snap-type: x mandatory; cursor: grab; scrollbar-width: none; }
     .we-design-showcase__stories::-webkit-scrollbar { display: none; }
     .we-design-showcase__stories:active { cursor: grabbing; }
-    .we-design-showcase__stories img { flex: 0 0 auto; height: 540px; width: auto; display: block; scroll-snap-align: start; border-radius: 8px; }
-    .we-stories-dots { display: flex; gap: 8px; justify-content: center; margin-top: 24px; margin-bottom: 140px; }
+    .we-design-showcase__stories img { flex: 0 0 auto; height: 380px; width: auto; display: block; scroll-snap-align: start; border-radius: 8px; }
+    .we-stories-dots { display: flex; gap: 8px; justify-content: center; margin-top: 24px; margin-bottom: 56px; }
     .we-stories-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
     .we-stories-dot.is-active { background: #6868b2; }
 
@@ -517,16 +543,16 @@
     .we-print-row:active { cursor: grabbing; }
     
     .we-print-row img { flex: 0 0 100%; max-width: 900px; height: auto; object-fit: contain; scroll-snap-align: start; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .we-idkort-row img { height: 680px; width: auto; flex: 0 0 auto; max-width: none; border-radius: 8px; }
-    .we-card-row img { height: 560px; width: auto; flex: 0 0 auto; max-width: none; }
-    .we-print-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; margin-bottom: 64px; }
+    .we-idkort-row img { height: 460px; width: auto; flex: 0 0 auto; max-width: none; border-radius: 8px; }
+    .we-card-row img { height: 400px; width: auto; flex: 0 0 auto; max-width: none; }
+    .we-print-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; margin-bottom: 48px; }
     .we-print-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
     .we-print-dot.is-active { background: #6868b2; }
 
     @media (min-width: 1600px) {
-      .we-design-showcase__stories img { height: clamp(540px, 28vw, 800px); }
-      .we-card-row img { height: clamp(560px, 29vw, 820px); }
-      .we-idkort-row img { height: clamp(680px, 36vw, 1000px); }
+      .we-design-showcase__stories img { height: clamp(380px, 20vw, 560px); }
+      .we-card-row img { height: clamp(400px, 21vw, 580px); }
+      .we-idkort-row img { height: clamp(460px, 24vw, 660px); }
     }
 
     /* ── Desktop Manual Scroll Area (Ved siden av laptopen, Slide 2) ── */
@@ -767,120 +793,67 @@
     </div>
 
     <p class="proj-description" style="font-size:22px; max-width:1050px;">Utvikling av en helhetlig visuell identitet for Stiftelsen WE — en nyetablert sosial stiftelse som bygger broer mellom næringsliv og sosialt entreprenørskap.</p>
-        <section class="proj-section reveal" id="sec-konsept">
-          <h2 class="proj-section__heading">Oppdragsgiver</h2>
-          <div class="we-client-v2">
-            <div class="we-client-v2__blocks">
-              <div class="we-client-block">
-                <p class="we-client-block__text" style="font-size:var(--type-body-lg);">Stiftelsen WE (Women Empowerment) arbeider for å styrke kvinners muligheter til selvstendighet ved å skape innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk. Gjennom å legge til rette for kompetanseutvikling, nettverksbygging og arbeidsmuligheter, er målet å bidra til økt deltakelse i samfunnet og en mer inkluderende arbeidsarena.</p>
-                <div class="we-quote" style="margin-top: 32px;">
-                  <p class="we-quote__text" style="font-size: 16px;">«For designløsningen til stiftelsen vår, ønsker vi noe <b>tillitsskapende</b>, <b>lekent</b> og <b>moderne!</b>»</p>
-                </div>
-              </div>
-            </div>
-            <figure class="we-client-v2__figure">
-              <a href="https://www.linkedin.com/posts/kirstine-holst_kvinnedagen-sosialtentreprenaeorskap-stiftelsenwe-activity-7304195466643038208-b-LH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEI0OqoBN-ikYxYK7sTRX62ULrtF7TQiGZ4" target="_blank" rel="noopener">
-                <img src="./assets/ragnhildkistine.webp" alt="Ragnhild Slettner og Kirstine Holst — grunnleggere av Stiftelsen WE" style="object-fit:cover;object-position:85% 20%;" loading="lazy" decoding="async">
-              </a>
-              <span class="we-client-v2__caption">Kirstine Holst (til venstre) og Ragnhild Slettner (til høyre)</span>
-            </figure>
-          </div>
-        </section>
-
-        <section class="proj-section reveal" id="sec-innsikt">
-          <h2 class="proj-section__heading">Innsikt</h2>
-          <div class="we-mg-blocks">
-
-            <div class="we-client-block">
-              <span class="we-client-block__label">Primærmålgruppe</span>
-              <h3 class="we-mg-title">Kvinner uten nettverk</h3>
-              <p class="we-client-block__text">Kvinner uten utdanning, erfaring eller nettverk. Identiteten må oppleves trygg og inkluderende — uten å virke veldedig eller stigmatiserende.</p>
-            </div>
-
-            <div class="we-client-block">
-              <span class="we-client-block__label">Sekundærmålgruppe</span>
-              <h3 class="we-mg-title">Næringslivsaktører</h3>
-              <p class="we-client-block__text">Virksomheter og samarbeidspartnere WE ønsker å engasjere. Overfor dem må identiteten signalisere profesjonalitet, struktur og troverdighet.</p>
-            </div>
-
-            <div class="we-client-block">
-              <span class="we-client-block__label">Designutfordring</span>
-              <p class="we-client-block__text">WE henvender seg til to målgrupper med <strong>ulike behov</strong>. For målgruppen med identiteten oppleves trygg og inkluderende. For næringslivet må den signalisere profesjonalitet, struktur og troverdighet.</p>
-            </div>
-
-            <div class="we-client-block" style="border-top: none;">
-              <div class="we-quote" style="margin-top:4px;">
-                <p class="we-quote__text">«Hvem skal føle seg trygge når de ser dette?»</p>
-                <p class="we-quote__attr">— Cecilie Melli, designer · ekspertintervju · <button class="we-posmap-trigger" style="font-size:11px;" onclick="document.getElementById('weIntervjuModal').showModal()">Les mer</button></p>
-              </div>
-            </div>
-
-            <div class="we-client-block">
-              <span class="we-client-block__label">Se analyse</span>
-              <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:4px;">
-                <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">Posisjoneringskart</button>
-                <span style="color:#ddd;">·</span>
-                <button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button>
-                <span style="color:#ddd;">·</span>
-                <button class="we-posmap-trigger" onclick="document.getElementById('weSwotModal').showModal()">SWOT-analyse</button>
-              </div>
-            </div>
-
-          </div>
-        </section>
-
         <section class="proj-section reveal" id="sec-retning">
-          <h2 class="proj-section__heading">Designretning</h2>
-          <p class="we-showcase-label">Nettsiden (3 slides)</p>
-          
-          <div class="we-site-hscroll">
-            <div class="we-design-showcase">
-              
-              <div class="we-design-showcase__left">
-                <figure class="we-design-showcase__laptop">
-                  <img src="./assets/laptop-mockup.webp" alt="Laptop mockup — WE visuell identitet" id="weShowcaseLaptop" loading="eager" style="width:100%;display:block;">
-                </figure>
-                <button class="we-mobile-nettside-btn" onclick="document.getElementById('weNettsideModal').showModal()">Se tre sider av nettsiden ↓</button>
-              </div>
+          <h2 class="proj-section__heading">Oppdragsgiver</h2>
 
-              <div class="we-site-scroll" id="weSiteScroll">
-                <div class="we-scroll-cue-container">
-                  <div class="we-scroll-cue" id="weScrollCue">Scroll for å se mer</div>
-                </div>
-                <div class="we-site-track" id="weSiteTrack">
-                  <img src="./assets/side-1-we2x.webp" alt="WE nettside — øverst" loading="lazy" decoding="async" draggable="false">
-                  <img src="./assets/side-2-we2x.webp" alt="WE nettside — midtre" loading="lazy" decoding="async" draggable="false">
-                  <img src="./assets/side-3-we2x.webp" alt="WE nettside — bunn" loading="lazy" decoding="async" draggable="false">
-                </div>
-              </div>
-
+          <div class="we-oppdrag-split">
+            <div>
+              <img src="./assets/ragnhildkistine.webp" alt="Oppdragsgiver" loading="lazy">
+            </div>
+            <div class="we-oppdrag-text">
+              <p>Stiftelsen WE (Women Empowerment) arbeider for å styrke kvinners muligheter til selvstendighet ved å skape innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk. Gjennom å legge til rette for kompetanseutvikling, nettverksbygging og arbeidsmuligheter, er målet å bidra til økt deltakelse i samfunnet og en mer inkluderende arbeidsarena.</p>
+              <blockquote>«For designløsningen til stiftelsen vår, ønsker vi noe tillitsskapende, lekent og moderne!»</blockquote>
             </div>
           </div>
-          
-          <div class="we-hscroll-dots" id="weHscrollDots"></div>
-          
-          <p class="we-showcase-label" style="margin-top: 64px;">Instagram stories og instagram posts</p>
-          <div class="we-design-showcase__stories" id="weStoriesScroll">
-            <img src="./assets/Story-1.webp" alt="WE Instagram story 1" loading="lazy" draggable="false">
-            <img src="./assets/Story-2.webp" alt="WE Instagram story 2" loading="lazy" draggable="false">
-            <img src="./assets/Story-3.webp" alt="WE Instagram story 3" loading="lazy" draggable="false">
-            <img src="./assets/instar4x.webp" alt="WE Instagram reel" loading="lazy" draggable="false">
-          </div>
-          <div class="we-stories-dots" id="weStoriesDots"></div>
 
-          <p class="we-showcase-label" style="margin-top: 64px;">Visittkort og Brosjyre</p>
-          <div class="we-print-row we-card-row" id="wePrintScroll">
-            <img src="./assets/businesscard.webp" alt="Visittkort" loading="lazy" draggable="false">
-            <img src="./assets/broskjyre.webp" alt="Brosjyre" loading="lazy" draggable="false">
-          </div>
-          <div class="we-print-dots" id="wePrintDots"></div>
+        </section>
 
-        <p class="we-showcase-label" style="margin-top: 64px;">Valgfrie flater: Id-kort og messebanner</p>
-<div class="we-print-row we-idkort-row" id="weIdkortScroll">
-  <img src="./assets/id-kort.webp" alt="Id-kort" loading="lazy" draggable="false">
-  <img src="./assets/we-banner.webp" alt="Messe-banner" loading="lazy" draggable="false">
-</div>
-<div class="we-print-dots" id="weIdkortDots"></div>
+        <section class="proj-section reveal" id="sec-konsept">
+          <h2 class="proj-section__heading">Designretning</h2>
+
+          <div class="we-retning-grid">
+
+            <!-- Rad 1: Banner -->
+            <img src="./assets/we-banner.webp" alt="Messebanner" loading="lazy" class="we-rg-banner">
+
+            <!-- Rad 2: Visittkort + ID-kort -->
+            <div class="we-rg-row we-rg-row--cards">
+              <img src="./assets/businesscard.webp" alt="Visittkort" loading="lazy">
+              <img src="./assets/id-kort.webp" alt="ID-kort" loading="lazy">
+            </div>
+
+            <!-- Rad 3: Instagram -->
+            <div class="we-rg-row we-rg-row--insta">
+              <img src="./assets/insta-we.webp" alt="WE Instagram posts" loading="lazy">
+              <img src="./assets/nyinsta.webp" alt="WE Instagram" loading="lazy">
+            </div>
+
+            <!-- Rad 4: Brosjyre -->
+            <div class="we-rg-row">
+              <img src="./assets/bros-1.webp" alt="Brosjyre forside" loading="lazy">
+              <img src="./assets/bros-2.webp" alt="Brosjyre innside" loading="lazy">
+            </div>
+
+            <!-- Rad 5: Nettside screenshots -->
+            <div class="we-rg-row we-rg-row--3">
+              <div class="we-rg-captioned">
+                <img src="./assets/side-1-we2x.webp" alt="WE nettside side 1" loading="lazy">
+                <span class="we-rg-caption">Nettside 1</span>
+              </div>
+              <div class="we-rg-captioned">
+                <img src="./assets/side-2-we2x.webp" alt="WE nettside side 2" loading="lazy">
+                <span class="we-rg-caption">Side 2</span>
+              </div>
+              <div class="we-rg-captioned">
+                <img src="./assets/side-3-we2x.webp" alt="WE nettside side 3" loading="lazy">
+                <span class="we-rg-caption">Side 3</span>
+              </div>
+            </div>
+
+            <!-- Rad 6: Nettside full bredde -->
+            <img src="./assets/laptop-mockup.webp" alt="Nettside" loading="lazy" class="we-rg-full">
+
+          </div>
 
         </section>
 
@@ -961,7 +934,7 @@
             <div class="we-palette-row">
               <div>
                 <h3 class="we-palette-group-title">Aksentfarger</h3>
-                <div class="we-palette" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="we-palette" style="grid-template-columns: repeat(2, 1fr);">
                   <div class="we-swatch we-stagger">
                     <div class="we-swatch__color" style="background:#6EB6A9"></div>
                     <div class="we-swatch__info">
@@ -986,12 +959,6 @@
                       <span class="we-swatch__use">Lysere lilla som til logo for god kontrast på mørk bakgrunn.</span>
                     </div>
                   </div>
-                </div>
-              </div>
-
-              <div>
-                <h3 class="we-palette-group-title">Tekstfarge</h3>
-                <div class="we-palette" style="grid-template-columns: repeat(2, 1fr);">
                   <div class="we-swatch we-stagger">
                     <div class="we-swatch__color" style="background:#000000; border: 1px solid #e0ecea;"></div>
                     <div class="we-swatch__info">
@@ -1002,6 +969,8 @@
                   </div>
                 </div>
               </div>
+
+              <div></div>
             </div>
           </div>
 
@@ -1085,68 +1054,6 @@
 
         </section>
 
-        <section class="proj-section reveal" id="sec-prosess">
-          <h2 class="proj-section__heading">Prosess</h2>
-          
-          <div class="we-steps">
-            <div class="we-step">
-              <div class="we-step__num">01</div>
-              <div class="we-step__title">Innledende brief</div>
-              <div class="we-step__body">Møte med Ragnhild Slettner ga rammen for prosjektet: seriøst, men lekent og fargerikt — uten fastsatt visuell retning.</div>
-            </div>
-            <div class="we-step">
-              <div class="we-step__num">02</div>
-              <div class="we-step__title">Innsikt</div>
-              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weKonkModal').showModal()">Konkurrentanalyse</button>, <button class="we-posmap-trigger" onclick="document.getElementById('wePosmapModal').showModal()">posisjoneringskart</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weSwotModal').showModal()">SWOT</button> kartla markedet og identifiserte WEs unike posisjon.</div>
-            </div>
-            <div class="we-step">
-              <div class="we-step__num">03</div>
-              <div class="we-step__title"><button class="we-posmap-trigger" onclick="document.getElementById('weIntervjuModal').showModal()">Ekspertintervju</button></div>
-              <div class="we-step__body">Samtale med designer Cecilie Melli ga et vendepunkt: identiteten trengte mer tyngde og tydeligere strategi.</div>
-            </div>
-            <div class="we-step">
-              <div class="we-step__num">04</div>
-              <div class="we-step__title">Identitetsutvikling</div>
-              <div class="we-step__body"><button class="we-posmap-trigger" onclick="document.getElementById('weMoodModal').showModal()">Moodboarding</button> og <button class="we-posmap-trigger" onclick="document.getElementById('weLogoutvModal').showModal()">logoutvikling</button> iterert fra skisse til ferdig system gjennom tett samarbeid.</div>
-            </div>
-            <div class="we-step">
-              <div class="we-step__num">05</div>
-              <div class="we-step__title">Kontaktflater</div>
-              <div class="we-step__body">Nettside, visittkort, brosjyre, banner og sosiale medier tilpasset identitetssystemet og de to målgruppene.</div>
-            </div>
-          </div>
-          
-          <div style="margin-top: 32px;">
-            <button class="we-posmap-trigger" onclick="document.getElementById('weProsessModal').showModal()"><span class="we-prosess-arrow">↗ </span>Se utdrag fra prosessen</button>
-          </div>
-        </section>
-
-        <section class="proj-section reveal" id="sec-refleksjon">
-          <h2 class="proj-section__heading">Refleksjon</h2>
-          
-          <div class="we-reflection">
-            <div>
-              <p class="we-reflection__learnings-heading">Vendepunkt</p>
-              <p class="we-reflection__body">Vendepunktet i prosessen kom da vi identifiserte et misforhold mellom uttrykk og formål. Det første utkastet hadde visuell energi, men manglet tilstrekkelig tyngde og troverdighet. <span class="we-reflection__hl">Vi hadde prioritert et ekspressivt uttrykk fremfor å bygge tillit.</span></p>
-              
-              <p class="we-reflection__learnings-heading" style="margin-top: 36px;">Strategisk justering</p>
-              <p class="we-reflection__body">Dette førte til en tydelig kursendring, der identiteten ble utviklet som et kommunikasjonsverktøy med klar funksjon: <span class="we-reflection__hl">å fungere for to ulike målgrupper med ulike behov.</span></p>
-              <p class="we-reflection__body">For næringslivet måtte uttrykket signalisere profesjonalitet og stabilitet. For målgruppen måtte det oppleves inkluderende, trygt og relevant. Identiteten ble derfor utviklet for å svare på to spørsmål samtidig:<br><span class="we-reflection__hl">Kan vi stole på dere?</span> og <span class="we-reflection__hl">Er dette for meg?</span></p>
-            </div>
-            <div>
-              <p class="we-reflection__learnings-heading">Refleksjon</p>
-              <p class="we-reflection__body">I arbeidet med å sikre troverdighet og tydelighet har uttrykket en bevisst balanse mot det trygge. Dette gir en robust og anvendelig identitet, men kan i enkelte sammenhenger oppleves noe <span class="we-reflection__hl">kontrollert</span>. Det åpner for videre utvikling, der <span class="we-reflection__hl">uttrykket kan utfordres</span> og gis mer særpreg uten å miste sin funksjon.</p>
-              
-              <p class="we-reflection__learnings-heading" style="margin-top: 36px;">Læring</p>
-              <ul class="we-reflection__learnings">
-                <li>Dobbel målgruppe krever tydelige prioriteringer fra start</li>
-                <li>Retning må forankres i funksjon, ikke kun uttrykk</li>
-                <li>En sterk identitet ligger i et konsistent system, ikke enkeltstående elementer</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
         <section class="proj-section reveal" id="sec-krediter">
           <h2 class="proj-section__heading">Krediter</h2>
           <div class="we-credits">
@@ -1195,6 +1102,10 @@
           </div>
         </section>
 
+
+    <div style="padding: 2.5rem clamp(20px, 4vw, 60px); display:flex; justify-content:center;">
+      <a class="proj-prosess-btn" href="./we-prosess.html">Se prosess →</a>
+    </div>
 
     <div class="proj-adjacent">
       <a class="proj-adjacent__link" href="./reina-fruktgard.html">← Gå til Reina Fruktgård</a>
@@ -1306,7 +1217,6 @@
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weLogoutvModal').close()" aria-label="Lukk">✕</button>
       <h3 class="we-posmap-modal__heading">Logoutvikling</h3>
-      <img src="./assets/logoutvikling.webp" alt="Logoutvikling — fra skisse til ferdig logo" style="width:90%;margin-left:6%;margin-right:4%;height:auto;display:block;" loading="lazy" decoding="async">
     </div>
   </dialog>
 
