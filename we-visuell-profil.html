@@ -81,9 +81,9 @@
     .we-hero-wrap {
       position: relative;
       overflow: clip;
-      margin-top: -34px;
-      margin-left: calc(-1 * clamp(20px, 3vw, 34px));
-      margin-right: calc(-1 * clamp(20px, 3vw, 34px));
+      margin-top: 0;
+      margin-left: 0;
+      margin-right: 0;
     }
     .we-hero__logo-bg {
       position: absolute;
@@ -132,7 +132,7 @@
     @media (max-width: 480px) { .we-hero-visual-wrap { height: 220px; } }
 
     /* Body */
-    .we-body { padding: 0 0 80px clamp(16px, 2vw, 28px); overflow-x: visible; margin: 0; }
+    .we-body { padding: 0 clamp(20px, 4vw, 60px) 80px; overflow-x: visible; margin: 0; }
 
     /* Snapshot (TL;DR) - UPDATED TO FEEL MORE PORTFOLIO LIKE */
     .we-snapshot {
@@ -293,8 +293,8 @@
     .we-credits__list a { color: #555; }
 
     /* Scroll fade-in */
-    .we-section.we-fade { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
-    .we-section.we-fade.is-visible { opacity: 1; transform: none; }
+    .proj-section.we-fade { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+    .proj-section.we-fade.is-visible { opacity: 1; transform: none; }
 
     /* Logo Grid */
     .we-logo-grid { 
@@ -371,7 +371,6 @@
 
     /* Stagger entrance */
     @keyframes we-stagger-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-    .we-stagger { opacity: 0; }
     .we-stagger.is-in { animation: we-stagger-in .45s ease both; }
 
     /* Toast */
@@ -564,7 +563,7 @@
     
     @media (max-width: 900px) {
       .we-hero { padding: 64px 20px 52px; }
-      .we-body { padding: 0 20px 60px; }
+      .we-body { padding: 0 20px 60px 20px; }
 
       .we-client-v2 { grid-template-columns: 1fr; gap: 40px; }
 
@@ -730,48 +729,46 @@
     </div>
   </header>
 
-  <main id="content" class="content" style="margin-left:0; padding-top:80px;">
-    <article class="project we-page" id="project">
+  <main class="proj-main" id="content">
 
-      <div class="we-hero-wrap">
-        <img src="./assets/logo-hero-we4x.png" alt="" class="we-hero__logo-bg" aria-hidden="true" />
-        <div class="we-hero">
-          <h1 class="we-hero__title">Stiftelsen Women Empowerment</h1>
-        </div>
+    <div class="proj-breadcrumb">
+      <a href="./projects.html">Prosjekter</a><span class="proj-breadcrumb__sep">›</span>Stiftelsen WE
+    </div>
 
-        <nav class="we-toc" aria-label="Innhold">
-        <div class="we-toc__inner">
-          <a class="we-toc__link" href="#sec-konsept">Konsept</a>
-          <a class="we-toc__link" href="#sec-innsikt">Innsikt</a>
-          <a class="we-toc__link" href="#sec-retning">Retning</a>
-          <a class="we-toc__link" href="#sec-identitet">Identitet</a>
-          <span class="we-toc__break"></span>
-          <a class="we-toc__link" href="#sec-prosess">Prosess</a>
-          <a class="we-toc__link" href="#sec-refleksjon">Refleksjon</a>
-        </div>
-      </nav>
-      </div><div class="we-body">
+    <section class="proj-hero">
+      <div class="proj-hero__left">
+        <h1 class="proj-hero__title">Stiftelsen<br>WE</h1>
+        <p class="proj-hero__sub">Visuell identitet — IDG2015</p>
+      </div>
+      <div class="proj-hero__right">
+        <img class="proj-hero__img" src="./assets/laptop-mockup.webp" alt="Stiftelsen WE nettside" fetchpriority="high">
+      </div>
+    </section>
 
-        <div class="we-snapshot">
-          <div class="we-snapshot__meta">
-            <div class="we-snapshot__item">
-              <span class="we-snapshot__label">Leveranser</span>
-              <ul class="we-snapshot__list">
-                <li>Design av nettside</li>
-                <li>Instagram posts og stories</li>
-                <li>Visittkort og brosjyre</li>
-                <li>To valgfrie flater: id-kort og messe-banner</li>
-              </ul>
-            </div>
-          </div>
-          <div class="we-snapshot__challenge">
-            <span class="we-snapshot__label">Utfordringen kort fortalt</span>
-            <p class="we-snapshot__text">«Å designe en identitet som balanserer B2B-profesjonalitet med en varm og inkluderende tone for kvinner på vei inn i arbeidslivet.»</p>
-          </div>
+    <div class="proj-meta-row">
+      <div class="proj-meta-fields">
+        <div>
+          <span class="proj-meta-label">Emne</span>
+          <span class="proj-meta-value">Strategisk design</span>
         </div>
-        <section class="we-section" id="sec-konsept">
-          <p class="we-section__num">01</p>
-          <h2 class="we-section__heading">Oppdragsgiver</h2>
+        <div>
+          <span class="proj-meta-label">Type prosjekt</span>
+          <span class="proj-meta-value">Visuell identitet</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">Veileder</span>
+          <span class="proj-meta-value">Vera Pahle</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">Dato</span>
+          <span class="proj-meta-value">Høst 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="proj-description" style="font-size:22px; max-width:1050px;">Utvikling av en helhetlig visuell identitet for Stiftelsen WE — en nyetablert sosial stiftelse som bygger broer mellom næringsliv og sosialt entreprenørskap.</p>
+        <section class="proj-section reveal" id="sec-konsept">
+          <h2 class="proj-section__heading">Oppdragsgiver</h2>
           <div class="we-client-v2">
             <div class="we-client-v2__blocks">
               <div class="we-client-block">
@@ -790,9 +787,8 @@
           </div>
         </section>
 
-        <section class="we-section" id="sec-innsikt">
-          <p class="we-section__num">02</p>
-          <h2 class="we-section__heading">Innsikt</h2>
+        <section class="proj-section reveal" id="sec-innsikt">
+          <h2 class="proj-section__heading">Innsikt</h2>
           <div class="we-mg-blocks">
 
             <div class="we-client-block">
@@ -833,9 +829,8 @@
           </div>
         </section>
 
-        <section class="we-section" id="sec-retning">
-          <p class="we-section__num">03</p>
-          <h2 class="we-section__heading">Designretning</h2>
+        <section class="proj-section reveal" id="sec-retning">
+          <h2 class="proj-section__heading">Designretning</h2>
           <p class="we-showcase-label">Nettsiden (3 slides)</p>
           
           <div class="we-site-hscroll">
@@ -889,9 +884,8 @@
 
         </section>
 
-        <section class="we-section" id="sec-identitet" style="border-top: none;">
-          <p class="we-section__num">04</p>
-          <h2 class="we-section__heading">Visuell Identitet</h2>
+        <section class="proj-section reveal" id="sec-identitet" style="border-top: none;">
+          <h2 class="proj-section__heading">Visuell Identitet</h2>
 
           <div style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Logo</h3>
@@ -1091,9 +1085,8 @@
 
         </section>
 
-        <section class="we-section" id="sec-prosess">
-          <p class="we-section__num">05</p>
-          <h2 class="we-section__heading">Prosess</h2>
+        <section class="proj-section reveal" id="sec-prosess">
+          <h2 class="proj-section__heading">Prosess</h2>
           
           <div class="we-steps">
             <div class="we-step">
@@ -1128,9 +1121,8 @@
           </div>
         </section>
 
-        <section class="we-section" id="sec-refleksjon">
-          <p class="we-section__num">06</p>
-          <h2 class="we-section__heading">Refleksjon</h2>
+        <section class="proj-section reveal" id="sec-refleksjon">
+          <h2 class="proj-section__heading">Refleksjon</h2>
           
           <div class="we-reflection">
             <div>
@@ -1155,9 +1147,8 @@
           </div>
         </section>
 
-        <section class="we-section" id="sec-krediter">
-          <p class="we-section__num">07</p>
-          <h2 class="we-section__heading">Krediter</h2>
+        <section class="proj-section reveal" id="sec-krediter">
+          <h2 class="proj-section__heading">Krediter</h2>
           <div class="we-credits">
             <div>
               <p class="we-credits__heading">Gruppe</p>
@@ -1204,22 +1195,12 @@
           </div>
         </section>
 
-      </div><div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
-        <a class="related__card" href="./reina-fruktgard.html">
-          <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
-          <p class="related__title">Reina Fruktgård</p>
-        </a>
-        <a class="related__card" href="./stoppestedet.html">
-          <img src="./stopp/assets/utenforforside.webp" alt="Stoppestedet" loading="lazy" decoding="async">
-          <p class="related__title">Stoppestedet</p>
-        </a>
-        <a class="related__card" href="./ansatts-portal.html">
-          <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
-          <p class="related__title">Tjønnås og Norvald</p>
-        </a>
-      </div></div>
 
-    </article>
+    <div class="proj-adjacent">
+      <a class="proj-adjacent__link" href="./reina-fruktgard.html">← Gå til Reina Fruktgård</a>
+      <a class="proj-adjacent__link" href="./stoppestedet.html">Gå til Stoppestedet →</a>
+    </div>
+
   </main>
 
   <dialog id="weNettsideModal">
@@ -1524,7 +1505,7 @@
 
     // Scroll fade-in + stagger
     (function() {
-      const sections = document.querySelectorAll(".we-section");
+      const sections = document.querySelectorAll(".proj-section");
       if (!sections.length || !window.IntersectionObserver) return;
       const obs = new IntersectionObserver((entries) => {
         entries.forEach(e => {
