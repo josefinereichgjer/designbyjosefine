@@ -10,6 +10,7 @@
   <style>
     html { scroll-behavior: smooth; }
 
+    .prosess-text { font-size: 15px; line-height: 1.78; max-width: 820px; }
     .prosess-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
     @media (max-width: 700px) { .prosess-grid { grid-template-columns: 1fr; } }
 
@@ -45,8 +46,35 @@
         <h1 class="proj-hero__title">Flerkanal-<br>publisering</h1>
         <p class="proj-hero__sub" style="color:#1a1a1a; letter-spacing:0.18em; font-weight:500; margin-top:0.5rem;">PROSESS</p>
       </div>
-      <div class="proj-hero__right">
-        <img class="proj-hero__img" src="./assets/poster-srh.webp" alt="SRH Open Day poster" fetchpriority="high" decoding="async">
+      <div class="proj-hero__right" style="flex-direction:column; align-items:flex-end; justify-content:center; gap:0; text-align:right;">
+        <p style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.35); margin:0 0 1.2rem;">Prosessfaser</p>
+        <p style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(30px,4vw,54px); line-height:1.5; color:#1a1a1a; margin:0;">
+          <a href="#valg-av-tema" style="color:inherit; text-decoration:none;">01. Valg av tema</a><br>
+          <a href="#iterasjon" style="color:inherit; text-decoration:none;">02. Iterasjon</a><br>
+          <a href="#refleksjon" style="color:inherit; text-decoration:none;">03. Refleksjon</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 01 Valg av tema -->
+    <section class="proj-section reveal" id="valg-av-tema">
+      <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; flex-shrink:0; background:#000; border-radius:50%; font-family:'Romie','Playfair Display',Georgia,serif; font-size:26px; color:#fff;">1</span>
+        <h2 class="proj-section__heading" style="margin:0;">Valg av tema</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr clamp(200px,28vw,400px); gap:3rem; align-items:stretch; margin-bottom:2.5rem;">
+        <div>
+          <p class="prosess-text" style="margin-bottom:1.25rem;">Jeg valgte å redesigne SRH Berlin University of Applied Sciences fordi skolen er relevant for meg både personlig og faglig. Jeg har selv vært interessert i å dra dit på utveksling, noe som gjorde prosjektet mer motiverende å jobbe med.</p>
+          <p class="prosess-text" style="margin-bottom:1.25rem;">SRH passet også godt til oppgaven fordi skolen allerede har en tydelig visuell identitet som jeg kunne ta utgangspunkt i. I redesignprosessen kunne vi velge om vi ville legge oss tett på originalen eller gjøre noe helt annerledes. Jeg valgte å holde meg nærmere den opprinnelige identiteten, fordi jeg ønsket å bevare gjenkjenneligheten til SRH og heller bruke oppgaven til å øve på grafisk design, layout, fargebruk, komposisjon og tilpasning til ulike flater.</p>
+          <p class="prosess-text">Jeg tok utgangspunkt i Open Day ved SRH Campus Berlin, fordi det ga prosjektet en realistisk ramme. Oppgaven ga meg mulighet til å utforske hvordan én visuell retning kan brukes på flere ulike trykte og digitale flater, samtidig som jeg fikk utviklet meg som førsteårsstudent på bachelor i grafisk design.</p>
+        </div>
+        <img src="./assets/analyse-4.webp" alt="Analyse" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2,clamp(180px,22vw,320px)); gap:1rem; justify-content:start;">
+        <img src="./assets/analyse-1.webp" alt="Analyse 1" loading="lazy" style="width:100%; display:block;">
+        <img src="./assets/analyse-2.webp" alt="Analyse 2" loading="lazy" style="width:100%; display:block;">
+        <img src="./assets/analyse-3.webp" alt="Analyse 3" loading="lazy" style="width:100%; display:block;">
+        <img src="./assets/analyse-5.webp" alt="Analyse 5" loading="lazy" style="width:100%; display:block;">
       </div>
     </section>
 
@@ -57,15 +85,6 @@
         <img src="./assets/linkedinprosess.webp" alt="LinkedIn prosess" loading="lazy" decoding="async" style="width:100%; display:block;">
         <img src="./assets/plakat-prosess.webp"  alt="Plakat prosess"   loading="lazy" decoding="async" style="width:100%; display:block;">
         <img src="./assets/logoprosess.webp"     alt="Logo prosess"     loading="lazy" decoding="async" style="width:100%; display:block;">
-      </div>
-    </section>
-
-    <!-- PDF-dokumenter -->
-    <section class="proj-section reveal" id="dokumenter">
-      <h2 class="proj-section__heading">Designdokumentasjon</h2>
-      <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
-        <a class="btn-pdf" href="./assets/prosess/Designutvikling.pdf" target="_blank" rel="noopener">Designutvikling ↗</a>
-        <a class="btn-pdf" href="./assets/prosess/Ferdig designløsning.pdf" target="_blank" rel="noopener">Ferdig designløsning ↗</a>
       </div>
     </section>
 
