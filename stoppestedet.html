@@ -73,7 +73,7 @@
       .stopp-collage img { position: static !important; width: 100% !important; left: auto !important; right: auto !important; top: auto !important; transform: none !important; opacity: 1 !important; margin-bottom: 12px; filter: none !important; }
     }
 
-    /* Process trigger */
+    /* Process trigger (logoutvikling button in design manual) */
     .ps-process-trigger {
       background: none; border: 1px solid #1a1a1a; padding: 13px 28px; cursor: pointer;
       font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #1a1a1a;
@@ -300,15 +300,9 @@
       </div>
     </section>
 
-    <!-- Prosess -->
-    <section class="proj-section reveal" id="prosess">
-      <h2 class="proj-section__heading">Prosessen — Ærlig talt: det var rotete</h2>
-      <p style="font-size:15px; line-height:1.78; max-width:820px; margin-bottom:2rem;">Jeg hoppet mellom ideer og mistet ofte målet av syne, noe som var frustrerende, men også lærerikt. Etter hvert som feilene ble tydeligere, forsto jeg hva som ikke fungerte, og fikk en mer strukturert måte å jobbe på.</p>
-      <div style="display:flex; flex-wrap:wrap; gap:1rem;">
-        <button class="ps-process-trigger" id="processBtn">Les mer om prosessen ↗&#xFE0E;</button>
-        <button class="ps-process-trigger" id="siteanaBtn">Digital konkurrentanalyse ↗&#xFE0E;</button>
-      </div>
-    </section>
+    <div style="padding: 2.5rem clamp(20px, 4vw, 60px); display:flex; justify-content:center;">
+      <a class="proj-prosess-btn" href="./stoppestedet-prosess.html">Se prosess →</a>
+    </div>
 
     <div class="proj-adjacent">
       <a class="proj-adjacent__link" href="./flerkanalspublisering.html">← Gå til Flerkanalspublisering</a>
@@ -317,55 +311,6 @@
 
   </main>
 
-  <!-- PROCESS MODAL -->
-  <div class="ps-overlay" id="processOverlay">
-    <div class="ps-modal">
-      <button class="ps-modal__close" id="processClose">Lukk ×</button>
-      <h2 class="ps-modal-h">Fra én ferdig idé til å begynne på nytt</h2>
-      <p class="ps-modal-p">Prosjektet startet med en helt annen identitet: mørk bakgrunn, olivengrønn palett og Space Mono. Designet var gjennomarbeidet og nesten ferdig, med et visuelt system som hang godt sammen på tvers av flater som logo, typografi og trykksaker.</p>
-      <span class="ps-modal-label">Hvem er dette for?</span>
-      <p class="ps-modal-p">Jeg tok et steg tilbake og stilte spørsmålet jeg burde ha stilt tidligere. Et mørkt og monospaced uttrykk signaliserer noe smalt og eksklusivt. Det kan passe for et plateselskap eller en tech-startup, men ikke for et sted som skal være åpent og tilgjengelig for unge mennesker som kanskje aldri har prøvd å skape noe før.</p>
-      <div class="ps-pull" style="margin:24px 0">
-        <p>V1 var et godt svar på feil spørsmål. V2 ble et enklere svar på det riktige.</p>
-      </div>
-      <span class="ps-modal-label">Blindveien hadde verdi</span>
-      <p class="ps-modal-p">Jeg valgte å starte på nytt. Ikke fordi arbeidet var bortkastet, men fordi prosessen viste hva stedet ikke skulle føles som. Den innsikten var avgjørende.</p>
-      <span class="ps-modal-label">Målgruppen endret alt</span>
-      <p class="ps-modal-p">Jeg utvidet målgruppen til folk fra 16 år og oppover. Det endret hele tilnærmingen. Oransje erstattet olivengrønt som en mer aktiv og inkluderende farge, og Syne erstattet Space Mono med et varmere og mer åpent uttrykk. Resultatet skulle føles enkelt og inviterende: kom hit.</p>
-      <span class="ps-modal-label">Ferdig design fra Versjon 1:</span>
-      <video src="./stoppestedet/images/nystoppvid.mp4" autoplay muted loop playsinline preload="none" style="width:100%;display:block;margin-top:12px"></video>
-      <div class="ps-modal-imgs ps-modal-imgs--2" style="margin-top:2px">
-        <figure><img src="./stoppestedet/icons/logo_hvit_skrift.png" alt="Primærlogo" loading="lazy" style="background:#0a0a0a;padding:24px;max-width:200px;object-fit:contain;"></figure>
-        <figure><img src="./stoppestedet/images/seklogo.png" alt="Sekundærlogo" loading="lazy" style="background:#0a0a0a;padding:24px;"></figure>
-      </div>
-      <div class="ps-modal-imgs ps-modal-imgs--1" style="margin-top:2px">
-        <figure style="aspect-ratio:16/7;overflow:hidden"><img src="./stoppestedet/images/businesscard.webp" alt="Visittkort" loading="lazy"></figure>
-      </div>
-      <div class="ps-modal-imgs ps-modal-imgs--2" style="margin-top:2px">
-        <figure style="aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/idcard.webp" alt="ID-kort" loading="lazy"></figure>
-        <figure style="aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/stoppstick.webp" alt="Stickere" loading="lazy"></figure>
-      </div>
-      <div class="ps-modal-imgs ps-modal-imgs--2" style="margin-top:2px">
-        <figure style="aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/skiltdesign.webp" alt="Skiltdesign" loading="lazy"></figure>
-        <figure style="aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/skiltutestopp.webp" alt="Skilt ute" loading="lazy"></figure>
-      </div>
-      <div class="ps-modal-imgs ps-modal-imgs--2" style="margin-top:2px">
-        <figure style="aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/storefrontstoppis.webp" alt="Utsiden" loading="lazy"></figure>
-        <figure style="aspect-ratio:3/2;overflow:hidden"><img src="./stoppestedet/images/stairstopp.webp" alt="Veggdesign" loading="lazy"></figure>
-      </div>
-      <table class="ps-compare" style="margin-top:40px">
-        <thead><tr><th></th><th>Versjon 1</th><th>Versjon 2</th></tr></thead>
-        <tbody>
-          <tr><td>Målgruppe</td><td>18–28, kreativ praksis</td><td>16+, alle aldre</td></tr>
-          <tr><td>Bakgrunn</td><td><span class="ps-dot" style="background:#0f0f0f;border:1px solid #555"></span>Nær-svart</td><td><span class="ps-dot" style="background:#fff;border:1px solid #ccc"></span>Hvit</td></tr>
-          <tr><td>Primærfarge</td><td><span class="ps-dot" style="background:#A3AF0E"></span>Olivengrønn</td><td><span class="ps-dot" style="background:#E84E1B"></span>Orange</td></tr>
-          <tr><td>Overskrift</td><td>Space Mono</td><td>Syne</td></tr>
-        </tbody>
-      </table>
-      <a class="ps-pdflink" href="./stoppestedet/images/stoppestedetprosess_original.pdf" target="_blank" rel="noopener">Prosessrapport (PDF) ↗&#xFE0E;</a>
-    </div>
-  </div>
-
   <!-- LOGOUTVIKLING MODAL -->
   <div class="ps-overlay" id="logoutviklingOverlay">
     <div class="ps-modal">
@@ -373,23 +318,6 @@
       <h2 class="ps-modal-h">Logoutvikling</h2>
       <img src="./stopp/assets/logoutviklingstoppi.webp" alt="Logoutvikling" style="width:100%;display:block;margin-bottom:28px" loading="lazy">
       <p class="ps-modal-p">Logoen er inspirert av makerspace-idéen, der enkle former fungerer som byggeklosser som kan settes sammen til noe større. De ulike elementene symboliserer materialer, verktøy og idéer som kombineres i kreative prosesser. Fargene gir et lekent og inkluderende uttrykk, mens det stramme rutenettet skaper struktur og balanse.</p>
-    </div>
-  </div>
-
-  <!-- NETTSIDEANALYSE MODAL -->
-  <div class="ps-overlay" id="siteanaOverlay">
-    <div class="ps-modal">
-      <button class="ps-modal__close" id="siteanaClose">Lukk ×</button>
-      <img src="./stopp/assets/nettside-analyse.webp" alt="Nettsideanalyse" style="width:100%;display:block;margin-bottom:40px" loading="lazy">
-      <div style="display:flex;flex-direction:column;gap:36px">
-        <div><p class="ps-siteana__name">FabCafe — Tokyo</p><p class="ps-modal-p">Nettsiden til FabCafe er visuelt tung og inspirasjonsdrevet, med fokus på prosjekter, events og kreativ utforskning. Den fungerer mer som en plattform for idéutveksling enn en tradisjonell informasjonsnettside.</p><p class="ps-siteana__summary">— Oppleves kreativ og inspirerende, men lite strukturert og ikke umiddelbart lavterskel.</p></div>
-        <div><p class="ps-siteana__name">Shibuya QWS</p><p class="ps-modal-p">Nettsiden er moderne og konseptuell, med fokus på samarbeid, innovasjon og community. Den bruker grafikk og visuelle elementer for å formidle stemning, men gir mindre konkret informasjon om hvordan stedet tas i bruk.</p><p class="ps-siteana__summary">— Oppleves inspirerende, men abstrakt og mindre tilgjengelig for nye brukere.</p></div>
-        <div><p class="ps-siteana__name">Folkehuset Absalon — Danmark</p><p class="ps-modal-p">Nettsiden er enkel, varm og direkte. Den kommuniserer tydelig hva man kan gjøre der, med fokus på aktiviteter, mat og fellesskap.</p><p class="ps-siteana__summary">— Veldig tilgjengelig og nærmest Stoppestedet i kommunikasjon.</p></div>
-        <div><p class="ps-siteana__name">Makerversity — London</p><p class="ps-modal-p">Nettsiden er profesjonell og tydelig strukturert, med fokus på medlemskap, fasiliteter og samarbeid. Den retter seg mot en etablert og kreativt aktiv målgruppe.</p><p class="ps-siteana__summary">— Oppleves eksklusiv og mer «proff» enn lavterskel.</p></div>
-        <div><p class="ps-siteana__name">Deichman Bjørvika (Folkeverkstedet)</p><p class="ps-modal-p">Nettsiden er informativ og funksjonell, med tydelig navigasjon og praktisk informasjon. Den forklarer tilbudet godt, men har mindre fokus på stemning og visuell identitet.</p><p class="ps-siteana__summary">— Veldig tilgjengelig, men mindre inspirerende visuelt.</p></div>
-        <div><p class="ps-siteana__name">Mesh — Oslo</p><p class="ps-modal-p">Nettsiden er stilren og kommersiell, med fokus på nettverk, arrangementer og arbeidsplasser. Den retter seg mot gründere og profesjonelle brukere.</p><p class="ps-siteana__summary">— Oppleves som et mer lukket og målrettet miljø.</p></div>
-        <div style="padding-top:36px;border-top:1px solid #e0e0e0"><p class="ps-siteana__name">Stoppestedets posisjon:</p><p class="ps-modal-p">Stoppestedet plasserer seg i skjæringspunktet mellom kreativ inspirasjon og tydelig tilgjengelighet. Konseptet tar en klar posisjon som et åpent og lavterskel alternativ — et sted man kan komme til uten forkunnskaper, og likevel føle at man hører til.</p></div>
-      </div>
     </div>
   </div>
 
@@ -435,9 +363,7 @@
       closeBtn.addEventListener('click', function() { overlay.classList.remove('is-open'); document.body.style.overflow = ''; });
       overlay.addEventListener('click', function(e) { if (e.target === overlay) { overlay.classList.remove('is-open'); document.body.style.overflow = ''; } });
     }
-    makeModal('processOverlay', 'processBtn', 'processClose');
     makeModal('logoutviklingOverlay', 'logoutviklingBtn', 'logoutviklingClose');
-    makeModal('siteanaOverlay', 'siteanaBtn', 'siteanaClose');
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         document.querySelectorAll('.ps-overlay').forEach(function(o) { o.classList.remove('is-open'); });
