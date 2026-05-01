@@ -2550,7 +2550,7 @@ a:hover{opacity:.75}
 }
 .proj-header__logo {
   font-family: "Romie", "Playfair Display", Georgia, serif;
-  font-size: 17px;
+  font-size: 21px;
   letter-spacing: 0.06em;
   color: #fff;
   text-decoration: none;
@@ -2769,7 +2769,7 @@ a:hover{opacity:.75}
 @media (max-width: 700px) {
   .proj-header { height: 52px; }
   .proj-main { padding-top: 52px; }
-  .proj-header__logo { font-size: 12px; }
+  .proj-header__logo { font-size: 15px; }
   .proj-header__nav {
     display: none;
     position: absolute;
