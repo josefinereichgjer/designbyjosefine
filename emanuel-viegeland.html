@@ -10,23 +10,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=32" />
-  <link rel="icon" href="assets/hvitlogo.png">
+  <link rel="icon" href="assets/hvitlogo.webp">
+  <style>
+    .ev-img-full { width: 100%; height: auto; display: block; }
+    .ev-img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .ev-img-pair img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    @media (max-width: 640px) { .ev-img-pair { grid-template-columns: 1fr; } }
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#content">Hopp til innhold</a>
-  <div class="process-drawer" id="processDrawer" aria-hidden="true">
-    <button class="process-drawer__close" id="processDrawerClose" aria-label="Lukk">✕</button>
-    <div class="process-drawer__inner" id="processDrawerContent"></div>
-  </div>
-  <div class="process-drawer__backdrop" id="processBackdrop"></div>
-  <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
-    <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
-    <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
-    <img id="lbImg" src="" alt="">
-    <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
-  </div>
-
   <header class="proj-header" id="projHeader">
     <div class="proj-header__inner">
       <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
@@ -41,266 +34,81 @@
     </div>
   </header>
 
-  <main id="content" class="content" style="margin-left:0; padding-top:80px;">
-    <article class="project" id="project">
-        <div class="project-layout">
-          <div class="project-layout__media">
-            <div class="project-header">
-              <h1 class="project-meta__title">Emanuel Viegeland nettside</h1>
-              
-              
-              <div class="header-btns">
-                
-                
-              </div>
-            </div>
-            
-            <div class="project-meta">
-              
-              
-              
-              
-            </div>
+  <main class="proj-main">
+
+    <div class="proj-breadcrumb">
+      <a href="./projects.html">Arbeider</a>
+      <span class="proj-breadcrumb__sep">›</span>
+      <strong style="color:#0d0d0d; font-weight:700; letter-spacing:0.12em;">Emanuel Viegeland</strong>
+    </div>
+
+    <section class="proj-hero">
+      <div class="proj-hero__left">
+        <h1 class="proj-hero__title">Emanuel<br>Viegeland</h1>
+        <p class="proj-hero__sub">Redesign / UX</p>
+      </div>
+      <div class="proj-hero__right">
+        <img class="proj-hero__img" src="./assets/3skjermer.png" alt="Emanuel Viegeland nettside — tre skjermer" fetchpriority="high">
+      </div>
+    </section>
+
+    <div class="proj-meta-row">
+      <div class="proj-meta-fields">
+        <div>
+          <span class="proj-meta-label">Fagfelt</span>
+          <span class="proj-meta-value">Redesign / UX</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">Type</span>
+          <span class="proj-meta-value">Nettside</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">År</span>
+          <span class="proj-meta-value">2026</span>
+        </div>
+      </div>
+    </div>
+
+    <article>
+
+      <div class="proj-sections">
+
+        <div class="proj-section proj-section--none">
+          <div class="ev-img-pair">
+            <img src="./assets/em.png" alt="Emanuel Viegeland" loading="lazy">
+            <img src="./assets/laptop.png" alt="Emanuel Viegeland nettside på laptop" loading="lazy">
           </div>
         </div>
-        
-        
-        
-        
-        
-        <div class="related"><h2 class="related__heading">Mer å se på</h2><div class="related__grid">
-                <a class="related__card" href="./tidsskrift.html">
-                  <img src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy">
-                  <p class="related__title">Tidsskrift</p>
-                </a>
-                <a class="related__card" href="./we-visuell-profil.html">
-                  <img src="./assets/laptop-mockup.webp" alt="Stiftelsen WE" loading="lazy">
-                  <p class="related__title">Stiftelsen WE</p>
-                </a>
-                <a class="related__card" href="./ansatts-portal.html">
-                  <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="lazy">
-                  <p class="related__title">Tjønnås og Norvald</p>
-                </a></div></div>
-      
+
+        <div class="proj-section proj-section--none">
+          <img class="ev-img-full" src="./assets/3skjermer.png" alt="Emanuel Viegeland nettside — responsivt design" loading="lazy">
+        </div>
+
+      </div>
+
     </article>
+
+    <div class="proj-adjacent">
+      <a class="proj-adjacent__link" href="./reina-fruktgard.html">← Gå til Reina Fruktgård</a>
+      <a class="proj-adjacent__link" href="./tidsskrift.html">Gå til Tidsskrift →</a>
+    </div>
+
   </main>
 
   <script src="./projects.js?v=6"></script>
   <script>
-    const $ = (s) => document.querySelector(s);
-    const id = "emanuel-viegeland";
-
-    const project = (window.PROJECTS || []).find(p => p.id === id);
-    const yearEl = document.querySelector("#year");
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // Slideshow
-    const track = $("#slideshowTrack");
-    if (track) {
-      const slides = [...track.querySelectorAll(".slideshow__slide")];
-      const counter = $("#slideIndex");
-      let current = 0;
-      let timer;
-      const slideshow = $("#slideshow");
-      const captionBar = $("#slideshowCaption");
-      let paused = false;
-      function goTo(n) {
-        current = (n + slides.length) % slides.length;
-        track.style.transform = `translateX(-${current * 100}%)`;
-        counter.textContent = current + 1;
-        if (captionBar) captionBar.textContent = slides[current].dataset.caption || "";
-      }
-      function startAuto() {
-        clearInterval(timer);
-        if (!paused) timer = setInterval(() => goTo(current + 1), 3500);
-      }
-      track.addEventListener("click", () => {
-        paused = !paused;
-        slideshow.classList.toggle("slideshow--paused", paused);
-        if (paused) clearInterval(timer);
-        else startAuto();
-      });
-      $("#slideNext")?.addEventListener("click", e => { e.stopPropagation(); goTo(current + 1); startAuto(); });
-      $("#slidePrev")?.addEventListener("click", e => { e.stopPropagation(); goTo(current - 1); startAuto(); });
-      let touchStartX = 0;
-      track.addEventListener("touchstart", e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-      track.addEventListener("touchend", e => {
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(dx) > 40) { goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-      }, { passive: true });
-      document.addEventListener("keydown", e => {
-        if (e.key === "ArrowRight") { goTo(current + 1); startAuto(); }
-        if (e.key === "ArrowLeft")  { goTo(current - 1); startAuto(); }
-      });
-      startAuto();
-    }
-
-    // Accordion
-    const accordion = document.getElementById("accordion");
-    const accordionItems = [...(accordion?.querySelectorAll(".accordion__item") || [])];
-    if (accordion) {
-      accordion.querySelectorAll(".accordion__item").forEach(item => {
-        item.querySelector(".accordion__trigger").addEventListener("click", () => {
-          if (project && project.noDrawer) {
-            const isOpen = item.classList.contains("accordion__item--open");
-            accordion.querySelectorAll(".accordion__item").forEach(i => {
-              i.classList.remove("accordion__item--open");
-              i.querySelector(".accordion__trigger").setAttribute("aria-expanded", "false");
-            });
-            if (!isOpen) {
-              item.classList.add("accordion__item--open");
-              item.querySelector(".accordion__trigger").setAttribute("aria-expanded", "true");
-            }
-          } else {
-            const idx = accordionItems.indexOf(item);
-            openDrawer();
-            const panel = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__panel");
-            const btn = document.getElementById(`drawer-item-${idx}`)?.querySelector(".drawer-index__btn");
-            if (panel) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-          }
-        });
-      });
-    }
-
-    // Panel toggle
-    const projectLayout = document.querySelector(".project-layout");
-    const inlineAccordion = document.getElementById("inlineAccordion");
-    function syncToggles(isOpen) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => {
-        btn.setAttribute("aria-expanded", String(isOpen));
-        btn.querySelector(".panel-toggle__icon").textContent = isOpen ? "−" : "+";
-      });
-    }
-    document.querySelectorAll(".panel-toggle").forEach(btn => {
-      btn.addEventListener("click", () => {
-        let isOpen;
-        if (inlineAccordion) {
-          isOpen = inlineAccordion.hidden;
-          inlineAccordion.hidden = !isOpen;
-        } else {
-          isOpen = projectLayout.classList.toggle("project-layout--panel-open");
-        }
-        syncToggles(isOpen);
-      });
+    var header = document.getElementById('projHeader');
+    var toggle = document.getElementById('projToggle');
+    toggle.addEventListener('click', function() {
+      var open = header.classList.toggle('proj-header--open');
+      toggle.setAttribute('aria-expanded', String(open));
     });
-
-    // Expandable gallery
-    document.querySelectorAll(".gallery-expandable__cover").forEach(cover => {
-      cover.addEventListener("click", () => {
-        const section = cover.closest(".gallery-expandable");
-        const wasOpen = section.classList.contains("is-open");
-        section.classList.toggle("is-open");
-        if (!wasOpen && window.innerWidth <= 780) {
-          setTimeout(() => section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
-        }
-      });
-    });
-    document.querySelectorAll(".gallery-expandable__close-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const section = btn.closest(".gallery-expandable");
-        section.classList.remove("is-open");
-        section.querySelector(".gallery-expandable__heading").scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-    });
-
-    // Lightbox
-    const lbOverlay = document.getElementById("lbOverlay");
-    const lbImg = document.getElementById("lbImg");
-    const lbPrev = document.getElementById("lbPrev");
-    const lbNext = document.getElementById("lbNext");
-    let lbImages = [], lbIndex = 0;
-    function openLightbox(src, alt, images, index) {
-      lbImg.src = src; lbImg.alt = alt || "";
-      lbImages = images || []; lbIndex = index ?? 0;
-      lbPrev.style.display = lbImages.length > 1 ? "" : "none";
-      lbNext.style.display = lbImages.length > 1 ? "" : "none";
-      lbOverlay.classList.add("lb-open");
-    }
-    function closeLightbox() { lbOverlay.classList.remove("lb-open"); lbImg.src = ""; }
-    function showLbImage(idx) {
-      lbIndex = (idx + lbImages.length) % lbImages.length;
-      lbImg.src = lbImages[lbIndex].src; lbImg.alt = lbImages[lbIndex].alt || "";
-    }
-    lbPrev.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex - 1); });
-    lbNext.addEventListener("click", e => { e.stopPropagation(); showLbImage(lbIndex + 1); });
-    document.addEventListener("click", e => {
-      const imgEl = e.target.tagName === "IMG" && (e.target.classList.contains("bg__img") || e.target.closest(".project__figure")) ? e.target : null;
-      if (imgEl) {
-        const section = imgEl.closest(".gallery-expandable");
-        if (section) {
-          const imgs = [...section.querySelectorAll(".project__figure img")];
-          openLightbox(imgEl.src, imgEl.alt, imgs.map(i => ({ src: i.src, alt: i.alt })), imgs.indexOf(imgEl));
-        } else { openLightbox(imgEl.src, imgEl.alt, [], 0); }
-      } else if (e.target === lbOverlay || e.target.id === "lbClose") { closeLightbox(); }
-    });
-    document.addEventListener("keydown", e => {
-      if (!lbOverlay.classList.contains("lb-open")) return;
-      if (e.key === "Escape") closeLightbox();
-      if (e.key === "ArrowLeft") showLbImage(lbIndex - 1);
-      if (e.key === "ArrowRight") showLbImage(lbIndex + 1);
-    });
-
-    // Process drawer
-    const processToggle = document.getElementById("processToggle");
-    const processDrawer = document.getElementById("processDrawer");
-    const processBackdrop = document.getElementById("processBackdrop");
-    const processDrawerClose = document.getElementById("processDrawerClose");
-    const processDrawerContent = document.getElementById("processDrawerContent");
-
-    const allSections = accordionItems.map(item => ({
-      title: item.querySelector(".accordion__title").textContent,
-      content: item.querySelector(".accordion__panel-inner").innerHTML
-    }));
-    if (project && project.processText) {
-      allSections.push({ title: "Mer om prosessen", content: project.processText.split("\n\n").map(p => `<p>${p}</p>`).join("") });
-    }
-    function showDrawerIndex() {
-      processDrawerContent.innerHTML = `<ul class="drawer-index">${allSections.map((s, i) => `<li class="drawer-index__item" id="drawer-item-${i}"><button class="drawer-index__btn" data-index="${i}"><span>${s.title}</span><span class="drawer-index__icon">+</span></button><div class="drawer-index__panel" hidden>${s.content}</div></li>`).join("")}</ul>`;
-      processDrawerContent.querySelectorAll(".drawer-index__btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const i = btn.dataset.index;
-          const panel = document.getElementById(`drawer-item-${i}`).querySelector(".drawer-index__panel");
-          const isOpen = !panel.hidden;
-          processDrawerContent.querySelectorAll(".drawer-index__panel").forEach(p => p.hidden = true);
-          processDrawerContent.querySelectorAll(".drawer-index__icon").forEach(ic => ic.textContent = "+");
-          if (!isOpen) { panel.hidden = false; btn.querySelector(".drawer-index__icon").textContent = "−"; }
-        });
-      });
-    }
-    function openDrawer() {
-      if (allSections.length === 1) {
-        processDrawerContent.innerHTML = `<h2 class="process-drawer__heading">${allSections[0].title}</h2>${allSections[0].content}`;
-      } else { showDrawerIndex(); }
-      processDrawer.classList.add("process-drawer--open");
-      processBackdrop.classList.add("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "false");
-    }
-    function closeDrawer() {
-      processDrawer.classList.remove("process-drawer--open");
-      processBackdrop.classList.remove("process-drawer__backdrop--visible");
-      processDrawer.setAttribute("aria-hidden", "true");
-    }
-    processToggle?.addEventListener("click", openDrawer);
-    if (project && !project.noDrawer) {
-      document.querySelectorAll(".panel-toggle").forEach(btn => btn.addEventListener("click", openDrawer));
-    }
-    processDrawerClose?.addEventListener("click", closeDrawer);
-    processBackdrop?.addEventListener("click", closeDrawer);
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
-
-    // Navbar toggle
-    const projHeader = document.getElementById("projHeader");
-    const projToggle = document.getElementById("projToggle");
-    projToggle?.addEventListener("click", () => {
-      const open = projHeader.classList.toggle("proj-header--open");
-      projToggle.setAttribute("aria-expanded", String(open));
-    });
-    document.addEventListener("click", e => {
-      if (projHeader && !projHeader.contains(e.target)) {
-        projHeader.classList.remove("proj-header--open");
-        projToggle?.setAttribute("aria-expanded", "false");
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target)) {
+        header.classList.remove('proj-header--open');
+        toggle.setAttribute('aria-expanded', 'false');
       }
     });
-    </script>
+  </script>
 </body>
 </html>
