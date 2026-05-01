@@ -60,6 +60,7 @@ body{
 @media (min-width: 1921px) {
   html { background: #c8c8c8; }
   body { max-width: 1920px; margin: 0 auto; }
+  .sidebar { left: calc((100vw - 1920px) / 2); }
 }
 
 a{color:inherit; text-decoration:none}
