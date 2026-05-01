@@ -392,6 +392,23 @@
           </div>
         </div>
 
+        <!-- Prosess section -->
+        <div class="srh-section" style="margin-bottom: 64px;">
+          <button class="btn-pdf btn-pdf--black" id="prosessToggle" aria-expanded="false" style="margin-top:0; cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+            <span>Prosess</span>
+            <svg id="prosessChevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true" style="transition:transform 0.3s ease;">
+              <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="prosessContent" style="display:none; margin-top:28px;">
+            <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
+              <img src="./assets/linkedinprosess.webp" alt="LinkedIn prosess" loading="lazy" decoding="async" style="width:100%; display:block;">
+              <img src="./assets/plakat-prosess.webp"  alt="Plakat prosess"   loading="lazy" decoding="async" style="width:100%; display:block;">
+              <img src="./assets/logoprosess.webp"     alt="Logo prosess"     loading="lazy" decoding="async" style="width:100%; display:block;">
+            </div>
+          </div>
+        </div>
+
         <div class="related">
           <h2 class="related__heading">Mer å se på</h2>
           <div class="related__grid">
@@ -713,6 +730,17 @@
         scrollEl.scrollLeft = scrollLeft - (e.pageX - scrollEl.offsetLeft - startX);
       });
     }
+
+    // Prosess toggle
+    const prosessToggle = document.getElementById('prosessToggle');
+    const prosessContent = document.getElementById('prosessContent');
+    const prosessChevron = document.getElementById('prosessChevron');
+    prosessToggle?.addEventListener('click', () => {
+      const open = prosessContent.style.display === 'none';
+      prosessContent.style.display = open ? 'block' : 'none';
+      prosessChevron.style.transform = open ? 'rotate(180deg)' : '';
+      prosessToggle.setAttribute('aria-expanded', String(open));
+    });
 
     // Sidebar toggle
     const toggle = $("#sidebarToggle");
