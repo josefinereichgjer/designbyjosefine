@@ -10,6 +10,7 @@
   <link rel="preload" href="./assets/brosyre-ute-srh.webp" as="image">
   <link rel="preload" href="./assets/norvald-iphone.webp" as="image">
   <link rel="icon" href="assets/hvitlogo.webp">
+  <link rel="stylesheet" href="./styles.css?v=32" />
 
   <style>
     @font-face {
@@ -303,11 +304,21 @@
 </head>
 
 <body>
-  <div class="page">
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link" href="./projects.html">Prosjekter</a>
+        <a class="proj-header__link" href="./projects.html#about">Om meg</a>
+        <a class="proj-header__link" href="./projects.html#contact">Kontakt</a>
+      </nav>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
 
-    <header class="top-bar">
-      <a class="logo" href="./index.html">Josefine Gjertsen</a>
-    </header>
+  <div class="page" style="padding-top:80px;">
 
     <div class="main-content">
 
@@ -371,6 +382,19 @@
   </div>
 
 <script>
+  var header = document.getElementById('projHeader');
+  var toggle = document.getElementById('projToggle');
+  toggle.addEventListener('click', function() {
+    var open = header.classList.toggle('proj-header--open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+  document.addEventListener('click', function(e) {
+    if (!header.contains(e.target)) {
+      header.classList.remove('proj-header--open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
   document.querySelectorAll('.float-card img').forEach(function(img) {
     if (img.complete) return;
     img.classList.add('img--loading');
