@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Designutvikling — Reina Fruktgård</title>
+<style>
+  :root {
+    --bg-0: #f5f0eb;
+    --bg-1: #ede7de;
+    --bg-2: #e5ddd3;
+    --ink: #1a1a1a;
+    --ink-dim: #888;
+    --ink-faint: #ccc;
+    --accent: #960C0C;
+    --flip-ms: 800ms;
+    --page-shadow: 0 20px 60px -10px rgba(0,0,0,0.22),
+                   0 6px 20px -6px rgba(0,0,0,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Optima', Georgia, serif;
+    color: var(--ink);
+    background: var(--bg-0);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: radial-gradient(ellipse at 50% 40%, var(--bg-2) 0%, var(--bg-1) 40%, var(--bg-0) 85%);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .stage {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 2600px;
+    perspective-origin: 50% 50%;
+    padding: 40px 48px 8px;
+    position: relative;
+    min-height: 0;
+  }
+
+  .book {
+    position: relative;
+    transform-style: preserve-3d;
+    /* A3 landscape: 1190 × 842 → ratio 1.4133 */
+    aspect-ratio: 1.4133 / 1;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .book::after {
+    content: "";
+    position: absolute;
+    left: 5%; right: 5%;
+    bottom: -24px;
+    height: 32px;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 70%);
+    filter: blur(6px);
+    z-index: -1;
+  }
+
+  .page, .flipper {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-color: #fff;
+  }
+
+  .page-left {
+    left: 0;
+    background-position: 0% 0%;
+    box-shadow: var(--page-shadow),
+                inset -12px 0 20px -8px rgba(0,0,0,0.12);
+  }
+
+  .page-right {
+    left: 50%;
+    background-position: 100% 0%;
+    box-shadow: var(--page-shadow),
+                inset 12px 0 20px -8px rgba(0,0,0,0.12);
+  }
+
+  .book.single-left .page-right,
+  .book.single-right .page-left {
+    background: var(--bg-0);
+    box-shadow: none;
+  }
+
+  .book::before {
+    content: "";
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 24px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg,
+      rgba(0,0,0,0) 0%,
+      rgba(0,0,0,0.1) 35%,
+      rgba(0,0,0,0.18) 50%,
+      rgba(0,0,0,0.1) 65%,
+      rgba(0,0,0,0) 100%);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .flipper {
+    transform-style: preserve-3d;
+    transition: transform var(--flip-ms) cubic-bezier(0.55, 0.05, 0.35, 1);
+    will-change: transform;
+    pointer-events: none;
+    display: none;
+    z-index: 5;
+  }
+
+  .flipper.forward { left: 50%; transform-origin: 0% 50%; transform: rotateY(0deg); }
+  .flipper.forward.go { transform: rotateY(-180deg); }
+  .flipper.backward { left: 0; transform-origin: 100% 50%; transform: rotateY(0deg); }
+  .flipper.backward.go { transform: rotateY(180deg); }
+
+  .flipper .face {
+    position: absolute;
+    inset: 0;
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-color: #fff;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+
+  .flipper.forward .face.front {
+    background-position: 100% 0%;
+    box-shadow: inset 12px 0 20px -8px rgba(0,0,0,0.12);
+  }
+  .flipper.forward .face.back {
+    transform: rotateY(180deg);
+    background-position: 0% 0%;
+    box-shadow: inset -12px 0 20px -8px rgba(0,0,0,0.12);
+  }
+  .flipper.backward .face.front {
+    background-position: 0% 0%;
+    box-shadow: inset -12px 0 20px -8px rgba(0,0,0,0.12);
+  }
+  .flipper.backward .face.back {
+    transform: rotateY(180deg);
+    background-position: 100% 0%;
+    box-shadow: inset 12px 0 20px -8px rgba(0,0,0,0.12);
+  }
+
+  .flipper .face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      rgba(0,0,0,0.12) 0%, rgba(0,0,0,0) 10%,
+      rgba(0,0,0,0) 90%, rgba(0,0,0,0.12) 100%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity calc(var(--flip-ms) * 0.5) ease-in-out;
+  }
+  .flipper.go .face::after { opacity: 1; }
+
+  .click-zone {
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 15%;
+    z-index: 6;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .click-zone.prev { left: 0; }
+  .click-zone.next { right: 0; }
+  .click-zone:hover { opacity: 1; }
+  .click-zone::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 28px; height: 28px;
+    margin-top: -14px;
+    border-top: 1.5px solid var(--ink);
+    border-right: 1.5px solid var(--ink);
+    opacity: 0.5;
+  }
+  .click-zone.prev::before { left: 16px; transform: rotate(-135deg); }
+  .click-zone.next::before { right: 16px; transform: rotate(45deg); }
+  .book.flipping .click-zone { pointer-events: none; }
+
+  footer {
+    flex: 0 0 auto;
+    padding: 14px 32px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+  }
+
+  .control-btn {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink-faint);
+    border-radius: 999px;
+    width: 36px; height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-size: 18px;
+  }
+  .control-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .control-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+
+  .page-indicator {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+    min-width: 160px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
+  .page-indicator .sep { color: var(--ink-faint); margin: 0 8px; }
+  .page-indicator .current { color: var(--ink); }
+
+  .scrubber {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 180px; height: 2px;
+    background: var(--ink-faint);
+    outline: none;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .scrubber::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+  }
+  .scrubber::-moz-range-thumb {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: none;
+  }
+
+  .fs-btn { position: fixed; top: 14px; right: 18px; z-index: 20; }
+
+  .loader {
+    position: fixed; inset: 0;
+    background: var(--bg-0);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 200; flex-direction: column; gap: 16px;
+    transition: opacity 0.5s ease;
+  }
+  .loader.done { opacity: 0; pointer-events: none; }
+  .loader-text { font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-dim); }
+  .loader-bar { width: 160px; height: 1px; background: var(--ink-faint); overflow: hidden; position: relative; }
+  .loader-bar::before {
+    content: ""; position: absolute; left: -40%; top: 0; bottom: 0; width: 40%;
+    background: var(--accent);
+    animation: loaderSlide 1.2s ease-in-out infinite;
+  }
+  @keyframes loaderSlide { 0% { left: -40%; } 100% { left: 100%; } }
+
+  @media (max-width: 720px) {
+    .stage { padding: 6px 8px; }
+    footer { gap: 12px; padding: 10px 12px 14px; }
+    .scrubber { width: 100px; }
+    .page-indicator { min-width: 100px; font-size: 9px; }
+    .fs-btn { top: 8px; right: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="loader-text">Laster inn</div>
+  <div class="loader-bar"></div>
+</div>
+
+<div class="stage" id="stage">
+  <div class="book" id="book">
+    <div class="page page-left" id="pageLeft"></div>
+    <div class="page page-right" id="pageRight"></div>
+    <div class="flipper" id="flipper">
+      <div class="face front" id="flipFront"></div>
+      <div class="face back" id="flipBack"></div>
+    </div>
+    <div class="click-zone prev" id="prevZone" aria-label="Forrige side"></div>
+    <div class="click-zone next" id="nextZone" aria-label="Neste side"></div>
+  </div>
+</div>
+
+<button class="control-btn fs-btn" id="fsBtn" title="Fullskjerm (F)" aria-label="Fullskjerm">⛶</button>
+
+<footer>
+  <button class="control-btn" id="prevBtn" title="Forrige (←)" aria-label="Forrige">‹</button>
+  <div class="page-indicator" id="indicator">
+    <span class="current">01</span><span class="sep">/</span><span class="total">10</span>
+  </div>
+  <button class="control-btn" id="nextBtn" title="Neste (→)" aria-label="Neste">›</button>
+  <input type="range" class="scrubber" id="scrubber" min="0" max="7" value="0" step="1" aria-label="Side">
+</footer>
+
+<script>
+  const PAGES = [
+    "assets/prosess/flipbook/page-01.webp",
+    "assets/prosess/flipbook/page-03.webp",
+    "assets/prosess/flipbook/page-04.webp",
+    "assets/prosess/flipbook/page-05.webp",
+    "assets/prosess/flipbook/page-06.webp",
+    "assets/prosess/flipbook/page-07.webp",
+    "assets/prosess/flipbook/page-08.webp",
+    "assets/prosess/flipbook/page-09.webp"
+  ];
+  const N = PAGES.length;
+
+  const book      = document.getElementById('book');
+  const pageLeft  = document.getElementById('pageLeft');
+  const pageRight = document.getElementById('pageRight');
+  const flipper   = document.getElementById('flipper');
+  const flipFront = document.getElementById('flipFront');
+  const flipBack  = document.getElementById('flipBack');
+  const prevBtn   = document.getElementById('prevBtn');
+  const nextBtn   = document.getElementById('nextBtn');
+  const prevZone  = document.getElementById('prevZone');
+  const nextZone  = document.getElementById('nextZone');
+  const indicator = document.getElementById('indicator');
+  const scrubber  = document.getElementById('scrubber');
+  const fsBtn     = document.getElementById('fsBtn');
+  const loader    = document.getElementById('loader');
+
+  let idx = 0, flipping = false;
+
+  function setImage(el, src) { el.style.backgroundImage = `url("${src}")`; }
+
+  function renderStatic() {
+    const src = PAGES[idx];
+    setImage(pageLeft, src);
+    setImage(pageRight, src);
+    indicator.querySelector('.current').textContent = String(idx + 1).padStart(2, '0');
+    indicator.querySelector('.total').textContent   = String(N).padStart(2, '0');
+    scrubber.value = idx;
+    prevBtn.disabled = (idx === 0);
+    nextBtn.disabled = (idx === N - 1);
+    prevZone.style.display = (idx === 0) ? 'none' : 'block';
+    nextZone.style.display = (idx === N - 1) ? 'none' : 'block';
+  }
+
+  function goForward() {
+    if (flipping || idx >= N - 1) return;
+    flipping = true;
+    book.classList.add('flipping');
+    const current = PAGES[idx], next = PAGES[idx + 1];
+    setImage(pageRight, next);
+    flipper.classList.remove('backward', 'go');
+    flipper.classList.add('forward');
+    setImage(flipFront, current);
+    setImage(flipBack, next);
+    flipper.style.display = 'block';
+    void flipper.offsetWidth;
+    flipper.classList.add('go');
+    flipper.addEventListener('transitionend', function onEnd(e) {
+      if (e.propertyName !== 'transform') return;
+      flipper.removeEventListener('transitionend', onEnd);
+      flipper.style.display = 'none';
+      flipper.classList.remove('go', 'forward');
+      idx++; renderStatic(); flipping = false;
+      book.classList.remove('flipping');
+    });
+  }
+
+  function goBackward() {
+    if (flipping || idx <= 0) return;
+    flipping = true;
+    book.classList.add('flipping');
+    const current = PAGES[idx], prev = PAGES[idx - 1];
+    setImage(pageLeft, prev);
+    flipper.classList.remove('forward', 'go');
+    flipper.classList.add('backward');
+    setImage(flipFront, current);
+    setImage(flipBack, prev);
+    flipper.style.display = 'block';
+    void flipper.offsetWidth;
+    flipper.classList.add('go');
+    flipper.addEventListener('transitionend', function onEnd(e) {
+      if (e.propertyName !== 'transform') return;
+      flipper.removeEventListener('transitionend', onEnd);
+      flipper.style.display = 'none';
+      flipper.classList.remove('go', 'backward');
+      idx--; renderStatic(); flipping = false;
+      book.classList.remove('flipping');
+    });
+  }
+
+  function jumpTo(target) {
+    if (flipping) return;
+    target = Math.max(0, Math.min(N - 1, target));
+    if (target === idx) return;
+    idx = target; renderStatic();
+  }
+
+  nextBtn.addEventListener('click', goForward);
+  prevBtn.addEventListener('click', goBackward);
+  nextZone.addEventListener('click', goForward);
+  prevZone.addEventListener('click', goBackward);
+  scrubber.addEventListener('input', e => jumpTo(parseInt(e.target.value, 10)));
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); goForward(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); goBackward(); }
+    else if (e.key === 'Home') { jumpTo(0); }
+    else if (e.key === 'End') { jumpTo(N - 1); }
+    else if (e.key === 'f' || e.key === 'F') { toggleFS(); }
+  });
+
+  let touchStart = null;
+  document.addEventListener('touchstart', e => {
+    if (e.touches.length === 1) touchStart = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+  }, { passive: true });
+  document.addEventListener('touchend', e => {
+    if (!touchStart) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.x, dy = t.clientY - touchStart.y;
+    if (Date.now() - touchStart.t < 600 && Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) goForward(); else goBackward();
+    }
+    touchStart = null;
+  }, { passive: true });
+
+  const stage = document.getElementById('stage');
+  function sizeBook() {
+    const rect = stage.getBoundingClientRect();
+    const availW = rect.width - 16, availH = rect.height - 16;
+    const ratio = 1.4133;
+    let w = availW, h = availW / ratio;
+    if (h > availH) { h = availH; w = h * ratio; }
+    book.style.width = w + 'px';
+    book.style.height = h + 'px';
+  }
+  window.addEventListener('resize', sizeBook);
+
+  function toggleFS() {
+    if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+    else document.exitFullscreen?.();
+  }
+  fsBtn.addEventListener('click', toggleFS);
+
+  sizeBook();
+  renderStatic();
+  const toLoad = Math.min(3, N);
+  let loaded = 0;
+  PAGES.slice(0, toLoad).forEach(src => {
+    const img = new Image();
+    img.onload = img.onerror = () => { if (++loaded >= toLoad) { loader.classList.add('done'); setTimeout(() => loader.remove(), 600); PAGES.forEach(s => { new Image().src = s; }); } };
+    img.src = src;
+  });
+  setTimeout(() => { loader.classList.add('done'); setTimeout(() => loader.remove(), 600); }, 3000);
+</script>
+</body>
+</html>
