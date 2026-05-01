@@ -273,17 +273,18 @@
         grid-template-columns: 1fr clamp(340px, 32vw, 760px);
         gap: clamp(64px, 4vw, 120px);
         padding: 0 clamp(52px, 4vw, 100px);
-        max-width: 1800px;
+        max-width: 2200px;
         margin-left: auto;
         margin-right: auto;
       }
-      .bottom-bar { max-width: 1800px; margin-left: auto; margin-right: auto; }
+      .bottom-bar { max-width: 2200px; margin-left: auto; margin-right: auto; }
       .col-right { height: clamp(480px, 58vh, 860px); }
 
-      /* Tighten photo cluster: pull me card right of text, compress outer card spread */
-      .float-card--me { width: 50%; left: -10%; top: 14%; }
+      /* Photo cluster: keep cards inside col-right to avoid overlapping text */
+      .float-card--me { width: 50%; left: 5%; top: 14%; }
       .float-card--1  { top: -8%; }
       .float-card--2  { top: 4%; }
+      .float-card--3  { left: 0%; }
       .float-card--5  { top: 55%; }
       .float-card--6  { left: 44%; top: 46%; }
       .float-card--7  { left: 52%; }
