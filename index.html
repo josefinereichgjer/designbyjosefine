@@ -265,17 +265,15 @@
       .col-right { height: clamp(260px, 38vh, 380px); }
     }
 
-    /* Large screens (iMac 27", wide laptops)
-       Let vw-based values scale freely — same proportions as the 1280px design,
-       just without the artificial 86px / 480px caps that kill the layout on wide viewports. */
+    /* Large screens (iMac 27", wide laptops) */
     @media (min-width: 1440px) {
-      .display-text { font-size: clamp(86px, 5.4vw, 160px); }
+      .display-text { font-size: clamp(86px, 5.4vw, 100px); }
       .main-content {
-        grid-template-columns: 1fr clamp(340px, 27vw, 720px);
-        gap: clamp(64px, 5vw, 160px);
+        grid-template-columns: 1fr clamp(340px, 32vw, 760px);
+        gap: clamp(64px, 4vw, 120px);
         padding: 0 clamp(52px, 4vw, 100px);
       }
-      .col-right { height: clamp(480px, 54vh, 900px); }
+      .col-right { height: clamp(480px, 58vh, 860px); }
 
       /* Tighten photo cluster: pull me card right of text, compress outer card spread */
       .float-card--me { width: 50%; left: -10%; top: 14%; }
