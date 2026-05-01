@@ -4,18 +4,67 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="format-detection" content="telephone=no">
-  <title>Emanuel Viegeland nettside — DesignbyJosefine</title>
-  <meta name="description" content="Emanuel Viegeland nettside — DesignbyJosefine" />
+  <title>Emanuel Viegeland Museum — DesignbyJosefine</title>
+  <meta name="description" content="Redesign av nettsiden til Emanuel Vigeland Museum — DesignbyJosefine" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=32" />
   <link rel="icon" href="assets/hvitlogo.webp">
   <style>
-    .ev-img-full { width: 100%; height: auto; display: block; }
-    .ev-img-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .ev-img-pair img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    @media (max-width: 640px) { .ev-img-pair { grid-template-columns: 1fr; } }
+    /* Before/after */
+    .ev-before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .ev-before-after__item { position: relative; overflow: hidden; }
+    .ev-before-after__label {
+      position: absolute; top: 16px; left: 16px;
+      font-size: 10px; letter-spacing: .12em; text-transform: uppercase;
+      font-weight: 600; color: #fff; background: rgba(0,0,0,0.55);
+      padding: 4px 10px;
+    }
+    .ev-before-after img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Persona grid */
+    .ev-persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+    .ev-persona-grid img { width: 100%; display: block; }
+
+    /* Innsikt cards */
+    .ev-innsikt { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .ev-innsikt__item { padding: 28px 32px; border-bottom: 1px solid #e8e4e0; border-right: 1px solid #e8e4e0; }
+    .ev-innsikt__item:nth-child(2n) { border-right: none; }
+    .ev-innsikt__item:nth-last-child(-n+2) { border-bottom: none; }
+    .ev-innsikt__num { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #aaa; font-weight: 500; display: block; margin-bottom: 10px; }
+    .ev-innsikt__heading { font-size: 16px; font-weight: 600; color: #111; margin: 0 0 8px; }
+    .ev-innsikt__body { font-size: 14px; line-height: 1.7; color: #555; margin: 0; }
+
+    /* Designgrep */
+    .ev-grep { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 56px; }
+    .ev-grep__item { }
+    .ev-grep__innsikt { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #999; font-weight: 500; margin: 0 0 6px; display: block; }
+    .ev-grep__heading { font-size: 17px; font-weight: 600; color: #111; margin: 0 0 8px; }
+    .ev-grep__body { font-size: 14px; line-height: 1.75; color: #555; margin: 0; }
+
+    /* Prosess steps */
+    .ev-prosess { display: flex; flex-wrap: wrap; gap: 0; counter-reset: step; }
+    .ev-prosess__step {
+      flex: 1 1 120px;
+      padding: 20px 18px;
+      border-right: 1px solid #e8e4e0;
+      counter-increment: step;
+    }
+    .ev-prosess__step:last-child { border-right: none; }
+    .ev-prosess__num { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 8px; }
+    .ev-prosess__label { font-size: 13px; font-weight: 600; color: #111; margin: 0; line-height: 1.4; }
+
+    @media (max-width: 700px) {
+      .ev-before-after { grid-template-columns: 1fr; }
+      .ev-persona-grid { grid-template-columns: 1fr 1fr; }
+      .ev-innsikt { grid-template-columns: 1fr; }
+      .ev-innsikt__item { border-right: none; }
+      .ev-innsikt__item:nth-last-child(-n+2) { border-bottom: 1px solid #e8e4e0; }
+      .ev-innsikt__item:last-child { border-bottom: none; }
+      .ev-grep { grid-template-columns: 1fr; gap: 28px; }
+      .ev-prosess__step { border-right: none; border-bottom: 1px solid #e8e4e0; flex: 1 1 100%; }
+    }
   </style>
 </head>
 
@@ -39,16 +88,16 @@
     <div class="proj-breadcrumb">
       <a href="./projects.html">Arbeider</a>
       <span class="proj-breadcrumb__sep">›</span>
-      <strong style="color:#0d0d0d; font-weight:700; letter-spacing:0.12em;">Emanuel Viegeland</strong>
+      <strong style="color:#0d0d0d; font-weight:700; letter-spacing:0.12em;">Emanuel Viegeland Museum</strong>
     </div>
 
     <section class="proj-hero">
       <div class="proj-hero__left">
-        <h1 class="proj-hero__title">Emanuel<br>Viegeland</h1>
+        <h1 class="proj-hero__title">Emanuel<br>Viegeland<br>Museum</h1>
         <p class="proj-hero__sub">Redesign / UX</p>
       </div>
       <div class="proj-hero__right">
-        <img class="proj-hero__img" src="./assets/3skjermer.png" alt="Emanuel Viegeland nettside — tre skjermer" fetchpriority="high">
+        <img class="proj-hero__img" src="./assets/3skjermer.png" alt="Emanuel Viegeland Museum — tre skjermer" fetchpriority="high">
       </div>
     </section>
 
@@ -59,8 +108,12 @@
           <span class="proj-meta-value">Redesign / UX</span>
         </div>
         <div>
-          <span class="proj-meta-label">Type</span>
-          <span class="proj-meta-value">Nettside</span>
+          <span class="proj-meta-label">Team</span>
+          <span class="proj-meta-value">5 personer</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">Min rolle</span>
+          <span class="proj-meta-value">UX, visuell design</span>
         </div>
         <div>
           <span class="proj-meta-label">År</span>
@@ -69,23 +122,161 @@
       </div>
     </div>
 
-    <article>
+    <p class="proj-description">Redesign av nettsiden til Emanuel Vigeland Museum — et mausoleum og museum i Oslo med en nettside fra 2001. Målet var å lage en mobil-first, tilgjengelig løsning som viderefører museets mørke, sanselige atmosfære.</p>
 
+    <article>
       <div class="proj-sections">
 
-        <div class="proj-section proj-section--none">
-          <div class="ev-img-pair">
-            <img src="./assets/em.png" alt="Emanuel Viegeland" loading="lazy">
-            <img src="./assets/laptop.png" alt="Emanuel Viegeland nettside på laptop" loading="lazy">
+        <!-- FØR / ETTER -->
+        <div class="proj-section proj-section--none" style="padding-bottom:0">
+          <div class="ev-before-after">
+            <div class="ev-before-after__item">
+              <span class="ev-before-after__label">Før</span>
+              <img src="./assets/prosess/before-website.webp" alt="Original nettside 2001">
+            </div>
+            <div class="ev-before-after__item">
+              <span class="ev-before-after__label">Etter</span>
+              <img src="./assets/em.png" alt="Redesignet nettside">
+            </div>
           </div>
         </div>
 
+        <!-- KONTEKST / UTFORDRING -->
+        <div class="proj-section proj-section--krem">
+          <div style="max-width:920px">
+            <h2 class="proj-section__heading">Utfordringen</h2>
+            <p class="proj-section__body">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser — men nettsiden fra 2001 klarte ikke å formidle den. Konsertinformasjon var spredt mellom nettsiden og Facebook, det fantes ingen mobiltilpasning, og den mørke atmosfæren som definerer museet var helt fraværende digitalt.</p>
+          </div>
+          <div class="ev-innsikt" style="margin-top:40px">
+            <div class="ev-innsikt__item">
+              <span class="ev-innsikt__num">01</span>
+              <h3 class="ev-innsikt__heading">Fragmentert konsertinfo</h3>
+              <p class="ev-innsikt__body">Arrangementsinformasjon var spredt mellom nettside og Facebook — brukerne visste ikke hvor de skulle lete.</p>
+            </div>
+            <div class="ev-innsikt__item">
+              <span class="ev-innsikt__num">02</span>
+              <h3 class="ev-innsikt__heading">Ingen tydelige CTA-er</h3>
+              <p class="ev-innsikt__body">Kun tekstlenker — ingen knapper som veiledet brukerne videre til billettkjøp eller besøksinfo.</p>
+            </div>
+            <div class="ev-innsikt__item">
+              <span class="ev-innsikt__num">03</span>
+              <h3 class="ev-innsikt__heading">Manglende mobiltilpasning</h3>
+              <p class="ev-innsikt__body">Nettsiden var ikke responsiv. Majoriteten av brukerne er mobile — og opplevelsen falt helt fra hverandre.</p>
+            </div>
+            <div class="ev-innsikt__item">
+              <span class="ev-innsikt__num">04</span>
+              <h3 class="ev-innsikt__heading">Atmosfære ikke formidlet</h3>
+              <p class="ev-innsikt__body">Museets mørke, sanselige karakter er en styrke — men ble ikke kommunisert gjennom den digitale flaten.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROSESS -->
         <div class="proj-section proj-section--none">
-          <img class="ev-img-full" src="./assets/3skjermer.png" alt="Emanuel Viegeland nettside — responsivt design" loading="lazy">
+          <h2 class="proj-section__heading">Prosess</h2>
+          <div class="ev-prosess">
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">01</span>
+              <p class="ev-prosess__label">Ekskursjon</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">02</span>
+              <p class="ev-prosess__label">Intervju med daglig leder</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">03</span>
+              <p class="ev-prosess__label">UX-evaluering</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">04</span>
+              <p class="ev-prosess__label">Spørreundersøkelse</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">05</span>
+              <p class="ev-prosess__label">Personas</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">06</span>
+              <p class="ev-prosess__label">MoSCoW</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">07</span>
+              <p class="ev-prosess__label">Skisser</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">08</span>
+              <p class="ev-prosess__label">Brukertesting</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">09</span>
+              <p class="ev-prosess__label">Hi-fi prototype</p>
+            </div>
+            <div class="ev-prosess__step">
+              <span class="ev-prosess__num">10</span>
+              <p class="ev-prosess__label">Designsystem</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SITEMAP -->
+        <div class="proj-section proj-section--none" style="padding-top:0">
+          <img src="./assets/prosess/sitemap.png" alt="Sitemap — Emanuel Viegeland Museum" style="width:100%; display:block;" loading="lazy">
+        </div>
+
+        <!-- PERSONAS -->
+        <div class="proj-section proj-section--mandel-light">
+          <h2 class="proj-section__heading">Personas</h2>
+          <p class="proj-section__body" style="max-width:600px; margin-bottom:32px;">Vi utviklet fire personas basert på intervjuer og spørreundersøkelse — fra den kulturinteresserte faste besøkende til den tilfeldige turisten.</p>
+          <div class="ev-persona-grid">
+            <img src="./assets/prosess/Persona-1.png" alt="Persona 1" loading="lazy">
+            <img src="./assets/prosess/Persona-2.png" alt="Persona 2" loading="lazy">
+            <img src="./assets/prosess/Persona-3.png" alt="Persona 3" loading="lazy">
+          </div>
+        </div>
+
+        <!-- LOGO-ITERASJONER -->
+        <div class="proj-section proj-section--none">
+          <h2 class="proj-section__heading">Logo-iterasjoner</h2>
+          <p class="proj-section__body" style="max-width:620px; margin-bottom:32px;">Dot voting ble brukt til å velge retning blant logoforslag fra teamet. Vi testet ulike uttrykk — fra symbolbaserte til typografiske løsninger.</p>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
+            <img src="./assets/prosess/iterasjoner.webp" alt="Logo-iterasjoner med dot voting" style="width:100%; display:block;" loading="lazy">
+            <img src="./assets/prosess/dot voting logo.png" alt="Dot voting — logovalg" style="width:100%; display:block;" loading="lazy">
+          </div>
+        </div>
+
+        <!-- DESIGNGREP -->
+        <div class="proj-section proj-section--krem">
+          <h2 class="proj-section__heading">Innsikt til design</h2>
+          <div class="ev-grep" style="margin-top:32px">
+            <div class="ev-grep__item">
+              <span class="ev-grep__innsikt">Innsikt → Design</span>
+              <h3 class="ev-grep__heading">Bookingflyt i 5 trinn</h3>
+              <p class="ev-grep__body">Kalender → billetter → sammendrag → betaling → QR-kode. Den gamle løsningen var uoversiktlig på mobil — vi delte opp flyten i tydelige, lineære steg.</p>
+            </div>
+            <div class="ev-grep__item">
+              <span class="ev-grep__innsikt">Innsikt → Design</span>
+              <h3 class="ev-grep__heading">Samlet arrangementskalender</h3>
+              <p class="ev-grep__body">Konsertinformasjon var spredt mellom nettside og Facebook. Vi samlet alt i én kalender med filtrering og tydelig hierarki.</p>
+            </div>
+            <div class="ev-grep__item">
+              <span class="ev-grep__innsikt">Innsikt → Design</span>
+              <h3 class="ev-grep__heading">Tydelige CTA-knapper</h3>
+              <p class="ev-grep__body">Tekstlenker ble erstattet med kontraststerke knapper som veiledet brukeren gjennom nøkkelflytene — billettkjøp, besøk og galleri.</p>
+            </div>
+            <div class="ev-grep__item">
+              <span class="ev-grep__innsikt">Innsikt → Design</span>
+              <h3 class="ev-grep__heading">Mørk palett med høy kontrast</h3>
+              <p class="ev-grep__body">Museets atmosfære ble overført digitalt gjennom en mørk fargepalett — med bevisst høy kontrast på CTA-er for å møte WCAG 2.1 AA.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- LØSNING / SLUTTBILDER -->
+        <div class="proj-section proj-section--none" style="padding-bottom:0">
+          <img src="./assets/laptop.png" alt="Emanuel Viegeland Museum på laptop" style="width:100%; display:block;" loading="lazy">
         </div>
 
       </div>
-
     </article>
 
     <div class="proj-adjacent">
