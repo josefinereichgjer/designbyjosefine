@@ -727,6 +727,20 @@
       .we-reflection__learnings li { max-width: 900px; }
 
     }
+    /* Leveranser pills */
+    .we-leveranser-pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 20px 0 32px; }
+    .we-pill { font-size: 12px; font-weight: 500; letter-spacing: .05em; padding: 5px 14px; border: 1px solid #ccc; color: #555; border-radius: 999px; }
+
+    /* Utfordringen block */
+    .we-utfordring { border-left: 3px solid #1C3A30; padding: 20px 24px; margin-bottom: 0; max-width: 760px; }
+    .we-utfordring__label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #1C3A30; display: block; margin-bottom: 10px; }
+    .we-utfordring__text { font-size: 19px; line-height: 1.6; font-style: italic; color: #111; margin: 0; }
+
+    /* Vendepunkt callout */
+    .we-vendepunkt { background: #1C3A30; padding: 32px 36px; margin-bottom: 32px; }
+    .we-vendepunkt__label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #6EB6A9; display: block; margin-bottom: 16px; }
+    .we-vendepunkt__quote { font-style: italic; font-size: 22px; line-height: 1.4; color: #fff; margin: 0 0 14px; border: none; padding: 0; }
+    .we-vendepunkt__body { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.7); margin: 0; max-width: 680px; }
   </style>
 </head>
 
@@ -774,34 +788,52 @@
     <div class="proj-meta-row">
       <div class="proj-meta-fields">
         <div>
+          <span class="proj-meta-label">Rolle</span>
+          <span class="proj-meta-value">Visuell identitet, nettside, sosiale medier og trykksaker</span>
+        </div>
+        <div>
+          <span class="proj-meta-label">Oppdragsgiver</span>
+          <span class="proj-meta-value">Stiftelsen WE</span>
+        </div>
+        <div>
           <span class="proj-meta-label">Emne</span>
-          <span class="proj-meta-value">Strategisk design</span>
+          <span class="proj-meta-value">IDG2015 Strategisk design</span>
         </div>
         <div>
-          <span class="proj-meta-label">Type prosjekt</span>
-          <span class="proj-meta-value">Visuell identitet</span>
-        </div>
-        <div>
-          <span class="proj-meta-label">Veileder</span>
-          <span class="proj-meta-value">Vera Pahle</span>
-        </div>
-        <div>
-          <span class="proj-meta-label">Dato</span>
-          <span class="proj-meta-value">Høst 2024</span>
+          <span class="proj-meta-label">År</span>
+          <span class="proj-meta-value">2024</span>
         </div>
       </div>
     </div>
 
-    <p class="proj-description" style="font-size:22px; max-width:1050px;">Utvikling av en helhetlig visuell identitet for Stiftelsen WE — en nyetablert sosial stiftelse som bygger broer mellom næringsliv og sosialt entreprenørskap.</p>
+    <p class="proj-description" style="font-size:20px; max-width:900px;">Visuell identitet for en stiftelse som kobler kvinner uten nettverk med arbeidsliv og næringsliv.</p>
+
+    <div class="we-leveranser-pills">
+      <span class="we-pill">Nettside</span>
+      <span class="we-pill">Instagram</span>
+      <span class="we-pill">Brosjyre</span>
+      <span class="we-pill">Visittkort</span>
+      <span class="we-pill">ID-kort</span>
+      <span class="we-pill">Messebanner</span>
+    </div>
+
+    <div class="we-utfordring">
+      <span class="we-utfordring__label">Utfordringen</span>
+      <p class="we-utfordring__text">Å skape en identitet som både oppleves trygg og inkluderende for kvinner på vei inn i arbeidslivet, og profesjonell nok til å bygge tillit hos næringslivet.</p>
+    </div>
         <section class="proj-section reveal" id="sec-retning">
           <h2 class="proj-section__heading">Oppdragsgiver</h2>
 
           <div class="we-oppdrag-split">
             <div>
               <img src="./assets/ragnhildkistine.webp" alt="Oppdragsgiver" loading="lazy">
+              <div class="we-oppdrag-names">
+                <span>Kirstine Holst</span>
+                <span>Ragnhild Slettner</span>
+              </div>
             </div>
             <div class="we-oppdrag-text">
-              <p>Stiftelsen WE (Women Empowerment) arbeider for å styrke kvinners muligheter til selvstendighet ved å skape innganger til arbeidslivet for kvinner uten utdanning, erfaring eller nettverk. Gjennom å legge til rette for kompetanseutvikling, nettverksbygging og arbeidsmuligheter, er målet å bidra til økt deltakelse i samfunnet og en mer inkluderende arbeidsarena.</p>
+              <p>Stiftelsen WE (Women Empowerment) arbeider for å styrke kvinners vei inn i arbeidslivet gjennom kompetanse, nettverk og samarbeid med næringslivet. Identiteten måtte balansere to behov: å oppleves trygg og inkluderende for kvinnene WE ønsker å nå, og samtidig fremstå profesjonell og troverdig for samarbeidspartnere.</p>
               <blockquote>«For designløsningen til stiftelsen vår, ønsker vi noe tillitsskapende, lekent og moderne!»</blockquote>
             </div>
           </div>
@@ -810,6 +842,14 @@
 
         <section class="proj-section reveal" id="sec-konsept">
           <h2 class="proj-section__heading">Designretning</h2>
+
+          <p class="we-section__intro">Designretningen bygger på en rolig, mørk grønn base kombinert med myke former, nettverksmønster og en lilla aksentfarge. Målet var å skape et uttrykk som føles varmt og menneskelig, men samtidig strukturert og profesjonelt.</p>
+
+          <div class="we-vendepunkt">
+            <span class="we-vendepunkt__label">Vendepunkt — ekspertintervju</span>
+            <blockquote class="we-vendepunkt__quote">«Hvem skal føle seg trygge når de ser dette?»</blockquote>
+            <p class="we-vendepunkt__body">Spørsmålet fra designer Cecilie Melli ble et vendepunkt. Det første utkastet hadde energi, men manglet tyngde. Vi justerte retningen mot et mer balansert, tillitsvekkende uttrykk — og begynte å se identiteten som et strategisk verktøy, ikke bare et visuelt uttrykk.</p>
+          </div>
 
           <div class="we-retning-grid">
 
@@ -858,22 +898,22 @@
         </section>
 
         <section class="proj-section reveal" id="sec-identitet" style="border-top: none;">
-          <h2 class="proj-section__heading">Visuell Identitet</h2>
+          <h2 class="proj-section__heading">Visuell identitet</h2>
 
           <div style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Logo</h3>
             <div class="we-logo-grid">
               <div class="we-logo-item">
                 <img src="./assets/main-logo4x.png" alt="Monokrom logo" loading="lazy" decoding="async">
-                <p class="we-logo-caption">Monokrom logo – brukt på print som brosjyre</p>
+                <p class="we-logo-caption">Monokrom logo. Brukes på trykte flater der fargebruk må begrenses.</p>
               </div>
               <div class="we-logo-item">
                 <img src="./assets/main-logo-purple4x.png" alt="Hovedlogo med farger" loading="lazy" decoding="async">
-                <p class="we-logo-caption">Hovedlogo med farger: #071f1b og #afa4ff (WCAG-kontrast: 7.84:1)</p>
+                <p class="we-logo-caption">Hovedlogo. Brukes i primær kommunikasjon og på mørk bakgrunn.</p>
               </div>
               <div class="we-logo-item">
                 <img src="./assets/logo-icon4x.png" alt="Ikonlogo" loading="lazy" decoding="async">
-                <p class="we-logo-caption">Ikonlogo brukt for Instagram, Facebook og andre sosiale medier</p>
+                <p class="we-logo-caption">Ikonlogo. Brukes i sosiale medier og små digitale flater.</p>
               </div>
             </div>
             <div class="we-logo-actions">
@@ -883,7 +923,7 @@
 
           <div class="we-subheading-block" style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Fargesystem</h3>
-            <p class="we-section__intro" style="max-width: 900px;">Paletten balanserer forankring og energi. Dype grønntoner skaper en identitet knyttet til natur, tillit og bærekraft, og skiller WE fra konkurrentenes blådominerte uttrykk. Violett fungerer som en kontrasterende aksentfarge som tilfører energi og understreker det innovative ved arbeidet.</p>
+            <p class="we-section__intro" style="max-width: 900px;">Fargesystemet bygger på mørke grønntoner som gir tyngde, tillit og ro. Lilla brukes som aksent for å tilføre energi og særpreg, mens lyse støttefarger gir fleksibilitet på nettside, kort og trykte flater.</p>
             
             <div class="we-palette-row">
               <div>
@@ -894,7 +934,7 @@
                     <div class="we-swatch__info">
                       <span class="we-swatch__hex">#071F1B</span>
                       <span class="we-swatch__name">Hovedbakgrunn</span>
-                      <span class="we-swatch__use">Brukes som hovedbakgrunn i designet (hero, rollups, sosiale medier).</span>
+                      <span class="we-swatch__use">Hovedbakgrunn</span>
                     </div>
                   </div>
                   <div class="we-swatch we-stagger">
@@ -902,7 +942,7 @@
                     <div class="we-swatch__info">
                       <span class="we-swatch__hex">#0F4A42</span>
                       <span class="we-swatch__name">Sekundær bakgrunn</span>
-                      <span class="we-swatch__use">Brukes i seksjoner for å skape dybde og visuell balanse.</span>
+                      <span class="we-swatch__use">Sekundær bakgrunn</span>
                     </div>
                   </div>
                 </div>
@@ -916,7 +956,7 @@
                     <div class="we-swatch__info">
                       <span class="we-swatch__hex">#F2F9F8</span>
                       <span class="we-swatch__name">Lys bakgrunn</span>
-                      <span class="we-swatch__use">Brukes på lyse flater som flyers, kort og nettsider.</span>
+                      <span class="we-swatch__use">Lys bakgrunn</span>
                     </div>
                   </div>
                   <div class="we-swatch we-stagger">
@@ -924,7 +964,7 @@
                     <div class="we-swatch__info">
                       <span class="we-swatch__hex">#D2E1DF</span>
                       <span class="we-swatch__name">Flater / bokser</span>
-                      <span class="we-swatch__use">Brukes til kort, informasjonsbokser og innholdsområder.</span>
+                      <span class="we-swatch__use">Kort og informasjonsbokser</span>
                     </div>
                   </div>
                 </div>
@@ -940,7 +980,7 @@
                     <div class="we-swatch__info">
                       <span class="we-swatch__hex">#6EB6A9</span>
                       <span class="we-swatch__name">Utheving</span>
-                      <span class="we-swatch__use">Brukes til å fremheve viktige ord og elementer. Skaper kontrast mot mørk bakgrunn.</span>
+                      <span class="we-swatch__use">Utheving og kontrast</span>
                     </div>
                   </div>
                   <div class="we-swatch we-stagger">
@@ -948,7 +988,7 @@
                     <div class="we-swatch__info">
                       <span class="we-swatch__hex">#8E7FFF</span>
                       <span class="we-swatch__name">Aksent</span>
-                      <span class="we-swatch__use">Mørkere lilla som brukes kun på sirkelen i det grafiske elementet.</span>
+                      <span class="we-swatch__use">Grafisk element</span>
                     </div>
                   </div>
                   <div class="we-swatch we-stagger">
@@ -956,7 +996,7 @@
                     <div class="we-swatch__info">
                       <span class="we-swatch__hex">#AFA4FF</span>
                       <span class="we-swatch__name">Logofarge</span>
-                      <span class="we-swatch__use">Lysere lilla som til logo for god kontrast på mørk bakgrunn.</span>
+                      <span class="we-swatch__use">Logofarge / aksent</span>
                     </div>
                   </div>
                   <div class="we-swatch we-stagger">
@@ -964,7 +1004,7 @@
                     <div class="we-swatch__info">
                       <span class="we-swatch__hex">#000000</span>
                       <span class="we-swatch__name">Primær tekst</span>
-                      <span class="we-swatch__use">Brukes på lyse bakgrunner for maksimal lesbarhet.</span>
+                      <span class="we-swatch__use">Primær tekst</span>
                     </div>
                   </div>
                 </div>
@@ -976,35 +1016,20 @@
 
           <div class="we-subheading-block" style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Typografi</h3>
-            <div class="we-typo-list">
-              <div class="we-typo-item we-stagger">
-                <h3 class="we-typo__name" style="font-weight: 400;">Forma DJR Micro Regular</h3>
-                <p class="we-typo__use">
-                  <strong>Brukes til:</strong><br>
-                  - Logo og merkevaretekst (“Foundation Women Empowerment”)<br>
-                  - Informasjonsbokser og kortere tekster<br>
-                  - Små tekststørrelser og UI-elementer
-                </p>
+            <div class=”we-typo-list”>
+              <div class=”we-typo-item we-stagger”>
+                <h3 class=”we-typo__name” style=”font-weight: 400;”>Forma DJR Micro Regular</h3>
+                <p class=”we-typo__use”>Brukt i logo, merkevaretekst og mindre UI-elementer.</p>
               </div>
-              
-              <div class="we-typo-item we-stagger">
-                <h3 class="we-typo__name" style="font-weight: 700;">Trade Gothic Next LT Pro Bold</h3>
-                <p class="we-typo__use">
-                  <strong>Brukes til:</strong><br>
-                  - Brødtekst og hovedinnhold<br>
-                  - Sitater (quotes)<br>
-                  - Generell løpende tekst i designet
-                </p>
+
+              <div class=”we-typo-item we-stagger”>
+                <h3 class=”we-typo__name” style=”font-weight: 700;”>Trade Gothic Next LT Pro Bold</h3>
+                <p class=”we-typo__use”>Brukt til brødtekst, sitater og hovedinnhold.</p>
               </div>
-              
-              <div class="we-typo-item we-stagger">
-                <h3 class="we-typo__name" style="font-weight: 900;">Trade Gothic Next LT Pro Heavy</h3>
-                <p class="we-typo__use">
-                  <strong>Brukes til:</strong><br>
-                  - Utheving av nøkkelord og viktige budskap<br>
-                  - Ord som skal skille seg ut visuelt, spesielt i overskrifter<br>
-                  - Brukes ofte i fargen <span style="color:#6EB6A9; font-weight:600;">#6EB6A9</span> for ekstra fokus
-                </p>
+
+              <div class=”we-typo-item we-stagger”>
+                <h3 class=”we-typo__name” style=”font-weight: 900;”>Trade Gothic Next LT Pro Heavy</h3>
+                <p class=”we-typo__use”>Brukt til nøkkelord, uthevinger og visuelle budskap.</p>
               </div>
             </div>
           </div>
@@ -1054,8 +1079,8 @@
 
         </section>
 
-        <section class="proj-section reveal" id="sec-krediter">
-          <h2 class="proj-section__heading">Krediter</h2>
+        <section class="proj-section reveal" id="sec-krediter" style="padding-top: 48px;">
+          <h2 style="font-family: var(--we-font); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: #999; margin: 0 0 24px;">Krediter</h2>
           <div class="we-credits">
             <div>
               <p class="we-credits__heading">Gruppe</p>
