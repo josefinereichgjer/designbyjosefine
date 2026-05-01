@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="format-detection" content="telephone=no">
+  <title>Flerkanalspublisering Prosess — Josefine RG</title>
+  <link rel="stylesheet" href="./styles.css?v=32" />
+  <link rel="icon" href="assets/hvitlogo.webp">
+  <style>
+    html { scroll-behavior: smooth; }
+
+    .prosess-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 700px) { .prosess-grid { grid-template-columns: 1fr; } }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+
+<body>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link proj-header__link--active" href="./projects.html">Prosjekter</a>
+        <a class="proj-header__link" href="./projects.html#about">Om meg</a>
+        <a class="proj-header__link" href="./projects.html#contact">Kontakt</a>
+      </nav>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="proj-main">
+
+    <div class="proj-breadcrumb" style="font-size:13px;">
+      <a href="./projects.html">Prosjekter</a><span class="proj-breadcrumb__sep">›</span><a href="./flerkanalspublisering.html">Flerkanalspublisering</a><span class="proj-breadcrumb__sep">›</span><strong style="color:#0d0d0d; font-weight:700; letter-spacing:0.12em;">Prosess</strong>
+    </div>
+
+    <section class="proj-hero">
+      <div class="proj-hero__left">
+        <h1 class="proj-hero__title">Flerkanal-<br>publisering</h1>
+        <p class="proj-hero__sub" style="color:#1a1a1a; letter-spacing:0.18em; font-weight:500; margin-top:0.5rem;">PROSESS</p>
+      </div>
+      <div class="proj-hero__right">
+        <img class="proj-hero__img" src="./assets/poster-srh.webp" alt="SRH Open Day poster" fetchpriority="high" decoding="async">
+      </div>
+    </section>
+
+    <!-- Prosessbilder -->
+    <section class="proj-section reveal" id="prosessbilder">
+      <h2 class="proj-section__heading">Prosessbilder</h2>
+      <div class="prosess-grid">
+        <img src="./assets/linkedinprosess.webp" alt="LinkedIn prosess" loading="lazy" decoding="async" style="width:100%; display:block;">
+        <img src="./assets/plakat-prosess.webp"  alt="Plakat prosess"   loading="lazy" decoding="async" style="width:100%; display:block;">
+        <img src="./assets/logoprosess.webp"     alt="Logo prosess"     loading="lazy" decoding="async" style="width:100%; display:block;">
+      </div>
+    </section>
+
+    <!-- PDF-dokumenter -->
+    <section class="proj-section reveal" id="dokumenter">
+      <h2 class="proj-section__heading">Designdokumentasjon</h2>
+      <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+        <a class="btn-pdf" href="./assets/prosess/Designutvikling.pdf" target="_blank" rel="noopener">Designutvikling ↗</a>
+        <a class="btn-pdf" href="./assets/prosess/Ferdig designløsning.pdf" target="_blank" rel="noopener">Ferdig designløsning ↗</a>
+      </div>
+    </section>
+
+    <div class="proj-adjacent" style="justify-content:flex-start;">
+      <a href="./flerkanalspublisering.html" style="display:inline-block; background:#0d0d0d; color:#fff; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; padding:14px 28px;">← Gå tilbake til Flerkanalspublisering</a>
+    </div>
+
+  </main>
+
+  <script>
+    var header = document.getElementById('projHeader');
+    var toggle = document.getElementById('projToggle');
+    toggle.addEventListener('click', function() {
+      var open = header.classList.toggle('proj-header--open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target)) {
+        header.classList.remove('proj-header--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+  </script>
+</body>
+</html>
