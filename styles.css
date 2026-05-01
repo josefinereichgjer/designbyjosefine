@@ -2507,36 +2507,23 @@ a:hover{opacity:.75}
   .related__grid { grid-template-columns: 1fr 1fr; }
 }
 
-/* ── XL (1920px+): 3-column masonry, centered content column ── */
+/* ── XL/XXL (1920px+): body is capped at 1440px so viewport-based centering is disabled ── */
 @media (min-width: 1920px) {
-  :root { --sidebarW: 180px; }
-  /* Center a ~1600px content column within the available area to the right of the sidebar.
-     Formula: (viewport - sidebar - 1600px) / 2, minimum 40px so it never crunches on mid-sizes. */
   .content {
-    padding-left: max(40px, calc((100vw - var(--sidebarW) - 1600px) / 2));
-    padding-right: max(40px, calc((100vw - var(--sidebarW) - 1600px) / 2));
+    padding-left: clamp(20px, 3vw, 34px);
+    padding-right: clamp(20px, 3vw, 34px);
   }
-  .masonry { columns: 3; column-gap: 52px; }
-}
-
-/* ── XXL (2400px+): 4-column masonry, wider sidebar, re-centers via the 1920px formula ── */
-@media (min-width: 2400px) {
-  :root { --sidebarW: 260px; }
-  .sidebar { width: 260px; }
-  /* --sidebarW is now 260px so the 1920px formula gives (2560-260-1600)/2 = 350px at 2560px */
-  .nav__link { font-size: 22px; }
-  .bg { max-width: 2000px; }
-  .masonry { columns: 4; column-gap: 60px; }
-  /* Body text 20px Poppins Regular across all pages */
-  body, p, li, .bg__body, .bg__list, .bg__list li { font-size: 20px; font-weight: 400; font-family: "Avenir Next", "Avenir", sans-serif; }
-  .bg__heading { font-size: 20px; }
-  .bg__body, .bg__list { max-width: 900px; }
+  .masonry { columns: 3; column-gap: 36px; }
 }
 
 /* ── Project page: horizontal-nav layout (.proj-*) ── */
 .proj-header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1440px;
   height: 80px;
   background: #0d0d0d;
   display: flex;

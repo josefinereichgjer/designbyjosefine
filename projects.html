@@ -6,7 +6,7 @@
   <meta name="format-detection" content="telephone=no">
   <title>Josefine Reichelt Gjertsen — Portfolio</title>
   <meta name="description" content="Selected work in branding, typography, and illustration." />
-  <link rel="stylesheet" href="./styles.css?v=31">
+  <link rel="stylesheet" href="./styles.css?v=32">
   <style>
     :root { --bg: #faf8f5; }
   </style>
@@ -30,8 +30,11 @@
 
     /* ── Top navbar (projects page only) ── */
     .sidebar {
-      inset: 0 0 auto 0;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
       width: 100%;
+      max-width: 1440px;
       height: 76px;
       padding: 0 clamp(20px, 3vw, 48px);
       display: flex;
