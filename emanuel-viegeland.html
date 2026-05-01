@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=20" />
+  <link rel="stylesheet" href="./styles.css?v=32" />
   <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
@@ -27,27 +27,21 @@
     <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
   </div>
 
-  <header class="sidebar sidebar--detail" id="sidebar">
-    <div class="sidebar__inner">
-      <div class="brand">
-        <a class="brand__mark" href="./projects.html" aria-label="Back to work">
-          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
-        </a>
-      </div>
-      <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      <nav class="nav" aria-label="Main navigation">
-        <a class="nav__link" href="./projects.html"><span>Arbeider</span></a>
-        <a class="nav__link" href="./projects.html#about"><span>Om</span></a>
-        <a class="nav__link" href="./projects.html#contact"><span>Kontakt</span></a>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link proj-header__link--active" href="./projects.html">Prosjekter</a>
+        <a class="proj-header__link" href="./projects.html#about">Om meg</a>
+        <a class="proj-header__link" href="./projects.html#contact">Kontakt</a>
       </nav>
-      <footer class="meta">
-        <p class="meta__small">© <span id="year"></span> Josefine Gjertsen</p>
-      </footer>
-      <button class="sidebar__toggle" id="sidebarToggle" aria-expanded="false" aria-controls="sidebar">Meny</button>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main id="content" class="content">
+  <main id="content" class="content" style="margin-left:0; padding-top:80px;">
     <article class="project" id="project">
         <div class="project-layout">
           <div class="project-layout__media">
@@ -294,12 +288,18 @@
     processBackdrop?.addEventListener("click", closeDrawer);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeDrawer(); });
 
-    // Sidebar toggle
-    const toggle = $("#sidebarToggle");
-    toggle?.addEventListener("click", () => {
-      const sidebar = $("#sidebar");
-      const isOpen = sidebar.classList.toggle("sidebar--open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
+    // Navbar toggle
+    const projHeader = document.getElementById("projHeader");
+    const projToggle = document.getElementById("projToggle");
+    projToggle?.addEventListener("click", () => {
+      const open = projHeader.classList.toggle("proj-header--open");
+      projToggle.setAttribute("aria-expanded", String(open));
+    });
+    document.addEventListener("click", e => {
+      if (projHeader && !projHeader.contains(e.target)) {
+        projHeader.classList.remove("proj-header--open");
+        projToggle?.setAttribute("aria-expanded", "false");
+      }
     });
     </script>
 </body>

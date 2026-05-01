@@ -356,6 +356,7 @@ window.PROJECTS = [
     images: ["./assets/viegeland.webp"],
     noSlideshow: true,
     comingSoon: false,
+    skipBuild: true,
   },
   {
     id: "lovechild",
