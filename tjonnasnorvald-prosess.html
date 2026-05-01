@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="format-detection" content="telephone=no">
+  <title>Tjønnås & Norvald Prosess — Josefine RG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Syne:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=32" />
+  <link rel="icon" href="assets/hvitlogo.webp">
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* PDF preview */
+    .pdf-preview-block { margin-bottom: 56px; }
+    .pdf-preview-block__label {
+      font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #888;
+      font-weight: 500; margin: 0 0 10px; display: block;
+    }
+    .pdf-preview-block__title {
+      font-size: 20px; font-weight: 600; color: #111; margin: 0 0 6px;
+    }
+    .pdf-preview-block__desc {
+      font-size: 14px; line-height: 1.7; color: #555; margin: 0 0 20px; max-width: 680px;
+    }
+    .pdf-preview-block__frame {
+      width: 100%;
+      height: 640px;
+      border: 1px solid #e8e4e0;
+      display: block;
+      background: #f5f5f5;
+    }
+    .pdf-preview-block__download {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #111;
+      border: 1.5px solid #111;
+      padding: 10px 22px;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+    .pdf-preview-block__download:hover { background: #111; color: #fff; }
+
+    /* Extra materials */
+    .extra-divider {
+      border: none; border-top: 1px solid #e8e4e0; margin: 64px 0;
+    }
+    .extra-video-block {
+      display: flex; justify-content: center; padding: 0 0 32px;
+    }
+    .extra-video {
+      max-width: 900px; width: 100%; border-radius: 0;
+    }
+    .extra-text-block { max-width: 760px; }
+    .extra-text {
+      font-size: 14px; line-height: 1.8; color: #555;
+    }
+
+    @media (max-width: 700px) {
+      .pdf-preview-block__frame { height: 420px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link proj-header__link--active" href="./projects.html">Arbeider</a>
+        <a class="proj-header__link" href="./projects.html#about">Om meg</a>
+        <a class="proj-header__link" href="./projects.html#contact">Kontakt</a>
+      </nav>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="proj-main">
+
+    <div class="proj-breadcrumb">
+      <a href="./projects.html">Arbeider</a>
+      <span class="proj-breadcrumb__sep">›</span>
+      <a href="./ansatts-portal.html">Tjønnås & Norvald</a>
+      <span class="proj-breadcrumb__sep">›</span>
+      <strong style="color:#0d0d0d; font-weight:700; letter-spacing:0.12em;">Prosess</strong>
+    </div>
+
+    <section class="proj-section proj-section--none" style="padding-bottom:0">
+      <h1 class="proj-section__heading" style="margin-bottom:8px;">Prosess & ekstramateriale</h1>
+      <p class="proj-section__body" style="max-width:620px; margin-bottom:0; color:#555;">Underlagsdokumenter, rapport, designmanual og sitemap fra prosjektet.</p>
+    </section>
+
+    <section class="proj-section proj-section--none reveal">
+
+      <!-- RAPPORT -->
+      <div class="pdf-preview-block">
+        <span class="pdf-preview-block__label">Dokumentasjon</span>
+        <h2 class="pdf-preview-block__title">Rapport</h2>
+        <p class="pdf-preview-block__desc">Prosjektrapporten dokumenterer hele prosessen fra brukerinnsikt og intervju til designvalg og prototype — inkludert affinity map, personas og WCAG-vurderinger.</p>
+        <iframe
+          class="pdf-preview-block__frame"
+          src="./assets/norvald/Endelig-rapport- informasjonsarkitektur.pdf"
+          title="Rapport — Tjønnås & Norvald">
+        </iframe>
+        <a class="pdf-preview-block__download" href="./assets/norvald/Endelig-rapport- informasjonsarkitektur.pdf" download>Last ned rapport</a>
+      </div>
+
+      <hr class="extra-divider">
+
+      <!-- SITEMAP -->
+      <div class="pdf-preview-block">
+        <span class="pdf-preview-block__label">Informasjonsarkitektur</span>
+        <h2 class="pdf-preview-block__title">Sitemap</h2>
+        <p class="pdf-preview-block__desc">Sitemapet viser strukturen vi valgte for ansattportalen — navigasjonshierarkiet, seksjoner og flyten mellom skjermer på tvers av mobil og iPad.</p>
+        <iframe
+          class="pdf-preview-block__frame"
+          src="./assets/norvald/sitemap.pdf"
+          title="Sitemap — Tjønnås & Norvald">
+        </iframe>
+        <a class="pdf-preview-block__download" href="./assets/norvald/sitemap.pdf" download>Last ned sitemap</a>
+      </div>
+
+      <hr class="extra-divider">
+
+      <!-- DESIGNMANUAL -->
+      <div class="pdf-preview-block">
+        <span class="pdf-preview-block__label">Designsystem</span>
+        <h2 class="pdf-preview-block__title">Designmanual</h2>
+        <p class="pdf-preview-block__desc">Manualen definerer den visuelle profilen for portalen: farger, typografi, komponenter og bruksmønstre.</p>
+        <iframe
+          class="pdf-preview-block__frame"
+          src="./assets/norvald/Designmanual.pdf"
+          title="Designmanual — Tjønnås & Norvald">
+        </iframe>
+        <a class="pdf-preview-block__download" href="./assets/norvald/Designmanual.pdf" download>Last ned designmanual</a>
+      </div>
+
+      <hr class="extra-divider">
+
+      <!-- NETTSIDE + VIDEO -->
+      <div style="margin-bottom:32px;">
+        <span class="pdf-preview-block__label">Eksperiment</span>
+        <h2 class="pdf-preview-block__title">Nettside generert med Claude Design</h2>
+        <p class="pdf-preview-block__desc">Et eksperiment utenfor oppgavens rammer: 17. april brukte jeg Figma-filen fra prosjektet som kilde og testet Claude Design — lansert samme dag. Jeg definerte layout, retning og struktur gjennom noen runder med prompting og redigering. Designet, kildemateriellet og redaksjonell kontroll er mitt; AI-en var verktøyet.</p>
+        <a class="pdf-preview-block__download" href="./assets/Norvald og Tjønnås/hjem.html" target="_blank" rel="noopener">Åpne nettsiden →</a>
+      </div>
+
+      <div class="extra-video-block">
+        <video class="extra-video" controls playsinline>
+          <source src="./assets/norvald/vide-nord.mp4">
+          Nettleseren din støtter ikke videofilen.
+        </video>
+      </div>
+
+    </section>
+
+    <div class="proj-adjacent">
+      <a class="proj-adjacent__link" href="./ansatts-portal.html">← Tilbake til Tjønnås & Norvald</a>
+    </div>
+
+  </main>
+
+  <script>
+    var header = document.getElementById('projHeader');
+    var toggle = document.getElementById('projToggle');
+    toggle.addEventListener('click', function() {
+      var open = header.classList.toggle('proj-header--open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target)) {
+        header.classList.remove('proj-header--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Scroll reveal
+    var revealEls = document.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.08 });
+    revealEls.forEach(function(el) { obs.observe(el); });
+  </script>
+</body>
+</html>
