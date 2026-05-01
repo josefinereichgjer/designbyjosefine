@@ -53,6 +53,9 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   min-height: 100vh;
   display: grid;
   grid-template-columns: 280px 1fr;
+  max-width: 1520px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* ---------- Sidebar ---------- */
@@ -143,13 +146,8 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
 /* ---------- Main ---------- */
 
 .main {
-  padding: 36px 48px 64px;
-  max-width: 1240px;
-  width: 100%;
+  padding: 36px clamp(20px, 4vw, 52px) 64px;
   min-width: 0;
-}
-@media (max-width: 960px) {
-  .main { padding-left: 28px; padding-right: 28px; }
 }
 @media (max-width: 720px) {
   .main { padding: 24px 18px 90px; }
