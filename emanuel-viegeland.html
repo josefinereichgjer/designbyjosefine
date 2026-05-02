@@ -85,6 +85,9 @@
       .ev-handling { grid-template-columns: 1fr; gap: 32px; }
       /* Inline grids */
       .ev-burger-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .ev-intro-grid { grid-template-columns: 1fr !important; }
+      .ev-logo-two-col { grid-template-columns: 1fr !important; }
+      .ev-reflect-grid { grid-template-columns: 1fr !important; }
       .ev-logo-grid { grid-template-columns: 1fr !important; }
       .ev-logo-grid > span { text-align: center; transform: rotate(90deg); display: block; }
       .ev-burger-grid img { width: 55% !important; }
@@ -155,11 +158,13 @@
     <article>
       <div class="proj-sections">
         <div class="proj-section proj-section--none" style="padding-bottom:3rem;">
-          <h2 class="proj-section__heading" style="margin-bottom:1rem;">Introduksjon</h2>
-          <p style="font-size:16px; line-height:1.75; color:#444; max-width:780px; margin-bottom:2.5rem;">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser — men nettsiden fra 2001 klarte ikke å formidle den. Konsertinformasjon var spredt mellom nettsiden og Facebook, det fantes ingen mobiltilpasning, og den mørke atmosfæren som definerer museet var helt fraværende digitalt.</p>
-          <div class="ev-before-after__item" style="max-width:720px;">
-            <span class="ev-before-after__label">Før</span>
-            <img src="./assets/prosess/before-website.webp" alt="Original nettside 2001" loading="lazy">
+          <h2 class="proj-section__heading" style="margin-bottom:2rem;">Introduksjon</h2>
+          <div class="ev-intro-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,80px); align-items:start;">
+            <div style="position:relative;">
+              <span class="ev-before-after__label">Før</span>
+              <img src="./assets/prosess/before-website.webp" alt="Original nettside 2001" style="width:100%; display:block;" loading="lazy">
+            </div>
+            <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#444; margin:0;">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser — men den digitale tilstedeværelsen formidler ingenting av den. Den eksisterende nettsiden er bygget på en tabellbasert HTML-struktur uten mobiltilpasning, og innholdet er pakket inn på en måte som gjør det vanskelig å navigere både for vanlige brukere og for skjermlesere. Billettkjøp er outsourcet til LetsReg, og konsertinformasjonen er spredt mellom museets nettside, Facebook, LetsReg og Ticketmaster — så det å planlegge et besøk krever at brukeren hopper mellom flere kanaler. Den mørke, sanselige atmosfæren som definerer mausoleet er helt fraværende digitalt.</p>
           </div>
         </div>
       </div>
@@ -215,41 +220,29 @@
 
     <!-- LOGO -->
     <div style="background:#0f0f0f; padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px);">
-      <h2 class="proj-section__heading" style="color:#fff; margin-bottom:1.5rem;">Logo</h2>
-      <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#888; max-width:640px; margin-bottom:3rem;">Den originale nettsiden brukte en av Emanuel Vigelands egne skisser som visuelt blikkfang – men i full størrelse fungerte den dårlig som identitetsbærer på tvers av flater. Vi destillerte det samme håndtegnede uttrykket ned til en logo som beholder kunstnerens karakteristiske strek, men som er gjenkjennelig og lesbar i alle størrelser.</p>
-      <div class="ev-logo-row" style="display:flex; gap:clamp(24px,4vw,56px); align-items:flex-end; flex-wrap:wrap;">
-        <div style="text-align:center;">
-          <img src="./assets/norvald/gammel-view.webp" alt="Gammel skisse" style="height:180px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
-          <span style="font-size:11px; color:#555; text-transform:uppercase; letter-spacing:.08em;">Original skisse</span>
-        </div>
-        <span style="font-size:28px; color:#fff; flex-shrink:0; padding-bottom:28px;">→</span>
-        <div style="text-align:center;">
-          <img src="./assets/norvald/ny-desktop.webp" alt="Logo for desktop" style="height:80px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
-          <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Desktop</span>
-        </div>
-        <div style="text-align:center;">
-          <img src="./assets/norvald/ny-mobil.webp" alt="Logo for mobil" style="height:56px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
-          <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Mobil</span>
+      <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Logo</h2>
+      <div class="ev-logo-two-col" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,96px); align-items:center;">
+        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#888; margin:0;">Den originale nettsiden brukte en av Emanuel Vigelands egne skisser som visuelt blikkfang – men i full størrelse fungerte den dårlig som identitetsbærer på tvers av flater. Vi destillerte det samme håndtegnede uttrykket ned til en logo som beholder kunstnerens karakteristiske strek, men som er gjenkjennelig og lesbar i alle størrelser.</p>
+        <div class="ev-logo-row" style="display:flex; gap:clamp(16px,3vw,40px); align-items:flex-end; flex-wrap:wrap;">
+          <div style="text-align:center;">
+            <img src="./assets/norvald/gammel-view.webp" alt="Gammel skisse" style="height:180px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
+            <span style="font-size:11px; color:#555; text-transform:uppercase; letter-spacing:.08em;">Original skisse</span>
+          </div>
+          <span style="font-size:28px; color:#fff; flex-shrink:0; padding-bottom:28px;">→</span>
+          <div style="text-align:center;">
+            <img src="./assets/norvald/ny-desktop.webp" alt="Logo for desktop" style="height:80px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
+            <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Desktop</span>
+          </div>
+          <div style="text-align:center;">
+            <img src="./assets/norvald/ny-mobil.webp" alt="Logo for mobil" style="height:56px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
+            <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Mobil</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- ETTER-BILDE -->
-    <article>
-      <div class="proj-sections">
-        <div class="proj-section proj-section--none" style="padding-bottom:3rem;">
-          <h2 class="proj-section__heading" style="margin-bottom:2rem;">Løsningen</h2>
-          <div class="ev-before-after__item">
-            <span class="ev-before-after__label">Etter</span>
-            <img src="./assets/3skjermer.webp" alt="Redesignet nettside" loading="lazy">
-          </div>
-        </div>
-      </div>
-    </article>
-
     <!-- BRUKERFLYTER -->
-    <article>
-      <div class="proj-sections">
+    <div style="background:#0d0d0d;">
 
         <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
           <h2 class="proj-section__heading" style="color:#fff;">Handling 1: se nærmere på Vita</h2>
@@ -269,9 +262,7 @@
           <img src="./assets/norvald/Brukerreise-03.png" alt="Brukerreise – Finn et arrangement" style="width:100%; display:block;" loading="lazy">
         </div>
 
-      </div>
-    </article>
-
+    </div>
     <!-- PROTOTYPE -->
     <section id="prototype" style="padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); background:#0b0b0b;">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:0.5rem;">Interaktiv prototype</h2>
@@ -300,8 +291,17 @@
 
     <!-- REFLEKSJON -->
     <div style="background:#111; padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px);">
-      <h2 class="proj-section__heading" style="color:#fff; margin-bottom:1.5rem;">Refleksjon</h2>
-      <p style="font-size:clamp(16px,1.5vw,20px); line-height:1.85; color:#aaa; max-width:680px;">[Skriv inn refleksjon her — hva lærte du, hva fungerte, hva ville du gjort annerledes?]</p>
+      <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2.5rem;">Refleksjon</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,96px); max-width:1100px;" class="ev-reflect-grid">
+        <div>
+          <h3 style="font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:#C9A84C; font-weight:500; margin-bottom:1.25rem;">Det som fungerte</h3>
+          <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">Innsiktsarbeidet i starten ga et solid grunnlag for resten av prosjektet. UX-evalueringen av den eksisterende nettsiden avdekket konkrete problemer vi kunne designe oss bort fra, og brukertestingen bekreftet at den nye navigasjonen og booking-flyten ble opplevd som enkel og naturlig. Vi testet tidlig og tok tilbakemeldingene med inn i neste iterasjon, og løsningen ble tydeligere for hver runde.</p>
+        </div>
+        <div>
+          <h3 style="font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:#C9A84C; font-weight:500; margin-bottom:1.25rem;">Det som ikke fungerte helt</h3>
+          <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">Tids- og ressursbegrensninger gjorde at vi ikke fikk gått like dypt i prosessen som vi ønsket – særlig på tilgjengelighetssiden, der den mørke visuelle stilen krever flere runder med kontrast- og lesbarhetstesting enn vi rakk. Vi testet også på en relativt smal brukergruppe, så funnene representerer ikke nødvendigvis alle potensielle besøkende. Flere runder med testing på et bredere utvalg ville gitt oss sterkere og mer pålitelige funn.</p>
+        </div>
+      </div>
     </div>
 
     <div style="text-align:center; padding: 3rem clamp(20px,4vw,60px);">
