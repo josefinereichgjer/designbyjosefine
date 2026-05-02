@@ -2743,7 +2743,7 @@ a:hover{opacity:.75}
 }
 .proj-gallery__item:hover img { transform: scale(1.04); }
 .proj-section {
-  padding: 4.5rem clamp(20px, 4vw, 60px);
+  padding: 4.5rem clamp(40px, 5vw, 80px);
 }
 .proj-section__label {
   font-size: 12px;
