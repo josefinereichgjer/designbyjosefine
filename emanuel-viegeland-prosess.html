@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="format-detection" content="telephone=no">
+  <title>Emanuel Viegeland — Prosess — DesignbyJosefine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=32" />
+  <link rel="icon" href="assets/hvitlogo.webp">
+  <style>
+    html { scroll-behavior: smooth; }
+
+    /* Prosess steps */
+    .ev-prosess { display: flex; flex-wrap: wrap; gap: 0; counter-reset: step; }
+    .ev-prosess__step {
+      flex: 1 1 120px;
+      padding: 20px 18px;
+      border-right: 1px solid #e8e4e0;
+      counter-increment: step;
+    }
+    .ev-prosess__step:last-child { border-right: none; }
+    .ev-prosess__num { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 8px; }
+    .ev-prosess__label { font-size: 13px; font-weight: 600; color: #111; margin: 0; line-height: 1.4; }
+
+    /* Innsikt cards */
+    .ev-innsikt { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .ev-innsikt__item { padding: 28px 32px; border-bottom: 1px solid #e8e4e0; border-right: 1px solid #e8e4e0; }
+    .ev-innsikt__item:nth-child(2n) { border-right: none; }
+    .ev-innsikt__item:nth-last-child(-n+2) { border-bottom: none; }
+    .ev-innsikt__num { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #aaa; font-weight: 500; display: block; margin-bottom: 10px; }
+    .ev-innsikt__heading { font-size: 16px; font-weight: 600; color: #111; margin: 0 0 8px; }
+    .ev-innsikt__body { font-size: 14px; line-height: 1.7; color: #555; margin: 0; }
+
+    /* Designgrep */
+    .ev-grep { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 56px; }
+    .ev-grep__innsikt { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; font-weight: 500; margin: 0 0 6px; display: block; }
+    .ev-grep__heading { font-size: 17px; font-weight: 600; margin: 0 0 8px; }
+    .ev-grep__body { font-size: 14px; line-height: 1.75; margin: 0; }
+    @media (max-width: 700px) { .ev-grep { grid-template-columns: 1fr; gap: 28px; } }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 700px) {
+      .ev-prosess__step { border-right: none; border-bottom: 1px solid #e8e4e0; flex: 1 1 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link proj-header__link--active" href="./projects.html">Arbeider</a>
+        <a class="proj-header__link" href="./projects.html#about">Om meg</a>
+        <a class="proj-header__link" href="./projects.html#contact">Kontakt</a>
+      </nav>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="proj-main">
+
+    <div class="proj-breadcrumb" style="font-size:13px;">
+      <a href="./projects.html">Arbeider</a><span class="proj-breadcrumb__sep">›</span><a href="./emanuel-viegeland.html">Emanuel Viegeland Museum</a><span class="proj-breadcrumb__sep">›</span><strong style="color:#0d0d0d; font-weight:700; letter-spacing:0.12em;">Prosess</strong>
+    </div>
+
+    <section class="proj-hero">
+      <div class="proj-hero__left">
+        <h1 class="proj-hero__title">Emanuel<br>Viegeland<br>Museum</h1>
+        <p class="proj-hero__sub" style="color:#1a1a1a; letter-spacing:0.18em; font-weight:500; margin-top:0.5rem;">PROSESS</p>
+      </div>
+      <div class="proj-hero__right" style="flex-direction:column; align-items:flex-end; justify-content:center; gap:0; text-align:right;">
+        <p style="font-size:9px; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.35); margin:0 0 1.2rem;">Prosessfaser</p>
+        <p style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(30px,4vw,54px); line-height:1.5; color:#1a1a1a; margin:0;">
+          <a href="#prosess" style="color:inherit; text-decoration:none;">01. Prosess</a><br>
+          <a href="#ux" style="color:inherit; text-decoration:none;">02. UX-evaluering</a><br>
+          <a href="#innsikt" style="color:inherit; text-decoration:none;">03. Innsikt til design</a><br>
+          <a href="#personas" style="color:inherit; text-decoration:none;">04. Personas</a><br>
+          <a href="#utforskning" style="color:inherit; text-decoration:none;">05. Utforskning</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- 01 Prosess -->
+    <section class="proj-section reveal" id="prosess">
+      <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; flex-shrink:0; background:#000; border-radius:50%; font-family:'Romie','Playfair Display',Georgia,serif; font-size:26px; color:#fff;">1</span>
+        <h2 class="proj-section__heading" style="margin:0;">Prosess</h2>
+      </div>
+      <div class="ev-prosess" style="margin-bottom:3rem;">
+        <div class="ev-prosess__step"><span class="ev-prosess__num">01</span><p class="ev-prosess__label">Ekskursjon</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">02</span><p class="ev-prosess__label">Intervju med daglig leder</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">03</span><p class="ev-prosess__label">UX-evaluering</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">04</span><p class="ev-prosess__label">Spørreundersøkelse</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">05</span><p class="ev-prosess__label">Personas</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">06</span><p class="ev-prosess__label">MoSCoW</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">07</span><p class="ev-prosess__label">Skisser</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">08</span><p class="ev-prosess__label">Brukertesting</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">09</span><p class="ev-prosess__label">Hi-fi prototype</p></div>
+        <div class="ev-prosess__step"><span class="ev-prosess__num">10</span><p class="ev-prosess__label">Designsystem</p></div>
+      </div>
+      <img src="./assets/prosess/sitemap.png" alt="Sitemap — Emanuel Viegeland Museum" style="display:block; width:100%; max-width:680px; height:auto; margin:0 auto;" loading="lazy">
+    </section>
+
+    <!-- 02 UX-evaluering -->
+    <section class="proj-section proj-section--lightgrey reveal" id="ux">
+      <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; flex-shrink:0; background:#000; border-radius:50%; font-family:'Romie','Playfair Display',Georgia,serif; font-size:26px; color:#fff;">2</span>
+        <h2 class="proj-section__heading" style="margin:0;">UX-evaluering</h2>
+      </div>
+      <div class="ev-innsikt" style="margin-top:24px;">
+        <div class="ev-innsikt__item">
+          <span class="ev-innsikt__num">01</span>
+          <h3 class="ev-innsikt__heading">Fragmentert konsertinfo</h3>
+          <p class="ev-innsikt__body">Arrangementsinformasjon var spredt mellom nettside og Facebook — brukerne visste ikke hvor de skulle lete.</p>
+        </div>
+        <div class="ev-innsikt__item">
+          <span class="ev-innsikt__num">02</span>
+          <h3 class="ev-innsikt__heading">Ingen tydelige CTA-er</h3>
+          <p class="ev-innsikt__body">Kun tekstlenker — ingen knapper som veiledet brukerne videre til billettkjøp eller besøksinfo.</p>
+        </div>
+        <div class="ev-innsikt__item">
+          <span class="ev-innsikt__num">03</span>
+          <h3 class="ev-innsikt__heading">Manglende mobiltilpasning</h3>
+          <p class="ev-innsikt__body">Nettsiden var ikke responsiv. Majoriteten av brukerne er mobile — og opplevelsen falt helt fra hverandre.</p>
+        </div>
+        <div class="ev-innsikt__item">
+          <span class="ev-innsikt__num">04</span>
+          <h3 class="ev-innsikt__heading">Atmosfære ikke formidlet</h3>
+          <p class="ev-innsikt__body">Museets mørke, sanselige karakter er en styrke — men ble ikke kommunisert gjennom den digitale flaten.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Innsikt til design -->
+    <section class="proj-section reveal" id="innsikt" style="background:#1a1a1a;">
+      <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; flex-shrink:0; background:#fff; border-radius:50%; font-family:'Romie','Playfair Display',Georgia,serif; font-size:26px; color:#000;">3</span>
+        <h2 class="proj-section__heading" style="margin:0; color:#fff;">Innsikt til design</h2>
+      </div>
+      <div class="ev-grep" style="margin-top:32px;">
+        <div class="ev-grep__item">
+          <span class="ev-grep__innsikt" style="color:#c9a84c;">Innsikt → Design</span>
+          <h3 class="ev-grep__heading" style="color:#fff;">Bookingflyt i 5 trinn</h3>
+          <p class="ev-grep__body" style="color:#aaa;">Kalender → billetter → sammendrag → betaling → QR-kode. Den gamle løsningen var uoversiktlig på mobil — vi delte opp flyten i tydelige, lineære steg.</p>
+        </div>
+        <div class="ev-grep__item">
+          <span class="ev-grep__innsikt" style="color:#c9a84c;">Innsikt → Design</span>
+          <h3 class="ev-grep__heading" style="color:#fff;">Samlet arrangementskalender</h3>
+          <p class="ev-grep__body" style="color:#aaa;">Konsertinformasjon var spredt mellom nettside og Facebook. Vi samlet alt i én kalender med filtrering og tydelig hierarki.</p>
+        </div>
+        <div class="ev-grep__item">
+          <span class="ev-grep__innsikt" style="color:#c9a84c;">Innsikt → Design</span>
+          <h3 class="ev-grep__heading" style="color:#fff;">Tydelige CTA-knapper</h3>
+          <p class="ev-grep__body" style="color:#aaa;">Tekstlenker ble erstattet med kontraststerke knapper som veiledet brukeren gjennom nøkkelflytene — billettkjøp, besøk og galleri.</p>
+        </div>
+        <div class="ev-grep__item">
+          <span class="ev-grep__innsikt" style="color:#c9a84c;">Innsikt → Design</span>
+          <h3 class="ev-grep__heading" style="color:#fff;">Mørk palett med høy kontrast</h3>
+          <p class="ev-grep__body" style="color:#aaa;">Museets atmosfære ble overført digitalt gjennom en mørk fargepalett — med bevisst høy kontrast på CTA-er for å møte WCAG 2.1 AA.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Personas -->
+    <section class="proj-section proj-section--lightgrey reveal" id="personas">
+      <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; flex-shrink:0; background:#000; border-radius:50%; font-family:'Romie','Playfair Display',Georgia,serif; font-size:26px; color:#fff;">4</span>
+        <h2 class="proj-section__heading" style="margin:0;">Personas</h2>
+      </div>
+      <p style="font-size:16px; line-height:1.75; color:#444; max-width:600px; margin-bottom:32px;">Vi utviklet fire personas basert på intervjuer og spørreundersøkelse — fra den kulturinteresserte faste besøkende til den tilfeldige turisten.</p>
+      <div style="position:relative;">
+        <div id="personaTrack" style="overflow:hidden;">
+          <div style="display:flex; transition:transform .4s cubic-bezier(.4,0,.2,1);" id="personaSlides">
+            <img src="./assets/prosess/persona-sara.png" alt="Persona Sara" style="width:100%; flex-shrink:0; display:block;" loading="lazy">
+            <img src="./assets/prosess/Persona-1.png" alt="Persona 1" style="width:100%; flex-shrink:0; display:block;" loading="lazy">
+            <img src="./assets/prosess/Persona-2.png" alt="Persona 2" style="width:100%; flex-shrink:0; display:block;" loading="lazy">
+            <img src="./assets/prosess/Persona-3.png" alt="Persona 3" style="width:100%; flex-shrink:0; display:block;" loading="lazy">
+          </div>
+        </div>
+        <div style="display:flex; justify-content:center; align-items:center; gap:16px; margin-top:14px;">
+          <button id="personaPrev" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #ccc;background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0.3;">←</button>
+          <span id="personaCounter" style="font-size:12px;color:#999;letter-spacing:.05em;min-width:36px;text-align:center;">1 / 4</span>
+          <button id="personaNext" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #ccc;background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">→</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Utforskning -->
+    <section class="proj-section reveal" id="utforskning">
+      <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.5rem;">
+        <span style="display:inline-flex; align-items:center; justify-content:center; width:52px; height:52px; flex-shrink:0; background:#000; border-radius:50%; font-family:'Romie','Playfair Display',Georgia,serif; font-size:26px; color:#fff;">5</span>
+        <h2 class="proj-section__heading" style="margin:0;">Utforskning & iterasjoner</h2>
+      </div>
+      <p style="font-size:16px; line-height:1.75; color:#444; max-width:620px; margin-bottom:32px;">Fra tidlige lo-fi skisser og utforskning av home-page-uttrykket, til dot voting på logoforslag. Vi testet bredt — farger, layout og identitet — før vi låste retningen.</p>
+      <div style="display:flex; flex-direction:column; gap:2px;">
+        <img src="./assets/prosess/lofi.png" alt="Lo-fi skisser" style="width:100%; display:block;" loading="lazy">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
+          <div>
+            <img src="./assets/prosess/iterasjoner.webp" alt="Tidlig utforskning av home-page" style="width:100%; display:block;" loading="lazy">
+            <p style="font-size:12px; color:#888; margin:8px 0 0; letter-spacing:.04em;">Tidlige iterasjoner av home-page</p>
+          </div>
+          <img src="./assets/prosess/dot voting logo.png" alt="Dot voting — logovalg" style="width:100%; display:block;" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <div class="proj-adjacent" style="justify-content:flex-start;">
+      <a href="./emanuel-viegeland.html" style="display:inline-block; background:#0d0d0d; color:#fff; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; text-decoration:none; padding:14px 28px;">← Gå tilbake til Emanuel Viegeland</a>
+    </div>
+
+  </main>
+
+  <script>
+    // Persona slideshow
+    (function() {
+      var slides = document.getElementById('personaSlides');
+      var prev = document.getElementById('personaPrev');
+      var next = document.getElementById('personaNext');
+      var counter = document.getElementById('personaCounter');
+      var pos = 0;
+      var total = 4;
+      function update() {
+        slides.style.transform = 'translateX(-' + (pos * 100) + '%)';
+        counter.textContent = (pos + 1) + ' / ' + total;
+        prev.style.opacity = pos === 0 ? '0.3' : '1';
+        next.style.opacity = pos === total - 1 ? '0.3' : '1';
+      }
+      prev.addEventListener('click', function() { if (pos > 0) { pos--; update(); } });
+      next.addEventListener('click', function() { if (pos < total - 1) { pos++; update(); } });
+      update();
+    })();
+
+    var header = document.getElementById('projHeader');
+    var toggle = document.getElementById('projToggle');
+    toggle.addEventListener('click', function() {
+      var open = header.classList.toggle('proj-header--open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target)) {
+        header.classList.remove('proj-header--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    var revealObs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+  </script>
+</body>
+</html>

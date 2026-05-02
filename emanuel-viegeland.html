@@ -8,7 +8,9 @@
   <meta name="description" content="Redesign av nettsiden til Emanuel Vigeland Museum — DesignbyJosefine" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://use.typekit.net/fsf3tmv.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/fsf3tmv.css"></noscript>
   <link rel="stylesheet" href="./styles.css?v=32" />
   <link rel="icon" href="assets/hvitlogo.webp">
   <style>
@@ -23,7 +25,8 @@
       font-weight: 600; color: #fff; background: rgba(0,0,0,0.55);
       padding: 4px 10px;
     }
-    .ev-before-after img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .ev-before-after img { width: 100%; height: auto; display: block; }
+    .ev-before-after__item:first-child img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
 
     /* Persona grid */
     .ev-persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
@@ -32,6 +35,7 @@
     /* Innsikt cards */
     .ev-innsikt { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
     .ev-innsikt__item { padding: 28px 32px; border-bottom: 1px solid #e8e4e0; border-right: 1px solid #e8e4e0; }
+    .proj-section[style*="1a1a1a"] .ev-grep__item { border-color: #2e2e2e; }
     .ev-innsikt__item:nth-child(2n) { border-right: none; }
     .ev-innsikt__item:nth-last-child(-n+2) { border-bottom: none; }
     .ev-innsikt__num { font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: #aaa; font-weight: 500; display: block; margin-bottom: 10px; }
@@ -57,6 +61,11 @@
     .ev-prosess__num { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 8px; }
     .ev-prosess__label { font-size: 13px; font-weight: 600; color: #111; margin: 0; line-height: 1.4; }
 
+    /* Handling */
+    .ev-handling { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+    .ev-handling__left {}
+    .ev-handling__right {}
+
     @media (max-width: 700px) {
       .ev-before-after { grid-template-columns: 1fr; }
       .ev-persona-grid { grid-template-columns: 1fr 1fr; }
@@ -66,6 +75,7 @@
       .ev-innsikt__item:last-child { border-bottom: none; }
       .ev-grep { grid-template-columns: 1fr; gap: 28px; }
       .ev-prosess__step { border-right: none; border-bottom: 1px solid #e8e4e0; flex: 1 1 100%; }
+      .ev-handling { grid-template-columns: 1fr; gap: 32px; }
     }
   </style>
 </head>
@@ -99,7 +109,7 @@
         <p class="proj-hero__sub">Redesign / UX</p>
       </div>
       <div class="proj-hero__right">
-        <img class="proj-hero__img" src="./assets/prosess/mock2.jpg" alt="Emanuel Viegeland Museum" fetchpriority="high">
+        <img src="./assets/viegeland.webp" alt="Emanuel Viegeland Museum — mobil mockup" fetchpriority="high" class="proj-hero__img">
       </div>
     </section>
 
@@ -124,223 +134,107 @@
       </div>
     </div>
 
-    <p class="proj-description">Redesign av nettsiden til Emanuel Vigeland Museum — et mausoleum og museum i Oslo med en nettside fra 2001. Målet var å lage en mobil-first, tilgjengelig løsning som viderefører museets mørke, sanselige atmosfære.</p>
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:2rem; padding: 3rem clamp(20px,4vw,60px); flex-wrap:wrap;">
+      <p class="proj-description" style="padding:0; margin:0; max-width:680px;">Redesign av nettsiden til Emanuel Vigeland Museum — et mausoleum og museum i Oslo med en nettside fra 2001. Målet var å lage en mobil-first, tilgjengelig løsning som viderefører museets mørke, sanselige atmosfære.</p>
+      <a href="./emanuel-viegeland-prosess.html" class="proj-prosess-btn" style="white-space:nowrap; flex-shrink:0;">Se prosess →</a>
+    </div>
 
     <article>
       <div class="proj-sections">
 
         <!-- FØR / ETTER -->
         <div class="proj-section proj-section--none" style="padding-bottom:0">
+          <h2 class="proj-section__heading" style="margin-bottom:1rem;">Introduksjon</h2>
           <p style="font-size:16px; line-height:1.75; color:#444; max-width:780px; margin-bottom:32px;">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser — men nettsiden fra 2001 klarte ikke å formidle den. Konsertinformasjon var spredt mellom nettsiden og Facebook, det fantes ingen mobiltilpasning, og den mørke atmosfæren som definerer museet var helt fraværende digitalt.</p>
           <div class="ev-before-after">
             <div class="ev-before-after__item">
               <span class="ev-before-after__label">Før</span>
-              <img src="./assets/prosess/before-website.webp" alt="Original nettside 2001">
-              <ul style="margin:16px 0 0; padding:0 0 0 18px; display:flex; flex-direction:column; gap:6px;">
-                <li style="font-size:13px; color:#555; line-height:1.5;">Nettside fra 2001 — ikke videreutviklet siden</li>
-                <li style="font-size:13px; color:#555; line-height:1.5;">Konsertinfo spredt på Facebook og andre plattformer</li>
-                <li style="font-size:13px; color:#555; line-height:1.5;">Ingen mobiltilpasning eller universell utforming</li>
-                <li style="font-size:13px; color:#555; line-height:1.5;">Museets atmosfære ikke formidlet digitalt</li>
-              </ul>
+              <img src="./assets/prosess/before-website.webp" alt="Original nettside 2001" loading="lazy">
             </div>
             <div class="ev-before-after__item">
               <span class="ev-before-after__label">Etter</span>
-              <img src="./assets/3skjermer.png" alt="Redesignet nettside">
+              <img src="./assets/3skjermer.png" alt="Redesignet nettside" loading="lazy">
             </div>
           </div>
         </div>
 
-        <!-- KONTEKST / UTFORDRING -->
-        <div class="proj-section proj-section--lightgrey">
-          <div style="max-width:920px">
-            <h2 class="proj-section__heading">UX-evaluering</h2>
-          </div>
-          <div class="ev-innsikt" style="margin-top:40px">
-            <div class="ev-innsikt__item">
-              <span class="ev-innsikt__num">01</span>
-              <h3 class="ev-innsikt__heading">Fragmentert konsertinfo</h3>
-              <p class="ev-innsikt__body">Arrangementsinformasjon var spredt mellom nettside og Facebook — brukerne visste ikke hvor de skulle lete.</p>
+
+
+
+        <!-- BRUKERREISE -->
+        <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
+          <h2 class="proj-section__heading" style="color:#fff;">Handling: se nærmere på Vita</h2>
+          <p style="font-size:20px; color:#c9a84c; margin:0 0 28px; line-height:1.6;">(Brukeren utforsker et av museets hovedverk – fresken Vita)</p>
+          <img src="./assets/prosess/bruerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="lazy">
+        </div>
+
+        <!-- HAMBURGERMENY -->
+        <div class="proj-section proj-section--none" style="background:#1a1a1a; padding-top:3rem; padding-bottom:3rem;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+            <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
+              <img src="./assets/prosess/burgermeny.webp" alt="Hamburgermeny" style="width:40%; display:block;" loading="lazy">
             </div>
-            <div class="ev-innsikt__item">
-              <span class="ev-innsikt__num">02</span>
-              <h3 class="ev-innsikt__heading">Ingen tydelige CTA-er</h3>
-              <p class="ev-innsikt__body">Kun tekstlenker — ingen knapper som veiledet brukerne videre til billettkjøp eller besøksinfo.</p>
-            </div>
-            <div class="ev-innsikt__item">
-              <span class="ev-innsikt__num">03</span>
-              <h3 class="ev-innsikt__heading">Manglende mobiltilpasning</h3>
-              <p class="ev-innsikt__body">Nettsiden var ikke responsiv. Majoriteten av brukerne er mobile — og opplevelsen falt helt fra hverandre.</p>
-            </div>
-            <div class="ev-innsikt__item">
-              <span class="ev-innsikt__num">04</span>
-              <h3 class="ev-innsikt__heading">Atmosfære ikke formidlet</h3>
-              <p class="ev-innsikt__body">Museets mørke, sanselige karakter er en styrke — men ble ikke kommunisert gjennom den digitale flaten.</p>
-            </div>
+            <p style="font-size:20px; line-height:1.7; color:#fff; margin:0; padding-right:clamp(20px,6vw,80px);">Du kan også bruke hamburgermenyen, som er tilgjengelig på alle sidene. Den gjør det enkelt å navigere til hovedsidene og videre til mer spesifikt innhold.</p>
           </div>
         </div>
 
-        <!-- PROSESS -->
-        <div class="proj-section proj-section--none">
-          <h2 class="proj-section__heading">Prosess</h2>
-          <div class="ev-prosess">
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">01</span>
-              <p class="ev-prosess__label">Ekskursjon</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">02</span>
-              <p class="ev-prosess__label">Intervju med daglig leder</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">03</span>
-              <p class="ev-prosess__label">UX-evaluering</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">04</span>
-              <p class="ev-prosess__label">Spørreundersøkelse</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">05</span>
-              <p class="ev-prosess__label">Personas</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">06</span>
-              <p class="ev-prosess__label">MoSCoW</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">07</span>
-              <p class="ev-prosess__label">Skisser</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">08</span>
-              <p class="ev-prosess__label">Brukertesting</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">09</span>
-              <p class="ev-prosess__label">Hi-fi prototype</p>
-            </div>
-            <div class="ev-prosess__step">
-              <span class="ev-prosess__num">10</span>
-              <p class="ev-prosess__label">Designsystem</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- SITEMAP -->
-        <div class="proj-section proj-section--none" style="padding-top:0">
-          <img src="./assets/prosess/sitemap.png" alt="Sitemap — Emanuel Viegeland Museum" style="display:block; width:100%; max-width:680px; height:auto; margin:0 auto;" loading="lazy">
-        </div>
-
-        <!-- PERSONAS -->
-        <div class="proj-section proj-section--lightgrey">
-          <h2 class="proj-section__heading">Personas</h2>
-          <p class="proj-section__body" style="max-width:600px; margin-bottom:32px;">Vi utviklet fire personas basert på intervjuer og spørreundersøkelse — fra den kulturinteresserte faste besøkende til den tilfeldige turisten.</p>
-          <div style="position:relative;">
-            <div id="personaTrack" style="overflow:hidden;">
-              <div style="display:flex; transition:transform .4s cubic-bezier(.4,0,.2,1);" id="personaSlides">
-                <img src="./assets/prosess/persona-sara.png" alt="Persona Sara" style="width:100%; flex-shrink:0; display:block;" loading="lazy">
-                <img src="./assets/prosess/Persona-1.png" alt="Persona 1" style="width:100%; flex-shrink:0; display:block;" loading="lazy">
-                <img src="./assets/prosess/Persona-2.png" alt="Persona 2" style="width:100%; flex-shrink:0; display:block;" loading="lazy">
-                <img src="./assets/prosess/Persona-3.png" alt="Persona 3" style="width:100%; flex-shrink:0; display:block;" loading="lazy">
-              </div>
-            </div>
-            <div style="display:flex; justify-content:center; align-items:center; gap:16px; margin-top:14px;">
-              <button id="personaPrev" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #ccc;background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0.3;">←</button>
-              <span id="personaCounter" style="font-size:12px;color:#999;letter-spacing:.05em;min-width:36px;text-align:center;">1 / 4</span>
-              <button id="personaNext" style="width:36px;height:36px;border-radius:50%;border:1.5px solid #ccc;background:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;">→</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- UTFORSKNING -->
-        <div class="proj-section proj-section--none">
-          <h2 class="proj-section__heading">Utforskning & iterasjoner</h2>
-          <p class="proj-section__body" style="max-width:620px; margin-bottom:32px;">Fra tidlige lo-fi skisser og utforskning av home-page-uttrykket, til dot voting på logoforslag. Vi testet bredt — farger, layout og identitet — før vi låste retningen.</p>
-          <div style="display:flex; flex-direction:column; gap:2px;">
-            <img src="./assets/prosess/lofi.png" alt="Lo-fi skisser" style="width:100%; display:block;" loading="lazy">
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
-              <div>
-                <div>
-                <img src="./assets/prosess/iterasjoner.webp" alt="Tidlig utforskning av home-page" style="width:100%; display:block;" loading="lazy">
-                <p style="font-size:15px; color:#555; margin:12px 0 0; line-height:1.5;">Tidlige iterasjoner av home-page</p>
-              </div>
-                <p style="font-size:12px; color:#888; margin:8px 0 0; letter-spacing:.04em;">Tidlige iterasjoner av home-page</p>
-              </div>
-              <img src="./assets/prosess/dot voting logo.png" alt="Dot voting — logovalg" style="width:100%; display:block;" loading="lazy">
-            </div>
-          </div>
-        </div>
-
-        <!-- DESIGNGREP -->
-        <div class="proj-section proj-section--lightgrey">
-          <h2 class="proj-section__heading">Innsikt til design</h2>
-          <div class="ev-grep" style="margin-top:32px">
-            <div class="ev-grep__item">
-              <span class="ev-grep__innsikt">Innsikt → Design</span>
-              <h3 class="ev-grep__heading">Bookingflyt i 5 trinn</h3>
-              <p class="ev-grep__body">Kalender → billetter → sammendrag → betaling → QR-kode. Den gamle løsningen var uoversiktlig på mobil — vi delte opp flyten i tydelige, lineære steg.</p>
-            </div>
-            <div class="ev-grep__item">
-              <span class="ev-grep__innsikt">Innsikt → Design</span>
-              <h3 class="ev-grep__heading">Samlet arrangementskalender</h3>
-              <p class="ev-grep__body">Konsertinformasjon var spredt mellom nettside og Facebook. Vi samlet alt i én kalender med filtrering og tydelig hierarki.</p>
-            </div>
-            <div class="ev-grep__item">
-              <span class="ev-grep__innsikt">Innsikt → Design</span>
-              <h3 class="ev-grep__heading">Tydelige CTA-knapper</h3>
-              <p class="ev-grep__body">Tekstlenker ble erstattet med kontraststerke knapper som veiledet brukeren gjennom nøkkelflytene — billettkjøp, besøk og galleri.</p>
-            </div>
-            <div class="ev-grep__item">
-              <span class="ev-grep__innsikt">Innsikt → Design</span>
-              <h3 class="ev-grep__heading">Mørk palett med høy kontrast</h3>
-              <p class="ev-grep__body">Museets atmosfære ble overført digitalt gjennom en mørk fargepalett — med bevisst høy kontrast på CTA-er for å møte WCAG 2.1 AA.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- LØSNING / SLUTTBILDER -->
-        <div class="proj-section proj-section--none" style="padding-bottom:0">
-          <img src="./assets/laptop.png" alt="Emanuel Viegeland Museum på laptop" style="width:100%; display:block;" loading="lazy">
-        </div>
 
       </div>
     </article>
 
     <!-- PROTOTYPE -->
-    <section style="padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); background:#0b0b0b;">
-      <p style="font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#555; margin:0 0 10px;">Interaktiv prototype</p>
-      <h2 style="font-size:28px; font-weight:600; color:#fff; margin:0 0 40px;">Prøv løsningen</h2>
-      <div style="display:flex; gap:40px; justify-content:center; align-items:flex-start; flex-wrap:wrap;">
-        <div style="flex:1; min-width:280px; max-width:420px;">
+    <section id="prototype" style="padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); background:#0b0b0b;">
+      <div style="display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;">
+
+        <div style="flex:0 0 320px;">
           <p style="font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#555; margin:0 0 14px;">Mobil — iPhone 16 Pro Max</p>
           <iframe
             src="https://embed.figma.com/proto/NL5qDjPZC77D2kKlViKK9G/Emmanuel-Vigeland?node-id=502-1858&embed-host=share"
-            style="border:1px solid #222; border-radius:12px; background:#111; width:100%; height:700px; display:block;"
+            style="border:1px solid #222; border-radius:12px; background:#111; width:100%; height:620px; display:block;"
+            loading="lazy"
             allowfullscreen>
           </iframe>
         </div>
-        <div style="flex:2; min-width:320px;">
-          <p style="font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#555; margin:0 0 14px;">Desktop</p>
-          <!-- Browser chrome mockup -->
-          <div style="background:#1e1e1e; border-radius:12px; overflow:hidden; box-shadow:0 24px 64px rgba(0,0,0,0.6);">
-            <!-- Titlebar -->
-            <div style="background:#2a2a2a; padding:10px 14px; display:flex; align-items:center; gap:10px; border-bottom:1px solid #111;">
-              <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;display:inline-block;"></span>
-              <span style="width:12px;height:12px;border-radius:50%;background:#febc2e;display:inline-block;"></span>
-              <span style="width:12px;height:12px;border-radius:50%;background:#28c840;display:inline-block;"></span>
-              <div style="flex:1; margin:0 12px; background:#1a1a1a; border-radius:4px; padding:4px 10px; text-align:center;">
-                <span style="font-size:11px; color:#555; letter-spacing:.02em;">emanuelvigelansmuseum.no</span>
-              </div>
-            </div>
-            <iframe
-              src="https://embed.figma.com/design/NL5qDjPZC77D2kKlViKK9G/Emmanuel-Vigeland?node-id=2006-3904&embed-host=share"
-              style="width:100%; height:680px; display:block; border:none;"
-              allowfullscreen>
-            </iframe>
-          </div>
+
+        <div style="flex:1; min-width:280px;">
+          <p style="font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#555; margin:0 0 14px;">Designsystem</p>
+          <iframe
+            src="https://embed.figma.com/design/NL5qDjPZC77D2kKlViKK9G/Emmanuel-Vigeland?node-id=2385-3656&embed-host=share"
+            style="border:1px solid #222; width:100%; height:620px; display:block;"
+            loading="lazy"
+            allowfullscreen>
+          </iframe>
         </div>
+
       </div>
     </section>
+
+    <!-- INNSIKT TIL DESIGN -->
+    <div style="background:#2a2a2a; padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px);">
+      <h2 class="proj-section__heading" style="color:#fff;">Innsikt til design</h2>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
+        <div style="background:#f7f7f7; padding:32px;">
+          <p style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#c9a84c; font-weight:600; margin:0 0 10px;">Innsikt → Design</p>
+          <h3 style="font-size:17px; font-weight:600; color:#111; margin:0 0 10px;">Bookingflyt i 5 trinn</h3>
+          <p style="font-size:14px; line-height:1.75; color:#555; margin:0;">Kalender → billetter → sammendrag → betaling → QR-kode. Den gamle løsningen var uoversiktlig på mobil — vi delte opp flyten i tydelige, lineære steg.</p>
+        </div>
+        <div style="background:#f7f7f7; padding:32px;">
+          <p style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#c9a84c; font-weight:600; margin:0 0 10px;">Innsikt → Design</p>
+          <h3 style="font-size:17px; font-weight:600; color:#111; margin:0 0 10px;">Samlet arrangementskalender</h3>
+          <p style="font-size:14px; line-height:1.75; color:#555; margin:0;">Konsertinformasjon var spredt mellom nettside og Facebook. Vi samlet alt i én kalender med filtrering og tydelig hierarki.</p>
+        </div>
+        <div style="background:#f7f7f7; padding:32px;">
+          <p style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#c9a84c; font-weight:600; margin:0 0 10px;">Innsikt → Design</p>
+          <h3 style="font-size:17px; font-weight:600; color:#111; margin:0 0 10px;">Tydelige CTA-knapper</h3>
+          <p style="font-size:14px; line-height:1.75; color:#555; margin:0;">Tekstlenker ble erstattet med kontraststerke knapper som veiledet brukeren gjennom nøkkelflytene — billettkjøp, besøk og galleri.</p>
+        </div>
+        <div style="background:#f7f7f7; padding:32px;">
+          <p style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#c9a84c; font-weight:600; margin:0 0 10px;">Innsikt → Design</p>
+          <h3 style="font-size:17px; font-weight:600; color:#111; margin:0 0 10px;">Mørk palett med høy kontrast</h3>
+          <p style="font-size:14px; line-height:1.75; color:#555; margin:0;">Museets atmosfære ble overført digitalt gjennom en mørk fargepalett — med bevisst høy kontrast på CTA-er for å møte WCAG 2.1 AA.</p>
+        </div>
+      </div>
+    </div>
 
     <div class="proj-adjacent">
       <a class="proj-adjacent__link" href="./reina-fruktgard.html">← Gå til Reina Fruktgård</a>
@@ -351,26 +245,7 @@
 
   <script src="./projects.js?v=6"></script>
   <script>
-    // Persona slideshow
-    (function() {
-      var slides = document.getElementById('personaSlides');
-      var prev = document.getElementById('personaPrev');
-      var next = document.getElementById('personaNext');
-      var counter = document.getElementById('personaCounter');
-      var pos = 0;
-      var total = 4;
-      function update() {
-        slides.style.transform = 'translateX(-' + (pos * 100) + '%)';
-        counter.textContent = (pos + 1) + ' / ' + total;
-        prev.style.opacity = pos === 0 ? '0.3' : '1';
-        next.style.opacity = pos === total - 1 ? '0.3' : '1';
-      }
-      prev.addEventListener('click', function() { if (pos > 0) { pos--; update(); } });
-      next.addEventListener('click', function() { if (pos < total - 1) { pos++; update(); } });
-      update();
-    })();
-
-    var header = document.getElementById('projHeader');
+var header = document.getElementById('projHeader');
     var toggle = document.getElementById('projToggle');
     toggle.addEventListener('click', function() {
       var open = header.classList.toggle('proj-header--open');
