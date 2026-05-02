@@ -91,6 +91,7 @@
       cursor: pointer;
       text-decoration: none;
       display: inline-block;
+      text-align: center;
       letter-spacing: 0.01em;
       transition: opacity 0.15s;
     }
