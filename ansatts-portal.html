@@ -643,11 +643,11 @@
     });
 
     // Sidebar toggle
-    const toggle = $("#sidebarToggle");
-    toggle?.addEventListener("click", () => {
+    const sidebarToggle = $("#sidebarToggle");
+    sidebarToggle?.addEventListener("click", () => {
       const sidebar = $("#sidebar");
       const isOpen = sidebar.classList.toggle("sidebar--open");
-      toggle.setAttribute("aria-expanded", String(isOpen));
+      sidebarToggle.setAttribute("aria-expanded", String(isOpen));
     });
 
     // Scroll reveal
