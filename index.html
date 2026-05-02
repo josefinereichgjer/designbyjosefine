@@ -31,7 +31,8 @@
       font-family: "Avenir Next", "Avenir", "Century Gothic", sans-serif;
       background: #0f0f0f;
       color: #fff;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: clip;
     }
 
     /* ── Page shell ── */
@@ -167,8 +168,8 @@
     /* me.webp: front, to the left side */
     .float-card--me { width: 72%; left: -24%; top: 12%; z-index: 10; animation: floatMe 5.2s ease-in-out infinite; }
     /* project cards: two loose columns */
-    .float-card--1  { width: 46%; left:  0%;  top: -16%; z-index: 5;  animation: float1  4.7s ease-in-out infinite -1.3s; }
-    .float-card--2  { width: 40%; left: 58%;  top:  -4%; z-index: 4;  animation: float2  6.0s ease-in-out infinite -2.6s; }
+    .float-card--1  { width: 46%; left:  0%;  top:  0%;  z-index: 5;  animation: float1  4.7s ease-in-out infinite -1.3s; }
+    .float-card--2  { width: 40%; left: 54%;  top:   2%; z-index: 4;  animation: float2  6.0s ease-in-out infinite -2.6s; }
     .float-card--3  { width: 48%; left: -10%; top:  52%; z-index: 3;  animation: float3  5.5s ease-in-out infinite -0.7s; }
     .float-card--4  { width: 40%; left: 44%;  top:  56%; z-index: 2;  animation: float4  4.3s ease-in-out infinite -3.8s; }
     .float-card--5  { width: 44%; left:  8%;  top:  82%; z-index: 1;  animation: float5  5.8s ease-in-out infinite -1.9s; }
