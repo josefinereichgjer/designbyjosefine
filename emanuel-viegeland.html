@@ -76,6 +76,12 @@
       .ev-grep { grid-template-columns: 1fr; gap: 28px; }
       .ev-prosess__step { border-right: none; border-bottom: 1px solid #e8e4e0; flex: 1 1 100%; }
       .ev-handling { grid-template-columns: 1fr; gap: 32px; }
+      /* Inline grids */
+      .ev-burger-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+      .ev-burger-grid img { width: 55% !important; }
+      .ev-innsikt-cards { grid-template-columns: 1fr !important; }
+      .ev-proto-box { flex: 0 0 auto !important; width: 100% !important; }
+      .ev-proto-iframe { height: 400px !important; }
     }
   </style>
 </head>
@@ -170,7 +176,7 @@
 
         <!-- HAMBURGERMENY -->
         <div class="proj-section proj-section--none" style="background:#1a1a1a; padding-top:3rem; padding-bottom:3rem;">
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
+          <div class="ev-burger-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;">
             <div style="display:flex; flex-direction:column; align-items:center; gap:16px;">
               <img src="./assets/prosess/burgermeny.webp" alt="Hamburgermeny" style="width:40%; display:block;" loading="lazy">
             </div>
@@ -186,9 +192,9 @@
     <section id="prototype" style="padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); background:#0b0b0b;">
       <div style="display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;">
 
-        <div style="flex:0 0 320px;">
+        <div class="ev-proto-box" style="flex:0 0 320px;">
           <p style="font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#555; margin:0 0 14px;">Mobil — iPhone 16 Pro Max</p>
-          <iframe
+          <iframe class="ev-proto-iframe"
             src="https://embed.figma.com/proto/NL5qDjPZC77D2kKlViKK9G/Emmanuel-Vigeland?node-id=502-1858&embed-host=share"
             style="border:1px solid #222; border-radius:12px; background:#111; width:100%; height:620px; display:block;"
             loading="lazy"
@@ -198,7 +204,7 @@
 
         <div style="flex:1; min-width:280px;">
           <p style="font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#555; margin:0 0 14px;">Designsystem</p>
-          <iframe
+          <iframe class="ev-proto-iframe"
             src="https://embed.figma.com/design/NL5qDjPZC77D2kKlViKK9G/Emmanuel-Vigeland?node-id=2385-3656&embed-host=share"
             style="border:1px solid #222; width:100%; height:620px; display:block;"
             loading="lazy"
@@ -212,7 +218,7 @@
     <!-- INNSIKT TIL DESIGN -->
     <div style="background:#2a2a2a; padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px);">
       <h2 class="proj-section__heading" style="color:#fff;">Innsikt til design</h2>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
+      <div class="ev-innsikt-cards" style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
         <div style="background:#f7f7f7; padding:32px;">
           <p style="font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:#c9a84c; font-weight:600; margin:0 0 10px;">Innsikt → Design</p>
           <h3 style="font-size:17px; font-weight:600; color:#111; margin:0 0 10px;">Bookingflyt i 5 trinn</h3>

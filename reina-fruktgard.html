@@ -47,6 +47,8 @@
       .reina-skrift-grid { grid-template-columns: 1fr !important; }
       .reina-illus-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
       .reina-farge-grid { grid-template-columns: 1fr 1fr !important; }
+      .reina-value-cards { grid-template-columns: 1fr !important; }
+      .reina-product-grid { grid-template-columns: 1fr !important; max-width: 92% !important; }
     }
     @media (min-width: 821px) { .strip-ss { margin-left: 0; width: 100%; } }
   </style>
@@ -154,7 +156,7 @@
       <div class="strip-dots" id="stripDots" style="margin-bottom:2rem;"></div>
     </section>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:0 clamp(20px,7vw,74px) 3rem;">
+    <div class="reina-value-cards" style="display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:0 clamp(20px,7vw,74px) 3rem;">
       <div style="background:#fff; padding:20px 22px;">
         <p style="margin:0 0 8px; font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:#960C0C; padding-bottom:7px; border-bottom:1.5px solid rgba(150,12,12,0.3); display:block;">Verdier og identitet</p>
         <p style="margin:0; line-height:1.7; font-size:15px; color:#3b1f0e;">Siden Reina Fruktgård bygger på økologi, kvalitet og lokal produksjon, ønsket jeg at identiteten skulle oppleves ærlig, jordnær og lite industriell. Derfor ble uttrykket redusert, med få farger, håndtegnet illustrasjon og materialer som gir en mer fysisk og naturlig følelse.</p>
@@ -170,21 +172,21 @@
       <h2 class="proj-section__heading">Etikett og emballasje</h2>
       <div style="display:flex; flex-direction:column; gap:3.5rem; margin-top:1.5rem;">
         <div>
-          <div class="gallery-expandable" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
+          <div class="gallery-expandable reina-product-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
             <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/foranreina.webp" alt="Reina Fruktgård foran" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
             <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/bakreina.webp" alt="Reina Fruktgård bak" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
           </div>
           <button id="originalBtn" style="background:none; border:none; cursor:pointer; font-family:inherit; font-size:15px; color:#960C0C; padding:8px 0 0; letter-spacing:0.02em; text-decoration:underline; display:block;">Se originalen →</button>
         </div>
         <div>
-          <div class="gallery-expandable" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
+          <div class="gallery-expandable reina-product-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
             <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/reinaramp-foran.webp" alt="Reinarampen foran" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
             <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/reinaramp-bak.webp" alt="Reinarampen bak" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
           </div>
           <button id="rampBtn" style="background:none; border:none; cursor:pointer; font-family:inherit; font-size:15px; color:#960C0C; padding:8px 0 0; letter-spacing:0.02em; text-decoration:underline; display:block;">Se originalen →</button>
         </div>
         <div>
-          <div class="gallery-expandable" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
+          <div class="gallery-expandable reina-product-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
             <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/syltforan.webp" alt="Sylteøl foran" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
             <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/syltreina.webp" alt="Sylteøl bak" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
           </div>
