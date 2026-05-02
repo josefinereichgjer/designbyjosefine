@@ -40,7 +40,7 @@
     }
 
     .logo { height: 48px; width: auto; flex-shrink: 0; margin-top: 5px; }
-    .logo-icon { display: none; height: 42px; width: 42px; object-fit: contain; }
+    .logo-icon { display: none; height: 34px; width: 34px; object-fit: contain; }
 
     .nav-links {
       display: flex;
