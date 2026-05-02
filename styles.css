@@ -106,7 +106,7 @@ a:hover{opacity:.75}
 .sidebar .back-btn {
   display: inline-block;
   font-family: "Avenir Next", "Avenir", sans-serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 300;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -264,7 +264,7 @@ a:hover{opacity:.75}
 }
 .masonry .card__tags {
   display: inline-block;
-  font-size: 11px;
+  font-size: 13px;
   font-family: "Avenir Next", "Avenir", sans-serif;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -882,7 +882,7 @@ a:hover{opacity:.75}
   overflow: hidden;
 }
 .scroll-gallery__label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 400;
   letter-spacing: 0;
   color: #111;
@@ -972,7 +972,7 @@ a:hover{opacity:.75}
   right: 12px;
   background: rgba(0,0,0,0.42);
   color: white;
-  font-size: 11px;
+  font-size: 13px;
   padding: 2px 8px;
   border-radius: 10px;
   pointer-events: none;
@@ -987,7 +987,7 @@ a:hover{opacity:.75}
   display: none;
   align-items: center;
   gap: 5px;
-  font-size: 12px;
+  font-size: 13px;
   color: #999;
   margin: 4px 0 10px 20px;
 }
@@ -1139,7 +1139,7 @@ a:hover{opacity:.75}
   font-weight: 500;
 }
 .palette__val {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   font-family: "SF Mono", "Fira Mono", monospace;
   letter-spacing: .02em;
@@ -1174,18 +1174,18 @@ a:hover{opacity:.75}
   gap: 2px;
 }
 .palette--cards .palette__name {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
 }
 .palette--cards .palette__hex {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   font-family: "SF Mono", "Fira Mono", monospace;
   letter-spacing: .04em;
   color: var(--muted);
 }
 .palette__desc {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 2px;
 }
@@ -1263,7 +1263,7 @@ a:hover{opacity:.75}
   display: none;
 }
 .pmeta__label {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
@@ -1315,7 +1315,7 @@ a:hover{opacity:.75}
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 300;
   font-family: "Avenir Next", "Avenir", sans-serif;
   text-transform: uppercase;
@@ -1566,7 +1566,7 @@ a:hover{opacity:.75}
   margin: 0;
 }
 .proj-problem-list__label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -1622,7 +1622,7 @@ a:hover{opacity:.75}
 }
 .proj-feature:nth-child(even) { padding-left: 40px; }
 .proj-feature-num {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--vinrod);
   letter-spacing: 1px;
@@ -1671,13 +1671,13 @@ a:hover{opacity:.75}
   flex-shrink: 0;
 }
 .proj-team-card h4 {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   color: var(--vinrod);
   margin-bottom: 3px;
 }
 .proj-team-card p {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--oliven);
   line-height: 1.4;
 }
@@ -1765,7 +1765,7 @@ a:hover{opacity:.75}
   pointer-events: none;
 }
 .proj-scenario__time {
-  font-size: 11px;
+  font-size: 13px;
   color: rgba(255,255,255,0.9);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
@@ -1845,7 +1845,7 @@ a:hover{opacity:.75}
   padding: 8px 16px;
   border-radius: 999px;
   border: none;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 300;
   font-family: "Avenir Next", "Avenir", sans-serif;
   text-transform: uppercase;
@@ -1934,7 +1934,7 @@ a:hover{opacity:.75}
   margin-top: 20px;
   padding: 0;
   background: none;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   text-decoration: underline;
   text-underline-offset: 3px;
@@ -2128,7 +2128,7 @@ a:hover{opacity:.75}
   backdrop-filter: blur(6px);
   border-radius: 999px;
   padding: 4px 12px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   z-index: 2;
 }
@@ -2343,7 +2343,7 @@ a:hover{opacity:.75}
   .sidebar--open .nav { display: flex; }
   .nav .nav__link {
     padding: 14px 20px;
-    font-size: 12px;
+    font-size: 13px;
     letter-spacing: 0.2em;
     border-bottom: 1px solid #1a1a1a;
   }
@@ -2360,14 +2360,14 @@ a:hover{opacity:.75}
   }
   .card__title {
     font-family: "Avenir Next", "Avenir", sans-serif;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 300;
     letter-spacing: 0.04em;
     color: #111;
   }
   .card__tags {
     font-family: "Avenir Next", "Avenir", sans-serif;
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 300;
     letter-spacing: 0.04em;
     color: #888;
@@ -2551,7 +2551,7 @@ a:hover{opacity:.75}
   gap: clamp(12px, 2vw, 36px);
 }
 .proj-header__link {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.55);
@@ -2588,7 +2588,7 @@ a:hover{opacity:.75}
 }
 .proj-breadcrumb {
   padding: 1.1rem clamp(20px, 4vw, 60px);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(0,0,0,0.38);
@@ -2615,7 +2615,7 @@ a:hover{opacity:.75}
   margin: 0 0 1.25rem;
 }
 .proj-hero__sub {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(0,0,0,0.38);
@@ -2647,7 +2647,7 @@ a:hover{opacity:.75}
   flex-wrap: wrap;
 }
 .proj-meta-label {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(0,0,0,0.38);
@@ -2661,7 +2661,7 @@ a:hover{opacity:.75}
   color: #1a1a1a;
 }
 .proj-prosess-btn {
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: #1a1a1a;
@@ -2717,7 +2717,7 @@ a:hover{opacity:.75}
 }
 .proj-dark__link {
   margin-top: 2rem;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.5);
@@ -2745,7 +2745,7 @@ a:hover{opacity:.75}
   padding: 4.5rem clamp(20px, 4vw, 60px);
 }
 .proj-section__label {
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(0,0,0,0.38);
@@ -2770,7 +2770,7 @@ a:hover{opacity:.75}
   flex-wrap: wrap;
 }
 .proj-adjacent__link {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #1a1a1a;
@@ -2797,7 +2797,7 @@ a:hover{opacity:.75}
   .proj-header--open .proj-header__nav { display: flex; }
   .proj-header__link {
     padding: 13px clamp(20px, 4vw, 60px);
-    font-size: 11px;
+    font-size: 13px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .proj-header__link--active {
