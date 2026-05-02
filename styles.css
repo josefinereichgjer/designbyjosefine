@@ -2513,6 +2513,7 @@ a:hover{opacity:.75}
     padding-right: clamp(20px, 3vw, 34px);
   }
   .masonry { columns: 3; column-gap: 36px; }
+  .proj-hero__meta .proj-meta-value { font-size: 22px; }
 }
 
 /* ── Project page: horizontal-nav layout (.proj-*) ── */
@@ -2694,7 +2695,7 @@ a:hover{opacity:.75}
 }
 .proj-hero__meta-row { display: flex; flex-direction: column; gap: 4px; padding-left: 14px; position: relative; }
 .proj-hero__meta-row::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: #1a1a1a; }
-.proj-hero__meta .proj-meta-value { font-size: clamp(18px, 1.6vw, 24px); }
+.proj-hero__meta .proj-meta-value { font-size: 16px; }
 
 .proj-description {
   padding: 3rem clamp(20px, 4vw, 60px);
