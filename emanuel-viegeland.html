@@ -71,7 +71,7 @@
     .tov-row { display: flex; flex-direction: column; gap: 8px; }
     .tov-labels { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #fff; }
     .tov-track { position: relative; height: 2px; background: #444; }
-    .tov-dot { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; border-radius: 50%; background: #FEE093; }
+    .tov-dot { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; border-radius: 50%; background: #C9A84C; }
 
     @media (max-width: 700px) {
       .ev-before-after { grid-template-columns: 1fr; }
@@ -90,9 +90,10 @@
       .ev-innsikt-cards li { padding: 1.25rem 0 !important; }
       .tov-scales { max-width: 100% !important; }
       .tov-intro { font-size: 16px !important; }
-      .tov-grid { grid-template-columns: 1fr !important; }
+      .tov-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
       .ev-proto-box { flex: 0 0 auto !important; width: 100% !important; }
       .ev-proto-iframe { height: 400px !important; }
+      .ev-brukerreise-sub { font-size: 18px !important; }
     }
   </style>
 </head>
@@ -165,7 +166,7 @@
         <!-- BRUKERREISE -->
         <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
           <h2 class="proj-section__heading" style="color:#fff;">Handling: se nærmere på Vita</h2>
-          <p style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren utforsker et av museets hovedverk</p>
+          <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren utforsker et av museets hovedverk</p>
           <img src="./assets/prosess/bruerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="lazy">
         </div>
 
@@ -218,7 +219,7 @@
     <!-- TONE OF VOICE -->
     <div style="background:#1a1a1a; padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px);">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2.5rem;">Tone of voice</h2>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,96px); align-items:start;">
+      <div class="tov-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,96px); align-items:start;">
         <div class="tov-scales">
           <div class="tov-row">
             <div class="tov-labels"><span>Formell</span><span>Uformell</span></div>
