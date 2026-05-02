@@ -39,16 +39,16 @@
         <div class="form-row">
           <div class="form-group">
             <label for="navn">Navn</label>
-            <input type="text" id="navn" placeholder="Ditt navn" />
+            <input type="text" id="navn" name="navn" placeholder="Ditt navn" autocomplete="name" />
           </div>
           <div class="form-group">
             <label for="epost">E-post</label>
-            <input type="email" id="epost" placeholder="din@epost.no" />
+            <input type="email" id="epost" name="epost" placeholder="din@epost.no" autocomplete="email" inputmode="email" />
           </div>
         </div>
         <div class="form-group">
           <label for="emne">Emne</label>
-          <select id="emne">
+          <select id="emne" name="emne">
             <option value="">Velg emne</option>
             <option>Generelt spørsmål</option>
             <option>Medlemskap</option>
@@ -60,7 +60,7 @@
         </div>
         <div class="form-group">
           <label for="melding">Melding</label>
-          <textarea id="melding" placeholder="Skriv din melding her..."></textarea>
+          <textarea id="melding" name="melding" placeholder="Skriv din melding her..." autocomplete="off"></textarea>
         </div>
         <button type="submit" class="btn-submit">Send melding</button>
         <p id="form-success" style="display:none; font-size:15px; color:#2a7a2a; margin-top:4px;">Takk! Vi tar kontakt så snart vi kan.</p>

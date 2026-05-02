@@ -220,7 +220,7 @@
 
     .pricing-cards {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 32px;
     }
 
@@ -878,6 +878,27 @@
       .hero-text h1 { font-size: 28px; }
       .pricing-card h3 { font-size: 28px; }
       .pricing-price strong { font-size: 34px; }
+    }
+
+    /* SLIDE-UP ANIMATION */
+    @keyframes slideUp {
+      from { transform: translateY(28px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    /* MOBILE BOTTOM SHEETS (≤600px) */
+    @media (max-width: 600px) {
+      /* Booking */
+      .booking-overlay { align-items: flex-end; padding: 0; }
+      .booking-card { max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; animation: slideUp 0.22s ease-out; }
+
+      /* Kurs */
+      .kurs-overlay.open { display: flex; flex-direction: column; justify-content: flex-end; padding: 0; }
+      .kurs-card { max-width: 100%; max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; margin: 0; animation: slideUp 0.22s ease-out; }
+
+      /* Member */
+      .modal-overlay { align-items: flex-end; padding: 0; }
+      .modal { max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; animation: slideUp 0.22s ease-out; }
     }
 
     /* ── Large desktop (≥1400px) ── */

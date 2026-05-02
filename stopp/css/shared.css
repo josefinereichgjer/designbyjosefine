@@ -81,6 +81,10 @@
       transition: opacity 0.2s;
     }
 
+    /* FOCUS */
+    :focus { outline: none; }
+    :focus-visible { outline: 2.5px solid var(--orange); outline-offset: 3px; }
+
     /* BUTTONS */
     .btn {
       font-family: 'IBM Plex Sans', sans-serif;

@@ -113,3 +113,67 @@
       .filter-btn { font-size: 13px; padding: 9px 14px; }
       .tool-table th, .tool-table tbody td { font-size: 13px; padding: 10px 8px; }
     }
+
+    /* Mobile: scrollable filter chips */
+    @media (max-width: 767px) {
+      .filters {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 4px;
+      }
+      .filters::-webkit-scrollbar { display: none; }
+      .filter-btn { flex-shrink: 0; }
+    }
+
+    /* Mobile: table → cards */
+    @media (max-width: 560px) {
+      .table-wrap { padding: 0; background: transparent; }
+      .tool-table, .tool-table thead, .tool-table tbody, .tool-table tr { display: block; }
+      .tool-table thead { display: none; }
+      .tool-table tbody tr {
+        background: #fff;
+        border-left: 4px solid var(--purple);
+        padding: 14px;
+        margin-bottom: 10px;
+      }
+      .tool-table tbody td,
+      .tool-table tbody td:nth-child(1),
+      .tool-table tbody td:nth-child(2),
+      .tool-table tbody td:nth-child(3),
+      .tool-table tbody td:nth-child(4),
+      .tool-table tbody td:nth-child(5),
+      .tool-table tbody td:nth-child(6) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 5px 0;
+        border-top: 1px solid #f0f0f0;
+        font-size: 14px;
+        width: 100%;
+        text-align: left;
+        word-break: normal;
+      }
+      .tool-table tbody td:nth-child(1) {
+        font-weight: 600;
+        font-size: 15px;
+        border-top: none;
+        padding-bottom: 8px;
+      }
+      .tool-table tbody td:nth-child(2)::before { content: "Kategori"; }
+      .tool-table tbody td:nth-child(3)::before { content: "Type"; }
+      .tool-table tbody td:nth-child(4)::before { content: "Produsent"; }
+      .tool-table tbody td:nth-child(5)::before { content: "Modell"; }
+      .tool-table tbody td:nth-child(6)::before { content: "Kurs"; }
+      .tool-table tbody td:not(:nth-child(1))::before {
+        font-family: 'IBM Plex Sans', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        color: #888;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        flex-shrink: 0;
+        margin-right: 12px;
+      }
+    }
