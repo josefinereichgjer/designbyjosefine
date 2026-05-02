@@ -11,7 +11,7 @@ window.PROJECTS = [
     noSlideshow: true,
     introBorder: true,
     showAccordion: true,
-    intro: "Ansattportal for Tjønnås Delikatesser og Norvald Café:\nett system som samler vaktlister, kommunikasjon og opplæring på én plass.",
+    intro: "Tjønnås & Norvald hadde behov for én samlet digital struktur for vaktplan, opplæring, rutiner og internkommunikasjon. Vi utviklet en ansattportal for både ledelse, erfarne ansatte og nyansatte, med mål om å gjøre informasjon lettere tilgjengelig og redusere behovet for manuell oppfølging.",
     scrollGalleries: [
       {
         label: "<strong>iPhone 16 Pro Max</strong> (utvalgte prototyper)",
