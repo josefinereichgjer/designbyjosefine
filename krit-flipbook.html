@@ -6,16 +6,16 @@
 <title>KRIT — Nr. 1 : 2026</title>
 <style>
   :root {
-    --bg-0: #0e0b09;
-    --bg-1: #1a1512;
-    --bg-2: #241c18;
-    --ink: #e8dfd4;
-    --ink-dim: #8a7d70;
-    --ink-faint: #4a413a;
-    --accent: #c2845a;
+    --bg-0: #faf5ee;
+    --bg-1: #f2ebe0;
+    --bg-2: #ede4d4;
+    --ink: #1a1a1a;
+    --ink-dim: #777;
+    --ink-faint: #ccc;
+    --accent: #8b5e3c;
     --flip-ms: 850ms;
-    --page-shadow: 0 30px 80px -20px rgba(0,0,0,0.8),
-                   0 10px 30px -10px rgba(0,0,0,0.6);
+    --page-shadow: 0 20px 60px -15px rgba(0,0,0,0.22),
+                   0 6px 20px -6px rgba(0,0,0,0.14);
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,9 +32,7 @@
   }
 
   body {
-    background:
-      radial-gradient(ellipse at 50% 40%, var(--bg-2) 0%, var(--bg-1) 40%, var(--bg-0) 85%),
-      var(--bg-0);
+    background: var(--bg-0);
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -84,7 +82,7 @@
     right: 5%;
     bottom: -30px;
     height: 40px;
-    background: radial-gradient(ellipse at center, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 70%);
     filter: blur(8px);
     z-index: -1;
   }
@@ -117,7 +115,7 @@
   /* A "single page" view (first & last, no spread) fades the other side */
   .book.single-left .page-right,
   .book.single-right .page-left {
-    background: #0e0b09;
+    background: var(--bg-0);
     box-shadow: none;
   }
 
@@ -267,9 +265,9 @@
   }
 
   .control-btn {
-    background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--ink-faint);
+    background: #1a1a1a;
+    color: #fff;
+    border: 1px solid #1a1a1a;
     border-radius: 999px;
     width: 40px;
     height: 40px;
