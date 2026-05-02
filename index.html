@@ -79,7 +79,7 @@
     /* ── Left column ── */
     .display-text {
       font-family: "SelfModern", Georgia, serif;
-      font-size: clamp(42px, 5.4vw, 86px);
+      font-size: clamp(36px, 4.4vw, 72px);
       font-weight: 400;
       line-height: 1.06;
       letter-spacing: -0.01em;
@@ -268,7 +268,7 @@
 
     /* Large screens (iMac 27", wide laptops) */
     @media (min-width: 1440px) {
-      .display-text { font-size: clamp(86px, 5.4vw, 100px); }
+      .display-text { font-size: clamp(72px, 4.6vw, 88px); }
       .main-content {
         grid-template-columns: 1fr clamp(340px, 32vw, 760px);
         gap: clamp(64px, 4vw, 120px);
@@ -366,18 +366,6 @@
 
     </div>
 
-    <!-- Bottom: email -->
-    <div class="bottom-bar">
-      <p class="email-label">Hold deg oppdatert</p>
-      <div class="email-form">
-        <svg class="email-icon" width="14" height="11" viewBox="0 0 14 11" fill="none" aria-hidden="true">
-          <rect x="0.5" y="0.5" width="13" height="10" rx="1" stroke="currentColor"/>
-          <path d="M1 1l6 4.5L13 1" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <input type="email" placeholder="Din e-post" aria-label="E-postadresse">
-        <a href="mailto:josefinegjertsen@gmail.com" class="email-submit" aria-label="Send">&#8594;</a>
-      </div>
-    </div>
 
   </div>
 
