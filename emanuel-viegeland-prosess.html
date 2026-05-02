@@ -47,6 +47,10 @@
 
     @media (max-width: 700px) {
       .ev-prosess__step { border-right: none; border-bottom: 1px solid #e8e4e0; flex: 1 1 100%; }
+      .ev-innsikt { grid-template-columns: 1fr; }
+      .ev-innsikt__item { border-right: none; }
+      .ev-innsikt__item:nth-last-child(-n+2) { border-bottom: 1px solid #e8e4e0; }
+      .ev-innsikt__item:last-child { border-bottom: none; }
     }
   </style>
 </head>
@@ -203,7 +207,7 @@
       <p style="font-size:16px; line-height:1.75; color:#444; max-width:620px; margin-bottom:32px;">Fra tidlige lo-fi skisser og utforskning av home-page-uttrykket, til dot voting på logoforslag. Vi testet bredt — farger, layout og identitet — før vi låste retningen.</p>
       <div style="display:flex; flex-direction:column; gap:2px;">
         <img src="./assets/prosess/lofi.png" alt="Lo-fi skisser" style="width:100%; display:block;" loading="lazy">
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
+        <div class="mob-stack" style="display:grid; grid-template-columns:1fr 1fr; gap:2px;">
           <div>
             <img src="./assets/prosess/iterasjoner.webp" alt="Tidlig utforskning av home-page" style="width:100%; display:block;" loading="lazy">
             <p style="font-size:12px; color:#888; margin:8px 0 0; letter-spacing:.04em;">Tidlige iterasjoner av home-page</p>

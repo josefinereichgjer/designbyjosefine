@@ -2814,4 +2814,6 @@ a:hover{opacity:.75}
   .proj-meta-fields { gap: 1rem; }
   .proj-section { padding-top: 3rem; padding-bottom: 3rem; }
   .proj-section__heading { margin-bottom: 1.5rem; }
+  /* Utility: collapse any inline grid to single column */
+  .mob-stack { grid-template-columns: 1fr !important; }
 }
