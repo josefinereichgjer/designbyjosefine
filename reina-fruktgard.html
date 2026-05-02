@@ -10,6 +10,7 @@
   <link rel="icon" href="assets/hvitlogo.webp">
   <style>
     html { scroll-behavior: smooth; }
+    .proj-hero__title { font-size: clamp(24px, 3.8vw, 58px); }
 
     /* Strip slideshow dots */
     .strip-dots { display: flex; gap: 8px; justify-content: center; margin-top: 14px; }
@@ -100,40 +101,32 @@
       <a href="./projects.html">Arbeider</a><span class="proj-breadcrumb__sep">›</span>Reina Fruktgård
     </div>
 
-    <section class="proj-hero">
-      <div class="proj-hero__left">
-        <h1 class="proj-hero__title">Emballasje<br>design for<br>Reina<br>Fruktgård</h1>
-        <p class="proj-hero__sub">Emballasjedesign — Reina Fruktgård</p>
-      </div>
+    <section class="proj-hero proj-hero--img-left" style="background:#fde8e3; padding-left:0; padding-bottom:0; align-items:stretch;">
       <div class="proj-hero__right">
-        <img class="proj-hero__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" fetchpriority="high" style="object-position:center 50%;">
+        <img class="proj-hero__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" fetchpriority="high" style="object-fit:cover; object-position:center 50%; height:100%; max-height:none;">
+      </div>
+      <div class="proj-hero__left" style="padding-top:3.5rem;">
+        <h1 class="proj-hero__title">REINA FRUKTGÅRD</h1>
+        <p class="proj-hero__desc">Emballasjen til Reina Fruktgård bygger på et nedtonet og stedbundet uttrykk, der landskapsillustrasjon, håndtegnet typografi og naturpapir formidler gårdens historie, håndverk og lokale forankring.</p>
+        <div class="proj-hero__meta">
+          <div class="proj-hero__meta-row">
+            <span class="proj-meta-label">Emne</span>
+            <span class="proj-meta-value">IDG3010 — Emballasjedesign</span>
+          </div>
+          <div class="proj-hero__meta-row">
+            <span class="proj-meta-label">Verktøy</span>
+            <span class="proj-meta-value">Illustrator, Pacdora, Photoshop, Procreate</span>
+          </div>
+          <div class="proj-hero__meta-row">
+            <span class="proj-meta-label">Dato</span>
+            <span class="proj-meta-value">2026</span>
+          </div>
+        </div>
       </div>
     </section>
 
-    <div class="proj-meta-row">
-      <div class="proj-meta-fields">
-        <div>
-          <span class="proj-meta-label">Emne</span>
-          <span class="proj-meta-value">IDG3010 — Emballasjedesign</span>
-        </div>
-        <div>
-          <span class="proj-meta-label">Verktøy</span>
-          <span class="proj-meta-value">Illustrator, Pacdora, Photoshop, Procreate</span>
-        </div>
-        <div>
-          <span class="proj-meta-label">Dato</span>
-          <span class="proj-meta-value">2026</span>
-        </div>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:10px; align-items:flex-start;">
-        <a class="proj-prosess-btn" href="./assets/ferdigreina.pdf" target="_blank" rel="noopener">Les full designbrief →</a>
-      </div>
-    </div>
-
-    <p class="proj-description" style="margin-top:8rem;">Emballasjen til Reina Fruktgård bygger på et nedtonet og stedbundet uttrykk, der landskapsillustrasjon, håndtegnet typografi og naturpapir formidler gårdens historie, håndverk og lokale forankring.</p>
-
     <!-- Slideshow -->
-    <section class="proj-section reveal" id="slideshow" style="padding-top:1rem;">
+    <section class="proj-section reveal" id="slideshow" style="padding-top:4rem;">
       <div class="strip-ss gallery-expandable" style="position:relative;">
         <div class="strip-ss__nav" style="display:none">
           <button class="strip-ss__btn" id="stripPrev" aria-label="Forrige bilde">←</button>
@@ -284,7 +277,8 @@
       </table>
     </section>
 
-    <div style="padding: 2.5rem clamp(20px, 4vw, 60px); display:flex; justify-content:center;">
+    <div style="padding: 2.5rem clamp(20px, 4vw, 60px); display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
+      <a class="proj-prosess-btn" href="./assets/ferdigreina.pdf" target="_blank" rel="noopener">Se designbrief →</a>
       <a class="proj-prosess-btn" href="./reina-prosess.html" target="_blank" rel="noopener">Se prosess →</a>
     </div>
 

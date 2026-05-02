@@ -2591,8 +2591,8 @@ a:hover{opacity:.75}
   min-height: 100vh;
 }
 .proj-breadcrumb {
-  padding: 0.85rem clamp(20px, 4vw, 60px);
-  font-size: 10px;
+  padding: 1.1rem clamp(20px, 4vw, 60px);
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(0,0,0,0.38);
@@ -2604,7 +2604,7 @@ a:hover{opacity:.75}
 .proj-hero {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  padding: 5rem clamp(20px, 4vw, 60px);
+  padding: 0 clamp(20px, 4vw, 60px) 5rem;
   gap: 4rem;
   align-items: center;
   border-bottom: 1px solid rgba(0,0,0,0.08);
@@ -2676,6 +2676,30 @@ a:hover{opacity:.75}
   transition: background 0.2s, color 0.2s;
 }
 .proj-prosess-btn:hover { background: #1a1a1a; color: #fff; }
+/* Image-left hero variant */
+.proj-hero--img-left { grid-template-columns: 1.5fr 1fr; align-items: start; }
+.proj-hero--img-left .proj-hero__right { order: -1; justify-content: flex-start; }
+
+/* In-hero info block */
+.proj-hero__desc {
+  font-size: 17px;
+  line-height: 1.78;
+  color: #555;
+  margin: 1.75rem 0 0;
+  max-width: 480px;
+}
+.proj-hero__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-top: 2.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(0,0,0,0.08);
+}
+.proj-hero__meta-row { display: flex; flex-direction: column; gap: 4px; padding-left: 14px; position: relative; }
+.proj-hero__meta-row::before { content: ''; position: absolute; left: 0; top: 7px; width: 5px; height: 5px; border-radius: 50%; background: #1a1a1a; }
+.proj-hero__meta .proj-meta-value { font-size: 16px; }
+
 .proj-description {
   padding: 3rem clamp(20px, 4vw, 60px);
   max-width: 780px;

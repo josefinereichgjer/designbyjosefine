@@ -9,6 +9,7 @@
   <link rel="icon" href="assets/hvitlogo.webp">
   <style>
     html { scroll-behavior: smooth; }
+    .proj-hero__title { font-size: clamp(24px, 3.8vw, 58px); }
     .proj-description { font-size: 22px; max-width: 1050px; }
 
     /* Colour palette */
@@ -47,43 +48,29 @@
       <a href="./projects.html">Arbeider</a><span class="proj-breadcrumb__sep">›</span>Bokomslag
     </div>
 
-    <!-- Hero: title left, video right -->
-    <section class="proj-hero">
-      <div class="proj-hero__left">
-        <h1 class="proj-hero__title">En redesign<br>av norske<br>klassikere</h1>
-        <p class="proj-hero__sub">Redaksjonell design — Bokomslag</p>
-      </div>
+    <section class="proj-hero proj-hero--img-left" style="padding-left:0; padding-bottom:0; align-items:stretch; background:#e3f2ff;">
       <div class="proj-hero__right">
-        <video src="./assets/bokserie-film.mp4" autoplay muted loop playsinline preload="metadata"
-          id="bokserieVideo"
-          style="width:100%; max-height:82vh; object-fit:cover; display:block;"></video>
+        <img src="./assets/red-3.webp" alt="Bokomslag" fetchpriority="high" class="proj-hero__img" style="object-fit:cover; height:100%; max-height:none;">
+      </div>
+      <div class="proj-hero__left" style="padding-top:3.5rem;">
+        <h1 class="proj-hero__title">BOKOMSLAG</h1>
+        <p class="proj-hero__desc">I dette prosjektet har jeg laget en ny visuell identitet for tre norske klassikere: <em>Amtmandens Døtre</em>, <em>Forrådt</em> og <em>Jenny</em>. Jeg ønsket å gi bøkene et mer dempet, fysisk og tidløst uttrykk, der tekstilbind, preging og fargevalg spiller en større rolle enn illustrasjon og tradisjonelle salgselementer.</p>
+        <div class="proj-hero__meta">
+          <div class="proj-hero__meta-row">
+            <span class="proj-meta-label">Emne</span>
+            <span class="proj-meta-value">Redaksjonell design</span>
+          </div>
+          <div class="proj-hero__meta-row">
+            <span class="proj-meta-label">Type prosjekt</span>
+            <span class="proj-meta-value">Bokomslag</span>
+          </div>
+          <div class="proj-hero__meta-row">
+            <span class="proj-meta-label">Dato</span>
+            <span class="proj-meta-value">2026</span>
+          </div>
+        </div>
       </div>
     </section>
-    <script>document.getElementById("bokserieVideo").playbackRate = 0.5;</script>
-
-    <div class="proj-meta-row">
-      <div class="proj-meta-fields">
-        <div>
-          <span class="proj-meta-label">Emne</span>
-          <span class="proj-meta-value">Redaksjonell design</span>
-        </div>
-        <div>
-          <span class="proj-meta-label">Type prosjekt</span>
-          <span class="proj-meta-value">Bokomslag</span>
-        </div>
-        <div>
-          <span class="proj-meta-label">Format</span>
-          <span class="proj-meta-value">Hardcover / tekstilbind</span>
-        </div>
-        <div>
-          <span class="proj-meta-label">Dato</span>
-          <span class="proj-meta-value">2026</span>
-        </div>
-      </div>
-      <a class="proj-prosess-btn" href="./bokomslag-prosess.html">Se prosess →</a>
-    </div>
-
-    <p class="proj-description">I dette prosjektet har jeg laget en ny visuell identitet for tre norske klassikere: <em>Amtmandens Døtre</em>, <em>Forrådt</em> og <em>Jenny</em>. Jeg ønsket å gi bøkene et mer dempet, fysisk og tidløst uttrykk, der tekstilbind, preging og fargevalg spiller en større rolle enn illustrasjon og tradisjonelle salgselementer.</p>
 
     <!-- Flate skisse + Mockups -->
     <section class="proj-section reveal" id="flate-skisse">
@@ -196,6 +183,10 @@
 
     <div style="padding: 2.5rem clamp(20px, 4vw, 60px);">
       <p style="font-size:13px; line-height:1.78; color:#666; max-width:700px;"><strong style="color:#1a1a1a;">NB:</strong> Logomerket er basert på Gyldendals danske merke. Dette var ikke et bevisst valg i starten, da jeg først senere ble klar over at merket tilhørte det danske Gyldendal. Jeg valgte likevel å beholde det fordi oppgaven åpnet for fri bruk av forlagsmerke, og fordi det minimalistiske og klassiske uttrykket passet godt til bokseriens formspråk. I prosjektet brukes merket derfor som en visuell referanse, ikke som en faktisk forlagsidentitet.</p>
+    </div>
+
+    <div style="padding: 2.5rem clamp(20px, 4vw, 60px); display:flex; justify-content:center;">
+      <a class="proj-prosess-btn" href="./bokomslag-prosess.html">Se prosess →</a>
     </div>
 
     <div class="proj-adjacent">
