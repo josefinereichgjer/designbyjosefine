@@ -60,6 +60,10 @@
     /* Scroll reveal */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media print {
+      .reveal { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+      .krit-flipbook-wrap { display: none !important; }
+    }
   </style>
 </head>
 
@@ -114,12 +118,12 @@
     <!-- Masonry mockup gallery -->
     <div class="krit-masonry" style="padding: 0 clamp(20px, 4vw, 60px); padding-top: 3rem; padding-bottom: 3rem;">
       <div class="krit-masonry-col">
-        <div class="krit-masonry-item reveal"><img src="assets/01-mockkrit.webp" alt="KRIT mockup 1" loading="lazy"></div>
-        <div class="krit-masonry-item reveal"><img src="assets/02-mockkrit.webp" alt="KRIT mockup 2" loading="lazy"></div>
+        <div class="krit-masonry-item reveal"><img src="assets/01-mockkrit.webp" alt="KRIT mockup 1" loading="eager"></div>
+        <div class="krit-masonry-item reveal"><img src="assets/02-mockkrit.webp" alt="KRIT mockup 2" loading="eager"></div>
       </div>
       <div class="krit-masonry-col krit-masonry-col--offset">
-        <div class="krit-masonry-item reveal"><img src="assets/03-mockkrit.webp" alt="KRIT mockup 3" loading="lazy" style="object-position:center 70%;"></div>
-        <div class="krit-masonry-item reveal"><img src="assets/04mag.webp" alt="KRIT nr.4" loading="lazy"></div>
+        <div class="krit-masonry-item reveal"><img src="assets/03-mockkrit.webp" alt="KRIT mockup 3" loading="eager" style="object-position:center 70%;"></div>
+        <div class="krit-masonry-item reveal"><img src="assets/04mag.webp" alt="KRIT nr.4" loading="eager"></div>
       </div>
     </div>
 
@@ -206,9 +210,9 @@
     <section class="proj-section reveal" id="bildebruk">
       <h2 class="proj-section__heading">Halftone som system</h2>
       <p class="system-intro">Halftone-effekten gir bildene et mer redaksjonelt og trykket preg, samtidig som den binder foto, fargeflater og typografi sammen i ett visuelt system. Hver utgave kan få sin egen fargekombinasjon, mens typografi, grid og bildebehandling holder identiteten samlet.</p>
-      <img src="assets/system1.webp" alt="Bildesystem oppslag" class="system-img" loading="lazy">
+      <img src="assets/system1.webp" alt="Bildesystem oppslag" class="system-img" loading="eager">
       <p class="system-caption"><strong>Oppslag:</strong> Oransje brukes som bakgrunn for litterær tekst og essay, mens blå benyttes bak kritikk. Dette bidrar til å differensiere innholdstypene visuelt.</p>
-      <img src="assets/system2.webp" alt="Bildesystem brødtekst" class="system-img" loading="lazy">
+      <img src="assets/system2.webp" alt="Bildesystem brødtekst" class="system-img" loading="eager">
       <p class="system-caption"><strong>I brødtekst:</strong> Primærfargene legges over bildene med redusert opasitet for å skape variasjon, dybde og et mer dynamisk uttrykk.</p>
     </section>
 
@@ -246,6 +250,9 @@
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+    window.addEventListener('beforeprint', function() {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+    });
   </script>
 </body>
 </html>
