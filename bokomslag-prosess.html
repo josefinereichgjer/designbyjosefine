@@ -128,14 +128,14 @@
 
       <!-- Grønn: Jenny -->
       <!-- 3D mockups -->
-      <div class="mock-row mob-stack" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; align-items:end; margin-bottom:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
+      <div class="mob-stack js-mock-row" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; align-items:end; margin-bottom:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
         <div class="mock-img"><img src="./assets/prosess/greenie.webp" alt="Jenny — 3D mockup" loading="eager" style="width:100%; display:block;"></div>
         <div class="mock-img"><img src="./assets/prosess/bluie.webp" alt="Amtmandens Døtre — 3D mockup" loading="eager" style="width:100%; display:block;"></div>
         <div class="mock-img"><img src="./assets/prosess/reddie.webp" alt="Forrådt — 3D mockup" loading="eager" style="width:100%; display:block;"></div>
       </div>
 
       <!-- Flat spreads -->
-      <div class="mock-row mob-stack" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; align-items:start;">
+      <div class="mob-stack js-mock-row" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; align-items:start;">
         <div class="mock-img"><img src="./assets/prosess/greenwhole.webp" alt="Jenny — flat spread" loading="eager" style="width:100%; display:block;"></div>
         <div class="mock-img"><img src="./assets/prosess/bluewhole.webp" alt="Amtmandens Døtre — flat spread" loading="eager" style="width:100%; display:block;"></div>
         <div class="mock-img"><img src="./assets/prosess/redwhole.webp" alt="Forrådt — flat spread" loading="eager" style="width:100%; display:block;"></div>
@@ -193,7 +193,10 @@
         }
       });
     }, { threshold: 0.1 });
-    document.querySelectorAll('.mock-row').forEach(function(el) { mockObs.observe(el); });
+    document.querySelectorAll('.js-mock-row').forEach(function(el) {
+      el.classList.add('mock-row');
+      mockObs.observe(el);
+    });
 
     function revealAll() {
       document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
