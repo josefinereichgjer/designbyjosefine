@@ -285,7 +285,7 @@
       .we-toc__link { padding: 11px 14px 9px; }
       /* Grids */
       .we-logo-grid { grid-template-columns: 1fr 1fr !important; gap: 24px !important; }
-      .we-palette-row { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .we-palette-row { grid-template-columns: 1fr !important; gap: 24px !important; margin-bottom: 48px !important; }
       .we-client-v2 { grid-template-columns: 1fr !important; gap: 40px !important; }
       .we-audience { grid-template-columns: 1fr !important; }
       .we-mg-blocks { grid-template-columns: 1fr !important; }
@@ -295,15 +295,17 @@
       .we-swot { grid-template-columns: 1fr !important; }
       .we-steps { grid-template-columns: 1fr 1fr !important; }
       .we-credits { grid-template-columns: 1fr !important; }
-      /* Fixed heights */
-      .we-rg-row--cards img { height: 220px !important; }
-      .we-rg-row--insta img { height: 180px !important; }
+      /* Image pairs: stack full-width on mobile */
+      .we-rg-row { grid-template-columns: 1fr !important; }
+      .we-rg-row--cards img, .we-rg-row--insta img { height: auto !important; }
       .we-page .strip-ss__slide img { height: 200px !important; }
       /* Hero padding */
       .we-hero { padding: 56px 24px 48px !important; }
       /* Monster layout */
       .we-monster-layout { flex-direction: column !important; }
       .we-monster-img { width: min(160px, 36vw) !important; }
+      /* Pull quote: more prominent */
+      .we-oppdrag-text blockquote { font-size: 20px !important; line-height: 1.7 !important; padding: 10px 0 10px 20px !important; margin: 28px 0 !important; border-left: 4px solid var(--we-lime) !important; color: #111 !important; }
     }
 
     /* Credits */
@@ -443,21 +445,28 @@
         gap: 32px;
       }
     }
-    .we-typo__name { 
-      font-family: 'neuzeit-grotesk', sans-serif; 
-      font-size: clamp(24px, 4vw, 32px); 
-      font-weight: 400; 
-      color: #111; 
-      margin: 0 0 12px; 
-      line-height: 1.1; 
+    .we-typo__name {
+      font-family: 'neuzeit-grotesk', sans-serif;
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 400;
+      color: #111;
+      margin: 0 0 12px;
+      line-height: 1.05;
     }
-    .we-typo__use { 
-      font-size: 15px; 
-      line-height: 1.65; 
-      color: #444; 
-      margin: 0; 
-      padding-left: 16px; 
-      border-left: 2px solid #D2E1DF; 
+    @media (max-width: 767px) {
+      .we-typo__name { font-size: clamp(42px, 11vw, 58px); margin: 0 0 16px; }
+    }
+    .we-typo-item:nth-child(1) .we-typo__name { font-family: forma-djr-micro, sans-serif; font-weight: 400; }
+    .we-typo-item:nth-child(2) .we-typo__name { font-weight: 700; }
+    .we-typo-item:nth-child(3) .we-typo__name { font-weight: 900; }
+    .we-typo__hl { color: #1a6b5e; font-weight: 600; }
+    .we-typo__use {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #444;
+      margin: 0;
+      padding-left: 16px;
+      border-left: 2px solid #D2E1DF;
     }
 
     /* Posmap trigger + modals */
@@ -688,10 +697,17 @@
       .we-monster-layout { flex-direction: column; gap: 24px; align-items: flex-start; text-align: left;}
       .we-monster-imgs { justify-content: flex-start; width: 100%; }
 
-      .we-logo-grid { grid-template-columns: 1fr; gap: 48px; }
-      .we-logo-item:nth-child(3) { grid-column: auto; }
-      
-      .we-palette { grid-template-columns: 1fr 1fr; }
+      .we-logo-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+      .we-logo-item:nth-child(3) { grid-column: auto !important; }
+      .we-logo-item:nth-child(3) img { display: block; margin: 0 auto; }
+
+      /* Monster: full-width stacked, no spin */
+      .we-monster-imgs { flex-direction: column; gap: 16px; align-items: center; }
+      .we-monster-img { width: 80% !important; max-width: 280px; animation: none !important; }
+
+      /* Palette: tighter within-group */
+      .we-palette { grid-template-columns: 1fr 1fr; gap: 8px !important; }
+      .we-swatch__color { height: 80px !important; }
     }
 
     @media (max-width: 480px) {
@@ -856,7 +872,7 @@
 
           <div style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Logo</h3>
-            <img src="./assets/norvald/logoutvikling.webp" alt="Logoutvikling" loading="lazy" style="width:70%; max-width:700px; display:block; margin:0 auto 2.5rem;">
+            <img src="./assets/norvald/logoutvikling.webp" alt="Logoutvikling" loading="lazy" style="width:100%; display:block; margin:0 0 2.5rem;">
             <div class="we-logo-grid">
               <div class="we-logo-item">
                 <img src="./assets/main-logo4x.webp" alt="Monokrom logo" loading="lazy" decoding="async">
@@ -972,33 +988,33 @@
           <div class="we-subheading-block" style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Typografi</h3>
             <div class="we-typo-list">
-              <div class="we-typo-item we-stagger">
-                <h3 class="we-typo__name" style="font-weight: 400;">Forma DJR Micro Regular</h3>
-                <p class="we-typo__use">
+              <div class=”we-typo-item we-stagger”>
+                <h3 class=”we-typo__name”>Forma DJR Micro Regular</h3>
+                <p class=”we-typo__use”>
                   <strong>Brukes til:</strong><br>
                   - Logo og merkevaretekst (“Foundation Women Empowerment”)<br>
                   - Informasjonsbokser og kortere tekster<br>
                   - Små tekststørrelser og UI-elementer
                 </p>
               </div>
-              
-              <div class="we-typo-item we-stagger">
-                <h3 class="we-typo__name" style="font-weight: 700;">Trade Gothic Next LT Pro Bold</h3>
-                <p class="we-typo__use">
+
+              <div class=”we-typo-item we-stagger”>
+                <h3 class=”we-typo__name”>Trade Gothic Next LT Pro Bold</h3>
+                <p class=”we-typo__use”>
                   <strong>Brukes til:</strong><br>
                   - Brødtekst og hovedinnhold<br>
                   - Sitater (quotes)<br>
                   - Generell løpende tekst i designet
                 </p>
               </div>
-              
-              <div class="we-typo-item we-stagger">
-                <h3 class="we-typo__name" style="font-weight: 900;">Trade Gothic Next LT Pro Heavy</h3>
-                <p class="we-typo__use">
+
+              <div class=”we-typo-item we-stagger”>
+                <h3 class=”we-typo__name”>Trade Gothic Next LT Pro Heavy</h3>
+                <p class=”we-typo__use”>
                   <strong>Brukes til:</strong><br>
                   - Utheving av nøkkelord og viktige budskap<br>
                   - Ord som skal skille seg ut visuelt, spesielt i overskrifter<br>
-                  - Brukes ofte i fargen <span style="color:#1a6b5e; font-weight:600;">#6EB6A9</span> for ekstra fokus
+                  - Brukes ofte i fargen <span class=”we-typo__hl”>#6EB6A9</span> for ekstra fokus
                 </p>
               </div>
             </div>
@@ -1024,12 +1040,12 @@
               </div>
               <button aria-label="Forrige bilde" onclick="weStripPrev()"
                 style="position:absolute;left:14px;top:50%;transform:translateY(-50%);z-index:10;
-                       width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.88);
+                       width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.88);
                        border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;
                        justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.15);">‹</button>
               <button aria-label="Neste bilde" onclick="weStripNext()"
                 style="position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:10;
-                       width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,0.88);
+                       width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.88);
                        border:none;cursor:pointer;font-size:18px;display:flex;align-items:center;
                        justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,0.15);">›</button>
               <div class="strip-ss__viewport">
