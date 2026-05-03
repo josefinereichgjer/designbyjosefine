@@ -771,6 +771,7 @@ a:hover{opacity:.75}
   text-transform: none;
   color: #fff !important;
   margin: 0 0 28px;
+  max-width: 30ch;
 }
 
 .about-bio-col p,
@@ -781,6 +782,7 @@ a:hover{opacity:.75}
   font-size: 15px;
   line-height: 1.75;
   color: #D8D8D8;
+  max-width: 66ch;
 }
 .about-bio-col .list li {
   color: #fff;
