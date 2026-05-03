@@ -1,6 +1,7 @@
 
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
 
 @font-face {
   font-family: "Romie";
@@ -773,7 +774,7 @@ a:hover{opacity:.75}
 .about-bio-col p,
 .about-bio-col li,
 .about-bio-col .list {
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-weight: 300;
   font-size: 15px;
   line-height: 1.75;
@@ -2247,7 +2248,7 @@ a:hover{opacity:.75}
 .contact-email-link {
   display: inline-block;
   margin-top: 12px;
-  font-family: "Avenir Next", "Avenir", sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 15px;
   font-weight: 300;
   letter-spacing: 0.08em;
@@ -2256,6 +2257,10 @@ a:hover{opacity:.75}
   text-underline-offset: 4px;
 }
 .contact-email-link:hover { opacity: 0.6; }
+.section--contact > p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
 
 /* ── Responsive ── */
 
