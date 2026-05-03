@@ -2846,20 +2846,22 @@ a:hover{opacity:.75}
     align-items: stretch;
     gap: 0;
     border-bottom: 1px solid rgba(255,255,255,0.08);
-    padding: 8px 0 16px;
+    padding: 8px 0 20px;
     z-index: 99;
   }
   .proj-header--open .proj-header__nav { display: flex; }
   .proj-header__link {
-    padding: 15px clamp(20px, 4vw, 60px);
-    font-size: 14px;
+    padding: 20px clamp(20px, 4vw, 60px);
+    font-size: 17px;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
+  .proj-header__link:last-child { border-bottom: none; }
   .proj-header__link--active {
     border: none;
     border-bottom: 1px solid rgba(255,255,255,0.06);
-    padding: 15px clamp(20px, 4vw, 60px);
+    padding: 20px clamp(20px, 4vw, 60px);
   }
+  .proj-header__link--active:last-child { border-bottom: none; }
   .proj-header__toggle { display: flex; }
   .proj-hero { grid-template-columns: 1fr; padding-left: 0; padding-right: 0; padding-top: 0; padding-bottom: 2rem; gap: 0; }
   .proj-hero__right { justify-content: center; order: -1; width: 100%; }
