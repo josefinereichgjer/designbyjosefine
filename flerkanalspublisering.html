@@ -114,7 +114,7 @@
     </section>
 
     <!-- Brosjyre -->
-    <section class="proj-section reveal" id="brosjyre">
+    <section class="proj-section" id="brosjyre">
       <h2 class="proj-section__heading">Brosjyre</h2>
       <div class="brosyre-slider">
         <img id="brosyreImg" src="./assets/brosyre-inn-srh.webp" alt="Brosjyre – innside" loading="eager" decoding="async">
@@ -125,14 +125,14 @@
     </section>
 
     <!-- Nettside -->
-    <section class="proj-section reveal" id="nettside">
+    <section class="proj-section" id="nettside">
       <h2 class="proj-section__heading">Nettside (event)</h2>
-      <video src="./assets/srh-video.mp4" autoplay muted loop playsinline controls preload="none" style="display:block; width:100%; height:auto; margin-bottom:1.5rem;"></video>
+      <video src="./assets/srh-video.mp4" autoplay muted loop playsinline controls preload="none" poster="./assets/srh-video-poster.webp" style="display:block; width:100%; height:auto; margin-bottom:1.5rem;"></video>
       <p style="font-size:16px; line-height:1.75; max-width:680px; color:#1a1a1a;">Nettsiden er holdt veldig enkel, med fokus på å formidle informasjon om arrangementet på en rask og oversiktlig måte. Den er laget for at brukeren raskt skal forstå hva, hvor og når. <a href="./srh-open-day-3/index.html" target="_blank" rel="noopener" style="color:inherit; text-decoration:underline; text-underline-offset:3px;">Åpne nettsiden ↗&#xFE0E;</a></p>
     </section>
 
     <!-- Plakat og banner -->
-    <section class="proj-section reveal" id="print">
+    <section class="proj-section" id="print">
       <h2 class="proj-section__heading">Plakat &amp; banner</h2>
       <div class="brosyre-slider" style="margin-bottom:1.5rem;">
         <img id="bannerPosterImg" src="./assets/poster-srh.webp" alt="Poster SRH" loading="eager" decoding="async">
@@ -144,7 +144,7 @@
     </section>
 
     <!-- LinkedIn -->
-    <section class="proj-section reveal" id="linkedin">
+    <section class="proj-section" id="linkedin">
       <h2 class="proj-section__heading">LinkedIn-karusell</h2>
       <div class="linkedin-cols">
         <img src="./assets/linkedin-post-3x.webp" alt="LinkedIn-karusell – enkeltpost" loading="eager" decoding="async">
@@ -165,7 +165,7 @@
     </section>
 
     <!-- Digitale flater -->
-    <section class="proj-section reveal" id="digitalt">
+    <section class="proj-section" id="digitalt">
       <h2 class="proj-section__heading">Digitale flater</h2>
       <div class="reklame-cols">
         <div>
@@ -182,7 +182,7 @@
     </section>
 
     <!-- Typografi -->
-    <section class="proj-section reveal" id="typografi">
+    <section class="proj-section" id="typografi">
       <h2 class="proj-section__heading">Typografi</h2>
       <div style="max-width:820px; margin-left:auto; margin-right:auto;">
 
@@ -222,7 +222,7 @@
     </section>
 
     <!-- Fargepalett -->
-    <section class="proj-section reveal" id="fargepalett">
+    <section class="proj-section" id="fargepalett">
       <h2 class="proj-section__heading">Fargepalett</h2>
       <div class="color-row" style="max-width:820px; margin-left:auto; margin-right:auto;">
         <div class="color-swatch">
@@ -278,7 +278,7 @@
       }
     });
 
-    // Scroll reveal
+    // Scroll reveal — add class via JS so elements are visible before JS runs
     var revealObs = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
@@ -287,13 +287,15 @@
         }
       });
     }, { threshold: 0.06 });
-    document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+    document.querySelectorAll('.proj-section').forEach(function(el, i) {
+      el.classList.add('reveal');
+      el.style.transitionDelay = Math.min(i, 3) * 0.06 + 's';
+      revealObs.observe(el);
+    });
 
     function revealAll() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); }); }
     setTimeout(revealAll, 0);
-    window.addEventListener('beforeprint', function() {
-      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
-    });
+    window.addEventListener('beforeprint', revealAll);
 
     // Cross-fade helper
     function setupCrossfade(baseId) {
