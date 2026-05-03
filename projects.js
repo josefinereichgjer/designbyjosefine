@@ -1,12 +1,12 @@
 window.PROJECTS = [
   {
-    id: "emanuel-viegeland",
-    title: "Emanuel Viegeland nettside",
+    id: "emanuel-vigeland",
+    title: "Emanuel Vigeland nettside",
     subtitle: "UX + redesign",
     year: "2026",
     tags: ["Redesign/UX"],
     cover: "./assets/norvald/homepage-em.webp",
-    images: ["./assets/viegeland.webp"],
+    images: ["./assets/norvald/homepage-em.webp"],
     noSlideshow: true,
     comingSoon: false,
     skipBuild: true,
