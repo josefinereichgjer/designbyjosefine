@@ -1799,7 +1799,8 @@
     revealObserver.observe(el);
   });
 
-  setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); }); }, 3000);
+  function revealAll() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); }); }
+    setTimeout(revealAll, 0);
     window.addEventListener('beforeprint', function() {
     document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
   });

@@ -661,10 +661,9 @@
       el.style.transitionDelay = `${Math.min(i, 3) * 0.06}s`;
       revealObserver.observe(el);
     });
-    setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); }); }, 3000);
-    window.addEventListener('beforeprint', function() {
-      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
-    });
+    function revealAll() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); }); }
+    setTimeout(revealAll, 0);
+    window.addEventListener('beforeprint', revealAll);
     </script>
 </body>
 </html>
