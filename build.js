@@ -321,7 +321,6 @@ function renderPage(project) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@300;400;500&family=Caveat:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
-  <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
 <body>
@@ -342,7 +341,7 @@ function renderPage(project) {
     <div class="sidebar__inner">
       <div class="brand">
         <a class="brand__mark" href="./projects.html" aria-label="Back to work">
-          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
+          <span class="brand__logo">JOSEFINE R.G</span>
         </a>
       </div>
 

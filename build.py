@@ -714,7 +714,6 @@ def render_page(project):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=20" />
-  <link rel="icon" href="assets/hvitlogo.png">
 </head>
 
 <body>
@@ -735,7 +734,7 @@ def render_page(project):
     <div class="sidebar__inner">
       <div class="brand">
         <a class="brand__mark" href="./projects.html" aria-label="Back to work">
-          <img src="./assets/hvitlogo.webp" alt="Logo" class="brand__logo">
+          <span class="brand__logo">JOSEFINE R.G</span>
         </a>
       </div>
       <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>

@@ -3,15 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DesignbyJosefine</title>
-  <meta name="description" content="Portfolio — grafisk design, visuell identitet og typografi." />
-  <link rel="preload" href="./assets/me.webp" as="image">
-  <link rel="preload" href="./assets/blaa.webp" as="image">
-  <link rel="preload" href="./assets/brosyre-ute-srh.webp" as="image">
-  <link rel="preload" href="./assets/norvald-iphone.webp" as="image">
-  <link rel="icon" href="assets/hvitlogo.webp">
+  <title>Josefine R.G</title>
+
+  <link rel="preload" href="./assets/reinalys.webp"             as="image">
+  <link rel="preload" href="./assets/blaa.webp"                 as="image">
+  <link rel="preload" href="./assets/krit1.webp"                as="image">
+  <link rel="preload" href="./assets/herotjonn.webp"            as="image">
+  <link rel="preload" href="./assets/norvald/homepage-em.webp"  as="image">
+  <link rel="preload" href="./assets/laptop-mockup.webp"        as="image">
+
   <link rel="stylesheet" href="https://use.typekit.net/bfd6wfh.css">
-  <link rel="stylesheet" href="./styles.css?v=32" />
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 
   <style>
     @font-face {
@@ -26,459 +28,125 @@
 
     html, body {
       margin: 0; padding: 0;
-      height: 100%;
-      max-width: none;
-      font-family: "Avenir Next", "Avenir", "Century Gothic", sans-serif;
+      width: 100%; height: 100%;
+      overflow: hidden;
       background: #0f0f0f;
-      color: #fff;
-      overflow-x: hidden;
-      overflow-y: clip;
-      transition: background 0.3s, color 0.3s;
+      font-family: "Avenir Next", "Avenir", "Century Gothic", sans-serif;
     }
 
-    /* ── Light mode ── */
-    html.light body { background: #f5f4f0; color: #0f0f0f; }
-    html.light .logo { color: rgba(0,0,0,0.75); }
-    html.light .proj-header { background: #f5f4f0; }
-    html.light .proj-header__logo { color: rgba(0,0,0,0.75); }
-    html.light .proj-header__link { color: rgba(0,0,0,0.45); }
-    html.light .proj-header__link:hover { color: #0f0f0f; }
-    html.light .proj-header__link--active { color: #0f0f0f; border-color: rgba(0,0,0,0.3); }
-    html.light .proj-header__toggle span { background: #0f0f0f; }
-    html.light .display-text { color: #0f0f0f; }
-    html.light .btn-primary { background: #0f0f0f; color: #fff; border-color: #0f0f0f; }
-    html.light .btn-primary:hover { background: transparent; color: #0f0f0f; }
+    /* ── Full-screen intro ── */
+    #intro {
+      position: fixed; inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(28px, 5vh, 52px);
+    }
 
-    /* ── Theme toggle button ── */
-    .theme-toggle {
+    /* ── Tagline ── */
+    #tagline {
+      color: #fff;
+      font-size: clamp(13px, 1.4vw, 18px);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin: 0;
+      opacity: 0;
+      text-align: center;
+    }
+
+    /* ── Card stack ── */
+    #card-stage {
+      position: relative;
+      width: clamp(150px, 20vw, 260px);
+      aspect-ratio: 3 / 4;
+    }
+
+    .sc {
+      position: absolute; inset: 0;
+      transform: rotate(var(--r, 0deg));
+      overflow: hidden;
+      box-shadow:
+        0 4px 16px rgba(0,0,0,0.6),
+        0 20px 60px rgba(0,0,0,0.55);
+      will-change: transform, opacity;
+    }
+
+    .sc img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── Skip button ── */
+    #skip {
       position: fixed;
-      bottom: 28px;
-      left: 32px;
-      z-index: 200;
+      bottom: 28px; right: 32px;
       background: none;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: rgba(255,255,255,0.5);
-      font-family: "Avenir Next", "Avenir", sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.12em;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.38);
+      font-family: inherit;
+      font-size: 10px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 8px 14px;
+      padding: 8px 16px;
       cursor: pointer;
       transition: border-color 0.2s, color 0.2s;
     }
-    .theme-toggle:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
-    html.light .theme-toggle { border-color: rgba(0,0,0,0.18); color: rgba(0,0,0,0.45); }
-    html.light .theme-toggle:hover { border-color: rgba(0,0,0,0.5); color: #0f0f0f; }
-
-    /* ── Page shell ── */
-    .page {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      animation: fadeIn 0.55s ease 0.08s forwards;
-    }
-    @keyframes fadeIn { to { opacity: 1; } }
-
-    /* ── Top bar ── */
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: clamp(20px, 3vh, 32px) clamp(24px, 4vw, 52px);
-      flex-shrink: 0;
-    }
-
-    .logo {
-      font-family: "Avenir Next", "Avenir", sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.8);
-      text-decoration: none;
-    }
-    .logo:hover { opacity: 0.6; }
-
-    /* ── Main content ── */
-    .main-content {
-      flex: 1;
-      display: grid;
-      grid-template-columns: 1fr clamp(300px, 32vw, 480px);
-      gap: clamp(32px, 5vw, 96px);
-      padding: 0 clamp(20px, 4vw, 60px);
-      align-items: center;
-      min-height: 0;
-      overflow: visible;
-    }
-
-    /* ── Left column ── */
-    .display-text {
-      font-family: "SelfModern", Georgia, serif;
-      font-size: clamp(36px, 4.4vw, 72px);
-      font-weight: 400;
-      line-height: 1.06;
-      letter-spacing: -0.01em;
-      margin: 0 0 clamp(48px, 8vh, 88px);
-    }
-    .display-text span { display: block; }
-
-    .action-row {
-      display: flex;
-      align-items: center;
-      gap: clamp(18px, 2.5vw, 36px);
-      margin-top: clamp(24px, 4vw, 56px);
-    }
-
-    .btn-primary {
-      display: inline-block;
-      padding: 16px 44px;
-      border: 1.5px solid #fff;
-      border-radius: 0;
-      background: #fff;
-      color: #0f0f0f;
-      font-family: "Avenir Next", "Avenir", sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-      white-space: nowrap;
-    }
-    .btn-primary:hover {
-      background: transparent;
-      color: #fff;
-      opacity: 1;
-    }
-
-    .btn-text {
-      color: rgba(255,255,255,0.5);
-      font-family: "Avenir Next", "Avenir", sans-serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .btn-text:hover { color: #fff; opacity: 1; }
-
-    /* ── Right column: floating cards ── */
-    .col-right {
-      position: relative;
-      height: clamp(380px, 54vh, 560px);
-      overflow: visible;
-    }
-
-    .float-card {
-      position: absolute;
-      overflow: hidden;
-      display: block;
-      text-decoration: none;
-      aspect-ratio: 3/4;
-      box-shadow:
-        0 6px 20px rgba(0,0,0,0.5),
-        0 18px 52px rgba(0,0,0,0.45);
-      will-change: transform;
-    }
-
-    .float-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      filter: brightness(1);
-      transition: filter 0.45s ease;
-    }
-    .float-card img.img--loading { opacity: 0; transition: opacity 0.5s ease, filter 0.45s ease; }
-    .float-card img.img--loading.img--loaded { opacity: 1; }
-
-    /* Floating keyframes — rotation baked in per card */
-    @keyframes floatMe { 0%,100% { transform: rotate(-4deg)  translateY(0);     } 50% { transform: rotate(-4deg)  translateY(-13px); } }
-    @keyframes float1  { 0%,100% { transform: rotate(8deg)   translateY(0);     } 50% { transform: rotate(8deg)   translateY(-16px); } }
-    @keyframes float2  { 0%,100% { transform: rotate(14deg)  translateY(0);     } 50% { transform: rotate(14deg)  translateY(-10px); } }
-    @keyframes float3  { 0%,100% { transform: rotate(-9deg)  translateY(0);     } 50% { transform: rotate(-9deg)  translateY(-15px); } }
-    @keyframes float4  { 0%,100% { transform: rotate(5deg)   translateY(0);     } 50% { transform: rotate(5deg)   translateY(-18px); } }
-    @keyframes float5  { 0%,100% { transform: rotate(-12deg) translateY(0);     } 50% { transform: rotate(-12deg) translateY(-11px); } }
-    @keyframes float6  { 0%,100% { transform: rotate(7deg)   translateY(0);     } 50% { transform: rotate(7deg)   translateY(-14px); } }
-    @keyframes float7  { 0%,100% { transform: rotate(-6deg)  translateY(0);     } 50% { transform: rotate(-6deg)  translateY(-12px); } }
-    /* me.webp: front, to the left side */
-    .float-card--me { width: 62%; left: -6%;  top: 20%; z-index: 10; animation: floatMe 5.2s ease-in-out infinite; }
-    /* project cards: compact cluster */
-    .float-card--1  { width: 40%; left:  2%;  top:  2%; z-index: 5;  animation: float1  4.7s ease-in-out infinite -1.3s; }
-    .float-card--2  { width: 36%; left: 52%;  top:  0%; z-index: 4;  animation: float2  6.0s ease-in-out infinite -2.6s; }
-    .float-card--3  { width: 40%; left:  0%;  top: 46%; z-index: 3;  animation: float3  5.5s ease-in-out infinite -0.7s; }
-    .float-card--4  { width: 34%; left: 48%;  top: 44%; z-index: 2;  animation: float4  4.3s ease-in-out infinite -3.8s; }
-    .float-card--5  { width: 36%; left:  6%;  top: 70%; z-index: 1;  animation: float5  5.8s ease-in-out infinite -1.9s; }
-    .float-card--6  { width: 36%; left: 52%;  top: 62%; z-index: 2;  animation: float6  5.1s ease-in-out infinite -4.4s; }
-    .float-card--7  { width: 34%; left: 60%;  top: 26%; z-index: 3;  animation: float7  4.9s ease-in-out infinite -2.2s; }
-
-    .float-card { cursor: pointer; }
-
-    /* ── Bottom bar ── */
-    .bottom-bar {
-      padding: clamp(16px, 2.5vh, 26px) clamp(24px, 4vw, 52px);
-      flex-shrink: 0;
-      border-top: none;
-    }
-
-    .email-label {
-      font-size: 12px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.38);
-      margin: 0 0 10px;
-    }
-
-    .email-form {
-      display: flex;
-      align-items: center;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 999px;
-      padding: 7px 7px 7px 16px;
-      width: fit-content;
-      gap: 10px;
-    }
-
-    .email-icon { flex-shrink: 0; opacity: 0.35; }
-
-    .email-form input {
-      background: none;
-      border: none;
-      outline: none;
-      color: #fff;
-      font-family: "Avenir Next", "Avenir", sans-serif;
-      font-size: 13px;
-      width: 210px;
-    }
-    .email-form input::placeholder { color: rgba(255,255,255,0.26); }
-
-    .email-submit {
-      width: 30px; height: 30px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      border: none;
-      color: rgba(255,255,255,0.6);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      text-decoration: none;
-      font-size: 15px;
-      line-height: 1;
-      transition: background 0.2s, color 0.2s;
-    }
-    .email-submit:hover { background: rgba(255,255,255,0.22); color: #fff; opacity: 1; }
-
-    /* ── Mobile ── */
-    @media (max-width: 820px) {
-      html, body { overflow: auto; }
-      .page { height: auto; min-height: 100vh; }
-      .main-content {
-        grid-template-columns: 1fr;
-        padding-top: 24px;
-        padding-bottom: 60px;
-        align-items: flex-start;
-        gap: 32px;
-        overflow: visible;
-      }
-      .display-text { font-size: clamp(26px, 7.5vw, 42px); }
-      .col-right {
-        height: clamp(340px, 82vw, 460px);
-        overflow: visible;
-      }
-      /* reset all cards to non-negative tops on mobile */
-      .float-card--me { width: 44%; left: 16%; top: 4%;  }
-      .float-card--1  { width: 36%; left: 6%;  top: 4%;  }
-      .float-card--2  { width: 34%; left: 58%; top: 2%;  }
-      .float-card--3  { width: 38%; left: 8%;  top: 56%; }
-      .float-card--4  { width: 34%; left: 52%; top: 59%; }
-      .float-card--5,
-      .float-card--6,
-      .float-card--7  { display: none; }
-    }
-
-    @media (max-height: 680px) and (min-width: 821px) {
-      .display-text { font-size: clamp(32px, 4.2vw, 62px); margin-bottom: 28px; }
-      .col-right { height: clamp(260px, 38vh, 380px); }
-    }
-
-    /* Large screens (iMac 27", wide laptops) */
-    @media (min-width: 1440px) {
-      .display-text { font-size: clamp(72px, 4.6vw, 88px); }
-      .main-content {
-        grid-template-columns: 1fr clamp(340px, 32vw, 760px);
-        gap: clamp(64px, 4vw, 120px);
-        padding: 0 clamp(52px, 4vw, 100px);
-        max-width: 2200px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .bottom-bar { max-width: 2200px; margin-left: auto; margin-right: auto; }
-      .col-right { height: clamp(480px, 58vh, 860px); }
-
-      /* Photo cluster */
-      .float-card--me { width: 62%; left: -6%;  top: 20%; }
-      .float-card--1  { width: 40%; left:  2%;  top:  2%; }
-      .float-card--2  { width: 36%; left: 52%;  top:  0%; }
-      .float-card--3  { width: 40%; left:  0%;  top: 46%; }
-      .float-card--4  { width: 34%; left: 48%;  top: 44%; }
-      .float-card--5  { width: 36%; left:  6%;  top: 70%; }
-      .float-card--6  { width: 36%; left: 52%;  top: 62%; }
-      .float-card--7  { width: 34%; left: 60%;  top: 26%; }
-
-      /* Scale chrome elements that feel tiny at this viewport */
-      .logo { font-size: 14px; }
-      .btn-primary { font-size: 15px; padding: 17px 48px; }
-      .btn-text { font-size: 15px; }
-      .email-label { font-size: 13px; }
-      .email-form { padding: 9px 9px 9px 20px; }
-      .email-form input { font-size: 15px; width: 260px; }
-      .email-submit { width: 38px; height: 38px; font-size: 18px; }
-      .bottom-bar { padding: clamp(20px, 3vh, 36px) clamp(24px, 4vw, 52px); }
-    }
-
+    #skip:hover { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.85); }
   </style>
 </head>
-
 <body>
-  <header class="proj-header" id="projHeader">
-    <div class="proj-header__inner">
-      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
-      <nav class="proj-header__nav" id="projNav">
-        <a class="proj-header__link" href="./projects.html">Arbeider</a>
-        <a class="proj-header__link" href="./projects.html#about">Om meg</a>
-        <a class="proj-header__link" href="./projects.html#contact">Kontakt</a>
-      </nav>
-      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+
+  <div id="intro">
+    <p id="tagline">Sisteårsstudent — søker jobb og praksis</p>
+    <div id="card-stage">
+      <div class="sc" style="--r: -7deg"><img src="./assets/reinalys.webp"             alt=""></div>
+      <div class="sc" style="--r:  4deg"><img src="./assets/blaa.webp"                 alt=""></div>
+      <div class="sc" style="--r: -2deg"><img src="./assets/krit1.webp"                alt=""></div>
+      <div class="sc" style="--r:  9deg"><img src="./assets/herotjonn.webp"            alt=""></div>
+      <div class="sc" style="--r: -5deg"><img src="./assets/norvald/homepage-em.webp"  alt=""></div>
+      <div class="sc" style="--r:  3deg"><img src="./assets/laptop-mockup.webp"        alt=""></div>
     </div>
-  </header>
-
-  <div class="page" style="padding-top:40px; padding-bottom:120px;">
-
-    <div class="main-content">
-
-      <!-- Left -->
-      <div class="col-left">
-        <h1 class="display-text">
-          <span>Visuell identitet</span>
-          <span>Redaksjonelt design</span>
-          <span>Digitale opplevelser</span>
-        </h1>
-        <div class="action-row">
-          <a class="btn-primary" href="./projects.html">Arbeider</a>
-        </div>
-      </div>
-
-      <!-- Right: floating photo cards -->
-      <div class="col-right">
-        <!-- me.webp: in front, to the left side -->
-        <a class="float-card float-card--me" href="./projects.html#about">
-          <img src="./assets/me.webp" alt="Josefine Gjertsen" loading="eager" decoding="async">
-        </a>
-        <a class="float-card float-card--1" href="./tidsskrift.html">
-          <img src="./assets/krit1.webp" alt="Tidsskrift" loading="eager" decoding="async">
-        </a>
-        <a class="float-card float-card--2" href="./flerkanalspublisering.html">
-          <img src="./assets/brosyre-ute-srh.webp" alt="Flerkanalspublisering" loading="eager" decoding="async">
-        </a>
-        <a class="float-card float-card--3" href="./ansatts-portal.html">
-          <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="eager" decoding="async">
-        </a>
-        <a class="float-card float-card--4" href="./bokomslag.html">
-          <img src="./assets/blaa.webp" alt="Bokomslag" loading="eager" decoding="async">
-        </a>
-        <a class="float-card float-card--5" href="./we-visuell-profil.html">
-          <img src="./assets/laptop-mockup.webp" alt="WE Visuell profil" loading="lazy" decoding="async">
-        </a>
-        <a class="float-card float-card--6" href="./emanuel-viegeland.html">
-          <img src="./assets/norvald/homepage-em.webp" alt="Emanuel Viegeland nettside" loading="lazy" decoding="async">
-        </a>
-        <a class="float-card float-card--7" href="./reina-fruktgard.html">
-          <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
-        </a>
-      </div>
-
-    </div>
-
-
   </div>
 
-<button class="theme-toggle" id="themeToggle" aria-label="Bytt tema">○ Lys</button>
+  <button id="skip">Hopp over</button>
 
-<script>
-  var html = document.documentElement;
-  var themeBtn = document.getElementById('themeToggle');
+  <script>
+    var DEST = './projects.html';
 
-  function applyTheme(light) {
-    html.classList.toggle('light', light);
-    themeBtn.textContent = light ? '● Mørk' : '○ Lys';
-  }
+    function go() { window.location.replace(DEST); }
 
-  themeBtn.addEventListener('click', function() {
-    var isLight = !html.classList.contains('light');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-    applyTheme(isLight);
-  });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      go();
+    } else {
+      var tl = gsap.timeline({ onComplete: go });
 
-  if (localStorage.getItem('theme') === 'light') applyTheme(true);
+      /* Cards drop in one by one */
+      tl.from('.sc', {
+        y: -520,
+        opacity: 0.2,
+        duration: 0.6,
+        stagger: 0.24,
+        ease: 'power3.out'
+      });
 
-  var header = document.getElementById('projHeader');
-  var toggle = document.getElementById('projToggle');
-  toggle.addEventListener('click', function() {
-    var open = header.classList.toggle('proj-header--open');
-    toggle.setAttribute('aria-expanded', String(open));
-  });
-  document.addEventListener('click', function(e) {
-    if (!header.contains(e.target)) {
-      header.classList.remove('proj-header--open');
-      toggle.setAttribute('aria-expanded', 'false');
+      /* Tagline fades in as last card settles */
+      tl.to('#tagline', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.2');
+
+      /* Pause */
+      tl.to({}, { duration: 1.1 });
+
+      /* Stack scales up + fades, then redirect fires via onComplete */
+      tl.to('#card-stage', { scale: 1.07, duration: 0.55, ease: 'power2.in' }, '<');
+      tl.to('#intro',      { opacity: 0,  duration: 0.6,  ease: 'power2.in' }, '-=0.25');
+
+      document.getElementById('skip').addEventListener('click', function () {
+        tl.progress(1);
+      });
     }
-  });
-
-  document.querySelectorAll('.float-card img').forEach(function(img) {
-    if (img.complete) return;
-    img.classList.add('img--loading');
-    img.addEventListener('load', function() { img.classList.add('img--loaded'); });
-  });
-
-  if (window.matchMedia('(hover: hover)').matches) {
-    var TRANS = 'transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.65s ease, filter 0.45s ease';
-    var SHADOW_HOVER = '0 14px 40px rgba(0,0,0,0.55), 0 32px 80px rgba(0,0,0,0.6)';
-    var SHADOW_BASE  = '0 6px 20px rgba(0,0,0,0.5), 0 18px 52px rgba(0,0,0,0.45)';
-
-    document.querySelectorAll('.float-card').forEach(function(card) {
-      var img = card.querySelector('img');
-
-      card.addEventListener('mouseenter', function() {
-        // Freeze card at its current animated position
-        var live = getComputedStyle(card).transform;
-        card.style.animation = 'none';
-        card.style.transition = 'none';
-        card.style.transform = live;
-        card.offsetHeight; // force reflow so browser commits the frozen frame
-        // Now transition to hover position
-        card.style.transition = TRANS;
-        card.style.transform = 'rotate(0deg) translateY(-18px) scale(1.05)';
-        card.style.boxShadow = SHADOW_HOVER;
-        card.style.zIndex = '20';
-        if (img) img.style.filter = 'brightness(0.75)';
-      });
-
-      card.addEventListener('mouseleave', function() {
-        // Let the floating animation take back over immediately
-        card.style.transition = '';
-        card.style.transform = '';
-        card.style.animation = '';
-        card.style.boxShadow = '';
-        card.style.zIndex = '';
-        if (img) img.style.filter = '';
-      });
-    });
-  }
-</script>
+  </script>
 </body>
 </html>
