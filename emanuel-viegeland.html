@@ -60,6 +60,16 @@
     .ev-prosess__num { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 8px; }
     .ev-prosess__label { font-size: 13px; font-weight: 600; color: #111; margin: 0; line-height: 1.4; }
 
+    /* Prototype intro row */
+    .ev-proto-intro {
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+      margin-bottom: 3rem;
+    }
+    .ev-proto-intro__text { flex: 0 0 auto; max-width: 500px; }
+    .ev-proto-intro__qr { flex-shrink: 0; text-align: center; margin-left: auto; }
+
     /* Handling */
     .ev-handling { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
     .ev-handling__left {}
@@ -95,9 +105,13 @@
       .tov-scales { max-width: 100% !important; }
       .tov-intro { font-size: 16px !important; }
       .tov-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
-      .ev-proto-box { flex: 0 0 auto !important; width: 100% !important; }
+      .ev-proto-intro { flex-direction: column !important; gap: 20px !important; max-width: 100% !important; }
+      .ev-proto-intro__qr { align-self: flex-start; }
+      .ev-proto-row { flex-direction: column !important; gap: 28px !important; }
+      .ev-proto-box { flex: 0 0 auto !important; width: 100% !important; min-width: 0 !important; }
       .ev-proto-iframe { height: 400px !important; }
       .ev-brukerreise-sub { font-size: 18px !important; }
+      .ev-brukerreise-img { margin-left: -20px !important; margin-right: -20px !important; width: calc(100% + 40px) !important; }
       .ev-logo-row { flex-direction: column !important; align-items: center !important; gap: 28px !important; }
       .ev-arrow-right { display: none !important; }
       .ev-arrow-down  { display: block !important; }
@@ -282,31 +296,40 @@
     <div style="background:#0d0d0d;">
 
         <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
-          <h2 class="proj-section__heading" style="color:#fff;">Handling 1: se nærmere på Vita</h2>
+          <h2 class="proj-section__heading" style="color:#fff;">Handling 1: utforsk Emmanuels verk</h2>
           <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren utforsker et av museets hovedverk</p>
-          <img src="./assets/prosess/bruerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="lazy" class="ev-zoomable">
+          <img src="./assets/prosess/bruerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="lazy" class="ev-zoomable ev-brukerreise-img">
         </div>
 
         <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
           <h2 class="proj-section__heading" style="color:#fff;">Handling 2: book et besøk</h2>
           <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren kjøper en honnørbillett</p>
-          <img src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" style="width:100%; display:block;" loading="lazy" class="ev-zoomable">
+          <img src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" style="width:100%; display:block;" loading="lazy" class="ev-zoomable ev-brukerreise-img">
         </div>
 
         <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
           <h2 class="proj-section__heading" style="color:#fff;">Handling 3: finn et arrangement</h2>
           <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren finner og leser om en kommende konsert</p>
-          <img src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" style="width:100%; display:block;" loading="lazy" class="ev-zoomable">
+          <img src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" style="width:100%; display:block;" loading="lazy" class="ev-zoomable ev-brukerreise-img">
         </div>
 
     </div>
     <!-- PROTOTYPE -->
     <section id="prototype" style="padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); background:#0b0b0b;">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:0.5rem;">Interaktiv prototype</h2>
-      <p style="font-size:16px; color:#888; line-height:1.7; max-width:600px; margin-bottom:3rem;">Test selve flyten direkte i Figma. Mobilprototypen er best opplevd på en faktisk telefon. Designsystemet viser komponenter, fargetokens og typografi brukt på tvers av alle flater.</p>
-      <div style="display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;">
+      <div class="ev-proto-intro">
+        <div class="ev-proto-intro__text">
+          <p style="font-size:16px; color:#888; line-height:1.7; margin:0 0 1.25rem;">Test selve flyten direkte i Figma. Mobilprototypen er best opplevd på en faktisk telefon. Designsystemet viser komponenter, fargetokens og typografi brukt på tvers av alle flater.</p>
+          <p style="font-size:14px; color:#999; line-height:1.7; margin:0;"><strong style="color:#bbb;">NB!</strong> Figma-lenkene kan bruke litt tid på å laste inn. Prototypen fungerer best på desktop. Dersom prototypen kun vises på desktop, og ikke testes direkte på mobil, kan den hvite teksten fremstå mindre tydelig enn den gjør i mobilvisning.</p>
+        </div>
+        <div class="ev-proto-intro__qr">
+          <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#999; margin:0 0 10px;">Skann for å teste på mobil</p>
+          <img src="./assets/qr-code-1777783556809.svg" alt="QR-kode — skann for å åpne Figma-prototypen på mobil" style="width:200px; height:200px; display:block;">
+        </div>
+      </div>
+      <div class="ev-proto-row" style="display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;">
         <div class="ev-proto-box" style="flex:0 0 320px;">
-          <p style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; font-weight:500; margin:0 0 12px;">Mobil — iPhone 16 Pro Max <span style="text-transform:none; font-size:11px; opacity:0.4; letter-spacing:0;">(kan lastes litt sakte)</span></p>
+          <p style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; font-weight:500; margin:0 0 12px;">Mobil — iPhone 16 Pro Max</p>
           <iframe class="ev-proto-iframe"
             title="Figma-prototype — Emanuel Viegeland, mobil"
             src="https://embed.figma.com/proto/NL5qDjPZC77D2kKlViKK9G/Emmanuel-Vigeland?node-id=502-1858&embed-host=share"
@@ -315,8 +338,8 @@
             allowfullscreen>
           </iframe>
         </div>
-        <div style="flex:1; min-width:280px;">
-          <p style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; font-weight:500; margin:0 0 12px;">Designsystem <span style="text-transform:none; font-size:11px; opacity:0.4; letter-spacing:0;">(kan lastes litt sakte)</span></p>
+        <div class="ev-proto-box" style="flex:1; min-width:280px;">
+          <p style="font-size:13px; letter-spacing:0.12em; text-transform:uppercase; color:#fff; font-weight:500; margin:0 0 12px;">Designsystem</p>
           <iframe class="ev-proto-iframe"
             title="Figma-designsystem — Emanuel Viegeland"
             src="https://embed.figma.com/design/NL5qDjPZC77D2kKlViKK9G/Emmanuel-Vigeland?node-id=2385-3656&embed-host=share"
