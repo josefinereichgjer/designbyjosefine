@@ -45,11 +45,19 @@
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
     @media (max-width: 700px) {
-      .ev-prosess__step { border-right: none; border-bottom: 1px solid #e8e4e0; flex: 1 1 100%; }
+      .ev-prosess-title { display: none; }
+      .ev-prosess { display: grid; grid-template-columns: 1fr 1fr; }
+      .ev-prosess__step { border-right: 1px solid #e8e4e0; border-bottom: 1px solid #e8e4e0; flex: unset; }
+      .ev-prosess__step:nth-child(2n) { border-right: none; }
+      .ev-prosess__step:nth-last-child(-n+2) { border-bottom: none; }
       .ev-innsikt { grid-template-columns: 1fr; }
       .ev-innsikt__item { border-right: none; }
       .ev-innsikt__item:nth-last-child(-n+2) { border-bottom: 1px solid #e8e4e0; }
       .ev-innsikt__item:last-child { border-bottom: none; }
+      /* Hero: venstrejuster navigasjonslisten */
+      .proj-hero__right { text-align: left !important; align-items: flex-start !important; }
+      /* Utforskning: bildeparet under hverandre */
+      .mob-stack { grid-template-columns: 1fr !important; }
     }
   </style>
 </head>
@@ -76,7 +84,7 @@
     </div>
 
     <section class="proj-hero">
-      <div class="proj-hero__left">
+      <div class="proj-hero__left ev-prosess-title">
         <h1 class="proj-hero__title">Emanuel<br>Viegeland<br>Museum</h1>
         <p class="proj-hero__sub" style="color:#1a1a1a; letter-spacing:0.18em; font-weight:500; margin-top:0.5rem;">PROSESS</p>
       </div>
