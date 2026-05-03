@@ -129,7 +129,7 @@ window.PROJECTS = [
     subtitle: "UX + redesign",
     year: "2026",
     tags: ["Redesign/UX"],
-    cover: "./assets/viegeland.webp",
+    cover: "./assets/norvald/homepage-em.webp",
     images: ["./assets/viegeland.webp"],
     noSlideshow: true,
     comingSoon: false,
