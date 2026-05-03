@@ -660,7 +660,7 @@
     .cal-day:hover:not(.inactive):not(.selected) { background: #f0f0f0; }
     .cal-day.inactive { color: #ccc; cursor: default; }
     .cal-day.today { font-weight: 700; }
-    .cal-day.selected { background: #E84E1B; color: #fff; font-weight: 600; }
+    .cal-day.selected { background: #E84E1B; color: #0a0a0a; font-weight: 600; }
 
     /* TIME SLOTS */
     .timeslots {
@@ -691,7 +691,7 @@
     }
 
     .timeslot:hover { border-color: #C8E600; }
-    .timeslot.selected { border-color: #E84E1B; background: #E84E1B; color: #fff; }
+    .timeslot.selected { border-color: #E84E1B; background: #E84E1B; color: #0a0a0a; }
     .timeslot.unavailable { color: #ccc; border-color: #f0f0f0; cursor: default; text-decoration: line-through; }
 
     .booking-confirm {
@@ -830,8 +830,8 @@
     }
 
     .kurs-section__tag--green { background: #C8E600; color: var(--black); }
-    .kurs-section__tag--orange { background: var(--orange); color: #fff; }
-    .kurs-section__tag--purple { background: #9B8CE8; color: #fff; }
+    .kurs-section__tag--orange { background: var(--orange); color: #0a0a0a; }
+    .kurs-section__tag--purple { background: #9B8CE8; color: #0a0a0a; }
 
     .kurs-section h3 {
       font-family: 'Syne', sans-serif;

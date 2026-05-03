@@ -64,7 +64,7 @@
 
     .sc {
       position: absolute; inset: 0;
-      transform: rotate(var(--r, 0deg));
+      transform: translateX(var(--tx, 0px)) translateY(var(--ty, 0px)) rotate(var(--r, 0deg));
       overflow: hidden;
       box-shadow:
         0 4px 16px rgba(0,0,0,0.6),
@@ -101,14 +101,14 @@
 <body>
 
   <div id="intro">
-    <p id="tagline">Sisteårsstudent — søker jobb og praksis</p>
+    <p id="tagline">Bachelor er nå ferdig — åpen for jobb!</p>
     <div id="card-stage">
-      <div class="sc" style="--r: -7deg"><img src="./assets/reinalys.webp"             alt=""></div>
-      <div class="sc" style="--r:  4deg"><img src="./assets/blaa.webp"                 alt=""></div>
-      <div class="sc" style="--r: -2deg"><img src="./assets/krit1.webp"                alt=""></div>
-      <div class="sc" style="--r:  9deg"><img src="./assets/herotjonn.webp"            alt=""></div>
-      <div class="sc" style="--r: -5deg"><img src="./assets/norvald/homepage-em.webp"  alt=""></div>
-      <div class="sc" style="--r:  3deg"><img src="./assets/laptop-mockup.webp"        alt=""></div>
+      <div class="sc" style="--r: -14deg; --tx: -16px; --ty:  6px"><img src="./assets/reinalys.webp"             alt=""></div>
+      <div class="sc" style="--r:  10deg; --tx:  18px; --ty: -8px"><img src="./assets/blaa.webp"                 alt=""></div>
+      <div class="sc" style="--r:  -5deg; --tx:  -9px; --ty:  4px"><img src="./assets/krit1.webp"                alt=""></div>
+      <div class="sc" style="--r:  16deg; --tx:  15px; --ty: -5px"><img src="./assets/herotjonn.webp"            alt=""></div>
+      <div class="sc" style="--r:  -9deg; --tx: -12px; --ty:  3px"><img src="./assets/norvald/homepage-em.webp"  alt=""></div>
+      <div class="sc" style="--r:   4deg; --tx:   6px; --ty: -2px"><img src="./assets/laptop-mockup.webp"        alt=""></div>
     </div>
   </div>
 

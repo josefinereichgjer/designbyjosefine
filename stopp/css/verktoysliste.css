@@ -37,8 +37,8 @@
       transition: background 0.15s, color 0.15s;
     }
 
-    .filter-btn:hover { background: var(--purple); color: var(--white); }
-    .filter-btn.active { background: var(--purple); color: var(--white); }
+    .filter-btn:hover { background: var(--purple); color: var(--black); }
+    .filter-btn.active { background: var(--purple); color: var(--black); }
 
     /* TABLE */
     .table-wrap {
@@ -74,7 +74,7 @@
     .kurs-badge {
       display: inline-block;
       background: #E84E1B;
-      color: #fff;
+      color: #0a0a0a;
       font-size: 12px;
       font-weight: 600;
       padding: 3px 10px;

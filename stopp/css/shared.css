@@ -102,7 +102,7 @@
     }
 
     .btn:hover { opacity: 0.85; }
-    .btn-orange { background: var(--orange); color: var(--white); }
+    .btn-orange { background: var(--orange); color: var(--black); }
     .btn-black { background: var(--black); color: var(--white); }
 
     /* FOOTER */
@@ -156,7 +156,7 @@
       transition: color 0.15s;
     }
 
-    .footer-link-group a:hover { color: var(--lime); }
+    .footer-link-group a:hover { text-decoration: underline; }
 
     .footer-bottom {
       max-width: 100%;
