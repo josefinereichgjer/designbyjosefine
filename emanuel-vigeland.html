@@ -78,13 +78,6 @@
     .ev-handling__left {}
     .ev-handling__right {}
 
-    /* Tone of voice */
-    .tov-scales { max-width: 720px; display: flex; flex-direction: column; gap: 2rem; }
-    .tov-row { display: flex; flex-direction: column; gap: 8px; }
-    .tov-labels { display: flex; justify-content: space-between; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #fff; }
-    .tov-track { position: relative; height: 2px; background: #444; }
-    .tov-dot { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; border-radius: 50%; background: #C9A84C; }
-
     @media (max-width: 700px) {
       .ev-before-after { grid-template-columns: 1fr; }
       .ev-persona-grid { grid-template-columns: 1fr 1fr; }
@@ -105,12 +98,7 @@
       .ev-burger-grid img { width: 55% !important; }
       .ev-innsikt-cards { grid-template-columns: 1fr !important; }
       .ev-innsikt-cards li { padding: 1.25rem 0 !important; }
-      .tov-scales { max-width: 100% !important; gap: 1rem !important; }
-      .tov-labels { font-size: 11px !important; }
-      .tov-dot { width: 13px !important; height: 13px !important; }
-      .tov-intro { font-size: 16px !important; }
-      .tov-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-      .ev-team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 28px !important; }
+.ev-team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 28px !important; }
       .ev-proto-intro { flex-direction: column !important; gap: 20px !important; max-width: 100% !important; }
       .ev-proto-intro__qr { align-self: flex-start; }
       .ev-proto-row { flex-direction: column !important; gap: 28px !important; }
@@ -126,6 +114,28 @@
 
     /* Brukerreise images: dark mockups on dark background — add border to frame them */
     .ev-brukerreise-img { box-shadow: 0 0 0 1px rgba(201,168,76,0.25), 0 8px 40px rgba(0,0,0,0.5); }
+
+    /* IA sitemap: scrollable on mobile */
+    .ev-sitemap-wrap { }
+    .ev-sitemap-hint { display: none; font-size: 11px; color: #555; text-align: center; letter-spacing: .08em; text-transform: uppercase; margin-top: 12px; }
+    @media (max-width: 700px) {
+      .ev-sitemap-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -20px; padding: 0 20px 12px; scrollbar-width: none; }
+      .ev-sitemap-wrap::-webkit-scrollbar { display: none; }
+      .ev-sitemap-wrap img { width: 860px !important; max-width: none !important; }
+      .ev-sitemap-hint { display: block; }
+    }
+
+    /* Prototype: QR on desktop, button on mobile */
+    .ev-proto-open-btn { display: none; }
+    @media (max-width: 700px) {
+      .ev-proto-intro__qr { display: none !important; }
+      .ev-proto-open-btn {
+        display: inline-flex; align-items: center; gap: 8px;
+        color: #C9A84C; font-size: 15px; text-decoration: none;
+        border: 1px solid rgba(201,168,76,0.45); padding: 12px 24px;
+        letter-spacing: .03em; margin-top: 8px;
+      }
+    }
 
 
     /* ── Lightbox ── */
@@ -234,49 +244,10 @@
     <!-- SITEMAP -->
     <div style="background:#0b0b0b; padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px);">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Informasjonsarkitektur</h2>
-      <img src="./assets/norvald/sitemap_emanuel_vigeland_full.svg" alt="Sitemap — Emanuel Vigeland Museum" style="width:100%; max-width:1100px; display:block; margin:0 auto;" loading="lazy" class="ev-zoomable">
-    </div>
-
-    <!-- TONE OF VOICE -->
-    <div style="background:#1a1a1a; padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px);">
-      <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2.5rem;">Tone of voice</h2>
-      <div class="tov-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,96px); align-items:start;">
-        <div class="tov-scales">
-          <div class="tov-row">
-            <div class="tov-labels"><span>Formell</span><span>Uformell</span></div>
-            <div class="tov-track"><div class="tov-dot" style="left:22%"></div></div>
-          </div>
-          <div class="tov-row">
-            <div class="tov-labels"><span>Tradisjonell</span><span>Progressiv</span></div>
-            <div class="tov-track"><div class="tov-dot" style="left:42%"></div></div>
-          </div>
-          <div class="tov-row">
-            <div class="tov-labels"><span>Seriøs</span><span>Humoristisk</span></div>
-            <div class="tov-track"><div class="tov-dot" style="left:8%"></div></div>
-          </div>
-          <div class="tov-row">
-            <div class="tov-labels"><span>Profesjonell</span><span>Leken</span></div>
-            <div class="tov-track"><div class="tov-dot" style="left:14%"></div></div>
-          </div>
-          <div class="tov-row">
-            <div class="tov-labels"><span>Inspirerende</span><span>Ironisk</span></div>
-            <div class="tov-track"><div class="tov-dot" style="left:10%"></div></div>
-          </div>
-          <div class="tov-row">
-            <div class="tov-labels"><span>Autoritativ</span><span>Konversasjonell</span></div>
-            <div class="tov-track"><div class="tov-dot" style="left:30%"></div></div>
-          </div>
-          <div class="tov-row">
-            <div class="tov-labels"><span>Eksklusiv</span><span>Tilgjengelig</span></div>
-            <div class="tov-track"><div class="tov-dot" style="left:18%"></div></div>
-          </div>
-        </div>
-        <p class="tov-intro" style="font-size:clamp(16px,1.5vw,19px); line-height:1.85; color:#aaa; margin:0;">
-          For Emanuel Vigeland Museum har vi definert en stemme som er rolig og selvbevisst. Den skal være inviterende uten å overtale, og heller la verkene tale for seg selv.<br><br>
-          Språket er presist og poetisk – aldri påtrengende. Vi unngår utropstegn, superlativer og tomme oppfordringer. Stemmen skal føles som museet selv – stille, intens og varig.<br><br>
-          Vi foretrekker: korte setninger med tyngde, rom til ettertanke, ord som etterklang, mørke, stillhet, liv og død.
-        </p>
+      <div class="ev-sitemap-wrap">
+        <img src="./assets/norvald/sitemap_emanuel_vigeland_full.svg" alt="Sitemap — Emanuel Vigeland Museum" style="width:100%; max-width:1100px; display:block; margin:0 auto;" loading="lazy" class="ev-zoomable">
       </div>
+      <p class="ev-sitemap-hint">← Scroll horisontalt for å se hele →</p>
     </div>
 
     <!-- LOGO -->
@@ -345,6 +316,7 @@
           <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#999; margin:0 0 10px;">Skann for å teste på mobil</p>
           <img src="./assets/qr-code-1777783556809.svg" alt="QR-kode — skann for å åpne Figma-prototypen på mobil" style="width:200px; height:200px; display:block;">
         </div>
+        <a class="ev-proto-open-btn" href="https://www.figma.com/proto/NL5qDjPZC77D2kKlViKK9G/Emmanuel-Vigeland?node-id=502-1858" target="_blank" rel="noopener">Åpne prototypen →</a>
       </div>
       <div class="ev-proto-row" style="display:flex; gap:40px; align-items:flex-start; flex-wrap:wrap;">
         <div class="ev-proto-box" style="flex:0 0 320px;">
