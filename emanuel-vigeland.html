@@ -171,6 +171,8 @@
       padding: 4px 8px;
     }
     #ev-lb-close:hover { color: #fff; }
+
+    /* Mobile metadata footer — styles in styles.css (.proj-meta-footer) */
   </style>
 </head>
 
@@ -199,7 +201,7 @@
       </div>
       <div class="proj-hero__left" style="padding-top:3.5rem; padding-bottom:3.5rem;">
         <h1 class="proj-hero__title">EMANUEL VIGELAND MUSEUM</h1>
-        <p class="proj-hero__desc">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser, men den digitale tilstedeværelsen formidler lite av den. Den eksisterende nettsiden er bygget på en tabellbasert HTML-struktur uten mobiltilpasning, og innholdet er pakket inn på en måte som gjør det vanskelig å navigere både for vanlige brukere og for skjermlesere. Billettkjøp er outsourcet til LetsReg, og konsertinformasjonen er spredt mellom museets nettside, Facebook, LetsReg og Ticketmaster. Derfor er det å planlegge et besøk noe som krever at brukeren hopper mellom flere kanaler.</p>
+        <p class="proj-hero__desc">Dette gruppeprosjektet tar utgangspunkt i Emanuel Vigeland Museum, som har en sterk og særpreget fysisk opplevelse, men en digital tilstedeværelse som ikke formidler den samme stemningen. Dagens nettside er lite mobilvennlig, vanskelig å navigere og har informasjon om billetter og konserter spredt på flere plattformer. Målet med prosjektet er å utvikle en mer tilgjengelig og helhetlig digital løsning, som samtidig ivaretar museets mørke, sanselige atmosfære.</p>
         <div class="proj-hero__meta">
           <div class="proj-hero__meta-row">
             <span class="proj-meta-label">Emne</span>
@@ -237,7 +239,7 @@
     <div style="background:#0b0b0b; padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); display:flex; justify-content:center;">
       <div style="max-width:600px; width:100%;">
         <h2 id="tov-heading" class="proj-section__heading" style="color:#fff; margin-bottom:2rem; opacity:0; transition: opacity 2.4s ease;">Tone of Voice</h2>
-        <p id="tov-text" style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0; opacity:0; transition: opacity 2.4s ease;">Emanuel Vigeland Museum skal høres ut som det føles: stille, intenst og varig. Stemmen er rolig, presis og poetisk, uten å overtale. Den inviterer inn, gir rom for ettertanke og lar mørket, stillheten og verkene tale for seg selv.</p>
+        <p id="tov-text" style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#c2c2c2; margin:0; opacity:0; transition: opacity 2.4s ease;">Emanuel Vigeland Museum skal oppleves digitalt slik det føles fysisk: stille, intenst og varig. Stemmen er rolig, presis og poetisk, uten å overtale. Den inviterer inn, gir rom for ettertanke og lar mørket, stillheten og verkene tale for seg selv.</p>
       </div>
     </div>
 
@@ -254,19 +256,19 @@
     <div style="background:#0f0f0f; padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px);">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Logo</h2>
       <div class="ev-logo-two-col" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,6vw,96px); align-items:center;">
-        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#888; margin:0;">Den originale nettsiden brukte en av Emanuel Vigelands egne skisser som visuelt blikkfang – men i full størrelse fungerte den dårlig som identitetsbærer på tvers av flater. Vi destillerte det samme håndtegnede uttrykket ned til en logo som beholder kunstnerens karakteristiske strek, men som er gjenkjennelig og lesbar i alle størrelser.</p>
+        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#c2c2c2; margin:0;">Den originale nettsiden brukte en av Emanuel Vigelands egne skisser som visuelt blikkfang – men i full størrelse fungerte den dårlig som identitetsbærer på tvers av flater. Vi destillerte det samme håndtegnede uttrykket ned til en logo som beholder kunstnerens karakteristiske strek, men som er gjenkjennelig og lesbar i alle størrelser.</p>
         <div class="ev-logo-row" style="display:flex; gap:clamp(16px,3vw,40px); align-items:flex-end; flex-wrap:wrap;">
-          <div style="text-align:center;">
+          <div class="ev-logo-appear" data-delay="0" style="text-align:center;">
             <img src="./assets/norvald/gammel-view.webp" alt="Gammel skisse" style="height:180px; width:auto; display:block; margin:0 auto 10px;" loading="eager" class="ev-zoomable">
             <span style="font-size:11px; color:#888; text-transform:uppercase; letter-spacing:.08em;">Original skisse</span>
           </div>
-          <span class="ev-arrow-right" style="font-size:28px; color:#fff; flex-shrink:0; padding-bottom:28px;">→</span>
+          <span class="ev-logo-appear ev-arrow-right" data-delay="300" style="font-size:28px; color:#fff; flex-shrink:0; padding-bottom:28px;">→</span>
           <span class="ev-arrow-down" style="font-size:28px; color:#fff; display:none;">↓</span>
-          <div style="text-align:center;">
+          <div class="ev-logo-appear" data-delay="400" style="text-align:center;">
             <img src="./assets/norvald/ny-desktop.webp" alt="Logo for desktop" style="height:80px; width:auto; display:block; margin:0 auto 10px;" loading="eager" class="ev-zoomable">
             <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Desktop</span>
           </div>
-          <div style="text-align:center;">
+          <div class="ev-logo-appear" data-delay="600" style="text-align:center;">
             <img src="./assets/norvald/ny-mobil.webp" alt="Logo for mobil" style="height:56px; width:auto; display:block; margin:0 auto 10px;" loading="eager" class="ev-zoomable">
             <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Mobil</span>
           </div>
@@ -275,11 +277,10 @@
     </div>
 
     <!-- STRATEGISKE VALG -->
-    <div style="background:#111; padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px);">
-      <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Strategiske valg</h2>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10rem; max-width:1400px;">
-        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">I kartleggingen pekte tre funn seg ut. Konsertinformasjonen var spredt mellom nettsiden og Facebook-arrangementer, noe som gjorde det unødvendig tungvint å finne og kjøpe billett til en konsert. Mobilopplevelsen var svak, selv om mange brukere møter kulturtilbud via mobil. Samtidig forsvant noe av den mørke, sanselige stemningen fra det fysiske besøket; nettsiden opplevdes mer som informasjon enn som en digital forlengelse av museet.</p>
-        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">Funnene ble oversatt til tre kjerneoppgaver brukeren skulle kunne løse uten friksjon: utforske et hovedverk digitalt, planlegge og booke et arrangementsbesøk, og kjøpe konsertbillett fra mobil. Mer perifert innhold, som pressearkiv og nyhetsbrev, ble bevisst prioritert ned. Målet var en strammere førsteversjon som løser det viktigste godt, heller enn en omfattende struktur som forsøker å dekke alt på én gang.</p>
+    <div style="background:#111; padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px); display:flex; justify-content:center;">
+      <div style="max-width:600px; width:100%;">
+        <h2 id="sv-heading" class="proj-section__heading" style="color:#fff; margin-bottom:2rem; opacity:0; transition: opacity 2.4s ease;">Strategiske valg</h2>
+        <p id="sv-text" style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#c2c2c2; margin:0; opacity:0; transition: opacity 2.4s ease;">I kartleggingen pekte tre hovedfunn seg ut: konsertinformasjon var spredt på flere flater, mobilopplevelsen var svak, og den mørke, sanselige stemningen fra museet forsvant digitalt. Dette ble oversatt til tre kjerneoppgaver: <strong>utforske et hovedverk</strong>, <strong>planlegge et arrangementsbesøk</strong> og <strong>kjøpe konsertbillett fra mobil</strong>. Målet var en stram førsteversjon som løser det viktigste godt.</p>
       </div>
     </div>
 
@@ -310,7 +311,7 @@
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Interaktiv prototype</h2>
       <div class="ev-proto-intro">
         <div class="ev-proto-intro__text">
-          <p style="font-size:16px; color:#888; line-height:1.7; margin:0;">Test selve flyten direkte i Figma! Mobilprototypen er best opplevd på en faktisk telefo, så skann QR-koden til høyre! Designsystemet  til høyre viser komponenter, fargetokens og typografi brukt på tvers av alle flater.</p>
+          <p style="font-size:16px; color:#888; line-height:1.7; color:#c2c2c2; margin:0;">Test selve flyten direkte i Figma! Mobilprototypen er best opplevd på en faktisk telefo, så skann QR-koden til høyre! Designsystemet  til høyre viser komponenter, fargetokens og typografi brukt på tvers av alle flater.</p>
         </div>
         <div class="ev-proto-intro__qr">
           <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#999; margin:0 0 10px;">Skann for å teste på mobil</p>
@@ -348,11 +349,11 @@
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(48px,7vw,120px); max-width:1300px;" class="ev-reflect-grid">
         <div>
           <h3 style="font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:#C9A84C; font-weight:500; margin-bottom:1.25rem;">Det som fungerte</h3>
-          <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">Innsiktsarbeidet i starten ga et solid grunnlag for resten av prosjektet. UX-evalueringen av den eksisterende nettsiden avdekket konkrete problemer vi kunne designe oss bort fra, og brukertestingen bekreftet at den nye navigasjonen og booking-flyten ble opplevd som enkel og naturlig. Vi testet tidlig og tok tilbakemeldingene med inn i neste iterasjon, og løsningen ble tydeligere for hver runde.</p>
+          <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#c2c2c2; margin:0;">Innsiktsarbeidet i starten ga et solid grunnlag for resten av prosjektet. UX-evalueringen av den eksisterende nettsiden avdekket konkrete problemer vi kunne designe oss bort fra, og brukertestingen bekreftet at den nye navigasjonen og booking-flyten ble opplevd som enkel og naturlig. Vi testet tidlig og tok tilbakemeldingene med inn i neste iterasjon, og løsningen ble tydeligere for hver runde.</p>
         </div>
         <div>
           <h3 style="font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:#C9A84C; font-weight:500; margin-bottom:1.25rem;">Det som ikke fungerte helt</h3>
-          <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">Tids- og ressursbegrensninger gjorde at vi ikke fikk gått like dypt i prosessen som vi ønsket – særlig på tilgjengelighetssiden, der den mørke visuelle stilen krever flere runder med kontrast- og lesbarhetstesting enn vi rakk. Vi testet også på en relativt smal brukergruppe, så funnene representerer ikke nødvendigvis alle potensielle besøkende. Flere runder med testing på et bredere utvalg ville gitt oss sterkere og mer pålitelige funn.</p>
+          <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#c2c2c2; margin:0;">Tids- og ressursbegrensninger gjorde at vi ikke fikk gått like dypt i prosessen som vi ønsket – særlig på tilgjengelighetssiden, der den mørke visuelle stilen krever flere runder med kontrast- og lesbarhetstesting enn vi rakk. Vi testet også på en relativt smal brukergruppe, så funnene representerer ikke nødvendigvis alle potensielle besøkende. Flere runder med testing på et bredere utvalg ville gitt oss sterkere og mer pålitelige funn.</p>
         </div>
       </div>
     </div>
@@ -391,10 +392,42 @@
       <a href="./emanuel-vigeland-prosess.html" class="proj-prosess-btn">Se prosess →</a>
     </div>
 
-    <div class="proj-adjacent">
-      <a class="proj-adjacent__link" href="./reina-fruktgard.html">← Gå til Reina Fruktgård</a>
-      <a class="proj-adjacent__link" href="./tidsskrift.html">Gå til Tidsskrift →</a>
+    <div class="proj-meta-footer">
+      <div>
+        <span class="proj-meta-footer__label">Emne</span>
+        <span class="proj-meta-footer__value">Designsystemer og universell utforming</span>
+      </div>
+      <div>
+        <span class="proj-meta-footer__label">Verktøy</span>
+        <span class="proj-meta-footer__value">Figma, Illustrator, Photoshop</span>
+      </div>
+      <div>
+        <span class="proj-meta-footer__label">Dato</span>
+        <span class="proj-meta-footer__value">2026</span>
+      </div>
     </div>
+
+    <div class="proj-adjacent proj-adjacent--with-cards">
+      <a class="proj-adjacent__link" href="./reina-fruktgard.html"><span class="proj-adjacent__arrow"></span><span class="proj-adjacent__text">Gå til Reina Fruktgård</span></a>
+      <a class="proj-adjacent__link" href="./tidsskrift.html"><span class="proj-adjacent__text">Gå til Tidsskrift</span><span class="proj-adjacent__arrow"></span></a>
+    </div>
+    <div class="proj-adjacent-cards">
+      <a class="proj-adjacent-card proj-adjacent-card--prev" href="./reina-fruktgard.html">
+        <img class="proj-adjacent-card__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+        <div class="proj-adjacent-card__label">
+          <span class="proj-adjacent-card__dir">←</span>
+          <span class="proj-adjacent-card__name">Reina Fruktgård</span>
+        </div>
+      </a>
+      <a class="proj-adjacent-card proj-adjacent-card--next" href="./tidsskrift.html">
+        <img class="proj-adjacent-card__img" src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy">
+        <div class="proj-adjacent-card__label">
+          <span class="proj-adjacent-card__name">Tidsskrift</span>
+          <span class="proj-adjacent-card__dir">→</span>
+        </div>
+      </a>
+    </div>
+
 
   </main>
 
@@ -447,6 +480,33 @@ var header = document.getElementById('projHeader');
     });
   </script>
   <script>
+    (function() {
+      var items = document.querySelectorAll('.ev-logo-appear');
+      items.forEach(function(el) {
+        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(10px)';
+      });
+      function revealLogoItems() {
+        items.forEach(function(el) {
+          var delay = parseInt(el.getAttribute('data-delay') || '0');
+          setTimeout(function() {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+          }, delay);
+        });
+      }
+      var logoObs = new IntersectionObserver(function(entries) {
+        if (entries[0].isIntersecting) {
+          revealLogoItems();
+          logoObs.disconnect();
+        }
+      }, { threshold: 0.1 });
+      logoObs.observe(items[0]);
+      window.addEventListener('beforeprint', revealLogoItems);
+    })();
+  </script>
+  <script>
     var sitemapContainer = document.getElementById('ev-sitemap-container');
     fetch('./assets/norvald/sitemap_emanuel_vigeland_full.svg')
       .then(function(r) { return r.text(); })
@@ -473,6 +533,23 @@ var header = document.getElementById('projHeader');
       }
     }, { threshold: 0.3 });
     tovObs.observe(tovHeading);
+
+    var svHeading = document.getElementById('sv-heading');
+    var svEl = document.getElementById('sv-text');
+    var svObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        setTimeout(function() { svHeading.style.opacity = '1'; }, 200);
+        setTimeout(function() { svEl.style.opacity = '1'; }, 600);
+        svObs.disconnect();
+      }
+    }, { threshold: 0.3 });
+    svObs.observe(svHeading);
+    window.addEventListener('beforeprint', function() {
+      tovHeading.style.opacity = '1';
+      tovEl.style.opacity = '1';
+      svHeading.style.opacity = '1';
+      svEl.style.opacity = '1';
+    });
   </script>
   <style>
     .site-footer { background:#eceaef; padding: 48px clamp(20px,5vw,80px); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; }

@@ -66,8 +66,8 @@
 
     @media (max-width: 700px) {
       .pdf-preview-block__frame { height: 400px; }
-      .extra-divider { margin: 40px 0; }
-      .pdf-preview-block { margin-bottom: 32px; }
+      .extra-divider { margin: 52px 0; }
+      .pdf-preview-block { margin-bottom: 44px; }
     }
 
     @media (max-width: 500px) {
@@ -78,13 +78,15 @@
         padding: 14px 24px;
         font-size: 13px;
       }
-      .extra-divider { margin: 28px 0; }
-      .pdf-preview-block { margin-bottom: 24px; }
+      .extra-divider { margin: 40px 0; }
+      .pdf-preview-block { margin-bottom: 36px; }
       .pdf-preview-block__title { font-size: 18px; }
     }
     @media (max-width: 700px) {
       .proj-hero__left  { display: none; }
       .proj-hero__right { text-align: left !important; align-items: flex-start !important; padding: 28px 24px !important; }
+      .affinity-two-col { grid-template-columns: 1fr !important; column-gap: 0 !important; }
+      .affinity-two-col p[style*="grid-row"] { grid-row: auto !important; }
     }
   </style>
 </head>
@@ -155,12 +157,12 @@
       <div class="pdf-preview-block">
         <span class="pdf-preview-block__label">Innsikt</span>
         <h2 class="pdf-preview-block__title">Affinity map</h2>
-        <p class="pdf-preview-block__desc">Funn fra intervjuet ble gruppert i 6 temaer gjennom affinity mapping. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene — og styrte prioriteringene i løsningsdesignet.</p>
-        <p class="pdf-preview-block__desc" style="margin-top:1.5rem; margin-bottom:0;">Etter intervjuet med Mari-Mette satt vi igjen med mye spredt informasjon som måtte struktureres før videre arbeid. Vi gjennomførte affinity-mapping i Figma og samlet funnene i syv temaer: salgsmål, vaktplaner, internkommunikasjon, digital opplæring, dokumenter og rutiner, markedsføring og synlighet, og kunder og kundeopplevelse.</p>
-        <p class="pdf-preview-block__desc" style="margin-top:1rem; margin-bottom:0;">Innenfor hvert tema delte vi funnene inn i observasjoner, utfordringer og behov/muligheter. Dette gjorde det lettere å koble designvalg til konkrete funn fra intervjuet.</p>
-        <p class="pdf-preview-block__desc" style="margin-top:1rem; margin-bottom:0;">Kartleggingen viste at flere utfordringer hadde samme årsak: informasjon og verktøy var spredt på fem ulike plattformer. Derfor fikk vi tidlig en tydelig retning mot en samlet ansattportal.</p>
-        <p class="pdf-preview-block__desc" style="margin-top:1rem; margin-bottom:1.5rem;">Videre valgte vi å fokusere på vaktplan, kommunikasjon, opplæring og dokumenthåndtering, fordi disse områdene påvirket de ansattes hverdag mest direkte. Markedsføring og kundeopplevelse ble beholdt som kontekst, men ikke prioritert i selve løsningen.</p>
-        <img src="./assets/affinity-map.webp" alt="Affinity map" style="width:100%; display:block;">
+        <div class="affinity-two-col" style="display:grid; grid-template-columns:1fr 1fr; column-gap:6rem; row-gap:1rem; margin-bottom:1.5rem; align-items:start;">
+          <p class="pdf-preview-block__desc" style="margin:0; grid-row:1/3;">Funn fra intervjuet ble gruppert i 6 temaer gjennom affinity mapping. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene — og styrte prioriteringene i løsningsdesignet. Innenfor hvert tema delte vi funnene inn i observasjoner, utfordringer og behov/muligheter. Dette gjorde det lettere å koble designvalg til konkrete funn fra intervjuet. Videre valgte vi å fokusere på vaktplan, kommunikasjon, opplæring og dokumenthåndtering, fordi disse områdene påvirket de ansattes hverdag mest direkte. Markedsføring og kundeopplevelse ble beholdt som kontekst, men ikke prioritert i selve løsningen.</p>
+          <p class="pdf-preview-block__desc" style="margin:0;">Etter intervjuet med Mari-Mette satt vi igjen med mye spredt informasjon som måtte struktureres før videre arbeid. Vi gjennomførte affinity-mapping i Figma og samlet funnene i syv temaer: salgsmål, vaktplaner, internkommunikasjon, digital opplæring, dokumenter og rutiner, markedsføring og synlighet, og kunder og kundeopplevelse.</p>
+          <p class="pdf-preview-block__desc" style="margin:0;">Kartleggingen viste at flere utfordringer hadde samme årsak: informasjon og verktøy var spredt på fem ulike plattformer. Derfor fikk vi tidlig en tydelig retning mot en samlet ansattportal.</p>
+        </div>
+        <img src="./assets/affinity-map.webp" alt="Affinity map" style="width:100%; display:block; margin-top:2.5rem;">
       </div>
 
       <hr class="extra-divider">
@@ -192,7 +194,7 @@
     </section>
 
     <div class="proj-adjacent">
-      <a class="proj-adjacent__link" href="./ansatts-portal.html">← Tilbake til Tjønnås & Norvald</a>
+      <a class="proj-adjacent__link" href="./ansatts-portal.html"><span class="proj-adjacent__arrow"></span><span class="proj-adjacent__text">Tilbake til Tjønnås & Norvald</span></a>
     </div>
 
   </main>
