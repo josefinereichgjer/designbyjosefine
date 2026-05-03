@@ -99,6 +99,46 @@
       .ev-proto-iframe { height: 400px !important; }
       .ev-brukerreise-sub { font-size: 18px !important; }
     }
+
+    @media (max-width: 700px) {
+      .ev-logo-two-col { grid-template-columns: 1fr !important; }
+      .ev-logo-row { flex-direction: column !important; align-items: flex-start !important; gap: 28px !important; }
+      .ev-logo-row span[style*="font-size:28px"] { display: none; }
+    }
+
+    /* ── Lightbox ── */
+    .ev-zoomable { cursor: zoom-in; }
+
+    #ev-lb {
+      position: fixed; inset: 0; z-index: 9000;
+      background: rgba(0,0,0,0.96);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      -webkit-overflow-scrolling: touch;
+      overflow: auto;
+    }
+    #ev-lb.open { display: flex; }
+
+    #ev-lb img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      touch-action: pinch-zoom;
+      cursor: zoom-out;
+      display: block;
+    }
+
+    #ev-lb-close {
+      position: fixed; top: 16px; right: 20px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.7);
+      font-size: 32px; line-height: 1;
+      cursor: pointer; z-index: 9001;
+      padding: 4px 8px;
+    }
+    #ev-lb-close:hover { color: #fff; }
   </style>
 </head>
 
@@ -161,7 +201,7 @@
           <div class="ev-intro-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,80px); align-items:start;">
             <div style="position:relative;">
               <span class="ev-before-after__label">Før</span>
-              <img src="./assets/prosess/before-website.webp" alt="Original nettside 2001" style="width:100%; display:block;" loading="lazy">
+              <img src="./assets/prosess/before-website.webp" alt="Original nettside 2001" style="width:100%; display:block;" loading="lazy" class="ev-zoomable">
             </div>
             <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#444; margin:0;">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser — men den digitale tilstedeværelsen formidler ingenting av den. Den eksisterende nettsiden er bygget på en tabellbasert HTML-struktur uten mobiltilpasning, og innholdet er pakket inn på en måte som gjør det vanskelig å navigere både for vanlige brukere og for skjermlesere. Billettkjøp er outsourcet til LetsReg, og konsertinformasjonen er spredt mellom museets nettside, Facebook, LetsReg og Ticketmaster — så det å planlegge et besøk krever at brukeren hopper mellom flere kanaler. Den mørke, sanselige atmosfæren som definerer mausoleet er helt fraværende digitalt.</p>
           </div>
@@ -172,7 +212,7 @@
     <!-- SITEMAP -->
     <div style="background:#0b0b0b; padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px);">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Informasjonsarkitektur</h2>
-      <img src="./assets/norvald/sitemap_emanuel_vigeland_full.svg" alt="Sitemap — Emanuel Vigeland Museum" style="width:100%; max-width:1100px; display:block; margin:0 auto;" loading="lazy">
+      <img src="./assets/norvald/sitemap_emanuel_vigeland_full.svg" alt="Sitemap — Emanuel Vigeland Museum" style="width:100%; max-width:1100px; display:block; margin:0 auto;" loading="lazy" class="ev-zoomable">
     </div>
 
     <!-- TONE OF VOICE -->
@@ -224,16 +264,16 @@
         <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#888; margin:0;">Den originale nettsiden brukte en av Emanuel Vigelands egne skisser som visuelt blikkfang – men i full størrelse fungerte den dårlig som identitetsbærer på tvers av flater. Vi destillerte det samme håndtegnede uttrykket ned til en logo som beholder kunstnerens karakteristiske strek, men som er gjenkjennelig og lesbar i alle størrelser.</p>
         <div class="ev-logo-row" style="display:flex; gap:clamp(16px,3vw,40px); align-items:flex-end; flex-wrap:wrap;">
           <div style="text-align:center;">
-            <img src="./assets/norvald/gammel-view.webp" alt="Gammel skisse" style="height:180px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
+            <img src="./assets/norvald/gammel-view.webp" alt="Gammel skisse" style="height:180px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable">
             <span style="font-size:11px; color:#555; text-transform:uppercase; letter-spacing:.08em;">Original skisse</span>
           </div>
           <span style="font-size:28px; color:#fff; flex-shrink:0; padding-bottom:28px;">→</span>
           <div style="text-align:center;">
-            <img src="./assets/norvald/ny-desktop.webp" alt="Logo for desktop" style="height:80px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
+            <img src="./assets/norvald/ny-desktop.webp" alt="Logo for desktop" style="height:80px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable">
             <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Desktop</span>
           </div>
           <div style="text-align:center;">
-            <img src="./assets/norvald/ny-mobil.webp" alt="Logo for mobil" style="height:56px; width:auto; display:block; margin:0 auto 10px;" loading="lazy">
+            <img src="./assets/norvald/ny-mobil.webp" alt="Logo for mobil" style="height:56px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable">
             <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Mobil</span>
           </div>
         </div>
@@ -246,19 +286,19 @@
         <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
           <h2 class="proj-section__heading" style="color:#fff;">Handling 1: se nærmere på Vita</h2>
           <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren utforsker et av museets hovedverk</p>
-          <img src="./assets/prosess/bruerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="lazy">
+          <img src="./assets/prosess/bruerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="lazy" class="ev-zoomable">
         </div>
 
         <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
           <h2 class="proj-section__heading" style="color:#fff;">Handling 2: book et besøk</h2>
           <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren kjøper en honnørbillett</p>
-          <img src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" style="width:100%; display:block;" loading="lazy">
+          <img src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" style="width:100%; display:block;" loading="lazy" class="ev-zoomable">
         </div>
 
         <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
           <h2 class="proj-section__heading" style="color:#fff;">Handling 3: finn et arrangement</h2>
           <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren finner og leser om en kommende konsert</p>
-          <img src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" style="width:100%; display:block;" loading="lazy">
+          <img src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" style="width:100%; display:block;" loading="lazy" class="ev-zoomable">
         </div>
 
     </div>
@@ -316,8 +356,41 @@
 
   </main>
 
+  <!-- Lightbox overlay -->
+  <div id="ev-lb" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
+    <button id="ev-lb-close" aria-label="Lukk">×</button>
+    <img id="ev-lb-img" src="" alt="">
+  </div>
+
   <script src="./projects.js?v=6"></script>
   <script>
+    /* ── Lightbox ── */
+    (function () {
+      var lb     = document.getElementById('ev-lb');
+      var lbImg  = document.getElementById('ev-lb-img');
+      var lbClose = document.getElementById('ev-lb-close');
+
+      function open(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+        lbImg.src = '';
+      }
+
+      document.querySelectorAll('.ev-zoomable').forEach(function (img) {
+        img.addEventListener('click', function () { open(img.src, img.alt); });
+      });
+
+      lbClose.addEventListener('click', close);
+      lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    }());
+
 var header = document.getElementById('projHeader');
     var toggle = document.getElementById('projToggle');
     toggle.addEventListener('click', function() {
