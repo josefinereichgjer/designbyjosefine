@@ -19,7 +19,6 @@ window.PROJECTS = [
     year: "2026",
     tags: ["UX"],
     cover: "./assets/herotjonn.webp",
-    images: ["./assets/tjonnipadiphone.webp"],
     noSlideshow: true,
     introBorder: true,
     showAccordion: true,
@@ -168,8 +167,7 @@ window.PROJECTS = [
       },
       {
         heading: "Typografi",
-        body: "Typografisystemet kombinerer skrifttypene Above the Beyond Script og Questa. Above the Beyond Script har et håndtegnet og kalligrafisk preg som gir identiteten et personlig og håndverksnært uttrykk. Den mer dekorative formen gjør at skriften ikke egner seg til lengre tekst, men fungerer godt som et karakterbærende element i identiteten.\n\nFor å balansere dette er serifskriften Questa brukt til mer informativ tekst. Questa har et tydelig og rolig uttrykk som gir god lesbarhet og struktur. Sammen skaper de to skrifttypene en balanse mellom det uttrykksfulle og det funksjonelle, samtidig som de understreker koblingen til håndverk og kvalitet.",
-        image: "./assets/reinatypografi.webp"
+        body: "Typografisystemet kombinerer skrifttypene Above the Beyond Script og Questa. Above the Beyond Script har et håndtegnet og kalligrafisk preg som gir identiteten et personlig og håndverksnært uttrykk. Den mer dekorative formen gjør at skriften ikke egner seg til lengre tekst, men fungerer godt som et karakterbærende element i identiteten.\n\nFor å balansere dette er serifskriften Questa brukt til mer informativ tekst. Questa har et tydelig og rolig uttrykk som gir god lesbarhet og struktur. Sammen skaper de to skrifttypene en balanse mellom det uttrykksfulle og det funksjonelle, samtidig som de understreker koblingen til håndverk og kvalitet."
       },
       {
         heading: "Illustrasjon",
@@ -288,7 +286,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Strategisk design"],
     cover: "./assets/laptop-mockup.webp",
-    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp"],
+    images: ["./assets/doorskilt.webp"],
   },
   {
     id: "flerkanalspublisering",
@@ -300,23 +298,6 @@ window.PROJECTS = [
     cover: "./assets/poster-srh.webp",
     coverCaption: "Brosjyre om universitetets bærekraftsarbeid",
     noSlideshow: true,
-    gallery: [
-      { type: "expandable",
-        heading: "Trykte flater",
-        cover: { src: "./assets/srhbrosk.webp", caption: "Brosjyre om universitetets bærekraftsarbeid", eager: true },
-        items: [
-          { src: "./assets/bak.webp",            caption: "Brosjyre – bakside",    cropX: 1.4 },
-          { src: "./assets/foran.webp",          caption: "Brosjyre – forside",    cropX: 1.4 },
-          { src: "./assets/srhbanner_mockup.webp", caption: "Roll-up banner" },
-        ]
-      },
-      { type: "expandable",
-        heading: "Digitale flater",
-        cover: { src: "./assets/srhvideo.mp4", caption: "Tilhørende nettside", captionLink: "./srh-open-day-3/index.html", video: true, autoplay: true },
-        items: [
-        ]
-      },
-    ],
     intro: "Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.",
     background: [
       {
