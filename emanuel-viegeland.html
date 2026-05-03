@@ -98,12 +98,9 @@
       .ev-proto-box { flex: 0 0 auto !important; width: 100% !important; }
       .ev-proto-iframe { height: 400px !important; }
       .ev-brukerreise-sub { font-size: 18px !important; }
-    }
-
-    @media (max-width: 700px) {
-      .ev-logo-two-col { grid-template-columns: 1fr !important; }
-      .ev-logo-row { flex-direction: column !important; align-items: flex-start !important; gap: 28px !important; }
-      .ev-logo-row span[style*="font-size:28px"] { display: none; }
+      .ev-logo-row { flex-direction: column !important; align-items: center !important; gap: 28px !important; }
+      .ev-arrow-right { display: none !important; }
+      .ev-arrow-down  { display: block !important; }
     }
 
     /* ── Lightbox ── */
@@ -267,7 +264,8 @@
             <img src="./assets/norvald/gammel-view.webp" alt="Gammel skisse" style="height:180px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable">
             <span style="font-size:11px; color:#555; text-transform:uppercase; letter-spacing:.08em;">Original skisse</span>
           </div>
-          <span style="font-size:28px; color:#fff; flex-shrink:0; padding-bottom:28px;">→</span>
+          <span class="ev-arrow-right" style="font-size:28px; color:#fff; flex-shrink:0; padding-bottom:28px;">→</span>
+          <span class="ev-arrow-down" style="font-size:28px; color:#fff; display:none;">↓</span>
           <div style="text-align:center;">
             <img src="./assets/norvald/ny-desktop.webp" alt="Logo for desktop" style="height:80px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable">
             <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Desktop</span>
