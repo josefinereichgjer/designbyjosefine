@@ -18,6 +18,16 @@
     .boks-pal__desc { font-size: clamp(13px, 1vw, 14px); margin-top: 12px; line-height: 1.6; display: block; }
     @media (max-width: 600px) { .boks-pal { grid-template-columns: 1fr; } }
 
+    /* Typography comparison grid */
+    .boks-type-compare { overflow: hidden; }
+    .boks-type-compare .mob-stack > * { min-width: 0; }
+    .boks-type-compare .mob-stack img { max-width: 100%; height: clamp(36px,4.5vw,64px); width: auto; object-fit: contain; object-position: left center; display: block; }
+    @media (max-width: 600px) {
+      .boks-type-compare .mob-stack { gap: 0.5rem !important; }
+      .boks-compare-label { margin-left: 0 !important; }
+      .boks-type-compare .mob-stack img { height: clamp(28px,6vw,40px); }
+    }
+
     /* Scroll reveal */
     .reveal { opacity: 0; visibility: hidden; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
     .reveal.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
@@ -125,13 +135,13 @@
           </div>
         </div>
       </div>
-      <div style="margin-top:3rem; background:#e3e7e8; margin-left:calc(-1 * clamp(20px, 7vw, 74px)); margin-right:calc(-1 * clamp(20px, 7vw, 74px)); padding:2.5rem clamp(20px, 7vw, 74px);">
+      <div class="boks-type-compare" style="margin-top:3rem; background:#e3e7e8; margin-left:calc(-1 * clamp(20px, 7vw, 74px)); margin-right:calc(-1 * clamp(20px, 7vw, 74px)); padding:2.5rem clamp(20px, 7vw, 74px);">
         <div style="max-width:820px; margin:0 auto;">
         <!-- Før og etter: original vs bearbeidet -->
         <div class="mob-stack" style="display:grid; grid-template-columns:1fr auto 1fr; gap:2rem; align-items:center; margin-bottom:1.5rem;">
           <p style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#595959; margin:0;">Original (Baskerville Old Face)</p>
           <span></span>
-          <p style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#595959; margin:0; text-align:left; margin-left:-2rem;">Bearbeidet for tekstil og preging</p>
+          <p class="boks-compare-label" style="font-size:10px; letter-spacing:0.16em; text-transform:uppercase; color:#595959; margin:0; text-align:left; margin-left:-2rem;">Bearbeidet for tekstil og preging</p>
         </div>
         <div class="mob-stack" style="display:grid; grid-template-columns:1fr auto 1fr; gap:2rem; align-items:center; row-gap:2rem;">
           <span style="font-family:'Baskerville Old Face','Baskerville',Georgia,serif; font-size:clamp(22px,3.2vw,46px); color:#1a1a1a; line-height:1; text-transform:uppercase;">Jenny</span>
