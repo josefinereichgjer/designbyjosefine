@@ -198,7 +198,7 @@ window.PROJECTS = [
       },
       {
         heading: "Første utkast",
-        body: "Hvorfor endret jeg uttrykket i 2026? I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer som en del av hoveduttrykket. Selv om dette formidlet historien om familiebruket og fellesskapet, ble systemet ganske komplekst og litt visuelt rotete når det skulle brukes på ulike produkter. Derfor utviklet jeg i 2026 en ny løsning som er mer minimalistisk og renere. Ved å forenkle uttrykket og redusere antall elementer blir designet mer oversiktlig, lettere å tilpasse til flere produkter og mer konsistent som visuell identitet.",
+        body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer som en del av hoveduttrykket. Selv om dette formidlet historien om familiebruket og fellesskapet, ble systemet ganske komplekst og litt visuelt rotete når det skulle brukes på ulike produkter. Derfor utviklet jeg i 2026 en ny løsning som er mer minimalistisk og renere. Ved å forenkle uttrykket og redusere antall elementer blir designet mer oversiktlig, lettere å tilpasse til flere produkter og mer konsistent som visuell identitet.",
         link: { label: "Se første utkast", src: "./assets/forsteutkastemballasje.pdf" }
       }
     ],
@@ -216,7 +216,7 @@ window.PROJECTS = [
         body: "I den første versjonen brukte jeg både landskapsillustrasjonen og flere menneskefigurer i hoveduttrykket. Dette formidlet historien om familiebruket, men gjorde systemet mer komplekst og visuelt rotete på ulike produkter. Derfor utviklet jeg i 2026 en ny, mer minimalistisk løsning som er enklere å tilpasse og mer konsistent som visuell identitet."
       }
     },
-    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" },
+    finalPdf: { label: "Nysgjerrig på mer om dette?", src: "./assets/ferdigreina.pdf" },
     skipBuild: true
   },
   {
@@ -353,7 +353,7 @@ window.PROJECTS = [
       { label: "Verktøy", value: "Illustrator, Photoshop" }
     ],
     link: { label: "Åpne nettsiden", src: "./srh-open-day-3/index.html" },
-    finalPdf: { label: "Nyskjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
+    finalPdf: { label: "Nysgjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
   },
   {
     id: "lovechild",
