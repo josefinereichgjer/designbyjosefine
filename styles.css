@@ -247,6 +247,9 @@ a:hover{opacity:.75}
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+@media print {
+  .reveal { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+}
 
 /* Scroll-reveal — opacity intentionally NOT animated to avoid WCAG partial-opacity issues */
 .masonry .card {
