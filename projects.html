@@ -18,11 +18,19 @@
   <style>
     body { background: #faf8f5; color: #1a1a1a; }
     .content { background: #faf8f5; }
-    .card { background: #fff; }
+    .card { background: #faf8f5; }
     .card__img-wrap { background: #f0ede8; }
-    .card__caption { background: #fff; }
-    .card__title { color: #1a1a1a; }
-    .card__tags { color: #666; }
+    .card__caption { background: #faf8f5; }
+    .card__title { color: #1D1D1B; }
+    .card__desc { color: #444444; }
+    .card__tags { color: #4A4643; border-color: #B8B2AA; }
+    .projects-page .card,
+    .projects-page .card p,
+    .projects-page .card div,
+    .projects-page .card span { color: #4A4643; }
+    .projects-page .card__title { color: #1D1D1B; }
+    .projects-page .card__desc { color: #444444; }
+    .projects-page .card__tags { color: #4A4643; border-color: #B8B2AA; background-color: #faf8f5; }
     .title, .h2 { letter-spacing: -0.01em; line-height: 1.06; font-size: clamp(42px, 5.4vw, 86px); }
     .title { color: #1a1a1a; }
     .h2 { color: inherit; }
@@ -119,7 +127,7 @@
   </style>
 </head>
 
-<body>
+<body class="projects-page">
   <a class="skip-link" href="#content">Hopp til innhold</a>
 
   <header class="proj-header" id="projHeader">

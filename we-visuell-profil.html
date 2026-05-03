@@ -219,11 +219,11 @@
     .we-client-block__text strong { font-weight: 600; color: #111; }
     .we-client-v2__figure { margin: 0; }
     .we-client-v2__figure img { width: 100%; display: block; border-radius: 8px; }
-    .we-client-v2__caption { font-family: 'Poppins', sans-serif; font-size: 13px; color: #999; margin-top: 10px; letter-spacing: .02em; display: block; }
+    .we-client-v2__caption { font-family: 'Poppins', sans-serif; font-size: 13px; color: #595959; margin-top: 10px; letter-spacing: .02em; display: block; }
 
     .we-quote { background: transparent; padding: 0 0 0 20px; border-left: 3px solid var(--we-lime); position: relative; }
     .we-quote__text { font-family: 'Poppins', sans-serif; font-style: italic; font-size: 17px; line-height: 1.65; margin: 0 0 10px; color: #0d1e1b; }
-    .we-quote__attr { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #767676; }
+    .we-quote__attr { font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #595959; }
 
     /* Målgruppe */
     .we-audience { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 8px; }
@@ -232,7 +232,7 @@
     .we-audience-cell--sec { border-color: #ddd; }
     .we-audience-cell__label { font-size: 12px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px; font-weight: 600; display: block; }
     .we-audience-cell--pri .we-audience-cell__label { color: var(--we-amethyst); }
-    .we-audience-cell--sec .we-audience-cell__label { color: var(--we-periwinkle); }
+    .we-audience-cell--sec .we-audience-cell__label { color: var(--we-periwinkle-text); }
     .we-audience-cell__title { font-family: var(--we-font); font-size: var(--type-h2); font-weight: 600; margin: 0 0 14px; line-height: 1.2; color: #111; }
     .we-audience-cell__body { font-size: var(--type-body); line-height: var(--lh-body); margin: 0; color: #555; }
     .we-mg-blocks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; max-width: 100%; align-items: stretch; }
@@ -248,12 +248,12 @@
     .we-quote__attr { line-height: 1.4; }
     .we-mg-title { font-family: var(--we-font); font-size: var(--type-h3); font-weight: 600; color: #111; margin: 0 0 12px; line-height: 1.3; }
     .we-posmap-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; align-items: center; }
-    .we-posmap-row__label { font-size: 13px; color: #767676; text-transform: uppercase; letter-spacing: .08em; }
+    .we-posmap-row__label { font-size: 13px; color: #595959; text-transform: uppercase; letter-spacing: .08em; }
 
     /* Prosess */
     .we-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 24px; }
     .we-step { border: 1px solid #e8e4e2; padding: 20px 16px; }
-    .we-step__num { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: 32px; color: var(--we-periwinkle); margin-bottom: 12px; line-height: 1; }
+    .we-step__num { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 700; font-size: 32px; color: var(--we-periwinkle-text); margin-bottom: 12px; line-height: 1; }
     .we-step__title { font-size: var(--type-sm); font-weight: 600; margin-bottom: 8px; color: #111; }
     .we-step__body { font-size: var(--type-sm); color: #666; line-height: var(--lh-sm); }
 
@@ -314,8 +314,8 @@
     .we-credits__list a { color: #555; }
 
     /* Scroll fade-in */
-    .proj-section.we-fade { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
-    .proj-section.we-fade.is-visible { opacity: 1; transform: none; }
+    .proj-section.we-fade { opacity: 0; visibility: hidden; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease, visibility 0s .65s; }
+    .proj-section.we-fade.is-visible { opacity: 1; visibility: visible; transform: none; transition: opacity .65s ease, transform .65s ease, visibility 0s; }
 
     /* Logo Grid */
     .we-logo-grid { 
@@ -387,7 +387,7 @@
     .we-swatch__color { height: 140px; border-radius: 4px; cursor: pointer; }
     .we-swatch__info { padding: 12px 0 0; }
     .we-swatch__hex { font-size: 13px; font-weight: 600; display: block; }
-    .we-swatch__name { font-size: 13px; color: #767676; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; display: block; }
+    .we-swatch__name { font-size: 13px; color: #595959; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; display: block; }
     .we-swatch__use { font-size: 13px; color: #555; display: block; margin-top: 6px; line-height: 1.45; }
 
     /* Oppdragsgiver split */
@@ -396,7 +396,7 @@
     .we-oppdrag-text h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 700; margin: 0 0 16px; }
     .we-oppdrag-text p { font-size: 15px; line-height: 1.7; color: #333; margin: 0 0 20px; }
     .we-oppdrag-text blockquote { font-style: italic; font-size: 19px; line-height: 1.6; color: #444; border-left: 3px solid #5b3fa6; padding-left: 16px; margin: 0 0 16px; }
-    .we-oppdrag-names { display: flex; justify-content: space-between; font-size: 13px; color: #888; font-family: 'IBM Plex Sans', sans-serif; padding-left: 19px; }
+    .we-oppdrag-names { display: flex; justify-content: space-between; font-size: 13px; color: #595959; font-family: 'IBM Plex Sans', sans-serif; padding-left: 19px; }
     @media (max-width: 700px) { .we-oppdrag-split { grid-template-columns: 1fr; } }
 
     /* Designretning grid */
@@ -410,7 +410,7 @@
     .we-rg-row--insta img { height: 360px; object-fit: cover; }
     .we-rg-captioned { display: flex; flex-direction: column; gap: 6px; }
     .we-rg-captioned img { width: 100%; height: auto; display: block; object-fit: cover; }
-    .we-rg-caption { font-size: 13px; color: #888; font-family: 'IBM Plex Sans', sans-serif; }
+    .we-rg-caption { font-size: 13px; color: #595959; font-family: 'IBM Plex Sans', sans-serif; }
     @media (max-width: 600px) {
       .we-rg-row { grid-template-columns: 1fr; }
       .we-rg-row--3 { grid-template-columns: 1fr 1fr; }
@@ -474,7 +474,7 @@
     #weNettsideModal { max-width: 600px; background: transparent; box-shadow: none; }
     dialog::backdrop { background: rgba(0,0,0,.45); }
     .we-posmap-modal__inner { padding: 32px; position: relative; }
-    .we-posmap-modal__close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: #888; line-height: 1; padding: 4px; }
+    .we-posmap-modal__close { position: absolute; top: 16px; right: 16px; background: none; border: none; font-size: 18px; cursor: pointer; color: #595959; line-height: 1; padding: 4px; }
     .we-posmap-modal__close:hover { color: #111; }
     .we-posmap-modal__heading { font-family: 'neuzeit-grotesk', sans-serif; font-weight: 600; font-size: 22px; margin: 0 0 20px; color: #111; }
 
@@ -493,7 +493,7 @@
     .we-reflection__body { font-size: 15px; line-height: 1.75; color: #444; margin: 0 0 18px; }
     .we-reflection__learnings { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
     .we-reflection__learnings li { font-size: 15px; color: #444; padding-left: 28px; position: relative; line-height: 1.65; }
-    .we-reflection__learnings li::before { content: '→'; position: absolute; left: 0; color: var(--we-periwinkle); font-weight: 600; }
+    .we-reflection__learnings li::before { content: '→'; position: absolute; left: 0; color: var(--we-periwinkle-text); font-weight: 600; }
     .we-reflection__hl { color: #35685e; font-size: 1em; font-weight: 600; background: rgba(53,104,94,.08); padding: 1px 4px; }
 
     /* Design showcase labels */
@@ -541,7 +541,7 @@
     }
     
     .we-hscroll-dots { display: flex; gap: 8px; justify-content: center; }
-    .we-hscroll-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
+    .we-hscroll-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: 1.5px solid #555555; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
     .we-hscroll-dot.is-active { background: #6868b2; }
     .we-site-hscroll:active { cursor: grabbing; }
     
@@ -555,7 +555,7 @@
     .we-design-showcase__stories:active { cursor: grabbing; }
     .we-design-showcase__stories img { flex: 0 0 auto; height: 380px; width: auto; display: block; scroll-snap-align: start; border-radius: 8px; }
     .we-stories-dots { display: flex; gap: 8px; justify-content: center; margin-top: 24px; margin-bottom: 56px; }
-    .we-stories-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
+    .we-stories-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: 1.5px solid #555555; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
     .we-stories-dot.is-active { background: #6868b2; }
 
     /* NYTT: Rad for Print-design (Visittkort, banner, brosjyre) */
@@ -567,7 +567,7 @@
     .we-idkort-row img { height: 460px; width: auto; flex: 0 0 auto; max-width: none; border-radius: 8px; }
     .we-card-row img { height: 400px; width: auto; flex: 0 0 auto; max-width: none; }
     .we-print-dots { display: flex; gap: 8px; justify-content: center; margin-top: 16px; margin-bottom: 48px; }
-    .we-print-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: none; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
+    .we-print-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0dde8; border: 1.5px solid #555555; padding: 0; cursor: pointer; transition: background .2s; flex-shrink: 0; }
     .we-print-dot.is-active { background: #6868b2; }
 
     @media (min-width: 1600px) {
@@ -998,7 +998,7 @@
                   <strong>Brukes til:</strong><br>
                   - Utheving av nøkkelord og viktige budskap<br>
                   - Ord som skal skille seg ut visuelt, spesielt i overskrifter<br>
-                  - Brukes ofte i fargen <span style="color:#6EB6A9; font-weight:600;">#6EB6A9</span> for ekstra fokus
+                  - Brukes ofte i fargen <span style="color:#1a6b5e; font-weight:600;">#6EB6A9</span> for ekstra fokus
                 </p>
               </div>
             </div>
@@ -1219,7 +1219,7 @@
     <div class="we-posmap-modal__inner">
       <button class="we-posmap-modal__close" onclick="document.getElementById('weKonkModal').close()" aria-label="Lukk">✕</button>
       <h3 class="we-posmap-modal__heading">Konkurrentanalyse</h3>
-      <p style="font-size:13px;color:#888;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px;">Analyserte aktører</p>
+      <p style="font-size:13px;color:#595959;text-transform:uppercase;letter-spacing:.08em;margin:0 0 8px;">Analyserte aktører</p>
       <p style="font-size:14px;font-weight:500;color:#111;margin:0 0 20px;">Kavlifondet, Røde Kors, Ferd, FOKUS Kvinner, Amnesty, Care Norge</p>
       <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Aktørene er valgt fordi de opererer innen filantropi, sosialt arbeid og samfunnsutvikling — områder som overlapper med Stiftelsen WEs formål. De representerer ulike tilnærminger til sosial påvirkning og gir et relevant sammenligningsgrunnlag.</p>
       <p style="font-size:14px;line-height:1.75;color:#333;margin:0 0 16px;">Røde Kors, CARE og Amnesty er etablerte organisasjoner med tydelige budskap og sterk visuell kommunikasjon, orientert mot krisehjelp og rettigheter. FOKUS Kvinner har et mer spesialisert likestillingsfokus med et litt mer lavmælt uttrykk.</p>
