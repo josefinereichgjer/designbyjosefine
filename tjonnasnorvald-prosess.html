@@ -66,7 +66,22 @@
     }
 
     @media (max-width: 700px) {
-      .pdf-preview-block__frame { height: 420px; }
+      .pdf-preview-block__frame { height: 400px; }
+      .extra-divider { margin: 40px 0; }
+      .pdf-preview-block { margin-bottom: 32px; }
+    }
+
+    @media (max-width: 500px) {
+      .pdf-preview-block__frame { display: none; }
+      .pdf-preview-block__download {
+        display: block;
+        text-align: center;
+        padding: 14px 24px;
+        font-size: 13px;
+      }
+      .extra-divider { margin: 28px 0; }
+      .pdf-preview-block { margin-bottom: 24px; }
+      .pdf-preview-block__title { font-size: 18px; }
     }
   </style>
 </head>
@@ -98,10 +113,25 @@
 
     <section class="proj-section proj-section--none" style="padding-bottom:0">
       <h1 class="proj-section__heading" style="margin-bottom:8px;">Prosess & ekstramateriale</h1>
-      <p class="proj-section__body" style="max-width:620px; margin-bottom:0; color:#555;">Underlagsdokumenter, rapport, designmanual og sitemap fra prosjektet.</p>
+      <p class="proj-section__body" style="max-width:620px; margin-bottom:0; color:#555;">Underlagsdokumenter, rapport, designmanual og affinity map fra prosjektet.</p>
     </section>
 
     <section class="proj-section proj-section--none reveal">
+
+      <!-- INTERVJUGUIDE -->
+      <div class="pdf-preview-block">
+        <span class="pdf-preview-block__label">Brukerinnsikt</span>
+        <h2 class="pdf-preview-block__title">Intervjuguide</h2>
+        <p class="pdf-preview-block__desc">Intervjuguiden ble brukt i det kvalitative intervjuet med daglig leder. Spørsmålene ble utformet for å avdekke reelle smertepunkter i driften — ikke bekrefte antagelser.</p>
+        <iframe
+          class="pdf-preview-block__frame"
+          src="./assets/Intervjuguide - Gruppe 1.pdf"
+          title="Intervjuguide — Tjønnås & Norvald">
+        </iframe>
+        <a class="pdf-preview-block__download" href="./assets/Intervjuguide - Gruppe 1.pdf" download>Last ned intervjuguide</a>
+      </div>
+
+      <hr class="extra-divider">
 
       <!-- RAPPORT -->
       <div class="pdf-preview-block">
@@ -118,17 +148,16 @@
 
       <hr class="extra-divider">
 
-      <!-- SITEMAP -->
+      <!-- AFFINITY MAP -->
       <div class="pdf-preview-block">
-        <span class="pdf-preview-block__label">Informasjonsarkitektur</span>
-        <h2 class="pdf-preview-block__title">Sitemap</h2>
-        <p class="pdf-preview-block__desc">Sitemapet viser strukturen vi valgte for ansattportalen — navigasjonshierarkiet, seksjoner og flyten mellom skjermer på tvers av mobil og iPad.</p>
-        <iframe
-          class="pdf-preview-block__frame"
-          src="./assets/norvald/sitemap.pdf"
-          title="Sitemap — Tjønnås & Norvald">
-        </iframe>
-        <a class="pdf-preview-block__download" href="./assets/norvald/sitemap.pdf" download>Last ned sitemap</a>
+        <span class="pdf-preview-block__label">Innsikt</span>
+        <h2 class="pdf-preview-block__title">Affinity map</h2>
+        <p class="pdf-preview-block__desc">Funn fra intervjuet ble gruppert i 6 temaer gjennom affinity mapping. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene — og styrte prioriteringene i løsningsdesignet.</p>
+        <p class="pdf-preview-block__desc" style="margin-top:1.5rem; margin-bottom:0;">Etter intervjuet med Mari-Mette satt vi igjen med mye spredt informasjon som måtte struktureres før videre arbeid. Vi gjennomførte affinity-mapping i Figma og samlet funnene i syv temaer: salgsmål, vaktplaner, internkommunikasjon, digital opplæring, dokumenter og rutiner, markedsføring og synlighet, og kunder og kundeopplevelse.</p>
+        <p class="pdf-preview-block__desc" style="margin-top:1rem; margin-bottom:0;">Innenfor hvert tema delte vi funnene inn i observasjoner, utfordringer og behov/muligheter. Dette gjorde det lettere å koble designvalg til konkrete funn fra intervjuet.</p>
+        <p class="pdf-preview-block__desc" style="margin-top:1rem; margin-bottom:0;">Kartleggingen viste at flere utfordringer hadde samme årsak: informasjon og verktøy var spredt på fem ulike plattformer. Derfor fikk vi tidlig en tydelig retning mot en samlet ansattportal.</p>
+        <p class="pdf-preview-block__desc" style="margin-top:1rem; margin-bottom:1.5rem;">Videre valgte vi å fokusere på vaktplan, kommunikasjon, opplæring og dokumenthåndtering, fordi disse områdene påvirket de ansattes hverdag mest direkte. Markedsføring og kundeopplevelse ble beholdt som kontekst, men ikke prioritert i selve løsningen.</p>
+        <img src="./assets/affinity-map.webp" alt="Affinity map" style="width:100%; display:block;">
       </div>
 
       <hr class="extra-divider">
@@ -156,12 +185,6 @@
         <a class="pdf-preview-block__download" href="./assets/Norvald og Tjønnås/hjem.html" target="_blank" rel="noopener">Åpne nettsiden →</a>
       </div>
 
-      <div class="extra-video-block">
-        <video class="extra-video" controls playsinline>
-          <source src="./assets/norvald/vide-nord.mp4">
-          Nettleseren din støtter ikke videofilen.
-        </video>
-      </div>
 
     </section>
 

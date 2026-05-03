@@ -32,6 +32,12 @@
       .prosess-row { grid-template-columns: 1fr; gap: 1.5rem; }
       .jambore-text { grid-template-columns: 1fr; }
       .prosess-images { width: 100%; }
+      .prosess-text { font-size: 15px; }
+      /* Okse-rad: stack to 2 per row on mobile */
+      .okse-row { flex-wrap: wrap !important; justify-content: center !important; gap: 12px !important; }
+      .okse-row > div { flex: 0 0 calc(50% - 16px) !important; }
+      .okse-row > div img { height: clamp(100px, 28vw, 160px) !important; }
+      .okse-arrow { display: none !important; }
     }
 
     /* Scroll reveal */
@@ -164,27 +170,27 @@
         <li>Monokromatisk: Ved å huke av for dette, unngikk jeg tilfeldige fargeprikker og beholdt en ren, svart-hvit kornstruktur.</li>
       </ul>
 
-      <div style="display:flex; align-items:flex-start; gap:clamp(12px,2vw,28px); margin-bottom:3rem;">
+      <div class="okse-row" style="display:flex; align-items:flex-start; justify-content:center; gap:clamp(10px,1.5vw,24px); margin-bottom:3rem; flex-wrap:wrap;">
         <div style="flex-shrink:0;">
           <img src="assets/prosess/okse-1.webp" alt="Okse – original" loading="lazy" style="height:clamp(160px,18vw,280px); width:auto; display:block; margin-bottom:0.5rem;">
           <p style="font-size:13px; line-height:1.5; color:#000; max-width:130px;">Eks. bilde: Minotaur II (2023). Skulptur av Erik Ebeling.</p>
         </div>
-        <div style="flex-shrink:0; display:flex; align-items:center; height:clamp(160px,18vw,280px);"><span style="font-size:20px; color:#000;">→</span></div>
+        <div class="okse-arrow" style="flex-shrink:0; display:flex; align-items:center; height:clamp(160px,18vw,280px);"><span style="font-size:20px; color:#000;">→</span></div>
         <div style="flex-shrink:0;">
           <img src="assets/prosess/okse-2.webp" alt="Okse – støy" loading="lazy" style="height:clamp(160px,18vw,280px); width:auto; display:block; margin-bottom:0.5rem;">
           <p style="font-size:13px; line-height:1.5; color:#000; max-width:130px;">Behandlet i Photoshop med støy og rastermønster (halftone)</p>
         </div>
-        <div style="flex-shrink:0; display:flex; align-items:center; height:clamp(160px,18vw,280px);"><span style="font-size:20px; color:#000;">→</span></div>
+        <div class="okse-arrow" style="flex-shrink:0; display:flex; align-items:center; height:clamp(160px,18vw,280px);"><span style="font-size:20px; color:#000;">→</span></div>
         <div style="flex-shrink:0;">
           <img src="assets/prosess/okse-3.webp" alt="Okse – silhuett" loading="lazy" style="height:clamp(160px,18vw,280px); width:auto; display:block; margin-bottom:0.5rem;">
           <p style="font-size:13px; line-height:1.5; color:#000; max-width:130px;">Vektorisert i Illustrator for å skape en silhuett</p>
         </div>
-        <div style="flex-shrink:0; display:flex; align-items:center; height:clamp(160px,18vw,280px);"><span style="font-size:20px; color:#000;">→</span></div>
+        <div class="okse-arrow" style="flex-shrink:0; display:flex; align-items:center; height:clamp(160px,18vw,280px);"><span style="font-size:20px; color:#000;">→</span></div>
         <div style="flex-shrink:0;">
           <img src="assets/prosess/okse-4.webp" alt="Okse – tekstur" loading="lazy" style="height:clamp(160px,18vw,280px); width:auto; display:block; margin-bottom:0.5rem;">
           <p style="font-size:13px; line-height:1.5; color:#000; max-width:130px;">Motivet frilagt ved bruk av Clipping Mask</p>
         </div>
-        <div style="flex-shrink:0; display:flex; align-items:center; height:clamp(160px,18vw,280px);"><span style="font-size:20px; color:#000;">→</span></div>
+        <div class="okse-arrow" style="flex-shrink:0; display:flex; align-items:center; height:clamp(160px,18vw,280px);"><span style="font-size:20px; color:#000;">→</span></div>
         <div style="flex-shrink:0;">
           <img src="assets/prosess/okse-5.webp" alt="Okse – farget" loading="lazy" style="height:clamp(160px,18vw,280px); width:auto; display:block; margin-bottom:0.5rem;">
           <p style="font-size:13px; line-height:1.5; color:#000; max-width:130px;">Fargetilpasning: Fargefyll (#00BCD0) med ca. 50 % opasitet</p>

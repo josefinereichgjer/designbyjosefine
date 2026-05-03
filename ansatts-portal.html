@@ -196,9 +196,13 @@
       .proto-under-gallery { gap: 18px; flex-direction: column; margin-top: 12px; }
       .proto-cta-row { gap: 12px; }
     }
+    .pill-kalender { top: 20%; }
     @media (max-width: 560px) {
       .proj-meta-strip { gap: 10px 0; flex-wrap: wrap; }
       .proj-meta-strip__item { padding: 0 16px 0 0; }
+      .screen-pill { padding: 6px 12px !important; font-size: 9px !important; letter-spacing: 0.08em !important; }
+      .pill-kalender { top: 38% !important; }
+      .tjonnmock-wrap { padding: 2rem 0 0 !important; }
     }
     @media (min-width: 2400px) {
       /* Section structure: sections are ~1668px wide (1600px column + 34px bleed each side).
@@ -245,8 +249,30 @@
       .proj-meta-strip__label { font-size: 13px; }
       .proj-meta-strip__value { font-size: 20px; }
     }
+
+    .marimette-link {
+      position: relative;
+      display: block;
+      overflow: hidden;
+    }
+    .marimette-link__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+    .marimette-link:hover .marimette-link__overlay { opacity: 1; }
   </style>
-<link rel="icon" href="assets/hvitlogo.png">
+<link rel="icon" href="assets/hvitlogo.webp">
 </head>
 
 <body>
@@ -319,10 +345,10 @@
         
         
         
-          <div class="proj-section proj-section--krem" style="border-bottom:1.5px solid rgba(107,30,46,0.35);"><div class="mob-stack" style="display:grid; grid-template-columns:1fr 1.4fr; gap:3rem; align-items:center;"><img src="./assets/norvald/marimette.webp" alt="Mari-Mette" style="width:100%; display:block;" loading="lazy" decoding="async"><div><p style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(18px,2vw,28px); font-weight:400; color:#6B1E2E; margin:0 0 0.4rem;">Problem:</p><h2 class="proj-section__heading" style="font-size:clamp(22px,3vw,44px);">Jobbhverdagen er spredt<br> på for mange systemer</h2><p class="proj-section__body">Et semi-strukturert intervju med Mari-Mette, daglig leder for Tjønnås Delikatesser og Norvald Café, avdekket at driften var fordelt på fem ulike kanaler: vaktplan i ett system, lønn i et annet, internkommunikasjon i Messenger-grupper, rutiner i Apple Notater, og opplæring som ble gjort muntlig fra vakt til vakt. Med hyppig utskiftning av unge deltidsansatte ble viktig informasjon ofte borte i prosessen.</p></div></div></div>
+          <div class="proj-section proj-section--krem" style="background:#ede8e0; border-bottom:1.5px solid rgba(107,30,46,0.35);"><div class="mob-stack" style="display:grid; grid-template-columns:1fr 1.4fr; gap:3rem; align-items:center;"><a href="https://www.instagram.com/norvald.tjonnas/" target="_blank" rel="noopener" class="marimette-link" aria-label="Besøk Norvald på Instagram"><img src="./assets/norvald/marimette.webp" alt="Mari-Mette" style="width:100%; display:block;" loading="lazy" decoding="async"><span class="marimette-link__overlay">@norvald.tjonnas</span></a><div><p style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(18px,2vw,28px); font-weight:400; color:#6B1E2E; margin:0 0 0.4rem;">Problem:</p><h2 class="proj-section__heading" style="font-size:clamp(22px,3vw,44px);">Jobbhverdagen er spredt<br> på for mange systemer</h2><p class="proj-section__body">Et semi-strukturert intervju med Mari-Mette, daglig leder for Tjønnås Delikatesser og Norvald Café, avdekket at driften var fordelt på fem ulike kanaler: vaktplan i ett system, lønn i et annet, internkommunikasjon i Messenger-grupper, rutiner i Apple Notater, og opplæring som ble gjort muntlig fra vakt til vakt. Med hyppig utskiftning av unge deltidsansatte ble viktig informasjon ofte borte i prosessen.</p></div></div></div>
           <div class="mob-stack" style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; padding:3rem clamp(40px,5vw,80px) 4rem;">
             <div class="project__figure" style="cursor:zoom-in; margin:0;" title="Klikk for å forstørre">
-              <img src="./assets/norvald/eirik-persona.webp" alt="Eirik — persona" style="width:100%; display:block;" loading="eager" fetchpriority="high" decoding="async">
+              <img src="./assets/eirik-persona.webp" alt="Eirik — persona" style="width:100%; display:block;" loading="eager" fetchpriority="high" decoding="async">
             </div>
             <div style="padding-top:1rem; max-width:420px;">
               <h2 style="font-family:'Inter',sans-serif; font-size:clamp(40px,5vw,72px); font-weight:700; color:#6B1E2E; margin:0 0 2rem; line-height:1.05;">Scenario</h2>
@@ -330,22 +356,21 @@
                 <li style="font-size:clamp(17px,1.8vw,22px); line-height:1.7; color:#111;">Eirik skal ha sin første åpningsvakt i morgen, men husker ikke alt fra opplæringen. Han skulle ønske det fantes en enkel måte for ham å lære seg åpningsrutinen hos Norvald.</li>
               </ul>
               <p style="font-size:clamp(16px,1.6vw,20px); line-height:1.65; color:#6B1E2E; font-style:italic; margin:0 0 1rem;">Sjekk ut brukerreisen hans under, for å se hvordan ansattsportalen kan hjelpe han.</p>
-              <svg width="14" height="56" viewBox="0 0 14 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="14" height="56" viewBox="0 0 14 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; margin:0 auto;">
                 <line x1="7" y1="0" x2="7" y2="46" stroke="#111" stroke-width="1.2"/>
                 <polyline points="2,40 7,50 12,40" stroke="#111" stroke-width="1.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
               </svg>
             </div>
           </div>
-          <div class="project__figure" style="cursor:zoom-in; margin:0;" title="Klikk for å forstørre">
-            <img src="./assets/norvald/brukerreise-tn.webp" alt="Brukerreise — Tjønnås & Norvald" style="width:100%; display:block;" loading="lazy" decoding="async">
+          <div style="background:#fff; padding: 0 clamp(2.5rem,5vw,6rem);">
+            <div class="project__figure" style="cursor:zoom-in; margin:0;" title="Klikk for å forstørre">
+              <img src="./assets/norvald/brukerreise-tn.webp" alt="Brukerreise — Tjønnås & Norvald" style="width:100%; display:block;" loading="lazy" decoding="async">
+            </div>
           </div>
-          <div style="position:relative; margin:0; padding-top:6rem; background:#f3edd8;">
-            <img src="./assets/norvald/tjonnmock.webp" alt="Tjønnås & Norvald mockup" style="width:100%; display:block;" loading="lazy" decoding="async">
-            <span style="position:absolute; bottom:20%; left:3%; background:rgba(255,255,255,0.82); backdrop-filter:blur(6px); padding:10px 22px; border-radius:999px; font-size:clamp(11px,1.1vw,15px); font-weight:600; letter-spacing:0.1em; color:#111; white-space:nowrap;">INNLOGGINGSSIDEN</span>
-            <span style="position:absolute; top:24%; left:50%; transform:translateX(-50%); background:rgba(255,255,255,0.82); backdrop-filter:blur(6px); padding:10px 22px; border-radius:999px; font-size:clamp(11px,1.1vw,15px); font-weight:600; letter-spacing:0.1em; color:#111; white-space:nowrap;">KALENDERSIDEN</span>
-            <span style="position:absolute; bottom:16%; right:3%; background:rgba(255,255,255,0.82); backdrop-filter:blur(6px); padding:10px 22px; border-radius:999px; font-size:clamp(11px,1.1vw,15px); font-weight:600; letter-spacing:0.1em; color:#111; white-space:nowrap;">KALENDER&gt;VAKT</span>
+          <div class="tjonnmock-wrap" style="position:relative; margin:0; padding: clamp(5rem,8vw,10rem) clamp(4rem,8vw,10rem) clamp(5rem,8vw,10rem); background:#f3edd8;">
+            <img src="./assets/tjonni.webp" alt="Tjønnås & Norvald mockup" style="width:100%; display:block;" loading="lazy" decoding="async">
           </div>
-        <div class="proj-sections" style="margin-top:0;"><div class="proj-section proj-section--mandel-light"><h2 class="proj-section__heading">Fra innsikt til løsning</h2><div class="proj-steps-grid"><div class="proj-step"><div class="proj-step-num">01</div><h3>Intervju</h3><p>Kvalitativt intervju med daglig leder ga oss innsikt i reell drift – ikke antagelser. Valget om å snakke med leder fremfor ansatte var bevisst: hun hadde overblikk over tvers av alle smertepunkter.</p></div><div class="proj-step"><div class="proj-step-num">02</div><h3>Affinity map</h3><p>Funn gruppert i 6 temaer. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene – det styrte prioriteringene våre i løsningsdesignet.</p></div><div class="proj-step"><div class="proj-step-num">03</div><h3>Personas & scenarier</h3><p>Vi utviklet 5 personas, men valgte to primærbrukere: Kari (erfaren) og Eirik (nyansatt). Disse to representerte de mest ulike behovene – og ble brukt aktivt gjennom hele designprosessen.</p></div><div class="proj-step"><div class="proj-step-num">04</div><h3>Wireframes → Hi-fi</h3><p>Lo-fi skisser ble iterert til hi-fi-prototype i Figma. Vi beholdt et enkelt navigasjonsmønster fremfor avanserte interaksjoner – basert på brukergruppens lave digitale terskel.</p></div></div></div><div class="proj-section proj-section--krem"><h2 class="proj-section__heading">Én samlet ansattportal</h2><p class="proj-section__body">Sitemapet ble utarbeidet etter affinity-mappingen (se prosess), hvor seks tematiske områder utkrystalliserte seg som kjernen i portalen. Strukturen speiler bottom-navigasjonen i prototypen, slik at den mentale modellen brukeren bygger opp gjennom sitemapet matcher den faktiske appen 1:1.</p><img src="./assets/norvald/sitemap_ansattportal.svg" alt="Sitemap for ansattportalen" style="width:100%; max-width:1100px; display:block; margin:2rem auto 0;"></div><div class="proj-section proj-section--mandel-light"><div style="max-width:920px"><p class="proj-section__label">Mitt bidrag</p><h2 class="proj-section__heading">Hva jeg eide i dette prosjektet</h2><p class="proj-section__body">Jeg var med på brukerinnsikten og bidro til intervjuguiden som la grunnlaget for prosessen. Jeg jobbet med utvikling av personas og scenarier – inkludert de to primærbrukerne Kari og Eirik. I designfasen hadde jeg rollen som UI-designer på mobilflaten: fra lo-fi-skisser til ferdig hi-fi-prototype i Figma, med fokus på tilgjengelighet og WCAG-krav.</p></div><div style="margin-top:5rem; width:100%;"><p style="font-size:15px; letter-spacing:0.15em; text-transform:uppercase; color:#1a1a1a; font-weight:400; margin-bottom:1rem;">Figmalink <span style="text-transform:none; font-size:12px; opacity:0.5; letter-spacing:0;">(NB: kan lastes litt sakte)</span></p><iframe style="border:1px solid rgba(0,0,0,0.1); display:block; width:100%; height:600px;" src="https://embed.figma.com/design/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=22-92&embed-host=share" allowfullscreen></iframe></div></div><div class="proj-section proj-section--none"><div class="proj-team-header"><p class="proj-section__label">Gruppe 01</p><h2 class="proj-section__heading">Teamet bak prosjektet</h2></div><div class="proj-team-grid"><div class="proj-team-card"><div class="proj-team-avatar" style="background:#571721">JR</div><h4>Josefine Reichelt Gjertsen</h4><p>Intervjuguide · Personas · UI-design (mobil)</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#ad822e">HB</div><h4>Herman Brenn-Svendsen</h4><p>Sitemap · Prototyper · Wireframes</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#c0523f">TD</div><h4>Tia Linnea Dahl</h4><p>Designmanual · Personas · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#403d26">AJ</div><h4>Axel Bruusgaard Jewett</h4><p>Prototyper · Wireframes · Intervju</p></div></div></div></div>
+        <div class="proj-sections" style="margin-top:0;"><div class="proj-section proj-section--mandel-light"><h2 class="proj-section__heading">Fra innsikt til løsning</h2><div class="proj-steps-grid"><div class="proj-step"><div class="proj-step-num">01</div><h3>Intervju</h3><p>Kvalitativt intervju med daglig leder ga oss innsikt i reell drift – ikke antagelser. Valget om å snakke med leder fremfor ansatte var bevisst: hun hadde overblikk over tvers av alle smertepunkter.</p></div><div class="proj-step"><div class="proj-step-num">02</div><h3>Affinity map</h3><p>Funn gruppert i 6 temaer. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene – det styrte prioriteringene våre i løsningsdesignet.</p></div><div class="proj-step"><div class="proj-step-num">03</div><h3>Personas & scenarier</h3><p>Vi utviklet 5 personas, men valgte to primærbrukere: Kari (erfaren) og Eirik (nyansatt). Disse to representerte de mest ulike behovene – og ble brukt aktivt gjennom hele designprosessen.</p></div><div class="proj-step"><div class="proj-step-num">04</div><h3>Wireframes → Hi-fi</h3><p>Lo-fi skisser ble iterert til hi-fi-prototype i Figma. Vi beholdt et enkelt navigasjonsmønster fremfor avanserte interaksjoner – basert på brukergruppens lave digitale terskel.</p></div></div></div><div class="proj-section proj-section--krem"><h2 class="proj-section__heading">Én samlet ansattportal</h2><p class="proj-section__body">Sitemapet ble utarbeidet etter affinity-mappingen (se prosess), hvor seks tematiske områder utkrystalliserte seg som kjernen i portalen. Strukturen speiler bottom-navigasjonen i prototypen, slik at den mentale modellen brukeren bygger opp gjennom sitemapet matcher den faktiske appen 1:1.</p><img src="./assets/norvald/sitemap_ansattportal.svg" alt="Sitemap for ansattportalen" style="width:100%; max-width:1100px; display:block; margin:2rem auto 0;"></div><div class="proj-section proj-section--mandel-light"><div style="max-width:920px"><p class="proj-section__label">Mitt bidrag</p><h2 class="proj-section__heading">Hva jeg eide i dette prosjektet</h2><p class="proj-section__body">Jeg var med på brukerinnsikten og bidro til intervjuguiden som la grunnlaget for prosessen. Jeg jobbet med utvikling av personas og scenarier – inkludert de to primærbrukerne Kari og Eirik. I designfasen hadde jeg rollen som UI-designer på mobilflaten: fra lo-fi-skisser til ferdig hi-fi-prototype i Figma, med fokus på tilgjengelighet og WCAG-krav.</p></div><div style="margin-top:5rem; width:100%;"><p style="font-size:15px; letter-spacing:0.15em; text-transform:uppercase; color:#1a1a1a; font-weight:400; margin-bottom:1rem;">Figmalink <span style="text-transform:none; font-size:12px; opacity:0.5; letter-spacing:0;">(NB: kan lastes litt sakte)</span></p><iframe title="Figma-prototype — Tjønnås & Norvald ansattportal" style="border:1px solid rgba(0,0,0,0.1); display:block; width:100%; height:600px;" src="https://embed.figma.com/design/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=22-92&embed-host=share" allowfullscreen></iframe></div></div><div class="proj-section proj-section--none"><div class="proj-team-header"><p class="proj-section__label">Gruppe 01</p><h2 class="proj-section__heading">Teamet bak prosjektet</h2></div><div class="proj-team-grid"><div class="proj-team-card"><div class="proj-team-avatar" style="background:#571721">JR</div><h4>Josefine Reichelt Gjertsen</h4><p>Intervjuguide · Personas · UI-design (mobil)</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#ad822e">HB</div><h4>Herman Brenn-Svendsen</h4><p>Sitemap · Prototyper · Wireframes</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#c0523f">TD</div><h4>Tia Linnea Dahl</h4><p>Designmanual · Personas · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#403d26">AJ</div><h4>Axel Bruusgaard Jewett</h4><p>Prototyper · Wireframes · Intervju</p></div></div></div></div>
         
         <div style="padding: 2.5rem clamp(40px, 5vw, 80px); display:flex; justify-content:center;">
           <a class="proj-prosess-btn" href="./tjonnasnorvald-prosess.html">Se prosess & ekstramateriale →</a>

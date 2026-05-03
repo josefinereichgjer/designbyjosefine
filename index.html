@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nb">
+<html lang="no">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -33,7 +33,42 @@
       color: #fff;
       overflow-x: hidden;
       overflow-y: clip;
+      transition: background 0.3s, color 0.3s;
     }
+
+    /* ── Light mode ── */
+    html.light body { background: #f5f4f0; color: #0f0f0f; }
+    html.light .logo { color: rgba(0,0,0,0.75); }
+    html.light .proj-header { background: #f5f4f0; }
+    html.light .proj-header__logo { color: rgba(0,0,0,0.75); }
+    html.light .proj-header__link { color: rgba(0,0,0,0.45); }
+    html.light .proj-header__link:hover { color: #0f0f0f; }
+    html.light .proj-header__link--active { color: #0f0f0f; border-color: rgba(0,0,0,0.3); }
+    html.light .proj-header__toggle span { background: #0f0f0f; }
+    html.light .display-text { color: #0f0f0f; }
+    html.light .btn-primary { background: #0f0f0f; color: #fff; border-color: #0f0f0f; }
+    html.light .btn-primary:hover { background: transparent; color: #0f0f0f; }
+
+    /* ── Theme toggle button ── */
+    .theme-toggle {
+      position: fixed;
+      bottom: 28px;
+      left: 32px;
+      z-index: 200;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.5);
+      font-family: "Avenir Next", "Avenir", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .theme-toggle:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+    html.light .theme-toggle { border-color: rgba(0,0,0,0.18); color: rgba(0,0,0,0.45); }
+    html.light .theme-toggle:hover { border-color: rgba(0,0,0,0.5); color: #0f0f0f; }
 
     /* ── Page shell ── */
     .page {
@@ -170,13 +205,13 @@
     /* me.webp: front, to the left side */
     .float-card--me { width: 62%; left: -6%;  top: 20%; z-index: 10; animation: floatMe 5.2s ease-in-out infinite; }
     /* project cards: compact cluster */
-    .float-card--1  { width: 42%; left:  4%;  top:  8%; z-index: 5;  animation: float1  4.7s ease-in-out infinite -1.3s; }
-    .float-card--2  { width: 38%; left: 52%;  top:  8%; z-index: 4;  animation: float2  6.0s ease-in-out infinite -2.6s; }
-    .float-card--3  { width: 42%; left:  2%;  top: 60%; z-index: 3;  animation: float3  5.5s ease-in-out infinite -0.7s; }
-    .float-card--4  { width: 36%; left: 48%;  top: 60%; z-index: 2;  animation: float4  4.3s ease-in-out infinite -3.8s; }
-    .float-card--5  { width: 38%; left:  6%;  top: 88%; z-index: 1;  animation: float5  5.8s ease-in-out infinite -1.9s; }
-    .float-card--6  { width: 38%; left: 54%;  top: 76%; z-index: 2;  animation: float6  5.1s ease-in-out infinite -4.4s; }
-    .float-card--7  { width: 36%; left: 60%;  top: 34%; z-index: 3;  animation: float7  4.9s ease-in-out infinite -2.2s; }
+    .float-card--1  { width: 40%; left:  2%;  top:  2%; z-index: 5;  animation: float1  4.7s ease-in-out infinite -1.3s; }
+    .float-card--2  { width: 36%; left: 52%;  top:  0%; z-index: 4;  animation: float2  6.0s ease-in-out infinite -2.6s; }
+    .float-card--3  { width: 40%; left:  0%;  top: 46%; z-index: 3;  animation: float3  5.5s ease-in-out infinite -0.7s; }
+    .float-card--4  { width: 34%; left: 48%;  top: 44%; z-index: 2;  animation: float4  4.3s ease-in-out infinite -3.8s; }
+    .float-card--5  { width: 36%; left:  6%;  top: 70%; z-index: 1;  animation: float5  5.8s ease-in-out infinite -1.9s; }
+    .float-card--6  { width: 36%; left: 52%;  top: 62%; z-index: 2;  animation: float6  5.1s ease-in-out infinite -4.4s; }
+    .float-card--7  { width: 34%; left: 60%;  top: 26%; z-index: 3;  animation: float7  4.9s ease-in-out infinite -2.2s; }
 
     .float-card { cursor: pointer; }
 
@@ -285,13 +320,13 @@
 
       /* Photo cluster */
       .float-card--me { width: 62%; left: -6%;  top: 20%; }
-      .float-card--1  { width: 42%; left:  4%;  top:  8%; }
-      .float-card--2  { width: 38%; left: 52%;  top:  8%; }
-      .float-card--3  { width: 42%; left:  2%;  top: 60%; }
-      .float-card--4  { width: 36%; left: 48%;  top: 60%; }
-      .float-card--5  { width: 38%; left:  6%;  top: 88%; }
-      .float-card--6  { width: 38%; left: 54%;  top: 76%; }
-      .float-card--7  { width: 36%; left: 60%;  top: 34%; }
+      .float-card--1  { width: 40%; left:  2%;  top:  2%; }
+      .float-card--2  { width: 36%; left: 52%;  top:  0%; }
+      .float-card--3  { width: 40%; left:  0%;  top: 46%; }
+      .float-card--4  { width: 34%; left: 48%;  top: 44%; }
+      .float-card--5  { width: 36%; left:  6%;  top: 70%; }
+      .float-card--6  { width: 36%; left: 52%;  top: 62%; }
+      .float-card--7  { width: 34%; left: 60%;  top: 26%; }
 
       /* Scale chrome elements that feel tiny at this viewport */
       .logo { font-size: 14px; }
@@ -345,22 +380,22 @@
           <img src="./assets/me.webp" alt="Josefine Gjertsen" loading="eager" decoding="async">
         </a>
         <a class="float-card float-card--1" href="./tidsskrift.html">
-          <img src="./assets/blaa.webp" alt="Tidsskrift" loading="eager" decoding="async">
+          <img src="./assets/krit1.webp" alt="Tidsskrift" loading="eager" decoding="async">
         </a>
         <a class="float-card float-card--2" href="./flerkanalspublisering.html">
           <img src="./assets/brosyre-ute-srh.webp" alt="Flerkanalspublisering" loading="eager" decoding="async">
         </a>
         <a class="float-card float-card--3" href="./ansatts-portal.html">
-          <img src="./assets/norvald-iphone.webp" alt="Tjønnås og Norvald" loading="eager" decoding="async">
+          <img src="./assets/norvald/norvald.webp" alt="Tjønnås og Norvald" loading="eager" decoding="async">
         </a>
         <a class="float-card float-card--4" href="./bokomslag.html">
-          <img src="./assets/baby-tote.webp" alt="Bokomslag" loading="eager" decoding="async">
+          <img src="./assets/blaa.webp" alt="Bokomslag" loading="eager" decoding="async">
         </a>
         <a class="float-card float-card--5" href="./we-visuell-profil.html">
-          <img src="./assets/we-banner.webp" alt="WE Visuell profil" loading="lazy" decoding="async">
+          <img src="./assets/laptop-mockup.webp" alt="WE Visuell profil" loading="lazy" decoding="async">
         </a>
         <a class="float-card float-card--6" href="./emanuel-viegeland.html">
-          <img src="./assets/viegeland.webp" alt="Emanuel Viegeland nettside" loading="lazy" decoding="async">
+          <img src="./assets/norvald/homepage-em.webp" alt="Emanuel Viegeland nettside" loading="lazy" decoding="async">
         </a>
         <a class="float-card float-card--7" href="./reina-fruktgard.html">
           <img src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async">
@@ -372,7 +407,25 @@
 
   </div>
 
+<button class="theme-toggle" id="themeToggle" aria-label="Bytt tema">○ Lys</button>
+
 <script>
+  var html = document.documentElement;
+  var themeBtn = document.getElementById('themeToggle');
+
+  function applyTheme(light) {
+    html.classList.toggle('light', light);
+    themeBtn.textContent = light ? '● Mørk' : '○ Lys';
+  }
+
+  themeBtn.addEventListener('click', function() {
+    var isLight = !html.classList.contains('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    applyTheme(isLight);
+  });
+
+  if (localStorage.getItem('theme') === 'light') applyTheme(true);
+
   var header = document.getElementById('projHeader');
   var toggle = document.getElementById('projToggle');
   toggle.addEventListener('click', function() {

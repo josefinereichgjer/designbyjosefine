@@ -6,7 +6,7 @@ window.PROJECTS = [
     subtitle: "UX design",
     year: "2026",
     tags: ["UX"],
-    cover: "./assets/norvald/norvald.webp",
+    cover: "./assets/herotjonn.webp",
     images: ["./assets/tjonnipadiphone.webp"],
     noSlideshow: true,
     introBorder: true,
@@ -288,7 +288,7 @@ window.PROJECTS = [
     year: "2026",
     tags: ["Strategisk design"],
     cover: "./assets/laptop-mockup.webp",
-    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp", "./assets/newicon.webp"],
+    images: ["./assets/doorskilt.webp", "./assets/storefront.webp", "./assets/skjema.webp"],
   },
   {
     id: "flerkanalspublisering",
@@ -307,7 +307,6 @@ window.PROJECTS = [
         items: [
           { src: "./assets/bak.webp",            caption: "Brosjyre – bakside",    cropX: 1.4 },
           { src: "./assets/foran.webp",          caption: "Brosjyre – forside",    cropX: 1.4 },
-          { src: "./assets/plakat_mockup.webp",  caption: "Plakat i A2-format" },
           { src: "./assets/srhbanner_mockup.webp", caption: "Roll-up banner" },
         ]
       },
@@ -315,8 +314,6 @@ window.PROJECTS = [
         heading: "Digitale flater",
         cover: { src: "./assets/srhvideo.mp4", caption: "Tilhørende nettside", captionLink: "./srh-open-day-3/index.html", video: true, autoplay: true },
         items: [
-          { src: "./assets/facebook.webp",       caption: "Facebook event cover" },
-          { src: "./assets/powerpointmal.webp",  caption: "PowerPoint-mal" },
         ]
       },
     ],
