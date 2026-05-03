@@ -283,6 +283,10 @@
       }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
       document.querySelectorAll('.masonry .card').forEach(function (c) { obs.observe(c); });
 
+      function showAllCards() { document.querySelectorAll('.masonry .card').forEach(function(c) { c.classList.add('card--visible'); }); }
+      setTimeout(showAllCards, 0);
+      window.addEventListener('beforeprint', showAllCards);
+
       document.querySelectorAll('img.card__img').forEach(function (img) {
         if (img.complete) return;
         img.classList.add('img--loading');

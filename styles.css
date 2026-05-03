@@ -247,6 +247,7 @@ a:hover{opacity:.75}
 }
 @media print {
   .reveal { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+  .masonry .card { visibility: visible !important; transform: none !important; }
 }
 
 /* Scroll-reveal — opacity intentionally NOT animated to avoid WCAG partial-opacity issues */
