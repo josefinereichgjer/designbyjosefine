@@ -599,6 +599,7 @@
       revealObserver.observe(el);
     });
 
+    setTimeout(function() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); }); }, 3000);
     window.addEventListener('beforeprint', function() {
       document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
     });
