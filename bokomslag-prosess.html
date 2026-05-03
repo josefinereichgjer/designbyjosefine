@@ -194,6 +194,13 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.mock-row').forEach(function(el) { mockObs.observe(el); });
+
+    function revealAll() {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+      document.querySelectorAll('.mock-row').forEach(function(el) { el.classList.add('in-view'); });
+    }
+    setTimeout(revealAll, 0);
+    window.addEventListener('beforeprint', revealAll);
   </script>
 </body>
 </html>
