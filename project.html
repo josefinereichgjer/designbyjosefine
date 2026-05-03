@@ -599,6 +599,10 @@
       revealObserver.observe(el);
     });
 
+    window.addEventListener('beforeprint', function() {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+    });
+
     // Sidebar mobile toggle
     const toggle = $("#sidebarToggle");
     toggle?.addEventListener("click", () => {

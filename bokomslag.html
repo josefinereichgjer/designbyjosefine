@@ -87,9 +87,9 @@
     <section class="proj-section reveal" id="flate-skisse">
       <span class="proj-section__label">Flate skisse</span>
       <div class="mob-stack" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem;">
-        <img src="assets/rot.webp" alt="Forrådt — flat skisse" loading="lazy" style="width:100%; display:block; border:1px solid #d0c8be;">
-        <img src="assets/bla.webp" alt="Amtmandens Døtre — flat skisse" loading="lazy" style="width:100%; display:block; border:1px solid #d0c8be;">
-        <img src="assets/gul.webp" alt="Jenny — flat skisse" loading="lazy" style="width:100%; display:block; border:1px solid #d0c8be;">
+        <img src="assets/rot.webp" alt="Forrådt — flat skisse" loading="eager" style="width:100%; display:block; border:1px solid #d0c8be;">
+        <img src="assets/bla.webp" alt="Amtmandens Døtre — flat skisse" loading="eager" style="width:100%; display:block; border:1px solid #d0c8be;">
+        <img src="assets/gul.webp" alt="Jenny — flat skisse" loading="eager" style="width:100%; display:block; border:1px solid #d0c8be;">
       </div>
       <div class="mob-stack" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1.25rem;">
         <div style="display:flex; justify-content:center; align-items:center; font-size:22px; color:#000;">↓</div>
@@ -98,9 +98,9 @@
       </div>
       <span class="proj-section__label" style="display:block; margin-top:1.25rem;">Mockups</span>
       <div class="mob-stack" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:1rem;">
-        <img src="assets/red-1.webp" alt="Forrådt — mockup" loading="lazy" style="width:100%; display:block;">
-        <img src="assets/red-3.webp" alt="Amtmandens Døtre — mockup" loading="lazy" style="width:100%; display:block;">
-        <img src="assets/red-2.webp" alt="Jenny — mockup" loading="lazy" style="width:100%; display:block;">
+        <img src="assets/red-1.webp" alt="Forrådt — mockup" loading="eager" style="width:100%; display:block;">
+        <img src="assets/red-3.webp" alt="Amtmandens Døtre — mockup" loading="eager" style="width:100%; display:block;">
+        <img src="assets/red-2.webp" alt="Jenny — mockup" loading="eager" style="width:100%; display:block;">
       </div>
     </section>
 
@@ -114,7 +114,7 @@
           <p style="font-size:17px; line-height:1.78; margin-bottom:1rem;">Deboss-effekten gjør at tittelen trer frem i møte med lys, og fungerer som en subtil visuell parallell til det underliggende i fortellingene. I både <em>Forrådt</em>, <em>Amtmandens Døtre</em> og <em>Jenny</em> tematiseres spenningen mellom ytre rammer og indre erfaringer — følelser, begjær og konflikter som ikke alltid er synlige på overflaten.</p>
           <p style="font-size:17px; line-height:1.78; color:#1a1a1a;">Den rene baksiden understreker bokas objektkarakter og gjør serien mer eksklusiv. Praktisk informasjon er flyttet til en egen side bakerst i boka, slik at omslaget kan fungere mer som et taktilt og visuelt objekt enn som en kommersiell flate.</p>
         </div>
-        <img src="assets/nede.webp" alt="Bokomslag — preging detalj" loading="lazy" style="width:75%; display:block; margin-left:auto;">
+        <img src="assets/nede.webp" alt="Bokomslag — preging detalj" loading="eager" style="width:75%; display:block; margin-left:auto;">
       </div>
     </section>
 
@@ -226,6 +226,9 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
 
+    window.addEventListener('beforeprint', function() {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+    });
   </script>
 </body>
 </html>

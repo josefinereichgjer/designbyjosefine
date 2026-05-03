@@ -108,7 +108,7 @@
         grid.innerHTML = personalProjects.map(p => `
           <a class="card card--visible" href="./${p.id}.html">
             <div class="card__img-wrap">
-              <img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${p.coverPosition ? ` style="object-position:${p.coverPosition}"` : ""}>
+              <img class="card__img" src="${p.cover}" alt="${p.title}" loading="eager" decoding="async"${p.coverPosition ? ` style="object-position:${p.coverPosition}"` : ""}>
             </div>
             <div class="card__caption">
               <p class="card__title">${p.title}</p>

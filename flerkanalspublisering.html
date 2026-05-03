@@ -113,7 +113,7 @@
     <section class="proj-section reveal" id="brosjyre">
       <h2 class="proj-section__heading">Brosjyre</h2>
       <div class="brosyre-slider">
-        <img id="brosyreImg" src="./assets/brosyre-inn-srh.webp" alt="Brosjyre – innside" loading="lazy" decoding="async">
+        <img id="brosyreImg" src="./assets/brosyre-inn-srh.webp" alt="Brosjyre – innside" loading="eager" decoding="async">
         <button class="brosyre-arrow brosyre-arrow--prev" onclick="brosyreNav(-1)" aria-label="Forrige"><svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M8 1L2 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="brosyre-arrow brosyre-arrow--next" onclick="brosyreNav(1)" aria-label="Neste"><svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M2 1L8 8L2 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
@@ -131,7 +131,7 @@
     <section class="proj-section reveal" id="print">
       <h2 class="proj-section__heading">Plakat &amp; banner</h2>
       <div class="brosyre-slider" style="margin-bottom:1.5rem;">
-        <img id="bannerPosterImg" src="./assets/poster-srh.webp" alt="Poster SRH" loading="lazy" decoding="async">
+        <img id="bannerPosterImg" src="./assets/poster-srh.webp" alt="Poster SRH" loading="eager" decoding="async">
         <button class="brosyre-arrow brosyre-arrow--prev" onclick="bannerPosterNav(-1)" aria-label="Forrige"><svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M8 1L2 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="brosyre-arrow brosyre-arrow--next" onclick="bannerPosterNav(1)" aria-label="Neste"><svg width="8" height="13" viewBox="0 0 10 16" fill="none"><path d="M2 1L8 8L2 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
@@ -143,10 +143,10 @@
     <section class="proj-section reveal" id="linkedin">
       <h2 class="proj-section__heading">LinkedIn-karusell</h2>
       <div class="linkedin-cols">
-        <img src="./assets/linkedin-post-3x.webp" alt="LinkedIn-karusell – enkeltpost" loading="lazy" decoding="async">
+        <img src="./assets/linkedin-post-3x.webp" alt="LinkedIn-karusell – enkeltpost" loading="eager" decoding="async">
         <div style="flex:1; min-width:0; position:relative;">
           <div id="linkedinPostsScroll" style="overflow-x:auto; -webkit-overflow-scrolling:touch; cursor:grab; width:100%;">
-            <img src="./assets/linkedin-posts.webp" alt="LinkedIn-karusell – oversikt" loading="lazy" decoding="async" style="display:block; height:320px; width:auto; max-width:none;">
+            <img src="./assets/linkedin-posts.webp" alt="LinkedIn-karusell – oversikt" loading="eager" decoding="async" style="display:block; height:320px; width:auto; max-width:none;">
           </div>
           <div style="position:absolute; top:0; right:0; width:80px; height:100%; background:linear-gradient(to right,transparent,rgba(250,248,245,0.97)); pointer-events:none; display:flex; align-items:center; justify-content:flex-end; padding-right:10px;">
             <div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
@@ -165,12 +165,12 @@
       <div class="reklame-cols">
         <div>
           <span class="proj-section__label">Reklamebanner</span>
-          <img src="./assets/reklamebanner.webp" alt="Reklamebanner – Finn.no" loading="lazy" decoding="async" style="display:block; width:100%; height:auto; margin-bottom:0.75rem;">
+          <img src="./assets/reklamebanner.webp" alt="Reklamebanner – Finn.no" loading="eager" decoding="async" style="display:block; width:100%; height:auto; margin-bottom:0.75rem;">
           <p style="font-size:15px; line-height:1.7; color:#1a1a1a;">Reklamebanneret er ganske enkelt og direkte, med fokus på å kommunisere arrangementet raskt uten for mye distraksjon.</p>
         </div>
         <div>
           <span class="proj-section__label">Facebook event</span>
-          <img src="./assets/facebookcover.webp" alt="Facebook cover" loading="lazy" decoding="async" style="display:block; width:100%; height:auto; margin-bottom:0.75rem;">
+          <img src="./assets/facebookcover.webp" alt="Facebook cover" loading="eager" decoding="async" style="display:block; width:100%; height:auto; margin-bottom:0.75rem;">
           <p style="font-size:15px; line-height:1.7; color:#1a1a1a;">Facebook-eventet er holdt enkelt, med tydelig informasjon om arrangementet.</p>
         </div>
       </div>
@@ -283,6 +283,10 @@
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+    window.addEventListener('beforeprint', function() {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+    });
 
     // Cross-fade helper
     function setupCrossfade(baseId) {

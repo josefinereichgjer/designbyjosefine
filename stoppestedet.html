@@ -192,9 +192,9 @@
       <p style="font-size:17px; line-height:1.78; max-width:820px; margin-bottom:0.75rem;"><strong>T-skjorte for ansatte</strong> — viderefører merkevarens uttrykk og gjør det enkelt å identifisere hvem som jobber der.</p>
       <p style="font-size:17px; line-height:1.78; max-width:820px; margin-bottom:0;">I det endelige uttrykket har jeg brukt gjentakelse av farger, former og enkelte bilder for å skape tydelig gjenkjennelighet på tvers av nettside, trykksaker og sosiale flater.</p>
       <div class="stopp-merkevare-grid mob-stack" style="display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; margin-top:2rem; align-items:end;">
-        <img src="./stopp/assets/iphone.webp"        alt="Instagram mock"               loading="lazy" style="width:100%; display:block;">
-        <img src="./stopp/assets/stoppi-banner.webp"  alt="Stoppestedet roll-up banner" loading="lazy" style="width:100%; display:block;">
-        <img src="./stopp/assets/stoppis-shirt.webp" alt="Stoppestedet t-skjorte"       loading="lazy" style="width:130%; display:block; margin-left:-15%;">
+        <img src="./stopp/assets/iphone.webp"        alt="Instagram mock"               loading="eager" style="width:100%; display:block;">
+        <img src="./stopp/assets/stoppi-banner.webp"  alt="Stoppestedet roll-up banner" loading="eager" style="width:100%; display:block;">
+        <img src="./stopp/assets/stoppis-shirt.webp" alt="Stoppestedet t-skjorte"       loading="eager" style="width:130%; display:block; margin-left:-15%;">
       </div>
     </section>
 
@@ -210,18 +210,18 @@
             <div>
               <span class="ps-logo-dd__col-label ps-logo-dd__col-label--do">✓ Gjør dette</span>
               <div class="ps-logo-dd__grid">
-                <img class="ps-logo-dd__img" src="./stopp/assets/do1@3x.webp" alt="Do 1" loading="lazy">
-                <img class="ps-logo-dd__img" src="./stopp/assets/do2@3x.webp" alt="Do 2" loading="lazy">
-                <img class="ps-logo-dd__img" src="./stopp/assets/do3@3x.webp" alt="Do 3" loading="lazy">
-                <img class="ps-logo-dd__img" src="./stopp/assets/do4@3x.webp" alt="Do 4" loading="lazy">
+                <img class="ps-logo-dd__img" src="./stopp/assets/do1@3x.webp" alt="Do 1" loading="eager">
+                <img class="ps-logo-dd__img" src="./stopp/assets/do2@3x.webp" alt="Do 2" loading="eager">
+                <img class="ps-logo-dd__img" src="./stopp/assets/do3@3x.webp" alt="Do 3" loading="eager">
+                <img class="ps-logo-dd__img" src="./stopp/assets/do4@3x.webp" alt="Do 4" loading="eager">
               </div>
             </div>
             <div>
               <span class="ps-logo-dd__col-label ps-logo-dd__col-label--dont">✕ Ikke gjør dette</span>
               <div class="ps-logo-dd__grid">
-                <img class="ps-logo-dd__img" src="./stopp/assets/dont1@3x.webp" alt="Don't 1" loading="lazy">
-                <img class="ps-logo-dd__img" src="./stopp/assets/dont2@3x.webp" alt="Don't 2" loading="lazy">
-                <img class="ps-logo-dd__img" src="./stopp/assets/dont3@3x.webp" alt="Don't 3" loading="lazy">
+                <img class="ps-logo-dd__img" src="./stopp/assets/dont1@3x.webp" alt="Don't 1" loading="eager">
+                <img class="ps-logo-dd__img" src="./stopp/assets/dont2@3x.webp" alt="Don't 2" loading="eager">
+                <img class="ps-logo-dd__img" src="./stopp/assets/dont3@3x.webp" alt="Don't 3" loading="eager">
               </div>
             </div>
           </div>
@@ -321,7 +321,7 @@
     <div class="ps-modal">
       <button class="ps-modal__close" id="logoutviklingClose">Lukk ×</button>
       <h2 class="ps-modal-h">Logoutvikling</h2>
-      <img src="./stopp/assets/logoutviklingstoppi.webp" alt="Logoutvikling" style="width:100%;display:block;margin-bottom:28px" loading="lazy">
+      <img src="./stopp/assets/logoutviklingstoppi.webp" alt="Logoutvikling" style="width:100%;display:block;margin-bottom:28px" loading="eager">
       <p class="ps-modal-p">Logoen er inspirert av makerspace-idéen, der enkle former fungerer som byggeklosser som kan settes sammen til noe større. De ulike elementene symboliserer materialer, verktøy og idéer som kombineres i kreative prosesser. Fargene gir et lekent og inkluderende uttrykk, mens det stramme rutenettet skaper struktur og balanse.</p>
     </div>
   </div>
@@ -346,6 +346,10 @@
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+    window.addEventListener('beforeprint', function() {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+    });
 
     // Collage animation
     (function() {
