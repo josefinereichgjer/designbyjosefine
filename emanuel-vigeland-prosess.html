@@ -250,6 +250,10 @@
       });
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
+
+    window.addEventListener('beforeprint', function() {
+      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
+    });
   </script>
 </body>
 </html>
