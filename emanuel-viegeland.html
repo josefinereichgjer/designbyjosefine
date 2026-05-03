@@ -60,6 +60,9 @@
     .ev-prosess__num { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: #bbb; display: block; margin-bottom: 8px; }
     .ev-prosess__label { font-size: 13px; font-weight: 600; color: #111; margin: 0; line-height: 1.4; }
 
+    /* Team grid — 5 columns */
+    .ev-team-grid { grid-template-columns: repeat(5, 1fr) !important; }
+
     /* Prototype intro row */
     .ev-proto-intro {
       display: flex;
@@ -105,6 +108,7 @@
       .tov-scales { max-width: 100% !important; }
       .tov-intro { font-size: 16px !important; }
       .tov-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+      .ev-team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 28px !important; }
       .ev-proto-intro { flex-direction: column !important; gap: 20px !important; max-width: 100% !important; }
       .ev-proto-intro__qr { align-self: flex-start; }
       .ev-proto-row { flex-direction: column !important; gap: 28px !important; }
@@ -362,6 +366,36 @@
         <div>
           <h3 style="font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:#C9A84C; font-weight:500; margin-bottom:1.25rem;">Det som ikke fungerte helt</h3>
           <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">Tids- og ressursbegrensninger gjorde at vi ikke fikk gått like dypt i prosessen som vi ønsket – særlig på tilgjengelighetssiden, der den mørke visuelle stilen krever flere runder med kontrast- og lesbarhetstesting enn vi rakk. Vi testet også på en relativt smal brukergruppe, så funnene representerer ikke nødvendigvis alle potensielle besøkende. Flere runder med testing på et bredere utvalg ville gitt oss sterkere og mer pålitelige funn.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TEAM -->
+    <div style="background:#0d0d0d; padding: clamp(48px,7vw,80px) clamp(20px,4vw,60px);">
+      <div class="proj-team-header">
+        <p class="proj-section__label" style="color:#C9A84C;">Gruppe 06</p>
+        <h2 class="proj-section__heading" style="color:#fff;">Teamet bak prosjektet</h2>
+      </div>
+      <div class="proj-team-grid ev-team-grid">
+        <div class="proj-team-card">
+          <div class="proj-team-avatar" style="background:#2DAABD; color:#fff; width:52px; height:52px; font-size:16px;">LV</div>
+          <h4 style="color:#fff;">Lance Kristian Vargas Venegas</h4>
+        </div>
+        <div class="proj-team-card">
+          <div class="proj-team-avatar" style="background:#C47800; color:#fff; width:52px; height:52px; font-size:16px;">AJ</div>
+          <h4 style="color:#fff;">Axel Bruusgaard Jewett</h4>
+        </div>
+        <div class="proj-team-card">
+          <div class="proj-team-avatar" style="background:#790003; color:#fff; width:52px; height:52px; font-size:16px;">TD</div>
+          <h4 style="color:#fff;">Tia Linnea Dahl</h4>
+        </div>
+        <div class="proj-team-card">
+          <div class="proj-team-avatar" style="background:#FEE093; color:#1a1a1a; width:52px; height:52px; font-size:16px;">HB</div>
+          <h4 style="color:#fff;">Herman Brenn-Svendsen</h4>
+        </div>
+        <div class="proj-team-card">
+          <div class="proj-team-avatar" style="background:#A63F00; color:#fff; width:52px; height:52px; font-size:16px;">JR</div>
+          <h4 style="color:#fff;">Josefine Reichelt Gjertsen</h4>
         </div>
       </div>
     </div>
