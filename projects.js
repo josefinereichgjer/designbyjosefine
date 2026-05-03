@@ -1,5 +1,17 @@
 window.PROJECTS = [
   {
+    id: "emanuel-viegeland",
+    title: "Emanuel Viegeland nettside",
+    subtitle: "UX + redesign",
+    year: "2026",
+    tags: ["Redesign/UX"],
+    cover: "./assets/norvald/homepage-em.webp",
+    images: ["./assets/viegeland.webp"],
+    noSlideshow: true,
+    comingSoon: false,
+    skipBuild: true,
+  },
+  {
     id: "ansatts-portal",
     skipBuild: true,
     title: "Tjønnås og Norvald",
@@ -124,18 +136,6 @@ window.PROJECTS = [
     ]
   },
   {
-    id: "emanuel-viegeland",
-    title: "Emanuel Viegeland nettside",
-    subtitle: "UX + redesign",
-    year: "2026",
-    tags: ["Redesign/UX"],
-    cover: "./assets/norvald/homepage-em.webp",
-    images: ["./assets/viegeland.webp"],
-    noSlideshow: true,
-    comingSoon: false,
-    skipBuild: true,
-  },
-  {
     id: "tidsskrift",
     title: "Tidsskrift",
     subtitle: "Redaksjonell design",
@@ -143,34 +143,6 @@ window.PROJECTS = [
     tags: ["Redaksjonell"],
     cover: "./assets/krit1.webp",
     skipBuild: true,
-  },
-  {
-    id: "bokomslag",
-    skipBuild: true,
-    title: "Bokomslag",
-    subtitle: "Redaksjonell design",
-    year: "2026",
-    tags: ["Redaksjonell"],
-    cover: "./assets/blaa.webp",
-    coverVideo: "./assets/bokserie-film.mp4",
-    coverFilter: "brightness(1.2)",
-    noSlideshow: true,
-    gallery: [
-      { src: "./assets/red-1.webp", wide: true },
-      { src: "./assets/red-2.webp", wide: true },
-      { src: "./assets/red-3.webp", wide: true },
-      { src: "./assets/nede.webp", wide: true },
-      { type: "heading", text: "Prototyper" },
-      { src: "./assets/rot.webp", wide: true },
-      { src: "./assets/gul.webp", wide: true },
-      { src: "./assets/bla.webp", wide: true },
-      { type: "palette", wide: true, colors: [
-        { name: "Forrådt",           hex: "#ce2e27", color: "rgba(206, 46, 39, 0.62)",  description: "Opasitet 62%" },
-        { name: "Jenny",             hex: "#ffeea8", color: "rgba(255, 238, 168, 0.62)", description: "Opasitet 62%" },
-        { name: "Amtmandens Døtre",  hex: "#4ab3e1", color: "rgba(74, 179, 225, 0.25)",  description: "Opasitet 25%" }
-      ]}
-    ],
-    processImages: ["./assets/prosess1.webp", "./assets/prosess2.webp"]
   },
   {
     id: "reina-fruktgard",
@@ -279,6 +251,34 @@ window.PROJECTS = [
     intro: "Stoppestedet er en fiktiv møteplass for ungdom i Oslo sentrum. Prosjektet omfatter utviklingen av en helhetlig visuell identitet, inkludert logo, fargepalett og profilering på fysiske flater, samt design og utvikling av en tilhørende nettside.\n\nJeg valgte dette prosjektet for å kombinere grafisk design med mine kodekunnskaper. Samtidig fikk jeg noe støtte fra Claude Code, som bidro til å effektivisere deler av utviklingsprosessen og gjøre det enklere å realisere løsningene i praksis.",
     link: { label: "Åpne nettsiden", src: "./stoppestedet/index.html" },
     processText: "<strong>Primærmålgruppe</strong>\nUngdom mellom 13 og 25 år i og rundt Oslo sentrum, som ønsker et uformelt, inkluderende og lett tilgjengelig sted å møtes. Tilbudet er samtidig åpent for alle som ønsker å være en del av miljøet.\n\n<strong>Sekundærmålgruppe</strong>\nForeldre, ungdomsarbeidere og frivillige organisasjoner som ønsker et trygt, synlig og inkluderende tilbud for unge i byen."
+  },
+  {
+    id: "bokomslag",
+    skipBuild: true,
+    title: "Bokomslag",
+    subtitle: "Redaksjonell design",
+    year: "2026",
+    tags: ["Redaksjonell"],
+    cover: "./assets/blaa.webp",
+    coverVideo: "./assets/bokserie-film.mp4",
+    coverFilter: "brightness(1.2)",
+    noSlideshow: true,
+    gallery: [
+      { src: "./assets/red-1.webp", wide: true },
+      { src: "./assets/red-2.webp", wide: true },
+      { src: "./assets/red-3.webp", wide: true },
+      { src: "./assets/nede.webp", wide: true },
+      { type: "heading", text: "Prototyper" },
+      { src: "./assets/rot.webp", wide: true },
+      { src: "./assets/gul.webp", wide: true },
+      { src: "./assets/bla.webp", wide: true },
+      { type: "palette", wide: true, colors: [
+        { name: "Forrådt",           hex: "#ce2e27", color: "rgba(206, 46, 39, 0.62)",  description: "Opasitet 62%" },
+        { name: "Jenny",             hex: "#ffeea8", color: "rgba(255, 238, 168, 0.62)", description: "Opasitet 62%" },
+        { name: "Amtmandens Døtre",  hex: "#4ab3e1", color: "rgba(74, 179, 225, 0.25)",  description: "Opasitet 25%" }
+      ]}
+    ],
+    processImages: ["./assets/prosess1.webp", "./assets/prosess2.webp"]
   },
   {
     id: "we-visuell-profil",
