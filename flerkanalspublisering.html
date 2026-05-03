@@ -37,9 +37,13 @@
 
     .linkedin-cols { display: flex; gap: 2.5rem; align-items: flex-start; }
     .linkedin-cols > img { width: 24%; flex-shrink: 0; display: block; }
+    .li-scroll-hint { display: none; }
     @media (max-width: 700px) {
       .linkedin-cols { flex-direction: column; }
       .linkedin-cols > img { width: 60%; max-width: 240px; margin: 0 auto; }
+      #linkedinPostsScroll { margin: 0 -20px; width: calc(100% + 40px); }
+      #linkedinPostsScroll img { height: 160px !important; }
+      .li-scroll-hint { display: block; font-size: 11px; color: #888; letter-spacing: .08em; text-transform: uppercase; text-align: center; margin-top: 10px; }
     }
 
     /* Reklame two-col */
@@ -155,6 +159,7 @@
             </div>
           </div>
         </div>
+        <p class="li-scroll-hint">← Scroll horisontalt →</p>
       </div>
       <p style="font-size:16px; line-height:1.75; max-width:680px; color:#1a1a1a; margin-top:1.5rem;">Carousel-designet er mer informasjonsbasert, med mindre bruk av bilder og tydelig hvit tekst på SRHs oransje farge. Her er det viktig at budskapet kommer klart frem i en profesjonell kontekst.</p>
     </section>
