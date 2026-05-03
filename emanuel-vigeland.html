@@ -199,7 +199,7 @@
       </div>
       <div class="proj-hero__left" style="padding-top:3.5rem; padding-bottom:3.5rem;">
         <h1 class="proj-hero__title">EMANUEL VIGELAND MUSEUM</h1>
-        <p class="proj-hero__desc">Redesign av nettsiden til Emanuel Vigeland Museum — et mausoleum og museum i Oslo med en nettside fra 2001. Målet var å lage en mobil-first, tilgjengelig løsning som viderefører museets mørke, sanselige atmosfære.</p>
+        <p class="proj-hero__desc">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser, men den digitale tilstedeværelsen formidler lite av den. Den eksisterende nettsiden er bygget på en tabellbasert HTML-struktur uten mobiltilpasning, og innholdet er pakket inn på en måte som gjør det vanskelig å navigere både for vanlige brukere og for skjermlesere. Billettkjøp er outsourcet til LetsReg, og konsertinformasjonen er spredt mellom museets nettside, Facebook, LetsReg og Ticketmaster. Derfor er det å planlegge et besøk noe som krever at brukeren hopper mellom flere kanaler.</p>
         <div class="proj-hero__meta">
           <div class="proj-hero__meta-row">
             <span class="proj-meta-label">Emne</span>
@@ -212,14 +212,6 @@
           <div class="proj-hero__meta-row">
             <span class="proj-meta-label">Dato</span>
             <span class="proj-meta-value">2026</span>
-          </div>
-          <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Min rolle</span>
-            <span class="proj-meta-value">UI-design, prototyping, brukertesting</span>
-          </div>
-          <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Team</span>
-            <span class="proj-meta-value">4 designere</span>
           </div>
         </div>
       </div>
@@ -241,11 +233,19 @@
       </div>
     </article>
 
+    <!-- TONE OF VOICE -->
+    <div style="background:#0b0b0b; padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); display:flex; justify-content:center;">
+      <div style="max-width:600px; width:100%;">
+        <h2 id="tov-heading" class="proj-section__heading" style="color:#fff; margin-bottom:2rem; opacity:0; transition: opacity 2.4s ease;">Tone of Voice</h2>
+        <p id="tov-text" style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0; opacity:0; transition: opacity 2.4s ease;">Emanuel Vigeland Museum skal høres ut som det føles: stille, intenst og varig. Stemmen er rolig, presis og poetisk, uten å overtale. Den inviterer inn, gir rom for ettertanke og lar mørket, stillheten og verkene tale for seg selv.</p>
+      </div>
+    </div>
+
     <!-- SITEMAP -->
     <div style="background:#0b0b0b; padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px);">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Informasjonsarkitektur</h2>
       <div class="ev-sitemap-wrap">
-        <img src="./assets/norvald/sitemap_emanuel_vigeland_full.svg" alt="Sitemap — Emanuel Vigeland Museum" style="width:100%; max-width:1100px; display:block; margin:0 auto;" loading="lazy" class="ev-zoomable">
+        <div id="ev-sitemap-container" style="width:100%; max-width:1100px; margin:0 auto;"></div>
       </div>
       <p class="ev-sitemap-hint">← Scroll horisontalt for å se hele →</p>
     </div>
@@ -277,9 +277,9 @@
     <!-- STRATEGISKE VALG -->
     <div style="background:#111; padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px);">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Strategiske valg</h2>
-      <div style="max-width:780px;">
-        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0 0 1.5rem;">I kartleggingen pekte tre funn seg ut: konsertinformasjon lå spredt mellom nettsiden og Facebook-arrangementer, slik at den enkleste oppgaven — finne en konsert og kjøpe billett — krevde at brukeren hoppet mellom flater. Mobilopplevelsen var i praksis fraværende, til tross for at størstedelen av trafikken til kulturinstitusjoner i Oslo kommer via mobil. Og den mørke, sanselige stemningen som definerer det fysiske besøket forsvant helt på skjerm; nettsiden føltes som en informasjonsside, ikke som en forlengelse av museet.</p>
-        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">Disse funnene formet tre kjerneoppgaver brukeren skulle kunne løse uten friksjon: utforske et hovedverk digitalt (Vita), planlegge og booke et arrangementsbesøk, og kjøpe billett til en konsert fra mobil. Bredere innhold som pressearkiv og nyhetsbrev ble bevisst lagt til side. Målet var en strammere førsteversjon som løser det essensielle godt, fremfor en større struktur som løser alt halvveis.</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10rem; max-width:1400px;">
+        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">I kartleggingen pekte tre funn seg ut. Konsertinformasjonen var spredt mellom nettsiden og Facebook-arrangementer, noe som gjorde det unødvendig tungvint å finne og kjøpe billett til en konsert. Mobilopplevelsen var svak, selv om mange brukere møter kulturtilbud via mobil. Samtidig forsvant noe av den mørke, sanselige stemningen fra det fysiske besøket; nettsiden opplevdes mer som informasjon enn som en digital forlengelse av museet.</p>
+        <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.85; color:#aaa; margin:0;">Funnene ble oversatt til tre kjerneoppgaver brukeren skulle kunne løse uten friksjon: utforske et hovedverk digitalt, planlegge og booke et arrangementsbesøk, og kjøpe konsertbillett fra mobil. Mer perifert innhold, som pressearkiv og nyhetsbrev, ble bevisst prioritert ned. Målet var en strammere førsteversjon som løser det viktigste godt, heller enn en omfattende struktur som forsøker å dekke alt på én gang.</p>
       </div>
     </div>
 
@@ -307,10 +307,10 @@
     </div>
     <!-- PROTOTYPE -->
     <section id="prototype" style="padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); background:#0b0b0b;">
-      <h2 class="proj-section__heading" style="color:#fff; margin-bottom:0.5rem;">Interaktiv prototype</h2>
+      <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Interaktiv prototype</h2>
       <div class="ev-proto-intro">
         <div class="ev-proto-intro__text">
-          <p style="font-size:16px; color:#888; line-height:1.7; margin:0;">Test selve flyten direkte i Figma. Mobilprototypen er best opplevd på en faktisk telefon — skann QR-koden til høyre. Designsystemet viser komponenter, fargetokens og typografi brukt på tvers av alle flater.</p>
+          <p style="font-size:16px; color:#888; line-height:1.7; margin:0;">Test selve flyten direkte i Figma! Mobilprototypen er best opplevd på en faktisk telefo, så skann QR-koden til høyre! Designsystemet  til høyre viser komponenter, fargetokens og typografi brukt på tvers av alle flater.</p>
         </div>
         <div class="ev-proto-intro__qr">
           <p style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#999; margin:0 0 10px;">Skann for å teste på mobil</p>
@@ -446,5 +446,55 @@ var header = document.getElementById('projHeader');
       }
     });
   </script>
+  <script>
+    var sitemapContainer = document.getElementById('ev-sitemap-container');
+    fetch('./assets/norvald/sitemap_emanuel_vigeland_full.svg')
+      .then(function(r) { return r.text(); })
+      .then(function(svg) {
+        sitemapContainer.innerHTML = svg;
+        var svgEl = sitemapContainer.querySelector('svg');
+        var sitemapObs = new IntersectionObserver(function(entries) {
+          if (entries[0].isIntersecting) {
+            setTimeout(function() { svgEl.classList.add('ev-lit'); }, 300);
+            sitemapObs.disconnect();
+          }
+        }, { threshold: 0.3 });
+        sitemapObs.observe(svgEl);
+      });
+  </script>
+  <script>
+    var tovHeading = document.getElementById('tov-heading');
+    var tovEl = document.getElementById('tov-text');
+    var tovObs = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) {
+        setTimeout(function() { tovHeading.style.opacity = '1'; }, 200);
+        setTimeout(function() { tovEl.style.opacity = '1'; }, 600);
+        tovObs.disconnect();
+      }
+    }, { threshold: 0.3 });
+    tovObs.observe(tovHeading);
+  </script>
+  <style>
+    .site-footer { background:#f0f0ee; padding: 48px clamp(20px,5vw,80px); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; }
+    .site-footer__copy { font-family:'Avenir Next','Avenir',sans-serif; font-size:13px; color:#444; letter-spacing:0.04em; }
+    .site-footer__links { display:flex; gap:28px; align-items:center; }
+    .site-footer__link { color:#444; transition:color 0.2s; display:flex; }
+    .site-footer__link:hover,
+    .site-footer__link:focus { color:#111; outline: 2px solid #111; outline-offset: 3px; }
+  </style>
+  <footer class="site-footer">
+    <span class="site-footer__copy">&copy; 2026 Josefine Reichelt Gjertsen</span>
+    <div class="site-footer__links">
+      <a href="mailto:josefinegjertsen@gmail.com" aria-label="E-post" class="site-footer__link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/josefine-reichelt-gjertsen-34ab8926b/" target="_blank" rel="noopener" aria-label="LinkedIn" class="site-footer__link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M12 10v7m0-5a3 3 0 0 1 6 0v5"/></svg>
+      </a>
+      <a href="https://www.facebook.com/josefine.gjertsen" target="_blank" rel="noopener" aria-label="Facebook" class="site-footer__link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+  </footer>
 </body>
 </html>
