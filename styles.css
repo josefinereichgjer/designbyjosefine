@@ -2696,6 +2696,7 @@ a:hover{opacity:.75}
   color: #1a1a1a;
 }
 .proj-prosess-btn {
+  display: inline-block;
   font-size: 13px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
