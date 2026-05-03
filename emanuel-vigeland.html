@@ -127,8 +127,10 @@
     /* Brukerreise images: dark mockups on dark background — add border to frame them */
     .ev-brukerreise-img { box-shadow: 0 0 0 1px rgba(201,168,76,0.25), 0 8px 40px rgba(0,0,0,0.5); }
 
-    /* Logo images: dark-on-transparent — show on white background */
-    .ev-logo-row img { background: #fff; padding: 10px; }
+    /* Logos (dark-on-transparent): invert to white for dark background */
+    .ev-logo-final { filter: invert(1); }
+    /* Sketch: very subtle warm frame, no white box */
+    .ev-logo-sketch { background: rgba(255,255,255,0.05); padding: 12px; border: 1px solid rgba(201,168,76,0.2); }
 
     /* ── Lightbox ── */
     .ev-zoomable { cursor: zoom-in; }
@@ -288,17 +290,17 @@
         <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#888; margin:0;">Den originale nettsiden brukte en av Emanuel Vigelands egne skisser som visuelt blikkfang – men i full størrelse fungerte den dårlig som identitetsbærer på tvers av flater. Vi destillerte det samme håndtegnede uttrykket ned til en logo som beholder kunstnerens karakteristiske strek, men som er gjenkjennelig og lesbar i alle størrelser.</p>
         <div class="ev-logo-row" style="display:flex; gap:clamp(16px,3vw,40px); align-items:flex-end; flex-wrap:wrap;">
           <div style="text-align:center;">
-            <img src="./assets/norvald/gammel-view.webp" alt="Gammel skisse" style="height:180px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable">
+            <img src="./assets/norvald/gammel-view.webp" alt="Gammel skisse" style="height:180px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable ev-logo-sketch">
             <span style="font-size:11px; color:#888; text-transform:uppercase; letter-spacing:.08em;">Original skisse</span>
           </div>
           <span class="ev-arrow-right" style="font-size:28px; color:#fff; flex-shrink:0; padding-bottom:28px;">→</span>
           <span class="ev-arrow-down" style="font-size:28px; color:#fff; display:none;">↓</span>
           <div style="text-align:center;">
-            <img src="./assets/norvald/ny-desktop.webp" alt="Logo for desktop" style="height:80px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable">
+            <img src="./assets/norvald/ny-desktop.webp" alt="Logo for desktop" style="height:80px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable ev-logo-final">
             <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Desktop</span>
           </div>
           <div style="text-align:center;">
-            <img src="./assets/norvald/ny-mobil.webp" alt="Logo for mobil" style="height:56px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable">
+            <img src="./assets/norvald/ny-mobil.webp" alt="Logo for mobil" style="height:56px; width:auto; display:block; margin:0 auto 10px;" loading="lazy" class="ev-zoomable ev-logo-final">
             <span style="font-size:11px; color:#C9A84C; text-transform:uppercase; letter-spacing:.08em;">Mobil</span>
           </div>
         </div>
