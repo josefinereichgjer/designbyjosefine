@@ -2296,7 +2296,7 @@ a:hover{opacity:.75}
   /* About: stack to single column */
   .about-layout { grid-template-columns: 1fr; gap: 32px; }
   .about-photo-col { align-items: center; }
-  .about-photo { width: 60%; max-width: 260px; height: auto; aspect-ratio: 3 / 4; }
+  .about-photo { width: 85%; max-width: 380px; height: auto; min-height: 0; aspect-ratio: 1 / 1; object-position: center 15%; }
   .cv-link { margin-top: 32px; display: inline-block; }
   .tool-icon-img { width: 36px; height: 36px; }
   .tools-track { gap: 12px; }
@@ -2495,7 +2495,7 @@ a:hover{opacity:.75}
 /* Mobile: single column */
 @media (max-width: 560px) {
   .slideshow { aspect-ratio: 4 / 3; border-radius: 0; }
-  .about-photo { width: 70%; max-width: 220px; }
+  .about-photo { width: 90%; max-width: 340px; }
   .bg__heading { font-size: 14px; }
   .bg__body { font-size: 14px; line-height: 1.6; }
   .proj-section { padding: 32px 20px; }
