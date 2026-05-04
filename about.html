@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="format-detection" content="telephone=no">
+  <title>Om meg — Josefine Reichelt Gjertsen</title>
+  <meta name="description" content="Grafisk designer som tenker strategisk, og designer for nærhet." />
+  <link rel="preload" href="./assets/me.webp" as="image">
+  <link rel="stylesheet" href="./styles.css?v=34">
+  <style>
+    body { background: #000; color: #fff; }
+    .about-page-wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: clamp(48px, 8vw, 96px) clamp(20px, 4vw, 34px) 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./projects.html">JOSEFINE R.G</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link" href="./projects.html">Arbeider</a>
+        <a class="proj-header__link proj-header__link--active" href="./about.html">Om</a>
+        <a class="proj-header__link" href="#contact">Kontakt</a>
+      </nav>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <div class="about-page-wrap">
+
+      <section id="about" class="section section--dark" style="margin-left:0; margin-right:0; padding-left:0; padding-right:0;">
+        <h1 class="h2">Om meg</h1>
+        <div class="about-layout">
+
+          <div class="about-photo-col">
+            <img
+              class="about-photo"
+              src="./assets/me.webp"
+              alt="Portrettfoto av Josefine"
+              loading="eager"
+              decoding="async"
+            />
+            <div class="tools-strip">
+              <div class="tools-track" id="toolsTrack"></div>
+            </div>
+          </div>
+
+          <div class="about-bio-col">
+            <p class="about-pullquote">Grafisk designer som tenker strategisk, og designer for nærhet.</p>
+            <p>Hei! Jeg er Josefine, sisteårsstudent på en bachelor i grafisk design ved NTNU. Bakgrunnen min ligger i typografi og merkevarebygging, men gjennom tverrfaglige prosjekter har jeg dratt stadig mer mot UI/UX. Det som driver meg er ikke det visuelle alene, men måten et grensesnitt kan gjøre kompleks informasjon forståelig, eller få et museumsbesøk til å begynne lenge før du går inn døra.</p>
+            <p>Gleden over håndverket startet på kunstlinjen. Et friår med språkreise til Korea ga meg innsikt i hvordan design og kommunikasjon fungerer på tvers av kulturer, og hvor mye av god UX som egentlig handler om å forstå hvem du designer for.</p>
+            <p>Når jeg ikke sitter foran skjermen, lærer jeg gjerne et nytt språk. Jeg snakker nesten flytende koreansk, pusser på tysken, og lærer ukrainsk og russisk for gøy. For meg henger språk og design tett sammen – begge deler handler om å forstå mennesker og treffe en tone.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="contact" class="section section--contact" style="color:#fff;">
+        <div class="contact-heading">
+          <h2 class="h2" style="color:#fff;">Kontakt</h2>
+        </div>
+        <p style="font-family:'Poppins',sans-serif; font-weight:300; color:#D8D8D8;">For samarbeid, oppdrag eller bare en liten prat, send gjerne en e-post:</p>
+        <script>(function(){var u='josefinegjertsen',d='gm'+'ail'+'.com';var a=document.createElement('a');a.href='mailto:'+u+'@'+d;a.className='contact-email-link';a.textContent=u+'@'+d;document.currentScript.insertAdjacentElement('afterend',a);})();</script>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer" style="background:#111; border-top:1px solid #222;">
+    <span class="site-footer__copy" style="color:#888;">&copy; 2026 Josefine Reichelt Gjertsen</span>
+    <div class="site-footer__links">
+      <a href="mailto:josefinegjertsen@gmail.com" aria-label="E-post" class="site-footer__link" style="color:#888;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/josefine-reichelt-gjertsen-34ab8926b/" target="_blank" rel="noopener" aria-label="LinkedIn" class="site-footer__link" style="color:#888;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M12 10v7m0-5a3 3 0 0 1 6 0v5"/></svg>
+      </a>
+      <a href="https://www.facebook.com/josefine.gjertsen" target="_blank" rel="noopener" aria-label="Facebook" class="site-footer__link" style="color:#888;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    var header = document.getElementById('projHeader');
+    var toggle = document.getElementById('projToggle');
+    toggle.addEventListener('click', function() {
+      var open = header.classList.toggle('proj-header--open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target)) {
+        header.classList.remove('proj-header--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
+  <script src="./app.js" defer></script>
+</body>
+</html>
