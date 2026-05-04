@@ -29,7 +29,7 @@ function cardHTML(p){
     ? `<div class="card__coming-soon">Coming soon</div>`
     : (p.coverVideo
       ? `<video class="card__img" src="${p.coverVideo}" autoplay muted loop playsinline${mediaStyle}></video>`
-      : `<img class="card__img" src="${p.cover}" alt="${p.title}" loading="lazy" decoding="async"${mediaStyle}>`);
+      : `<img class="card__img" src="${p.cover}" alt="${p.title}" loading="eager" decoding="async"${mediaStyle}>`);
   return `
     <a class="card" href="./${p.id}.html">
       <div class="card__img-wrap">
