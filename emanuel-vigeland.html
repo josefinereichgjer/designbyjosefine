@@ -114,7 +114,7 @@
     }
 
     /* Brukerreise images: dark mockups on dark background — add border to frame them */
-    .ev-brukerreise-img { box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
+    .ev-brukerreise-img { box-shadow: 0 8px 40px rgba(0,0,0,0.5); filter: contrast(1.12); }
 
     /* IA sitemap: scrollable on mobile */
     .ev-sitemap-wrap { }
@@ -291,26 +291,45 @@
     </div>
 
     <!-- BRUKERFLYTER -->
-    <div style="background:#0d0d0d;">
+    <div style="background:#0d0d0d; position:relative;">
+      <button id="handlingPrev" aria-label="Forrige handling" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);z-index:10;background:none;border:none;cursor:pointer;padding:0;">
+        <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="22,4 4,24 22,44" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button id="handlingNext" aria-label="Neste handling" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:10;background:none;border:none;cursor:pointer;padding:0;">
+        <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="6,4 24,24 6,44" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
 
-        <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
-          <h2 class="proj-section__heading" style="color:#fff;">Handling 1: utforsk Emmanuels verk</h2>
-          <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren utforsker et av museets hovedverk</p>
-          <img src="./assets/prosess/brukerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
-        </div>
+      <div id="handlingSlide0" class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
+        <h2 class="proj-section__heading" style="color:#fff;">Handling 1: utforsk Emmanuels verk</h2>
+        <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren utforsker et av museets hovedverk</p>
+        <img src="./assets/prosess/brukerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
+      </div>
 
-        <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
-          <h2 class="proj-section__heading" style="color:#fff;">Handling 2: book et besøk</h2>
-          <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren kjøper en honnørbillett</p>
-          <img src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
-        </div>
+      <div id="handlingSlide1" class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0; display:none;">
+        <h2 class="proj-section__heading" style="color:#fff;">Handling 2: book et besøk</h2>
+        <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren kjøper en honnørbillett</p>
+        <img src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
+      </div>
 
-        <div class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
-          <h2 class="proj-section__heading" style="color:#fff;">Handling 3: finn et arrangement</h2>
-          <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren finner og leser om en kommende konsert</p>
-          <img src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
-        </div>
+      <div id="handlingSlide2" class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0; display:none;">
+        <h2 class="proj-section__heading" style="color:#fff;">Handling 3: finn et arrangement</h2>
+        <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren finner og leser om en kommende konsert</p>
+        <img src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
+      </div>
 
+      <script>
+        (function(){
+          var slides = [document.getElementById('handlingSlide0'), document.getElementById('handlingSlide1'), document.getElementById('handlingSlide2')];
+          var current = 0;
+          function show(i) {
+            slides[current].style.display = 'none';
+            current = (i + slides.length) % slides.length;
+            slides[current].style.display = '';
+          }
+          document.getElementById('handlingPrev').addEventListener('click', function(){ show(current - 1); });
+          document.getElementById('handlingNext').addEventListener('click', function(){ show(current + 1); });
+        })();
+      </script>
     </div>
     <!-- PROTOTYPE -->
     <section id="prototype" style="padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); background:#0b0b0b;">
