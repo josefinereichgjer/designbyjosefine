@@ -32,7 +32,7 @@
         <a class="proj-header__link" href="./about.html#contact">Kontakt</a>
       </nav>
       <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
-        <span></span><span></span><span></span>
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
     </div>
   </header>
@@ -141,7 +141,7 @@
           inner += `<div class="bg__img-stack">${s.imageStack.map(src => `<img class="bg__img bg__img--stacked" src="${src}" alt="${s.heading}" loading="lazy" decoding="async">`).join("")}</div>`;
         }
         if (s.imagePairs) {
-          inner += `<div class="bg__img-pairs">${s.imagePairs.map(([l, r]) => `<div class="bg__img-pair"><img class="bg__img" src="${l}" loading="lazy" decoding="async"><img class="bg__img" src="${r}" loading="lazy" decoding="async"></div>`).join("")}</div>`;
+          inner += `<div class="bg__img-pairs">${s.imagePairs.map(([l, r]) => `<div class="bg__img-pair"><img class="bg__img" src="${l}" alt="" loading="lazy" decoding="async"><img class="bg__img" src="${r}" alt="" loading="lazy" decoding="async"></div>`).join("")}</div>`;
         }
         if (s.links) {
           s.links.forEach(lnk => {

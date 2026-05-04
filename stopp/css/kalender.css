@@ -51,6 +51,7 @@
     }
 
     .event-card:hover { border-color: var(--purple); }
+    .event-card:focus-visible { outline: 3px solid var(--purple); outline-offset: 2px; border-color: var(--purple); }
 
     .event-card img {
       width: 100%;
