@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Caveat:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://use.typekit.net/fsf3tmv.css">
-  <link rel="stylesheet" href="./styles.css?v=33" />
+  <link rel="stylesheet" href="./styles.css?v=34" />
   <style>
     /* ── override accent colour ── */
     .we-body .gallery-expandable__heading{ color: #224942; border-color: #224942; }
@@ -774,7 +774,7 @@
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
-    <img id="lbImg" src="" alt="">
+    <img id="lbImg" src="data:," alt="">
     <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
   </div>
 
@@ -988,19 +988,19 @@
           <div class="we-subheading-block" style="margin-bottom: 80px;">
             <h3 class="we-section__subheading" style="margin-top: 0; font-size: var(--type-h2);">Typografi</h3>
             <div class="we-typo-list">
-              <div class=”we-typo-item we-stagger”>
-                <h3 class=”we-typo__name”>Forma DJR Micro Regular</h3>
-                <p class=”we-typo__use”>
+              <div class="we-typo-item we-stagger">
+                <h3 class="we-typo__name">Forma DJR Micro Regular</h3>
+                <p class="we-typo__use">
                   <strong>Brukes til:</strong><br>
-                  - Logo og merkevaretekst (“Foundation Women Empowerment”)<br>
+                  - Logo og merkevaretekst ("Foundation Women Empowerment")<br>
                   - Informasjonsbokser og kortere tekster<br>
                   - Små tekststørrelser og UI-elementer
                 </p>
               </div>
 
-              <div class=”we-typo-item we-stagger”>
-                <h3 class=”we-typo__name”>Trade Gothic Next LT Pro Bold</h3>
-                <p class=”we-typo__use”>
+              <div class="we-typo-item we-stagger">
+                <h3 class="we-typo__name">Trade Gothic Next LT Pro Bold</h3>
+                <p class="we-typo__use">
                   <strong>Brukes til:</strong><br>
                   - Brødtekst og hovedinnhold<br>
                   - Sitater (quotes)<br>
@@ -1008,13 +1008,13 @@
                 </p>
               </div>
 
-              <div class=”we-typo-item we-stagger”>
-                <h3 class=”we-typo__name”>Trade Gothic Next LT Pro Heavy</h3>
-                <p class=”we-typo__use”>
+              <div class="we-typo-item we-stagger">
+                <h3 class="we-typo__name">Trade Gothic Next LT Pro Heavy</h3>
+                <p class="we-typo__use">
                   <strong>Brukes til:</strong><br>
                   - Utheving av nøkkelord og viktige budskap<br>
                   - Ord som skal skille seg ut visuelt, spesielt i overskrifter<br>
-                  - Brukes ofte i fargen <span class=”we-typo__hl”>#6EB6A9</span> for ekstra fokus
+                  - Brukes ofte i fargen <span class="we-typo__hl">#6EB6A9</span> for ekstra fokus
                 </p>
               </div>
             </div>
@@ -1714,7 +1714,7 @@
       display:flex; align-items:center; justify-content:center;
       cursor:zoom-in;
     ">
-      <img id="weLightboxImg" src="" alt="" style="
+      <img id="weLightboxImg" src="data:," alt="" style="
         width:auto; height:auto; max-width:90vw; max-height:90vh;
         border-radius:8px;
         display:block; user-select:none;
@@ -1832,14 +1832,6 @@
     document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
   });
   </script>
-  <style>
-    .site-footer { background:#eceaef; padding: 48px clamp(20px,5vw,80px); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; }
-    .site-footer__copy { font-family:'Avenir Next','Avenir',sans-serif; font-size:13px; color:#444; letter-spacing:0.04em; }
-    .site-footer__links { display:flex; gap:28px; align-items:center; }
-    .site-footer__link { color:#444; transition:color 0.2s; display:flex; }
-    .site-footer__link:hover,
-    .site-footer__link:focus { color:#111; outline: 2px solid #111; outline-offset: 3px; }
-  </style>
   <footer class="site-footer">
     <span class="site-footer__copy">&copy; 2026 Josefine Reichelt Gjertsen</span>
     <div class="site-footer__links">

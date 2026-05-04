@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css?v=33" />
+  <link rel="stylesheet" href="./styles.css?v=34" />
   <style>
     @media (max-width: 640px) {
       .babilogo-img { width: 100% !important; max-width: none !important; filter: none !important; }
@@ -41,7 +41,7 @@
   <div class="lb-overlay" id="lbOverlay" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
     <button class="lb-close" id="lbClose" aria-label="Lukk">✕</button>
     <button class="lb-prev" id="lbPrev" aria-label="Forrige">&#8592;</button>
-    <img id="lbImg" src="" alt="">
+    <img id="lbImg" src="data:," alt="">
     <button class="lb-next" id="lbNext" aria-label="Neste">&#8594;</button>
   </div>
 
@@ -435,14 +435,6 @@
       toggle.setAttribute("aria-expanded", String(isOpen));
     });
     </script>
-  <style>
-    .site-footer { background:#eceaef; padding: 48px clamp(20px,5vw,80px); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px; }
-    .site-footer__copy { font-family:'Avenir Next','Avenir',sans-serif; font-size:13px; color:#444; letter-spacing:0.04em; }
-    .site-footer__links { display:flex; gap:28px; align-items:center; }
-    .site-footer__link { color:#444; transition:color 0.2s; display:flex; }
-    .site-footer__link:hover,
-    .site-footer__link:focus { color:#111; outline: 2px solid #111; outline-offset: 3px; }
-  </style>
   <footer class="site-footer">
     <span class="site-footer__copy">&copy; 2026 Josefine Reichelt Gjertsen</span>
     <div class="site-footer__links">
