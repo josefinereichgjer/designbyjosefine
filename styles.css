@@ -2211,7 +2211,8 @@ a:hover{opacity:.75}
   scroll-snap-align: start;
   margin: 0;
 }
-.strip-ss__slide img {
+.strip-ss__slide img,
+.strip-ss__slide video {
   width: 100%;
   height: auto;
   display: block;
