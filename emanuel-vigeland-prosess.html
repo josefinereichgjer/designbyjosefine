@@ -252,9 +252,9 @@
     }, { threshold: 0.06 });
     document.querySelectorAll('.reveal').forEach(function(el) { revealObs.observe(el); });
 
-    window.addEventListener('beforeprint', function() {
-      document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); });
-    });
+    function revealAll() { document.querySelectorAll('.reveal').forEach(function(el) { el.classList.add('is-visible'); }); }
+    setTimeout(revealAll, 3000);
+    window.addEventListener('beforeprint', revealAll);
   </script>
   <footer class="site-footer">
     <span class="site-footer__copy">&copy; 2026 Josefine Reichelt Gjertsen</span>

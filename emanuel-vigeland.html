@@ -113,7 +113,7 @@
     }
 
     /* Brukerreise images: dark mockups on dark background — add border to frame them */
-    .ev-brukerreise-img { box-shadow: 0 0 0 1px rgba(201,168,76,0.25), 0 8px 40px rgba(0,0,0,0.5); }
+    .ev-brukerreise-img { box-shadow: 0 8px 40px rgba(0,0,0,0.5); }
 
     /* IA sitemap: scrollable on mobile */
     .ev-sitemap-wrap { }
@@ -173,6 +173,11 @@
     #ev-lb-close:hover { color: #fff; }
 
     /* Mobile metadata footer — styles in styles.css (.proj-meta-footer) */
+
+    @media print {
+      .ev-logo-appear { opacity: 1 !important; transform: none !important; }
+      #tov-heading, #tov-text, #sv-heading, #sv-text { opacity: 1 !important; }
+    }
   </style>
 </head>
 
@@ -413,14 +418,14 @@
     </div>
     <div class="proj-adjacent-cards">
       <a class="proj-adjacent-card proj-adjacent-card--prev" href="./reina-fruktgard.html">
-        <img class="proj-adjacent-card__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy">
+        <img class="proj-adjacent-card__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="eager">
         <div class="proj-adjacent-card__label">
           <span class="proj-adjacent-card__dir">←</span>
           <span class="proj-adjacent-card__name">Reina Fruktgård</span>
         </div>
       </a>
       <a class="proj-adjacent-card proj-adjacent-card--next" href="./tidsskrift.html">
-        <img class="proj-adjacent-card__img" src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy">
+        <img class="proj-adjacent-card__img" src="./assets/krit1.webp" alt="Tidsskrift" loading="eager">
         <div class="proj-adjacent-card__label">
           <span class="proj-adjacent-card__name">Tidsskrift</span>
           <span class="proj-adjacent-card__dir">→</span>
@@ -503,7 +508,6 @@ var header = document.getElementById('projHeader');
         }
       }, { threshold: 0.1 });
       logoObs.observe(items[0]);
-      window.addEventListener('beforeprint', revealLogoItems);
     })();
   </script>
   <script>
@@ -550,6 +554,19 @@ var header = document.getElementById('projHeader');
       svHeading.style.opacity = '1';
       svEl.style.opacity = '1';
     });
+
+    function revealAll() {
+      document.querySelectorAll('.ev-logo-appear').forEach(function(el) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      });
+      tovHeading.style.opacity = '1';
+      tovEl.style.opacity = '1';
+      svHeading.style.opacity = '1';
+      svEl.style.opacity = '1';
+    }
+    setTimeout(revealAll, 3000);
+    window.addEventListener('beforeprint', revealAll);
   </script>
   <footer class="site-footer">
     <span class="site-footer__copy">&copy; 2026 Josefine Reichelt Gjertsen</span>
