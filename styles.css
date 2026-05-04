@@ -2777,7 +2777,7 @@ a:hover{opacity:.75}
   .proj-hero__img { max-height: none; width: 100%; height: auto !important; object-fit: cover; }
   .proj-hero--img-left .proj-hero__right { height: 260px; overflow: hidden; }
   .proj-hero--img-left .proj-hero__right .proj-hero__img { height: 100% !important; object-fit: cover; }
-  .proj-hero__left { padding: 2rem clamp(20px, 5vw, 32px) 2.5rem; }
+  .proj-hero__left { padding-top: 2rem !important; padding-right: clamp(20px, 5vw, 32px); padding-bottom: 2rem !important; padding-left: clamp(20px, 5vw, 32px); }
   .proj-hero__meta { display: none; }
   .proj-gallery { grid-template-columns: 1fr; }
   .proj-gallery__item { aspect-ratio: 3/2; }
