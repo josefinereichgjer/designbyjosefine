@@ -335,23 +335,5 @@ window.PROJECTS = [
     ],
     link: { label: "Åpne nettsiden", src: "./srh-open-day-3/index.html" },
     finalPdf: { label: "Nysgjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
-  },
-  {
-    id: "lovechild",
-    title: "Weit & Weiter",
-    subtitle: "café identitet",
-    year: "2026",
-    tags: [],
-    cover: "./assets/3-april-brot.webp",
-    noSlideshow: true,
-    skipBuild: true,
-    personal: true,
-    gallery: [
-      { src: "./assets/babilogo.webp", wide: true },
-      { src: "./assets/3-april.webp", wide: true },
-      { src: "./assets/3-april-brot.webp", wide: true },
-      { src: "./assets/baby-skilt.webp", wide: true },
-      { src: "./assets/baby-tote.webp", wide: true }
-    ]
   }
 ];
