@@ -168,7 +168,7 @@
 </div><!-- /.site-wrap -->
 
   <!-- BOOKING MODAL -->
-  <div class="booking-overlay" id="modal-dropin">
+  <div class="booking-overlay" id="modal-dropin" onclick="if(event.target===this)this.style.display='none'">
     <div class="booking-card">
       <button class="booking-close" onclick="document.getElementById('modal-dropin').style.display='none'">&times;</button>
       <img src="assets/logoskrift-gg.png" alt="Stoppestedet" class="booking-logo" />
