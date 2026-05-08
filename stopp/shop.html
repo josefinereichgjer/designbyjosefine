@@ -25,7 +25,7 @@
       <li><a href="kalender.html">Kalender</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
       <li><a href="shop.html" class="current">Shop</a></li>
-      <li><a href="index.html#priser" class="active">Priser</a></li>
+      <li><a href="index.html#priser">Priser</a></li>
     </ul>
     <button class="cart-btn" onclick="toggleCart()" aria-label="Handlekurv">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -57,7 +57,9 @@
   <!-- HERO -->
   <div class="shop-hero">
     <h1>Shop</h1>
-    <p>Verktøy og utstyr for medlemmer og andre.</p>
+<div class="shop-search-wrap">
+      <input type="search" class="shop-search" id="shop-search" placeholder="Søk etter produkt..." oninput="filterProducts(this.value)" autocomplete="off" />
+    </div>
   </div>
 
   <!-- PRODUCT GRID -->
@@ -234,6 +236,7 @@
     </div>
 
   </div>
+  <p id="shop-empty" style="display:none; padding: 0 clamp(40px,6vw,100px) 60px; font-family:'IBM Plex Sans',sans-serif; font-size:16px; color:#777; background:#b29ff4;">Ingen produkter funnet.</p>
 
   <footer>
     <div class="footer-inner">
@@ -245,7 +248,7 @@
         <div class="footer-link-group">
           <a href="#">Om oss</a>
           <a href="#">Brukervilkår</a>
-          <a href="#">Personvernerklæring</a>
+          <a href="#">personvernerklæring</a>
           <a href="#">Cookie-erklæring</a>
         </div>
         <div class="footer-link-group">
@@ -256,13 +259,27 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Stoppestedet AS. Alle rettigheter forbeholdt.</p>
+      <p>© 2026 Stoppestedet As. Alle rettigheter forbeholdt</p>
     </div>
   </footer>
 </div>
 
 <script>
   var cart = {};
+
+  function filterProducts(query) {
+    var q = query.trim().toLowerCase();
+    var cards = document.querySelectorAll('.product-card');
+    var visible = 0;
+    cards.forEach(function(card) {
+      var name = card.querySelector('h3').textContent.toLowerCase();
+      var match = !q || name.includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+    var empty = document.getElementById('shop-empty');
+    empty.style.display = visible === 0 ? 'block' : 'none';
+  }
 
   function changeQty(btn, delta) {
     var group = btn.parentElement;

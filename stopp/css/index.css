@@ -388,7 +388,7 @@
     .modal-close:hover { color: #000; }
 
     .modal-left {
-      background: #C8E600;
+      background: #f5f5f5;
       padding: 0;
       display: flex;
       flex-direction: column;
@@ -457,7 +457,7 @@
 
     .modal-divider {
       border: none;
-      border-top: 2px solid #C8E600;
+      border-top: 2px solid #e0e0e0;
       margin: 8px 0;
     }
 
@@ -535,7 +535,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: #C8E600;
+      background: rgba(0,0,0,0.5);
       z-index: 1000;
       align-items: flex-start;
       justify-content: center;
@@ -585,7 +585,7 @@
       padding: 14px 16px;
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 16px;
-      border: 3px solid #C8E600;
+      border: 2px solid #d0d0d0;
       background: #fff;
       color: var(--black);
       appearance: none;
@@ -599,7 +599,7 @@
     .booking-select:focus { outline: none; border-color: #E84E1B; }
 
     .booking-rabatt {
-      background: #C8E600;
+      background: #f5f5f5;
       padding: 14px 16px;
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 15px;
@@ -616,7 +616,7 @@
 
     .booking-rabatt-input input {
       width: 100%;
-      border: 2px solid #C8E600;
+      border: 2px solid #d0d0d0;
       padding: 10px 14px;
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 15px;
@@ -712,7 +712,7 @@
       transition: all 0.15s;
     }
 
-    .timeslot:hover { border-color: #C8E600; }
+    .timeslot:hover { border-color: #888; }
     .timeslot.selected { border-color: #E84E1B; background: #E84E1B; color: #0a0a0a; }
     .timeslot.unavailable { color: #ccc; border-color: #f0f0f0; cursor: default; text-decoration: line-through; }
 
