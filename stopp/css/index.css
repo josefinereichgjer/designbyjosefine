@@ -64,8 +64,8 @@
       position: absolute;
       inset: 0;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(7, 1fr);
       pointer-events: none;
     }
 
@@ -925,8 +925,7 @@
 
     /* ── Large desktop (≥1400px) ── */
     @media (min-width: 1400px) {
-      nav { padding: 0 80px; height: 80px; }
-      .logo { height: 52px; }
+
       .hero {
         grid-template-columns: 4fr 6fr;
         gap: 88px;

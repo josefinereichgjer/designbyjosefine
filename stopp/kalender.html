@@ -24,7 +24,7 @@
       <li><a href="faq.html">FAQ</a></li>
       <li><a href="kalender.html" class="current">Kalender</a></li>
       <li><a href="kontakt.html">Kontakt</a></li>
-
+      <li><a href="shop.html">Shop</a></li>
       <li><a href="index.html#priser" class="active">Priser</a></li>
     </ul>
   </nav>
@@ -33,63 +33,85 @@
     <div class="page-header">
       <h1>Kurs og arrangementer</h1>
       <p>Her ser du kommende kurs, workshops og arrangementer hos Stoppestedet. Vi arrangerer gjerne kurs etter ønske dersom dere er en vennegjeng eller bedrift som ønsker noe spesielt.</p>
-      <p class="kommende-label">Kommende arrangementer</p>
     </div>
 
     <div class="events-grid">
 
-      <div class="event-card" role="button" tabindex="0" onclick="openEvent(0)" onkeydown="if(event.key==='Enter'||event.key===' ')openEvent(0)">
-        <img src="assets/bilde3.webp" alt="Kurs 1" />
-        <div class="event-meta">
-          <div class="event-date">Tir 7. april 2026<br>kl. 18–21</div>
-          <div class="event-spots">Kursplasser: 10</div>
+      <div class="event-card">
+        <div class="event-header">
+          <div class="event-day-col">
+            <span class="event-weekday">TIR</span>
+            <span class="event-daynum">7</span>
+          </div>
+          <div class="event-header-info">
+            <div class="event-title">Bygg ditt eget prosjekt — Praktisk helgekurs i snekring</div>
+            <div class="event-when">7. april 2026 · kl. 18–21</div>
+            <div class="event-spots">10 kursplasser · Tom Helling</div>
+          </div>
         </div>
-        <div class="event-body">
-          <div class="event-title">Bygg ditt eget prosjekt — Praktisk helgekurs i snekring</div>
-          <div class="event-instructor">Kursholder: Tom Helling</div>
-          <p class="event-desc">På dette kurset velger du selv hva du skal bygge. Vi sørger for at du enten kommer godt i gang med prosjektet ditt, eller blir helt ferdig med det i løpet av kurstiden.</p>
-        </div>
-      </div>
-
-      <div class="event-card" role="button" tabindex="0" onclick="openEvent(1)" onkeydown="if(event.key==='Enter'||event.key===' ')openEvent(1)">
-        <img src="assets/bilde4.webp" alt="Kurs 2" />
-        <div class="event-meta">
-          <div class="event-date">Lør 12. april 2026<br>kl. 10–15</div>
-          <div class="event-spots">Kursplasser: 8</div>
-        </div>
-        <div class="event-body">
-          <div class="event-title">Introduksjon til leire og keramikk</div>
-          <div class="event-instructor">Kursholder: Maria Strand</div>
-          <p class="event-desc">En praktisk innføring i grunnleggende keramikkteknikker. Passer for alle — ingen erfaring nødvendig. Du tar med deg en ferdig kopp hjem.</p>
+        <img src="assets/bilde3.webp" alt="Snekringskurs" />
+        <div class="event-footer">
+          <button class="event-btn-book" onclick="openDirectBooking(0)">Meld deg på</button>
+          <button class="event-btn-more" onclick="openEvent(0)">Les mer</button>
         </div>
       </div>
 
-      <div class="event-card" role="button" tabindex="0" onclick="openEvent(2)" onkeydown="if(event.key==='Enter'||event.key===' ')openEvent(2)">
-        <img src="assets/bilde6.webp" alt="Kurs 3" />
-        <div class="event-meta">
-          <div class="event-date">Ons 16. april 2026<br>kl. 17–20</div>
-          <div class="event-spots">Kursplasser: 12</div>
+      <div class="event-card">
+        <div class="event-header">
+          <div class="event-day-col">
+            <span class="event-weekday">LØR</span>
+            <span class="event-daynum">12</span>
+          </div>
+          <div class="event-header-info">
+            <div class="event-title">Introduksjon til leire og keramikk</div>
+            <div class="event-when">12. april 2026 · kl. 10–15</div>
+            <div class="event-spots">8 kursplasser · Maria Strand</div>
+          </div>
         </div>
-        <div class="event-body">
-          <div class="event-title">Kveldskurs: Maling og overflatebehandling av tre</div>
-          <div class="event-instructor">Kursholder: Anders Lie</div>
-          <p class="event-desc">Lær teknikker for å male og behandle treoverflater profesjonelt. Vi går gjennom både penselteknikker og spraymaling.</p>
-        </div>
-      </div>
-
-      <div class="event-card" role="button" tabindex="0" onclick="openEvent(3)" onkeydown="if(event.key==='Enter'||event.key===' ')openEvent(3)">
-        <img src="assets/bilde7.webp" alt="Kurs 4" />
-        <div class="event-meta">
-          <div class="event-date">Søn 27. april 2026<br>kl. 11–16</div>
-          <div class="event-spots">Kursplasser: 6</div>
-        </div>
-        <div class="event-body">
-          <div class="event-title">Sikkerhetsopplæring — komme i gang med maskiner</div>
-          <div class="event-instructor">Kursholder: Stoppestedet-teamet</div>
-          <p class="event-desc">Obligatorisk kurs for deg som ønsker å bruke tyngre maskiner. Vi går gjennom sikker bruk av sirkelsag, drillpresse og slipemaskin.</p>
+        <img src="assets/bilde4.webp" alt="Keramikkurs" />
+        <div class="event-footer">
+          <button class="event-btn-book" onclick="openDirectBooking(1)">Meld deg på</button>
+          <button class="event-btn-more" onclick="openEvent(1)">Les mer</button>
         </div>
       </div>
 
+      <div class="event-card">
+        <div class="event-header">
+          <div class="event-day-col">
+            <span class="event-weekday">ONS</span>
+            <span class="event-daynum">16</span>
+          </div>
+          <div class="event-header-info">
+            <div class="event-title">Kveldskurs: Maling og overflatebehandling av tre</div>
+            <div class="event-when">16. april 2026 · kl. 17–20</div>
+            <div class="event-spots">12 kursplasser · Anders Lie</div>
+          </div>
+        </div>
+        <img src="assets/bilde6.webp" alt="Malingskurs" />
+        <div class="event-footer">
+          <button class="event-btn-book" onclick="openDirectBooking(2)">Meld deg på</button>
+          <button class="event-btn-more" onclick="openEvent(2)">Les mer</button>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-header">
+          <div class="event-day-col">
+            <span class="event-weekday">SØN</span>
+            <span class="event-daynum">27</span>
+          </div>
+          <div class="event-header-info">
+            <div class="event-title">Sikkerhetsopplæring — komme i gang med maskiner</div>
+            <div class="event-when">27. april 2026 · kl. 11–16</div>
+            <div class="event-spots">6 kursplasser · Stoppestedet-teamet</div>
+          </div>
+        </div>
+        <img src="assets/bilde7.webp" alt="Sikkerhetsopplæring" />
+        <div class="event-footer">
+          <button class="event-btn-book" onclick="openDirectBooking(3)">Meld deg på</button>
+          <button class="event-btn-more" onclick="openEvent(3)">Les mer</button>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -226,6 +248,11 @@
     ];
 
     let currentEvent = 0;
+
+    function openDirectBooking(i) {
+      currentEvent = i;
+      openBookingModal();
+    }
 
     function openBookingModal() {
       const e = events[currentEvent];

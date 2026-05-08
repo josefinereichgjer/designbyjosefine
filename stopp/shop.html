@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Stoppestedet</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/shop.css" />
+</head>
+<body>
+
+<div class="site-wrap">
+  <nav>
+    <a href="index.html"><img src="assets/logoskrift-hg.png" alt="Stoppestedet logo" class="logo" /><img src="assets/stoppilogo.webp" alt="Stoppestedet" class="logo-icon" /></a>
+    <button class="nav-toggle" onclick="this.nextElementSibling.classList.toggle('open')" aria-label="Meny">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="verkstedet.html">Verkstedet</a></li>
+      <li><a href="verktoysliste.html">Verktøyliste</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="kalender.html">Kalender</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+      <li><a href="shop.html" class="current">Shop</a></li>
+      <li><a href="index.html#priser" class="active">Priser</a></li>
+    </ul>
+    <button class="cart-btn" onclick="toggleCart()" aria-label="Handlekurv">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      <span class="cart-count" id="cart-count">0</span>
+    </button>
+  </nav>
+
+  <!-- CART DRAWER -->
+  <div class="cart-overlay" id="cart-overlay" onclick="toggleCart()"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-header">
+      <h2>Handlekurv</h2>
+      <button class="cart-close" onclick="toggleCart()" aria-label="Lukk">✕</button>
+    </div>
+    <div class="cart-items" id="cart-items">
+      <p class="cart-empty">Kurven er tom.</p>
+    </div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-total">
+        <span>Totalt</span>
+        <strong id="cart-total">0 kr</strong>
+      </div>
+      <button class="btn btn-orange" style="width:100%; border-radius:0; padding:18px;">Gå til kassen</button>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="shop-hero">
+    <h1>Shop</h1>
+    <p>Verktøy og utstyr for medlemmer og andre.</p>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div class="shop-grid">
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="assets/tool-1.webp" alt="Justerbar tang" />
+        <div class="badge-ny"><span>NY</span></div>
+      </div>
+      <div class="product-info">
+        <h3>Justerbar tang</h3>
+        <span class="price-badge">149 kr</span>
+      </div>
+      <div class="product-controls">
+        <div class="qty-add">
+          <div class="qty-group">
+            <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+          <div class="divider"></div>
+          <button class="add-btn" onclick="addToCart(this, 'Justerbar tang', 149)">Legg til</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="assets/tool-2.webp" alt="Rørtang" />
+      </div>
+      <div class="product-info">
+        <h3>Rørtang</h3>
+        <span class="price-badge">129 kr</span>
+      </div>
+      <div class="product-controls">
+        <div class="qty-add">
+          <div class="qty-group">
+            <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+          <div class="divider"></div>
+          <button class="add-btn" onclick="addToCart(this, 'Rørtang', 129)">Legg til</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="assets/tool-3.webp" alt="Naglemonteringsverktøy" />
+      </div>
+      <div class="product-info">
+        <h3>Naglemonteringsverktøy</h3>
+        <span class="price-badge">199 kr</span>
+      </div>
+      <div class="product-controls">
+        <div class="qty-add">
+          <div class="qty-group">
+            <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+          <div class="divider"></div>
+          <button class="add-btn" onclick="addToCart(this, 'Naglemonteringsverktøy', 199)">Legg til</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="assets/tool-4.webp" alt="Kontaktkrympetang" />
+      </div>
+      <div class="product-info">
+        <h3>Kontaktkrympetang</h3>
+        <span class="price-badge">169 kr</span>
+      </div>
+      <div class="product-controls">
+        <div class="qty-add">
+          <div class="qty-group">
+            <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+          <div class="divider"></div>
+          <button class="add-btn" onclick="addToCart(this, 'Kontaktkrympetang', 169)">Legg til</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="assets/tool-5.webp" alt="Avisoleringstang" />
+        <div class="badge-ny"><span>NY</span></div>
+      </div>
+      <div class="product-info">
+        <h3>Avisoleringstang</h3>
+        <span class="price-badge">139 kr</span>
+      </div>
+      <div class="product-controls">
+        <div class="qty-add">
+          <div class="qty-group">
+            <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+          <div class="divider"></div>
+          <button class="add-btn" onclick="addToCart(this, 'Avisoleringstang', 139)">Legg til</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="assets/tool-6.webp" alt="Tang" />
+      </div>
+      <div class="product-info">
+        <h3>Tang</h3>
+        <span class="price-badge">99 kr</span>
+      </div>
+      <div class="product-controls">
+        <div class="qty-add">
+          <div class="qty-group">
+            <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+          <div class="divider"></div>
+          <button class="add-btn" onclick="addToCart(this, 'Tang', 99)">Legg til</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="assets/tool-7.webp" alt="Fleksibel skralle-kombinasjonsnøkkel" />
+      </div>
+      <div class="product-info">
+        <h3>Fleksibel skralle-<br>kombinasjonsnøkkel</h3>
+        <span class="price-badge">249 kr</span>
+      </div>
+      <div class="product-controls">
+        <div class="qty-add">
+          <div class="qty-group">
+            <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+          <div class="divider"></div>
+          <button class="add-btn" onclick="addToCart(this, 'Fleksibel skralle-kombinasjonsnøkkel', 249)">Legg til</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <div class="product-img-wrap">
+        <img src="assets/tool-8.webp" alt="Nøkkel" />
+      </div>
+      <div class="product-info">
+        <h3>Nøkkel</h3>
+        <span class="price-badge">89 kr</span>
+      </div>
+      <div class="product-controls">
+        <div class="qty-add">
+          <div class="qty-group">
+            <button class="qty-btn" onclick="changeQty(this, -1)">−</button>
+            <span class="qty-val">1</span>
+            <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+          <div class="divider"></div>
+          <button class="add-btn" onclick="addToCart(this, 'Nøkkel', 89)">Legg til</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-contact">
+        <h3>Kontakt oss</h3>
+        <p>Stoppestedet@gmail.com<br>+47 123 45 678</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-link-group">
+          <a href="#">Om oss</a>
+          <a href="#">Brukervilkår</a>
+          <a href="#">Personvernerklæring</a>
+          <a href="#">Cookie-erklæring</a>
+        </div>
+        <div class="footer-link-group">
+          <a href="#">Instagram</a>
+          <a href="#">Facebook</a>
+          <a href="#">Linkedin</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Stoppestedet AS. Alle rettigheter forbeholdt.</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+  var cart = {};
+
+  function changeQty(btn, delta) {
+    var group = btn.parentElement;
+    var valEl = group.querySelector('.qty-val');
+    var val = Math.max(1, parseInt(valEl.textContent) + delta);
+    valEl.textContent = val;
+  }
+
+  function addToCart(btn, name, price) {
+    var card = btn.closest('.product-card');
+    var qty = parseInt(card.querySelector('.qty-val').textContent);
+    if (!cart[name]) cart[name] = { price: price, qty: 0 };
+    cart[name].qty += qty;
+    updateCartUI();
+    btn.textContent = 'Lagt til ✓';
+    btn.classList.add('added');
+    setTimeout(function () { btn.textContent = 'Legg til'; btn.classList.remove('added'); }, 1400);
+  }
+
+  function updateCartUI() {
+    var total = 0, count = 0;
+    var html = '';
+    for (var name in cart) {
+      var item = cart[name];
+      count += item.qty;
+      total += item.qty * item.price;
+      html += '<div class="cart-item">' +
+        '<div class="cart-item-info"><span class="cart-item-name">' + name + '</span>' +
+        '<span class="cart-item-qty">× ' + item.qty + '</span></div>' +
+        '<span class="cart-item-price">' + (item.qty * item.price) + ' kr</span>' +
+        '</div>';
+    }
+    document.getElementById('cart-count').textContent = count;
+    document.getElementById('cart-items').innerHTML = html || '<p class="cart-empty">Kurven er tom.</p>';
+    document.getElementById('cart-total').textContent = total + ' kr';
+    document.getElementById('cart-footer').style.display = count > 0 ? 'block' : 'none';
+  }
+
+  function toggleCart() {
+    document.getElementById('cart-drawer').classList.toggle('open');
+    document.getElementById('cart-overlay').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

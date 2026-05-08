@@ -173,6 +173,11 @@
     }
 
     /* RESPONSIVE */
+    @media (min-width: 1400px) {
+      nav { padding: 0 80px; height: 80px; }
+      .logo { height: 52px; }
+    }
+
     @media (max-width: 1024px) {
       nav { padding: 0 clamp(24px, 3.5vw, 40px); }
       .nav-links { gap: 24px; }
