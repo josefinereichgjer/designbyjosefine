@@ -38,6 +38,7 @@
     </div>
     <div class="hero-image-wrap">
       <img src="assets/front.webp" alt="Folk som arbeider på verkstedet" fetchpriority="high" />
+      <div class="tri-grid"></div>
     </div>
     <div class="hero-buttons">
       <a href="#priser" class="btn btn-orange" style="padding: 20px 44px; font-size: 19px;">Bli medlem</a>
@@ -48,6 +49,7 @@
   <section class="section-alt">
     <div class="section-image-wrap">
       <img src="assets/front2.webp" alt="Folk på kurs og arrangement" loading="lazy" />
+      <div class="tri-grid"></div>
     </div>
     <div class="section-text">
       <h2>Kurs, arrangementer og konkurranser</h2>
@@ -420,6 +422,54 @@
       btn.classList.add('clicked');
       setTimeout(() => btn.classList.remove('clicked'), 150);
     }
+  </script>
+
+  <script>
+    (function () {
+      const COLORS = ['#e95a33', '#ceeb4c', '#b29ff4'];
+      const CLIPS = [
+        'polygon(0 0, 100% 0, 0 100%)',
+        'polygon(0 0, 100% 0, 100% 100%)',
+        'polygon(0 100%, 100% 100%, 0 0)',
+        'polygon(100% 0, 100% 100%, 0 100%)'
+      ];
+
+      document.querySelectorAll('.tri-grid').forEach(function (grid) {
+        var cells = [];
+        for (var i = 0; i < 25; i++) {
+          var cell = document.createElement('div');
+          cell.className = 'tri-cell';
+          cell.style.backgroundColor = COLORS[Math.floor(Math.random() * COLORS.length)];
+          cell.style.clipPath = CLIPS[Math.floor(Math.random() * CLIPS.length)];
+          grid.appendChild(cell);
+          cells.push(cell);
+        }
+
+        var wrapper = grid.parentElement;
+        var timeouts = [], gen = 0;
+
+        function show() {
+          var g = ++gen;
+          var shuffled = cells.slice().sort(function () { return Math.random() - 0.5; });
+          shuffled.forEach(function (cell, i) {
+            var t = setTimeout(function () {
+              if (gen === g) cell.style.opacity = '0.38';
+            }, i * 35 + Math.random() * 180);
+            timeouts.push(t);
+          });
+        }
+
+        function hide() {
+          gen++;
+          timeouts.forEach(clearTimeout);
+          timeouts = [];
+          cells.forEach(function (c) { c.style.opacity = '0'; });
+        }
+
+        wrapper.addEventListener('pointerenter', show);
+        wrapper.addEventListener('pointerleave', hide);
+      });
+    })();
   </script>
 </body>
 </html>
