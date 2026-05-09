@@ -319,6 +319,7 @@
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      white-space: nowrap;
       cursor: pointer;
       height: 100%;
       padding: 0 16px;
@@ -328,6 +329,12 @@
     .add-btn.added { color: #c7e140; }
 
     /* RESPONSIVE */
+    @media (min-width: 1400px) {
+      .shop-hero { padding: 40px 48px 32px; }
+      .shop-grid { padding: 32px 48px 64px; }
+      .product-img-wrap { padding: 16px; }
+    }
+
     @media (max-width: 1024px) {
       .shop-grid { grid-template-columns: repeat(3, 1fr); }
       .qty-group { padding: 0 10px; gap: 6px; }
