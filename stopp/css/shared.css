@@ -35,9 +35,15 @@
       justify-content: space-between;
       padding: 0 clamp(40px, 5vw, 80px);
       height: 72px;
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
       z-index: 200;
+    }
+
+    .site-wrap {
+      padding-top: 72px;
     }
 
     .logo { height: 48px; width: auto; flex-shrink: 0; margin-top: 5px; }
@@ -178,6 +184,7 @@
     @media (min-width: 1400px) {
       nav { padding: 0 80px; height: 80px; }
       .logo { height: 52px; }
+      .site-wrap { padding-top: 80px; }
     }
 
     @media (max-width: 1024px) {
@@ -189,6 +196,7 @@
 
     @media (max-width: 900px) {
       nav { padding: 0 24px; height: 64px; }
+      .site-wrap { padding-top: 64px; }
       .logo { display: none; }
       .logo-icon { display: block; }
       .nav-toggle { display: flex; }
