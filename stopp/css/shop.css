@@ -176,6 +176,8 @@
 
     .product-img-wrap {
       aspect-ratio: 1 / 1;
+      width: 100%;
+      align-self: start;
       background: transparent;
       display: flex;
       align-items: center;
@@ -225,7 +227,6 @@
       padding: 20px 24px 12px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       gap: 10px;
     }
     .product-info h3 {
@@ -245,6 +246,7 @@
       background: var(--white);
       border-radius: 0;
       padding: 5px 16px;
+      margin-top: auto;
       font-family: 'IBM Plex Sans', sans-serif;
       font-size: 15px;
       font-weight: 500;
