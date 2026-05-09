@@ -733,6 +733,16 @@
     .booking-confirm:hover { opacity: 0.8; }
     .booking-confirm.visible { display: block; }
 
+    /* MID DESKTOP (1025px–1399px) */
+    @media (min-width: 1025px) and (max-width: 1399px) {
+      .hero { padding: 64px 64px; gap: 48px; }
+      .hero-text { gap: 20px; }
+      .hero-image-wrap { align-self: center; }
+      .section-alt { padding: 64px 64px; gap: 48px; }
+      .section-image-wrap { align-self: center; }
+      .pricing { padding: 64px 64px 80px; }
+    }
+
     /* TABLET (≤1024px) */
     @media (max-width: 1024px) {
       .hero,
