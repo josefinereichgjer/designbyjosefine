@@ -922,9 +922,39 @@
       .modal { max-height: 90vh; overflow-y: auto; -webkit-overflow-scrolling: touch; animation: slideUp 0.22s ease-out; }
     }
 
-    /* ── Large desktop (≥1400px) ── */
-    @media (min-width: 1400px) {
+    /* ── Mid-large desktop (1400px–1679px, covers 1440×900) ── */
+    @media (min-width: 1400px) and (max-width: 1679px) {
+      .hero {
+        grid-template-columns: 1fr 1fr;
+        gap: 72px;
+        max-width: 1440px;
+        padding: 72px 80px;
+      }
+      .hero-text h1 { font-size: 52px; line-height: 1.08; text-wrap: balance; }
+      .hero-text p { font-size: 18px; max-width: 100%; }
+      .hero-text { gap: 28px; }
+      .section-alt {
+        grid-template-columns: 1fr 1fr;
+        gap: 72px;
+        max-width: 1440px;
+        padding: 72px 80px;
+      }
+      .section-text h2 { font-size: 42px; line-height: 1.05; text-wrap: balance; }
+      .section-text p { font-size: 18px; max-width: 100%; }
+      .slideshow { padding: 80px 0 88px; }
+      .slideshow-track-wrap { max-width: 1440px; padding: 0 80px; }
+      .slideshow-main img { height: 460px; }
+      .slideshow-thumbs img { width: 130px; height: 84px; }
+      .pricing { max-width: 1440px; padding: 72px 80px 96px; }
+      .pricing h2 { font-size: 56px; }
+      .pricing-cards { max-width: 1060px; margin: 0 auto; gap: 32px; }
+      .pricing-card { padding: 48px; }
+      .pricing-card h3 { font-size: 44px; }
+      .pricing-price strong { font-size: 52px; }
+    }
 
+    /* ── Large desktop (≥1680px) ── */
+    @media (min-width: 1680px) {
       .hero {
         grid-template-columns: 4fr 6fr;
         gap: 88px;
