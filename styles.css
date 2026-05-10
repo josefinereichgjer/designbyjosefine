@@ -2209,11 +2209,14 @@ a:hover{opacity:.75}
   flex: 0 0 calc(60cqi - 4px);
   scroll-snap-align: start;
   margin: 0;
+  aspect-ratio: 4/3;
+  overflow: hidden;
 }
 .strip-ss__slide img,
 .strip-ss__slide video {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
   -webkit-user-drag: none;
   user-select: none;
