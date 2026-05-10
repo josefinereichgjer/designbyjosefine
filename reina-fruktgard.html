@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap"></noscript>
+  <link rel="preload" href="./assets/reinalys.webp" as="image" fetchpriority="high">
   <link rel="stylesheet" href="./styles.css?v=35" />
   <style>
     html { scroll-behavior: smooth; }
@@ -65,14 +66,14 @@
   <div class="original-modal" id="rampModal" role="dialog" aria-modal="true" aria-label="Original Reinarampen">
     <div class="original-modal__box">
       <button class="original-modal__close" id="rampModalClose" aria-label="Lukk">✕</button>
-      <img src="./assets/originalreina.webp" alt="Original etikett — Reinarampen Fyldig fra Reina Fruktgård" style="max-width:180px;width:100%;display:block;margin:0 auto">
+      <img src="./assets/originalreina.webp" alt="Original etikett — Reinarampen Fyldig fra Reina Fruktgård" loading="lazy" style="max-width:180px;width:100%;display:block;margin:0 auto">
       <p>Reinarampen Fyldig inneholder konsentrert eplemost, lilla mais fra Peru, habanero og ingefær som gir en rundere smak.</p>
     </div>
   </div>
   <div class="original-modal" id="originalModal" role="dialog" aria-modal="true" aria-label="Original Reina Rosette">
     <div class="original-modal__box">
       <button class="original-modal__close" id="originalModalClose" aria-label="Lukk">✕</button>
-      <img src="./assets/original-reina-rosette.webp" alt="Original etikett — Eplemost Rosette fra Reina Fruktgård">
+      <img src="./assets/original-reina-rosette.webp" alt="Original etikett — Eplemost Rosette fra Reina Fruktgård" loading="lazy">
       <p>Rosette er en premium eplemost med frisk, balansert smak og en fin kombinasjon av syrlighet og naturlig sødme. Den er klar og elegant, passer godt til mat, og har en mer raffinert og aromatisk karakter enn vanlig eplejuice.</p>
     </div>
   </div>
@@ -130,15 +131,11 @@
     <!-- Slideshow -->
     <section class="proj-section reveal" id="slideshow" style="padding-top:4rem;">
       <div class="strip-ss gallery-expandable" style="position:relative;">
-        <div class="strip-ss__nav" style="display:none">
-          <button class="strip-ss__btn" id="stripPrev" aria-label="Forrige bilde">←</button>
-          <button class="strip-ss__btn" id="stripNext" aria-label="Neste bilde">→</button>
-        </div>
-        <button aria-label="Forrige bilde" onclick="document.getElementById('stripPrev').click()"
+        <button id="stripPrev" aria-label="Forrige bilde"
           style="position:absolute;left:14px;top:50%;transform:translateY(-50%);z-index:10;background:none;border:none;cursor:pointer;padding:0;">
           <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="22,4 4,24 22,44" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <button aria-label="Neste bilde" onclick="document.getElementById('stripNext').click()"
+        <button id="stripNext" aria-label="Neste bilde"
           style="position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:10;background:none;border:none;cursor:pointer;padding:0;">
           <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="6,4 24,24 6,44" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -146,12 +143,12 @@
           <div class="strip-ss__track" id="stripTrack">
 
             <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/reina.webp" alt="Reina Fruktgård — bilde 2"></figure>
-            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 4"></figure>
-    <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/reiiiina.webp" alt="Reina Fruktgård — bilde 5"></figure>
-            <figure class="strip-ss__slide project__figure" style="position:relative;aspect-ratio:4/3;overflow:hidden;background:#e8ebf2;"><video src="./assets/Export_Video_2026-03-03.mp4" autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"></video></figure>
-            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/sylt.png" alt="Reina Fruktgård — sylteøl"></figure>
-            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/reinafarget.jpg" alt="Reina Fruktgård — fargebilde"></figure>
-            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in; background:#f5f3ef;"><img loading="eager" fetchpriority="high" decoding="async" draggable="false" src="./assets/reinafruktgaardis.webp" alt="Reina Fruktgård — bilde 1" style="object-fit:contain;"></figure>
+            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 4"></figure>
+    <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reiiiina.webp" alt="Reina Fruktgård — bilde 5"></figure>
+            <figure class="strip-ss__slide project__figure" style="position:relative;background:#e8ebf2;"><video src="./assets/Export_Video_2026-03-03.mp4" autoplay muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"></video></figure>
+            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/sylt.webp" alt="Reina Fruktgård — sylteøl"></figure>
+            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinafarget.webp" alt="Reina Fruktgård — fargebilde"></figure>
+            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in; background:#f5f3ef;"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinafruktgaardis.webp" alt="Reina Fruktgård — bilde 1" style="object-fit:contain;"></figure>
           </div>
         </div>
       </div>
@@ -175,22 +172,22 @@
       <div style="display:flex; flex-direction:column; gap:3.5rem; margin-top:1.5rem;">
         <div>
           <div class="gallery-expandable reina-product-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
-            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/foranreina.webp" alt="Reina Fruktgård foran" loading="eager" decoding="async" style="width:100%; display:block;"></figure>
-            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/bakreina.webp" alt="Reina Fruktgård bak" loading="eager" decoding="async" style="width:100%; display:block;"></figure>
+            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/foranreina.webp" alt="Reina Fruktgård foran" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
+            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/bakreina.webp" alt="Reina Fruktgård bak" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
           </div>
           <button id="originalBtn" style="background:none; border:none; cursor:pointer; font-family:inherit; font-size:15px; color:#960C0C; padding:8px 0 0; letter-spacing:0.02em; text-decoration:underline; display:block;">Se originalen →</button>
         </div>
         <div>
           <div class="gallery-expandable reina-product-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
-            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/reinaramp-foran.webp" alt="Reinarampen foran" loading="eager" decoding="async" style="width:100%; display:block;"></figure>
-            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/reinaramp-bak.webp" alt="Reinarampen bak" loading="eager" decoding="async" style="width:100%; display:block;"></figure>
+            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/reinaramp-foran.webp" alt="Reinarampen foran" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
+            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/reinaramp-bak.webp" alt="Reinarampen bak" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
           </div>
           <button id="rampBtn" style="background:none; border:none; cursor:pointer; font-family:inherit; font-size:15px; color:#960C0C; padding:8px 0 0; letter-spacing:0.02em; text-decoration:underline; display:block;">Se originalen →</button>
         </div>
         <div>
           <div class="gallery-expandable reina-product-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:70%; margin-left:auto; margin-right:auto;">
-            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/syltforan.webp" alt="Sylteøl foran" loading="eager" decoding="async" style="width:100%; display:block;"></figure>
-            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/syltreina.webp" alt="Sylteøl bak" loading="eager" decoding="async" style="width:100%; display:block;"></figure>
+            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/syltforan.webp" alt="Sylteøl foran" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
+            <figure style="margin:0; cursor:zoom-in; overflow:hidden;"><img src="./assets/syltreina.webp" alt="Sylteøl bak" loading="lazy" decoding="async" style="width:100%; display:block;"></figure>
           </div>
           <p style="margin:8px 0 0; font-size:15px; color:#960C0C; line-height:1.7;">De tilbyr foreløpig ikke eplegelé, men planlegger å utvikle og lansere dette i fremtiden.</p>
         </div>
@@ -220,7 +217,7 @@
       <h2 class="proj-section__heading">Landskap og sted</h2>
       <div class="reina-illus-grid" style="display:grid; grid-template-columns:1.3fr 1fr; gap:0.75rem; align-items:center; margin-top:1.5rem;">
         <figure style="margin:0; max-width:100%;">
-          <img src="./assets/reinategning.webp" alt="Illustrasjon — Reina Fruktgård" loading="eager" decoding="async" style="width:100%; display:block;">
+          <img src="./assets/reinategning.webp" alt="Illustrasjon — Reina Fruktgård" loading="lazy" decoding="async" style="width:100%; display:block;">
         </figure>
         <p style="font-size:17px; line-height:1.85; color:#3b1f0e; margin:0;">Illustrasjonen er inspirert av landskapet rundt gården. Skråningen gir motivet bevegelse, mens gårdsbygningen gjør uttrykket mer stedbundet og personlig. Logoen holdes enkel og ren, slik at illustrasjonen får fortelle historien. Den håndtegnede linjen gir emballasjen et ekte og nært preg, og passer godt til følelsen av småskala produksjon.</p>
       </div>
