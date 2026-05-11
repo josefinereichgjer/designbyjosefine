@@ -18,6 +18,7 @@
       font-family: 'IBM Plex Sans', sans-serif;
       background: #e8e8e8;
       color: var(--black);
+      overflow-x: hidden;
     }
 
     .site-wrap {
