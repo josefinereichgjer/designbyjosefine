@@ -145,18 +145,18 @@
     .slide-btn {
       flex-shrink: 0;
       margin-top: 5px;
-      background: #fff;
+      background: none;
       border: none;
-      padding: 16px 20px;
+      padding: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      color: #000;
     }
 
-    .slide-btn:hover { opacity: 0.7; }
-    .slide-btn.clicked line,
-    .slide-btn.clicked path { stroke: #E84E1B; }
+    .slide-btn:hover { color: #E84E1B; }
+    .slide-btn.clicked { color: #9B8CE8; }
 
     .slideshow-main {
       flex: 1;
@@ -213,14 +213,16 @@
         top: 50%;
         transform: translateY(-50%);
         z-index: 2;
-        background: rgba(255, 255, 255, 0.75);
-        padding: 12px 14px;
+        background: none;
+        padding: 12px;
         min-width: 44px;
         min-height: 44px;
+        color: #C8E600;
       }
+      .slide-btn:hover { color: #C8E600; opacity: 0.7; }
       .slide-btn:first-child { left: 0; }
       .slide-btn:last-child  { right: 0; }
-      .slide-btn svg { width: 24px; height: 13px; }
+      .slide-btn svg { width: 17px; height: 29px; }
       .slideshow-thumbs { padding: 0 6px; }
       .slideshow-thumbs img { width: 66px; height: 44px; }
     }
