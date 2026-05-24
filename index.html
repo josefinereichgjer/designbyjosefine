@@ -28,7 +28,7 @@
     #hero {
       position: fixed;
       top: 0; left: 0; right: 0;
-      height: 72vh;
+      height: 86vh;
       overflow: hidden;
       background: #000;
       z-index: 0;
@@ -67,9 +67,9 @@
 
     .hero-pattern {
       position: absolute;
-      right: 0;
-      top: clamp(36px, 5.5vw, 88px);
-      width: clamp(180px, 22vw, 320px);
+      right: clamp(36px, 5.5vw, 88px);
+      top: 38%;
+      width: clamp(280px, 34vw, 520px);
       height: auto;
       opacity: 0.55;
       pointer-events: none;
@@ -87,7 +87,7 @@
     /* ── Page content slides over the hero ── */
     #page-content {
       position: relative;
-      margin-top: 72vh;
+      margin-top: 86vh;
       z-index: 1;
       background: #faf8f5;
       overflow-x: clip;
@@ -178,9 +178,8 @@
 
     @media (min-width: 821px) and (max-width: 1200px) {
       .hero-pattern {
-        width: clamp(160px, 20vw, 280px);
-        top: clamp(36px, 5.5vw, 88px);
-        right: 0;
+        width: clamp(220px, 30vw, 360px);
+        top: 36%;
       }
     }
 
