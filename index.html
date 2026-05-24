@@ -3,462 +3,158 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="format-detection" content="telephone=no">
-  <title>Josefine Reichelt Gjertsen — Grafisk designer</title>
-  <meta name="description" content="Josefine Reichelt Gjertsen — grafisk designer med fokus på identitet, typografi og brukerorienterte digitale løsninger." />
+  <title>Josefine R.G — Grafisk designer (portefølje)</title>
 
+  <link rel="preload" href="./assets/reinalys.webp"             as="image">
+  <link rel="preload" href="./assets/blaa.webp"                 as="image">
+  <link rel="preload" href="./assets/krit1.webp"                as="image">
+  <link rel="preload" href="./assets/herotjonn.webp"            as="image">
+  <link rel="preload" href="./assets/norvald/homepage-em.webp"  as="image">
+  <link rel="preload" href="./assets/laptop-mockup.webp"        as="image">
+
+  <link rel="preconnect" href="https://use.typekit.net" crossorigin>
+  <link rel="preload" href="https://use.typekit.net/bfd6wfh.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://use.typekit.net/bfd6wfh.css"></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap"></noscript>
-
-  <link rel="stylesheet" href="./styles.css?v=35">
-
-  <link rel="preload" href="./assets/krit1.webp" as="image">
-  <link rel="preload" href="./assets/lillawenettside.webp" as="image">
-  <link rel="preload" href="./assets/blaa.webp" as="image">
-  <link rel="preload" href="./assets/poster-srh.webp" as="image">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap"></noscript>
 
   <style>
-    :root { --bg: #faf8f5; }
+    @font-face {
+      font-family: "SelfModern";
+      src: url("./assets/selfmodern.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
 
-    body { background: #0f0f0f; color: #1a1a1a; overflow-x: clip; }
+    *, *::before, *::after { box-sizing: border-box; }
 
-    /* ── Fixed hero ── */
-    #hero {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      height: 86vh;
+    html, body {
+      margin: 0; padding: 0;
+      width: 100%; height: 100%;
       overflow: hidden;
-      background: #000;
-      z-index: 0;
+      background: #0f0f0f;
+      font-family: "Avenir Next", "Avenir", "Century Gothic", sans-serif;
+    }
+
+    /* ── Full-screen intro ── */
+    #intro {
+      position: fixed; inset: 0;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: clamp(36px, 5.5vw, 88px);
+      align-items: center;
+      justify-content: center;
+      gap: clamp(28px, 5vh, 52px);
     }
 
-    .hero-name {
-      font-family: 'Romie', 'Playfair Display', Georgia, serif;
-      font-weight: 400;
-      font-size: clamp(40px, 6.6vw, 95px);
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      text-transform: uppercase;
+    /* ── Tagline ── */
+    #tagline {
+      font-family: 'Poppins', sans-serif;
       color: #fff;
-      margin: 0;
-    }
-
-    .hero-bottom {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 24px;
-    }
-
-    .hero-tagline {
-      font-family: 'Poppins', sans-serif;
+      font-size: clamp(18px, 2.2vw, 28px);
       font-weight: 400;
-      font-size: clamp(14px, 1.4vw, 20px);
-      letter-spacing: 0.03em;
-      color: rgba(255, 255, 255, 0.65);
+      letter-spacing: 0.04em;
       margin: 0;
-    }
-
-    .hero-pattern {
-      position: absolute;
-      right: clamp(36px, 5.5vw, 88px);
-      top: 38%;
-      width: clamp(280px, 34vw, 520px);
-      height: auto;
-      opacity: 0.55;
-      pointer-events: none;
-      animation: patternFloat 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-    }
-    @keyframes patternFloat {
-      0%   { transform: translateY(0px); }
-      25%  { transform: translateY(-8px); }
-      50%  { transform: translateY(-18px); }
-      75%  { transform: translateY(-8px); }
-      100% { transform: translateY(0px); }
-    }
-
-
-    /* ── Page content slides over the hero ── */
-    #page-content {
-      position: relative;
-      margin-top: 86vh;
-      z-index: 1;
-      background: #faf8f5;
-      overflow-x: clip;
-    }
-
-    /* ── Projects page overrides (from projects.html) ── */
-    .content { background: #faf8f5; }
-    .card { background: #faf8f5; }
-    .card__img-wrap { background: #f0ede8; }
-    .card__caption { background: #faf8f5; }
-    .card__title { color: #1D1D1B; }
-    .card__desc { color: #444444; }
-    .card__tags { color: #4A4643; border-color: #B8B2AA; }
-    .projects-page .card,
-    .projects-page .card p,
-    .projects-page .card div,
-    .projects-page .card span { color: #4A4643; }
-    .projects-page .card__title { color: #1D1D1B; }
-    .projects-page .card__desc { color: #444444; }
-    .projects-page .card__tags { color: #4A4643; border-color: #B8B2AA; background-color: #faf8f5; }
-    .grid-header { flex-direction: column; align-items: flex-start; }
-    .grid-subline--mobile { display: none; }
-
-    .grid-subline {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 400;
-      font-size: clamp(14px, 1.2vw, 17px);
-      color: #1a1a1a;
-      line-height: 1.65;
-      margin: 0.75rem 0 0;
-      max-width: 640px;
-    }
-    .title, .h2 { letter-spacing: -0.01em; line-height: 1.06; font-size: clamp(42px, 5.4vw, 86px); }
-    .title { color: #1a1a1a; }
-    .h2 { color: inherit; }
-
-    /* Top navbar */
-    .sidebar {
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 100%;
-      max-width: 1920px;
-      height: 76px;
-      padding: 0 clamp(20px, 3vw, 48px);
-      display: flex;
-      align-items: center;
-      background: #faf8f5;
-    }
-    .sidebar__inner {
-      flex-direction: row;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-      gap: 0;
-    }
-    .nav {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: clamp(16px, 2vw, 32px);
-      margin-top: 0;
-      flex: 1;
-      justify-content: flex-end;
-    }
-    .nav__link { padding: 0; font-size: 11px; }
-    .nav__link--personal { margin-top: 0; }
-    .content {
-      margin-left: 0;
-      margin-right: 0;
-      max-width: none;
-      padding-top: 108px;
-    }
-    #work { padding-top: 40px; padding-bottom: 120px; }
-
-    @media (min-width: 2400px) {
-      .sidebar { height: 152px; padding: 0 clamp(40px, 4vw, 80px); }
-      .brand__logo { font-size: 14px; }
-      .nav { gap: clamp(32px, 3vw, 56px); }
-      .nav__link { font-size: 22px; }
-      .content { padding-top: 200px; }
-      .about-bio-col p,
-      .about-bio-col li { font-size: 22px; line-height: 1.8; max-width: 900px; }
-      .about-pullquote { font-size: clamp(44px, 4.8vw, 72px) !important; }
-    }
-
-    @media (min-width: 768px) { #about { padding-top: 80px; padding-bottom: 140px; } }
-
-    @media (min-width: 821px) and (max-width: 1200px) {
-      .hero-pattern {
-        width: clamp(220px, 30vw, 360px);
-        top: 36%;
-      }
-    }
-
-    /* Header hidden until past hero */
-    .proj-header {
       opacity: 0;
+      visibility: hidden;
+      text-align: center;
+    }
+
+    /* ── Card stack ── */
+    #card-stage {
+      position: relative;
+      width: clamp(150px, 20vw, 260px);
+      aspect-ratio: 3 / 4;
+    }
+
+    .sc {
+      position: absolute; inset: 0;
+      transform: translateX(var(--tx, 0px)) translateY(var(--ty, 0px)) rotate(var(--r, 0deg));
+      overflow: hidden;
+      box-shadow:
+        0 4px 16px rgba(0,0,0,0.6),
+        0 20px 60px rgba(0,0,0,0.55);
+      will-change: transform, opacity;
+    }
+
+    .sc img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
       pointer-events: none;
-      transition: opacity 0.35s ease;
-    }
-    .proj-header--visible {
-      opacity: 1;
-      pointer-events: auto;
+      user-select: none;
     }
 
-    @media (max-width: 820px) {
-      .content { padding-top: 72px; }
-      #work { padding-bottom: 80px; }
-      .masonry {
-        display: flex;
-        flex-direction: column;
-        columns: unset;
-        column-gap: unset;
-      }
-      .masonry [href="./emanuel-vigeland.html"]    { order: 1; }
-      .masonry [href="./ansatts-portal.html"]      { order: 2; }
-      .masonry [href="./tidsskrift.html"]           { order: 3; }
-      .masonry [href="./reina-fruktgard.html"]      { order: 4; }
-      .masonry [href="./stoppestedet.html"]         { order: 5; }
-      .masonry [href="./bokomslag.html"]            { order: 6; }
-      .masonry [href="./we-visuell-profil.html"]   { order: 7; }
-      .masonry [href="./flerkanalspublisering.html"] { order: 8; }
-      .nav {
-        display: none;
-        position: absolute;
-        top: 76px;
-        left: 0; right: 0;
-        background: #000;
-        border-bottom: 1px solid #222;
-        flex-direction: column;
-        gap: 0;
-        padding: 8px 0 16px;
-        align-items: stretch;
-        z-index: 200;
-        margin-top: 0;
-      }
-      .sidebar--open .nav { display: flex; }
-      .nav .nav__link {
-        padding: 14px 20px;
-        font-size: 13px;
-        letter-spacing: 0.18em;
-        border-bottom: 1px solid #1a1a1a;
-      }
-      .sidebar__toggle { display: flex !important; }
-      .content { padding-top: 72px; }
-
-      #hero { height: 60vh; }
-      #page-content { margin-top: 60vh; }
-      .grid-subline--desktop { display: none; }
-      .grid-subline--mobile { display: block; }
-
-      .hero-name { font-size: clamp(44px, 13vw, 80px); }
-      .hero-pattern {
-        width: clamp(200px, 58vw, 320px);
-        top: auto;
-        bottom: -14%;
-        right: -14%;
-      }
+    /* ── Skip button ── */
+    #skip {
+      position: fixed;
+      bottom: 28px; right: 32px;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.35);
+      color: rgba(255,255,255,0.70);
+      font-family: inherit;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s;
     }
+    #skip:hover { border-color: rgba(255,255,255,0.7); color: rgba(255,255,255,0.95); }
   </style>
 </head>
+<body>
 
-<body class="projects-page">
-  <a class="skip-link" href="#content">Hopp til innhold</a>
-
-  <!-- ═══════════════════════════════════════════════════════ HERO (fixed) -->
-  <section id="hero" aria-label="Intro">
-
-    <h1 class="hero-name">Josefine<br>Reichelt<br>Gjertsen</h1>
-
-    <img class="hero-pattern" src="./assets/business.svg" alt="" aria-hidden="true">
-
-    <div class="hero-bottom">
-      <p class="hero-tagline">Grafisk &amp; UX design</p>
+  <div id="intro">
+    <p id="tagline">Velkommen til min grafisk design portefølje!</p>
+    <div id="card-stage">
+      <div class="sc" style="--r: -14deg; --tx: -16px; --ty:  6px"><img src="./assets/reinalys.webp"             alt=""></div>
+      <div class="sc" style="--r:  10deg; --tx:  18px; --ty: -8px"><img src="./assets/blaa.webp"                 alt=""></div>
+      <div class="sc" style="--r:  -5deg; --tx:  -9px; --ty:  4px"><img src="./assets/krit1.webp"                alt=""></div>
+      <div class="sc" style="--r:  16deg; --tx:  15px; --ty: -5px"><img src="./assets/herotjonn.webp"            alt=""></div>
+      <div class="sc" style="--r:  -9deg; --tx: -12px; --ty:  3px"><img src="./assets/norvald/homepage-em.webp"  alt=""></div>
+      <div class="sc" style="--r:   4deg; --tx:   6px; --ty: -2px"><img src="./assets/laptop-mockup.webp"        alt=""></div>
     </div>
+  </div>
 
-  </section>
+  <button id="skip">Hopp over</button>
 
-  <!-- ═══════════════════════════════════════════════════ SCROLLABLE CONTENT -->
-  <div id="page-content">
-
-    <header class="proj-header" id="projHeader">
-      <div class="proj-header__inner">
-        <a class="proj-header__logo" href="#hero">JOSEFINE R.G</a>
-        <nav class="proj-header__nav" id="projNav">
-          <a class="proj-header__link proj-header__link--active" href="#work">Arbeider</a>
-          <a class="proj-header__link" href="#about">Om</a>
-          <a class="proj-header__link" href="#contact">Kontakt</a>
-        </nav>
-        <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
-          <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-        </button>
-      </div>
-    </header>
-
-    <main id="content" class="content" style="margin-left:0; padding-top:80px;">
-
-      <section id="work" class="section">
-        <div class="grid-header">
-          <h2 class="title">ARBEIDER</h2>
-          <p class="grid-subline grid-subline--desktop">Jeg er Josefine Reichelt Gjertsen, en grafisk designer med interesse for visuell identitet, typografi, redaksjonell design og digitale konsepter. Denne porteføljen viser utvalgte prosjekter fra bachelorstudiet mitt i grafisk design. Basert i Gjøvik og Oslo — tilgjengelig for samarbeid og oppdrag.</p>
-          <p class="grid-subline grid-subline--mobile">Jeg er Josefine Reichelt Gjertsen, grafisk designer med interesse for visuell identitet, typografi og digitale konsepter. Porteføljen viser utvalgte bachelorprosjekter. Basert i Gjøvik og Oslo, tilgjengelig for samarbeid og oppdrag.</p>
-        </div>
-
-        <div class="masonry" id="grid" aria-live="polite">
-          <a class="card card--visible" href="./emanuel-vigeland.html">
-            <div class="card__img-wrap"><img class="card__img" src="./assets/norvald/homepage-em.webp" alt="Emanuel Vigeland Museum" loading="eager" decoding="async"></div>
-            <div class="card__caption">
-              <p class="card__title">Emanuel Vigeland Museum</p>
-              <p class="card__desc">Mobil-first redesign av nettsiden til Emanuel Vigeland Museum i Oslo.</p>
-              <p class="card__tags">Redesign / UX</p>
-            </div>
-          </a>
-          <a class="card card--visible" href="./reina-fruktgard.html">
-            <div class="card__img-wrap"><img class="card__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="eager" decoding="async"></div>
-            <div class="card__caption">
-              <p class="card__title">Reina Fruktgård</p>
-              <p class="card__desc">Emballasjedesign for en norsk småskalaprodusent med fokus på lokalitet og håndverk.</p>
-              <p class="card__tags">Emballasjedesign</p>
-            </div>
-          </a>
-          <a class="card card--visible" href="./stoppestedet.html">
-            <div class="card__img-wrap"><img class="card__img" src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="eager" decoding="async" style="object-position:center 40%"></div>
-            <div class="card__caption">
-              <p class="card__title">Stoppestedet</p>
-              <p class="card__desc">Merkevare og nettside for et fiktivt lavterskel makerspace i Oslo.</p>
-              <p class="card__tags">Visuell identitet & nettside</p>
-            </div>
-          </a>
-          <a class="card card--visible" href="./tidsskrift.html">
-            <div class="card__img-wrap"><img class="card__img" src="./assets/krit1.webp" alt="Tidsskrift" loading="eager" decoding="async"></div>
-            <div class="card__caption">
-              <p class="card__title">KRIT Litteraturtidsskrift</p>
-              <p class="card__desc">Redaksjonelt konsept for et litterært tidsskrift som utforsker forholdet mellom kropp, kultur og erfaring.</p>
-              <p class="card__tags">Redaksjonell design</p>
-            </div>
-          </a>
-          <a class="card card--visible" href="./ansatts-portal.html">
-            <div class="card__img-wrap"><img class="card__img" src="./assets/tjonni.webp" alt="Tjønnås og Norvald" loading="eager" decoding="async"></div>
-            <div class="card__caption">
-              <p class="card__title">Tjønnås & Norvald</p>
-              <p class="card__desc">Ansattportal som samler vaktlister, kommunikasjon og opplæring på én flate.</p>
-              <p class="card__tags">UX / Informasjonsarkitektur</p>
-            </div>
-          </a>
-          <a class="card card--visible" href="./bokomslag.html">
-            <div class="card__img-wrap"><img class="card__img" src="./assets/blaa.webp" alt="Bokomslag" loading="eager" decoding="async"></div>
-            <div class="card__caption">
-              <p class="card__title">Bokomslag</p>
-              <p class="card__desc">Ny visuell identitet for tre norske litterære klassikere med preget typografi og tekstilbind.</p>
-              <p class="card__tags">Redaksjonell design</p>
-            </div>
-          </a>
-          <a class="card card--visible" href="./we-visuell-profil.html">
-            <div class="card__img-wrap"><img class="card__img" src="./assets/lillawenettside.webp" alt="Stiftelsen WE" loading="eager" decoding="async"></div>
-            <div class="card__caption">
-              <p class="card__title">Stiftelsen WE</p>
-              <p class="card__desc">Helhetlig visuell identitet for en sosial stiftelse som styrker kvinner i arbeidslivet.</p>
-              <p class="card__tags">Strategisk design</p>
-            </div>
-          </a>
-          <a class="card card--visible" href="./flerkanalspublisering.html">
-            <div class="card__img-wrap"><img class="card__img" src="./assets/poster-srh.webp" alt="Flerkanalspublisering" loading="eager" decoding="async"></div>
-            <div class="card__caption">
-              <p class="card__title">Flerkanalspublisering</p>
-              <p class="card__desc">Visuell kommunikasjonsløsning for SRH Berlin på tvers av plakat, sosiale medier og trykksaker.</p>
-              <p class="card__tags">Flerkanal</p>
-            </div>
-          </a>
-        </div>
-      </section>
-
-      <!-- ── ABOUT ── -->
-      <section id="about" class="section section--thin section--dark">
-        <h2 class="h2">Om meg</h2>
-        <div class="about-layout">
-          <div class="about-photo-col">
-            <img class="about-photo" src="./assets/me.webp" alt="Portrait photo" loading="eager" decoding="async"/>
-            <div class="tools-strip">
-              <div class="tools-track" id="toolsTrack"></div>
-            </div>
-          </div>
-          <div class="about-bio-col">
-            <p class="about-pullquote">Grafisk designer som tenker strategisk, og designer for nærhet.</p>
-            <p>Hei! Jeg er Josefine, sisteårsstudent på en bachelor i grafisk design ved NTNU. Bakgrunnen min ligger i typografi og merkevarebygging, men gjennom tverrfaglige prosjekter har jeg dratt stadig mer mot UI/UX. Det som driver meg er ikke det visuelle alene, men måten et grensesnitt kan gjøre kompleks informasjon forståelig, eller få et museumsbesøk til å begynne lenge før du går inn døra.</p>
-            <p>Gleden over håndverket startet på kunstlinjen. Et friår med språkreise til Korea ga meg innsikt i hvordan design og kommunikasjon fungerer på tvers av kulturer, og hvor mye av god UX som egentlig handler om å forstå hvem du designer for.</p>
-            <p>Når jeg ikke sitter foran skjermen, lærer jeg gjerne et nytt språk. Jeg snakker nesten flytende koreansk, pusser på tysken, og lærer ukrainsk og russisk for gøy. For meg henger språk og design tett sammen – begge deler handler om å forstå mennesker og treffe en tone.</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="section section--thin section--contact">
-        <div class="contact-heading">
-          <h2 class="h2">Kontakt</h2>
-        </div>
-        <p>For samarbeid, oppdrag eller bare en liten prat, send gjerne en e-post:</p>
-        <script>(function(){var u='josefinegjertsen',d='gm'+'ail'+'.com';var a=document.createElement('a');a.href='mailto:'+u+'@'+d;a.className='contact-email-link';a.textContent=u+'@'+d;document.currentScript.insertAdjacentElement('afterend',a);})();</script>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <span class="site-footer__copy">© 2026 Josefine Reichelt Gjertsen</span>
-      <div class="site-footer__links">
-        <a href="mailto:josefinegjertsen@gmail.com" aria-label="E-post" class="site-footer__link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/josefine-reichelt-gjertsen-34ab8926b/" target="_blank" rel="noopener" aria-label="LinkedIn" class="site-footer__link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M12 10v7m0-5a3 3 0 0 1 6 0v5"/></svg>
-        </a>
-        <a href="https://www.facebook.com/josefine.gjertsen" target="_blank" rel="noopener" aria-label="Facebook" class="site-footer__link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-        </a>
-      </div>
-    </footer>
-  </div><!-- #page-content -->
-
-  <script src="./projects.js?v=6"></script>
-  <script src="./app.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('card--visible'); obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
-      document.querySelectorAll('.masonry .card').forEach(function (c) { obs.observe(c); });
+    var DEST = './projects.html';
 
-      function showAllCards() { document.querySelectorAll('.masonry .card').forEach(function(c) { c.classList.add('card--visible'); }); }
-      setTimeout(showAllCards, 0);
-      window.addEventListener('beforeprint', showAllCards);
+    function go() { window.location.replace(DEST); }
 
-      document.querySelectorAll('img.card__img').forEach(function (img) {
-        if (img.complete) return;
-        img.classList.add('img--loading');
-        img.addEventListener('load', function () { img.classList.add('img--loaded'); });
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      go();
+    } else {
+      var tl = gsap.timeline({ onComplete: go });
+
+      /* Cards drop in one by one */
+      tl.from('.sc', {
+        y: -520,
+        opacity: 0.2,
+        duration: 0.6,
+        stagger: 0.24,
+        ease: 'power3.out'
       });
 
-      if (window.innerWidth >= 2400) {
-        var toolsTrack = document.getElementById('toolsTrack');
-        if (toolsTrack && toolsTrack.innerHTML) {
-          var c = toolsTrack.innerHTML;
-          toolsTrack.innerHTML = c + c + c;
-        }
-      }
+      /* Tagline fades in as last card settles */
+      tl.to('#tagline', { opacity: 1, visibility: 'visible', duration: 0.6, ease: 'power2.out' }, '-=0.2');
 
-      var header = document.getElementById('projHeader');
+      /* Pause */
+      tl.to({}, { duration: 1.1 });
 
-      // Show navbar only after hero is scrolled past
-      function updateNav() {
-        if (window.scrollY > window.innerHeight * 0.6) {
-          header.classList.add('proj-header--visible');
-        } else {
-          header.classList.remove('proj-header--visible');
-        }
-      }
-      window.addEventListener('scroll', updateNav, { passive: true });
-      updateNav();
+      /* Stack scales up + fades, then redirect fires via onComplete */
+      tl.to('#card-stage', { scale: 1.07, duration: 0.55, ease: 'power2.in' }, '<');
+      tl.to('#intro',      { opacity: 0,  duration: 0.6,  ease: 'power2.in' }, '-=0.25');
 
-      var toggle = document.getElementById('projToggle');
-      toggle.addEventListener('click', function() {
-        var open = header.classList.toggle('proj-header--open');
-        toggle.setAttribute('aria-expanded', String(open));
+      document.getElementById('skip').addEventListener('click', function () {
+        tl.progress(1);
       });
-      document.addEventListener('click', function(e) {
-        if (!header.contains(e.target)) {
-          header.classList.remove('proj-header--open');
-          toggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
+    }
   </script>
 </body>
 </html>
