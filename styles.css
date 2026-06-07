@@ -170,7 +170,7 @@ a:hover{opacity:.75}
 /* Main */
 .section{padding:10px 0 80px}
 .section--thin{max-width:980px}
-.section--contact{margin-top:60px}
+.section--contact{margin-top:0}
 .section--dark {
   background: #000;
   color: #fff;
@@ -804,6 +804,7 @@ a:hover{opacity:.75}
   width: 100%;
   overflow: hidden;
   position: relative;
+  flex-shrink: 0;
 }
 
 .tools-strip::before,
@@ -2242,10 +2243,19 @@ a:hover{opacity:.75}
 }
 
 /* Contact */
+#about { padding-bottom: 0; }
+
 #contact {
-  max-width: 420px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 860px;
+  margin: 0 auto;
 }
 .contact-heading {
   display: flex;
@@ -2253,8 +2263,10 @@ a:hover{opacity:.75}
   gap: 10px;
   margin-bottom: 8px;
 }
-
-
+.contact-right video {
+  width: 100%;
+  display: block;
+}
 .contact-email-link {
   display: inline-block;
   margin-top: 12px;
@@ -2262,12 +2274,13 @@ a:hover{opacity:.75}
   font-size: 15px;
   font-weight: 300;
   letter-spacing: 0.08em;
-  color: #6b3fa0;
+  color: #fff;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 .contact-email-link:hover { opacity: 0.6; }
-.section--contact > p {
+.section--contact > p,
+.contact-left > p {
   font-family: 'Poppins', sans-serif;
   font-weight: 300;
 }
@@ -2320,7 +2333,10 @@ a:hover{opacity:.75}
   .slideshow { aspect-ratio: 16 / 9; border-radius: 0; }
   .bg { margin-top: 36px; }
   .bg__sections { grid-template-columns: 1fr; }
+  html { scrollbar-gutter: auto; }
   .section--dark { margin-left: -20px; margin-right: -20px; padding-left: 20px; padding-right: 20px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .contact-right video { max-width: 100%; }
   /* About: stack to single column */
   .about-layout { grid-template-columns: 1fr; gap: 56px; }
   .about-photo-col { align-items: center; }
@@ -2414,7 +2430,7 @@ a:hover{opacity:.75}
   .proj-steps-grid { grid-template-columns: 1fr; gap: 20px; }
   .proj-team-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
   .proj-team-card { padding: 0; }
-  #contact { max-width: 100%; }
+  #contact { max-width: none; }
 }
 
 @media (max-width: 700px) {
