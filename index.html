@@ -175,7 +175,6 @@
     (function () {
       var video = document.getElementById('heroVideo');
       if (!video) return;
-      video.playbackRate = 2.0;
       function tryPlay() {
         var p = video.play();
         if (p && typeof p.catch === 'function') p.catch(function(){});
