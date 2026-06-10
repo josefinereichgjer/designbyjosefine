@@ -270,7 +270,10 @@
       <script>(function(){var u='josefinegjertsen',d='gm'+'ail'+'.com';var a=document.createElement('a');a.href='mailto:'+u+'@'+d;a.className='contact-email-link';a.textContent=u+'@'+d;document.currentScript.insertAdjacentElement('afterend',a);})();</script>
     </div>
     <div class="contact-right">
-      <video id="heroVideo" src="./assets/blackbg.mov" muted playsinline></video>
+      <video id="heroVideo" muted playsinline preload="auto">
+        <source src="./assets/blackbg.webm" type="video/webm">
+        <source src="./assets/blackbg-mobile.mp4" type="video/mp4">
+      </video>
     </div>
   </div>
 </section>
@@ -327,10 +330,22 @@
       var video = document.getElementById('heroVideo');
       if (!video) return;
       video.playbackRate = 5.0;
-      video.addEventListener('loadeddata', function () {
+      var played = false;
+      function startVideo() {
+        if (played) return;
+        played = true;
         video.currentTime = 0;
-        setTimeout(function () { video.play(); }, 2500);
-      });
+        setTimeout(function () {
+          var p = video.play();
+          if (p && typeof p.catch === 'function') p.catch(function(){});
+        }, 2500);
+      }
+      if (video.readyState >= 2) {
+        startVideo();
+      } else {
+        video.addEventListener('canplay', startVideo, { once: true });
+        video.addEventListener('loadeddata', startVideo, { once: true });
+      }
       var reversing = false;
       var lastTs = null;
       video.addEventListener('ended', function () {
