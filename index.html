@@ -170,28 +170,12 @@
   </main>
 
   <div class="hero__visual">
-    <video id="heroVideo" class="hero__video"
-      autoplay muted playsinline preload="auto">
+    <video class="hero__video"
+      autoplay muted playsinline loop preload="auto">
       <source src="./assets/blackbg-loop.mp4" type="video/mp4">
       <source src="./assets/blackbg-loop.webm" type="video/webm">
     </video>
   </div>
-
-  <script>
-    (function () {
-      var video = document.getElementById('heroVideo');
-      if (!video) return;
-      function tryPlay() {
-        var p = video.play();
-        if (p && typeof p.catch === 'function') p.catch(function(){});
-      }
-      if (video.readyState >= 2) {
-        tryPlay();
-      } else {
-        video.addEventListener('canplay', tryPlay, { once: true });
-      }
-    })();
-  </script>
 
 </body>
 </html>
