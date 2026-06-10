@@ -53,6 +53,7 @@
   --accent-red: #8A1111;
 }
 
+
 *{box-sizing:border-box}
 button{color:inherit; font-family:inherit; background:none; border:none; padding:0; cursor:pointer; border-radius:0; -webkit-appearance:none; appearance:none; -webkit-tap-highlight-color:transparent}
 html{scrollbar-gutter:stable; overflow-x:clip; overflow-y:scroll}
@@ -2510,26 +2511,31 @@ a:hover{opacity:.75}
 .proj-header__nav {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 2vw, 36px);
+  gap: clamp(16px, 2vw, 36px);
 }
 .proj-header__link {
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.55);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-.proj-header__link:hover { color: #fff; }
-.proj-header__link--active {
+  font-family: "Avenir Next", "Avenir", "Century Gothic", sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.45);
-  padding: 7px 16px;
+  text-decoration: none;
+  transition: opacity 0.15s;
 }
+.proj-header__link:hover { opacity: 0.7; }
+.proj-header__link--active {
+  background: #fff;
+  color: #111;
+  border-radius: 999px;
+  padding: 8px 22px;
+  text-transform: uppercase;
+}
+.proj-header__link--active:hover { opacity: 1; background: #e8e8e8; color: #111; }
 .proj-header__toggle {
   display: none;
   flex-direction: column;
-  gap: 4px;
+  gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
@@ -2538,9 +2544,39 @@ a:hover{opacity:.75}
 }
 .proj-header__toggle span {
   display: block;
-  width: 20px;
+  width: 22px;
   height: 1.5px;
   background: #fff;
+}
+
+/* ── Individual project pages: always hamburger ── */
+.project-page .proj-header__toggle { display: flex; }
+.project-page .proj-header__nav {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: clamp(20px, 4vw, 60px);
+  min-width: 210px;
+  background: #111;
+  flex-direction: column;
+  gap: 0;
+  padding: 6px 0;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  z-index: 200;
+}
+.project-page .proj-header--open .proj-header__nav { display: flex; }
+.project-page .proj-header__link {
+  padding: 14px 28px;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.project-page .proj-header__link:last-child { border-bottom: none; }
+.project-page .proj-header__link--active {
+  background: none;
+  color: #fff;
+  border-radius: 0;
+  padding: 14px 28px;
 }
 .proj-main {
   padding-top: 80px;
@@ -2784,6 +2820,9 @@ a:hover{opacity:.75}
   }
   .proj-header__link:last-child { border-bottom: none; }
   .proj-header__link--active {
+    background: none;
+    color: #fff;
+    border-radius: 0;
     border: none;
     border-bottom: 1px solid rgba(255,255,255,0.06);
     padding: 20px clamp(20px, 4vw, 60px);

@@ -1,9 +1,219 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="no">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="refresh" content="0;url=./projects.html" />
-  <link rel="canonical" href="./projects.html" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Josefine Reichelt Gjertsen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "Romie";
+      src: url("./assets/Romie-Regular.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      color: #fff;
+      overflow: hidden;
+    }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      padding: 0 clamp(20px, 4vw, 60px);
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: clamp(16px, 2vw, 36px);
+      z-index: 20;
+    }
+
+    .nav a {
+      font-family: "Avenir Next", "Avenir", "Century Gothic", sans-serif;
+      font-size: 19px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav a:hover { opacity: 0.7; }
+
+    .nav__pill {
+      background: #fff;
+      color: #111 !important;
+      border-radius: 999px;
+      padding: 8px 22px;
+    }
+    .nav__pill:hover { opacity: 1 !important; background: #e8e8e8; }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: 100vh;
+      align-items: center;
+      padding: 0 5vw;
+    }
+
+    .hero__text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero__name {
+      font-family: "Romie", "Playfair Display", Georgia, serif;
+      font-size: clamp(48px, 7.2vw, 118px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    .hero__subtitle {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(15px, 1.4vw, 22px);
+      font-weight: 300;
+      color: #fff;
+      margin-top: clamp(24px, 3vw, 48px);
+      letter-spacing: 0.01em;
+    }
+
+    /* ── Video — fixed to viewport bottom-right ── */
+    .hero__visual {
+      position: fixed;
+      bottom: -28vh;
+      right: -17vw;
+      width: 53vw;
+      max-width: 816px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero__video {
+      width: 100%;
+      display: block;
+      /* GPU compositing layer — prevents repaint jank */
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    /* ── Tablet ── */
+    @media (max-width: 900px) {
+      .hero__visual {
+        width: 55vw;
+        bottom: -6vh;
+        right: -5vw;
+      }
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      html, body { overflow: hidden; }
+
+      .nav { padding: 20px 24px; gap: 20px; }
+      .nav a { font-size: 14px; }
+      .nav__pill { padding: 6px 16px; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        height: 100svh;
+        padding: calc(110px + 8svh) 28px 0;
+        align-items: flex-start;
+      }
+
+      .hero__text { position: relative; z-index: 2; }
+
+      .hero__name { font-size: clamp(52px, 15vw, 80px); }
+
+      .hero__visual {
+        width: 140vw;
+        bottom: -22vh;
+        right: -53vw;
+      }
+    }
+  </style>
 </head>
-<body></body>
+<body>
+
+  <nav class="nav">
+    <a class="nav__pill" href="./projects.html">ARBEIDER</a>
+    <a href="./projects.html#about">Om meg</a>
+    <a href="./projects.html#contact">Kontakt</a>
+  </nav>
+
+  <main class="hero">
+    <div class="hero__text">
+      <h1 class="hero__name">JOSEFINE<br>REICHELT<br>GJERTSEN</h1>
+      <p class="hero__subtitle">UX/Grafisk designer</p>
+    </div>
+  </main>
+
+  <div class="hero__visual">
+    <video id="heroVideo" class="hero__video"
+      muted playsinline preload="auto">
+      <source src="./assets/blackbg.webm" type="video/webm">
+      <source src="./assets/blackbg.mov" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    (function () {
+      var video = document.getElementById('heroVideo');
+      if (!video) return;
+      var RATE = 5.5;
+      video.playbackRate = RATE;
+
+      function tryPlay() {
+        video.currentTime = 0;
+        var p = video.play();
+        if (p && typeof p.catch === 'function') p.catch(function(){});
+      }
+
+      if (video.readyState >= 3) {
+        tryPlay();
+      } else {
+        video.addEventListener('canplaythrough', tryPlay, { once: true });
+      }
+
+      var reversing = false;
+      var lastTs = null;
+
+      video.addEventListener('ended', function () {
+        reversing = true;
+        lastTs = null;
+        requestAnimationFrame(reverseStep);
+      });
+
+      function reverseStep(now) {
+        if (!reversing) return;
+        var delta = lastTs !== null ? (now - lastTs) / 1000 : 0;
+        lastTs = now;
+        video.currentTime = Math.max(0, video.currentTime - delta * RATE);
+        if (video.currentTime <= 0) {
+          reversing = false;
+          video.currentTime = 0;
+          tryPlay();
+          return;
+        }
+        requestAnimationFrame(reverseStep);
+      }
+    })();
+  </script>
+
+</body>
 </html>
