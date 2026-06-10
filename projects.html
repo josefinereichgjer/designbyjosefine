@@ -270,9 +270,9 @@
       <script>(function(){var u='josefinegjertsen',d='gm'+'ail'+'.com';var a=document.createElement('a');a.href='mailto:'+u+'@'+d;a.className='contact-email-link';a.textContent=u+'@'+d;document.currentScript.insertAdjacentElement('afterend',a);})();</script>
     </div>
     <div class="contact-right">
-      <video id="heroVideo" muted playsinline preload="auto">
-        <source src="./assets/blackbg.webm" type="video/webm">
-        <source src="./assets/blackbg-mobile.mp4" type="video/mp4">
+      <video id="heroVideo" muted playsinline loop preload="auto">
+        <source src="./assets/blackbg-loop.webm" type="video/webm">
+        <source src="./assets/blackbg-loop.mp4" type="video/mp4">
       </video>
     </div>
   </div>
@@ -329,12 +329,11 @@
     (function () {
       var video = document.getElementById('heroVideo');
       if (!video) return;
-      video.playbackRate = 5.0;
-      var played = false;
+      video.playbackRate = 2.0;
+      var started = false;
       function startVideo() {
-        if (played) return;
-        played = true;
-        video.currentTime = 0;
+        if (started) return;
+        started = true;
         setTimeout(function () {
           var p = video.play();
           if (p && typeof p.catch === 'function') p.catch(function(){});
@@ -345,26 +344,6 @@
       } else {
         video.addEventListener('canplay', startVideo, { once: true });
         video.addEventListener('loadeddata', startVideo, { once: true });
-      }
-      var reversing = false;
-      var lastTs = null;
-      video.addEventListener('ended', function () {
-        reversing = true;
-        lastTs = null;
-        requestAnimationFrame(reverseStep);
-      });
-      function reverseStep(now) {
-        if (!reversing) return;
-        var delta = lastTs !== null ? (now - lastTs) / 1000 : 0;
-        lastTs = now;
-        video.currentTime = Math.max(0, video.currentTime - delta * 5.0);
-        if (video.currentTime <= 0) {
-          reversing = false;
-          video.currentTime = 0;
-          video.play();
-          return;
-        }
-        requestAnimationFrame(reverseStep);
       }
     })();
   </script>

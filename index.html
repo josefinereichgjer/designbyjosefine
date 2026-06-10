@@ -166,8 +166,8 @@
   <div class="hero__visual">
     <video id="heroVideo" class="hero__video"
       autoplay muted playsinline preload="auto">
-      <source src="./assets/blackbg.webm" type="video/webm">
-      <source src="./assets/blackbg-mobile.mp4" type="video/mp4">
+      <source src="./assets/blackbg-loop.webm" type="video/webm">
+      <source src="./assets/blackbg-loop.mp4" type="video/mp4">
     </video>
   </div>
 
@@ -175,42 +175,15 @@
     (function () {
       var video = document.getElementById('heroVideo');
       if (!video) return;
-      var RATE = 5.5;
-      video.playbackRate = RATE;
-
+      video.playbackRate = 2.0;
       function tryPlay() {
-        video.currentTime = 0;
         var p = video.play();
         if (p && typeof p.catch === 'function') p.catch(function(){});
       }
-
-      if (video.readyState >= 3) {
+      if (video.readyState >= 2) {
         tryPlay();
       } else {
-        video.addEventListener('canplaythrough', tryPlay, { once: true });
-      }
-
-      var reversing = false;
-      var lastTs = null;
-
-      video.addEventListener('ended', function () {
-        reversing = true;
-        lastTs = null;
-        requestAnimationFrame(reverseStep);
-      });
-
-      function reverseStep(now) {
-        if (!reversing) return;
-        var delta = lastTs !== null ? (now - lastTs) / 1000 : 0;
-        lastTs = now;
-        video.currentTime = Math.max(0, video.currentTime - delta * RATE);
-        if (video.currentTime <= 0) {
-          reversing = false;
-          video.currentTime = 0;
-          tryPlay();
-          return;
-        }
-        requestAnimationFrame(reverseStep);
+        video.addEventListener('canplay', tryPlay, { once: true });
       }
     })();
   </script>
