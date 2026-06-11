@@ -56,6 +56,56 @@
     .extra-divider {
       border: none; border-top: 1px solid #e8e4e0; margin: 64px 0;
     }
+
+    /* Website preview */
+    .site-preview {
+      margin-top: 28px;
+      border: 1px solid #e0dbd5;
+      overflow: hidden;
+    }
+    .site-preview__bar {
+      background: #f0ece8;
+      border-bottom: 1px solid #e0dbd5;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .site-preview__dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .site-preview__dot:nth-child(1) { background: #e0dbd5; }
+    .site-preview__dot:nth-child(2) { background: #e0dbd5; }
+    .site-preview__dot:nth-child(3) { background: #e0dbd5; }
+    .site-preview__url {
+      flex: 1; background: #fff; border: 1px solid #e0dbd5;
+      border-radius: 4px; padding: 4px 10px;
+      font-size: 11px; color: #999; letter-spacing: 0.02em;
+      margin-left: 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .site-preview__viewport {
+      position: relative;
+      width: 100%;
+      height: 460px;
+      overflow: hidden;
+    }
+    .site-preview__iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 166.67%;
+      height: 166.67%;
+      border: none;
+      transform: scale(0.6);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+    @media (max-width: 700px) {
+      .site-preview__viewport { height: 320px; }
+    }
+    @media (max-width: 500px) {
+      .site-preview__viewport { height: 240px; }
+      .site-preview__iframe { width: 200%; height: 200%; transform: scale(0.5); }
+    }
     .extra-video-block {
       display: flex; justify-content: center; padding: 0 0 32px;
     }
@@ -192,6 +242,21 @@
         <h2 class="pdf-preview-block__title">Nettside generert med Claude Design</h2>
         <p class="pdf-preview-block__desc">Et eksperiment utenfor oppgavens rammer: 17. april brukte jeg Figma-filen fra prosjektet som kilde og testet Claude Design — lansert samme dag. Jeg definerte layout, retning og struktur gjennom noen runder med prompting og redigering. Designet, kildemateriellet og redaksjonell kontroll er mitt; AI-en var verktøyet.</p>
         <a class="pdf-preview-block__download" href="./assets/Norvald%20og%20Tj%C3%B8nn%C3%A5s/hjem.html" target="_blank" rel="noopener">Åpne nettsiden →</a>
+        <div class="site-preview">
+          <div class="site-preview__bar">
+            <span class="site-preview__dot"></span>
+            <span class="site-preview__dot"></span>
+            <span class="site-preview__dot"></span>
+            <span class="site-preview__url">tjønnås-norvald.no/meldinger</span>
+          </div>
+          <div class="site-preview__viewport">
+            <iframe
+              class="site-preview__iframe"
+              src="./assets/Norvald%20og%20Tj%C3%B8nn%C3%A5s/chat.html"
+              title="Forhåndsvisning av Meldinger-siden">
+            </iframe>
+          </div>
+        </div>
       </div>
 
 
