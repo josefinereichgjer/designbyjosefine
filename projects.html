@@ -329,6 +329,7 @@
     (function () {
       var video = document.getElementById('heroVideo');
       if (!video) return;
+      video.playbackRate = window.innerWidth > 600 ? 2.0 : 1.5;
       var started = false;
       function startVideo() {
         if (started) return;
