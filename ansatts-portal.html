@@ -141,6 +141,42 @@
     .tn-stmt__media { display: block; margin-top: clamp(28px,4vw,36px); border-radius: 12px; border: 1px solid #dedede; overflow: hidden; position: relative; }
     .tn-stmt__media img, .tn-stmt__media video { width: 100%; display: block; }
     .tn-stmt__media--portrait { max-width: 320px; margin-left: auto; margin-right: auto; }
+
+    /* Quote card: photo with a frosted-glass panel holding a readable pull-quote */
+    .tn-quote__text {
+      position: absolute;
+      left: 50%;
+      bottom: clamp(16px,3vw,28px);
+      transform: translateX(-50%);
+      width: calc(100% - 48px);
+      max-width: 560px;
+      margin: 0;
+      padding: clamp(16px,2.5vw,24px) clamp(18px,3vw,28px);
+      background: rgba(255,255,255,0.62);
+      backdrop-filter: blur(14px) saturate(150%);
+      -webkit-backdrop-filter: blur(14px) saturate(150%);
+      border-radius: 12px;
+      font-family: var(--tn-sans);
+      font-size: clamp(15px,1.6vw,17px);
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--tn-ink);
+      text-align: center;
+    }
+    .tn-quote__attr {
+      display: block;
+      margin-top: 10px;
+      font-family: var(--tn-sans);
+      font-size: 11px;
+      font-weight: 600;
+      font-style: normal;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tn-body);
+    }
+    @media (max-width: 600px) {
+      .tn-quote__text { width: calc(100% - 24px); }
+    }
     @media (max-width: 800px) {
       .tn-stmt__row { grid-template-columns: 1fr; }
     }
@@ -652,7 +688,13 @@
                   <p>Med hyppig utskiftning av unge deltidsansatte ble viktig informasjon ofte borte i prosessen.</p>
                 </div>
               </div>
-              <img class="tn-stmt__media" src="./assets/norvald/marimette.webp" alt="Mari-Mette bak disken hos Norvald" loading="lazy" decoding="async">
+              <div class="tn-stmt__media tn-quote">
+                <img src="./assets/norvald/marimette.webp" alt="Mari-Mette bak disken hos Norvald" loading="lazy" decoding="async">
+                <blockquote class="tn-quote__text">
+                  «Driften er avhengig av flere separate systemer, noe som gjør kommunikasjon, vaktplanlegging og opplæring unødvendig tidkrevende.»
+                  <footer class="tn-quote__attr">— Mari-Mette, daglig leder</footer>
+                </blockquote>
+              </div>
             </div>
           </section>
         <section class="tn-stmt">
