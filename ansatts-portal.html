@@ -106,6 +106,25 @@
     /* Video content has a black recording background behind a rounded iPad mockup — a hard square frame reads as harsh against it. Scoped to video only; the static screenshots keep sharp corners. */
     .tn-design__frame:has(video) { border-radius: 32px; }
     .tn-design__frame--portrait { max-width: 320px; margin: 0 auto; }
+    .tn-design__filmstrip { display: flex; gap: 10px; margin: 14px auto 0; max-width: 320px; }
+    .tn-design__placeholder {
+      flex: 1 1 0;
+      aspect-ratio: 9 / 19.5;
+      border: 1px dashed var(--rule);
+      background: #f3edd8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4px;
+    }
+    .tn-design__placeholder span {
+      font-family: Menlo, "SFMono-Regular", monospace;
+      font-size: 8px;
+      line-height: 1.4;
+      color: #8a8578;
+      word-break: break-word;
+    }
     @media (max-width: 800px) {
       .tn-design { grid-template-columns: 1fr; }
     }
@@ -544,6 +563,12 @@
                 <source src="./assets/norvald/figma-export/design-kalender-flow.webm" type="video/webm">
                 <source src="./assets/norvald/figma-export/design-kalender-flow.mp4" type="video/mp4">
               </video>
+            </div>
+            <div class="tn-design__filmstrip" aria-hidden="true">
+              <div class="tn-design__placeholder"><span>mobil-01-login-preview.png</span></div>
+              <div class="tn-design__placeholder"><span>mobil-02-hjem-preview.png</span></div>
+              <div class="tn-design__placeholder"><span>mobil-03-kalender-preview.png</span></div>
+              <div class="tn-design__placeholder"><span>mobil-04-vaktdetalj-preview.png</span></div>
             </div>
           </div>
           <div class="tn-design" style="background:#faf8f4;">
