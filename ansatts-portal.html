@@ -12,8 +12,157 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400\&family=Poppins:wght@300;400;500\&display=swap"></noscript>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"></noscript>
-  <link rel="stylesheet" href="./styles.css?v=37" />
+  <link rel="stylesheet" href="./styles.css?v=45" />
   <style>
+    /* SANVITHI-INSPIRED RESKIN — deliberate one-off visual treatment for this case study only.
+       Scoped to .proj-main so the global site chrome (nav, buttons) is untouched. See honest note in the hero. */
+    .proj-main {
+      --tn-cream: #f6f2e6;
+      --tn-cream-deep: #ece4cf;
+      --tn-sage: #7c8c6a;
+      --tn-sage-deep: #57634a;
+      --tn-ink: #322f28;
+      --tn-body: #58554c;
+      --tn-label: #a19c8c;
+      --tn-rule: rgba(50,47,40,0.14);
+      --tn-serif: "Playfair Display", "Romie", Georgia, serif;
+      --tn-sans: "Poppins", "Inter", -apple-system, sans-serif;
+      background: var(--tn-cream);
+    }
+    .proj-main .proj-hero__title,
+    .proj-main .proj-section__heading {
+      font-family: var(--tn-serif);
+      text-transform: none;
+      letter-spacing: -0.01em;
+      color: var(--tn-ink);
+      font-weight: 400;
+    }
+    .proj-main .proj-hero__title em,
+    .proj-main .proj-section__heading em,
+    .proj-main .proj-hero__desc em,
+    .proj-main .proj-section__body em {
+      font-style: italic;
+      font-weight: 700;
+      color: var(--tn-sage-deep);
+    }
+    .proj-main .proj-hero__desc,
+    .proj-main .proj-meta-value,
+    .proj-main .proj-section__body,
+    .proj-main .proj-meta-label,
+    .proj-main .proj-section__label {
+      font-family: var(--tn-sans);
+    }
+    .proj-main .proj-hero__desc,
+    .proj-main .proj-section__body { color: var(--tn-body); }
+    .proj-main .proj-section__label {
+      color: var(--tn-label);
+      font-weight: 600;
+      letter-spacing: 0.16em;
+    }
+    .proj-main .proj-hero__meta,
+    .proj-main .proj-meta-row { border-color: var(--tn-rule) !important; }
+    .proj-main .proj-hero__meta-row::before { background: var(--tn-sage) !important; }
+
+    .tn-note {
+      max-width: 640px;
+      margin: clamp(28px,4vw,44px) auto 0;
+      padding: 14px 20px;
+      border-left: 2px solid var(--tn-sage);
+      background: var(--tn-cream-deep);
+      font-family: var(--tn-sans);
+      font-size: 13px;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--tn-body);
+    }
+
+    /* Quick-scan: Problem / Solution / Result + honest stat placeholder */
+    .tn-quickscan { background: var(--paper); padding: clamp(40px,6vw,64px) clamp(20px,4vw,60px); border-bottom: 1px solid var(--rule); }
+    .tn-quickscan__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
+    .tn-quickscan__label { display: block; font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+    .tn-quickscan__item p { font-family: var(--font-ui); font-size: 15px; line-height: 1.6; color: var(--ink); margin: 0; }
+    .tn-quickscan__stat { max-width: 1200px; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 13px; font-style: italic; color: #6f6f6f; }
+    @media (max-width: 700px) {
+      .tn-quickscan__grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+
+    /* Sitemap — rebuilt as real HTML/CSS in the site system, replacing the old embedded SVG */
+    /* DESIGN walkthrough — numbered, italic title, real Figma screens */
+    .tn-design { padding: clamp(48px,7vw,80px) clamp(20px,4vw,60px); border-top: 1px solid var(--rule); display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(32px,5vw,64px); align-items: start; }
+    .tn-design__num { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
+    .tn-design__title { font-family: var(--font-ui); font-style: italic; font-weight: 500; font-size: clamp(22px,2.4vw,30px); color: var(--ink); margin: 0 0 14px; }
+    .tn-design__caption { font-family: var(--font-ui); font-size: 15px; line-height: 1.7; color: #444; max-width: 46ch; }
+    .tn-design__flow { font-family: var(--font-ui); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--accent); margin: 14px 0 0; }
+    .tn-design__group { margin-top: 26px; }
+    .tn-design__group-label { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink); margin: 0 0 8px; }
+    .tn-design__group-body { font-family: var(--font-ui); font-size: 15px; line-height: 1.7; color: #444; max-width: 46ch; margin: 0; }
+    .tn-design__list, .tn-design__checklist { list-style: none; margin: 0; padding: 0; font-family: var(--font-ui); font-size: 15px; line-height: 1.7; color: #444; max-width: 46ch; }
+    .tn-design__list li { position: relative; padding-left: 1.1em; }
+    .tn-design__list li::before { content: "–"; position: absolute; left: 0; color: var(--accent); }
+    .tn-design__checklist li { position: relative; padding-left: 1.4em; }
+    .tn-design__checklist li::before { content: "✔"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 3px; }
+    .tn-design__frame { border: 1.5px solid var(--ink); overflow: hidden; }
+    .tn-design__frame img, .tn-design__frame video { width: 100%; display: block; }
+    /* Video content has a black recording background behind a rounded iPad mockup — a hard square frame reads as harsh against it. Scoped to video only; the static screenshots keep sharp corners. */
+    .tn-design__frame:has(video) { border-radius: 32px; }
+    .tn-design__frame--portrait { max-width: 320px; margin: 0 auto; }
+    @media (max-width: 800px) {
+      .tn-design { grid-template-columns: 1fr; }
+    }
+
+    .tn-sitemap { max-width: 1100px; margin: 3rem auto 0; }
+    .tn-sitemap__root-wrap { text-align: center; margin-bottom: 44px; position: relative; }
+    .tn-sitemap__root {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 10px 26px;
+    }
+    .tn-sitemap__root-wrap::after {
+      content: "";
+      position: absolute;
+      left: 50%; bottom: -24px;
+      width: 1px; height: 24px;
+      background: var(--rule);
+    }
+    .tn-sitemap__branches {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 14px;
+      position: relative;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+    }
+    .tn-sitemap__node {
+      border: 1.5px solid var(--ink);
+      background: var(--paper);
+      padding: 14px 8px;
+      text-align: center;
+      font-family: var(--font-ui);
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--accent);
+    }
+    .tn-sitemap__num { display: block; font-size: 10px; font-weight: 500; color: var(--ink); opacity: 0.55; margin-bottom: 6px; }
+    .tn-sitemap__subs { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+    .tn-sitemap__sub {
+      display: block;
+      border: 1px solid var(--rule);
+      padding: 6px 4px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--ink);
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      .tn-sitemap__branches { grid-template-columns: repeat(2, 1fr); gap: 20px 14px; }
+    }
+
     @font-face {
       font-family: 'Romie';
       src: url('./assets/Romie-Regular.woff2') format('woff2');
@@ -125,7 +274,7 @@
       display: inline-flex; align-items: center; gap: 6px;
       background: #111; color: #fff; border: none; cursor: pointer;
       font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 500;
-      padding: 9px 18px; text-decoration: none; border-radius: 999px;
+      padding: 9px 18px; text-decoration: none; border-radius: 0;
       transition: background 0.15s;
     }
     .btn-proto:hover { background: #333; }
@@ -291,6 +440,7 @@
       <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
       <nav class="proj-header__nav" id="projNav">
         <a class="proj-header__link proj-header__link--active" href="./projects.html">Arbeider</a>
+        <a class="proj-header__link" href="./more-work.html">Mer arbeid</a>
         <a class="proj-header__link" href="./about.html">Om meg</a>
         <a class="proj-header__link" href="./about.html#contact">Kontakt</a>
       </nav>
@@ -303,28 +453,42 @@
   <main class="proj-main" id="content">
 
 
-    <section class="proj-hero proj-hero--img-left" style="padding-left:0; padding-bottom:0; align-items:stretch; background:#f5f0e4;">
+    <p class="tn-note">Dette prosjektet har en egen visuell stil, forskjellig fra resten av porteføljen min — jeg har brukt anledningen til å utforske en roligere, redaksjonell estetikk.</p>
+    <section class="proj-hero proj-hero--img-left" style="padding-left:0; padding-bottom:0; align-items:stretch; background:var(--tn-cream);">
       <div class="proj-hero__right">
         <img class="proj-hero__img" src="./assets/herotjonn.webp" alt="Tjønnås & Norvald laptop mockup" fetchpriority="high" style="object-fit:cover; object-position:right center; height:100%; max-height:none;">
       </div>
       <div class="proj-hero__left" style="padding-top:3.5rem; padding-bottom:4rem;">
-        <h1 class="proj-hero__title">TJØNNÅS & NORVALD</h1>
-        <p class="proj-hero__desc">Tjønnås & Norvald hadde behov for én samlet digital struktur for vaktplan, opplæring, rutiner og internkommunikasjon. Vi utviklet en ansattportal for både ledelse, erfarne ansatte og nyansatte, med mål om å gjøre informasjon lettere tilgjengelig og redusere behovet for manuell oppfølging.</p>
+        <h1 class="proj-hero__title">Tjønnås &amp; Norvald — <em>ansattportal</em></h1>
+        <p class="proj-hero__desc">En samlet ansattportal for Tjønnås Delikatesser og Norvald Café, bygget for å erstatte <em>fem spredte systemer</em> for vaktplan, kommunikasjon og opplæring. Designet for nyansatte og erfarne medarbeidere som trenger én forutsigbar plass å finne alt de trenger på jobb.</p>
         <div class="proj-hero__meta">
           <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Emne</span>
-            <span class="proj-meta-value">Informasjonsarkitektur</span>
+            <span class="proj-meta-label">Type</span>
+            <span class="proj-meta-value">Internt verktøy / ansattportal (mobil + iPad)</span>
           </div>
           <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Verktøy</span>
-            <span class="proj-meta-value">Figma</span>
+            <span class="proj-meta-label">Min rolle</span>
+            <span class="proj-meta-value">Intervjuguide · Transkribering · Affinity mapping · Personas &amp; scenarier · Designvalg · Rapportskriving</span>
           </div>
           <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Dato</span>
-            <span class="proj-meta-value">2025</span>
+            <span class="proj-meta-label">Team</span>
+            <span class="proj-meta-value">4 medlemmer</span>
+          </div>
+          <div class="proj-hero__meta-row">
+            <span class="proj-meta-label">Omfang</span>
+            <span class="proj-meta-value">Research · Informasjonsarkitektur · Personas · Rapport</span>
           </div>
         </div>
       </div>
+    </section>
+
+    <section class="tn-quickscan">
+      <div class="tn-quickscan__grid">
+        <div class="tn-quickscan__item"><span class="tn-quickscan__label">Problem</span><p>Driften til Tjønnås &amp; Norvald var spredt over fem separate systemer — vaktplan, økonomi, kommunikasjon og opplæring hver for seg — og viktig informasjon forsvant ofte i prosessen.</p></div>
+        <div class="tn-quickscan__item"><span class="tn-quickscan__label">Solution</span><p>Vi designet én samlet ansattportal med en bunnnavigasjon bygget rundt seks kjerneområder, strukturert etter hvordan ansatte faktisk tenker om jobbhverdagen sin.</p></div>
+        <div class="tn-quickscan__item"><span class="tn-quickscan__label">Result</span><p>En ferdig hi-fi-prototype som samler alt personalet trenger på én plate — nå klar for brukertesting med faktiske ansatte.</p></div>
+      </div>
+      <p class="tn-quickscan__stat">[Brukertesting ikke gjennomført ennå — planlagt neste steg]</p>
     </section>
 
     <!-- Hidden accordion — data source for drawer -->
@@ -342,32 +506,90 @@
         
         
         
-          <div class="proj-section proj-section--krem" style="background:#ede8e0; border-bottom:1.5px solid rgba(107,30,46,0.35); padding-top:90px; padding-bottom:90px;"><div class="mob-stack" style="display:grid; grid-template-columns:1fr 1.4fr; gap:3rem; align-items:center;"><a href="https://www.instagram.com/norvald.tjonnas/" target="_blank" rel="noopener" class="marimette-link" aria-label="Besøk Norvald på Instagram"><img src="./assets/norvald/marimette.webp" alt="Mari-Mette" style="width:100%; display:block;" loading="eager" decoding="async"><span class="marimette-link__overlay" aria-hidden="true">@norvald.tjonnas</span></a><div><p style="font-family:'Romie','Playfair Display',Georgia,serif; font-size:clamp(18px,2vw,28px); font-weight:400; color:#6B1E2E; margin:0 0 0.4rem;">Problem:</p><h2 class="proj-section__heading">Jobbhverdagen er spredt<br> på for mange systemer</h2><p class="proj-section__body">Et semi-strukturert intervju med Mari-Mette, daglig leder for Tjønnås Delikatesser og Norvald Café, avdekket at driften var fordelt på fem ulike kanaler: vaktplan i ett system, lønn i et annet, internkommunikasjon i Messenger-grupper, rutiner i Apple Notater, og opplæring som ble gjort muntlig fra vakt til vakt. Med hyppig utskiftning av unge deltidsansatte ble viktig informasjon ofte borte i prosessen.</p></div></div></div>
-          <div class="mob-stack" style="display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; padding:3rem clamp(40px,5vw,80px) 4rem;">
-            <div class="project__figure" style="cursor:zoom-in; margin:0;" title="Klikk for å forstørre">
-              <img src="./assets/eirik-persona.webp" alt="Eirik — persona" style="width:100%; display:block;" loading="eager" fetchpriority="high" decoding="async">
+          <div class="proj-section proj-section--krem" style="background:#ede8e0; border-bottom:1.5px solid rgba(107,30,46,0.35); padding-top:90px; padding-bottom:90px;"><div class="mob-stack" style="display:grid; grid-template-columns:1fr 1.4fr; gap:3rem; align-items:center;"><a href="https://www.instagram.com/norvald.tjonnas/" target="_blank" rel="noopener" class="marimette-link" aria-label="Besøk Norvald på Instagram"><img src="./assets/norvald/marimette.webp" alt="Mari-Mette" style="width:100%; display:block;" loading="eager" decoding="async"><span class="marimette-link__overlay" aria-hidden="true">@norvald.tjonnas</span></a><div><p class="proj-section__label">Context</p><h2 class="proj-section__heading">Hvorfor dette prosjektet finnes</h2><p class="proj-section__body">Prosjektet var en del av IDG3009 – Informasjonsarkitektur ved NTNU Gjøvik, høsten 2025. Vi tok utgangspunkt i et reelt behov: Tjønnås Delikatesser og Norvald Café driftes av samme ledelse, men hadde ingen felles digital struktur for de ansatte. Vi gjennomførte et semi-strukturert intervju med Mari-Mette, daglig leder for begge virksomhetene, for å forstå hvordan arbeidsdagen faktisk fungerte — valgt fremfor et strukturert intervju nettopp for å fange opp innsikter vi ikke visste vi lette etter.</p></div></div></div><div class="proj-section proj-section--none proj-section--wide-mobile-pad"><p class="proj-section__label">Problem</p><h2 class="proj-section__heading">Fem systemer, ingen oversikt</h2><p class="proj-section__body">Intervjuet avdekket at driften var fordelt på fem ulike kanaler, uten noen felles struktur:</p><ul class="bg__list" style="font-family:var(--font-ui); font-size:16px; line-height:1.8; color:var(--ink); margin:0.5rem 0 1.5rem; padding-left:1.25rem;"><li>Vaktplan i ett system</li><li>Lønn og økonomi i et annet</li><li>Internkommunikasjon i Messenger-grupper</li><li>Rutiner i Apple Notater</li><li>Opplæring gitt muntlig, fra vakt til vakt</li></ul><p class="proj-section__body">Med hyppig utskiftning av unge deltidsansatte ble viktig informasjon ofte borte i prosessen.</p></div>
+        <div class="proj-sections" style="margin-top:0;"><div class="proj-section proj-section--mandel-light proj-section--wide-mobile-pad"><h2 class="proj-section__heading">Fra innsikt til løsning</h2><p class="proj-section__body">Basert på ett intervju med reell drifts-innsikt (ikke antagelser), kartla vi funn i en affinity map og bygde hi-fi wireframes rundt to primærpersonas — Kari (erfaren) og Eirik (nyansatt). <a href="./assets/norvald/Endelig-rapport-informasjonsarkitektur.pdf" target="_blank" rel="noopener" style="text-decoration:underline; color:inherit;">Les hele prosessrapporten →</a></p></div><div class="proj-section proj-section--krem proj-section--wide-mobile-pad"><h2 class="proj-section__heading">Én samlet ansattportal</h2><p class="proj-section__body">Sitemapet ble utarbeidet etter affinity-mappingen (se prosess), hvor seks tematiske områder utkrystalliserte seg som kjernen i portalen. Strukturen speiler bottom-navigasjonen i prototypen, slik at den mentale modellen brukeren bygger opp gjennom sitemapet matcher den faktiske appen 1:1.</p><div class="tn-sitemap"><div class="tn-sitemap__root-wrap"><span class="tn-sitemap__root">Login</span></div><div class="tn-sitemap__branches"><div class="tn-sitemap__node"><span class="tn-sitemap__num">01</span>Hjem<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Daglige mål</span><span class="tn-sitemap__sub">Beskjeder</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">02</span>Vaktliste<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Kalender</span><span class="tn-sitemap__sub">Vaktdetalj</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">03</span>Chat<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Kanaler</span><span class="tn-sitemap__sub">Varsler</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">04</span>Opplæring<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Min trening</span><span class="tn-sitemap__sub">Arkivert</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">05</span>Rutiner<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Dokumenter</span><span class="tn-sitemap__sub">Versjoner</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">06</span>Min side<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Profil</span><span class="tn-sitemap__sub">Innstilling</span></div></div></div></div></div></div>
+
+          <div class="tn-design" style="background:#faf8f4;">
+            <div>
+              <p class="tn-design__num">Scenario 1</p>
+              <p class="tn-design__title">Mobil – Vaktplan (Kari)</p>
+              <p class="tn-design__flow">Login → Hjem → Kalender → Vaktdetaljer</p>
+              <div class="tn-design__group">
+                <p class="tn-design__group-label">Mål</p>
+                <p class="tn-design__group-body">Gi ansatte rask tilgang til vaktplanen uten å måtte være på arbeidsplassen.</p>
+              </div>
+              <div class="tn-design__group">
+                <p class="tn-design__group-label">Brukerscenario</p>
+                <p class="tn-design__group-body">Kari ønsker å sjekke vaktene sine hjemmefra når hun skal planlegge ferie.</p>
+              </div>
+              <div class="tn-design__group">
+                <p class="tn-design__group-label">Designbeslutninger</p>
+                <ul class="tn-design__list">
+                  <li>Kalender med månedsoverblikk.</li>
+                  <li>Tydelige vaktkort med tid, sted og kolleger.</li>
+                  <li>Mobiltilpasset fordi ansatte ofte sjekker vakter på farten.</li>
+                </ul>
+              </div>
+              <div class="tn-design__group">
+                <p class="tn-design__group-label">Løste behov</p>
+                <ul class="tn-design__checklist">
+                  <li>Oversikt over vakter</li>
+                  <li>Mindre avhengighet av fysisk vaktliste</li>
+                  <li>Enklere ferieplanlegging</li>
+                </ul>
+              </div>
             </div>
-            <div style="padding-top:1rem; max-width:420px;">
-              <h2 style="font-family:'Inter',sans-serif; font-size:clamp(40px,5vw,72px); font-weight:700; color:#6B1E2E; margin:0 0 2rem; line-height:1.05;">Scenario</h2>
-              <ul style="list-style:disc; padding-left:1.25rem; margin:0 0 1.5rem;">
-                <li style="font-size:clamp(17px,1.8vw,22px); line-height:1.7; color:#111;">Eirik skal ha sin første åpningsvakt i morgen, men husker ikke alt fra opplæringen. Han skulle ønske det fantes en enkel måte for ham å lære seg åpningsrutinen hos Norvald.</li>
-              </ul>
-              <p style="font-size:clamp(16px,1.6vw,20px); line-height:1.65; color:#6B1E2E; font-style:italic; margin:0 0 1rem;">Sjekk ut brukerreisen hans under, for å se hvordan ansattportalen kan hjelpe han.</p>
-              <svg width="14" height="56" viewBox="0 0 14 56" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block; margin:0 auto;">
-                <line x1="7" y1="0" x2="7" y2="46" stroke="#111" stroke-width="1.2"/>
-                <polyline points="2,40 7,50 12,40" stroke="#111" stroke-width="1.2" fill="none" stroke-linejoin="round" stroke-linecap="round"/>
-              </svg>
+            <div class="tn-design__frame tn-design__frame--portrait">
+              <video src="./assets/norvald/figma-export/design-kalender-flow.mp4" autoplay muted loop playsinline aria-label="Skjermopptak av Kari som sjekker vaktplanen i mobilappen">
+                <source src="./assets/norvald/figma-export/design-kalender-flow.webm" type="video/webm">
+                <source src="./assets/norvald/figma-export/design-kalender-flow.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
-          <div style="background:#fff; padding: 0 clamp(2.5rem,5vw,6rem) clamp(5rem,8vw,8rem);">
-            <div class="project__figure" style="cursor:zoom-in; margin:0;" title="Klikk for å forstørre">
-              <img src="./assets/norvald/brukerreise-tn.webp" alt="Brukerreise — Tjønnås & Norvald" style="width:100%; display:block;" loading="eager" decoding="async">
+          <div class="tn-design" style="background:#faf8f4;">
+            <div>
+              <p class="tn-design__num">Scenario 2</p>
+              <p class="tn-design__title">iPad – Opplæring (Eirik)</p>
+              <p class="tn-design__flow">Login → Opplæring → Modul → Video → Ferdig</p>
+              <div class="tn-design__group">
+                <p class="tn-design__group-label">Mål</p>
+                <p class="tn-design__group-body">Gjøre opplæringen enklere og mer tilgjengelig for nyansatte.</p>
+              </div>
+              <div class="tn-design__group">
+                <p class="tn-design__group-label">Brukerscenario</p>
+                <p class="tn-design__group-body">Eirik trenger å repetere åpnerutinen uten å måtte spørre kollegaer.</p>
+              </div>
+              <div class="tn-design__group">
+                <p class="tn-design__group-label">Designbeslutninger</p>
+                <ul class="tn-design__list">
+                  <li>Modulbasert opplæring.</li>
+                  <li>Progresjonsindikator.</li>
+                  <li>Video og steg-for-steg-instruksjoner.</li>
+                  <li>Tilgjengelig på iPad i butikken.</li>
+                </ul>
+              </div>
+              <div class="tn-design__group">
+                <p class="tn-design__group-label">Løste behov</p>
+                <ul class="tn-design__checklist">
+                  <li>Rask tilgang til rutiner</li>
+                  <li>Konsistent opplæring</li>
+                  <li>Mindre behov for muntlig oppfølging</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tn-design__frame">
+              <video src="./assets/norvald/figma-export/design-kasse-flow.mp4" autoplay muted loop playsinline aria-label="Skjermopptak av Eirik som fullfører Åpne kassen-modulen i prototypen">
+                <source src="./assets/norvald/figma-export/design-kasse-flow.webm" type="video/webm">
+                <source src="./assets/norvald/figma-export/design-kasse-flow.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
+          <div class="proj-section proj-section--none proj-section--wide-mobile-pad" style="background:#faf8f4; border-top:1px solid var(--rule);"><div style="max-width:640px"><p class="proj-section__label">Hvorfor disse to scenarioene?</p><p class="proj-section__body">Vi valgte å fokusere på Kari og Eirik fordi de representerte de to viktigste behovene som kom frem i intervjuet: oversikt over vakter og tilgjengelig opplæring. Ved å løse disse utfordringene kunne én samlet ansattportal redusere behovet for flere separate systemer og gjøre arbeidshverdagen enklere. Dette bygger direkte på innsikten fra intervjuet, personaene og scenarioene i prosjektet.</p></div></div>
           <div class="tjonnmock-wrap" style="position:relative; margin:0; padding: clamp(5rem,8vw,10rem) clamp(4rem,8vw,10rem) clamp(5rem,8vw,10rem); background:#f3edd8;">
-            <img src="./assets/tjonni.webp" alt="Tjønnås & Norvald mockup" style="width:100%; display:block;" loading="eager" decoding="async">
+            <img src="./assets/norvald/tjonni-mockup.webp" alt="Tjønnås & Norvald mockup" style="width:100%; display:block;" loading="lazy" decoding="async">
           </div>
-        <div class="proj-sections" style="margin-top:0;"><div class="proj-section proj-section--mandel-light proj-section--wide-mobile-pad"><h2 class="proj-section__heading">Fra innsikt til løsning</h2><div class="proj-steps-grid"><div class="proj-step"><div class="proj-step-num" aria-hidden="true">01</div><h3>Intervju</h3><p>Kvalitativt intervju med daglig leder ga oss innsikt i reell drift – ikke antagelser. Valget om å snakke med leder fremfor ansatte var bevisst: hun hadde overblikk over tvers av alle smertepunkter.</p></div><div class="proj-step"><div class="proj-step-num" aria-hidden="true">02</div><h3>Affinity map</h3><p>Funn gruppert i 6 temaer. Kartet avdekket at vaktplan og kommunikasjon var de to hyppigst nevnte problemene – det styrte prioriteringene våre i løsningsdesignet.</p></div><div class="proj-step"><div class="proj-step-num" aria-hidden="true">03</div><h3>Personas & scenarier</h3><p>Vi utviklet 5 personas, men valgte to primærbrukere: Kari (erfaren) og Eirik (nyansatt). Disse to representerte de mest ulike behovene – og ble brukt aktivt gjennom hele designprosessen.</p></div><div class="proj-step"><div class="proj-step-num" aria-hidden="true">04</div><h3>Wireframes → Hi-fi</h3><p>Lo-fi skisser ble iterert til hi-fi-prototype i Figma. Vi beholdt et enkelt navigasjonsmønster fremfor avanserte interaksjoner – basert på brukergruppens lave digitale terskel.</p></div></div></div><div class="proj-section proj-section--krem proj-section--wide-mobile-pad"><h2 class="proj-section__heading">Én samlet ansattportal</h2><p class="proj-section__body">Sitemapet ble utarbeidet etter affinity-mappingen (se prosess), hvor seks tematiske områder utkrystalliserte seg som kjernen i portalen. Strukturen speiler bottom-navigasjonen i prototypen, slik at den mentale modellen brukeren bygger opp gjennom sitemapet matcher den faktiske appen 1:1.</p><img src="./assets/norvald/sitemap_ansattportal.svg" alt="Sitemap for ansattportalen" style="width:100%; max-width:1100px; display:block; margin:2rem auto 0;"></div><div class="proj-section proj-section--mandel-light proj-section--wide-mobile-pad"><div style="max-width:920px"><p class="proj-section__label">Mitt bidrag</p><h2 class="proj-section__heading">Hva jeg eide i dette prosjektet</h2><p class="proj-section__body">Jeg var med på brukerinnsikten og bidro til intervjuguiden som la grunnlaget for prosessen. Videre jobbet jeg med utvikling av personas og scenarier, inkludert primærbrukerne Kari og Eirik. I designfasen hadde jeg rollen som UI-designer for mobilflaten, fra lo-fi-skisser til ferdig hi-fi-prototype i Figma, med fokus på lesbarhet, struktur og en mer tilgjengelig brukeropplevelse.</p></div><div style="margin-top:5rem; width:100%;"><p style="font-size:15px; letter-spacing:0.15em; text-transform:uppercase; color:#1a1a1a; font-weight:400; margin-bottom:1rem;">Figmalink <span style="text-transform:none; font-size:12px; color:#4a4643; letter-spacing:0;">(NB: kan lastes litt sakte)</span></p><iframe title="Figma-prototype — Tjønnås & Norvald ansattportal" style="border:1px solid rgba(0,0,0,0.1); display:block; width:100%; height:600px;" src="https://embed.figma.com/design/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=22-92&embed-host=share" allowfullscreen></iframe></div></div><div class="proj-section proj-section--none proj-section--wide-mobile-pad"><div class="proj-team-header"><p class="proj-section__label">Gruppe 01</p><h2 class="proj-section__heading">Teamet bak prosjektet</h2></div><div class="proj-team-grid"><div class="proj-team-card"><div class="proj-team-avatar" style="background:#571721" aria-hidden="true">JR</div><h3>Josefine Reichelt Gjertsen</h3><p>Intervjuguide · Personas · UI-design (mobil)</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#ad822e" aria-hidden="true">HB</div><h3>Herman Brenn-Svendsen</h3><p>Sitemap · Prototyper · Wireframes</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#c0523f" aria-hidden="true">TD</div><h3>Tia Linnea Dahl</h3><p>Designmanual · Personas · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#403d26" aria-hidden="true">AJ</div><h3>Axel Bruusgaard Jewett</h3><p>Prototyper · Wireframes · Intervju</p></div></div></div></div>
+
+        <div class="proj-sections" style="margin-top:0;"><div class="proj-section proj-section--krem proj-section--wide-mobile-pad"><div style="max-width:720px"><p class="proj-section__label">Testing — hva som mangler</p><h2 class="proj-section__heading">Prototypen ble ikke brukertestet</h2><p class="proj-section__body">Vi gjennomførte et semi-strukturert intervju med daglig leder tidlig i prosjektet, og brukte innsikten derfra til å bygge personas, scenarier, informasjonsarkitektur, wireframes og hi-fi-prototyper. På grunn av prosjektets omfang og tidsramme rakk vi derimot ikke å gjennomføre formell brukbarhetstesting av den ferdige prototypen.</p><p class="proj-section__body">Neste steg ville vært moderert brukertesting med ansatte — særlig nyansatte og erfarne ansatte — for å validere navigasjon, onboarding og opplæringsflyt. Med en uke til rådighet ville jeg rekruttert to nyansatte og to erfarne ansatte, gitt dem realistiske oppgaver som å finne neste vakt eller fullføre en opplæringsmodul, og målt hvor de nølte.</p></div></div><div class="proj-section proj-section--mandel-light proj-section--wide-mobile-pad"><div style="max-width:920px"><p class="proj-section__label">Mitt bidrag</p><h2 class="proj-section__heading">Hva jeg eide i dette prosjektet</h2><p class="proj-section__body">Min rolle i prosjektet var intervjuguide, transkribering av intervjuet, affinity map, personas og scenarier, designvalg, og rapportskriving. Jeg utarbeidet intervjuguiden og gjennomførte transkriberingen som la grunnlaget for affinity-mappingen, og var med på å utvikle personas og scenarier — inkludert primærbrukerne Kari og Eirik — samt en rekke av designvalgene som ligger til grunn for løsningen.</p></div><div style="margin-top:5rem; width:100%;"><p style="font-family:var(--font-ui); font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink); margin-bottom:1rem;">Figma-prototype <span style="text-transform:none; font-weight:400; font-size:12px; color:#4a4643; letter-spacing:0;">(NB: kan lastes litt sakte)</span></p><iframe title="Figma-prototype — Tjønnås & Norvald ansattportal" style="border:1.5px solid var(--ink); display:block; width:100%; height:600px;" src="https://embed.figma.com/design/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=22-92&embed-host=share" allowfullscreen></iframe></div></div><div class="proj-section proj-section--none proj-section--wide-mobile-pad"><div class="proj-team-header"><p class="proj-section__label">Gruppe 01</p><h2 class="proj-section__heading">Teamet bak prosjektet</h2></div><div class="proj-team-grid"><div class="proj-team-card"><div class="proj-team-avatar" style="background:#571721" aria-hidden="true">JR</div><h3>Josefine Reichelt Gjertsen</h3><p>Intervjuguide · Transkribering · Personas · Designvalg · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#ad822e" aria-hidden="true">HB</div><h3>Herman Brenn-Svendsen</h3><p>Sitemap · Prototyper · Wireframes</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#c0523f" aria-hidden="true">TD</div><h3>Tia Linnea Dahl</h3><p>Designmanual · Personas · Rapport</p></div><div class="proj-team-card"><div class="proj-team-avatar" style="background:#403d26" aria-hidden="true">AJ</div><h3>Axel Bruusgaard Jewett</h3><p>Prototyper · Wireframes · Intervju</p></div></div></div></div>
         
         <div style="padding: 2.5rem clamp(40px, 5vw, 80px); display:flex; justify-content:center;">
           <a class="proj-prosess-btn" href="./tjonnasnorvald-prosess.html">Se prosess & ekstramateriale →</a>
@@ -415,7 +637,7 @@
 
   </main>
 
-  <script src="./projects.js?v=6"></script>
+  <script src="./projects.js?v=7"></script>
   <script>
     var header = document.getElementById('projHeader');
     var toggle = document.getElementById('projToggle');
