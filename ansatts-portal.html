@@ -29,7 +29,6 @@
       --tn-sans: "Poppins", "Inter", -apple-system, sans-serif;
       background: var(--tn-cream);
     }
-    .proj-main .proj-hero__title,
     .proj-main .proj-section__heading {
       font-family: var(--tn-serif);
       text-transform: none;
@@ -37,31 +36,25 @@
       color: var(--tn-ink);
       font-weight: 400;
     }
-    .proj-main .proj-hero__title em,
     .proj-main .proj-section__heading em,
-    .proj-main .proj-hero__desc em,
     .proj-main .proj-section__body em {
       font-style: italic;
       font-weight: 700;
       color: var(--tn-sage-deep);
     }
-    .proj-main .proj-hero__desc,
     .proj-main .proj-meta-value,
     .proj-main .proj-section__body,
     .proj-main .proj-meta-label,
     .proj-main .proj-section__label {
       font-family: var(--tn-sans);
     }
-    .proj-main .proj-hero__desc,
     .proj-main .proj-section__body { color: var(--tn-body); }
     .proj-main .proj-section__label {
       color: var(--tn-label);
       font-weight: 600;
       letter-spacing: 0.16em;
     }
-    .proj-main .proj-hero__meta,
     .proj-main .proj-meta-row { border-color: var(--tn-rule) !important; }
-    .proj-main .proj-hero__meta-row::before { background: var(--tn-sage) !important; }
 
     .tn-note {
       max-width: 640px;
@@ -76,14 +69,44 @@
       color: var(--tn-body);
     }
 
-    /* Quick-scan: Problem / Solution / Result + honest stat placeholder */
-    .tn-quickscan { background: var(--paper); padding: clamp(40px,6vw,64px) clamp(20px,4vw,60px); border-bottom: 1px solid var(--rule); }
-    .tn-quickscan__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; max-width: 1200px; margin: 0 auto; }
-    .tn-quickscan__label { display: block; font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
-    .tn-quickscan__item p { font-family: var(--font-ui); font-size: 15px; line-height: 1.6; color: var(--ink); margin: 0; }
-    .tn-quickscan__stat { max-width: 1200px; margin: 32px auto 0; padding-top: 24px; border-top: 1px solid var(--rule); font-family: var(--font-ui); font-size: 13px; font-style: italic; color: #6f6f6f; }
-    @media (max-width: 700px) {
-      .tn-quickscan__grid { grid-template-columns: 1fr; gap: 24px; }
+    /* Centered hero — replaces the shared .proj-hero grid for this page only */
+    .tn-hero { text-align: center; padding: clamp(48px,8vw,88px) clamp(20px,4vw,60px) 0; }
+    .tn-hero__title {
+      font-family: var(--tn-serif);
+      font-weight: 400;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      color: var(--tn-ink);
+      margin: 0 0 22px;
+    }
+    .tn-hero__title em { font-style: italic; font-weight: 700; color: var(--tn-sage-deep); }
+    .tn-hero__meta {
+      font-family: var(--tn-sans);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      color: var(--tn-body);
+      margin: 0 0 clamp(36px,6vw,56px);
+    }
+    .tn-hero__img-wrap { max-width: 1100px; margin: 0 auto; }
+    .tn-hero__img { width: 100%; display: block; box-shadow: 0 40px 80px -20px rgba(28,27,23,0.18); }
+
+    /* Summary cards: Prosjekt+details / Problem+Løsning+Resultat */
+    .tn-summary { background: var(--tn-cream); padding: clamp(56px,8vw,88px) clamp(20px,4vw,60px); }
+    .tn-summary__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px,4vw,36px); max-width: 1200px; margin: 0 auto; }
+    .tn-summary__card { background: var(--tn-cream-deep); padding: clamp(32px,4vw,44px); }
+    .tn-summary__heading { font-family: var(--tn-sans); font-weight: 700; font-size: 19px; letter-spacing: -0.01em; color: var(--tn-ink); margin: 0 0 12px; }
+    .tn-summary__heading em { font-style: normal; font-weight: 500; color: var(--tn-sage-deep); }
+    .tn-summary__body { font-family: var(--tn-sans); font-size: 15px; line-height: 1.7; color: var(--tn-body); margin: 0 0 26px; }
+    .tn-summary__row { padding: 14px 0; border-top: 1px solid var(--tn-rule); display: flex; flex-direction: column; gap: 4px; }
+    .tn-summary__row:first-of-type { border-top: none; padding-top: 0; }
+    .tn-summary__label { font-family: var(--tn-sans); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tn-label); }
+    .tn-summary__value { font-family: var(--tn-sans); font-size: 15px; color: var(--tn-ink); }
+    .tn-summary__psr { padding: 18px 0; border-top: 1px solid var(--tn-rule); }
+    .tn-summary__psr:first-child { border-top: none; padding-top: 0; }
+    .tn-summary__psr .tn-summary__body { margin-bottom: 0; }
+    @media (max-width: 800px) {
+      .tn-summary__grid { grid-template-columns: 1fr; }
     }
 
     /* Sitemap — rebuilt as real HTML/CSS in the site system, replacing the old embedded SVG */
@@ -473,41 +496,52 @@
 
 
     <p class="tn-note">Dette prosjektet har en egen visuell stil, forskjellig fra resten av porteføljen min — jeg har brukt anledningen til å utforske en roligere, redaksjonell estetikk.</p>
-    <section class="proj-hero proj-hero--img-left" style="padding-left:0; padding-bottom:0; align-items:stretch; background:var(--tn-cream);">
-      <div class="proj-hero__right">
-        <img class="proj-hero__img" src="./assets/herotjonn.webp" alt="Tjønnås & Norvald laptop mockup" fetchpriority="high" style="object-fit:cover; object-position:right center; height:100%; max-height:none;">
-      </div>
-      <div class="proj-hero__left" style="padding-top:3.5rem; padding-bottom:4rem;">
-        <h1 class="proj-hero__title">Tjønnås &amp; Norvald — <em>ansattportal</em></h1>
-        <p class="proj-hero__desc">En samlet ansattportal for Tjønnås Delikatesser og Norvald Café, bygget for å erstatte <em>fem spredte systemer</em> for vaktplan, kommunikasjon og opplæring. Designet for nyansatte og erfarne medarbeidere som trenger én forutsigbar plass å finne alt de trenger på jobb.</p>
-        <div class="proj-hero__meta">
-          <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Type</span>
-            <span class="proj-meta-value">Internt verktøy / ansattportal (mobil + iPad)</span>
-          </div>
-          <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Min rolle</span>
-            <span class="proj-meta-value">Intervjuguide · Transkribering · Affinity mapping · Personas &amp; scenarier · Designvalg · Rapportskriving</span>
-          </div>
-          <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Team</span>
-            <span class="proj-meta-value">4 medlemmer</span>
-          </div>
-          <div class="proj-hero__meta-row">
-            <span class="proj-meta-label">Omfang</span>
-            <span class="proj-meta-value">Research · Informasjonsarkitektur · Personas · Rapport</span>
-          </div>
-        </div>
+
+    <section class="tn-hero">
+      <h1 class="tn-hero__title">Tjønnås &amp; Norvald<br><em>ansattportal</em></h1>
+      <p class="tn-hero__meta">Informasjonsarkitektur · Mobil + iPad · NTNU Gjøvik, høst 2025</p>
+      <div class="tn-hero__img-wrap">
+        <img class="tn-hero__img" src="./assets/herotjonn.webp" alt="Tjønnås & Norvald ansattportal — laptop-mockup" fetchpriority="high">
       </div>
     </section>
 
-    <section class="tn-quickscan">
-      <div class="tn-quickscan__grid">
-        <div class="tn-quickscan__item"><span class="tn-quickscan__label">Problem</span><p>Driften til Tjønnås &amp; Norvald var spredt over fem separate systemer — vaktplan, økonomi, kommunikasjon og opplæring hver for seg — og viktig informasjon forsvant ofte i prosessen.</p></div>
-        <div class="tn-quickscan__item"><span class="tn-quickscan__label">Solution</span><p>Vi designet én samlet ansattportal med en bunnnavigasjon bygget rundt seks kjerneområder, strukturert etter hvordan ansatte faktisk tenker om jobbhverdagen sin.</p></div>
-        <div class="tn-quickscan__item"><span class="tn-quickscan__label">Result</span><p>En ferdig hi-fi-prototype som samler alt personalet trenger på én plate — nå klar for brukertesting med faktiske ansatte.</p></div>
+    <section class="tn-summary">
+      <div class="tn-summary__grid">
+        <div class="tn-summary__card">
+          <h2 class="tn-summary__heading">Prosjekt <em>Tjønnås &amp; Norvald — ansattportal</em></h2>
+          <p class="tn-summary__body">En samlet ansattportal for Tjønnås Delikatesser og Norvald Café, bygget for å erstatte fem spredte systemer for vaktplan, kommunikasjon og opplæring. Designet for nyansatte og erfarne medarbeidere som trenger én forutsigbar plass å finne alt de trenger på jobb.</p>
+          <div class="tn-summary__row">
+            <span class="tn-summary__label">Type</span>
+            <span class="tn-summary__value">Internt verktøy / ansattportal (mobil + iPad)</span>
+          </div>
+          <div class="tn-summary__row">
+            <span class="tn-summary__label">Min rolle</span>
+            <span class="tn-summary__value">Intervjuguide · Transkribering · Affinity mapping · Personas &amp; scenarier · Designvalg · Rapportskriving</span>
+          </div>
+          <div class="tn-summary__row">
+            <span class="tn-summary__label">Team</span>
+            <span class="tn-summary__value">4 medlemmer</span>
+          </div>
+          <div class="tn-summary__row">
+            <span class="tn-summary__label">Omfang</span>
+            <span class="tn-summary__value">Research · Informasjonsarkitektur · Personas · Rapport</span>
+          </div>
+        </div>
+        <div class="tn-summary__card">
+          <div class="tn-summary__psr">
+            <h2 class="tn-summary__heading">Problem <em>Fem systemer, ingen oversikt</em></h2>
+            <p class="tn-summary__body">Driften til Tjønnås &amp; Norvald var spredt over fem separate systemer — vaktplan, økonomi, kommunikasjon og opplæring hver for seg — og viktig informasjon forsvant ofte i prosessen.</p>
+          </div>
+          <div class="tn-summary__psr">
+            <h2 class="tn-summary__heading">Løsning <em>Én samlet ansattportal</em></h2>
+            <p class="tn-summary__body">Vi designet én samlet ansattportal med en bunnnavigasjon bygget rundt seks kjerneområder, strukturert etter hvordan ansatte faktisk tenker om jobbhverdagen sin.</p>
+          </div>
+          <div class="tn-summary__psr">
+            <h2 class="tn-summary__heading">Resultat <em>Klar for brukertesting</em></h2>
+            <p class="tn-summary__body">En ferdig hi-fi-prototype som samler alt personalet trenger på én plate. Brukertesting er ikke gjennomført ennå — det er planlagt som neste steg.</p>
+          </div>
+        </div>
       </div>
-      <p class="tn-quickscan__stat">[Brukertesting ikke gjennomført ennå — planlagt neste steg]</p>
     </section>
 
     <!-- Hidden accordion — data source for drawer -->
