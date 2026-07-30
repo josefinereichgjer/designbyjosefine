@@ -6,34 +6,104 @@
   <meta name="format-detection" content="telephone=no">
   <title>Tjønnås & Norvald — DesignbyJosefine</title>
   <meta name="description" content="Ansattportal for Tjønnås Delikatesser og Norvald Café: ett system som samler vaktlister, kommunikasjon og opplæring på én plass." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400\&family=Poppins:wght@300;400;500\&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400\&family=Poppins:wght@300;400;500\&display=swap"></noscript>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap"></noscript>
+  <!-- Self-hosted: Playfair (variable, opsz axis) + Inter. No Google Fonts request at runtime
+       (perf: same-origin, non-render-blocking; also removes the GDPR exposure of dynamically
+       embedding Google Fonts for EU/EEA visitors — LG München I, 2022). -->
+  <link rel="preload" href="./assets/fonts/playfair-italic-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="./styles.css?v=45" />
   <style>
-    /* SANVITHI-INSPIRED RESKIN — deliberate one-off visual treatment for this case study only.
-       Scoped to .proj-main so the global site chrome (nav, buttons) is untouched. See honest note in the hero. */
+    /* Self-hosted font files. Weight is a variable range (Playfair 300–900) in one file
+       per style/subset — no separate files per weight. unicode-range values are Google's
+       own standard "latin"/"latin-ext" splits, copied verbatim from their API response so
+       glyph coverage matches exactly. Norwegian æ/ø/å (U+00E6/00F8/00E5) fall inside the
+       plain "latin" range (U+0000-00FF) — latin-ext is included anyway as agreed insurance,
+       not because Norwegian needs it. */
+    @font-face {
+      font-family: 'Playfair';
+      font-style: italic;
+      font-weight: 300 900;
+      font-display: swap;
+      src: url('./assets/fonts/playfair-italic-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Playfair';
+      font-style: italic;
+      font-weight: 300 900;
+      font-display: swap;
+      src: url('./assets/fonts/playfair-italic-latinext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Playfair';
+      font-style: normal;
+      font-weight: 300 900;
+      font-display: swap;
+      src: url('./assets/fonts/playfair-roman-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Playfair';
+      font-style: normal;
+      font-weight: 300 900;
+      font-display: swap;
+      src: url('./assets/fonts/playfair-roman-latinext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400 600;
+      font-display: swap;
+      src: url('./assets/fonts/inter-latin.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 400 600;
+      font-display: swap;
+      src: url('./assets/fonts/inter-latinext.woff2') format('woff2');
+      unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+    }
+
+    /* Editorial redesign — tokens. Scoped to .proj-main (this page's own <style> block,
+       loaded only by this file) so nothing here reaches any other page. Deliberately kept
+       under a --tn- prefix rather than the site's generic --ink/--paper names, even though
+       nothing in this page's subtree currently collides, as a second layer of safety. */
     .proj-main {
-      --tn-cream: #ffffff;
-      --tn-cream-deep: #f8f8f8;
-      --tn-card-bg: #F5F5F3;
-      --tn-sage: #929290;
-      --tn-sage-deep: #929290;
-      --tn-ink: #101010;
-      --tn-body: #6E6E69;
-      --tn-caption: #9C9C96;
-      --tn-label: #949494;
-      --tn-rule: rgba(16,16,16,0.1);
-      --tn-serif: "Playfair Display", "Romie", Georgia, serif;
-      --tn-sans: "Poppins", "Inter", -apple-system, sans-serif;
-      --section-y: clamp(96px, 15vw, 210px);
+      --tn-paper:        #FAF6E8;  /* warm cream, sampled from this project's own photography */
+      --tn-paper-raised: #F1E9D2;  /* one step darker — used once, on the summary card fill only */
+      --tn-ink:          #241C16;  /* near-black roast, sampled from marimette/herotjonn shadow tones */
+      --tn-ink-muted:    #6B5F53;  /* 5.73:1 on paper — body copy */
+      --tn-ink-faint:    #746E66;  /* 4.66:1 on paper — eyebrows/meta/captions */
+      --tn-hairline:     rgba(36,28,22,.14);
+      --tn-accent-text:  #A85A1E;  /* TEXT ONLY — italic emphasis, links. 4.68:1 on paper (AA) */
+      --tn-accent-gold:  #D4AF37;  /* NON-TEXT ONLY — stat arrows, hairline highlights, hero mesh. Fails AA as text. */
+      --tn-serif: "Playfair", Georgia, serif;
+      --tn-sans: "Inter", -apple-system, sans-serif;
+
+      /* type scale — defined here, wired into components in the type-hierarchy pass */
+      --t-display-xl: clamp(2.5rem, 6.5vw, 5.5rem);
+      --t-display-l:  clamp(1.75rem, 3.4vw, 2.875rem);
+      --t-display-m:  clamp(1.375rem, 2.2vw, 1.875rem);
+      --t-data:       clamp(2.75rem, 5.5vw, 4.75rem);
+      --t-lead:       1.1875rem;
+      --t-body:       1rem;
+      --t-meta:       0.6875rem;
+
+      /* spacing scale */
+      --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px;
+      --sp-6: 32px; --sp-7: 48px; --sp-8: 64px; --sp-9: 96px; --sp-10: 128px; --sp-11: 160px; --sp-12: 200px;
+
+      --radius-content: 20px;
+      --radius-device: 32px;
+
+      --section-y: clamp(88px, 12vw, 200px);
       --eyebrow-gap: clamp(40px, 6vw, 80px);
       --col-gap: clamp(40px, 6vw, 90px);
       --fig-gap: clamp(46px, 6vw, 80px);
-      background: var(--tn-cream);
+      background: var(--tn-paper);
     }
     .proj-main .proj-section__heading {
       font-family: var(--tn-serif);
@@ -46,7 +116,7 @@
     .proj-main .proj-section__body em {
       font-style: italic;
       font-weight: 700;
-      color: var(--tn-sage-deep);
+      color: var(--tn-accent-text);
     }
     .proj-main .proj-meta-value,
     .proj-main .proj-section__body,
@@ -54,25 +124,25 @@
     .proj-main .proj-section__label {
       font-family: var(--tn-sans);
     }
-    .proj-main .proj-section__body { color: var(--tn-body); }
+    .proj-main .proj-section__body { color: var(--tn-ink-muted); }
     .proj-main .proj-section__label {
-      color: var(--tn-label);
+      color: var(--tn-ink-faint);
       font-weight: 600;
       letter-spacing: 0.16em;
     }
-    .proj-main .proj-meta-row { border-color: var(--tn-rule) !important; }
+    .proj-main .proj-meta-row { border-color: var(--tn-hairline) !important; }
 
     .tn-note {
       max-width: 640px;
       margin: clamp(28px,4vw,44px) auto 0;
       padding: 14px 20px;
-      border-left: 2px solid var(--tn-sage);
-      background: var(--tn-cream-deep);
+      border-left: 2px solid var(--tn-hairline);
+      background: var(--tn-paper-raised);
       font-family: var(--tn-sans);
       font-size: 13px;
       font-style: italic;
       line-height: 1.6;
-      color: var(--tn-body);
+      color: var(--tn-ink-muted);
     }
 
     /* Centered hero — replaces the shared .proj-hero grid for this page only */
@@ -137,7 +207,7 @@
       font-family: var(--tn-sans);
       font-size: clamp(15px, 1.1vw, 17.5px);
       letter-spacing: 0.01em;
-      color: var(--tn-body);
+      color: var(--tn-ink-muted);
       margin: clamp(22px,3vw,34px) 0 0;
     }
     .tn-hero__dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: 0.55; display: inline-block; }
@@ -152,13 +222,13 @@
     /* Summary cards: Prosjekt+details / Problem+Løsning+Resultat */
     .tn-summary { position: relative; z-index: 0; background: #fff; padding-block: calc(var(--section-y) * 0.5); padding-inline: clamp(20px,4vw,60px); }
     .tn-summary__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1200px; margin: 0 auto; }
-    .tn-summary__card { background: var(--tn-card-bg); border-radius: 22px; padding: clamp(28px,3.4vw,44px); }
+    .tn-summary__card { background: var(--tn-paper-raised); border-radius: 22px; padding: clamp(28px,3.4vw,44px); }
     .tn-summary__heading { font-family: var(--tn-serif); font-weight: 400; font-size: clamp(1.45rem,2.3vw,1.95rem); letter-spacing: -0.01em; color: var(--tn-ink); margin: 0 0 12px; text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
-    .tn-summary__heading em { font-style: italic; font-weight: 400; color: var(--tn-body); }
-    .tn-summary__body { font-family: var(--tn-sans); font-size: 18px; line-height: 1.6; color: var(--tn-body); text-wrap: pretty; margin: 0 0 26px; }
+    .tn-summary__heading em { font-style: italic; font-weight: 400; color: var(--tn-ink-muted); }
+    .tn-summary__body { font-family: var(--tn-sans); font-size: 18px; line-height: 1.6; color: var(--tn-ink-muted); text-wrap: pretty; margin: 0 0 26px; }
     .tn-summary__row { padding: 16px 0; border-bottom: 1px solid rgba(25,25,24,.10); display: flex; flex-direction: column-reverse; gap: 4px; }
     .tn-summary__row:last-child { border-bottom: none; padding-bottom: 0; }
-    .tn-summary__label { font-family: var(--tn-sans); font-size: 0.92em; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--tn-caption); }
+    .tn-summary__label { font-family: var(--tn-sans); font-size: 0.92em; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--tn-ink-faint); }
     .tn-summary__value { font-family: var(--tn-sans); font-size: 15px; font-weight: 600; color: var(--tn-ink); }
     .tn-summary__psr { padding: 18px 0; border-bottom: 1px solid rgba(25,25,24,.10); }
     .tn-summary__psr:last-child { border-bottom: none; padding-bottom: 0; }
@@ -175,8 +245,8 @@
     .tn-stat__item { padding-left: 0; }
     .tn-stat__number { font-family: var(--tn-serif); font-weight: 400; font-size: clamp(2.4rem,5.4vw,4rem); line-height: 1; letter-spacing: -0.02em; color: var(--tn-ink); margin: 0 0 12px; }
     .tn-stat__claim { font-family: var(--tn-sans); font-weight: 600; font-size: 18px; color: var(--tn-ink); margin: 0 0 6px; line-height: 1.3; max-width: 22ch; }
-    .tn-stat__foot { font-family: var(--tn-sans); font-size: 14px; color: var(--tn-body); margin: 0; line-height: 1.5; }
-    .tn-stat__note { font-family: var(--tn-sans); font-size: 13.5px; font-style: italic; color: var(--tn-caption); max-width: 1200px; margin: 20px auto 0; }
+    .tn-stat__foot { font-family: var(--tn-sans); font-size: 14px; color: var(--tn-ink-muted); margin: 0; line-height: 1.5; }
+    .tn-stat__note { font-family: var(--tn-sans); font-size: 13.5px; font-style: italic; color: var(--tn-ink-faint); max-width: 1200px; margin: 20px auto 0; }
     @media (max-width: 800px) {
       .tn-stat__row { grid-template-columns: 1fr; gap: 28px; }
     }
@@ -186,11 +256,11 @@
     .tn-stmt__inner { max-width: 910px; margin: 0 auto; }
     .tn-stmt__eyebrow { font-family: var(--tn-sans); font-size: clamp(12px,.9vw,13.5px); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tn-ink); margin: 0 0 var(--eyebrow-gap); }
     .tn-stmt__row { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,6fr); gap: var(--col-gap); align-items: start; }
-    .tn-stmt__heading { font-family: var(--tn-serif); font-size: clamp(1.5rem,2.6vw,2.15rem); line-height: 1.16; letter-spacing: -0.01em; margin: 0; font-weight: 400; color: var(--tn-caption); text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
+    .tn-stmt__heading { font-family: var(--tn-serif); font-size: clamp(1.5rem,2.6vw,2.15rem); line-height: 1.16; letter-spacing: -0.01em; margin: 0; font-weight: 400; color: var(--tn-ink-faint); text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
     .tn-stmt__heading strong,
     .tn-stmt__heading em { font-style: italic; font-weight: 400; color: var(--tn-ink); }
     .tn-stmt__heading .rom { display: block; font-style: normal; }
-    .tn-stmt__prose { font-family: var(--tn-sans); font-size: clamp(16px,1.15vw,18.5px); line-height: 1.6; color: var(--tn-body); text-wrap: pretty; margin: 0; }
+    .tn-stmt__prose { font-family: var(--tn-sans); font-size: clamp(16px,1.15vw,18.5px); line-height: 1.6; color: var(--tn-ink-muted); text-wrap: pretty; margin: 0; }
     .tn-stmt__prose p { margin: 0 0 12px; }
     .tn-stmt__prose p:last-child { margin-bottom: 0; }
     .tn-stmt__prose ul { list-style: disc; margin: 10px 0 12px; padding-left: 20px; }
@@ -202,7 +272,7 @@
       align-items: center;
       justify-content: center;
       margin-top: var(--fig-gap);
-      background: var(--tn-card-bg);
+      background: var(--tn-paper-raised);
       border-radius: 22px;
       border: none;
       padding: clamp(24px,3.5vw,52px);
@@ -216,7 +286,7 @@
     .tn-stmt__media--tablet img, .tn-stmt__media--tablet video { max-width: 560px; width: 100%; margin: 0 auto; }
     .tn-stmt__media--photo { background: none; padding: 0; border-radius: 22px; }
     .tn-stmt__media--photo img, .tn-stmt__media--photo video { width: 100%; max-width: none; }
-    .tn-stmt__caption { font-family: var(--tn-sans); font-size: 13.5px; color: var(--tn-caption); margin: 10px 0 0; text-align: center; }
+    .tn-stmt__caption { font-family: var(--tn-sans); font-size: 13.5px; color: var(--tn-ink-faint); margin: 10px 0 0; text-align: center; }
 
     /* Media-left / text-right variant, and side-alternating rows for the design walkthrough */
     .tn-stmt__row--media-left { grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: center; }
@@ -283,13 +353,13 @@
     .tn-design__num { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
     .tn-design__title { font-family: var(--font-ui); font-style: italic; font-weight: 500; font-size: clamp(22px,2.4vw,30px); color: var(--ink); margin: 0 0 14px; text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
     .tn-design__caption { font-family: var(--font-ui); font-size: 15px; line-height: 1.7; color: #444; max-width: 46ch; }
-    .tn-design__flow { font-family: var(--tn-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--tn-caption); margin: 0 0 14px; }
+    .tn-design__flow { font-family: var(--tn-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--tn-ink-faint); margin: 0 0 14px; }
     .tn-design__group { margin-top: 26px; }
     .tn-design__group-label { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink); margin: 0 0 8px; }
     .tn-design__group-body { font-family: var(--font-ui); font-size: 15px; line-height: 1.7; color: #444; max-width: 46ch; margin: 0; }
     .tn-design__list, .tn-design__checklist { list-style: none; margin: 0; padding: 0; font-family: var(--font-ui); font-size: 15px; line-height: 1.7; color: #444; max-width: 46ch; }
     .tn-design__list li { position: relative; padding-left: 1.1em; }
-    .tn-design__list li::before { content: "•"; position: absolute; left: 0; color: var(--tn-body); }
+    .tn-design__list li::before { content: "•"; position: absolute; left: 0; color: var(--tn-ink-muted); }
     .tn-design__checklist li { position: relative; padding-left: 1.4em; }
     .tn-design__checklist li::before { content: "✔"; position: absolute; left: 0; color: var(--accent); font-size: 13px; top: 3px; }
     .tn-design__frame { border: 1.5px solid var(--ink); overflow: hidden; }
@@ -303,8 +373,8 @@
     .tn-design__placeholder {
       flex: 1 1 0;
       aspect-ratio: 9 / 19.5;
-      border: 1px dashed var(--tn-rule);
-      background: var(--tn-cream-deep);
+      border: 1px dashed var(--tn-hairline);
+      background: var(--tn-paper-raised);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -340,7 +410,7 @@
       position: absolute;
       left: 50%; bottom: -24px;
       width: 1px; height: 24px;
-      background: var(--tn-rule);
+      background: var(--tn-hairline);
     }
     .tn-sitemap__branches {
       display: grid;
@@ -348,7 +418,7 @@
       gap: 14px;
       position: relative;
       padding-top: 24px;
-      border-top: 1px solid var(--tn-rule);
+      border-top: 1px solid var(--tn-hairline);
     }
     .tn-sitemap__node {
       border: 1.5px solid var(--tn-ink);
@@ -364,7 +434,7 @@
     .tn-sitemap__subs { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
     .tn-sitemap__sub {
       display: block;
-      border: 1px solid var(--tn-rule);
+      border: 1px solid var(--tn-hairline);
       padding: 6px 4px;
       font-size: 11px;
       font-weight: 500;
@@ -375,11 +445,6 @@
       .tn-sitemap__branches { grid-template-columns: repeat(2, 1fr); gap: 20px 14px; }
     }
 
-    @font-face {
-      font-family: 'Romie';
-      src: url('./assets/Romie-Regular.woff2') format('woff2');
-      font-weight: 400; font-style: normal; font-display: swap;
-    }
     .project-meta__title {
       font-family: 'Poppins', sans-serif;
       font-size: 40px;
@@ -636,16 +701,16 @@
     .tn-nav .proj-header__logo,
     .tn-nav .proj-header__link {
       pointer-events: auto;
-      background: #fff;
+      background: var(--tn-paper);
       border-radius: 999px;
       padding: 10px 20px;
-      font-family: "Poppins", "Inter", -apple-system, sans-serif;
+      font-family: var(--tn-sans);
       font-size: 15px;
       font-weight: 600;
       letter-spacing: 0;
       text-transform: lowercase;
-      color: #101010;
-      box-shadow: 0 1px 2px rgba(25,25,24,.10), 0 6px 18px rgba(25,25,24,.06);
+      color: var(--tn-ink);
+      box-shadow: 0 1px 2px rgba(36,28,22,.10), 0 6px 18px rgba(36,28,22,.06);
       transition: transform 180ms ease, box-shadow 180ms ease;
     }
     .tn-nav .proj-header__logo { margin-right: auto; }
@@ -653,29 +718,29 @@
     .tn-nav .proj-header__link:hover {
       opacity: 1;
       transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(25,25,24,.14), 0 10px 24px rgba(25,25,24,.10);
+      box-shadow: 0 2px 4px rgba(36,28,22,.14), 0 10px 24px rgba(36,28,22,.10);
     }
     .tn-nav .proj-header__link--active {
-      background: #101010;
-      color: #fff;
+      background: var(--tn-ink);
+      color: var(--tn-paper);
     }
-    .tn-nav .proj-header__link--active:hover { background: #101010; color: #fff; }
+    .tn-nav .proj-header__link--active:hover { background: var(--tn-ink); color: var(--tn-paper); }
     @media (max-width: 860px) {
       .tn-nav .proj-header__inner { pointer-events: auto; }
     }
 
     /* Team cards: no avatar circles — serif names + small grey sans roles under a hairline rule */
     .proj-team-avatar { display: none; }
-    .proj-team-card { padding-top: 22px; border-top: 1px solid rgba(16,16,16,.12); align-items: center; }
-    .proj-team-card h3 { font-family: "Playfair Display", Georgia, serif; font-weight: 400; }
-    .proj-team-card p { font-family: "Poppins", "Inter", -apple-system, sans-serif; font-size: 13px; color: #6E6E69; }
+    .proj-team-card { padding-top: 22px; border-top: 1px solid var(--tn-hairline); align-items: center; }
+    .proj-team-card h3 { font-family: var(--tn-serif); font-weight: 400; }
+    .proj-team-card p { font-family: var(--tn-sans); font-size: 13px; color: var(--tn-ink-muted); }
 
     /* Footer, this page only — hairline top rule, no background */
-    .tn-footer { background: transparent; border-top: 1px solid rgba(16,16,16,.1); }
-    .tn-footer .site-footer__copy { font-family: "Poppins", "Inter", -apple-system, sans-serif; font-size: 14px; color: #6E6E69; }
-    .tn-footer .site-footer__link { color: #6E6E69; }
+    .tn-footer { background: transparent; border-top: 1px solid var(--tn-hairline); }
+    .tn-footer .site-footer__copy { font-family: var(--tn-sans); font-size: 14px; color: var(--tn-ink-muted); }
+    .tn-footer .site-footer__link { color: var(--tn-ink-muted); }
     .tn-footer .site-footer__link:hover,
-    .tn-footer .site-footer__link:focus { color: #101010; outline-color: #101010; }
+    .tn-footer .site-footer__link:focus { color: var(--tn-ink); outline-color: var(--tn-ink); }
   </style>
 </head>
 
@@ -995,7 +1060,7 @@
               </div>
             </div>
             <div style="margin-top:clamp(28px,4vw,36px);">
-              <p style="font-family:var(--tn-sans); font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--tn-ink); margin-bottom:1rem;">Figma-prototype <span style="text-transform:none; font-weight:400; font-size:12px; color:var(--tn-body); letter-spacing:0;">(NB: kan lastes litt sakte)</span></p>
+              <p style="font-family:var(--tn-sans); font-size:12px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--tn-ink); margin-bottom:1rem;">Figma-prototype <span style="text-transform:none; font-weight:400; font-size:12px; color:var(--tn-ink-muted); letter-spacing:0;">(NB: kan lastes litt sakte)</span></p>
               <iframe title="Figma-prototype — Tjønnås & Norvald ansattportal" class="tn-stmt__media" style="width:100%; height:600px; margin-top:0;" src="https://embed.figma.com/design/SwPTqrNk3YUqrM2xNAKrhO/Tj%C3%B8nn%C3%A5s?node-id=22-92&embed-host=share" allowfullscreen></iframe>
             </div>
           </div>
