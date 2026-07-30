@@ -254,6 +254,16 @@
       .tn-stat__row { grid-template-columns: 1fr; gap: 28px; }
     }
 
+    /* Læringer — three-column band, same rhythm as the stats band above */
+    .tn-learn__row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(28px,4vw,56px); }
+    .tn-learn__label { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--tn-ink-faint); margin: 0 0 14px; }
+    .tn-learn__title { font-family: var(--tn-serif); font-style: italic; font-weight: 400; font-size: var(--t-display-m); line-height: 1.2; color: var(--tn-ink); margin: 0 0 12px; }
+    .tn-learn__tagline { font-family: var(--tn-sans); font-weight: 600; font-size: var(--t-body); color: var(--tn-ink); margin: 0 0 10px; }
+    .tn-learn__body { font-family: var(--tn-sans); font-size: var(--t-body); line-height: 1.65; color: var(--tn-ink-muted); margin: 0; }
+    @media (max-width: 800px) {
+      .tn-learn__row { grid-template-columns: 1fr; gap: 36px; }
+    }
+
     /* Repeating statement + prose + media pattern, matched to the Figma reference (eyebrow, mixed-weight heading, prose, full-width rounded media) */
     .tn-stmt { padding-block: calc(var(--section-y) * 0.5); padding-inline: clamp(1.25rem, 5vw, 5rem); }
     .tn-stmt__inner { max-width: 1240px; margin: 0 auto; }
@@ -1065,6 +1075,32 @@
               <div class="tn-stmt__prose">
                 <p>Vi gjennomførte et semi-strukturert intervju med daglig leder tidlig i prosjektet, og brukte innsikten derfra til å bygge personas, scenarier, informasjonsarkitektur, wireframes og hi-fi-prototyper. På grunn av prosjektets omfang og tidsramme rakk vi derimot ikke å gjennomføre formell brukbarhetstesting av den ferdige prototypen.</p>
                 <p>Neste steg ville vært moderert brukertesting med ansatte — særlig nyansatte og erfarne ansatte — for å validere navigasjon, onboarding og opplæringsflyt. Med en uke til rådighet ville jeg rekruttert to nyansatte og to erfarne ansatte, gitt dem realistiske oppgaver som å finne neste vakt eller fullføre en opplæringsmodul, og målt hvor de nølte.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="tn-stmt">
+          <div class="tn-stmt__inner">
+            <p class="tn-stmt__eyebrow">LÆRINGER</p>
+            <div class="tn-learn__row">
+              <div>
+                <p class="tn-learn__label">Scope-disiplin</p>
+                <h3 class="tn-learn__title">Å tørre å velge bort</h3>
+                <p class="tn-learn__tagline">Fokus fremfor alt</p>
+                <p class="tn-learn__body">Under innsiktsarbeidet avdekket vi mange ulike behov — fra markedsføring og nettbestilling for kunder til intern drift. Ved å bevisst avgrense prosjektet og fokusere 100 % på de ansattes kjernebehov (vaktplan og opplæring), skapte vi en spisset og verdifull ansattportal fremfor et overfylt, halvferdig system.</p>
+              </div>
+              <div>
+                <p class="tn-learn__label">Prosess</p>
+                <h3 class="tn-learn__title">Struktur før overflate</h3>
+                <p class="tn-learn__tagline">Læringen i Low-Fi</p>
+                <p class="tn-learn__body">Ved å jobbe grundig med wireframes og low-fi-skisser før vi innførte designmanualen, unngikk vi å bli distrahert av farger og typografi. Det tvingte oss til å løse selve informasjonsarkitekturen og navigasjonsflyten først, noe som gjorde den endelige Hi-Fi-prototypen betydelig mer intuitiv.</p>
+              </div>
+              <div>
+                <p class="tn-learn__label">Brukerinnsikt</p>
+                <h3 class="tn-learn__title">Design for selvstendighet</h3>
+                <p class="tn-learn__tagline">Sjølvstendig onboarding</p>
+                <p class="tn-learn__body">Med hyppig utskiftning av unge deltidsansatte så vi at muntlig opplæring skapte usikkerhet og avbrudd i travle vakter. Ved å flytte opplæringen over på en dedikert iPad i butikken med visuelle, modulbaserte steg, ga vi nyansatte trygghet til å lære i eget tempo uten å måtte spørre kolleger.</p>
               </div>
             </div>
           </div>
