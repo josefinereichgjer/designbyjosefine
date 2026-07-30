@@ -225,14 +225,14 @@
     .tn-summary { position: relative; z-index: 0; background: var(--tn-paper); padding-block: calc(var(--section-y) * 0.5); padding-inline: clamp(1.25rem, 5vw, 5rem); }
     .tn-summary__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1240px; margin: 0 auto; }
     .tn-summary__card { background: var(--tn-paper-raised); border-radius: 22px; padding: clamp(28px,3.4vw,44px); }
-    .tn-summary__heading { font-family: var(--tn-serif); font-weight: 400; font-size: clamp(1.45rem,2.3vw,1.95rem); letter-spacing: -0.01em; color: var(--tn-ink); margin: 0 0 12px; text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
+    .tn-summary__heading { font-family: var(--tn-serif); font-weight: 400; font-size: var(--t-display-m); letter-spacing: -0.01em; color: var(--tn-ink); margin: 0 0 12px; text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
     .tn-summary__heading em { font-style: italic; font-weight: 400; color: var(--tn-ink-muted); }
-    .tn-summary__body { font-family: var(--tn-sans); font-size: 18px; line-height: 1.6; color: var(--tn-ink-muted); text-wrap: pretty; margin: 0 0 26px; }
-    .tn-summary__row { padding: 16px 0; border-bottom: 1px solid rgba(25,25,24,.10); display: flex; flex-direction: column-reverse; gap: 4px; }
+    .tn-summary__body { font-family: var(--tn-sans); font-size: var(--t-body); line-height: 1.65; color: var(--tn-ink-muted); text-wrap: pretty; margin: 0 0 26px; }
+    .tn-summary__row { padding: 16px 0; border-bottom: 1px solid var(--tn-hairline); display: flex; flex-direction: column-reverse; gap: 4px; }
     .tn-summary__row:last-child { border-bottom: none; padding-bottom: 0; }
-    .tn-summary__label { font-family: var(--tn-sans); font-size: 0.92em; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--tn-ink-faint); }
+    .tn-summary__label { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tn-ink-faint); }
     .tn-summary__value { font-family: var(--tn-sans); font-size: 15px; font-weight: 600; color: var(--tn-ink); }
-    .tn-summary__psr { padding: 18px 0; border-bottom: 1px solid rgba(25,25,24,.10); }
+    .tn-summary__psr { padding: 18px 0; border-bottom: 1px solid var(--tn-hairline); }
     .tn-summary__psr:last-child { border-bottom: none; padding-bottom: 0; }
     .tn-summary__psr .tn-summary__body { margin-bottom: 0; }
     @media (max-width: 800px) {
@@ -241,13 +241,14 @@
 
     /* Stat band, sitting beneath the two summary cards — no box, huge serif numbers, small label above */
     .tn-stat { max-width: 1240px; margin: clamp(56px,7vw,88px) auto 0; }
-    .tn-stat__heading { font-family: var(--tn-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: #6b6b6b; margin: 0 0 var(--eyebrow-gap); }
-    .tn-stat__heading em { font-style: normal; font-weight: 600; }
+    .tn-stat__heading { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tn-ink-faint); margin: 0 0 var(--eyebrow-gap); }
+    .tn-stat__heading em { font-style: normal; font-weight: 500; }
     .tn-stat__row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(28px,4vw,56px); }
     .tn-stat__item { padding-left: 0; }
-    .tn-stat__number { font-family: var(--tn-serif); font-weight: 400; font-size: clamp(2.4rem,5.4vw,4rem); line-height: 1; letter-spacing: -0.02em; color: var(--tn-ink); margin: 0 0 12px; }
-    .tn-stat__claim { font-family: var(--tn-sans); font-weight: 600; font-size: 18px; color: var(--tn-ink); margin: 0 0 6px; line-height: 1.3; max-width: 22ch; }
-    .tn-stat__foot { font-family: var(--tn-sans); font-size: 14px; color: var(--tn-ink-muted); margin: 0; line-height: 1.5; }
+    .tn-stat__number { font-family: var(--tn-serif); font-weight: 400; font-size: var(--t-data); font-variant-numeric: tabular-nums; line-height: .95; letter-spacing: -0.02em; color: var(--tn-ink); margin: 0 0 16px; }
+    .tn-stat__arrow { font-weight: 300; color: var(--tn-accent-gold); padding: 0 0.15em; }
+    .tn-stat__claim { font-family: var(--tn-sans); font-weight: 600; font-size: var(--t-body); color: var(--tn-ink); margin: 0 0 6px; line-height: 1.3; max-width: 22ch; }
+    .tn-stat__foot { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; color: var(--tn-ink-faint); margin: 0; line-height: 1.5; }
     .tn-stat__note { font-family: var(--tn-sans); font-size: 13.5px; font-style: italic; color: var(--tn-ink-faint); max-width: 1240px; margin: 20px auto 0; }
     @media (max-width: 800px) {
       .tn-stat__row { grid-template-columns: 1fr; gap: 28px; }
@@ -256,7 +257,7 @@
     /* Repeating statement + prose + media pattern, matched to the Figma reference (eyebrow, mixed-weight heading, prose, full-width rounded media) */
     .tn-stmt { padding-block: calc(var(--section-y) * 0.5); padding-inline: clamp(1.25rem, 5vw, 5rem); }
     .tn-stmt__inner { max-width: 1240px; margin: 0 auto; }
-    .tn-stmt__eyebrow { font-family: var(--tn-sans); font-size: clamp(12px,.9vw,13.5px); font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--tn-ink); margin: 0 0 var(--eyebrow-gap); }
+    .tn-stmt__eyebrow { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tn-ink); margin: 0 0 var(--eyebrow-gap); }
     /* Three-track grid: thesis (col 1-5) / empty air gap (col 6) / body (col 7-12).
        The direct-child combinator is deliberate — it targets only the base
        eyebrow->thesis->body pattern (heading/prose as direct .tn-stmt__row children).
@@ -265,11 +266,11 @@
     .tn-stmt__row { display: grid; grid-template-columns: minmax(0,5fr) minmax(0,1fr) minmax(0,6fr); gap: var(--col-gap); align-items: start; }
     .tn-stmt__row > .tn-stmt__heading { grid-column: 1; max-width: 22ch; }
     .tn-stmt__row > .tn-stmt__prose { grid-column: 3; max-width: 62ch; }
-    .tn-stmt__heading { font-family: var(--tn-serif); font-size: clamp(1.5rem,2.6vw,2.15rem); line-height: 1.16; letter-spacing: -0.01em; margin: 0; font-weight: 400; color: var(--tn-ink-faint); text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
+    .tn-stmt__heading { font-family: var(--tn-serif); font-size: var(--t-display-l); line-height: 1.12; letter-spacing: -0.015em; margin: 0; font-weight: 400; color: var(--tn-ink-faint); text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
     .tn-stmt__heading strong,
     .tn-stmt__heading em { font-style: italic; font-weight: 400; color: var(--tn-ink); }
     .tn-stmt__heading .rom { display: block; font-style: normal; }
-    .tn-stmt__prose { font-family: var(--tn-sans); font-size: clamp(16px,1.15vw,18.5px); line-height: 1.6; color: var(--tn-ink-muted); text-wrap: pretty; margin: 0; }
+    .tn-stmt__prose { font-family: var(--tn-sans); font-size: var(--t-body); line-height: 1.65; color: var(--tn-ink-muted); text-wrap: pretty; margin: 0; }
     .tn-stmt__prose p { margin: 0 0 12px; }
     .tn-stmt__prose p:last-child { margin-bottom: 0; }
     .tn-stmt__prose ul { list-style: disc; margin: 10px 0 12px; padding-left: 20px; }
@@ -295,7 +296,7 @@
     .tn-stmt__media--tablet img, .tn-stmt__media--tablet video { max-width: 560px; width: 100%; margin: 0 auto; }
     .tn-stmt__media--photo { background: none; padding: 0; border-radius: 22px; }
     .tn-stmt__media--photo img, .tn-stmt__media--photo video { width: 100%; max-width: none; }
-    .tn-stmt__caption { font-family: var(--tn-sans); font-size: 13.5px; color: var(--tn-ink-faint); margin: 10px 0 0; text-align: center; }
+    .tn-stmt__caption { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--tn-ink-faint); margin: 10px 0 0; text-align: center; }
 
     /* Media-left / text-right variant, and side-alternating rows for the design walkthrough */
     .tn-stmt__row--media-left { grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: center; }
@@ -364,7 +365,7 @@
     .tn-design__num { font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
     .tn-design__title { font-family: var(--font-ui); font-style: italic; font-weight: 500; font-size: clamp(22px,2.4vw,30px); color: var(--ink); margin: 0 0 14px; text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
     .tn-design__caption { font-family: var(--font-ui); font-size: 15px; line-height: 1.7; color: #444; max-width: 46ch; }
-    .tn-design__flow { font-family: var(--tn-sans); font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--tn-ink-faint); margin: 0 0 14px; }
+    .tn-design__flow { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--tn-ink-faint); margin: 0 0 14px; }
     .tn-design__group { margin-top: 26px; }
     .tn-design__group-label { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--ink); margin: 0 0 8px; }
     .tn-design__group-body { font-family: var(--font-ui); font-size: 15px; line-height: 1.7; color: #444; max-width: 46ch; margin: 0; }
@@ -820,7 +821,7 @@
         <h2 class="tn-stat__heading">Prosjektet <em>i tall</em></h2>
         <div class="tn-stat__row">
           <div class="tn-stat__item">
-            <p class="tn-stat__number">5 → 1</p>
+            <p class="tn-stat__number">5<span class="tn-stat__arrow"> → </span>1</p>
             <p class="tn-stat__claim">Systemer samlet til én portal</p>
             <p class="tn-stat__foot">Vaktplan, lønn, Messenger, notater og muntlig opplæring</p>
           </div>
@@ -830,7 +831,7 @@
             <p class="tn-stat__foot">Definert gjennom affinity mapping av intervjudata</p>
           </div>
           <div class="tn-stat__item">
-            <p class="tn-stat__number">4 → 2</p>
+            <p class="tn-stat__number">4<span class="tn-stat__arrow"> → </span>2</p>
             <p class="tn-stat__claim">Personas prioritert ned til to scenarioer</p>
             <p class="tn-stat__foot">Kari (erfaren ansatt) og Eirik (nyansatt)</p>
           </div>
@@ -903,7 +904,7 @@
               <h2 class="tn-stmt__heading">Fra <strong>innsikt</strong> til <strong>løsning</strong>.</h2>
               <div class="tn-stmt__prose">
                 <p>Basert på ett intervju med reell drifts-innsikt (ikke antagelser), kartla vi funn i en affinity map og bygde hi-fi wireframes rundt to primærpersonas — Kari (erfaren) og Eirik (nyansatt).</p>
-                <p><a href="./assets/norvald/Endelig-rapport-informasjonsarkitektur.pdf" target="_blank" rel="noopener" style="text-decoration:underline; color:inherit;">Les hele prosessrapporten →</a></p>
+                <p><a href="./assets/norvald/Endelig-rapport-informasjonsarkitektur.pdf" target="_blank" rel="noopener" style="text-decoration:underline; color:var(--tn-accent-text);">Les hele prosessrapporten →</a></p>
               </div>
             </div>
           </div>
@@ -1052,13 +1053,6 @@
               <p class="tn-stmt__eyebrow">HVORFOR DISSE TO SCENARIOENE?</p>
               <div class="tn-stmt__prose" style="max-width:640px;">
                 <p>Vi valgte å fokusere på Kari og Eirik fordi de representerte de to viktigste behovene som kom frem i intervjuet: oversikt over vakter og tilgjengelig opplæring. Ved å løse disse utfordringene kunne én samlet ansattportal redusere behovet for flere separate systemer og gjøre arbeidshverdagen enklere. Dette bygger direkte på innsikten fra intervjuet, personaene og scenarioene i prosjektet.</p>
-              </div>
-            </div>
-          </section>
-          <section class="tn-stmt">
-            <div class="tn-stmt__inner">
-              <div class="tn-stmt__media tn-stmt__media--photo" style="margin-top:0;">
-                <img src="./assets/norvald/tjonni-mockup.webp" alt="Tjønnås & Norvald mockup" loading="lazy" decoding="async">
               </div>
             </div>
           </section>
