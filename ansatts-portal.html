@@ -188,9 +188,9 @@
       font-family: var(--tn-serif);
       font-style: italic;
       font-weight: 400;
-      font-size: clamp(2.3rem, 5.4vw, 4.2rem);
-      line-height: 1.03;
-      letter-spacing: -0.012em;
+      font-size: var(--t-display-xl);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
       color: var(--tn-ink);
       margin: 0;
       text-wrap: balance;
@@ -205,12 +205,14 @@
       flex-wrap: wrap;
       gap: 10px;
       font-family: var(--tn-sans);
-      font-size: clamp(15px, 1.1vw, 17.5px);
-      letter-spacing: 0.01em;
-      color: var(--tn-ink-muted);
+      font-size: var(--t-meta);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--tn-ink-faint);
       margin: clamp(22px,3vw,34px) 0 0;
     }
-    .tn-hero__dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: 0.55; display: inline-block; }
+    .tn-hero__dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; opacity: 0.4; display: inline-block; }
     .tn-hero__img-wrap {
       max-width: min(280px, 58vw);
       margin: clamp(46px,7vw,84px) auto calc(-1 * 14vh);
@@ -376,82 +378,60 @@
     /* Video content has a black recording background behind a rounded iPad mockup — a hard square frame reads as harsh against it. Scoped to video only; the static screenshots keep sharp corners. */
     .tn-design__frame:has(video) { border-radius: 32px; }
     .tn-design__frame--portrait { max-width: 320px; margin: 0 auto; }
-    .tn-design__filmstrip { display: flex; gap: 10px; margin: 14px auto 0; max-width: 320px; }
-    .tn-design__filmstrip--ipad { max-width: 520px; }
-    .tn-design__filmstrip--ipad .tn-design__placeholder { aspect-ratio: 3 / 4; }
-    .tn-design__placeholder {
-      flex: 1 1 0;
-      aspect-ratio: 9 / 19.5;
-      border: 1px dashed var(--tn-hairline);
-      background: var(--tn-paper-raised);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4px;
-    }
-    .tn-design__placeholder span {
-      font-family: Menlo, "SFMono-Regular", monospace;
-      font-size: 8px;
-      line-height: 1.4;
-      color: #8a8578;
-      word-break: break-word;
-    }
     @media (max-width: 800px) {
       .tn-design { grid-template-columns: 1fr; }
     }
 
-    .tn-sitemap { max-width: 1100px; margin: 3rem auto 0; }
-    .tn-sitemap__root-wrap { text-align: center; margin-bottom: 44px; position: relative; }
-    .tn-sitemap__root {
+    /* IA diagram — editorial figure, not UI. Type and whitespace carry the
+       structure; the only lines are the ones encoding a real relationship
+       (the login-gate rule + the six stubs dropping into each column). */
+    .tn-ia { margin: var(--fig-gap) 0 0; }
+    .tn-ia__login {
       display: inline-block;
-      background: var(--tn-ink);
-      color: #fff;
       font-family: var(--tn-sans);
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 0.06em;
+      font-size: var(--t-meta);
+      font-weight: 500;
       text-transform: uppercase;
-      padding: 10px 26px;
+      letter-spacing: 0.14em;
+      color: var(--tn-ink);
+      border: 1px solid var(--tn-hairline);
+      padding: 6px 14px;
+      margin: 0 0 28px;
     }
-    .tn-sitemap__root-wrap::after {
+    .tn-ia__rule { height: 1px; background: var(--tn-hairline); margin: 0 0 20px; }
+    .tn-ia__grid { display: grid; grid-template-columns: repeat(6, minmax(0,1fr)); gap: 24px; }
+    .tn-ia__col { position: relative; padding-top: 20px; }
+    .tn-ia__col::before {
       content: "";
       position: absolute;
-      left: 50%; bottom: -24px;
-      width: 1px; height: 24px;
-      background: var(--tn-hairline);
+      top: -20px; left: 0;
+      width: 1px; height: 20px;
+      background: var(--tn-ink-faint);
+      opacity: 0.3;
     }
-    .tn-sitemap__branches {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 14px;
-      position: relative;
-      padding-top: 24px;
-      border-top: 1px solid var(--tn-hairline);
-    }
-    .tn-sitemap__node {
-      border: 1.5px solid var(--tn-ink);
-      background: #fff;
-      padding: 14px 8px;
-      text-align: center;
-      font-family: var(--tn-sans);
-      font-weight: 700;
-      font-size: 13px;
+    .tn-ia__title {
+      font-family: var(--tn-serif);
+      font-size: 1.1875rem;
+      font-weight: 400;
+      line-height: 1.25;
       color: var(--tn-ink);
+      margin: 0 0 24px;
     }
-    .tn-sitemap__num { display: block; font-size: 10px; font-weight: 500; color: var(--tn-ink); opacity: 0.55; margin-bottom: 6px; }
-    .tn-sitemap__subs { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-    .tn-sitemap__sub {
-      display: block;
-      border: 1px solid var(--tn-hairline);
-      padding: 6px 4px;
-      font-size: 11px;
-      font-weight: 500;
-      color: var(--tn-ink);
-      text-align: center;
+    .tn-ia__children { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+    .tn-ia__children li { font-family: var(--tn-sans); font-size: var(--t-body); line-height: 1.4; color: var(--tn-ink-muted); }
+    .tn-ia__caption { margin: 32px 0 0; font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--tn-ink-faint); }
+    @media (max-width: 720px) {
+      /* The rule+stub construction only reads across six aligned columns —
+         swap to a plain 2-col grid rather than shrinking it. */
+      .tn-ia__rule { display: none; }
+      .tn-ia__grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 32px 24px; }
+      .tn-ia__col { padding-top: 0; }
+      .tn-ia__col::before { display: none; }
     }
-    @media (max-width: 700px) {
-      .tn-sitemap__branches { grid-template-columns: repeat(2, 1fr); gap: 20px 14px; }
+    @media (max-width: 430px) {
+      .tn-ia__grid { grid-template-columns: 1fr; gap: 0; }
+      .tn-ia__col { padding: 16px 0 16px 16px; border-left: 1px solid var(--tn-hairline); }
+      .tn-ia__col:first-child { padding-top: 0; }
     }
 
     .project-meta__title {
@@ -938,9 +918,55 @@
                 <p>Sitemapet ble utarbeidet etter affinity-mappingen, hvor seks tematiske områder utkrystalliserte seg som kjernen i portalen. Strukturen speiler bottom-navigasjonen i prototypen, slik at den mentale modellen brukeren bygger opp gjennom sitemapet matcher den faktiske appen 1:1.</p>
               </div>
             </div>
-            <div class="tn-stmt__media">
-              <div class="tn-sitemap" style="margin-top:0;"><div class="tn-sitemap__root-wrap"><span class="tn-sitemap__root">Login</span></div><div class="tn-sitemap__branches"><div class="tn-sitemap__node"><span class="tn-sitemap__num">01</span>Hjem<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Daglige mål</span><span class="tn-sitemap__sub">Beskjeder</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">02</span>Vaktliste<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Kalender</span><span class="tn-sitemap__sub">Vaktdetalj</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">03</span>Chat<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Kanaler</span><span class="tn-sitemap__sub">Varsler</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">04</span>Opplæring<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Min trening</span><span class="tn-sitemap__sub">Arkivert</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">05</span>Rutiner<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Dokumenter</span><span class="tn-sitemap__sub">Versjoner</span></div></div><div class="tn-sitemap__node"><span class="tn-sitemap__num">06</span>Min side<div class="tn-sitemap__subs"><span class="tn-sitemap__sub">Profil</span><span class="tn-sitemap__sub">Innstilling</span></div></div></div></div>
-            </div>
+            <figure class="tn-ia" data-reveal>
+              <p class="tn-ia__login">Login</p>
+              <div class="tn-ia__rule" aria-hidden="true"></div>
+              <div class="tn-ia__grid">
+                <div class="tn-ia__col" data-reveal style="--reveal-delay:0ms">
+                  <h3 class="tn-ia__title">Hjem</h3>
+                  <ul class="tn-ia__children">
+                    <li>Daglige mål</li>
+                    <li>Beskjeder</li>
+                  </ul>
+                </div>
+                <div class="tn-ia__col" data-reveal style="--reveal-delay:70ms">
+                  <h3 class="tn-ia__title">Vaktliste</h3>
+                  <ul class="tn-ia__children">
+                    <li>Kalender</li>
+                    <li>Vaktdetalj</li>
+                  </ul>
+                </div>
+                <div class="tn-ia__col" data-reveal style="--reveal-delay:140ms">
+                  <h3 class="tn-ia__title">Chat</h3>
+                  <ul class="tn-ia__children">
+                    <li>Kanaler</li>
+                    <li>Varsler</li>
+                  </ul>
+                </div>
+                <div class="tn-ia__col" data-reveal style="--reveal-delay:210ms">
+                  <h3 class="tn-ia__title">Opplæring</h3>
+                  <ul class="tn-ia__children">
+                    <li>Min trening</li>
+                    <li>Arkivert</li>
+                  </ul>
+                </div>
+                <div class="tn-ia__col" data-reveal style="--reveal-delay:280ms">
+                  <h3 class="tn-ia__title">Rutiner</h3>
+                  <ul class="tn-ia__children">
+                    <li>Dokumenter</li>
+                    <li>Versjoner</li>
+                  </ul>
+                </div>
+                <div class="tn-ia__col" data-reveal style="--reveal-delay:280ms">
+                  <h3 class="tn-ia__title">Min side</h3>
+                  <ul class="tn-ia__children">
+                    <li>Profil</li>
+                    <li>Innstilling</li>
+                  </ul>
+                </div>
+              </div>
+              <figcaption class="tn-ia__caption">Sitemap</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -986,11 +1012,6 @@
                   </video>
                 </div>
               </div>
-              <div class="tn-design__filmstrip" aria-hidden="true">
-                <div class="tn-design__placeholder"><span>mobil-02-hjem-preview.png</span></div>
-                <div class="tn-design__placeholder"><span>mobil-03-kalender-preview.png</span></div>
-                <div class="tn-design__placeholder"><span>mobil-04-vaktdetalj-preview.png</span></div>
-              </div>
             </div>
           </section>
 
@@ -1022,10 +1043,6 @@
               </div>
               <div class="tn-stmt__media tn-stmt__media--tablet">
                 <img src="./assets/norvald/ipad-min-trening.webp" alt="iPad-skjerm som viser ni opplæringsmoduler under Min trening, hver med egen fremdriftsindikator" loading="lazy" decoding="async">
-              </div>
-              <div class="tn-design__filmstrip tn-design__filmstrip--ipad" aria-hidden="true">
-                <div class="tn-design__placeholder"><span>ipad-01-login-preview.png</span></div>
-                <div class="tn-design__placeholder"><span>ipad-03-arkivert-trening-preview.png</span></div>
               </div>
             </div>
           </section>
