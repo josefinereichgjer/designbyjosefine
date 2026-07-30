@@ -62,7 +62,7 @@ const TOOLS = [
   { label: "InDesign",    src: "./assets/indesign.webp"    },
   { label: "Glyphs",      src: "./assets/glyphs.webp"      },
   { label: "Acrobat",     src: "./assets/acrobat.webp"     },
-  { label: "Figma",       src: "./srh-open-day-3/assets/img/figma.png" },
+  { label: "Figma",       src: "./assets/figma.png" },
 ];
 
 const track = document.getElementById("toolsTrack");

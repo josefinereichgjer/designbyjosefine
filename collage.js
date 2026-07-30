@@ -14,7 +14,6 @@
     { src: './assets/reinalys.webp',                       alt: 'Reina Fruktgård',       href: './reina-fruktgard.html',       opacity: 0.62 },
     { src: './assets/lillawenettside.webp',                alt: 'Stiftelsen WE',         href: './we-visuell-profil.html',     opacity: 0.62 },
     { src: './assets/scenebok.webp',                       alt: 'Bokomslag',             href: './bokomslag.html',             opacity: 0.62 },
-    { src: './assets/poster-srh.webp',                     alt: 'Flerkanalspublisering', href: './flerkanalspublisering.html', opacity: 0.62 },
     { src: './assets/tjonnipadiphone.webp',                alt: 'Tjønnås og Norvald',    href: './ansatts-portal.html',        opacity: 0.62 },
     { src: './stoppestedet/images/storefrontstoppis.webp', alt: 'Stoppestedet',          href: './stoppestedet.html',          opacity: 0.62 },
     { src: './assets/krit.webp',                           alt: 'Tidsskrift',            href: './tidsskrift.html',            opacity: 0.62 },
@@ -26,7 +25,6 @@
     { x: -100, y:  -40, rot:  -9, z: 7 },  // left, up
     { x:  280, y:  -25, rot:  13, z: 6 },  // right, up
     { x:  -50, y:   85, rot:  -5, z: 5 },  // left, lower
-    { x:  250, y:   95, rot: -11, z: 4 },  // right, lower
     { x: -150, y:   30, rot:   8, z: 3 },  // left, middle
     { x:  320, y:    5, rot: -14, z: 2 },  // right, middle
     { x:  160, y:  -80, rot:   6, z: 1 },  // up-right

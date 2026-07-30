@@ -294,54 +294,5 @@ window.PROJECTS = [
     tags: ["Strategisk design"],
     cover: "./assets/laptop-mockup.webp",
     images: ["./assets/doorskilt.webp"],
-  },
-  {
-    id: "flerkanalspublisering",
-    group: "archive",
-    skipBuild: true,
-    title: "Flerkanalspublisering",
-    subtitle: "Redesign",
-    year: "2024",
-    tags: ["Redesign"],
-    cover: "./assets/poster-srh.webp",
-    coverCaption: "Brosjyre om universitetets bærekraftsarbeid",
-    noSlideshow: true,
-    intro: "Oppgaven har vært å utvikle en visuell kommunikasjonsløsning for et arrangement på tvers av flere medier. Prosjektet tar utgangspunkt i Open Day ved SRH Campus Berlin og studieområdet Digital Media & Creative Arts, et fiktivt paraplykonsept for kreative fag. Arrangementet brukes som et case for å utforske et tydelig visuelt uttrykk gjennom struktur, hierarki og konsistente designprinsipper.",
-    background: [
-      {
-        heading: "Oppgaven",
-        body: "Prosjektet går ut på å utvikle et visuelt uttrykk som fungerer på tvers av flere flater.\n\nDesignet bygger på SRH University Berlins eksisterende visuelle identitet, men videreutvikles gjennom egne designvalg. Fokus har vært på tydelig hierarki, struktur og en balansert bruk av typografi, bilde og luft i layouten."
-      },
-      {
-        heading: "Hva skal produseres",
-        body: "<ul class=\"bg__list\"><li>Plakat i A2-format</li><li>Roll-up banner (850 × 2000 mm)</li><li>Brosjyre om universitetets bærekraftsarbeid</li><li>LinkedIn-karusell for promotering av arrangementet</li><li>PowerPoint-mal for presentasjoner</li><li>Digitale reklamebannere</li><li>Facebook event cover for mobil og desktop</li><li>Designmanual for den visuelle identiteten</li></ul>"
-      },
-      {
-        heading: "Typografi",
-        body: "Typografien er basert på en rund og moderne grotesk skrifttype inspirert av SRHs visuelle profil.\n\nSiden den originale fonten ikke er tilgjengelig, brukes en alternativ font med lignende uttrykk (men ikke like brukervennlig). Ulike skriftvekter og størrelser skaper likevel et tydelig hierarki mellom overskrifter, mellomtitler og brødtekst."
-      },
-      {
-        heading: "Fotografi",
-        body: "Fotografiene viser campusmiljøet ved SRH University Berlin og fungerer som sentrale visuelle elementer i designet. Bildene gir kontekst til arrangementet. Alle er gratis nedlastbare hos deres nettside."
-      },
-      {
-        heading: "Fargepalett",
-        body: "Fargepaletten tar utgangspunkt i SRH University Berlins merkevarefarger.\n\nEn varm oransjetone brukes som aksentfarge sammen med mørke og lyse nøytrale toner. Dette skaper et tydelig og konsistent uttrykk på tvers av flater.",
-        palette: [
-          { hex: "#c44f24", name: "SRH Oransj",  description: "Primær farge" },
-          { hex: "#1c1c1c", name: "SRH Mørk",    description: "Tekst og mørke slides" },
-          { hex: "#e2ded5", name: "SRH Krem",     description: "Seksjon bakgrunn" },
-          { hex: "#ffffff", name: "SRH Hvit",     description: "Bakgrunn" }
-        ]
-      }
-    ],
-    projectMeta: [
-      { label: "År", value: "2024" },
-      { label: "Fag", value: "IDG1009 – Flerkanalpublisering" },
-      { label: "Fagansvarlig", value: "Mari Hermansen" },
-      { label: "Verktøy", value: "Illustrator, Photoshop" }
-    ],
-    link: { label: "Åpne nettsiden", src: "./srh-open-day-3/index.html" },
-    finalPdf: { label: "Nysgjerrig på mer om dette?", src: "./assets/srh_pdf.pdf" }
   }
 ];

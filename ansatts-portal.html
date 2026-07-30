@@ -240,6 +240,9 @@
        exception to the site-wide no-border-radius-on-images rule, which
        otherwise still applies everywhere else on this page). */
     .tn-persona-pair { display: flex; gap: 28px; justify-content: flex-end; }
+    @media (max-width: 900px) {
+      .tn-persona-pair { justify-content: center; }
+    }
     .tn-persona-pair figure { margin: 0; flex: 0 0 auto; width: clamp(100px, 21vw, 190px); text-align: center; }
     .tn-persona-pair img { display: block; width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: top center; border-radius: 50%; }
     .tn-persona-pair figcaption { margin-top: 12px; font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--tn-ink-faint); }
@@ -275,6 +278,14 @@
     .tn-stmt__prose ul { list-style: disc; margin: 10px 0 12px; padding-left: 20px; }
     .tn-stmt__prose li { margin-bottom: 10px; }
     .tn-stmt__prose li::marker { color: var(--tn-ink-faint); }
+    .tn-stmt__prose strong { color: var(--tn-ink); font-weight: 600; }
+    /* Spec-list columns (Onboarding/Vaktplan/Opplæring) — heading + prose stack in one column here, so give them their own rhythm */
+    .tn-stmt__row--split .tn-stmt__heading,
+    .tn-stmt__row--media-left .tn-stmt__heading { margin-bottom: 24px; }
+    .tn-stmt__row--split .tn-stmt__prose p,
+    .tn-stmt__row--media-left .tn-stmt__prose p { margin-bottom: 20px; }
+    .tn-stmt__row--split .tn-stmt__prose ul,
+    .tn-stmt__row--media-left .tn-stmt__prose ul { margin: 14px 0 20px; }
     /* Lead paragraph — one per section max, first line in .tn-stmt__prose, sits between h2 and body copy */
     .tn-stmt__lead { font-family: var(--tn-sans); font-size: var(--t-lead); line-height: 1.55; font-weight: 400; color: var(--tn-ink); margin: 0 0 16px; }
 
@@ -308,9 +319,11 @@
     .tn-stmt__row--split { grid-template-columns: minmax(0,1fr) minmax(0,1fr); align-items: center; }
     .tn-stmt__row--split .tn-stmt__media { margin-top: 0; }
     .tn-stmt__row--split.tn-stmt__row--media-left .tn-stmt__media { order: -1; }
+    .tn-row--wide-media { grid-template-columns: 3fr 2fr; }
     @media (max-width: 900px) {
       .tn-stmt__row--media-left,
-      .tn-stmt__row--split { grid-template-columns: 1fr; }
+      .tn-stmt__row--split,
+      .tn-row--wide-media { grid-template-columns: 1fr; }
       .tn-stmt__row--media-left .tn-stmt__media,
       .tn-stmt__row--split .tn-stmt__media { order: 0; }
     }
@@ -392,7 +405,8 @@
     .tn-ia__col::before {
       content: "";
       position: absolute;
-      top: -24px; left: 0;
+      top: -24px; left: 50%;
+      transform: translateX(-50%);
       width: 1px; height: 24px;
       background: var(--tn-ink-faint);
       opacity: 0.5;
@@ -401,7 +415,7 @@
       display: block;
       font-family: var(--tn-serif);
       font-size: 1.125rem;
-      font-weight: 400;
+      font-weight: 700;
       letter-spacing: -0.01em;
       line-height: 1.25;
       color: var(--tn-ink);
@@ -413,6 +427,8 @@
       /* The rule+stub construction only reads across six aligned columns —
          swap to a plain 2-col grid rather than shrinking it. */
       .tn-ia__rule { display: none; }
+      .tn-ia__login::after { display: none; }
+      .tn-ia__login { margin-bottom: 28px; }
       .tn-ia__grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 32px 24px; }
       .tn-ia__col { padding-top: 0; }
       .tn-ia__col::before { display: none; }
@@ -717,7 +733,7 @@
           <section class="tn-stmt">
             <div class="tn-stmt__inner">
               <p class="tn-stmt__eyebrow">ONBOARDING</p>
-              <div class="tn-stmt__row tn-stmt__row--media-left" style="grid-template-columns: 3fr 2fr;">
+              <div class="tn-stmt__row tn-stmt__row--media-left tn-row--wide-media">
                 <div class="tn-stmt__media" style="padding: clamp(12px,1.5vw,24px);">
                   <figure style="margin:0;">
                     <img src="./assets/norvald/onboarding-login.webp" alt="Innloggingsskjerm for Tjønnås & Norvald-appen, vist på to iPhone-mockuper" loading="lazy" decoding="async">
@@ -740,7 +756,6 @@
                 <div>
                   <h2 class="tn-stmt__heading">Vaktplan</h2>
                   <div class="tn-stmt__prose">
-                    <p class="tn-design__flow">Logg inn → Hjem → Kalender → Vaktdetaljer</p>
                     <p><strong>Mål:</strong> Gi ansatte rask tilgang til vaktplanen uten å måtte være på arbeidsplassen.</p>
                     <p><strong>Brukerscenario:</strong> Kari ønsker å sjekke vaktene sine hjemmefra når hun skal planlegge ferie.</p>
                     <ul>
@@ -751,11 +766,14 @@
                     <p><strong>Løste behov:</strong> Oversikt over vakter · Mindre avhengighet av fysisk vaktliste · Enklere ferieplanlegging</p>
                   </div>
                 </div>
-                <div class="tn-stmt__media tn-stmt__media--portrait">
-                  <video src="./assets/norvald/figma-export/design-kalender-flow.mp4" poster="./assets/norvald/poster-kalender.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Skjermopptak av Kari som sjekker vaktplanen i mobilappen">
-                    <source src="./assets/norvald/figma-export/design-kalender-flow.webm" type="video/webm">
-                    <source src="./assets/norvald/figma-export/design-kalender-flow.mp4" type="video/mp4">
-                  </video>
+                <div>
+                  <div class="tn-stmt__media tn-stmt__media--portrait">
+                    <video src="./assets/norvald/figma-export/design-kalender-flow.mp4" poster="./assets/norvald/poster-kalender.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Skjermopptak av Kari som sjekker vaktplanen i mobilappen">
+                      <source src="./assets/norvald/figma-export/design-kalender-flow.webm" type="video/webm">
+                      <source src="./assets/norvald/figma-export/design-kalender-flow.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <p class="tn-design__flow" style="text-align:center; margin-top:16px;">Logg inn → Hjem → Kalender → Vaktdetaljer</p>
                 </div>
               </div>
             </div>
@@ -764,17 +782,19 @@
           <section class="tn-stmt">
             <div class="tn-stmt__inner">
               <p class="tn-stmt__eyebrow">IPAD · EIRIK</p>
-              <div class="tn-stmt__row tn-stmt__row--split tn-stmt__row--media-left" style="grid-template-columns: 3fr 2fr;">
-                <div class="tn-stmt__media tn-stmt__media--tablet" style="padding: clamp(12px,1.5vw,24px);">
-                  <video src="./assets/norvald/figma-export/design-kasse-flow.mp4" poster="./assets/norvald/poster-kasse.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Skjermopptak av Eirik som fullfører Åpne kassen-modulen i prototypen">
-                    <source src="./assets/norvald/figma-export/design-kasse-flow.webm" type="video/webm">
-                    <source src="./assets/norvald/figma-export/design-kasse-flow.mp4" type="video/mp4">
-                  </video>
+              <div class="tn-stmt__row tn-stmt__row--split tn-stmt__row--media-left tn-row--wide-media">
+                <div>
+                  <div class="tn-stmt__media tn-stmt__media--tablet" style="padding: clamp(12px,1.5vw,24px);">
+                    <video src="./assets/norvald/figma-export/design-kasse-flow.mp4" poster="./assets/norvald/poster-kasse.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Skjermopptak av Eirik som fullfører Åpne kassen-modulen i prototypen">
+                      <source src="./assets/norvald/figma-export/design-kasse-flow.webm" type="video/webm">
+                      <source src="./assets/norvald/figma-export/design-kasse-flow.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <p class="tn-design__flow" style="text-align:center; margin-top:16px;">Logg inn → Opplæring → Modul → Video → Ferdig</p>
                 </div>
                 <div>
                   <h2 class="tn-stmt__heading">Opplæring</h2>
                   <div class="tn-stmt__prose">
-                    <p class="tn-design__flow">Logg inn → Opplæring → Modul → Video → Ferdig</p>
                     <p><strong>Mål:</strong> Gjøre opplæringen enklere og mer tilgjengelig for nyansatte.</p>
                     <p><strong>Brukerscenario:</strong> Eirik trenger å repetere åpnerutinen uten å måtte spørre kollegaer.</p>
                     <ul>
