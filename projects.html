@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap"></noscript>
-  <link rel="stylesheet" href="./styles.css?v=37">
+  <link rel="stylesheet" href="./styles.css?v=45">
   <style>
     :root { --bg: #faf8f5; }
   </style>
@@ -27,16 +27,16 @@
     .card__caption { background: #faf8f5; }
     .card__title { color: #1D1D1B; }
     .card__desc { color: #444444; }
-    .card__tags { color: #4A4643; border-color: #B8B2AA; }
+    .card__tags { color: #4A4643; border-color: #948A7E; }
     .projects-page .card,
     .projects-page .card p,
     .projects-page .card div,
     .projects-page .card span { color: #4A4643; }
     .projects-page .card__title { color: #1D1D1B; }
     .projects-page .card__desc { color: #444444; }
-    .projects-page .card__tags { color: #4A4643; border-color: #B8B2AA; background-color: #faf8f5; }
+    .projects-page .card__tags { color: #4A4643; border-color: #948A7E; background-color: #faf8f5; }
     .grid-header { flex-direction: column; align-items: flex-start; }
-    .grid-subline { font-family: 'Poppins', sans-serif; font-weight: 400; font-size: clamp(14px, 1.2vw, 17px); color: #1a1a1a; line-height: 1.65; margin: 0.75rem 0 0; max-width: 900px; }
+    .grid-subline { font-family: var(--font-ui); font-weight: 400; font-size: clamp(14px, 1.2vw, 17px); color: #1a1a1a; line-height: 1.65; margin: 0.75rem 0 0; max-width: 900px; }
     .title, .h2 { letter-spacing: -0.01em; line-height: 1.06; font-size: clamp(42px, 5.4vw, 86px); }
     .title { color: #1a1a1a; }
     .h2 { color: inherit; }
@@ -98,14 +98,6 @@
         columns: unset;
         column-gap: unset;
       }
-      .masonry [href="./emanuel-vigeland.html"]    { order: 1; }
-      .masonry [href="./ansatts-portal.html"]      { order: 2; }
-      .masonry [href="./tidsskrift.html"]           { order: 3; }
-      .masonry [href="./reina-fruktgard.html"]      { order: 4; }
-      .masonry [href="./stoppestedet.html"]         { order: 5; }
-      .masonry [href="./bokomslag.html"]            { order: 6; }
-      .masonry [href="./we-visuell-profil.html"]   { order: 7; }
-      .masonry [href="./flerkanalspublisering.html"] { order: 8; }
       .nav {
         display: none;
         position: absolute;
@@ -141,6 +133,7 @@
       <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
       <nav class="proj-header__nav" id="projNav">
         <a class="proj-header__link proj-header__link--active" href="#work">Arbeider</a>
+        <a class="proj-header__link" href="./more-work.html">Mer arbeid</a>
         <a class="proj-header__link" href="#about">Om meg</a>
         <a class="proj-header__link" href="#contact">Kontakt</a>
       </nav>
@@ -154,76 +147,52 @@
 
     <section id="work" class="section">
       <div class="grid-header">
-        <h1 class="title">ARBEIDER</h1>
-        <p class="grid-subline">Heiehei, Josefine her! Jeg er en UX/grafisk designer med fokus på visuelle identiteter, redaksjonell design og smarte digitale konsepter. Denne porteføljen viser det beste fra bachelorstudiet mitt fra NTNU i Gjøvik. Tilgjengelig for frilansoppdrag og samarbeid!</p>
+        <h1 class="title rise">ARBEIDER</h1>
+        <p class="grid-subline rise" style="animation-delay:0.08s">Josefine, produktdesigner med fokus på visuelle identiteter, redaksjonell design og digitale brukeropplevelser. Jeg jobber med prosjekter som gjør komplekse konsepter enkle å forstå og bruke. Tilgjengelig for frilansoppdrag og samarbeid.</p>
       </div>
 
-      <div class="masonry" id="grid" aria-live="polite">
-        <!-- Static fallback for crawlers/link previewers — JS replaces this on load -->
-        <a class="card card--visible" href="./emanuel-vigeland.html">
-          <div class="card__img-wrap"><img class="card__img" src="./assets/norvald/homepage-em.webp" alt="Emanuel Vigeland Museum" loading="eager" decoding="async"></div>
-          <div class="card__caption">
-            <p class="card__title">Emanuel Vigeland Museum</p>
-            <p class="card__desc">Mobil-first redesign av nettsiden til Emanuel Vigeland Museum i Oslo.</p>
-            <p class="card__tags">Redesign / UX</p>
+      <div class="reveal-projects">
+        <section class="reveal-project">
+          <a class="reveal-project__frame" href="./emanuel-vigeland.html">
+            <img class="reveal-project__img" src="./assets/norvald/homepage-em.webp" alt="Emanuel Vigeland Museum" loading="eager" decoding="async">
+          </a>
+          <div class="reveal-project__text">
+            <p class="reveal-project__statement">Jeg redesignet <strong>Emanuel Vigeland Museums</strong> booking-flyt — testet som enkel og intuitiv i brukertesting.</p>
+            <div class="reveal-project__tags">
+              <span class="reveal-project__tag">UX</span>
+              <span class="reveal-project__tag">Mobil-first</span>
+              <span class="reveal-project__tag">Brukertestet</span>
+            </div>
           </div>
-        </a>
-        <a class="card card--visible" href="./reina-fruktgard.html">
-          <div class="card__img-wrap"><img class="card__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="eager" decoding="async"></div>
-          <div class="card__caption">
-            <p class="card__title">Reina Fruktgård</p>
-            <p class="card__desc">Emballasjedesign for en norsk småskalaprodusent med fokus på lokalitet og håndverk.</p>
-            <p class="card__tags">Emballasjedesign</p>
+        </section>
+
+        <section class="reveal-project">
+          <a class="reveal-project__frame" href="./ansatts-portal.html">
+            <img class="reveal-project__img" src="./assets/herotjonn.webp" alt="Tjønnås og Norvald" loading="lazy" decoding="async">
+          </a>
+          <div class="reveal-project__text">
+            <p class="reveal-project__statement">Jeg samlet <strong>fem adskilte kanaler</strong> til én ansattportal for Tjønnås &amp; Norvald.</p>
+            <div class="reveal-project__tags">
+              <span class="reveal-project__tag">UX</span>
+              <span class="reveal-project__tag">Informasjonsarkitektur</span>
+              <span class="reveal-project__tag">Figma-prototype</span>
+            </div>
           </div>
-        </a>
-        <a class="card card--visible" href="./stoppestedet.html">
-          <div class="card__img-wrap"><img class="card__img" src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="eager" decoding="async" style="object-position:center 40%"></div>
-          <div class="card__caption">
-            <p class="card__title">Stoppestedet</p>
-            <p class="card__desc">Merkevare og nettside for et fiktivt lavterskel makerspace i Oslo.</p>
-            <p class="card__tags">Visuell identitet & nettside</p>
+        </section>
+
+        <section class="reveal-project">
+          <a class="reveal-project__frame" href="./we-visuell-profil.html">
+            <img class="reveal-project__img" src="./assets/lillawenettside.webp" alt="Stiftelsen WE" loading="lazy" decoding="async">
+          </a>
+          <div class="reveal-project__text">
+            <p class="reveal-project__statement">Et <strong>ekspertintervju</strong> jeg gjennomførte snudde retningen på hele merkevarestrategien til Stiftelsen WE.</p>
+            <div class="reveal-project__tags">
+              <span class="reveal-project__tag">Strategisk design</span>
+              <span class="reveal-project__tag">Research</span>
+              <span class="reveal-project__tag">Merkevare</span>
+            </div>
           </div>
-        </a>
-        <a class="card card--visible" href="./tidsskrift.html">
-          <div class="card__img-wrap"><img class="card__img" src="./assets/krit1.webp" alt="Tidsskrift" loading="eager" decoding="async"></div>
-          <div class="card__caption">
-            <p class="card__title">KRIT Litteraturtidsskrift</p>
-            <p class="card__desc">Redaksjonelt konsept for et litterært tidsskrift som utforsker forholdet mellom kropp, kultur og erfaring.</p>
-            <p class="card__tags">Redaksjonell design</p>
-          </div>
-        </a>
-        <a class="card card--visible" href="./ansatts-portal.html">
-          <div class="card__img-wrap"><img class="card__img" src="./assets/tjonni.webp" alt="Tjønnås og Norvald" loading="eager" decoding="async"></div>
-          <div class="card__caption">
-            <p class="card__title">Tjønnås & Norvald</p>
-            <p class="card__desc">Ansattportal som samler vaktlister, kommunikasjon og opplæring på én flate.</p>
-            <p class="card__tags">UX / Informasjonsarkitektur</p>
-          </div>
-        </a>
-        <a class="card card--visible" href="./bokomslag.html">
-          <div class="card__img-wrap"><img class="card__img" src="./assets/blaa.webp" alt="Bokomslag" loading="eager" decoding="async"></div>
-          <div class="card__caption">
-            <p class="card__title">Bokomslag</p>
-            <p class="card__desc">Ny visuell identitet for tre norske litterære klassikere med preget typografi og tekstilbind.</p>
-            <p class="card__tags">Redaksjonell design</p>
-          </div>
-        </a>
-        <a class="card card--visible" href="./we-visuell-profil.html">
-          <div class="card__img-wrap"><img class="card__img" src="./assets/lillawenettside.webp" alt="Stiftelsen WE" loading="eager" decoding="async"></div>
-          <div class="card__caption">
-            <p class="card__title">Stiftelsen WE</p>
-            <p class="card__desc">Helhetlig visuell identitet for en sosial stiftelse som styrker kvinner i arbeidslivet.</p>
-            <p class="card__tags">Strategisk design</p>
-          </div>
-        </a>
-        <a class="card card--visible" href="./flerkanalspublisering.html">
-          <div class="card__img-wrap"><img class="card__img" src="./assets/poster-srh.webp" alt="Flerkanalspublisering" loading="eager" decoding="async"></div>
-          <div class="card__caption">
-            <p class="card__title">Flerkanalspublisering</p>
-            <p class="card__desc">Visuell kommunikasjonsløsning for SRH Berlin på tvers av plakat, sosiale medier og trykksaker.</p>
-            <p class="card__tags">Flerkanal</p>
-          </div>
-        </a>
+        </section>
       </div>
     </section>
 
@@ -280,21 +249,43 @@
   </main>
 
 
-  <script src="./projects.js?v=6" defer></script>
-  <script src="./app.js" defer></script>
+  <script src="./projects.js?v=7" defer></script>
+  <script src="./app.js?v=1" defer></script>
   <script>
     // Must run after deferred scripts (app.js renders the grid) — DOMContentLoaded fires after all defer scripts complete
     document.addEventListener('DOMContentLoaded', function () {
-      var obs = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) {
-          if (e.isIntersecting) { e.target.classList.add('card--visible'); obs.unobserve(e.target); }
-        });
-      }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
-      document.querySelectorAll('.masonry .card').forEach(function (c) { obs.observe(c); });
-
       function showAllCards() { document.querySelectorAll('.masonry .card').forEach(function(c) { c.classList.add('card--visible'); }); }
-      setTimeout(showAllCards, 0);
+
+      if ('IntersectionObserver' in window) {
+        var obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('card--visible'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.06, rootMargin: '0px 0px -32px 0px' });
+        document.querySelectorAll('.masonry .card').forEach(function (c) { obs.observe(c); });
+      } else {
+        showAllCards();
+      }
       window.addEventListener('beforeprint', showAllCards);
+
+      // Scroll-reveal project showcase — settle from blurred/scaled into sharp focus as each project scrolls into view
+      (function () {
+        var frames = document.querySelectorAll('.reveal-project__frame');
+        var texts = document.querySelectorAll('.reveal-project__text');
+        function showAllReveals() {
+          frames.forEach(function (f) { f.classList.add('is-active'); });
+          texts.forEach(function (t) { t.classList.add('is-active'); });
+        }
+        if (!('IntersectionObserver' in window)) { showAllReveals(); return; }
+        var revealObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('is-active'); revealObs.unobserve(e.target); }
+          });
+        }, { threshold: 0.35 });
+        frames.forEach(function (f) { revealObs.observe(f); });
+        texts.forEach(function (t) { revealObs.observe(t); });
+        window.addEventListener('beforeprint', showAllReveals);
+      })();
 
       document.querySelectorAll('img.card__img').forEach(function (img) {
         if (img.complete) return;

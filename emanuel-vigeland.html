@@ -12,8 +12,12 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400;700&display=swap"></noscript>
   <link rel="preload" href="https://use.typekit.net/fsf3tmv.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://use.typekit.net/fsf3tmv.css"></noscript>
-  <link rel="stylesheet" href="./styles.css?v=37" />
+  <link rel="stylesheet" href="./styles.css?v=45" />
   <style>
+    /* Case-study narration on the new typography system (site-chrome-level headings, not project branding) */
+    .proj-hero__title, .proj-section__heading { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.005em; }
+    .proj-hero__desc, .proj-meta-value { font-family: var(--font-ui); }
+
     .proj-section--lightgrey { background: #f2f2f2; }
 
     /* Before/after */
@@ -139,6 +143,48 @@
     }
 
 
+    /* ── Sticky-scroll brukerflyter (3 handlinger) ── */
+    .ev-scroll { background: #0d0d0d; padding: clamp(48px, 7vw, 96px) clamp(20px, 4vw, 60px); }
+    .ev-scroll__grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(32px, 5vw, 72px);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .ev-scroll__sticky { position: sticky; top: 100px; align-self: start; height: fit-content; }
+    .ev-scroll__frame {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.14);
+      overflow: hidden;
+    }
+    .ev-scroll__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .ev-scroll__img.is-active { opacity: 1; }
+    .ev-scroll__steps { display: flex; flex-direction: column; gap: 46vh; padding: 8vh 0; }
+    .ev-scroll__step { opacity: 0.32; transition: opacity 0.35s ease; max-width: 46ch; }
+    .ev-scroll__step.is-active { opacity: 1; }
+    .ev-scroll__num { font-size: 13px; letter-spacing: 0.14em; color: #C9A84C; margin: 0 0 0.75rem; }
+    .ev-scroll__desc { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.7; color: #c2c2c2; margin-top: 0.75rem; }
+    @media (prefers-reduced-motion: reduce) {
+      .ev-scroll__step, .ev-scroll__img { transition: none; }
+    }
+    @media (max-width: 800px) {
+      .ev-scroll__grid { grid-template-columns: 1fr; }
+      .ev-scroll__sticky { top: 64px; }
+      .ev-scroll__frame { aspect-ratio: 4 / 3; }
+      .ev-scroll__steps { gap: 30vh; padding: 4vh 0; }
+    }
+
     /* ── Lightbox ── */
     .ev-zoomable { cursor: zoom-in; }
 
@@ -189,6 +235,7 @@
       <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
       <nav class="proj-header__nav" id="projNav">
         <a class="proj-header__link proj-header__link--active" href="./projects.html">Arbeider</a>
+        <a class="proj-header__link" href="./more-work.html">Mer arbeid</a>
         <a class="proj-header__link" href="./about.html">Om meg</a>
         <a class="proj-header__link" href="./about.html#contact">Kontakt</a>
       </nav>
@@ -290,47 +337,52 @@
       </div>
     </div>
 
-    <!-- BRUKERFLYTER -->
-    <div style="background:#0d0d0d; position:relative;">
-      <button id="handlingPrev" aria-label="Forrige handling" style="position:absolute;left:14px;top:50%;transform:translateY(-50%);z-index:10;background:none;border:none;cursor:pointer;padding:0;">
-        <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="22,4 4,24 22,44" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button id="handlingNext" aria-label="Neste handling" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);z-index:10;background:none;border:none;cursor:pointer;padding:0;">
-        <svg width="28" height="48" viewBox="0 0 28 48" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="6,4 24,24 6,44" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-
-      <div id="handlingSlide0" class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0;">
-        <h2 class="proj-section__heading" style="color:#fff;">Handling 1: utforsk Emmanuels verk</h2>
-        <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren utforsker et av museets hovedverk</p>
-        <img src="./assets/prosess/brukerreise.webp" alt="Brukerreise – Se nærmere på Vita" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
-      </div>
-
-      <div id="handlingSlide1" class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0; display:none;">
-        <h2 class="proj-section__heading" style="color:#fff;">Handling 2: book et besøk</h2>
-        <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren kjøper en honnørbillett</p>
-        <img src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
-      </div>
-
-      <div id="handlingSlide2" class="proj-section proj-section--none" style="background:#0d0d0d; padding-bottom:0; display:none;">
-        <h2 class="proj-section__heading" style="color:#fff;">Handling 3: finn et arrangement</h2>
-        <p class="ev-brukerreise-sub" style="font-size:26px; color:#fff; margin:-1rem 0 28px; line-height:1.6;">Brukeren finner og leser om en kommende konsert</p>
-        <img src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" style="width:100%; display:block;" loading="eager" class="ev-zoomable ev-brukerreise-img">
+    <!-- BRUKERFLYTER — sticky image, scrolls through 3 steps -->
+    <section class="ev-scroll">
+      <div class="ev-scroll__grid">
+        <div class="ev-scroll__sticky">
+          <div class="ev-scroll__frame">
+            <img class="ev-zoomable ev-scroll__img is-active" data-step="0" src="./assets/prosess/brukerreise.webp" alt="Brukerreise – Se nærmere på Vita" loading="eager">
+            <img class="ev-zoomable ev-scroll__img" data-step="1" src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" loading="lazy">
+            <img class="ev-zoomable ev-scroll__img" data-step="2" src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" loading="lazy">
+          </div>
+        </div>
+        <div class="ev-scroll__steps">
+          <div class="ev-scroll__step is-active" data-step="0">
+            <p class="ev-scroll__num">01 / 03</p>
+            <h2 class="proj-section__heading" style="color:#fff;">Utforsk Emmanuels verk</h2>
+            <p class="ev-scroll__desc">Brukeren utforsker et av museets hovedverk.</p>
+          </div>
+          <div class="ev-scroll__step" data-step="1">
+            <p class="ev-scroll__num">02 / 03</p>
+            <h2 class="proj-section__heading" style="color:#fff;">Book et besøk</h2>
+            <p class="ev-scroll__desc">Brukeren kjøper en honnørbillett.</p>
+          </div>
+          <div class="ev-scroll__step" data-step="2">
+            <p class="ev-scroll__num">03 / 03</p>
+            <h2 class="proj-section__heading" style="color:#fff;">Finn et arrangement</h2>
+            <p class="ev-scroll__desc">Brukeren finner og leser om en kommende konsert.</p>
+          </div>
+        </div>
       </div>
 
       <script>
         (function(){
-          var slides = [document.getElementById('handlingSlide0'), document.getElementById('handlingSlide1'), document.getElementById('handlingSlide2')];
-          var current = 0;
-          function show(i) {
-            slides[current].style.display = 'none';
-            current = (i + slides.length) % slides.length;
-            slides[current].style.display = '';
-          }
-          document.getElementById('handlingPrev').addEventListener('click', function(){ show(current - 1); });
-          document.getElementById('handlingNext').addEventListener('click', function(){ show(current + 1); });
+          var steps = document.querySelectorAll('.ev-scroll__step');
+          var imgs = document.querySelectorAll('.ev-scroll__img');
+          if (!steps.length || !('IntersectionObserver' in window)) return;
+          var obs = new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+              if (!e.isIntersecting) return;
+              var idx = e.target.getAttribute('data-step');
+              steps.forEach(function(s){ s.classList.toggle('is-active', s === e.target); });
+              imgs.forEach(function(img){ img.classList.toggle('is-active', img.getAttribute('data-step') === idx); });
+            });
+          }, { threshold: 0, rootMargin: '-45% 0px -45% 0px' });
+          steps.forEach(function(s){ obs.observe(s); });
         })();
       </script>
-    </div>
+    </section>
     <!-- PROTOTYPE -->
     <section id="prototype" style="padding: clamp(40px,6vw,80px) clamp(20px,4vw,60px); background:#0b0b0b;">
       <h2 class="proj-section__heading" style="color:#fff; margin-bottom:2rem;">Interaktiv prototype</h2>
@@ -447,7 +499,7 @@
     <img id="ev-lb-img" src="data:," alt="">
   </div>
 
-  <script src="./projects.js?v=6"></script>
+  <script src="./projects.js?v=7"></script>
   <script>
     /* ── Lightbox ── */
     (function () {

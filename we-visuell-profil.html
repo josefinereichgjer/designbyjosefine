@@ -15,8 +15,63 @@
   <link rel="preconnect" href="https://use.typekit.net" crossorigin>
   <link rel="preload" href="https://use.typekit.net/fsf3tmv.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://use.typekit.net/fsf3tmv.css"></noscript>
-  <link rel="stylesheet" href="./styles.css?v=37" />
+  <link rel="stylesheet" href="./styles.css?v=45" />
   <style>
+    /* Case-study narration on the new typography system — .proj-* classes are generic portfolio narration.
+       .we-* classes are Stiftelsen WE's own designed brand typography shown as case-study content — left untouched. */
+    .proj-hero__title, .proj-section__heading { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.005em; }
+    .proj-hero__desc, .proj-meta-value { font-family: var(--font-ui); }
+
+    /* ── Research sticky-scroll (real content surfaced from previously-orphaned modals) — narration, new type system ── */
+    .we-research__grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(32px, 5vw, 72px);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .we-research__sticky { position: sticky; top: 100px; align-self: start; height: fit-content; }
+    .we-research__frame {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      background: #fafafa;
+      overflow: hidden;
+    }
+    .we-research__img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .we-research__img.is-active { opacity: 1; }
+    .we-research__swot {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      font-family: var(--font-ui);
+    }
+    .we-research__swot-cell { background: #fafafa; padding: 14px 16px; overflow-y: auto; }
+    .we-research__swot-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin: 0 0 8px; }
+    .we-research__swot-cell ul { margin: 0; padding-left: 16px; }
+    .we-research__swot-cell li { font-size: 12px; line-height: 1.5; color: #333; margin-bottom: 4px; }
+    .we-research__steps { display: flex; flex-direction: column; gap: 44vh; padding: 6vh 0; font-family: var(--font-ui); }
+    .we-research__step { opacity: 0.32; transition: opacity 0.35s ease; max-width: 52ch; }
+    .we-research__step.is-active { opacity: 1; }
+    .we-research__step p { font-size: 16px; line-height: 1.7; color: #333; margin: 0 0 1em; }
+    .we-research__num { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent) !important; margin-bottom: 0.9em !important; }
+    @media (prefers-reduced-motion: reduce) {
+      .we-research__img, .we-research__step { transition: none; }
+    }
+    @media (max-width: 800px) {
+      .we-research__grid { grid-template-columns: 1fr; }
+      .we-research__sticky { top: 64px; }
+      .we-research__steps { gap: 28vh; padding: 3vh 0; }
+    }
+
     /* ── override accent colour ── */
     .we-body .gallery-expandable__heading{ color: #224942; border-color: #224942; }
     .we-body .gallery-expandable__header { display: flex; align-items: center; justify-content: space-between; }
@@ -366,38 +421,66 @@
     }
 
     /* NY Palett CSS */
-    .we-palette-row { 
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 56px; 
-      margin-bottom: 32px; 
-      align-items: start; 
+    .we-palette-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 18px;
+      align-items: start;
     }
-    .we-palette-group-title { 
-      font-family: var(--we-font); 
-      font-size: 15px; 
-      font-weight: 600; 
-      margin: 0 0 16px; 
-      color: #111; 
-      text-transform: uppercase; 
-      letter-spacing: 0.05em; 
+    .we-palette-group-title {
+      font-family: var(--we-font);
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 10px;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
-    .we-palette { 
-      display: grid; 
-      gap: 16px; 
+    .we-palette {
+      display: grid;
+      gap: 10px;
     }
-    .we-swatch { 
-      transition: transform .2s ease; 
-      cursor: default; 
+    .we-swatch {
+      perspective: 800px;
+      cursor: pointer;
     }
-    .we-swatch:hover { 
-      transform: translateY(-5px); 
+    .we-swatch__inner {
+      position: relative;
+      height: 92px;
+      transform-style: preserve-3d;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .we-swatch__color { height: 140px; border-radius: 4px; cursor: pointer; }
-    .we-swatch__info { padding: 12px 0 0; }
-    .we-swatch__hex { font-size: 13px; font-weight: 600; display: block; }
-    .we-swatch__name { font-size: 13px; color: #595959; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; display: block; }
-    .we-swatch__use { font-size: 13px; color: #555; display: block; margin-top: 6px; line-height: 1.45; }
+    .we-swatch:hover .we-swatch__inner,
+    .we-swatch.is-flipped .we-swatch__inner,
+    .we-swatch:focus-visible .we-swatch__inner {
+      transform: rotateY(180deg);
+    }
+    .we-swatch__front,
+    .we-swatch__back {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      border-radius: 4px;
+    }
+    .we-swatch__back {
+      transform: rotateY(180deg);
+      background: #fff;
+      border: 1px solid var(--rule, #ddd);
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .we-swatch:focus-visible { outline: 2px solid var(--ink, #111); outline-offset: 3px; }
+    .we-swatch__hex { font-size: 12px; font-weight: 600; display: block; }
+    .we-swatch__name { font-size: 11px; color: #595959; text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; display: block; }
+    .we-swatch__use { font-size: 11px; color: #555; display: block; margin-top: 4px; line-height: 1.35; }
+    @media (prefers-reduced-motion: reduce) {
+      .we-swatch__inner { transition: none; }
+    }
 
     /* Oppdragsgiver split */
     .we-oppdrag-split { display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: center; margin-bottom: 48px; }
@@ -714,7 +797,7 @@
 
       /* Palette: tighter within-group */
       .we-palette { grid-template-columns: 1fr 1fr; gap: 8px !important; }
-      .we-swatch__color { height: 80px !important; }
+      .we-swatch__inner { height: 80px !important; }
     }
 
     @media (max-width: 480px) {
@@ -790,6 +873,7 @@
       <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
       <nav class="proj-header__nav" id="projNav">
         <a class="proj-header__link proj-header__link--active" href="./projects.html">Arbeider</a>
+        <a class="proj-header__link" href="./more-work.html">Mer arbeid</a>
         <a class="proj-header__link" href="./about.html">Om meg</a>
         <a class="proj-header__link" href="./about.html#contact">Kontakt</a>
       </nav>
@@ -838,6 +922,60 @@
             </div>
           </div>
 
+        </section>
+
+        <section class="proj-section reveal we-research" id="sec-research" style="border-top:none;">
+          <p class="proj-section__label">Innsikt &amp; research</p>
+          <h2 class="proj-section__heading">Fra research til retning</h2>
+          <div class="we-research__grid">
+            <div class="we-research__sticky">
+              <div class="we-research__frame">
+                <img class="we-research__img is-active" data-step="0" src="./assets/cecilie.webp" alt="Cecilie Melli" loading="eager">
+                <div class="we-research__img we-research__swot" data-step="1">
+                  <div class="we-research__swot-cell"><p class="we-research__swot-title">Styrker</p><ul><li>Tydelig visjon om å styrke kvinners selvstendighet</li><li>Styret består av erfarne sosiale entreprenører</li><li>Internasjonalt nedslagsfelt gir bredere påvirkning</li></ul></div>
+                  <div class="we-research__swot-cell"><p class="we-research__swot-title">Svakheter</p><ul><li>Begrenset synlighet som nyetablert organisasjon</li><li>Mangler stabil finansieringsstruktur</li></ul></div>
+                  <div class="we-research__swot-cell"><p class="we-research__swot-title">Muligheter</p><ul><li>Økende interesse for sosial bærekraft i næringslivet</li><li>Sosiale medier som effektiv plattform for synlighet</li></ul></div>
+                  <div class="we-research__swot-cell"><p class="we-research__swot-title">Trusler</p><ul><li>Høy konkurranse om støtte fra samme givermiljø</li><li>Skepsis til nye aktører fremfor etablerte organisasjoner</li></ul></div>
+                </div>
+                <img class="we-research__img" data-step="2" src="./assets/posisjoneringwe.webp" alt="Posisjoneringskart for Stiftelsen WE" loading="lazy">
+              </div>
+            </div>
+            <div class="we-research__steps">
+              <div class="we-research__step is-active" data-step="0">
+                <p class="we-research__num">01 / 03 — Ekspertintervju</p>
+                <p>Vi intervjuet designer Cecilie Melli for å få et eksternt blikk på identiteten. Hun stilte spørsmålet: <em>«Hvem skal føle seg trygge når de ser dette?»</em> Uttrykket hadde energi, men manglet tyngde, og ga assosiasjoner til noe midlertidig.</p>
+                <p>Melli fremhevet viktigheten av å kommunisere kvalitet, konsistens og kontroll — ikke bare kreativitet. Hun anbefalte en mer dempet fargepalett og tydeligere struktur.</p>
+                <p><strong>Dette ble et vendepunkt i prosessen.</strong> Vi utviklet et mer balansert, moderne og tillitsvekkende uttrykk — og begynte å se identiteten som et strategisk verktøy, ikke bare et visuelt uttrykk.</p>
+              </div>
+              <div class="we-research__step" data-step="1">
+                <p class="we-research__num">02 / 03 — SWOT-analyse</p>
+                <p>Analysen kartla stiftelsens reelle utgangspunkt: en tydelig visjon og et erfarent styre, men begrenset synlighet som nyetablert aktør og en usikker finansieringsstruktur.</p>
+                <p>Økt interesse for sosial bærekraft i næringslivet ble vurdert som den klareste muligheten — identiteten måtte derfor signalisere profesjonalitet like mye som varme.</p>
+              </div>
+              <div class="we-research__step" data-step="2">
+                <p class="we-research__num">03 / 03 — Posisjoneringskart</p>
+                <p>Sammenlignet med aktører som Røde Kors, CARE og FOKUS Kvinner, posisjonerer WE seg i skjæringspunktet mellom det profesjonelle og det menneskelige.</p>
+                <p>Identiteten er designet for å bære nettopp den dobbeltheten — næringslivets tillit og det sosiale arbeidets nærhet i samme uttrykk.</p>
+              </div>
+            </div>
+          </div>
+
+          <script>
+            (function(){
+              var steps = document.querySelectorAll('.we-research__step');
+              var imgs = document.querySelectorAll('.we-research__img');
+              if (!steps.length || !('IntersectionObserver' in window)) return;
+              var obs = new IntersectionObserver(function(entries){
+                entries.forEach(function(e){
+                  if (!e.isIntersecting) return;
+                  var idx = e.target.getAttribute('data-step');
+                  steps.forEach(function(s){ s.classList.toggle('is-active', s === e.target); });
+                  imgs.forEach(function(img){ img.classList.toggle('is-active', img.getAttribute('data-step') === idx); });
+                });
+              }, { threshold: 0, rootMargin: '-45% 0px -45% 0px' });
+              steps.forEach(function(s){ obs.observe(s); });
+            })();
+          </script>
         </section>
 
         <section class="proj-section reveal" id="sec-konsept">
@@ -907,20 +1045,24 @@
               <div>
                 <h3 class="we-palette-group-title">Primærfarger</h3>
                 <div class="we-palette mob-stack" style="grid-template-columns: repeat(2, 1fr);">
-                  <div class="we-swatch we-stagger">
-                    <div class="we-swatch__color" style="background:#071F1B"></div>
-                    <div class="we-swatch__info">
-                      <span class="we-swatch__hex">#071F1B</span>
-                      <span class="we-swatch__name">Hovedbakgrunn</span>
-                      <span class="we-swatch__use">Brukes som hovedbakgrunn i designet (hero, rollups, sosiale medier).</span>
+                  <div class="we-swatch we-stagger" tabindex="0">
+                    <div class="we-swatch__inner">
+                      <div class="we-swatch__front" style="background:#071F1B"></div>
+                      <div class="we-swatch__back">
+                        <span class="we-swatch__hex">#071F1B</span>
+                        <span class="we-swatch__name">Hovedbakgrunn</span>
+                        <span class="we-swatch__use">Brukes som hovedbakgrunn i designet (hero, rollups, sosiale medier).</span>
+                      </div>
                     </div>
                   </div>
-                  <div class="we-swatch we-stagger">
-                    <div class="we-swatch__color" style="background:#0F4A42"></div>
-                    <div class="we-swatch__info">
-                      <span class="we-swatch__hex">#0F4A42</span>
-                      <span class="we-swatch__name">Sekundær bakgrunn</span>
-                      <span class="we-swatch__use">Brukes i seksjoner for å skape dybde og visuell balanse.</span>
+                  <div class="we-swatch we-stagger" tabindex="0">
+                    <div class="we-swatch__inner">
+                      <div class="we-swatch__front" style="background:#0F4A42"></div>
+                      <div class="we-swatch__back">
+                        <span class="we-swatch__hex">#0F4A42</span>
+                        <span class="we-swatch__name">Sekundær bakgrunn</span>
+                        <span class="we-swatch__use">Brukes i seksjoner for å skape dybde og visuell balanse.</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -929,20 +1071,24 @@
               <div>
                 <h3 class="we-palette-group-title">Støttefarger</h3>
                 <div class="we-palette mob-stack" style="grid-template-columns: repeat(2, 1fr);">
-                  <div class="we-swatch we-stagger">
-                    <div class="we-swatch__color" style="background:#F2F9F8; border: 1px solid #e0ecea;"></div>
-                    <div class="we-swatch__info">
-                      <span class="we-swatch__hex">#F2F9F8</span>
-                      <span class="we-swatch__name">Lys bakgrunn</span>
-                      <span class="we-swatch__use">Brukes på lyse flater som flyers, kort og nettsider.</span>
+                  <div class="we-swatch we-stagger" tabindex="0">
+                    <div class="we-swatch__inner">
+                      <div class="we-swatch__front" style="background:#F2F9F8; border: 1px solid #e0ecea;"></div>
+                      <div class="we-swatch__back">
+                        <span class="we-swatch__hex">#F2F9F8</span>
+                        <span class="we-swatch__name">Lys bakgrunn</span>
+                        <span class="we-swatch__use">Brukes på lyse flater som flyers, kort og nettsider.</span>
+                      </div>
                     </div>
                   </div>
-                  <div class="we-swatch we-stagger">
-                    <div class="we-swatch__color" style="background:#D2E1DF"></div>
-                    <div class="we-swatch__info">
-                      <span class="we-swatch__hex">#D2E1DF</span>
-                      <span class="we-swatch__name">Flater / bokser</span>
-                      <span class="we-swatch__use">Brukes til kort, informasjonsbokser og innholdsområder.</span>
+                  <div class="we-swatch we-stagger" tabindex="0">
+                    <div class="we-swatch__inner">
+                      <div class="we-swatch__front" style="background:#D2E1DF"></div>
+                      <div class="we-swatch__back">
+                        <span class="we-swatch__hex">#D2E1DF</span>
+                        <span class="we-swatch__name">Flater / bokser</span>
+                        <span class="we-swatch__use">Brukes til kort, informasjonsbokser og innholdsområder.</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -953,36 +1099,44 @@
               <div>
                 <h3 class="we-palette-group-title">Aksentfarger</h3>
                 <div class="we-palette mob-stack" style="grid-template-columns: repeat(2, 1fr);">
-                  <div class="we-swatch we-stagger">
-                    <div class="we-swatch__color" style="background:#6EB6A9"></div>
-                    <div class="we-swatch__info">
-                      <span class="we-swatch__hex">#6EB6A9</span>
-                      <span class="we-swatch__name">Utheving</span>
-                      <span class="we-swatch__use">Brukes til å fremheve viktige ord og elementer. Skaper kontrast mot mørk bakgrunn.</span>
+                  <div class="we-swatch we-stagger" tabindex="0">
+                    <div class="we-swatch__inner">
+                      <div class="we-swatch__front" style="background:#6EB6A9"></div>
+                      <div class="we-swatch__back">
+                        <span class="we-swatch__hex">#6EB6A9</span>
+                        <span class="we-swatch__name">Utheving</span>
+                        <span class="we-swatch__use">Brukes til å fremheve viktige ord og elementer. Skaper kontrast mot mørk bakgrunn.</span>
+                      </div>
                     </div>
                   </div>
-                  <div class="we-swatch we-stagger">
-                    <div class="we-swatch__color" style="background:#8E7FFF"></div>
-                    <div class="we-swatch__info">
-                      <span class="we-swatch__hex">#8E7FFF</span>
-                      <span class="we-swatch__name">Aksent</span>
-                      <span class="we-swatch__use">Mørkere lilla som brukes kun på sirkelen i det grafiske elementet.</span>
+                  <div class="we-swatch we-stagger" tabindex="0">
+                    <div class="we-swatch__inner">
+                      <div class="we-swatch__front" style="background:#8E7FFF"></div>
+                      <div class="we-swatch__back">
+                        <span class="we-swatch__hex">#8E7FFF</span>
+                        <span class="we-swatch__name">Aksent</span>
+                        <span class="we-swatch__use">Mørkere lilla som brukes kun på sirkelen i det grafiske elementet.</span>
+                      </div>
                     </div>
                   </div>
-                  <div class="we-swatch we-stagger">
-                    <div class="we-swatch__color" style="background:#AFA4FF"></div>
-                    <div class="we-swatch__info">
-                      <span class="we-swatch__hex">#AFA4FF</span>
-                      <span class="we-swatch__name">Logofarge</span>
-                      <span class="we-swatch__use">Lysere lilla som til logo for god kontrast på mørk bakgrunn.</span>
+                  <div class="we-swatch we-stagger" tabindex="0">
+                    <div class="we-swatch__inner">
+                      <div class="we-swatch__front" style="background:#AFA4FF"></div>
+                      <div class="we-swatch__back">
+                        <span class="we-swatch__hex">#AFA4FF</span>
+                        <span class="we-swatch__name">Logofarge</span>
+                        <span class="we-swatch__use">Lysere lilla som til logo for god kontrast på mørk bakgrunn.</span>
+                      </div>
                     </div>
                   </div>
-                  <div class="we-swatch we-stagger">
-                    <div class="we-swatch__color" style="background:#000000; border: 1px solid #e0ecea;"></div>
-                    <div class="we-swatch__info">
-                      <span class="we-swatch__hex">#000000</span>
-                      <span class="we-swatch__name">Primær tekst</span>
-                      <span class="we-swatch__use">Brukes på lyse bakgrunner for maksimal lesbarhet.</span>
+                  <div class="we-swatch we-stagger" tabindex="0">
+                    <div class="we-swatch__inner">
+                      <div class="we-swatch__front" style="background:#000000; border: 1px solid #e0ecea;"></div>
+                      <div class="we-swatch__back">
+                        <span class="we-swatch__hex">#000000</span>
+                        <span class="we-swatch__name">Primær tekst</span>
+                        <span class="we-swatch__use">Brukes på lyse bakgrunner for maksimal lesbarhet.</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1299,7 +1453,7 @@
     </div>
   </dialog>
 
-  <script src="./projects.js?v=6" defer></script>
+  <script src="./projects.js?v=7" defer></script>
   <script>
     var header = document.getElementById('projHeader');
     var toggle = document.getElementById('projToggle');
@@ -1501,6 +1655,7 @@
       let timer;
       document.querySelectorAll(".we-swatch").forEach(swatch => {
         swatch.addEventListener("click", () => {
+          swatch.classList.toggle("is-flipped");
           const hex = swatch.querySelector(".we-swatch__hex")?.textContent?.trim();
           if (!hex) return;
           navigator.clipboard.writeText(hex).catch(() => {});

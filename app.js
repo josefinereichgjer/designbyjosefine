@@ -1,4 +1,3 @@
-const grid = document.getElementById("grid");
 const yearEl = document.getElementById("year");
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 
@@ -19,6 +18,7 @@ document.querySelectorAll(".nav .nav__link").forEach(link => {
 });
 
 const projects = (window.PROJECTS || []).filter(p => !p.personal);
+const archiveProjects = projects.filter(p => p.group === "archive");
 
 function cardHTML(p){
   const tag = p.subtitle || p.tags[0] || "";
@@ -44,13 +44,15 @@ function cardHTML(p){
   `;
 }
 
-if (!projects.length) {
-  grid.innerHTML = `<p class="muted">Ingen prosjekter funnet.</p>`;
-} else {
-  grid.innerHTML = projects.map(cardHTML).join("");
+function renderGrid(el, list) {
+  if (!el) return;
+  el.innerHTML = list.length
+    ? list.map(cardHTML).join("")
+    : `<p class="muted">Ingen prosjekter funnet.</p>`;
+  el.querySelectorAll("video.card__img").forEach(v => { v.playbackRate = 0.25; });
 }
 
-grid.querySelectorAll("video.card__img").forEach(v => { v.playbackRate = 0.25; });
+renderGrid(document.getElementById("archiveGrid"), archiveProjects);
 
 
 // Tool strip

@@ -1,6 +1,7 @@
 window.PROJECTS = [
   {
     id: "emanuel-vigeland",
+    group: "case-study",
     title: "Emanuel Vigeland nettside",
     subtitle: "UX + redesign",
     year: "2026",
@@ -13,6 +14,7 @@ window.PROJECTS = [
   },
   {
     id: "ansatts-portal",
+    group: "case-study",
     skipBuild: true,
     title: "Tjønnås og Norvald",
     subtitle: "UX design",
@@ -136,6 +138,7 @@ window.PROJECTS = [
   },
   {
     id: "tidsskrift",
+    group: "archive",
     title: "Tidsskrift",
     subtitle: "Redaksjonell design",
     year: "2026",
@@ -145,6 +148,7 @@ window.PROJECTS = [
   },
   {
     id: "reina-fruktgard",
+    group: "archive",
     title: "Reina Fruktgård",
     year: "2025",
     tags: ["Emballasje design"],
@@ -219,6 +223,7 @@ window.PROJECTS = [
   },
   {
     id: "stoppestedet",
+    group: "archive",
     skipBuild: true,
     title: "Stoppestedet",
     subtitle: "Visuell identitet & nettside",
@@ -252,6 +257,7 @@ window.PROJECTS = [
   },
   {
     id: "bokomslag",
+    group: "archive",
     skipBuild: true,
     title: "Bokomslag",
     subtitle: "Redaksjonell design",
@@ -280,6 +286,7 @@ window.PROJECTS = [
   },
   {
     id: "we-visuell-profil",
+    group: "case-study",
     skipBuild: true,
     title: "Stiftelsen WE",
     subtitle: "Strategisk design",
@@ -290,6 +297,7 @@ window.PROJECTS = [
   },
   {
     id: "flerkanalspublisering",
+    group: "archive",
     skipBuild: true,
     title: "Flerkanalspublisering",
     subtitle: "Redesign",

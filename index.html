@@ -3,184 +3,275 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Josefine Reichelt Gjertsen</title>
+  <title>Josefine Reichelt Gjertsen — Grafisk & UX/UI-designer</title>
+  <meta name="description" content="Josefine Reichelt Gjertsen — grafisk & UX/UI-designer. Portefølje og case-studier.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=45">
   <style>
-    @font-face {
-      font-family: "Romie";
-      src: url("./assets/Romie-Regular.woff2") format("woff2");
-      font-weight: 400;
-      font-style: normal;
-      font-display: swap;
-    }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    /* --ink, --paper, --accent, --accent-soft, --rule, --ease now defined globally in styles.css */
 
     html, body {
       width: 100%;
-      height: 100%;
-      background: #000;
-      color: #fff;
-      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
     }
+    body { font-family: "Space Grotesk", "Avenir Next", "Avenir", sans-serif; overflow-x: clip; }
 
-    /* ── Nav ── */
-    .nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 80px;
-      padding: 0 clamp(20px, 4vw, 60px);
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: clamp(16px, 2vw, 36px);
-      z-index: 20;
-    }
+    a { color: inherit; }
 
-    .nav a {
-      font-family: "Avenir Next", "Avenir", "Century Gothic", sans-serif;
-      font-size: 19px;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: #fff;
-      text-decoration: none;
+    /* .proj-header and .rise/riseIn now live in styles.css (shared site-wide) */
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
     }
-    .nav a:hover { opacity: 0.7; }
-
-    .nav__pill {
-      background: #fff;
-      color: #111 !important;
-      border-radius: 999px;
-      padding: 8px 22px;
+    @media (prefers-reduced-motion: reduce) {
+      .hero__frame { animation: none !important; }
     }
-    .nav__pill:hover { opacity: 1 !important; background: #e8e8e8; }
 
     /* ── Hero ── */
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: 100vh;
+      min-height: 100svh;
+      padding: calc(80px + clamp(28px, 6vh, 64px)) clamp(20px, 6vw, 72px) clamp(48px, 6vh, 80px);
+      display: flex;
       align-items: center;
-      padding: 0 5vw;
+      position: relative;
+      overflow: hidden;
     }
 
-    .hero__text {
+    .hero__grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: clamp(24px, 4vw, 56px);
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero__eyebrow {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: clamp(16px, 2.5vh, 26px);
+      animation-delay: 0.05s;
+    }
+    .hero__eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 3px;
+      background: var(--accent);
+      flex-shrink: 0;
     }
 
     .hero__name {
-      font-family: "Romie", "Playfair Display", Georgia, serif;
-      font-size: clamp(48px, 7.2vw, 118px);
+      font-family: "Bebas Neue", "Avenir Next", sans-serif;
       font-weight: 400;
-      line-height: 1.12;
-      letter-spacing: -0.01em;
-      color: #fff;
+      font-size: clamp(56px, 8.4vw, 132px);
+      line-height: 0.86;
+      letter-spacing: 0.005em;
       text-transform: uppercase;
+      color: var(--ink);
     }
-
-    .hero__subtitle {
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(15px, 1.4vw, 22px);
-      font-weight: 300;
-      color: #fff;
-      margin-top: clamp(24px, 3vw, 48px);
-      letter-spacing: 0.01em;
-    }
-
-    /* ── Video — fixed to viewport bottom-right ── */
-    .hero__visual {
-      position: fixed;
-      bottom: -28vh;
-      right: -17vw;
-      width: 53vw;
-      max-width: 816px;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .hero__video {
-      width: 100%;
+    .hero__name-line {
       display: block;
-      /* GPU compositing layer — prevents repaint jank */
-      will-change: transform;
-      transform: translateZ(0);
+      overflow: hidden;
+    }
+    .hero__name-line span {
+      display: block;
+      animation-delay: var(--d, 0.1s);
+    }
+    .hero__name-line:nth-child(1) span { --d: 0.12s; }
+    .hero__name-line:nth-child(2) span { --d: 0.2s; }
+    .hero__name-line:nth-child(3) span { --d: 0.28s; }
+
+    .hero__row {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(20px, 3vh, 28px);
+      margin-top: clamp(24px, 4vh, 40px);
+      border-top: 1px solid var(--rule);
+      padding-top: clamp(20px, 3vh, 28px);
+      animation-delay: 0.38s;
     }
 
-    /* ── Tablet ── */
+    .hero__line {
+      font-size: clamp(18px, 1.7vw, 24px);
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+      max-width: 42ch;
+    }
+    .hero__line strong {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      width: fit-content;
+      padding: 16px 20px;
+      background: var(--ink);
+      color: var(--paper);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid var(--ink);
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s var(--ease);
+    }
+    .hero__cta:hover,
+    .hero__cta:focus-visible { background: var(--paper); color: var(--ink); transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--ink); }
+    .hero__cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+    .hero__cta-arrow {
+      display: inline-block;
+      transition: transform 0.25s var(--ease);
+    }
+    .hero__cta:hover .hero__cta-arrow { transform: translateX(4px) rotate(-45deg); }
+
+    /* ── Visual: stacked screenshots from all 3 case studies, hard offset shadow, gentle float ── */
+    .hero__visual {
+      position: relative;
+      justify-self: end;
+      width: 100%;
+      max-width: 460px;
+      margin-top: 36px;
+      animation-delay: 0.22s;
+    }
+    .hero__stack { position: relative; }
+    .hero__frame {
+      border: 1.5px solid var(--ink);
+      background: var(--paper);
+      overflow: hidden;
+    }
+    .hero__frame--back,
+    .hero__frame--mid {
+      position: absolute;
+      inset: 0;
+    }
+    .hero__frame--back { transform: translate(-30px, -30px) scale(0.94); z-index: 1; opacity: 0.5; }
+    .hero__frame--mid  { transform: translate(-15px, -15px) scale(0.97); z-index: 2; opacity: 0.78; }
+    .hero__frame--front {
+      position: relative;
+      z-index: 3;
+      box-shadow: 14px 14px 0 var(--accent);
+      animation: floatY 7s ease-in-out infinite;
+    }
+    .hero__frame-bar {
+      display: flex;
+      gap: 6px;
+      padding: 10px 12px;
+      border-bottom: 1.5px solid var(--ink);
+    }
+    .hero__frame-bar span {
+      width: 8px;
+      height: 8px;
+      border: 1.5px solid var(--ink);
+    }
+    .hero__frame-img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .hero__visual-caption {
+      margin-top: 22px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      opacity: 0.65;
+    }
+
     @media (max-width: 900px) {
-      .hero__visual {
-        width: 55vw;
-        bottom: -6vh;
-        right: -5vw;
-      }
+      .hero__grid { grid-template-columns: 1fr; }
+      .hero__visual { justify-self: stretch; max-width: 340px; margin: clamp(40px, 6vh, 56px) auto 0; order: -1; }
     }
 
-    /* ── Mobile ── */
-    @media (max-width: 600px) {
-      html, body { overflow: hidden; }
-
-      .nav { padding: 20px 24px; gap: 20px; }
-      .nav a { font-size: 14px; }
-      .nav__pill { padding: 6px 16px; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        height: 100svh;
-        padding: calc(110px + 8svh) 28px 0;
-        align-items: flex-start;
-      }
-
-      .hero__text { position: relative; z-index: 2; }
-
-      .hero__name { font-size: clamp(52px, 15vw, 80px); }
-      .hero__subtitle { font-size: 16.5px; }
-
-      .hero__visual {
-        position: absolute;
-        width: 140vw;
-        bottom: -36vh;
-        right: -53vw;
-      }
-
-      .hero__video {
-        will-change: auto;
-        transform: none;
-      }
+    @media (max-width: 700px) {
+      .hero { padding-top: calc(52px + clamp(28px, 6vh, 48px)); align-items: flex-start; }
+      .hero__row { align-items: stretch; }
+      .hero__cta { width: 100%; justify-content: center; }
     }
   </style>
 </head>
 <body>
 
-  <nav class="nav">
-    <a class="nav__pill" href="./projects.html">ARBEIDER</a>
-    <a href="./projects.html#about">Om meg</a>
-    <a href="./projects.html#contact">Kontakt</a>
-  </nav>
+  <header class="proj-header" id="projHeader">
+    <div class="proj-header__inner">
+      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
+      <nav class="proj-header__nav" id="projNav">
+        <a class="proj-header__link" href="./projects.html">Arbeider</a>
+        <a class="proj-header__link" href="./more-work.html">Mer arbeid</a>
+        <a class="proj-header__link" href="./about.html">Om meg</a>
+        <a class="proj-header__link" href="./about.html#contact">Kontakt</a>
+      </nav>
+      <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
 
   <main class="hero">
-    <div class="hero__text">
-      <h1 class="hero__name">JOSEFINE<br>REICHELT<br>GJERTSEN</h1>
-      <p class="hero__subtitle">UX/Grafisk designer</p>
+    <div class="hero__grid">
+      <div class="hero__text">
+        <p class="hero__eyebrow rise">Grafisk &amp; UX/UI-designer</p>
+        <h1 class="hero__name">
+          <span class="hero__name-line"><span class="rise">Josefine</span></span>
+          <span class="hero__name-line"><span class="rise">Reichelt</span></span>
+          <span class="hero__name-line"><span class="rise">Gjertsen</span></span>
+        </h1>
+
+        <div class="hero__row rise">
+          <p class="hero__line">Jeg samler kaos til <strong>ett system</strong> — fem adskilte kanaler ble til én ansattportal for Tjønnås &amp; Norvald.</p>
+          <a class="hero__cta" href="./projects.html">
+            <span>Se arbeid</span>
+            <span class="hero__cta-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__visual rise">
+        <div class="hero__stack">
+          <div class="hero__frame hero__frame--back" aria-hidden="true">
+            <img class="hero__frame-img" src="./assets/norvald/homepage-em.webp" alt="" loading="lazy">
+          </div>
+          <div class="hero__frame hero__frame--mid" aria-hidden="true">
+            <img class="hero__frame-img" src="./assets/lillawenettside.webp" alt="" loading="lazy">
+          </div>
+          <div class="hero__frame hero__frame--front">
+            <div class="hero__frame-bar" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </div>
+            <img class="hero__frame-img" src="./assets/herotjonn.webp" alt="Skjermbilde av ansattportalen for Tjønnås &amp; Norvald" loading="eager" fetchpriority="high">
+          </div>
+        </div>
+        <p class="hero__visual-caption">3 case-studier — Emanuel Vigeland Museum, Tjønnås &amp; Norvald, Stiftelsen WE</p>
+      </div>
     </div>
   </main>
 
-  <div class="hero__visual">
-    <video class="hero__video"
-      autoplay muted playsinline loop preload="auto">
-      <source src="./assets/blackbg-loop.mp4" type="video/mp4">
-      <source src="./assets/blackbg-loop.webm" type="video/webm">
-    </video>
-  </div>
-
   <script>
-    var v = document.querySelector('.hero__video');
-    if (v) v.playbackRate = window.innerWidth > 600 ? 4.5 : 3.0;
+    var header = document.getElementById('projHeader');
+    var toggle = document.getElementById('projToggle');
+    toggle.addEventListener('click', function () {
+      var open = header.classList.toggle('proj-header--open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.addEventListener('click', function (e) {
+      if (!header.contains(e.target)) {
+        header.classList.remove('proj-header--open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
   </script>
 
 </body>
