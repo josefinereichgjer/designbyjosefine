@@ -13,7 +13,15 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap"></noscript>
   <link rel="stylesheet" href="./styles.css?v=45">
   <style>
-    body { background: #000; color: #fff; }
+    body { background: var(--paper); color: var(--ink); }
+    .tools-strip::before { background: linear-gradient(to right, var(--paper), transparent) !important; }
+    .tools-strip::after  { background: linear-gradient(to left,  var(--paper), transparent) !important; }
+    .about-pullquote, .about-bio-col .about-pullquote { color: var(--ink) !important; }
+    .about-bio-col p, .about-bio-col li, .about-bio-col .list, .about-bio-col .list li { color: var(--muted); }
+    .about-layout, .about-photo-col, .about-bio-col { background: var(--paper) !important; }
+    .about-bio-col .list .muted { color: var(--ink) !important; }
+    .about-bio-col .muted { color: var(--muted) !important; }
+    .tool-pill { background: var(--paper) !important; }
     .about-page-wrap {
       max-width: 980px;
       margin: 0 auto;
@@ -26,12 +34,10 @@
   <a class="skip-link" href="#content">Hopp til innhold</a>
   <header class="proj-header" id="projHeader">
     <div class="proj-header__inner">
-      <a class="proj-header__logo" href="./projects.html">JOSEFINE R.G</a>
+      <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
       <nav class="proj-header__nav" id="projNav">
-        <a class="proj-header__link" href="./projects.html">Arbeider</a>
-        <a class="proj-header__link" href="./more-work.html">Mer arbeid</a>
+        <a class="proj-header__link" href="./index.html">Arbeider</a>
         <a class="proj-header__link proj-header__link--active" href="./about.html">Om</a>
-        <a class="proj-header__link" href="#contact">Kontakt</a>
       </nav>
       <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
         <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
@@ -42,7 +48,7 @@
   <main id="content">
     <div class="about-page-wrap">
 
-      <section id="about" class="section section--dark" style="margin-left:0; margin-right:0; padding-left:0; padding-right:0;">
+      <section id="about" class="section" style="margin-left:0; margin-right:0; padding-left:0; padding-right:0;">
         <h1 class="h2">Om meg</h1>
         <div class="about-layout">
 
@@ -60,7 +66,6 @@
           </div>
 
           <div class="about-bio-col">
-            <p class="about-pullquote">Grafisk designer som tenker strategisk, og designer for nærhet.</p>
             <p>Hei! Jeg er Josefine, sisteårsstudent på en bachelor i grafisk design ved NTNU. Bakgrunnen min ligger i typografi og merkevarebygging, men gjennom tverrfaglige prosjekter har jeg dratt stadig mer mot UI/UX. Det som driver meg er ikke det visuelle alene, men måten et grensesnitt kan gjøre kompleks informasjon forståelig, eller få et museumsbesøk til å begynne lenge før du går inn døra.</p>
             <p>Gleden over håndverket startet på kunstlinjen. Et friår med språkreise til Korea ga meg innsikt i hvordan design og kommunikasjon fungerer på tvers av kulturer, og hvor mye av god UX som egentlig handler om å forstå hvem du designer for.</p>
             <p>Når jeg ikke sitter foran skjermen, lærer jeg gjerne et nytt språk. Jeg snakker nesten flytende koreansk, pusser på tysken, og lærer ukrainsk og russisk for gøy. For meg henger språk og design tett sammen – begge deler handler om å forstå mennesker og treffe en tone.</p>
@@ -69,27 +74,19 @@
         </div>
       </section>
 
-      <section id="contact" class="section section--contact" style="color:#fff;">
-        <div class="contact-heading">
-          <h2 class="h2" style="color:#fff;">Kontakt</h2>
-        </div>
-        <p style="font-family:var(--font-ui); font-weight:400; color:#D8D8D8;">For samarbeid, oppdrag eller bare en liten prat, send gjerne en e-post:</p>
-        <script>(function(){var u='josefinegjertsen',d='gm'+'ail'+'.com';var a=document.createElement('a');a.href='mailto:'+u+'@'+d;a.className='contact-email-link';a.textContent=u+'@'+d;document.currentScript.insertAdjacentElement('afterend',a);})();</script>
-      </section>
-
     </div>
   </main>
 
-  <footer class="site-footer" style="background:#111; border-top:1px solid #222;">
-    <span class="site-footer__copy" style="color:#888;">&copy; 2026 Josefine Reichelt Gjertsen</span>
+  <footer class="site-footer">
+    <span class="site-footer__copy">&copy; 2026 Josefine Reichelt Gjertsen</span>
     <div class="site-footer__links">
-      <a href="mailto:josefinegjertsen@gmail.com" aria-label="E-post" class="site-footer__link" style="color:#888;">
+      <a href="mailto:josefinegjertsen@gmail.com" aria-label="E-post" class="site-footer__link">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
       </a>
-      <a href="https://www.linkedin.com/in/josefine-reichelt-gjertsen-34ab8926b/" target="_blank" rel="noopener" aria-label="LinkedIn" class="site-footer__link" style="color:#888;">
+      <a href="https://www.linkedin.com/in/josefine-reichelt-gjertsen-34ab8926b/" target="_blank" rel="noopener" aria-label="LinkedIn" class="site-footer__link">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="4"/><path d="M7 10v7M7 7v.01M12 10v7m0-5a3 3 0 0 1 6 0v5"/></svg>
       </a>
-      <a href="https://www.facebook.com/josefine.gjertsen" target="_blank" rel="noopener" aria-label="Facebook" class="site-footer__link" style="color:#888;">
+      <a href="https://www.facebook.com/josefine.gjertsen" target="_blank" rel="noopener" aria-label="Facebook" class="site-footer__link">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
       </a>
     </div>

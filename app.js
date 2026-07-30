@@ -17,44 +17,6 @@ document.querySelectorAll(".nav .nav__link").forEach(link => {
   });
 });
 
-const projects = (window.PROJECTS || []).filter(p => !p.personal);
-const archiveProjects = projects.filter(p => p.group === "archive");
-
-function cardHTML(p){
-  const tag = p.subtitle || p.tags[0] || "";
-  const mediaStyle = (p.coverPosition || p.coverFilter || p.coverScale)
-    ? ` style="${p.coverPosition ? `object-position:${p.coverPosition};` : ""}${p.coverFilter ? `filter:${p.coverFilter};` : ""}${p.coverScale ? `transform:scale(${p.coverScale});` : ""}"`
-    : "";
-  const media = p.comingSoon
-    ? `<div class="card__coming-soon">Coming soon</div>`
-    : (p.coverVideo
-      ? `<video class="card__img" src="${p.coverVideo}" autoplay muted loop playsinline${mediaStyle}></video>`
-      : `<img class="card__img" src="${p.cover}" alt="${p.title}" loading="eager" decoding="async"${mediaStyle}>`);
-  return `
-    <a class="card" href="./${p.id}.html">
-      <div class="card__img-wrap">
-        ${media}
-        <div class="card__overlay"><span>${p.title}${tag ? ` — ${tag}` : ""}</span></div>
-      </div>
-      <div class="card__caption">
-        <p class="card__title">${p.title}</p>
-        <p class="card__tags">${p.subtitle || p.tags[0] || ""}</p>
-      </div>
-    </a>
-  `;
-}
-
-function renderGrid(el, list) {
-  if (!el) return;
-  el.innerHTML = list.length
-    ? list.map(cardHTML).join("")
-    : `<p class="muted">Ingen prosjekter funnet.</p>`;
-  el.querySelectorAll("video.card__img").forEach(v => { v.playbackRate = 0.25; });
-}
-
-renderGrid(document.getElementById("archiveGrid"), archiveProjects);
-
-
 // Tool strip
 const TOOLS = [
   { label: "Illustrator", src: "./assets/illustrator.webp" },

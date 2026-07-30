@@ -23,35 +23,31 @@
     a { color: inherit; }
 
     /* .proj-header and .rise/riseIn now live in styles.css (shared site-wide) */
-    @keyframes floatY {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero__frame { animation: none !important; }
-    }
 
     /* ── Hero ── */
     .hero {
       min-height: 100svh;
       padding: calc(80px + clamp(28px, 6vh, 64px)) clamp(20px, 6vw, 72px) clamp(48px, 6vh, 80px);
       display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       position: relative;
       overflow: hidden;
     }
 
     .hero__grid {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: clamp(24px, 4vw, 56px);
-      align-items: center;
+      grid-template-columns: 1fr;
       width: 100%;
     }
+
+    .hero__text { text-align: center; }
 
     .hero__eyebrow {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       font-family: "Inclusive Sans", "Avenir Next", sans-serif;
       font-size: 13px;
@@ -72,13 +68,15 @@
 
     .hero__name {
       font-family: "Averia Serif Libre", "Avenir Next", serif;
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(44px, 6.6vw, 96px);
-      line-height: 0.9;
-      letter-spacing: -0.02em;
+      font-weight: 400;
+      font-style: normal;
+      font-size: clamp(28px, 3.4vw, 52px);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
       text-transform: none;
       color: var(--ink);
+      max-width: 18ch;
+      margin-inline: auto;
     }
     .hero__name-line {
       display: block;
@@ -86,120 +84,7 @@
     }
     .hero__name-line span {
       display: block;
-      animation-delay: var(--d, 0.1s);
-    }
-    .hero__name-line:nth-child(1) span { --d: 0.12s; }
-    .hero__name-line:nth-child(2) span { --d: 0.2s; }
-    .hero__name-line:nth-child(3) span { --d: 0.28s; }
-
-    .hero__row {
-      display: flex;
-      flex-direction: column;
-      gap: clamp(20px, 3vh, 28px);
-      margin-top: clamp(24px, 4vh, 40px);
-      border-top: 1px solid var(--rule);
-      padding-top: clamp(20px, 3vh, 28px);
-      animation-delay: 0.38s;
-    }
-
-    .hero__line {
-      font-size: clamp(18px, 1.7vw, 24px);
-      font-weight: 500;
-      line-height: 1.4;
-      letter-spacing: -0.005em;
-      max-width: 42ch;
-    }
-    .hero__line strong {
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .hero__cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      width: fit-content;
-      padding: 16px 26px;
-      background: var(--ink);
-      color: var(--paper);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      border: 1px solid var(--ink);
-      border-radius: 999px;
-      transition: background 0.18s ease, color 0.18s ease, box-shadow 0.18s var(--ease);
-    }
-    .hero__cta:hover,
-    .hero__cta:focus-visible { background: var(--paper); color: var(--ink); box-shadow: 0 6px 20px rgba(20,18,15,.15); }
-    .hero__cta:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
-    .hero__cta-arrow {
-      display: inline-block;
-      transition: transform 0.25s var(--ease);
-    }
-    .hero__cta:hover .hero__cta-arrow { transform: translateX(4px) rotate(-45deg); }
-
-    /* ── Visual: stacked screenshots from all 3 case studies, hard offset shadow, gentle float ── */
-    .hero__visual {
-      position: relative;
-      justify-self: end;
-      width: 100%;
-      max-width: 460px;
-      margin-top: 36px;
-      animation-delay: 0.22s;
-    }
-    .hero__stack { position: relative; }
-    .hero__frame {
-      border: 1.5px solid var(--ink);
-      background: var(--paper);
-      border-radius: 22px;
-      overflow: hidden;
-    }
-    .hero__frame--back,
-    .hero__frame--mid {
-      position: absolute;
-      inset: 0;
-    }
-    .hero__frame--back { transform: translate(-30px, -30px) scale(0.94); z-index: 1; opacity: 0.5; }
-    .hero__frame--mid  { transform: translate(-15px, -15px) scale(0.97); z-index: 2; opacity: 0.78; }
-    .hero__frame--front {
-      position: relative;
-      z-index: 3;
-      box-shadow: 14px 14px 0 var(--accent);
-      animation: floatY 7s ease-in-out infinite;
-    }
-    .hero__frame-bar {
-      display: flex;
-      gap: 6px;
-      padding: 10px 12px;
-      border-bottom: 1.5px solid var(--ink);
-    }
-    .hero__frame-bar span {
-      width: 8px;
-      height: 8px;
-      border: 1.5px solid var(--ink);
-      border-radius: 50%;
-    }
-    .hero__frame-img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-    .hero__visual-caption {
-      margin-top: 22px;
-      font-family: "Inclusive Sans", "Avenir Next", sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--ink);
-      opacity: 0.65;
-    }
-
-    @media (max-width: 900px) {
-      .hero__grid { grid-template-columns: 1fr; }
-      .hero__visual { justify-self: stretch; max-width: 340px; margin: clamp(40px, 6vh, 56px) auto 0; order: -1; }
+      animation-delay: 0.12s;
     }
 
     /* ── Scroll cue ── */
@@ -207,21 +92,32 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 4px;
+      gap: 10px;
       width: fit-content;
-      margin: clamp(32px, 5vh, 56px) auto 0;
+      margin: clamp(48px, 7vh, 80px) auto 0;
+      text-decoration: none;
+      color: var(--ink);
+      opacity: 0.6;
+      transition: opacity 0.15s;
+    }
+    .hero__scroll-cue:hover { opacity: 1; }
+    .hero__scroll-cue-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--rule);
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .hero__scroll-cue-label {
       font-family: "Inclusive Sans", "Avenir Next", sans-serif;
       font-size: 12px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      text-decoration: none;
-      color: var(--ink);
-      opacity: 0.55;
-      transition: opacity 0.15s;
     }
-    .hero__scroll-cue:hover { opacity: 1; }
-    .hero__scroll-cue span:first-child { font-size: 16px; }
 
     /* ── Work list ── */
     .work {
@@ -267,10 +163,24 @@
       color: var(--accent);
     }
 
+    /* ── More work — reuses the shared .masonry/.card component from styles.css ── */
+    .more-work {
+      padding: 0 clamp(20px, 6vw, 72px) clamp(64px, 10vh, 120px);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .more-work__label {
+      font-family: "Inclusive Sans", "Avenir Next", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: 0.6;
+    }
+
     @media (max-width: 700px) {
-      .hero { padding-top: calc(52px + clamp(28px, 6vh, 48px)); align-items: flex-start; }
-      .hero__row { align-items: stretch; }
-      .hero__cta { width: 100%; justify-content: center; }
+      .hero { padding-top: calc(52px + clamp(28px, 6vh, 48px)); }
     }
   </style>
 </head>
@@ -280,10 +190,8 @@
     <div class="proj-header__inner">
       <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
       <nav class="proj-header__nav" id="projNav">
-        <a class="proj-header__link" href="./projects.html">Arbeider</a>
-        <a class="proj-header__link" href="./more-work.html">Mer arbeid</a>
+        <a class="proj-header__link proj-header__link--active" href="./index.html">Arbeider</a>
         <a class="proj-header__link" href="./about.html">Om meg</a>
-        <a class="proj-header__link" href="./about.html#contact">Kontakt</a>
       </nav>
       <button class="proj-header__toggle" id="projToggle" aria-label="Meny" aria-expanded="false">
         <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
@@ -296,42 +204,14 @@
       <div class="hero__text">
         <p class="hero__eyebrow rise">Grafisk &amp; UX/UI-designer</p>
         <h1 class="hero__name">
-          <span class="hero__name-line"><span class="rise">Josefine</span></span>
-          <span class="hero__name-line"><span class="rise">Reichelt</span></span>
-          <span class="hero__name-line"><span class="rise">Gjertsen</span></span>
+          <span class="hero__name-line"><span class="rise">Designer som former meningsfulle opplevelser gjennom visuelle identiteter og digitalt design.</span></span>
         </h1>
-
-        <div class="hero__row rise">
-          <p class="hero__line">Jeg samler kaos til <strong>ett system</strong> — fem adskilte kanaler ble til én ansattportal for Tjønnås &amp; Norvald.</p>
-          <a class="hero__cta" href="./projects.html">
-            <span>Se arbeid</span>
-            <span class="hero__cta-arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="hero__visual rise">
-        <div class="hero__stack">
-          <div class="hero__frame hero__frame--back" aria-hidden="true">
-            <img class="hero__frame-img" src="./assets/norvald/homepage-em.webp" alt="" loading="lazy">
-          </div>
-          <div class="hero__frame hero__frame--mid" aria-hidden="true">
-            <img class="hero__frame-img" src="./assets/lillawenettside.webp" alt="" loading="lazy">
-          </div>
-          <div class="hero__frame hero__frame--front">
-            <div class="hero__frame-bar" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-            <img class="hero__frame-img" src="./assets/herotjonn.webp" alt="Skjermbilde av ansattportalen for Tjønnås &amp; Norvald" loading="eager" fetchpriority="high">
-          </div>
-        </div>
-        <p class="hero__visual-caption">3 case-studier — Emanuel Vigeland Museum, Tjønnås &amp; Norvald, Stiftelsen WE</p>
       </div>
     </div>
 
     <a class="hero__scroll-cue" href="#work">
-      <span aria-hidden="true">↕</span>
-      <span>scroll for å se arbeid</span>
+      <span class="hero__scroll-cue-icon" aria-hidden="true">↕</span>
+      <span class="hero__scroll-cue-label">Scroll for å se arbeid</span>
     </a>
   </main>
 
@@ -352,17 +232,41 @@
         <p class="work__desc">Redesignet nettside for museet, med fokus på formidling av kunstverkene og en enklere vei til billettkjøp og arrangementer.</p>
         <p class="work__tags">UX ∙ Redesign</p>
       </li>
-      <li class="work__item">
-        <a class="work__title" href="./reina-fruktgard.html">Reina Fruktgård</a>
-        <p class="work__desc">Redesignet emballasje for en småskala økologisk produsent i Molde, videreutviklet for å tydeligere formidle opprinnelse, kvalitet og håndverk.</p>
-        <p class="work__tags">Emballasjedesign ∙ Visuell identitet</p>
-      </li>
-      <li class="work__item">
-        <a class="work__title" href="./tidsskrift.html">KRIT</a>
-        <p class="work__desc">Redaksjonell design og layout for tidsskriftet KRIT.</p>
-        <p class="work__tags">Redaksjonell design</p>
-      </li>
     </ol>
+  </section>
+
+  <section class="more-work">
+    <p class="more-work__label">Flere prosjekter</p>
+    <div class="masonry masonry--craft">
+      <a class="card card--visible" href="./tidsskrift.html">
+        <div class="card__img-wrap"><img class="card__img" src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy" decoding="async"></div>
+        <div class="card__caption">
+          <p class="card__title">KRIT Litteraturtidsskrift</p>
+          <p class="card__tags">Redaksjonell design</p>
+        </div>
+      </a>
+      <a class="card card--visible" href="./reina-fruktgard.html">
+        <div class="card__img-wrap"><img class="card__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async"></div>
+        <div class="card__caption">
+          <p class="card__title">Reina Fruktgård</p>
+          <p class="card__tags">Emballasjedesign</p>
+        </div>
+      </a>
+      <a class="card card--visible" href="./stoppestedet.html">
+        <div class="card__img-wrap"><img class="card__img" src="./stoppestedet/images/storefrontstoppis.webp" alt="Stoppestedet" loading="lazy" decoding="async" style="object-position:center 40%"></div>
+        <div class="card__caption">
+          <p class="card__title">Stoppestedet</p>
+          <p class="card__tags">Visuell identitet &amp; nettside</p>
+        </div>
+      </a>
+      <a class="card card--visible" href="./bokomslag.html">
+        <div class="card__img-wrap"><img class="card__img" src="./assets/blaa.webp" alt="Bokomslag" loading="lazy" decoding="async"></div>
+        <div class="card__caption">
+          <p class="card__title">Bokomslag</p>
+          <p class="card__tags">Redaksjonell design</p>
+        </div>
+      </a>
+    </div>
   </section>
 
   <script>

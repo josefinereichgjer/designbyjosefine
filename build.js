@@ -340,17 +340,16 @@ function renderPage(project) {
   <header class="sidebar sidebar--detail" id="sidebar">
     <div class="sidebar__inner">
       <div class="brand">
-        <a class="brand__mark" href="./projects.html" aria-label="Back to work">
+        <a class="brand__mark" href="./index.html" aria-label="Back to work">
           <span class="brand__logo">JOSEFINE R.G</span>
         </a>
       </div>
 
-      <a class="back-btn" href="./projects.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a class="back-btn" href="./index.html" aria-label="Tilbake til arbeider"><svg width="9" height="16" viewBox="0 0 9 16" fill="none" aria-hidden="true"><path d="M8 1L1 8L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 
       <nav class="nav" aria-label="Main navigation">
-        <a class="nav__link" href="./projects.html"><span>Arbeider</span></a>
-        <a class="nav__link" href="./projects.html#about"><span>Om</span></a>
-        <a class="nav__link" href="./projects.html#contact"><span>Kontakt</span></a>
+        <a class="nav__link" href="./index.html"><span>Arbeider</span></a>
+        <a class="nav__link" href="./about.html"><span>Om</span></a>
       </nav>
 
       <footer class="meta">
