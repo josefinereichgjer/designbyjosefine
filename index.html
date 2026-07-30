@@ -122,17 +122,35 @@
     /* ── Work list ── */
     .work {
       padding: clamp(48px, 8vh, 96px) clamp(20px, 6vw, 72px) clamp(64px, 10vh, 120px);
-      max-width: 900px;
+      max-width: 1080px;
       margin: 0 auto;
     }
     .work__list {
       list-style: none;
     }
     .work__item {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 4vw, 48px);
       padding: clamp(28px, 4vh, 40px) 0;
       border-top: 1px solid var(--rule);
     }
     .work__item:last-child { border-bottom: 1px solid var(--rule); }
+    .work__media {
+      flex: 0 0 clamp(140px, 20vw, 220px);
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--rule);
+    }
+    .work__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s var(--ease, ease);
+    }
+    .work__item:hover .work__media img { transform: scale(1.04); }
+    .work__content { flex: 1; min-width: 0; }
     .work__title {
       display: inline-block;
       font-family: "Averia Serif Libre", Georgia, serif;
@@ -161,6 +179,11 @@
       letter-spacing: 0.04em;
       text-transform: uppercase;
       color: var(--accent);
+    }
+
+    @media (max-width: 640px) {
+      .work__item { flex-direction: column; align-items: stretch; gap: 18px; }
+      .work__media { flex-basis: auto; aspect-ratio: 16 / 10; }
     }
 
     /* ── More work — reuses the shared .masonry/.card component from styles.css ── */
@@ -218,19 +241,34 @@
   <section class="work" id="work">
     <ol class="work__list">
       <li class="work__item">
-        <a class="work__title" href="./ansatts-portal.html">Tjønnås &amp; Norvald</a>
-        <p class="work__desc">Fem spredte systemer for vaktplan, kommunikasjon og opplæring samlet i én ansattportal, bygget rundt seks kjerneområder for både erfarne og nyansatte.</p>
-        <p class="work__tags">UX design ∙ Informasjonsarkitektur ∙ NTNU-prosjekt</p>
+        <a class="work__media" href="./emanuel-vigeland.html" tabindex="-1" aria-hidden="true">
+          <img src="./assets/norvald/homepage-em.webp" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="work__content">
+          <a class="work__title" href="./emanuel-vigeland.html">Emanuel Vigeland Museum</a>
+          <p class="work__desc">Redesignet nettside for museet, med fokus på formidling av kunstverkene og en enklere vei til billettkjøp og arrangementer.</p>
+          <p class="work__tags">UX ∙ Redesign</p>
+        </div>
       </li>
       <li class="work__item">
-        <a class="work__title" href="./we-visuell-profil.html">Stiftelsen WE</a>
-        <p class="work__desc">Strategisk visuell identitet for en stiftelse som styrker kvinners selvstendighet, bygget på SWOT-analyse og posisjonering mot lignende aktører.</p>
-        <p class="work__tags">Strategisk design ∙ Visuell identitet</p>
+        <a class="work__media" href="./ansatts-portal.html" tabindex="-1" aria-hidden="true">
+          <img src="./assets/herotjonn.webp" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="work__content">
+          <a class="work__title" href="./ansatts-portal.html">Tjønnås &amp; Norvald</a>
+          <p class="work__desc">Fem spredte systemer for vaktplan, kommunikasjon og opplæring samlet i én ansattportal, bygget rundt seks kjerneområder for både erfarne og nyansatte.</p>
+          <p class="work__tags">UX design ∙ Informasjonsarkitektur ∙ NTNU-prosjekt</p>
+        </div>
       </li>
       <li class="work__item">
-        <a class="work__title" href="./emanuel-vigeland.html">Emanuel Vigeland Museum</a>
-        <p class="work__desc">Redesignet nettside for museet, med fokus på formidling av kunstverkene og en enklere vei til billettkjøp og arrangementer.</p>
-        <p class="work__tags">UX ∙ Redesign</p>
+        <a class="work__media" href="./we-visuell-profil.html" tabindex="-1" aria-hidden="true">
+          <img src="./assets/laptop-mockup.webp" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="work__content">
+          <a class="work__title" href="./we-visuell-profil.html">Stiftelsen WE</a>
+          <p class="work__desc">Strategisk visuell identitet for en stiftelse som styrker kvinners selvstendighet, bygget på SWOT-analyse og posisjonering mot lignende aktører.</p>
+          <p class="work__tags">Strategisk design ∙ Visuell identitet</p>
+        </div>
       </li>
     </ol>
   </section>
