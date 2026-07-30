@@ -4,6 +4,17 @@ Scope: `ansatts-portal.html` only (inline `<style>` block + this page's markup +
 
 ---
 
+## Progress log
+
+- ✅ **Commit 1 (tokens)** — palette, self-hosted fonts, type/spacing/radius scale defined. Verified: fonts confirmed loaded via `document.fonts`, screenshots at 1440/390 clean.
+- ✅ **Commit 2 (grid & spacing)** — three-track `.tn-stmt__row`, unified 1240px containers. Verified at 1440/700/390.
+- ✅ **Sitemap restyle** (out-of-band request, landed between commits 2 and 3) — rebuilt as a hairline/typographic figure per a separate detailed brief; 01–06 numbering dropped after checking the actual bottom-nav mockup only shows 5 icons against 6 IA areas (confirmed with user rather than guessing). `sitemap_ansattportal.svg` deleted (was orphaned, unreferenced anywhere).
+- ✅ **Commit 3 (type hierarchy)** — scale wired into every component. `type-audit.js` re-run confirms thesis/body ratio moved from 2.08x (10/10 failing) to 2.88x (10/10 passing) at 1440px. Caught the base `.tn-stmt__heading` still on its old hardcoded clamp after the grid commit by re-running the audit instead of assuming the wiring took — fixed before commit.
+- ⚠️ **`assets/norvald/tjonni-mockup.webp` deleted per direct request** (during commit 3). This was the image table's only full-bleed candidate below — its standalone section was removed too rather than leave a broken `<img>`. **This means the page currently has zero full-bleed images**, which needs a decision before commit 5 (image rhythm): drop the "at least one full-bleed" target entirely (acceptance criterion #5 becomes partially unmet, but "no new photography" is explicitly out of scope so there's no other atmospheric candidate to promote), or revisit if a replacement image surfaces. Flagging now, deciding at commit 5.
+- ⏳ **Commit 4 (de-boxing)** — next up.
+
+---
+
 ## 0. Inventory — what's actually here
 
 Read the full file (1354 lines). Confirmed structure:

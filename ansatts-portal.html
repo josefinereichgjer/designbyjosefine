@@ -221,37 +221,50 @@
     }
     .tn-hero__img { width: 100%; display: block; }
 
-    /* Summary cards: Prosjekt+details / Problem+Løsning+Resultat */
+    /* Summary — ONE boxed panel (one of exactly two boxed modules on the page,
+       the other being the stats band below). Cells inside separate with
+       hairlines only — no nested card fills. */
     .tn-summary { position: relative; z-index: 0; background: var(--tn-paper); padding-block: calc(var(--section-y) * 0.5); padding-inline: clamp(1.25rem, 5vw, 5rem); }
-    .tn-summary__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1240px; margin: 0 auto; }
-    .tn-summary__card { background: var(--tn-paper-raised); border-radius: 22px; padding: clamp(28px,3.4vw,44px); }
+    .tn-summary__panel { background: var(--tn-paper-raised); border-radius: var(--radius-content); padding: clamp(32px,4.5vw,64px); max-width: 1240px; margin: 0 auto; }
+    .tn-summary__grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .tn-summary__col--left { padding-right: clamp(24px,3vw,40px); border-right: 1px solid var(--tn-hairline); }
+    .tn-summary__col--right { padding-left: clamp(24px,3vw,40px); }
     .tn-summary__heading { font-family: var(--tn-serif); font-weight: 400; font-size: var(--t-display-m); letter-spacing: -0.01em; color: var(--tn-ink); margin: 0 0 12px; text-wrap: balance; hyphens: none; -webkit-hyphens: none; }
     .tn-summary__heading em { font-style: italic; font-weight: 400; color: var(--tn-ink-muted); }
     .tn-summary__body { font-family: var(--tn-sans); font-size: var(--t-body); line-height: 1.65; color: var(--tn-ink-muted); text-wrap: pretty; margin: 0 0 26px; }
+    .tn-summary__meta { margin: 0; }
     .tn-summary__row { padding: 16px 0; border-bottom: 1px solid var(--tn-hairline); display: flex; flex-direction: column-reverse; gap: 4px; }
     .tn-summary__row:last-child { border-bottom: none; padding-bottom: 0; }
-    .tn-summary__label { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tn-ink-faint); }
-    .tn-summary__value { font-family: var(--tn-sans); font-size: 15px; font-weight: 600; color: var(--tn-ink); }
+    .tn-summary__label { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tn-ink-faint); margin: 0; }
+    .tn-summary__value { font-family: var(--tn-sans); font-size: 15px; font-weight: 600; color: var(--tn-ink); margin: 0; }
     .tn-summary__psr { padding: 18px 0; border-bottom: 1px solid var(--tn-hairline); }
     .tn-summary__psr:last-child { border-bottom: none; padding-bottom: 0; }
     .tn-summary__psr .tn-summary__body { margin-bottom: 0; }
     @media (max-width: 800px) {
       .tn-summary__grid { grid-template-columns: 1fr; }
+      .tn-summary__col--left { padding-right: 0; padding-bottom: 32px; border-right: none; border-bottom: 1px solid var(--tn-hairline); }
+      .tn-summary__col--right { padding-left: 0; padding-top: 32px; }
     }
 
-    /* Stat band, sitting beneath the two summary cards — no box, huge serif numbers, small label above */
-    .tn-stat { max-width: 1240px; margin: clamp(56px,7vw,88px) auto 0; }
+    /* Stat band — the second (and last) of the two boxed modules on the page.
+       Cells divided by vertical hairlines only, no fills. */
+    .tn-stat { max-width: 1240px; margin: clamp(56px,7vw,88px) auto 0; border: 1px solid var(--tn-hairline); border-radius: var(--radius-content); padding: clamp(32px,4.5vw,56px); }
     .tn-stat__heading { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--tn-ink-faint); margin: 0 0 var(--eyebrow-gap); }
     .tn-stat__heading em { font-style: normal; font-weight: 500; }
-    .tn-stat__row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(28px,4vw,56px); }
-    .tn-stat__item { padding-left: 0; }
+    .tn-stat__row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .tn-stat__item { padding: 0 clamp(16px,2.5vw,28px); }
+    .tn-stat__item:first-child { padding-left: 0; }
+    .tn-stat__item:last-child { padding-right: 0; }
+    .tn-stat__item:not(:first-child) { border-left: 1px solid var(--tn-hairline); }
     .tn-stat__number { font-family: var(--tn-serif); font-weight: 400; font-size: var(--t-data); font-variant-numeric: tabular-nums; line-height: .95; letter-spacing: -0.02em; color: var(--tn-ink); margin: 0 0 16px; }
     .tn-stat__arrow { font-weight: 300; color: var(--tn-accent-gold); padding: 0 0.15em; }
     .tn-stat__claim { font-family: var(--tn-sans); font-weight: 600; font-size: var(--t-body); color: var(--tn-ink); margin: 0 0 6px; line-height: 1.3; max-width: 22ch; }
     .tn-stat__foot { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; color: var(--tn-ink-faint); margin: 0; line-height: 1.5; }
     .tn-stat__note { font-family: var(--tn-sans); font-size: 13.5px; font-style: italic; color: var(--tn-ink-faint); max-width: 1240px; margin: 20px auto 0; }
     @media (max-width: 800px) {
-      .tn-stat__row { grid-template-columns: 1fr; gap: 28px; }
+      .tn-stat__row { grid-template-columns: 1fr; }
+      .tn-stat__item { padding: 24px 0 0; border-left: none !important; border-top: 1px solid var(--tn-hairline); }
+      .tn-stat__item:first-child { padding-top: 0; border-top: none; }
     }
 
     /* Læringer — three-column band, same rhythm as the stats band above */
@@ -263,6 +276,14 @@
     @media (max-width: 800px) {
       .tn-learn__row { grid-template-columns: 1fr; gap: 36px; }
     }
+
+    /* Kari/Eirik persona photos — circular, per direct request (an explicit
+       exception to the site-wide no-border-radius-on-images rule, which
+       otherwise still applies everywhere else on this page). */
+    .tn-persona-pair { display: flex; gap: 28px; justify-content: flex-end; }
+    .tn-persona-pair figure { margin: 0; flex: 0 0 auto; width: clamp(110px, 24vw, 220px); text-align: center; }
+    .tn-persona-pair img { display: block; width: 100%; aspect-ratio: 1/1; object-fit: cover; object-position: top center; border-radius: 50%; }
+    .tn-persona-pair figcaption { margin-top: 12px; font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--tn-ink-faint); }
 
     /* Repeating statement + prose + media pattern, matched to the Figma reference (eyebrow, mixed-weight heading, prose, full-width rounded media) */
     .tn-stmt { padding-block: calc(var(--section-y) * 0.5); padding-inline: clamp(1.25rem, 5vw, 5rem); }
@@ -791,39 +812,43 @@
     </section>
 
     <section class="tn-summary">
-      <div class="tn-summary__grid">
-        <div class="tn-summary__card">
-          <h2 class="tn-summary__heading">Prosjekt <em>Tjønnås &amp; Norvald — ansattportal</em></h2>
-          <p class="tn-summary__body">En samlet ansattportal for Tjønnås Delikatesser og Norvald Café, bygget for å erstatte fem spredte systemer for vaktplan, kommunikasjon og opplæring. Designet for nyansatte og erfarne medarbeidere som trenger én forutsigbar plass å finne alt de trenger på jobb.</p>
-          <div class="tn-summary__row">
-            <span class="tn-summary__label">Type</span>
-            <span class="tn-summary__value">Internt verktøy / ansattportal (mobil + iPad)</span>
+      <div class="tn-summary__panel">
+        <div class="tn-summary__grid">
+          <div class="tn-summary__col tn-summary__col--left">
+            <h2 class="tn-summary__heading">Prosjekt <em>Tjønnås &amp; Norvald — ansattportal</em></h2>
+            <p class="tn-summary__body">En samlet ansattportal for Tjønnås Delikatesser og Norvald Café, bygget for å erstatte fem spredte systemer for vaktplan, kommunikasjon og opplæring. Designet for nyansatte og erfarne medarbeidere som trenger én forutsigbar plass å finne alt de trenger på jobb.</p>
+            <dl class="tn-summary__meta">
+              <div class="tn-summary__row">
+                <dt class="tn-summary__label">Type</dt>
+                <dd class="tn-summary__value">Internt verktøy / ansattportal (mobil + iPad)</dd>
+              </div>
+              <div class="tn-summary__row">
+                <dt class="tn-summary__label">Min rolle</dt>
+                <dd class="tn-summary__value">Intervjuguide · Transkribering · Affinity mapping · Personas &amp; scenarier · Designvalg · Rapportskriving</dd>
+              </div>
+              <div class="tn-summary__row">
+                <dt class="tn-summary__label">Team</dt>
+                <dd class="tn-summary__value">4 medlemmer</dd>
+              </div>
+              <div class="tn-summary__row">
+                <dt class="tn-summary__label">Omfang</dt>
+                <dd class="tn-summary__value">Research · Informasjonsarkitektur · Personas · Rapport</dd>
+              </div>
+            </dl>
           </div>
-          <div class="tn-summary__row">
-            <span class="tn-summary__label">Min rolle</span>
-            <span class="tn-summary__value">Intervjuguide · Transkribering · Affinity mapping · Personas &amp; scenarier · Designvalg · Rapportskriving</span>
-          </div>
-          <div class="tn-summary__row">
-            <span class="tn-summary__label">Team</span>
-            <span class="tn-summary__value">4 medlemmer</span>
-          </div>
-          <div class="tn-summary__row">
-            <span class="tn-summary__label">Omfang</span>
-            <span class="tn-summary__value">Research · Informasjonsarkitektur · Personas · Rapport</span>
-          </div>
-        </div>
-        <div class="tn-summary__card">
-          <div class="tn-summary__psr">
-            <h2 class="tn-summary__heading">Problem <em>Fem systemer, ingen oversikt</em></h2>
-            <p class="tn-summary__body">Driften til Tjønnås &amp; Norvald var spredt over fem separate systemer — vaktplan, økonomi, kommunikasjon og opplæring hver for seg — og viktig informasjon forsvant ofte i prosessen.</p>
-          </div>
-          <div class="tn-summary__psr">
-            <h2 class="tn-summary__heading">Løsning <em>Én samlet ansattportal</em></h2>
-            <p class="tn-summary__body">Vi designet én samlet ansattportal med en bunnnavigasjon bygget rundt seks kjerneområder, strukturert etter hvordan ansatte faktisk tenker om jobbhverdagen sin.</p>
-          </div>
-          <div class="tn-summary__psr">
-            <h2 class="tn-summary__heading">Resultat <em>Klar for brukertesting</em></h2>
-            <p class="tn-summary__body">En ferdig hi-fi-prototype som samler alt personalet trenger på én plate.</p>
+          <div class="tn-summary__col tn-summary__col--right">
+            <div class="tn-summary__psr">
+              <h2 class="tn-summary__heading">Problem <em>Fem systemer, ingen oversikt</em></h2>
+              <p class="tn-summary__body">Driften til Tjønnås &amp; Norvald var spredt over fem separate systemer — vaktplan, økonomi, kommunikasjon og opplæring hver for seg — og viktig informasjon forsvant ofte i prosessen.</p>
+            </div>
+            <div class="tn-summary__psr">
+              <h2 class="tn-summary__heading">Løsning <em>Én samlet ansattportal</em></h2>
+              <p class="tn-summary__body">Vi designet én samlet ansattportal med en bunnnavigasjon bygget rundt seks kjerneområder, strukturert etter hvordan ansatte faktisk tenker om jobbhverdagen sin.</p>
+            </div>
+            <div class="tn-summary__psr">
+              <h2 class="tn-summary__heading">Resultat <em>Klar for brukertesting</em></h2>
+              <p class="tn-summary__body">En ferdig hi-fi-prototype som samler alt personalet trenger på én plate.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -881,7 +906,7 @@
             </div>
           </section>
 
-          <section class="tn-stmt" style="background:#fafafa;">
+          <section class="tn-stmt">
             <div class="tn-stmt__inner">
               <p class="tn-stmt__eyebrow">PROBLEM</p>
               <div class="tn-stmt__row">
@@ -920,7 +945,7 @@
           </div>
         </section>
 
-        <section class="tn-stmt" style="background:#fafafa;">
+        <section class="tn-stmt">
           <div class="tn-stmt__inner">
             <p class="tn-stmt__eyebrow">INFORMASJONSARKITEKTUR</p>
             <div class="tn-stmt__row">
@@ -981,7 +1006,7 @@
           </div>
         </section>
 
-          <section class="tn-stmt" style="background:#fafafa;">
+          <section class="tn-stmt">
             <div class="tn-stmt__inner">
               <p class="tn-stmt__eyebrow">DESIGN 1/3</p>
               <div class="tn-stmt__row tn-stmt__row--media-left">
@@ -998,7 +1023,7 @@
             </div>
           </section>
 
-          <section class="tn-stmt" style="background:#fafafa;">
+          <section class="tn-stmt">
             <div class="tn-stmt__inner">
               <p class="tn-stmt__eyebrow">DESIGN 2/3</p>
               <div class="tn-stmt__row tn-stmt__row--split">
@@ -1026,7 +1051,7 @@
             </div>
           </section>
 
-          <section class="tn-stmt" style="background:#fafafa;">
+          <section class="tn-stmt">
             <div class="tn-stmt__inner">
               <p class="tn-stmt__eyebrow">DESIGN 3/3</p>
               <div class="tn-stmt__row tn-stmt__row--split tn-stmt__row--media-left">
@@ -1058,11 +1083,25 @@
             </div>
           </section>
 
-          <section class="tn-stmt" style="background:#fafafa;">
+          <section class="tn-stmt">
             <div class="tn-stmt__inner">
               <p class="tn-stmt__eyebrow">HVORFOR DISSE TO SCENARIOENE?</p>
-              <div class="tn-stmt__prose" style="max-width:640px;">
-                <p>Vi valgte å fokusere på Kari og Eirik fordi de representerte de to viktigste behovene som kom frem i intervjuet: oversikt over vakter og tilgjengelig opplæring. Ved å løse disse utfordringene kunne én samlet ansattportal redusere behovet for flere separate systemer og gjøre arbeidshverdagen enklere. Dette bygger direkte på innsikten fra intervjuet, personaene og scenarioene i prosjektet.</p>
+              <div class="tn-stmt__row tn-stmt__row--split">
+                <div>
+                  <div class="tn-stmt__prose">
+                    <p>Vi valgte å fokusere på Kari og Eirik fordi de representerte de to viktigste behovene som kom frem i intervjuet: oversikt over vakter og tilgjengelig opplæring. Ved å løse disse utfordringene kunne én samlet ansattportal redusere behovet for flere separate systemer og gjøre arbeidshverdagen enklere. Dette bygger direkte på innsikten fra intervjuet, personaene og scenarioene i prosjektet.</p>
+                  </div>
+                </div>
+                <div class="tn-persona-pair">
+                  <figure>
+                    <img src="./assets/norvald/persona-kari.webp" alt="Kari, erfaren ansatt-persona" loading="lazy" decoding="async">
+                    <figcaption>Kari — erfaren ansatt</figcaption>
+                  </figure>
+                  <figure>
+                    <img src="./assets/norvald/persona-eirik.webp" alt="Eirik, nyansatt-persona" loading="lazy" decoding="async">
+                    <figcaption>Eirik — nyansatt</figcaption>
+                  </figure>
+                </div>
               </div>
             </div>
           </section>
@@ -1106,7 +1145,7 @@
           </div>
         </section>
 
-        <section class="tn-stmt" style="background:#fafafa;">
+        <section class="tn-stmt">
           <div class="tn-stmt__inner">
             <p class="tn-stmt__eyebrow">MITT BIDRAG</p>
             <div class="tn-stmt__row">
