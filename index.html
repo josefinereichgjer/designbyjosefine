@@ -202,6 +202,71 @@
       .hero__visual { justify-self: stretch; max-width: 340px; margin: clamp(40px, 6vh, 56px) auto 0; order: -1; }
     }
 
+    /* ── Scroll cue ── */
+    .hero__scroll-cue {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      width: fit-content;
+      margin: clamp(32px, 5vh, 56px) auto 0;
+      font-family: "Inclusive Sans", "Avenir Next", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--ink);
+      opacity: 0.55;
+      transition: opacity 0.15s;
+    }
+    .hero__scroll-cue:hover { opacity: 1; }
+    .hero__scroll-cue span:first-child { font-size: 16px; }
+
+    /* ── Work list ── */
+    .work {
+      padding: clamp(48px, 8vh, 96px) clamp(20px, 6vw, 72px) clamp(64px, 10vh, 120px);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .work__list {
+      list-style: none;
+    }
+    .work__item {
+      padding: clamp(28px, 4vh, 40px) 0;
+      border-top: 1px solid var(--rule);
+    }
+    .work__item:last-child { border-bottom: 1px solid var(--rule); }
+    .work__title {
+      display: inline-block;
+      font-family: "Averia Serif Libre", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(22px, 2.6vw, 30px);
+      color: var(--ink);
+      text-decoration: none;
+      margin-bottom: 10px;
+      transition: opacity 0.15s;
+    }
+    .work__title:hover { opacity: 0.6; }
+    .work__desc {
+      font-family: "Inclusive Sans", "Avenir Next", sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+      opacity: 0.75;
+      max-width: 56ch;
+      margin-bottom: 10px;
+    }
+    .work__tags {
+      font-family: "Inclusive Sans", "Avenir Next", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
     @media (max-width: 700px) {
       .hero { padding-top: calc(52px + clamp(28px, 6vh, 48px)); align-items: flex-start; }
       .hero__row { align-items: stretch; }
@@ -263,7 +328,42 @@
         <p class="hero__visual-caption">3 case-studier — Emanuel Vigeland Museum, Tjønnås &amp; Norvald, Stiftelsen WE</p>
       </div>
     </div>
+
+    <a class="hero__scroll-cue" href="#work">
+      <span aria-hidden="true">↕</span>
+      <span>scroll for å se arbeid</span>
+    </a>
   </main>
+
+  <section class="work" id="work">
+    <ol class="work__list">
+      <li class="work__item">
+        <a class="work__title" href="./ansatts-portal.html">Tjønnås &amp; Norvald</a>
+        <p class="work__desc">Fem spredte systemer for vaktplan, kommunikasjon og opplæring samlet i én ansattportal, bygget rundt seks kjerneområder for både erfarne og nyansatte.</p>
+        <p class="work__tags">UX design ∙ Informasjonsarkitektur ∙ NTNU-prosjekt</p>
+      </li>
+      <li class="work__item">
+        <a class="work__title" href="./we-visuell-profil.html">Stiftelsen WE</a>
+        <p class="work__desc">Strategisk visuell identitet for en stiftelse som styrker kvinners selvstendighet, bygget på SWOT-analyse og posisjonering mot lignende aktører.</p>
+        <p class="work__tags">Strategisk design ∙ Visuell identitet</p>
+      </li>
+      <li class="work__item">
+        <a class="work__title" href="./emanuel-vigeland.html">Emanuel Vigeland Museum</a>
+        <p class="work__desc">Redesignet nettside for museet, med fokus på formidling av kunstverkene og en enklere vei til billettkjøp og arrangementer.</p>
+        <p class="work__tags">UX ∙ Redesign</p>
+      </li>
+      <li class="work__item">
+        <a class="work__title" href="./reina-fruktgard.html">Reina Fruktgård</a>
+        <p class="work__desc">Redesignet emballasje for en småskala økologisk produsent i Molde, videreutviklet for å tydeligere formidle opprinnelse, kvalitet og håndverk.</p>
+        <p class="work__tags">Emballasjedesign ∙ Visuell identitet</p>
+      </li>
+      <li class="work__item">
+        <a class="work__title" href="./tidsskrift.html">KRIT</a>
+        <p class="work__desc">Redaksjonell design og layout for tidsskriftet KRIT.</p>
+        <p class="work__tags">Redaksjonell design</p>
+      </li>
+    </ol>
+  </section>
 
   <script>
     var header = document.getElementById('projHeader');
