@@ -9,11 +9,19 @@
   <link rel="preload" href="./assets/me.webp" as="image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500&display=swap"></noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;1,300;1,400&family=Inclusive+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css?v=45">
   <style>
-    body { background: var(--paper); color: var(--ink); }
+    body { background: var(--paper); color: var(--ink); font-family: "Inclusive Sans", "Avenir Next", "Avenir", sans-serif; }
+    .about-page-wrap .h2 {
+      font-family: "Averia Serif Libre", "Avenir Next", serif;
+      font-weight: 400;
+      font-style: normal;
+      text-transform: none;
+      letter-spacing: -0.01em;
+      font-size: clamp(32px, 4.5vw, 56px);
+    }
+    .about-bio-col p { font-family: "Inclusive Sans", "Avenir Next", "Avenir", sans-serif; }
     .tools-strip::before { background: linear-gradient(to right, var(--paper), transparent) !important; }
     .tools-strip::after  { background: linear-gradient(to left,  var(--paper), transparent) !important; }
     .about-pullquote, .about-bio-col .about-pullquote { color: var(--ink) !important; }
