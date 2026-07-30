@@ -335,7 +335,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.4), transparent 65%);
+      background:
+        radial-gradient(60% 90% at 82% 100%, rgba(0,0,0,.55), transparent 70%),
+        linear-gradient(to top, rgba(0,0,0,.4), transparent 65%);
       pointer-events: none;
     }
     .tn-quote__text {
@@ -343,10 +345,10 @@
       z-index: 1;
       max-width: 42ch;
       margin: 0;
-      padding: clamp(20px,3vw,36px) clamp(12px,2vw,20px) clamp(20px,3vw,36px) clamp(24px,4vw,64px);
+      padding: clamp(24px,3.5vw,40px) clamp(14px,2vw,24px) clamp(24px,3.5vw,40px) clamp(24px,3.5vw,40px);
       font-family: var(--tn-sans);
-      font-size: clamp(0.9rem,1.7vw,1.3rem);
-      font-weight: 500;
+      font-size: clamp(0.85rem,1.55vw,1.2rem);
+      font-weight: 400;
       line-height: 1.35;
       color: #fff;
       text-align: center;
@@ -375,7 +377,7 @@
     /* IA diagram — editorial figure, not UI. Type and whitespace carry the
        structure; the only lines are the ones encoding a real relationship
        (the login-gate rule + the six stubs dropping into each column). */
-    .tn-ia { margin: var(--fig-gap) 0 0; background: var(--tn-paper-raised); border-radius: var(--radius-content); padding: clamp(28px,4vw,48px) clamp(24px,4vw,44px); }
+    .tn-ia { margin: var(--fig-gap) 0 0; }
     .tn-ia__login {
       display: table;
       position: relative;
@@ -439,18 +441,21 @@
       .tn-ia__col:first-child { padding-top: 0; }
     }
 
-    /* Scroll-driven dissolve — pure CSS (animation-timeline: view()), no JS. Degrades to fully visible where unsupported. */
+    /* Scroll-driven drop-in + float-up — pure CSS (animation-timeline: view()), no JS. Degrades to fully visible where unsupported. */
     @media (prefers-reduced-motion: no-preference) {
       @supports (animation-timeline: view()) {
         .tn-dissolve-on-scroll {
-          animation: tn-dissolve 1s linear both;
+          animation: tn-drop-float 1s linear both;
           animation-timeline: view();
-          animation-range: exit;
+          animation-range: cover;
         }
       }
     }
-    @keyframes tn-dissolve {
-      to { opacity: 0.08; filter: blur(22px); }
+    @keyframes tn-drop-float {
+      0%   { opacity: 0; transform: translateY(-60px); }
+      18%  { opacity: 1; transform: translateY(0); }
+      82%  { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0.15; transform: translateY(-70px); }
     }
 
     /* Floating pill nav — scoped to this page only; the shared .proj-header stays untouched elsewhere */
@@ -580,7 +585,7 @@
           <div class="tn-summary__col tn-summary__col--right">
             <div class="tn-summary__card">
               <div class="tn-summary__psr">
-                <h2 class="tn-summary__heading">Problem <em>Fem systemer, ingen oversikt</em></h2>
+                <h2 class="tn-summary__heading">Problem <em>Ulike systemer, ingen oversikt</em></h2>
                 <p class="tn-summary__body">Driften var spredt over fem separate systemer, uten felles struktur.</p>
               </div>
               <div class="tn-summary__psr">
@@ -640,18 +645,17 @@
             <div class="tn-stmt__inner">
               <p class="tn-stmt__eyebrow">PROBLEM</p>
               <div class="tn-stmt__row">
-                <h2 class="tn-stmt__heading">Fem systemer, ingen oversikt.</h2>
+                <h2 class="tn-stmt__heading">Ulike systemer, ingen oversikt.</h2>
                 <div class="tn-stmt__prose">
-                  <p class="tn-stmt__lead">Vaktplanen lå i ett system, rutinene i Apple Notater, opplæringen i hodet til den som var på vakt.</p>
-                  <p>Intervjuet avdekket at driften var fordelt på fem ulike kanaler, uten noen felles struktur:</p>
+                  <p>Driften var spredt over ulike kanaler uten felles struktur:</p>
                   <ul>
-                    <li>Vaktplan i ett system</li>
-                    <li>Lønn og økonomi i et annet</li>
-                    <li>Internkommunikasjon i Messenger-grupper</li>
-                    <li>Rutiner i Apple Notater</li>
-                    <li>Opplæring gitt muntlig, fra vakt til vakt</li>
+                    <li><strong>Vaktplan:</strong> Eget system</li>
+                    <li><strong>Lønn/økonomi:</strong> Eget system</li>
+                    <li><strong>Kommunikasjon:</strong> Messenger-grupper</li>
+                    <li><strong>Rutiner:</strong> Apple Notater</li>
+                    <li><strong>Opplæring:</strong> Muntlig fra vakt til vakt</li>
                   </ul>
-                  <p>Med hyppig utskiftning av unge deltidsansatte ble viktig informasjon ofte borte i prosessen.</p>
+                  <p>Med hyppig utskiftning av unge deltidsansatte førte fragmenteringen til at viktig informasjon ofte gikk tapt.</p>
                 </div>
               </div>
             </div>
@@ -663,7 +667,7 @@
               <h2 class="tn-stmt__heading">Vi tegnet ingenting før funnene var kartlagt.</h2>
               <div class="tn-stmt__prose">
                 <p>Basert på ett intervju med reell driftsinnsikt (ikke antagelser), kartla vi funn i en affinity map og bygde hi-fi wireframes rundt to primærpersonas, Kari (erfaren) og Eirik (nyansatt).</p>
-                <p><a href="./assets/norvald/Endelig-rapport-informasjonsarkitektur.pdf" target="_blank" rel="noopener" style="text-decoration:underline; color:var(--tn-accent-text);">Les hele prosessrapporten →</a></p>
+                <p><a href="./tjonnasnorvald-prosess.html" style="text-decoration:underline; color:var(--tn-accent-text);">Les hele prosessrapporten →</a></p>
               </div>
             </div>
           </div>
@@ -675,8 +679,7 @@
             <div class="tn-stmt__row">
               <h2 class="tn-stmt__heading">Seks kjerneområder, én bunnavigasjon.</h2>
               <div class="tn-stmt__prose">
-                <p class="tn-stmt__lead">Sitemapet og bunnavigasjonen i appen har samme struktur, 1:1.</p>
-                <p>Sitemapet ble utarbeidet etter affinity-mappingen, hvor seks tematiske områder utkrystalliserte seg som kjernen i portalen. Strukturen speiler bunnavigasjonen i prototypen, slik at den mentale modellen brukeren bygger opp gjennom sitemapet matcher den faktiske appen 1:1.</p>
+                <p>Sitemapet ble basert på funn fra affinity-mappingen. Bunnavigasjonen speiler strukturen 1:1 for å gi en direkte og forutsigbar brukeropplevelse.</p>
               </div>
             </div>
             <figure class="tn-ia" data-reveal>
