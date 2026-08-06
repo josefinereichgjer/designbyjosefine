@@ -20,17 +20,62 @@
 
     .proj-section--lightgrey { background: #f2f2f2; }
 
-    /* Before/after */
-    .ev-before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
-    .ev-before-after__item { position: relative; overflow: hidden; }
-    .ev-before-after__label {
-      position: absolute; top: 16px; left: 16px;
-      font-size: 12px; letter-spacing: .12em; text-transform: uppercase;
-      font-weight: 600; color: #fff; background: rgba(0,0,0,0.55);
-      padding: 4px 10px;
+    /* Before/after drag-reveal comparison — sized to before-website.webp's own
+       aspect ratio (1467:816) so both images line up with no stretch. */
+    .ev-compare {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1467 / 816;
+      overflow: hidden;
+      background: #000;
     }
-    .ev-before-after img { width: 100%; height: auto; display: block; }
-    .ev-before-after__item:first-child img { width: 100%; height: 100%; object-fit: cover; object-position: left top; }
+    .ev-compare__img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+      -webkit-user-drag: none;
+      user-select: none;
+    }
+    .ev-compare__before { position: absolute; inset: 0; clip-path: inset(0 50% 0 0); }
+    .ev-compare__divider {
+      position: absolute; top: 0; bottom: 0; left: 50%;
+      width: 2px; background: rgba(255,255,255,0.9);
+      box-shadow: 0 0 0 1px rgba(0,0,0,.25);
+      transform: translateX(-1px);
+      pointer-events: none;
+    }
+    .ev-compare__handle {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #fff; color: #1a1a1a;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(0,0,0,.35);
+    }
+    .ev-compare__handle svg { width: 18px; height: 18px; }
+    .ev-compare__tag {
+      position: absolute; top: 16px;
+      font-family: var(--font-ui);
+      font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+      color: #fff; background: rgba(0,0,0,0.55);
+      padding: 5px 12px;
+      pointer-events: none;
+    }
+    .ev-compare__tag--before { left: 16px; }
+    .ev-compare__tag--after { right: 16px; }
+    .ev-compare__range {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; margin: 0;
+      -webkit-appearance: none; appearance: none;
+      background: transparent;
+      cursor: ew-resize;
+    }
+    .ev-compare__range::-webkit-slider-runnable-track { -webkit-appearance: none; background: transparent; height: 100%; }
+    .ev-compare__range::-webkit-slider-thumb { -webkit-appearance: none; width: 40px; height: 100%; background: transparent; cursor: ew-resize; }
+    .ev-compare__range::-moz-range-track { background: transparent; height: 100%; border: none; }
+    .ev-compare__range::-moz-range-thumb { width: 40px; height: 100%; background: transparent; border: none; cursor: ew-resize; }
+    .ev-compare__range:focus-visible ~ .ev-compare__divider .ev-compare__handle { outline: 2px solid #C9A84C; outline-offset: 2px; }
 
     /* Persona grid */
     .ev-persona-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
@@ -84,7 +129,6 @@
     .ev-handling__right {}
 
     @media (max-width: 700px) {
-      .ev-before-after { grid-template-columns: 1fr; }
       .ev-persona-grid { grid-template-columns: 1fr 1fr; }
       .ev-innsikt { grid-template-columns: 1fr; }
       .ev-innsikt__item { border-right: none; }
@@ -147,9 +191,9 @@
     .ev-scroll { background: #0d0d0d; padding: clamp(48px, 7vw, 96px) clamp(20px, 4vw, 60px); }
     .ev-scroll__grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.5fr 0.7fr;
       gap: clamp(32px, 5vw, 72px);
-      max-width: 1200px;
+      max-width: 1440px;
       margin: 0 auto;
     }
     .ev-scroll__sticky { position: sticky; top: 160px; align-self: start; height: fit-content; }
@@ -277,9 +321,19 @@
         <div class="proj-section proj-section--none" style="padding-bottom:5rem;">
           <h2 class="proj-section__heading" style="margin-bottom:2rem;">Introduksjon</h2>
           <div class="ev-intro-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,80px); align-items:start;">
-            <div style="position:relative;">
-              <span class="ev-before-after__label">Før</span>
-              <img src="./assets/prosess/before-website.webp" alt="Original nettside 2001" style="width:100%; display:block;" loading="lazy" class="ev-zoomable">
+            <div class="ev-compare" id="evCompare">
+              <img class="ev-compare__img" src="./assets/norvald/forsideemanuel.webp" alt="Redesignet forside">
+              <div class="ev-compare__before">
+                <img class="ev-compare__img" src="./assets/prosess/before-website.webp" alt="Original nettside, 2001">
+              </div>
+              <div class="ev-compare__divider">
+                <span class="ev-compare__handle" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 7-5 5 5 5M15 7l5 5-5 5"/></svg>
+                </span>
+              </div>
+              <span class="ev-compare__tag ev-compare__tag--before">Før</span>
+              <span class="ev-compare__tag ev-compare__tag--after">Etter</span>
+              <input type="range" class="ev-compare__range" min="0" max="100" value="50" aria-label="Dra for å sammenligne original og redesignet forside">
             </div>
             <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#444; margin:0;">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser — men den digitale tilstedeværelsen formidler ingenting av den. Den eksisterende nettsiden er bygget på en tabellbasert HTML-struktur uten mobiltilpasning, og innholdet er pakket inn på en måte som gjør det vanskelig å navigere både for vanlige brukere og for skjermlesere. Billettkjøp er outsourcet til LetsReg, og konsertinformasjonen er spredt mellom museets nettside, Facebook, LetsReg og Ticketmaster — så det å planlegge et besøk krever at brukeren hopper mellom flere kanaler. Den mørke, sanselige atmosfæren som definerer mausoleet er helt fraværende digitalt.</p>
           </div>
@@ -341,8 +395,8 @@
         <div class="ev-scroll__sticky">
           <div class="ev-scroll__frame">
             <img class="ev-zoomable ev-scroll__img is-active" data-step="0" src="./assets/prosess/brukerreise.webp" alt="Brukerreise – Se nærmere på Vita" loading="eager">
-            <img class="ev-zoomable ev-scroll__img" data-step="1" src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Book et besøk" loading="lazy">
-            <img class="ev-zoomable ev-scroll__img" data-step="2" src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Finn et arrangement" loading="lazy">
+            <img class="ev-zoomable ev-scroll__img" data-step="1" src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Book et besøk" loading="lazy">
+            <img class="ev-zoomable ev-scroll__img" data-step="2" src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Finn et arrangement" loading="lazy">
           </div>
         </div>
         <div class="ev-scroll__steps">
@@ -467,10 +521,6 @@
       <a href="./emanuel-vigeland-prosess.html" class="proj-prosess-btn">Se prosess →</a>
     </div>
 
-    <div class="proj-adjacent proj-adjacent--with-cards">
-      <a class="proj-adjacent__link" href="./reina-fruktgard.html"><span class="proj-adjacent__arrow" aria-hidden="true"></span><span class="proj-adjacent__text">Gå til Reina Fruktgård</span></a>
-      <a class="proj-adjacent__link" href="./tidsskrift.html"><span class="proj-adjacent__text">Gå til Tidsskrift</span><span class="proj-adjacent__arrow" aria-hidden="true"></span></a>
-    </div>
     <div class="proj-adjacent-cards">
       <a class="proj-adjacent-card proj-adjacent-card--prev" href="./reina-fruktgard.html">
         <img class="proj-adjacent-card__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="eager">
@@ -498,6 +548,22 @@
   </div>
 
   <script src="./projects.js?v=7"></script>
+  <script>
+    /* ── Before/after drag-reveal ── */
+    (function () {
+      var wrap = document.getElementById('evCompare');
+      if (!wrap) return;
+      var before = wrap.querySelector('.ev-compare__before');
+      var divider = wrap.querySelector('.ev-compare__divider');
+      var range = wrap.querySelector('.ev-compare__range');
+      function update(v) {
+        before.style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+        divider.style.left = v + '%';
+      }
+      range.addEventListener('input', function () { update(range.value); });
+      update(range.value);
+    }());
+  </script>
   <script>
     /* ── Lightbox ── */
     (function () {
