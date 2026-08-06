@@ -94,7 +94,7 @@
       align-items: center;
       gap: 10px;
       width: fit-content;
-      margin: clamp(48px, 7vh, 80px) auto 0;
+      margin: clamp(88px, 13vh, 150px) auto 0;
       text-decoration: none;
       color: var(--ink);
       opacity: 0.6;
@@ -109,8 +109,8 @@
       height: 28px;
       border: 1.5px solid var(--rule);
       border-radius: 8px;
-      font-size: 14px;
     }
+    .hero__scroll-cue-icon svg { display: block; }
     .hero__scroll-cue-label {
       font-family: "Inclusive Sans", "Avenir Next", sans-serif;
       font-size: 12px;
@@ -233,7 +233,12 @@
     </div>
 
     <a class="hero__scroll-cue" href="#work">
-      <span class="hero__scroll-cue-icon" aria-hidden="true">↕</span>
+      <span class="hero__scroll-cue-icon" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 5.5L7 2L11 5.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3 8.5L7 12L11 8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
       <span class="hero__scroll-cue-label">Scroll for å se arbeid</span>
     </a>
   </main>
@@ -246,7 +251,7 @@
         </a>
         <div class="work__content">
           <a class="work__title" href="./emanuel-vigeland.html">Emanuel Vigeland Museum</a>
-          <p class="work__desc">Redesignet nettside for museet, med fokus på formidling av kunstverkene og en enklere vei til billettkjøp og arrangementer.</p>
+          <p class="work__desc">Helhetlig UX/UI-redesign med vekt på sanselig stemningsformidling, informasjonsarkitektur og prototyping.</p>
           <p class="work__tags">UX ∙ Redesign</p>
         </div>
       </li>
@@ -256,7 +261,7 @@
         </a>
         <div class="work__content">
           <a class="work__title" href="./ansatts-portal.html">Tjønnås &amp; Norvald</a>
-          <p class="work__desc">Fem spredte systemer for vaktplan, kommunikasjon og opplæring samlet i én ansattportal, bygget rundt seks kjerneområder for både erfarne og nyansatte.</p>
+          <p class="work__desc">Informasjonsarkitektur og UI-design basert på brukerintervjuer, affinity-mapping og personadrevne scenarier.</p>
           <p class="work__tags">UX design ∙ Informasjonsarkitektur ∙ NTNU-prosjekt</p>
         </div>
       </li>
@@ -266,7 +271,7 @@
         </a>
         <div class="work__content">
           <a class="work__title" href="./we-visuell-profil.html">Stiftelsen WE</a>
-          <p class="work__desc">Strategisk visuell identitet for en stiftelse som styrker kvinners selvstendighet, bygget på SWOT-analyse og posisjonering mot lignende aktører.</p>
+          <p class="work__desc">Strategisk merkevareprosess fra ekspertintervjuer og konkurrentanalyse til komplett visuell identitet.</p>
           <p class="work__tags">Strategisk design ∙ Visuell identitet</p>
         </div>
       </li>

@@ -144,10 +144,10 @@
             <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="eager" decoding="async" draggable="false" src="./assets/reina.webp" alt="Reina Fruktgård — bilde 2"></figure>
             <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinalys.webp" alt="Reina Fruktgård — bilde 4"></figure>
     <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reiiiina.webp" alt="Reina Fruktgård — bilde 5"></figure>
-            <figure class="strip-ss__slide project__figure" style="position:relative;background:#e8ebf2;"><video src="./assets/Export_Video_2026-03-03.mp4" autoplay muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;"></video></figure>
+            <figure class="strip-ss__slide strip-ss__slide--video project__figure" style="position:relative;background:#e8ebf2;"><video src="./assets/Export_Video_2026-03-03.mp4" autoplay muted loop playsinline preload="none" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;"></video></figure>
             <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/sylt.webp" alt="Reina Fruktgård — sylteøl"></figure>
             <figure class="strip-ss__slide project__figure" style="cursor:zoom-in"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinafarget.webp" alt="Reina Fruktgård — fargebilde"></figure>
-            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in; background:#f5f3ef;"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinafruktgaardis.webp" alt="Reina Fruktgård — bilde 1" style="object-fit:contain;"></figure>
+            <figure class="strip-ss__slide project__figure" style="cursor:zoom-in; background:#f5f3ef;"><img loading="lazy" decoding="async" draggable="false" src="./assets/reinafruktgaardis.webp" alt="Reina Fruktgård — bilde 1"></figure>
           </div>
         </div>
       </div>
@@ -371,8 +371,12 @@
       viewport.addEventListener("mousemove", e => { if (!dragging) return; e.preventDefault(); if (Math.abs(e.pageX - viewport.offsetLeft - startX) > 4) didDrag = true; viewport.scrollLeft = scrollLeft - (e.pageX - viewport.offsetLeft - startX); });
       viewport.addEventListener("click", e => { if (didDrag) { e.stopPropagation(); didDrag = false; } });
       viewport.addEventListener("scroll", () => {
-        const w = slides[0]?.offsetWidth || 1;
-        current = Math.round(viewport.scrollLeft / w);
+        let closest = 0, closestDist = Infinity;
+        slides.forEach((s, i) => {
+          const dist = Math.abs(s.offsetLeft - viewport.scrollLeft);
+          if (dist < closestDist) { closestDist = dist; closest = i; }
+        });
+        current = closest;
         updateDots();
       }, { passive: true });
     })();
