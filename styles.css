@@ -2615,7 +2615,7 @@ a:hover{opacity:.75}
   .about-photo { width: 90%; max-width: 340px; }
   .bg__heading { font-size: 14px; }
   .bg__body { font-size: 14px; line-height: 1.6; }
-  .proj-sections .proj-section { padding: 52px 20px; }
+  .proj-sections .proj-section { padding: 52px 40px; }
   .proj-sections .proj-section--wide-mobile-pad { padding-left: 28px; padding-right: 28px; }
   .proj-steps-grid { gap: 12px; margin-top: 16px; }
   .process__images { grid-template-columns: 1fr; }
@@ -2955,7 +2955,7 @@ a:hover{opacity:.75}
   .proj-gallery__item { aspect-ratio: 3/2; }
   .proj-meta-fields { gap: 1rem; }
   .proj-section { padding: 3.5rem 20px; }
-  .proj-section__heading { margin-bottom: 2rem; }
+  .proj-section__heading { margin-bottom: 2rem; overflow-wrap: break-word; }
   .intro-cols { grid-template-columns: 1fr; gap: 28px; }
   /* Utility: collapse any inline grid to single column */
   .mob-stack { grid-template-columns: 1fr !important; }

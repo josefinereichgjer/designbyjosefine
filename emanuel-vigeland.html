@@ -142,6 +142,8 @@
       .ev-intro-grid { grid-template-columns: 1fr !important; }
       .ev-logo-two-col { grid-template-columns: 1fr !important; }
       .ev-reflect-grid { grid-template-columns: 1fr !important; }
+      /* Før/etter-tag overlapper skjermbildenes egne header-ikoner på mobil (kort boks) — flytt til bunn */
+      .ev-compare__tag { top: auto; bottom: 12px; }
       .ev-logo-grid { grid-template-columns: 1fr !important; }
       .ev-logo-grid > span { text-align: center; transform: rotate(90deg); display: block; }
       .ev-burger-grid img { width: 55% !important; }
@@ -219,14 +221,28 @@
     .ev-scroll__step.is-active { opacity: 1; }
     .ev-scroll__num { font-size: 13px; letter-spacing: 0.14em; color: #C9A84C; margin: 0 0 0.75rem; }
     .ev-scroll__desc { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.7; color: #c2c2c2; margin-top: 0.75rem; }
+    .ev-scroll__step-frame { display: none; }
     @media (prefers-reduced-motion: reduce) {
       .ev-scroll__step, .ev-scroll__img { transition: none; }
     }
     @media (max-width: 800px) {
+      /* Sticky pinned-image + huge scroll gaps only works as a 2-column layout —
+         collapsed to one column the image stays pinned across the whole grid and
+         overlaps the step text scrolling underneath it. Drop the pin on mobile. */
       .ev-scroll__grid { grid-template-columns: 1fr; }
-      .ev-scroll__sticky { top: 100px; }
-      .ev-scroll__frame { aspect-ratio: 4 / 3; }
-      .ev-scroll__steps { gap: 30vh; padding: 4vh 0; }
+      .ev-scroll__sticky { display: none; }
+      .ev-scroll__steps { gap: 48px; padding: 0; }
+      .ev-scroll__step { opacity: 1; }
+      .ev-scroll__step-frame {
+        display: block;
+        position: relative;
+        aspect-ratio: 4 / 3;
+        background: #000;
+        border: 1px solid rgba(255,255,255,0.14);
+        overflow: hidden;
+        margin: 16px 0;
+      }
+      .ev-scroll__step-frame img { width: 100%; height: 100%; object-fit: contain; display: block; }
     }
 
     /* ── Lightbox ── */
@@ -335,7 +351,7 @@
               <span class="ev-compare__tag ev-compare__tag--after">Etter</span>
               <input type="range" class="ev-compare__range" min="0" max="100" value="50" aria-label="Dra for å sammenligne original og redesignet forside">
             </div>
-            <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#444; margin:0;">Emanuel Vigeland Museum har en av Oslos sterkeste fysiske opplevelser — men den digitale tilstedeværelsen formidler ingenting av den. Den eksisterende nettsiden er bygget på en tabellbasert HTML-struktur uten mobiltilpasning, og innholdet er pakket inn på en måte som gjør det vanskelig å navigere både for vanlige brukere og for skjermlesere. Billettkjøp er outsourcet til LetsReg, og konsertinformasjonen er spredt mellom museets nettside, Facebook, LetsReg og Ticketmaster — så det å planlegge et besøk krever at brukeren hopper mellom flere kanaler. Den mørke, sanselige atmosfæren som definerer mausoleet er helt fraværende digitalt.</p>
+            <p style="font-size:clamp(15px,1.4vw,18px); line-height:1.8; color:#444; margin:0;">Emanuel Vigeland Museum byr på en av Oslos sterkeste fysiske opplevelser, men den digitale tilstedeværelsen yter den ikke rettferdighet. Den eksisterende nettsiden har utdatert HTML-struktur, mangler mobiltilpasning og er vanskelig å navigere for både vanlige brukere og skjermlesere. Billettkjøp og konsertinformasjon er spredt over Facebook, LetsReg og Ticketmaster, noe som gjør besøksplanleggingen uoversiktlig. I tillegg mangler nettsiden den mørke, sanselige atmosfæren som kjennetegner mausoleet.</p>
           </div>
         </div>
       </div>
@@ -403,16 +419,19 @@
           <div class="ev-scroll__step is-active" data-step="0">
             <p class="ev-scroll__num">01 / 03</p>
             <h2 class="proj-section__heading" style="color:#fff;">Utforsk Emmanuels verk</h2>
+            <div class="ev-scroll__step-frame"><img class="ev-zoomable" src="./assets/prosess/brukerreise.webp" alt="Brukerreise – Se nærmere på Vita" loading="lazy"></div>
             <p class="ev-scroll__desc">Brukeren utforsker et av museets hovedverk.</p>
           </div>
           <div class="ev-scroll__step" data-step="1">
             <p class="ev-scroll__num">02 / 03</p>
             <h2 class="proj-section__heading" style="color:#fff;">Book et besøk</h2>
+            <div class="ev-scroll__step-frame"><img class="ev-zoomable" src="./assets/norvald/Brukerreise-03.webp" alt="Brukerreise – Book et besøk" loading="lazy"></div>
             <p class="ev-scroll__desc">Brukeren kjøper en honnørbillett.</p>
           </div>
           <div class="ev-scroll__step" data-step="2">
             <p class="ev-scroll__num">03 / 03</p>
             <h2 class="proj-section__heading" style="color:#fff;">Finn et arrangement</h2>
+            <div class="ev-scroll__step-frame"><img class="ev-zoomable" src="./assets/norvald/Brukerreise-04.webp" alt="Brukerreise – Finn et arrangement" loading="lazy"></div>
             <p class="ev-scroll__desc">Brukeren finner og leser om en kommende konsert.</p>
           </div>
         </div>
