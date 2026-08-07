@@ -282,6 +282,29 @@
 
     /* Mobile metadata footer — styles in styles.css (.proj-meta-footer) */
 
+    /* ── Brukertesting / funn — same eyebrow→heading→offset-column and
+       icon→label→heading→body patterns as ansatts-portal's TESTING/LÆRINGER
+       sections, re-skinned with this page's own dark tokens (var(--font-display),
+       var(--font-ui), #C9A84C accent) instead of introducing new ones. */
+    .ev-test { padding: clamp(48px,7vw,96px) clamp(20px,4vw,60px) clamp(64px,9vw,120px); background:#0b0b0b; }
+    .ev-test__inner { max-width: 920px; margin: 0 auto; }
+    .ev-test__eyebrow { font-family: var(--font-ui); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: #C9A84C; margin: 0 0 24px; }
+    .ev-test__eyebrow--center { text-align: center; }
+    .ev-test__heading { font-family: var(--font-display); font-weight: 400; font-size: clamp(24px,2.6vw,36px); line-height: 1.12; letter-spacing: -0.015em; color: #fff; text-align: center; margin: 0 auto 32px; text-wrap: balance; }
+    .ev-test__prose { max-width: 62ch; margin: 0 auto; font-family: var(--font-ui); font-size: 1rem; line-height: 1.65; color: #c2c2c2; }
+    .ev-test__prose p { margin: 0 0 12px; }
+    .ev-test__prose p:last-child { margin-bottom: 0; }
+    .ev-findings { padding: clamp(64px,9vw,120px) clamp(20px,4vw,60px) clamp(56px,8vw,112px); background: #0b0b0b; }
+    .ev-findings__inner { max-width: 1100px; margin: 0 auto; }
+    .ev-findings__row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: clamp(28px,4vw,56px); }
+    .ev-findings__icon { width: 40px; height: 40px; color: #C9A84C; margin: 0 0 20px; display: block; }
+    .ev-findings__label { font-family: var(--font-ui); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: #C9A84C; margin: 0 0 14px; }
+    .ev-findings__title { font-family: var(--font-display); font-weight: 400; font-size: clamp(22px,2.2vw,30px); line-height: 1.2; color: #fff; margin: 0 0 12px; text-wrap: balance; }
+    .ev-findings__body { font-family: var(--font-ui); font-size: 1rem; line-height: 1.65; color: #c2c2c2; margin: 0; }
+    @media (max-width: 768px) {
+      .ev-findings__row { grid-template-columns: 1fr; gap: 36px; }
+    }
+
     @media print {
       .ev-logo-appear { opacity: 1 !important; transform: none !important; }
       #tov-heading, #tov-text, #sv-heading, #sv-text { opacity: 1 !important; }
@@ -488,6 +511,45 @@
             loading="lazy"
             allowfullscreen>
           </iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRUKERTESTING / FUNN -->
+    <section aria-label="Brukertesting">
+      <div class="ev-test">
+        <div class="ev-test__inner">
+          <p class="ev-test__eyebrow ev-test__eyebrow--center">BRUKERTESTING</p>
+          <h3 class="ev-test__heading">Vi testet på <strong>ni deltakere</strong>.</h3>
+          <div class="ev-test__prose">
+            <p>Deltakerne fikk tre oppgaver: finne informasjon om hovedverket Vita, kjøpe honnørbillett fra mobil, og finne en kommende konsert. Vi testet underveis i prosessen, slik at funnene kunne tas med inn i siste iterasjon.</p>
+            <p>Utvalget bestod av tre grupper: to deltakere over 65 som representerte museets faktiske publikum og målgruppen for honnørbillett, fire deltakere uten forkunnskap om prosjektet, og tre medstudenter som fagfellevurderte komponenter og lesbarhet.</p>
+          </div>
+        </div>
+      </div>
+      <div class="ev-findings">
+        <div class="ev-findings__inner">
+          <p class="ev-test__eyebrow">FUNN</p>
+          <div class="ev-findings__row">
+            <div>
+              <svg class="ev-findings__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true"><rect width="256" height="256" fill="none"/><circle cx="200" cy="200" r="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M72,56h96a32,32,0,0,1,0,64H72a40,40,0,0,0,0,80H176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+              <p class="ev-findings__label">NAVIGASJON</p>
+              <h3 class="ev-findings__title">Færre steg til betaling.</h3>
+              <p class="ev-findings__body">Booking-flyten krevde for mange klikk og ga lite oversikt. Vi reduserte antall steg og samlet primærhandlingene på én tydelig, gul fullbredde-knapp («Book nå» og «Betal»). Gult er reservert for primærhandlinger, noe som gir høy kontrast og et forutsigbart mønster på tvers av flatene.</p>
+            </div>
+            <div>
+              <svg class="ev-findings__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true"><rect width="256" height="256" fill="none"/><rect x="32" y="48" width="192" height="160" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><circle cx="92" cy="100" r="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/><path d="M32,164l40-40a8,8,0,0,1,11.31,0L128,169.37,180.69,116.69a8,8,0,0,1,11.31,0L224,148" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+              <p class="ev-findings__label">INNHOLD</p>
+              <h3 class="ev-findings__title">De ville se kunsten først.</h3>
+              <p class="ev-findings__body">Deltakerne søkte mot verkene før de lette etter praktisk informasjon. Vi la derfor inn en forhåndsvisning av utvalgte verk direkte på forsiden, mens det fullstendige galleriet ligger ett nivå ned i hovednavigasjonen. Forsiden gir stemningen umiddelbart; galleriet gir dybden til dem som vil ha den.</p>
+            </div>
+            <div>
+              <svg class="ev-findings__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" aria-hidden="true"><rect width="256" height="256" fill="none"/><path d="M32,56H224l-72,88v64l-48,24V144Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16"/></svg>
+              <p class="ev-findings__label">BEGRENSNINGER</p>
+              <h3 class="ev-findings__title">Utvalget var smalt.</h3>
+              <p class="ev-findings__body">Deltakerne ble rekruttert fra nærmiljø og klasse, og tre av dem kjente prosjektet fra før. Det gjør funnene retningsgivende, ikke representative. Testing på faktiske museumsbesøkende og på deltakere med syns- eller motoriske utfordringer ville gitt sterkere grunnlag, særlig for den mørke visuelle stilen.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
