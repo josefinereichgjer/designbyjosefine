@@ -104,8 +104,8 @@
   /* Geometric/hard direction (2026-07-28) — nav + motion tokens, used site-wide */
   --ink: #14120f;
   --paper: #faf8f4;
-  --accent: #5a2ea6;
-  --accent-soft: #b48de8;
+  --accent: #25499d;
+  --accent-soft: #7898e3;
   --rule: rgba(20, 18, 15, 0.5);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --font-display: "Averia Serif Libre", Georgia, serif;
@@ -232,7 +232,7 @@ a:hover{opacity:.75}
   text-transform:uppercase;
   color:#fff;
 }
-.nav__link--personal { margin-top: 20px; color: #b48de8; opacity: 1; }
+.nav__link--personal { margin-top: 20px; color: #7898e3; opacity: 1; }
 
 .nav__link:hover { opacity: 0.7; }
 
@@ -2533,7 +2533,7 @@ a:hover{opacity:.75}
     border-radius: 0;
     transition: transform 0.3s ease, opacity 0.2s ease, background 0.2s ease;
   }
-  .sidebar--open .hamburger-line { background: #b48de8; }
+  .sidebar--open .hamburger-line { background: #7898e3; }
   .sidebar--open .hamburger-line:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .sidebar--open .hamburger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .sidebar--open .hamburger-line:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
