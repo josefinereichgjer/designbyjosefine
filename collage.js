@@ -14,7 +14,7 @@
     { src: './assets/reinalys.webp',                       alt: 'Reina Fruktgård',       href: './reina-fruktgard.html',       opacity: 0.62 },
     { src: './assets/lillawenettside.webp',                alt: 'Stiftelsen WE',         href: './we-visuell-profil.html',     opacity: 0.62 },
     { src: './assets/scenebok.webp',                       alt: 'Bokomslag',             href: './bokomslag.html',             opacity: 0.62 },
-    { src: './assets/tjonnipadiphone.webp',                alt: 'Tjønnås og Norvald',    href: './ansatts-portal.html',        opacity: 0.62 },
+    { src: './assets/norvald-iphone.webp',                alt: 'Tjønnås og Norvald',    href: './ansatts-portal.html',        opacity: 0.62 },
     { src: './stoppestedet/images/storefrontstoppis.webp', alt: 'Stoppestedet',          href: './stoppestedet.html',          opacity: 0.62 },
     { src: './assets/krit.webp',                           alt: 'Tidsskrift',            href: './tidsskrift.html',            opacity: 0.62 },
   ];

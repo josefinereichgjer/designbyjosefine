@@ -387,6 +387,10 @@
     /* Flow line used inside the Design 2/3 and 3/3 spec lists (e.g. "Login → Hjem → Kalender → Vaktdetaljer") */
     .tn-design__flow { font-family: var(--tn-sans); font-size: var(--t-meta); font-weight: 500; text-transform: uppercase; letter-spacing: 0.14em; color: var(--tn-ink-faint); margin: 0 0 14px; }
 
+    /* "Se prosess" button — page's own beige (var(--mandel)) instead of the site default black */
+    .proj-prosess-btn { color: var(--tn-ink); border-color: var(--mandel); }
+    .proj-prosess-btn:hover { background: var(--mandel); color: var(--tn-ink); }
+
     /* IA diagram — editorial figure, not UI. Type and whitespace carry the
        structure; the only lines are the ones encoding a real relationship
        (the login-gate rule + the six stubs dropping into each column). */

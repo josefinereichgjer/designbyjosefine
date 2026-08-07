@@ -2812,12 +2812,13 @@ a:hover{opacity:.75}
 }
 .proj-prosess-btn {
   display: inline-block;
-  font-size: 13px;
+  font-size: 12px;
   letter-spacing: 0.13em;
   text-transform: uppercase;
   color: #1a1a1a;
   border: 1.5px solid currentColor;
-  padding: 14px 28px;
+  border-radius: 999px;
+  padding: 10px 22px;
   text-decoration: none;
   white-space: nowrap;
   transition: background 0.2s, color 0.2s;

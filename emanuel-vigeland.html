@@ -305,6 +305,10 @@
       .ev-findings__row { grid-template-columns: 1fr; gap: 36px; }
     }
 
+    /* "Se prosess" button — sits on the black team-section background, so it needs a white outline instead of the site default black */
+    .proj-prosess-btn { color: #fff; border-color: #fff; }
+    .proj-prosess-btn:hover { background: #fff; color: #000; }
+
     @media print {
       .ev-logo-appear { opacity: 1 !important; transform: none !important; }
       #tov-heading, #tov-text, #sv-heading, #sv-text { opacity: 1 !important; }
@@ -599,7 +603,7 @@
       </div>
     </div>
 
-    <div style="padding: 2.5rem clamp(20px,4vw,60px); display:flex; justify-content:center;">
+    <div style="background:#0d0d0d; padding: 2.5rem clamp(20px,4vw,60px); display:flex; justify-content:center;">
       <a href="./emanuel-vigeland-prosess.html" class="proj-prosess-btn">Se prosess →</a>
     </div>
 
