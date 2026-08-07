@@ -375,6 +375,8 @@
       .tn-stmt__row { grid-template-columns: 1fr; }
       .tn-stmt__row > .tn-stmt__heading { grid-column: 1; max-width: 28ch; }
       .tn-stmt__row > .tn-stmt__prose { grid-column: 1; max-width: 100%; }
+      .tn-quote { padding-bottom: 6px; }
+      .tn-quote__text { padding: 16px 16px 18px; }
     }
 
     /* Flow line used inside the Design 2/3 and 3/3 spec lists (e.g. "Login → Hjem → Kalender → Vaktdetaljer") */
@@ -431,20 +433,23 @@
     }
     .tn-ia__children { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
     .tn-ia__children li { font-family: var(--tn-sans); font-size: var(--t-body); line-height: 1.4; color: var(--tn-ink-muted); }
+    /* Mobile: the rule+stub construction only reads across six aligned columns, so rather than
+       reflowing it into a stack (which loses the tree structure), render the real desktop layout
+       at its native width and zoom the whole figure down — crisp text, pinch-zoomable, not a raster
+       image. `zoom` (not transform:scale) is used deliberately so the box's layout size actually
+       shrinks with it — no hand-measured height hack that can drift out of sync with real content.
+       The wrapper bleeds past .tn-stmt's own side padding and flex-centers the zoomed figure, so it
+       reads as a full-width, centered strip rather than sitting inside the narrower text column. */
     @media (max-width: 720px) {
-      /* The rule+stub construction only reads across six aligned columns —
-         swap to a plain 2-col grid rather than shrinking it. */
-      .tn-ia__rule { display: none; }
-      .tn-ia__login::after { display: none; }
-      .tn-ia__login { margin-bottom: 28px; }
-      .tn-ia__grid { grid-template-columns: repeat(2, minmax(0,1fr)); gap: 32px 24px; }
-      .tn-ia__col { padding-top: 0; }
-      .tn-ia__col::before { display: none; }
+      .tn-ia-scale {
+        margin-inline: calc(-1 * clamp(1.25rem, 5vw, 5rem));
+        display: flex;
+        justify-content: center;
+      }
+      .tn-ia { width: 640px; zoom: 0.673; }
     }
     @media (max-width: 430px) {
-      .tn-ia__grid { grid-template-columns: 1fr; gap: 0; }
-      .tn-ia__col { padding: 16px 0 16px 16px; border-left: 1px solid var(--tn-hairline); }
-      .tn-ia__col:first-child { padding-top: 0; }
+      .tn-ia { zoom: 0.5625; }
     }
 
     /* Scroll-driven drop-in + float-up — pure CSS (animation-timeline: view()), no JS. Degrades to fully visible where unsupported. */
@@ -637,7 +642,6 @@
                   <img src="./assets/norvald/marimette.webp" alt="Mari-Mette bak disken hos Norvald" loading="lazy" decoding="async">
                   <blockquote class="tn-quote__text">
                     «Driften er avhengig av flere separate systemer, noe som gjør kommunikasjon, vaktplanlegging og opplæring unødvendig tidkrevende.»
-                    <footer class="tn-quote__attr">Mari-Mette, daglig leder</footer>
                   </blockquote>
                 </div>
                 <figcaption class="tn-fig-caption">Mari-Mette driver begge stedene med samme ledelse.</figcaption>
@@ -686,6 +690,7 @@
                 <p>Sitemapet ble basert på funn fra affinity-mappingen. Bunnavigasjonen speiler strukturen 1:1 for å gi en direkte og forutsigbar brukeropplevelse.</p>
               </div>
             </div>
+            <div class="tn-ia-scale">
             <figure class="tn-ia" data-reveal>
               <p class="tn-ia__login">Logg inn</p>
               <div class="tn-ia__rule" aria-hidden="true"></div>
@@ -734,6 +739,7 @@
                 </div>
               </div>
             </figure>
+            </div>
           </div>
         </section>
 
