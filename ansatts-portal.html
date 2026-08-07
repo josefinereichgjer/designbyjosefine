@@ -357,7 +357,7 @@
       font-weight: 400;
       line-height: 1.35;
       color: #fff;
-      text-align: center;
+      text-align: right;
       text-shadow: 0 2px 14px rgba(0,0,0,.5);
     }
     .tn-quote__attr {
@@ -377,6 +377,11 @@
       .tn-stmt__row > .tn-stmt__prose { grid-column: 1; max-width: 100%; }
       .tn-quote { padding-bottom: 6px; }
       .tn-quote__text { padding: 16px 16px 18px; }
+    }
+    /* Narrower wrap on desktop only, so the right-aligned quote doesn't leave a single short
+       word orphaned on its own last line. */
+    @media (min-width: 901px) {
+      .tn-quote__text { max-width: 36ch; }
     }
 
     /* Flow line used inside the Design 2/3 and 3/3 spec lists (e.g. "Login → Hjem → Kalender → Vaktdetaljer") */
@@ -443,10 +448,11 @@
     @media (max-width: 720px) {
       .tn-ia-scale {
         margin-inline: calc(-1 * clamp(1.25rem, 5vw, 5rem));
+        margin-block: 40px 48px;
         display: flex;
         justify-content: center;
       }
-      .tn-ia { width: 640px; zoom: 0.673; }
+      .tn-ia { width: 640px; zoom: 0.673; margin: 0; }
     }
     @media (max-width: 430px) {
       .tn-ia { zoom: 0.5625; }
@@ -668,19 +674,6 @@
               </div>
             </div>
           </section>
-        <section class="tn-stmt">
-          <div class="tn-stmt__inner">
-            <p class="tn-stmt__eyebrow">PROSESS</p>
-            <div class="tn-stmt__row">
-              <h2 class="tn-stmt__heading">Vi tegnet ingenting før funnene var kartlagt.</h2>
-              <div class="tn-stmt__prose">
-                <p>Basert på ett intervju med reell driftsinnsikt (ikke antagelser), kartla vi funn i en affinity map og bygde hi-fi wireframes rundt to primærpersonas, Kari (erfaren) og Eirik (nyansatt).</p>
-                <p><a href="./tjonnasnorvald-prosess.html" style="text-decoration:underline; color:var(--tn-accent-text);">Les hele prosessrapporten →</a></p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         <section class="tn-stmt">
           <div class="tn-stmt__inner">
             <p class="tn-stmt__eyebrow">INFORMASJONSARKITEKTUR</p>
