@@ -27,8 +27,8 @@
 
     /* ── Hero ── */
     .hero {
-      min-height: 100svh;
-      padding: calc(80px + clamp(28px, 6vh, 64px)) clamp(20px, 6vw, 72px) clamp(48px, 6vh, 80px);
+      min-height: 88svh;
+      padding: calc(80px + clamp(24px, 5vh, 48px)) clamp(20px, 6vw, 72px) clamp(32px, 4vh, 56px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -76,7 +76,7 @@
       letter-spacing: -0.01em;
       text-transform: none;
       color: var(--ink);
-      max-width: 18ch;
+      max-width: 30ch;
       margin-inline: auto;
     }
     .hero__name-line {
@@ -87,6 +87,11 @@
       display: block;
       animation-delay: 0.12s;
     }
+    .hero__name-line span.hero__name-mobile { display: none; }
+    @media (max-width: 700px) {
+      .hero__name-line span.hero__name-desktop { display: none; }
+      .hero__name-line span.hero__name-mobile { display: inline; }
+    }
 
     /* ── Scroll cue ── */
     .hero__scroll-cue {
@@ -95,7 +100,7 @@
       align-items: center;
       gap: 10px;
       width: fit-content;
-      margin: clamp(88px, 13vh, 150px) auto 0;
+      margin: clamp(40px, 6vh, 64px) auto 0;
       text-decoration: none;
       color: var(--ink);
       opacity: 0.6;
@@ -120,12 +125,68 @@
       text-transform: uppercase;
     }
 
-    /* ── Work list ── */
-    .work {
-      padding: clamp(48px, 8vh, 96px) clamp(20px, 6vw, 72px) clamp(64px, 10vh, 120px);
-      max-width: 1080px;
+    /* ── Featured work (top 3) — large full-bleed rows; this is the lead content,
+       so it gets the biggest visual weight on the page. Sits directly under the
+       hero, id="work" lives here so the scroll cue lands on it. ── */
+    .featured {
+      padding: clamp(16px, 3vh, 32px) clamp(20px, 6vw, 72px) clamp(52px, 8vh, 94px);
+      max-width: 1044px;
       margin: 0 auto;
     }
+    .featured__list { list-style: none; }
+    .featured__item {
+      padding: clamp(43px, 6.3vh, 79px) 0;
+      border-top: 1px solid var(--rule);
+    }
+    .featured__item:first-child { padding-top: 0; border-top: none; }
+    .featured__media {
+      display: block;
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      background: var(--rule);
+      margin-bottom: clamp(18px, 2.7vh, 29px);
+    }
+    .featured__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s var(--ease, ease);
+    }
+    .featured__item:hover .featured__media img { transform: scale(1.025); }
+    .featured__body { max-width: 640px; }
+    .featured__title {
+      display: inline-block;
+      font-family: "Averia Serif Libre", Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(25px, 3.06vw, 38px);
+      color: var(--ink);
+      text-decoration: none;
+      margin-bottom: 12px;
+      transition: opacity 0.15s;
+    }
+    .featured__title:hover { opacity: 0.6; }
+    .featured__desc {
+      font-family: "Inclusive Sans", "Avenir Next", sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+      opacity: 0.75;
+      max-width: 60ch;
+      margin-bottom: 12px;
+    }
+    .featured__tags {
+      font-family: "Inclusive Sans", "Avenir Next", sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    /* ── Secondary work list (the rest) — compact, de-emphasised. Sits inside
+       .more-work's own container below, so no block-level wrapper of its own. ── */
     .work__list {
       list-style: none;
     }
@@ -183,14 +244,29 @@
     }
 
     @media (max-width: 640px) {
-      .work__item { flex-direction: column; align-items: stretch; gap: 18px; }
-      .work__media { flex-basis: auto; aspect-ratio: 16 / 10; }
+      /* Two rows of two instead of a four-row single-column stack */
+      .work__list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 16px;
+      }
+      .work__item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 0;
+        border-top: none;
+      }
+      .work__item:last-child { border-bottom: none; }
+      .work__media { flex-basis: auto; aspect-ratio: 1 / 1; }
+      .work__title { font-size: 17px; margin-bottom: 4px; }
+      .work__tags { font-size: 10px; }
     }
 
-    /* ── More work — reuses the shared .masonry/.card component from styles.css ── */
+    /* ── More work — compact .work__list, de-emphasised vs. .featured above ── */
     .more-work {
       padding: 0 clamp(20px, 6vw, 72px) clamp(64px, 10vh, 120px);
-      max-width: 1200px;
+      max-width: 1080px;
       margin: 0 auto;
     }
     .more-work__label {
@@ -228,7 +304,7 @@
       <div class="hero__text">
         <p class="hero__eyebrow rise">Grafisk &amp; UX/UI-designer</p>
         <h1 class="hero__name">
-          <span class="hero__name-line"><span class="rise">Designer som former meningsfulle opplevelser gjennom visuelle identiteter og digitalt design.</span></span>
+          <span class="hero__name-line"><span class="rise"><span class="hero__name-desktop">Designer som former<br>meningsfulle opplevelser<br>gjennom visuelle identiteter<br>og digitalt design.</span><span class="hero__name-mobile" aria-hidden="true">Designer som<br>former meningsfulle<br>opplevelser gjennom<br>visuelle identiteter<br>og digitalt design.</span></span></span>
         </h1>
       </div>
     </div>
@@ -244,36 +320,36 @@
     </a>
   </main>
 
-  <section class="work" id="work">
-    <ol class="work__list">
-      <li class="work__item">
-        <a class="work__media" href="./emanuel-vigeland.html" tabindex="-1" aria-hidden="true">
-          <img src="./assets/norvald/homepage-em.webp" alt="" loading="lazy" decoding="async">
+  <section class="featured" id="work">
+    <ol class="featured__list">
+      <li class="featured__item">
+        <a class="featured__media" href="./emanuel-vigeland.html" tabindex="-1" aria-hidden="true">
+          <img src="./assets/norvald/homepage-em.webp" alt="" loading="eager" decoding="async">
         </a>
-        <div class="work__content">
-          <a class="work__title" href="./emanuel-vigeland.html">Emanuel Vigeland Museum</a>
-          <p class="work__desc">Helhetlig UX/UI-redesign med vekt på sanselig stemningsformidling, informasjonsarkitektur og prototyping.</p>
-          <p class="work__tags">UX ∙ Redesign</p>
+        <div class="featured__body">
+          <a class="featured__title" href="./emanuel-vigeland.html">Emanuel Vigeland Museum</a>
+          <p class="featured__desc">Helhetlig UX/UI-redesign med vekt på sanselig stemningsformidling, informasjonsarkitektur og prototyping.</p>
+          <p class="featured__tags">UX ∙ Redesign</p>
         </div>
       </li>
-      <li class="work__item">
-        <a class="work__media" href="./ansatts-portal.html" tabindex="-1" aria-hidden="true">
+      <li class="featured__item">
+        <a class="featured__media" href="./ansatts-portal.html" tabindex="-1" aria-hidden="true">
           <img src="./assets/herotjonn.webp" alt="" loading="lazy" decoding="async">
         </a>
-        <div class="work__content">
-          <a class="work__title" href="./ansatts-portal.html">Tjønnås &amp; Norvald</a>
-          <p class="work__desc">Informasjonsarkitektur og UI-design basert på brukerintervjuer, affinity-mapping og personadrevne scenarier.</p>
-          <p class="work__tags">UX design ∙ Informasjonsarkitektur ∙ NTNU-prosjekt</p>
+        <div class="featured__body">
+          <a class="featured__title" href="./ansatts-portal.html">Tjønnås &amp; Norvald</a>
+          <p class="featured__desc">Informasjonsarkitektur og UI-design basert på brukerintervjuer, affinity-mapping og personadrevne scenarier.</p>
+          <p class="featured__tags">UX design ∙ Informasjonsarkitektur ∙ NTNU-prosjekt</p>
         </div>
       </li>
-      <li class="work__item">
-        <a class="work__media" href="./we-visuell-profil.html" tabindex="-1" aria-hidden="true">
+      <li class="featured__item">
+        <a class="featured__media" href="./we-visuell-profil.html" tabindex="-1" aria-hidden="true">
           <img src="./assets/laptop-mockup.webp" alt="" loading="lazy" decoding="async">
         </a>
-        <div class="work__content">
-          <a class="work__title" href="./we-visuell-profil.html">Stiftelsen WE</a>
-          <p class="work__desc">Strategisk merkevareprosess fra ekspertintervjuer og konkurrentanalyse til komplett visuell identitet.</p>
-          <p class="work__tags">Strategisk design ∙ Visuell identitet</p>
+        <div class="featured__body">
+          <a class="featured__title" href="./we-visuell-profil.html">Stiftelsen WE</a>
+          <p class="featured__desc">Strategisk merkevareprosess fra ekspertintervjuer og konkurrentanalyse til komplett visuell identitet.</p>
+          <p class="featured__tags">Strategisk design ∙ Visuell identitet</p>
         </div>
       </li>
     </ol>
@@ -281,36 +357,44 @@
 
   <section class="more-work">
     <p class="more-work__label">Flere prosjekter</p>
-    <div class="masonry masonry--craft">
-      <a class="card card--visible" href="./tidsskrift.html">
-        <div class="card__img-wrap"><img class="card__img" src="./assets/krit1.webp" alt="Tidsskrift" loading="lazy" decoding="async"></div>
-        <div class="card__caption">
-          <p class="card__title">KRIT Litteraturtidsskrift</p>
-          <p class="card__tags">Redaksjonell design</p>
+    <ol class="work__list">
+      <li class="work__item">
+        <a class="work__media" href="./reina-fruktgard.html" tabindex="-1" aria-hidden="true">
+          <img src="./assets/reinalys.webp" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="work__content">
+          <a class="work__title" href="./reina-fruktgard.html">Reina Fruktgård</a>
+          <p class="work__tags">Emballasjedesign</p>
         </div>
-      </a>
-      <a class="card card--visible" href="./reina-fruktgard.html">
-        <div class="card__img-wrap"><img class="card__img" src="./assets/reinalys.webp" alt="Reina Fruktgård" loading="lazy" decoding="async"></div>
-        <div class="card__caption">
-          <p class="card__title">Reina Fruktgård</p>
-          <p class="card__tags">Emballasjedesign</p>
+      </li>
+      <li class="work__item">
+        <a class="work__media" href="./tidsskrift.html" tabindex="-1" aria-hidden="true">
+          <img src="./assets/krit1.webp" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="work__content">
+          <a class="work__title" href="./tidsskrift.html">KRIT Litteraturtidsskrift</a>
+          <p class="work__tags">Redaksjonell design</p>
         </div>
-      </a>
-      <a class="card card--visible" href="./stoppestedet.html">
-        <div class="card__img-wrap"><img class="card__img" src="./stopp/assets/stoppis-shirt.webp" alt="Stoppestedet" loading="lazy" decoding="async"></div>
-        <div class="card__caption">
-          <p class="card__title">Stoppestedet</p>
-          <p class="card__tags">Visuell identitet &amp; nettside</p>
+      </li>
+      <li class="work__item">
+        <a class="work__media" href="./stoppestedet.html" tabindex="-1" aria-hidden="true">
+          <img src="./stopp/assets/stoppis-shirt.webp" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="work__content">
+          <a class="work__title" href="./stoppestedet.html">Stoppestedet</a>
+          <p class="work__tags">Visuell identitet &amp; nettside</p>
         </div>
-      </a>
-      <a class="card card--visible" href="./bokomslag.html">
-        <div class="card__img-wrap"><img class="card__img" src="./assets/blaa.webp" alt="Bokomslag" loading="lazy" decoding="async"></div>
-        <div class="card__caption">
-          <p class="card__title">Bokomslag</p>
-          <p class="card__tags">Redaksjonell design</p>
+      </li>
+      <li class="work__item">
+        <a class="work__media" href="./bokomslag.html" tabindex="-1" aria-hidden="true">
+          <img src="./assets/blaa.webp" alt="" loading="lazy" decoding="async">
+        </a>
+        <div class="work__content">
+          <a class="work__title" href="./bokomslag.html">Bokomslag</a>
+          <p class="work__tags">Redaksjonell design</p>
         </div>
-      </a>
-    </div>
+      </li>
+    </ol>
   </section>
 
   <script>

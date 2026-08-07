@@ -475,40 +475,6 @@
       100% { opacity: 0.15; transform: translateY(-70px); }
     }
 
-    /* Floating pill nav — scoped to this page only; the shared .proj-header stays untouched elsewhere */
-    .tn-nav { background: transparent; border-bottom: none; }
-    .tn-nav .proj-header__inner { pointer-events: none; }
-    .tn-nav .proj-header__logo,
-    .tn-nav .proj-header__link {
-      pointer-events: auto;
-      background: var(--tn-paper);
-      border-radius: 999px;
-      padding: 10px 20px;
-      font-family: var(--tn-sans);
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0;
-      text-transform: lowercase;
-      color: var(--tn-ink);
-      box-shadow: 0 1px 2px rgba(36,28,22,.10), 0 6px 18px rgba(36,28,22,.06);
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-    .tn-nav .proj-header__logo { margin-right: auto; }
-    .tn-nav .proj-header__nav { pointer-events: none; gap: 8px; }
-    .tn-nav .proj-header__link:hover {
-      opacity: 1;
-      transform: translateY(-1px);
-      box-shadow: 0 2px 4px rgba(36,28,22,.14), 0 10px 24px rgba(36,28,22,.10);
-    }
-    .tn-nav .proj-header__link--active {
-      background: var(--tn-ink);
-      color: var(--tn-paper);
-    }
-    .tn-nav .proj-header__link--active:hover { background: var(--tn-ink); color: var(--tn-paper); }
-    @media (max-width: 860px) {
-      .tn-nav .proj-header__inner { pointer-events: auto; }
-    }
-
     /* Team cards: no avatar circles — serif names + small grey sans roles under a hairline rule */
     .proj-team-avatar { display: none; }
     .proj-team-card { padding-top: 22px; border-top: 1px solid var(--tn-hairline); align-items: center; }
@@ -538,7 +504,7 @@
     <button class="lb-next" id="lbNext" aria-label="Neste"><svg width="11" height="19" viewBox="0 0 11 19" fill="none" aria-hidden="true"><path d="M2 1L10 9.5L2 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
   </div>
 
-    <header class="proj-header tn-nav" id="projHeader">
+    <header class="proj-header" id="projHeader">
     <div class="proj-header__inner">
       <a class="proj-header__logo" href="./index.html">JOSEFINE R.G</a>
       <nav class="proj-header__nav" id="projNav">
