@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <script src="./ink-transition.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Josefine Reichelt Gjertsen — Grafisk & UX/UI-designer</title>
+  <title>Josefine Reichelt Gjertsen — UX/UI & grafisk design</title>
   <meta name="description" content="Josefine Reichelt Gjertsen — grafisk & UX/UI-designer. Portefølje og case-studier.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,13 +58,6 @@
       color: var(--accent);
       margin-bottom: clamp(16px, 2.5vh, 26px);
       animation-delay: 0.05s;
-    }
-    .hero__eyebrow::before {
-      content: "";
-      width: 28px;
-      height: 3px;
-      background: var(--accent);
-      flex-shrink: 0;
     }
 
     .hero__name {
@@ -281,6 +274,9 @@
 
     @media (max-width: 700px) {
       .hero { padding-top: calc(52px + clamp(28px, 6vh, 48px)); }
+      .hero__name { font-size: clamp(32px, 8vw, 44px); }
+      .hero__eyebrow { font-size: 9px; }
+      .hero__scroll-cue { margin: clamp(120px, 22vh, 200px) auto 0; }
     }
   </style>
 </head>
@@ -302,7 +298,7 @@
   <main class="hero">
     <div class="hero__grid">
       <div class="hero__text">
-        <p class="hero__eyebrow rise">Grafisk &amp; UX/UI-designer</p>
+        <p class="hero__eyebrow rise">UX/UI &amp; grafisk design</p>
         <h1 class="hero__name">
           <span class="hero__name-line"><span class="rise"><span class="hero__name-desktop">Designer som former<br>meningsfulle opplevelser<br>gjennom visuelle identiteter<br>og digitalt design.</span><span class="hero__name-mobile" aria-hidden="true">Designer som<br>former meningsfulle<br>opplevelser gjennom<br>visuelle identiteter<br>og digitalt design.</span></span></span>
         </h1>
