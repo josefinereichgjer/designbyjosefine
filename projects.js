@@ -292,7 +292,7 @@ window.PROJECTS = [
     subtitle: "Strategisk design",
     year: "2026",
     tags: ["Strategisk design"],
-    cover: "./assets/laptop-mockup.webp",
+    cover: "./assets/we-banner.webp",
     images: ["./assets/doorskilt.webp"],
   }
 ];
