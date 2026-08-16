@@ -177,21 +177,45 @@
       text-transform: uppercase;
       color: var(--accent);
     }
-    .featured__media--soon { position: relative; cursor: default; }
-    .featured__media--soon img { filter: grayscale(0.15); }
+    .featured__item--soon { overflow: visible; }
+    .featured__media--soon { position: relative; overflow: visible; cursor: default; }
+    .featured__media--soon > img:first-child { filter: grayscale(0.15); }
+    .featured__media--soon img.soon-sticker {
+      position: absolute;
+      width: clamp(32px, 3.5vw, 44px);
+      height: auto;
+      object-fit: contain;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 2;
+      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.18));
+      transition: opacity 0.4s var(--ease, ease), transform 0.4s var(--ease, ease);
+    }
+    .soon-sticker--1 { top: 8%; left: 0; transform: rotate(-11deg) translateX(20%); }
+    .soon-sticker--2 { bottom: 10%; left: 0; transform: rotate(9deg) translateX(20%); }
+    .soon-sticker--3 { top: 12%; right: 0; transform: rotate(10deg) translateX(-20%); }
+    .soon-sticker--4 { bottom: 8%; right: 0; transform: rotate(-9deg) translateX(-20%); }
+    .featured__media--soon:hover .soon-sticker--1 { opacity: 1; transform: rotate(-11deg) translate(-72%, -10%); }
+    .featured__media--soon:hover .soon-sticker--2 { opacity: 1; transform: rotate(9deg) translate(-72%, 10%); }
+    .featured__media--soon:hover .soon-sticker--3 { opacity: 1; transform: rotate(10deg) translate(72%, -10%); }
+    .featured__media--soon:hover .soon-sticker--4 { opacity: 1; transform: rotate(-9deg) translate(72%, 10%); }
     .featured__soon-badge {
       position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 12px 26px;
+      border-radius: 999px;
       font-family: "Inclusive Sans", "Avenir Next", sans-serif;
-      font-size: clamp(14px, 1.6vw, 18px);
+      font-size: clamp(13px, 1.4vw, 16px);
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: #fff;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.35);
     }
     .featured__title--soon { cursor: default; }
     .featured__title--soon:hover { opacity: 1; }
@@ -367,13 +391,17 @@
           <p class="featured__tags">Strategisk design ∙ Visuell identitet</p>
         </div>
       </li>
-      <li class="featured__item">
+      <li class="featured__item featured__item--soon">
         <div class="featured__media featured__media--soon">
-          <img src="./assets/Pixel%207a.webp" alt="" loading="lazy" decoding="async">
+          <img src="./assets/sunnyfrontpage.webp" alt="" loading="lazy" decoding="async">
           <span class="featured__soon-badge">Coming soon</span>
+          <img class="soon-sticker soon-sticker--1" src="./assets/Sunshine.webp" alt="" aria-hidden="true" loading="lazy">
+          <img class="soon-sticker soon-sticker--2" src="./assets/Cheerful-Running-Cat-Character.webp" alt="" aria-hidden="true" loading="lazy">
+          <img class="soon-sticker soon-sticker--3" src="./assets/Summer-Calendar.webp" alt="" aria-hidden="true" loading="lazy">
+          <img class="soon-sticker soon-sticker--4" src="./assets/Cat-Character-Using-Binoculars.webp" alt="" aria-hidden="true" loading="lazy">
         </div>
         <div class="featured__body">
-          <span class="featured__title featured__title--soon">Sunny — Heatwave skincare app — ESdi</span>
+          <span class="featured__title featured__title--soon">Sunny: Heatwave skincare app — ESDi summer course</span>
         </div>
       </li>
     </ol>
