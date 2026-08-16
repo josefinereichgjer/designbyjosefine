@@ -177,6 +177,24 @@
       text-transform: uppercase;
       color: var(--accent);
     }
+    .featured__media--soon { position: relative; cursor: default; }
+    .featured__media--soon img { filter: grayscale(0.15); }
+    .featured__soon-badge {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Inclusive Sans", "Avenir Next", sans-serif;
+      font-size: clamp(14px, 1.6vw, 18px);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .featured__title--soon { cursor: default; }
+    .featured__title--soon:hover { opacity: 1; }
 
     /* ── Secondary work list (the rest) — compact, de-emphasised. Sits inside
        .more-work's own container below, so no block-level wrapper of its own. ── */
@@ -347,6 +365,15 @@
           <a class="featured__title" href="./we-visuell-profil.html">Stiftelsen WE</a>
           <p class="featured__desc">Strategisk merkevareprosess fra ekspertintervjuer og konkurrentanalyse til komplett visuell identitet.</p>
           <p class="featured__tags">Strategisk design ∙ Visuell identitet</p>
+        </div>
+      </li>
+      <li class="featured__item">
+        <div class="featured__media featured__media--soon">
+          <img src="./assets/Pixel%207a.webp" alt="" loading="lazy" decoding="async">
+          <span class="featured__soon-badge">Coming soon</span>
+        </div>
+        <div class="featured__body">
+          <span class="featured__title featured__title--soon">Sunny — Heatwave skincare app — ESdi</span>
         </div>
       </li>
     </ol>
